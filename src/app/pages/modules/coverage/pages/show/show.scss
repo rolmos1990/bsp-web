@@ -1,0 +1,224 @@
+button{
+    font-family: 'Lato', sans-serif!important;
+}
+
+p{
+    margin: 0;
+    padding: 0;
+    color:  #808a9d;
+    font-weight: initial;
+}
+
+h4{
+    font-size: 22px;
+}
+
+header {
+    background: #ffffff !important;
+}
+
+.btn.btn-primary.solicitar{
+    width: 100%;
+    height: 48px;
+    padding: 0!important;
+    background-color: #1c8464;
+    font-weight: 100;
+    border: 0;
+}
+
+.btn.btn-primary.solicitar:hover{
+    background-color: #0f644b;
+}
+
+.btn.ver-detalles{
+    width: 100%;
+    font-size: 16px;
+    img{
+        width: 20px;
+    }
+}
+
+.espaciado{
+    height: 20px;
+    width: 100%;
+}
+
+
+.titulo-condiciones{
+    margin: 20px 0 50px 100px;
+    font-family: Lato;
+    font-size: 28px;
+    color: #1c8364;
+    font-weight: 700;
+    text-decoration: none solid rgb(87, 98, 120);
+}
+
+.cobertura{
+    background-color: #fafafa;
+    padding: 70px 0;
+}
+
+.h4-gris{
+    color: #556176;
+    margin: 20px 0 40px 0;
+}
+
+.color-gray{
+    color: #556176;
+}
+
+i.fas.fa-angle-down{
+    color:#1975d1;
+    margin-right: 20px;
+}
+
+.titulo-1{
+    text-align: center;
+    margin: 16px 0 24px 0;
+    font-weight: 700;
+    color: #1c8364;
+}
+
+.cuadrado.top{
+    width: 376px;
+    display: block;
+    margin: 70px auto;
+    border: 2px solid #dce1e9;
+    background-size: cover;
+    box-shadow: 0px 1px 4px rgba(0,0,0,0.5);
+}
+
+.cuadrado{
+    border: 2px solid #dce1e9;
+    background-size: cover;
+}
+
+.cuadrado .superior{
+    padding: 10px 0;
+}
+
+.cuadrado .inferior{
+    padding: 15px 0;
+}
+
+.cuadrado .superior img{
+    width: 150px;
+    margin: 0 auto;
+    display: block;
+}
+
+.xmes{
+    font-weight: bold;
+    margin: 0;
+    text-align: right;
+    color: #379074;
+}
+
+.cuadrado .inferior{
+    background-color: #ebf0f5;
+    border: 1px solid #d6d6d6;
+    border-width: 0 0 1px 0;
+}
+
+
+.cuadrado .inferior h5{
+    font-size: 18px;
+    font-weight: 600;
+    color: #5075b1;
+}
+
+.cuadrado .inferior p span{
+    color: #557ab3;
+    font-weight: bold;
+}
+
+.cuadrado .inferior a{
+    color: #5075b1;
+}
+
+.modal-body{
+    h4{
+        font-size: 20px;
+        color: #556176;
+        text-decoration: none solid rgb(85, 97, 118);
+        font-weight: bold;
+    }
+
+    .especial{
+        margin-top: 45px;
+    }
+
+}
+
+
+
+.btn-primary{
+    width: 233px;
+    height: 59px;
+    padding: 0px 16px;
+    border-radius: 4px;
+    background-color: #1c8464;
+    font-family: Lato;
+    font-size: 17px;
+    color: #ffffff;
+    text-decoration: none solid rgb(255, 255, 255);
+    text-align: center;
+}
+
+.btn-white{
+    width: 233px;
+    height: 59px;
+    padding: 0px 16px;
+    border: 1px solid #556176;
+    border-radius: 4px;
+    background-color: #ffffff;
+    font-family: Lato;
+    font-size: 17px;
+    color: #556176;
+    text-decoration: none solid rgb(85, 97, 118);
+    text-align: center;
+}
+
+.modal-header{
+    border: 0;
+    padding: 1rem 1rem 0 1rem;
+}
+
+.modal-body {
+    padding: 0rem 1rem 1rem;
+}
+
+.modal-body img{
+    width: 140px;
+    margin: 0 auto;
+    display: block;
+}
+
+.h4-verde{
+    color: #1c8464!important;
+    margin-top: -30px;
+}
+
+.card.customClass, .card.customClass .card-header, .panel.customClass{
+    background-color: white;
+}
+
+.modal-body .row{
+ margin: 15px 0;
+}
+
+.btn-primary{
+    border: 0;
+}
+
+
+@media (max-width: 767px){
+    h4{
+        font-size: 20px;
+    }
+
+
+    .cuadrado.top{
+    width: auto;
+    }
+}

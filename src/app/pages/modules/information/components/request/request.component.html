@@ -1,0 +1,515 @@
+<section class="kalacra">
+  <form [formGroup]="forma">
+    <accordion> <!-- Primer Formulario -->
+      <accordion-group [panelClass]="customClass" [isOpen]="isFirstOpen">
+        <button class="btn btn-link btn-block clearfix" accordion-heading>
+          <div class="pull-left float-left" style="margin-left:-15px;"><i class="fas fa-angle-down"></i> Datos del contratante</div>
+        </button>
+        <div class="container">
+          <p class="subtitulo">Por favor completa los siguientes datos y continúa con el proceso de solicitud.</p>
+            <div class="row mb-5">
+              <div class="col-md-4">
+                <label for="">Nombre y apellido</label>
+                <input type="text" class="form-control" formControlName="contFullname">
+                <div class="error" *ngIf="forma.get('contFullname').hasError('required') && forma.get('contFullname').dirty">
+                Campo requerido (*)
+                </div>
+              </div>
+              <div class="col-md-4">
+                <label for="">Provincia</label>
+                <select class="form-control" formControlName="contProvinceId">
+                  <option value="">Seleccione</option>
+                  <option value="1">1</option>
+                </select>
+                <div class="error" *ngIf="forma.get('contProvinceId').hasError('required') && forma.get('contProvinceId').dirty">
+                    Campo requerido (*)
+                </div>
+              </div>
+              <div class="col-md-4">
+                <label for="">Distrito</label>
+                <select class="form-control" formControlName="contDistrictId">
+                  <option value="" selected disabled>Seleccione</option>
+                  <option value="1">1</option>
+                </select>
+                <div class="error" *ngIf="forma.get('contDistrictId').hasError('required') && forma.get('contDistrictId').dirty">
+                    Campo requerido (*)
+                </div>
+              </div>
+            </div>
+            <div class="row mb-5">
+              <div class="col-md-4">
+                <label for="">Corregimiento: </label>
+                <select class="form-control" formControlName="contCorregimientoId">
+                  <option value="" selected disabled>Seleccione</option>
+                  <option value="1">1</option>
+                </select>
+                <div class="error" *ngIf="forma.get('contCorregimientoId').hasError('required') && forma.get('contCorregimientoId').dirty">
+                    Campo requerido (*)
+                </div>
+              </div>
+              <div class="col-md-4">
+                <label for="">Calle / Avenida: </label>
+                <input type="text" class="form-control" placeholder="Ej: calle 56 C con Av. Brasil" formControlName="contStreet">
+                <div class="error" *ngIf="forma.get('contStreet').hasError('required') && forma.get('contStreet').dirty">
+                    Campo requerido (*)
+                </div>
+              </div>
+              <div class="col-md-4">
+                <label for="">Casa / Apartamento:</label>
+                <input type="text" class="form-control" placeholder="Ej: edificio pacif sea, apto 3C" formControlName="contBuilding">
+                <div class="error" *ngIf="forma.get('contBuilding').hasError('required') && forma.get('contBuilding').dirty">
+                    Campo requerido (*)
+                </div>
+              </div>
+            </div>
+            <div class="row mb-5">
+              <div class="col-md-4">
+                <label for="">Barriada / Urbanización:</label>
+                <input type="text" class="form-control" placeholder="Ej: Marbella" formControlName="contNeighborhood">
+                <div class="error" *ngIf="forma.get('contNeighborhood').hasError('required') && forma.get('contNeighborhood').dirty">
+                    Campo requerido (*)
+                </div>
+              </div>
+              <div class="col-md-4">
+                <label for="">Teléfono</label>
+                <input type="text" class="form-control" formControlName="contCellphone">
+                <div class="error" *ngIf="forma.get('contCellphone').hasError('required') && forma.get('contCellphone').dirty">
+                    Campo requerido (*)
+                </div>
+              </div>
+              <div class="col-md-4">
+                <label for="">Fax</label>
+                <input type="text" class="form-control" formControlName="contFax">
+                <div class="error" *ngIf="forma.get('contFax').hasError('required') && forma.get('contFax').dirty">
+                    Campo requerido (*)
+                </div>
+              </div>
+            </div>
+            <div class="row mb-5">
+              <div class="col-md-4">
+                <label for="">Actividad económica:</label>
+                <select class="form-control" formControlName="contEconomicActivity">
+                  <option value="" selected disabled>Seleccione</option>
+                  <option value="1">1</option>
+                </select>
+                <div class="error" *ngIf="forma.get('contEconomicActivity').hasError('required') && forma.get('contEconomicActivity').dirty">
+                    Campo requerido (*)
+                </div>
+              </div>
+              <div class="col-md-4">
+                <!-- -->
+              </div>
+              <div class="col-md-4">
+                <!-- -->
+              </div>
+            </div>
+        </div>
+      </accordion-group>
+    </accordion>
+
+    <accordion> <!-- Segundo Formulario -->
+      <accordion-group [panelClass]="customClass" [isOpen]="isFirstOpen">
+          <button class="btn btn-link btn-block clearfix" accordion-heading>
+            <div class="pull-left float-left" style="margin-left:-15px;"><i class="fas fa-angle-down"></i> Datos del solicitante como asegurado principal</div>
+          </button>
+          <div class="container">
+              <div class="row mb-5">
+                <div class="col-md-4">
+                <label for="">Nombres</label>
+                <input type="text" class="form-control" placeholder="" formControlName="insuName">
+                <div class="error" *ngIf="forma.get('insuName').hasError('required') && forma.get('insuName').dirty">
+                    Campo requerido (*)
+                </div>
+                </div>
+                <div class="col-md-4">
+                <label for="">Apellidos</label>
+                <input type="text" class="form-control" formControlName="insuLastName">
+                <div class="error" *ngIf="forma.get('insuLastName').hasError('required') && forma.get('insuLastName').dirty">
+                    Campo requerido (*)
+                </div>
+                </div>
+                <div class="col-md-4">
+                <label for="">Cédula / Pasaporte:</label>
+                <input type="text" class="form-control" formControlName="insuDocument">
+                <div class="error" *ngIf="forma.get('insuDocument').hasError('required') && forma.get('insuDocument').dirty">
+                    Campo requerido (*)
+                </div>
+                </div>
+              </div>
+              <div class="row mb-5">
+                <div class="col-md-4">
+                <label for="">Sexo: </label>
+                <div class="form-check mb-3">
+                <input class="form-check-input" type="radio" value="masculino" formControlName="insuGender">
+                <label class="form-check-label" for="gender">
+                  Masculino
+                </label>
+                </div>
+                <div class="form-check">
+                <input class="form-check-input" type="radio" value="femenino" formControlName="insuGender">
+                <label class="form-check-label" for="gender">
+                  Femenino
+                </label>
+                </div>
+                </div>
+                <div class="col-md-4">
+                <label for="">Fecha de nacimiento:</label>
+                <input type="date" class="form-control" formControlName="insuBirthday">
+                <div class="error" *ngIf="forma.get('insuBirthday').hasError('required') && forma.get('insuBirthday').dirty">
+                    Campo requerido (*)
+                </div>
+                </div>
+                <div class="col-md-4">
+                <label for="">Estado civil:</label>
+                <select class="form-control" formControlName="insuCivilStatus">
+                  <option value="" selected disabled>Seleccione</option>
+                  <option value="1">1</option>
+                </select>
+                <div class="error" *ngIf="forma.get('insuCivilStatus').hasError('required') && forma.get('insuCivilStatus').dirty">
+                    Campo requerido (*)
+                </div>
+                </div>
+              </div>
+              <div class="row mb-5">
+                <div class="col-md-4">
+                <label for="">Lugar de nacimiento (País /Provincia):</label>
+                <input type="text" class="form-control" formControlName="insuBirthplace">
+                <div class="error" *ngIf="forma.get('insuBirthplace').hasError('required') && forma.get('insuBirthplace').dirty">
+                    Campo requerido (*)
+                </div>
+                </div>
+                <div class="col-md-4">
+                <label for="">Nacionalidad:</label>
+                <select class="form-control" formControlName="insuNationalityId">
+                  <option value="" selected disabled>Seleccione</option>
+                  <option value="1">1</option>
+                </select>
+                <div class="error" *ngIf="forma.get('insuNationalityId').hasError('required') && forma.get('insuNationalityId').dirty">
+                    Campo requerido (*)
+                </div>
+                </div>
+                <div class="col-md-4">
+                <label for="">Profesión:</label>
+                <input type="text" class="form-control" formControlName="insuProfession">
+                <div class="error" *ngIf="forma.get('insuProfession').hasError('required') && forma.get('insuProfession').dirty">
+                    Campo requerido (*)
+                </div>
+                </div>
+              </div>
+              <div class="row mb-5">
+                <div class="col-md-4">
+                <label for="">Ocupación:</label>
+                <input type="text" class="form-control" formControlName="insuOccupation">
+                <div class="error" *ngIf="forma.get('insuOccupation').hasError('required') && forma.get('insuOccupation').dirty">
+                    Campo requerido (*)
+                </div>
+                </div>
+                <div class="col-md-8">
+                <label for="">Describa sus funciones:</label>
+                <input type="text" class="form-control" formControlName="insuOccupationDescription">
+                <div class="error" *ngIf="forma.get('insuOccupationDescription').hasError('required') && forma.get('insuOccupationDescription').dirty">
+                    Campo requerido (*)
+                </div>
+                </div>
+              </div>
+              <div class="row mb-5">
+                <div class="col-md-4">
+                <label for="">Empresa donde labora:</label>
+                <input type="text" class="form-control" formControlName="insuCompany">
+                <div class="error" *ngIf="forma.get('insuCompany').hasError('required') && forma.get('insuCompany').dirty">
+                    Campo requerido (*)
+                </div>
+                </div>
+                <div class="col-md-4">
+                <label for="">Tiempo en esta ocupación:</label>
+                <input type="text" class="form-control" formControlName="insuOccupationTime">
+                <div class="error" *ngIf="forma.get('insuOccupationTime').hasError('required') && forma.get('insuOccupationTime').dirty">
+                    Campo requerido (*)
+                </div>
+                </div>
+                <div class="col-md-4">
+                <label for="">Otras ocupaciones:</label>
+                <input type="text" class="form-control" formControlName="insuOtherOccupations">
+                <div class="error" *ngIf="forma.get('insuOtherOccupations').hasError('required') && forma.get('insuOtherOccupations').dirty">
+                    Campo requerido (*)
+                </div>
+                </div>
+              </div>
+              <div class="row mb-5">
+                <div class="col-md-4">
+                <label for="">Ocupaciones anteriores:</label>
+                <input type="text" class="form-control" formControlName="insuPreviousOccupations">
+                <div class="error" *ngIf="forma.get('insuPreviousOccupations').hasError('required') && forma.get('insuPreviousOccupations').dirty">
+                    Campo requerido (*)
+                </div>
+                </div>
+                <div class="col-md-4">
+                <label for="">Deportes que practica:</label>
+                <input type="text" class="form-control" formControlName="insuSports">
+                <div class="error" *ngIf="forma.get('insuSports').hasError('required') && forma.get('insuSports').dirty">
+                    Campo requerido (*)
+                </div>
+                </div>
+                <div class="col-md-4">
+                <label for="">Ingreso mensual:</label>
+                <select class="form-control" formControlName="insuIngreso">
+                  <option value="" selected disabled>Seleccione</option>
+                  <option value="1">1</option>
+                </select>
+                <div class="error" *ngIf="forma.get('insuIngreso').hasError('required') && forma.get('insuIngreso').dirty">
+                    Campo requerido (*)
+                </div>
+                </div>
+              </div>
+              <div class="row mb-5">
+                <div class="col-md-4">
+                <label for="">Provincia:</label>
+                <select class="form-control" formControlName="insuProvinceId">
+                  <option value="" selected disabled>Seleccione</option>
+                  <option value="1">1</option>
+                </select>
+                <div class="error" *ngIf="forma.get('insuProvinceId').hasError('required') && forma.get('insuProvinceId').dirty">
+                    Campo requerido (*)
+                </div>
+                </div>
+                <div class="col-md-4">
+                <label for="">Distrito:</label>
+                <select class="form-control" formControlName="insuDistrictId">
+                  <option value="" selected disabled>Seleccione</option>
+                  <option value="1">1</option>
+                </select>
+                <div class="error" *ngIf="forma.get('insuDistrictId').hasError('required') && forma.get('insuDistrictId').dirty">
+                    Campo requerido (*)
+                </div>
+                </div>
+                <div class="col-md-4">
+                <label for="">Corregimiento:</label>
+                <select class="form-control" formControlName="insuCorregimientoId">
+                  <option value="" selected disabled>Seleccione</option>
+                  <option value="1">1</option>
+                </select>
+                <div class="error" *ngIf="forma.get('insuCorregimientoId').hasError('required') && forma.get('insuCorregimientoId').dirty">
+                    Campo requerido (*)
+                </div>
+                </div>
+              </div>
+              <div class="row mb-5">
+                <div class="col-md-4">
+                <label for="">Barriada / Urbanización:</label>
+                <input type="text" class="form-control" placeholder="Ej: Marbella" formControlName="insuNeighbourhood">
+                <div class="error" *ngIf="forma.get('insuNeighbourhood').hasError('required') && forma.get('insuNeighbourhood').dirty">
+                    Campo requerido (*)
+                </div>
+                </div>
+                <div class="col-md-4">
+                <label for="">Calle / Avenida:</label>
+                <input type="text" class="form-control" placeholder="Ej: calle 56 con Av. Brasil" formControlName="insuStreet">
+                <div class="error" *ngIf="forma.get('insuStreet').hasError('required') && forma.get('insuStreet').dirty">
+                    Campo requerido (*)
+                </div>
+                </div>
+                <div class="col-md-4">
+                <label for="">Casa / Apartamento:</label>
+                <input type="text" class="form-control" placeholder="Ej: edificio pacif sea, apto 3C" formControlName="insuBuilding">
+                <div class="error" *ngIf="forma.get('insuBuilding').hasError('required') && forma.get('insuBuilding').dirty">
+                    Campo requerido (*)
+                </div>
+                </div>
+              </div>
+              <div class="row mb-5">
+                <div class="col-md-4">
+                <label for="">Teléfono residencial:</label>
+                <input type="text" class="form-control" formControlName="insuLocalNumber">
+                <div class="error" *ngIf="forma.get('insuLocalNumber').hasError('required') && forma.get('insuLocalNumber').dirty">
+                    Campo requerido (*)
+                </div>
+                </div>
+                <div class="col-md-4">
+                <label for="">Teléfono celular:</label>
+                <input type="text" class="form-control" formControlName="insuCellphone">
+                <div class="error" *ngIf="forma.get('insuCellphone').hasError('required') && forma.get('insuCellphone').dirty">
+                    Campo requerido (*)
+                </div>
+                </div>
+                <div class="col-md-4">
+                <label for="">Email:</label>
+                <input type="text" class="form-control" formControlName="insuEmail">
+                <div class="error" *ngIf="forma.get('insuEmail').hasError('required') && forma.get('insuEmail').dirty">
+                    Campo requerido (*)
+                </div>
+                </div>
+              </div>
+          </div>
+      </accordion-group>
+    </accordion>
+
+    <section class="request"> <!-- Tercer Formulario -->
+      <ng-template #content let-modal>
+      <div class="modal-header">
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+            <div class="row">
+              <div class="col-md-12">
+                <p class="addbene">Agregar Beneficiario</p>
+                  <div class="form-group">
+                    <label for="">Tipo de identificación: </label>
+                    <div class="custom-control custom-radio">
+                        <input type="radio" class="custom-control-input">
+                        <label class="custom-control-label check" for="cedula">Cédula</label>
+                      </div>
+                      <div class="custom-control custom-radio">
+                        <input type="radio" class="custom-control-input">
+                        <label class="custom-control-label check" for="pasaporte">Pasaporte</label>
+                      </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="">Número de identificación:</label>
+                    <div class="row">
+                      <div class="col-4 col-md-4">
+                        <input type="text" class="form-control">
+                      </div>
+                      <div class="d-none d-md-block col-md-1">
+                        -
+                      </div>
+                      <div class="col-4 col-md-2">
+                          <input type="text" class="form-control">
+                      </div>
+                      <div class="d-none d-md-block col-md-1">
+                        -
+                      </div>
+                      <div class="col-4 col-md-4">
+                          <input type="text" class="form-control">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="">Nombre(s) y Apellido(s):</label>
+                    <input type="text" class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <label for="">Nacionalidad:</label>
+                    <select class="form-control">
+                      <option value="" selected disabled>Seleccione</option>
+                      <option value="1">1</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="">Fecha de nacimiento del integrante:</label>
+                    <input type="date" class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <label for="">Parentesco:</label>
+                    <input type="text" class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <label for="">Porcentaje (%): <span tooltip="Aqui va la información" placement="top" show-delay="500"><i class="fas fa-info-circle mx-2"></i></span> </label>
+                    <input type="text" class="form-control">
+                  </div>
+              </div>
+            </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary W-100" (click)="modal.dismiss('Cross click')">GUARDAR</button>
+      </div>
+      </ng-template>
+    </section>
+
+    <accordion>
+      <accordion-group [panelClass]="customClass" [isOpen]="isFirstOpen">
+          <button class="btn btn-link btn-block clearfix" accordion-heading>
+            <div class="pull-left float-left" style="margin-left:-15px;"><i class="fas fa-angle-down"></i> Datos de los beneficiarios</div>
+          </button>
+          <div class="container">
+            <div class="row mb-5">
+              <div class="marco-verde uno">
+                <h3 class="text-white">Beneficiarios en caso del Fallecimiento del Asegurado Principal</h3>
+              </div>
+              <button class="btn-mas1" (click)="open(content)"><img src="assets/img/mas.svg" alt="" class="img" ></button> 
+                <div class="fondo-blanco">
+                  <div class="table-responsive">
+                    <table class="table table-hover">
+                      <thead>
+                        <tr>
+                          <th scope="col">Nombre(s) y apellido(s):</th>
+                          <th scope="col">Cédula / Pasaporte:</th>
+                          <th scope="col">Nacionalidad:</th>
+                          <th scope="col">Fecha de nacimiento:</th>
+                          <th scope="col">Parentesco:</th>
+                          <th scope="col">Porcentaje (%):</th>
+                          <th scope="col"> </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                          <tr *ngFor="let number of [0,1,2,3,4]">
+                            <th scope="row"><span class="font-weight-bold">Alexis Suarez</span></th>
+                            <td>E - 8-333-444</td>
+                            <td>Venezolana</td>
+                            <td>05/05/1987</td>
+                            <td>Esposo</td>
+                            <td>50%</td>
+                            <td><i class="fas fa-pen"></i> <i class="fas fa-trash ml-3"></i></td>
+                          </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+            </div>
+
+            <div class="row mb-5">
+              <div class="marco-verde dos">
+                <h3 class="text-white">Beneficiarios contingentes</h3>
+              </div>
+              <button class="btn-mas2" (click)="open(content)"><img src="assets/img/mas.svg" alt="" class="img" ></button> 
+                <div class="fondo-blanco ">
+                  <div class="table-responsive">
+                      <table class="table table-hover">
+                        <thead>
+                          <tr>
+                            <th scope="col">Nombre(s) y apellido(s):</th>
+                            <th scope="col">Cédula / Pasaporte:</th>
+                            <th scope="col">Nacionalidad:</th>
+                            <th scope="col">Fecha de nacimiento:</th>
+                            <th scope="col">Parentesco:</th>
+                            <th scope="col">Porcentaje (%):</th>
+                            <th scope="col"> </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let number of [0,1,2,3,4]">
+                            <th scope="row"><span class="font-weight-bold">Alexis Suarez</span></th>
+                            <td>E - 8-333-444</td>
+                            <td>Venezolana</td>
+                            <td>05/05/1987</td>
+                            <td>Esposo</td>
+                            <td>50%</td>
+                            <td><i class="fas fa-pen"></i> <i class="fas fa-trash ml-3"></i></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                  </div>
+                </div>
+            </div>
+
+            <div class="parrafo-final">
+            <p>Cualquier beneficio que corresponda a un menor de edad designado como Beneficiario en esta Póliza, será pagado a:</p>
+            <input type="text" class="form-control parrafo mr-md-2" formControlName="insuPaymentName">
+            <p class="d-inline-block">con cédula de identidad N°</p>
+            <input type="text" class="form-control parrafo mx-md-2" formControlName="insuPaymentDocument">
+            <p class="d-inline-block">, y en su defecto a</p>
+            <input type="text" class="form-control parrafo mx-md-2" formControlName="insuPaymentName2">
+            <br>
+            <p class="d-inline-block">, con cédula de identidad N°</p>
+            <input type="text" class="form-control parrafo mx-md-2" formControlName="insuPaymentDocument2">
+            <p class="d-inline-block">, a quien(es) he instruido sobre la forma que debe(n) disponer del dinero que reciba(n)</p>
+            <p>de la compañía, sin que por esta razón deba(n) considerarse a esta(s) persona(s) como beneficiario(s) de esta póliza.</p>
+            </div>
+          </div>
+      </accordion-group>
+    </accordion>
+  </form>
+</section>

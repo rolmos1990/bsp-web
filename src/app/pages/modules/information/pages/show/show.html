@@ -1,0 +1,87 @@
+<div class="portada-info">
+    <div class="texto">
+        <h3>Accidentes Personales</h3>
+        <h5>Obtén tu seguro en tan solo 48 horas</h5>
+    </div>
+</div>
+
+<!-- Modal Términos y condiciones -->
+<ng-template #content let-modal>
+<div class="modal-body">
+    <div class="container">
+        <h4>Términos y condiciones</h4>
+        <div class="terminos">
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Omnis adipisci, dolorum, veniam a excepturi, molestiae eaque obcaecati placeat assumenda dicta facere explicabo atque.
+                 Voluptates minus tempora sit velit excepturi cupiditate debitis cum eligendi facere id officiis unde non, animi ducimus itaque nulla in sunt voluptatum magnam atque ab sed rem 
+                 sequi? Eligendi delectus aspernatur sequi autem impedit voluptate tempore nobis nulla at aliquid adipisci repudiandae sint molestiae labore, quisquam voluptatem velit cupiditate
+                  sapiente nam itaque! Unde vero excepturi expedita odio libero laudantium nisi tempore accusamus dolore animi enim itaque dolorum deserunt, laborum quia. Nam, voluptates deserunt
+                   officiis sit eos minima minus, et quisquam labore eius commodi ut itaque eaque repellendus tenetur, veniam aspernatur nihil? Ad dignissimos magni, fugit itaque officiis,
+                    possimus tempore nemo dicta, iure natus at cumque. Vero dolorem natus ullam vel quae repudiandae aut enim, quis debitis vitae velit, recusandae saepe maxime sit distinctio
+                     consequatur consequuntur dolores nisi sunt voluptatum necessitatibus. Sed nisi voluptatibus perspiciatis nam eius similique, odit exercitationem, ullam dolores provident
+                      deleniti ab aliquam autem deserunt. Voluptates officia error perferendis, illum labore, facere vel, dicta quidem culpa a consequuntur! Minus nesciunt doloremque aspernatur
+                       fuga ad similique, reiciendis cupiditate voluptate a beatae. Minima quia ducimus consequatur laudantium quos quasi ab, ad quae error, rem neque, tenetur fuga deserunt sunt
+                        adipisci dolore delectus necessitatibus reiciendis cupiditate eligendi facere. Laborum ipsa adipisci expedita facere quasi perferendis distinctio reiciendis obcaecati porro,
+                         dicta non, et voluptatum? Sed quaerat natus iure nulla, expedita dolore temporibus autem neque a aliquid soluta! Voluptatum harum sunt amet vel at quae aut animi dicta
+                          quia nobis unde corporis asperiores molestias, cum fuga ducimus ut debitis hic alias quaerat aliquid reiciendis ipsam veritatis laudantium! Quo ea reiciendis corrupti
+                           temporibus, eligendi odit explicabo perferendis cumque perspiciatis, nostrum quaerat, rem accusantium deserunt aliquid fugiat labore itaque sequi! Facilis, 
+                           quod.</p>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-white W-100" (click)="modal.dismiss('Cross click')">CANCELAR</button>
+    <button class="btn btn-primary W-100" (click)="modal.dismiss('Cross click')">ACEPTO</button>
+</div>
+</ng-template>
+<!-- <button class="btn btn-lg btn-outline-primary" (click)="open(content)">Términos y condiciones</button> -->
+
+<!-- Padre -->
+<div class="information" [ngClass]="{'d-none': flag == true}">
+    <form [formGroup]="formulario">
+        <aw-wizard>
+            <aw-wizard-step stepTitle="Solicitud">
+                <div class="container">
+                    <!-- Componente Hijo 1-->
+                    <bsp-request [forma]="formulario.get('forma')" ></bsp-request>
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            <button class="btn btn-primary" awNextStep (click)="inicio()" >CONTINUAR</button>
+                            <button class="btn btn-white ml-0 ml-md-4">
+                                <i class="fas fa-save text-dark"></i> GUARDAR PARA DESPUÉS
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </aw-wizard-step>
+            <aw-wizard-step stepTitle="Datos médicos">
+                <div class="container">
+                    <!-- Componente Hijo 2-->
+                    <bsp-medical-data [formaMedical]="formulario.get('formaMedical')"></bsp-medical-data>
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            <button class="btn btn-primary" awNextStep (click)="inicio()">CONTINUAR</button>
+                        </div>
+                    </div>
+                </div>
+            </aw-wizard-step>
+            <aw-wizard-step stepTitle="Datos de pago">
+                <div class="container">
+                    <!-- Componente Hijo 3-->
+                    <bsp-payment-info [formaPayment]="formulario.get('formaPayment')"></bsp-payment-info>
+                    <button class="btn btn-primary d-block" awNextStep (click)="inicio()">CONTINUAR</button>
+                </div>
+            </aw-wizard-step>
+            <aw-wizard-step stepTitle="Datos de entrega">
+                <div class="container">
+                    <!-- Componente Hijo 4-->
+                    <bsp-delivery-data [formaDelivery]="formulario.get('formaDelivery')"></bsp-delivery-data>
+                    <button class="btn btn-primary d-block" (click)="showSucess()">ENVIAR SOLICITUD</button>
+                </div>
+            </aw-wizard-step>
+        </aw-wizard>
+    </form>
+</div>
+
+<div class="container" [ngClass]="{'d-block': flag,'d-none': !flag}">
+    <bsp-success></bsp-success>
+</div>

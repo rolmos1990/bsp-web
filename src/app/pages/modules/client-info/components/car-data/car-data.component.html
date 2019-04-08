@@ -1,0 +1,68 @@
+<form [formGroup]="formCardata">
+    <div class="formulario">
+        <h3 class="font-weight-bold color-green">Datos Automóvil</h3>
+        <p class="color-blue mb-3">Por favor completa los siguientes datos y continúa con el proceso de solicitud.</p>
+        <h5>Características</h5>
+        <hr>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="tipo_auto" class="sub-titulo">Tipo de automóvil:</label>
+                <select name="" id="" class="form-control" formControlName="tipo_auto">
+                    <option disabled selected>Tipo de automóvil</option>
+                    <option value="enero">Pick up</option>
+                    <option value="enero">Camioneta</option>
+                </select>
+                <div class="error" *ngIf="(formCardata.get('tipo_auto').errors && formCardata.get('tipo_auto').dirty)">
+                    <p *ngIf="formCardata.get('tipo_auto').hasError('required')">* Campo requerido</p>
+                </div>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="marca"  class="sub-titulo">Marca:</label>
+                <input type="text" class="form-control" formControlName="marca" placeholder="Marca" >
+                <div class="error" *ngIf="(formCardata.get('marca').errors && formCardata.get('marca').dirty)">
+                    <p *ngIf="formCardata.get('marca').hasError('required')">* Campo requerido</p>
+                </div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="modelo" class="sub-titulo">Modelo:</label>
+                <input type="text" class="form-control" placeholder="Modelo" formControlName="modelo">
+                <div class="error" *ngIf="(formCardata.get('modelo').errors && formCardata.get('modelo').dirty)">
+                    <p *ngIf="formCardata.get('modelo').hasError('required')">* Campo requerido</p>
+                </div>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="anio" class="sub-titulo">Año:</label>
+                <input type="number" class="form-control w-100" placeholder="Año" formControlName="anio">
+                <div class="error" *ngIf="(formCardata.get('anio').errors && formCardata.get('anio').dirty)">
+                    <p *ngIf="formCardata.get('anio').hasError('required')">* Campo requerido</p>
+                </div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="precio"  class="sub-titulo">Precio:</label>
+                <input type="number" class="form-control w-100"  placeholder="$ 0.00" formControlName="precio">
+                <div class="error" *ngIf="(formCardata.get('precio').errors && formCardata.get('precio').dirty)">
+                    <p *ngIf="formCardata.get('precio').hasError('required')">* Campo requerido</p>
+                </div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group">
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" value="Nuevo" formControlName="nuevo">
+                    <label class="form-check-label" for="nuevo">Automóvil nuevo</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="formulario-externo">
+        <div class="row">
+            <div class="col-md-12 text-right">
+                <button class="btn btn-primary" type="submit" [routerLink]="['/payment']" routerLinkActive="router-link-active" [disabled]="formCardata.invalid">Siguiente</button>
+            </div>
+        </div>
+    </div>
+</form>

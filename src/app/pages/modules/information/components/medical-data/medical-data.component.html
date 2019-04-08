@@ -1,0 +1,306 @@
+<div class="row">
+  <div class="col-md-12 titulo-wrap">
+      <h4 class="titulo d-inline-block">Información médica </h4> <img src="assets/img/hospital.svg" alt="" class="pb-35">
+      <p class="sub-titulo">Por favor completa los siguientes datos médicos y continúa con el proceso de solicitud.</p>
+  </div>
+</div> 
+
+  <div class="row">
+    <div class="col-md-12">
+      <form [formGroup]="formaMedical">
+        <div class="cuadrado-gris">
+          <div class="container">
+            <div class="row">
+              <div class="col-9 col-xs-9 col-md-9 col-lg-10  raya color-gray">
+                <p>¿Ha disminuido de peso en el último año?</p>
+                    <p class="d-inline-block m-md-0">Peso(lbs): </p>
+                    <input type="phone" class="form-control d-inline-block mx-2" formControlName="weight">
+                    <p class="d-inline-block m-md-0">Estatura(cm):  </p>
+                    <input type="phone" class="form-control d-inline-block mx-2" formControlName="height">
+              </div>
+              <div class="col-3 col-xs-3 col-md-3 col-lg-2">
+                  <div class="form-check form-check-inline">
+                      <label class="form-check-label mx-0 mx-md-2" for="inlineCheckbox1">Si</label>
+                      <input class="form-check-input" type="checkbox" value="true" formControlName="weightDecrease">
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <label class="form-check-label mx-0 mx-md-2" for="inlineCheckbox2">No</label>
+                      <input class="form-check-input" type="checkbox" value="false" formControlName="weightDecrease">
+                    </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="cuadrado-gris claro">
+          <div class="container">
+            <div class="row">
+              <div class="col-9 col-xs-9 col-md-9 col-lg-10  raya color-gray">
+                <p class="m-md-0">¿Tiene o ha tenido episodios de epilepsia, convulsiones, mareos o síncopes?</p>
+              </div>
+              <div class="col-3 col-xs-3 col-md-3 col-lg-2">
+                  <div class="form-check form-check-inline">
+                      <label class="form-check-label mx-0 mx-md-2" for="inlineCheckbox1">Si</label>
+                      <input class="form-check-input" type="checkbox" value="true" formControlName="neurologycalDisorder">
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <label class="form-check-label mx-0 mx-md-2" for="inlineCheckbox2">No</label>
+                      <input class="form-check-input" type="checkbox" value="false" formControlName="neurologycalDisorder">
+                    </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="cuadrado-gris">
+          <div class="container">
+            <div class="row">
+              <div class="col-9 col-xs-9 col-md-9 col-lg-10  raya color-gray">
+                <p class="m-md-0">¿Tiene o ha tenido enfermedades mentales o del sistema nervioso, parálisis,
+                  esclerosis múltiples, afecciones de espina dorsal, reumatismo o artritis, mutilaciones o deformaciones físicas?</p>
+              </div>
+              <div class="col-3 col-xs-3 col-md-3 col-lg-2">
+                  <div class="form-check form-check-inline">
+                      <label class="form-check-label mx-0 mx-md-2" for="inlineCheckbox1">Si</label>
+                      <input class="form-check-input" type="checkbox" value="true" formControlName="mentalDiseases">
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <label class="form-check-label mx-0 mx-md-2" for="inlineCheckbox2">No</label>
+                      <input class="form-check-input" type="checkbox" value="false" formControlName="mentalDiseases">
+                    </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="cuadrado-gris claro">
+          <div class="container">
+            <div class="row">
+              <div class="col-9 col-xs-9 col-md-9 col-lg-10  raya color-gray">
+                <p class="m-md-0">¿Tiene algún impedimento o defecto físico?</p>
+              </div>
+              <div class="col-3 col-xs-3 col-md-3 col-lg-2">
+                  <div class="form-check form-check-inline">
+                      <label class="form-check-label mx-0 mx-md-2" for="inlineCheckbox1">Si</label>
+                      <input class="form-check-input" type="checkbox" value="true" formControlName="physicalImpediment">
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <label class="form-check-label mx-0 mx-md-2" for="inlineCheckbox2">No</label>
+                      <input class="form-check-input" type="checkbox" value="false" formControlName="physicalImpediment">
+                    </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="cuadrado-gris">
+          <div class="container">
+            <div class="row">
+              <div class="col-9 col-xs-9 col-md-9 col-lg-10  raya color-gray">
+                <p class="m-md-0">¿Ha sufrido algún accidente?</p>
+              </div>
+              <div class="col-3 col-xs-3 col-md-3 col-lg-2">
+                  <div class="form-check form-check-inline">
+                      <label class="form-check-label mx-0 mx-md-2" for="inlineCheckbox1">Si</label>
+                      <input class="form-check-input" type="checkbox" value="true" formControlName="accidents">
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <label class="form-check-label mx-0 mx-md-2" for="inlineCheckbox2">No</label>
+                      <input class="form-check-input" type="checkbox" value="false" formControlName="accidents">
+                    </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="cuadrado-gris claro">
+          <div class="container">
+            <div class="row">
+              <div class="col-9 col-xs-9 col-md-9 col-lg-10  raya color-gray">
+                  <p class="d-inline-block m-md-0">¿Viaja como pasajero en aviones, avionetas o helicópteros particulares? Frecuencia: </p>
+                  <input type="phone" class="form-control d-inline-block mx-2" id="" placeholder="" formControlName="passenger">
+              </div>
+              <div class="col-3 col-xs-3 col-md-3 col-lg-2">
+                  <div class="form-check form-check-inline">
+                      <label class="form-check-label mx-0 mx-md-2" for="inlineCheckbox1">Si</label>
+                      <input class="form-check-input" type="checkbox" value="true" formControlName="passengerFrequency">
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <label class="form-check-label mx-0 mx-md-2" for="inlineCheckbox2">No</label>
+                      <input class="form-check-input" type="checkbox" value="false" formControlName="passengerFrequency">
+                    </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="cuadrado-gris">
+          <div class="container">
+            <div class="row">
+              <div class="col-9 col-xs-9 col-md-9 col-lg-10  raya color-gray">
+                  <p class="d-inline-block m-md-0">¿Pilotea algún tipo de aeronave? Tipo de aeronave: </p>
+                  <input type="phone" class="form-control d-inline-block mx-2" formControlName="pilot">
+              </div>
+              <div class="col-3 col-xs-3 col-md-3 col-lg-2">
+                  <div class="form-check form-check-inline">
+                      <label class="form-check-label mx-0 mx-md-2" for="inlineCheckbox1">Si</label>
+                      <input class="form-check-input" type="checkbox" value="true" formControlName="airplaneType">
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <label class="form-check-label mx-0 mx-md-2" for="inlineCheckbox2">No</label>
+                      <input class="form-check-input" type="checkbox" value="false" formControlName="airplaneType">
+                    </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="cuadrado-gris claro">
+          <div class="container">
+            <div class="row">
+              <div class="col-9 col-xs-9 col-md-9 col-lg-10  raya color-gray">
+                  <p class="d-inline-block m-md-0">¿Utiliza lanchas u otro tipo de embarcaciones? Frecuencia: </p>
+                  <input type="phone" class="form-control d-inline-block mx-2" formControlName="saler">
+              </div>
+              <div class="col-3 col-xs-3 col-md-3 col-lg-2">
+                  <div class="form-check form-check-inline">
+                      <label class="form-check-label mx-0 mx-md-2" for="inlineCheckbox1">Si</label>
+                      <input class="form-check-input" type="checkbox" value="true" formControlName="useFrequency">
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <label class="form-check-label mx-0 mx-md-2" for="inlineCheckbox2">No</label>
+                      <input class="form-check-input" type="checkbox" value="false" formControlName="useFrequency">
+                    </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="cuadrado-gris">
+            <div class="container">
+              <div class="row">
+                <div class="col-9 col-xs-9 col-md-9 col-lg-10  raya color-gray">
+                    <p class="d-inline-block m-md-0">¿Ha sido arrestado por posesión de drogas o por embriaguez, o ha sido tratado por adicción al alcohol o a las drogas? </p>
+                </div>
+                <div class="col-3 col-xs-3 col-md-3 col-lg-2">
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label mx-0 mx-md-2" for="inlineCheckbox1">Si</label>
+                        <input class="form-check-input" type="checkbox" value="true" formControlName="arrested">
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <label class="form-check-label mx-0 mx-md-2" for="inlineCheckbox2">No</label>
+                        <input class="form-check-input" type="checkbox" value="false" formControlName="arrested">
+                      </div>
+                </div>
+              </div>
+            </div>
+        </div>
+
+        <div class="cuadrado-gris claro">
+          <div class="container">
+            <div class="row">
+              <div class="col-9 col-xs-9 col-md-9 col-lg-10  raya color-gray">
+                  <p class="d-inline-block m-md-0">¿Trabaja sobre andamios, techos, exteriores de edificios o similar? Especifique: </p>
+                  <input type="phone" class="form-control d-inline-block mx-2" formControlName="worker">
+              </div>
+              <div class="col-3 col-xs-3 col-md-3 col-lg-2">
+                  <div class="form-check form-check-inline">
+                      <label class="form-check-label mx-0 mx-md-2" for="inlineCheckbox1">Si</label>
+                      <input class="form-check-input" type="checkbox" value="" formControlName="workerPlaces">
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <label class="form-check-label mx-0 mx-md-2" for="inlineCheckbox2">No</label>
+                      <input class="form-check-input" type="checkbox" value="" formControlName="workerPlaces">
+                    </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="cuadrado-gris">
+          <div class="container">
+            <div class="row">
+              <div class="col-9 col-xs-9 col-md-9 col-lg-10  raya color-gray">
+                <p class="m-md-0">¿Trabaja o transporta materiales inflamables, sustancias corrosivas o de alta peligrosidad?</p>
+              </div>
+              <div class="col-3 col-xs-3 col-md-3 col-lg-2">
+                  <div class="form-check form-check-inline">
+                      <label class="form-check-label mx-0 mx-md-2" for="inlineCheckbox1">Si</label>
+                      <input class="form-check-input" type="checkbox" value="" formControlName="useFlammableMaterials">
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <label class="form-check-label mx-0 mx-md-2" for="inlineCheckbox2">No</label>
+                      <input class="form-check-input" type="checkbox" value="" formControlName="useFlammableMaterials">
+                    </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="cuadrado-gris claro">
+          <div class="container">
+            <div class="row">
+              <div class="col-9 col-xs-9 col-md-9 col-lg-10  raya color-gray">
+                  <p class="d-inline-block m-md-0">¿Utiliza maquinarias para hacer su trabajo? Especifique: </p>
+                  <input type="phone" class="form-control d-inline-block mx-2" formControlName="useMachinery">
+              </div>
+              <div class="col-3 col-xs-3 col-md-3 col-lg-2">
+                  <div class="form-check form-check-inline">
+                      <label class="form-check-label mx-0 mx-md-2" for="inlineCheckbox1">Si</label>
+                      <input class="form-check-input" type="checkbox" formControlName="machinery">
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <label class="form-check-label mx-0 mx-md-2" for="inlineCheckbox2">No</label>
+                      <input class="form-check-input" type="checkbox" formControlName="machinery">
+                    </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="cuadrado-gris">
+          <div class="container">
+            <div class="row">
+              <div class="col-9 col-xs-9 col-md-9 col-lg-10  raya color-gray">
+                <p class="d-inline-block m-md-0">¿Trabaja con corriente eléctrica de alta tensión? Especifique: </p>
+                <input type="phone" class="form-control d-inline-block mx-2" formControlName="useElectricity">
+              </div>
+              <div class="col-3 col-xs-3 col-md-3 col-lg-2">
+                  <div class="form-check form-check-inline">
+                      <label class="form-check-label mx-0 mx-md-2">Si</label>
+                      <input class="form-check-input" type="checkbox" value="true" formControlName="electricityType">
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <label class="form-check-label mx-0 mx-md-2">No</label>
+                      <input class="form-check-input" type="checkbox" value="false" formControlName="electricityType">
+                    </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="cuadrado-gris claro">
+          <div class="container">
+            <div class="row">
+              <div class="col-9 col-xs-9 col-md-9 col-lg-10  raya color-gray">
+                  <p class="d-inline-block m-md-0">¿Manipula explosivos o preparados químicos?</p>
+              </div>
+              <div class="col-3 col-xs-3 col-md-3 col-lg-2">
+                  <div class="form-check form-check-inline">
+                      <label class="form-check-label mx-0 mx-md-2" for="inlineCheckbox1">Si</label>
+                      <input class="form-check-input" type="checkbox" value="true" formControlName="useExplosives">
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <label class="form-check-label mx-0 mx-md-2" for="inlineCheckbox2">No</label>
+                      <input class="form-check-input" type="checkbox" value="false" formControlName="useExplosives">
+                    </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+

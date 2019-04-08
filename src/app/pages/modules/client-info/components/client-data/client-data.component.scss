@@ -1,0 +1,45 @@
+.form-control {
+    display: block;
+    margin: 0;
+    padding: 5px;
+    color: inherit;
+    width: 100%;
+    font-family: inherit;
+    border: 1px solid #e6e6e6;;
+    transition: box-shadow 700ms ease-in-out;
+    color: rgb(27, 27, 27);
+}
+
+.form-control::placeholder {
+    color: rgb(27, 27, 27);
+}
+
+.form-control:focus {
+    outline: none;
+    border: none;
+    box-shadow: 0.2rem 0.2rem 0.6rem #e2e7ea
+}
+
+textarea{
+    display: block;
+    box-sizing: padding-box;
+    overflow: hidden;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #1c8364;
+    border-color: #1c8364;
+}
+
+.btn-primary:hover{
+    color: #fff;
+    background-color: #0d5640;
+    border-color: #0d5640;
+}
+
+.ngx-dropdown-container .ngx-dropdown-button{
+    border: 0!important;
+    border-radius: 0!important;
+    color: #333!important;
+}

@@ -1,0 +1,557 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "~ngx-tabset/ngx-tabset";
+@import "app/app.component";
+
+body, button,a{
+    font-family: 'Lato', sans-serif!important;
+}
+
+label.check{
+    font-weight: 100;
+}
+
+.blue{
+    color: #1975d1;
+}
+
+.contenedor-tarjeta{
+    width: auto;
+    border: 5px solid #1c8464;
+    border-width: 5px 0 0 0;
+    border-radius: 4px;
+    background-color: #ebf0f5;
+    margin: 0 auto;
+    display: block;
+}
+
+option[value=""][disabled] {
+display: none;
+}
+option {
+color: black;
+}
+
+.nav-tabset{
+    
+    background-color: #f2f3f4;
+    margin: 0;
+}
+
+.modal-backdrop {
+    background-color: white!important;
+ }
+
+.nav-tabset .nav-tab {
+    border-bottom: solid 0px transparent;
+    transition: border 200ms ease-out;
+    display: block;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 20px;
+    padding: 20px!important;
+    margin: 0;
+    border-radius: 0;
+    color: #222222;
+}
+
+.navbar {
+    padding: 1rem 1rem!important;
+}
+
+.nav-tabset .nav-tab:hover{
+background-color: #e9e9e9;
+}
+
+.nav-tabset .nav-tab.active {
+    background-color: green;
+    background-image: linear-gradient(to right, #1c8264 , #024c36)!important;
+    color: white;
+}
+
+.nav-tabset .nav-tab.active {
+    border-color: #16af0a!important;
+}
+
+@import url('https://fonts.googleapis.com/css?family=Lato:300i,400,400i,700,900');
+
+body{
+	margin: 0;
+	padding: 0;
+	font-family: 'Lato', sans-serif;
+}
+
+header{
+	background: #fafafa!important;
+}
+
+/* Header Menú de Navegación */
+
+.item_contact{
+	color: #13599e;
+	font-size: 16px;
+	padding: .4rem 0.25rem;
+}
+
+.navbar-dark .navbar-nav .nav-link{
+	color: #3a4454!important;
+	font-weight: 400;
+	font-size: 14px;
+}
+
+.sizeImgLogo{
+	width: 134px;
+}
+
+.wrapper{
+	position: relative;
+	min-height: 100%;
+}
+
+/* Page Header */
+.module-header{
+	background-image: url("/assets/img/family.jpg");
+	background-size: cover;
+}
+
+.btn-primary{
+	padding: 12px 20px!important;
+	font-size: 18px;
+	font-weight: 700;
+}
+
+h1{
+	font-weight: 700;
+}
+
+
+.navbar-expand-md .navbar-nav .dropdown-menu{
+	max-height: 150px!important;
+}
+
+.dropdown-menu{
+	min-width: 15rem;
+}
+
+
+.btn-light{
+	background-color: transparent;
+	border: 0;
+}
+
+.btn-light:hover{
+	background-color: #F6F6F6!important;
+}
+
+
+/*Segundo-Contenido*/
+
+.h1-azul, .p-azul{
+	color: #3a4454;
+}
+
+.font-size-22{
+	font-size: 22px;
+}
+
+.font-size-48{
+	font-size: 48px;
+	font-weight: 900;
+}
+
+.cuarto-contenido{
+	background-color: #3A4454;
+}
+
+.width-212{
+	width: 212px;
+}
+
+.quinto-contenido{
+	height: 100px;
+	background-image: linear-gradient(to top, #d0d0d0,#fafafa);
+}
+
+.font-size-18{
+	font-size: 18px;
+}
+
+.height-70{
+	height: 70px;
+}
+
+.color-verde{
+	color: #1c8464;
+}
+
+.ul-footer li a{
+	color: #13599e!important;
+}
+
+.p-footer{
+	font-size: 14px;
+	color: #556176;
+}
+
+
+/* Polizas */
+
+/* Page Header */
+.module-header-2 {
+    background-image: url("/assets/img/car.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+
+li i.far.fa-circle{
+	font-size: 14px;
+}
+
+h3.color-green, i.fas, i.fab{
+	color: #1c8364;
+}
+
+p.color-blue{
+	color: #4078b0;
+}
+
+.form-check-label{
+    font-weight: 100;
+}
+
+.alert:hover{
+	border: 1px solid #C43141;
+	transition:all .5s ease-in-out;
+}
+
+::placeholder{ 
+	color: #a5adb4!important; 
+	::-webkit-input-placeholder { color: #a5adb4; } /* WebKit */
+	::-moz-placeholder { color: #a5adb4; } /* Firefox 19+ */
+	:-ms-input-placeholder { color: #a5adb4; } /* IE 10+ */
+}
+
+.table td, .table th {
+    border-top: 0!important;
+}
+
+.input-group>.form-control{
+	width: 100%!important;
+}
+
+.form-control{
+    color: #5f5f5f;
+    padding: 0px 10px;
+    border: 1px solid #c8c8c8!important;
+    border-radius: 2px!important;
+    text-decoration: none solid rgb(55, 65, 64);
+}
+
+.modal-header{
+    border-bottom: 0!important;
+}
+
+.modal-header .close{
+    color: #1c8364;
+}
+
+.close {
+    opacity: 1!important;
+}
+
+.centrado{
+    margin: 0 auto;
+    display: block;
+}
+
+
+
+.btn-flecha{
+    border: 0;
+    background: transparent;
+    position: absolute;
+    top: 50%;
+}
+
+.logo-banesco{
+    width: 350px;
+    display: block;
+    margin: 0 auto;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #1c8364;
+    border: 0!important;
+}
+
+.btn-primary:hover{
+    color: #fff;
+    background-color: #0d5640;
+}
+
+.formulario{
+    background-color: white;
+    padding: 40px;
+    box-shadow: 0 4px 20px -10px #949494;
+}
+
+.formulario h5{
+	color: #1c8364;
+}
+
+.formulario .sub-titulo {
+    color: #383838;
+}
+
+.sub-titulo{
+    font-weight: bold;
+}
+
+.formulario-externo{
+	padding: 15px;
+    background-image: linear-gradient(to right, #eeeeee , #f9f9f9)!important;
+    box-shadow: 0 4px 20px -10px #949494;
+}
+
+label{
+    margin-left: 5px;
+    margin-bottom: 4px;
+    font-weight: bold;
+	color: #626d80;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.img-fondo{
+    background-image:  url("/assets/img/family4.jpg");
+    background-position: center;
+    background-size: cover;
+    height: 100%;
+}
+
+accordion-group.panel{
+    margin: 25px 0;
+}
+
+.btn-link {
+    font-weight: bold!important;
+    color: #576278!important;
+    text-decoration: none!important;
+    font-size: 20px!important;
+}
+
+.btn-link:hover{
+    text-decoration: none!important;
+}
+
+
+.card-body ul li{
+    color: #6b7484;
+}
+
+.cober .card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid #c1c1c1;
+    border-radius: 0;
+    box-shadow: 0px 3px 7px rgba(0,0,0,0.2);
+}
+
+.cober .card-header {
+    background-color: rgba(255, 255, 255, 0.03)!important;
+}
+
+.cober .card-body{
+    background-color: #fafafa;
+}
+
+p.subtitulo{
+    color: #13599e;
+}
+
+section.kalacra{
+    margin: 70px 0;
+}
+
+section.kalacra .card.customClass, section.kalacra .card.customClass .card-header, section.kalacra .panel.customClass {
+    background-color: #ebf0f5;
+    color: black;
+    width: 100%;
+}
+
+section.kalacra .card-header{
+    padding: 1rem 1.25rem 0!important;
+    border: 5px solid #1c8464;
+    border-width: 5px 0 0 0;
+    border-bottom: 0!important;
+}
+
+section.kalacra.otro .card-header{
+    padding: 0 1.25rem!important;
+    background-color: #ebf0f5!important;
+}
+
+section.kalacra.otro .card{
+    width: 100%;
+    margin: 0 auto;
+}
+
+section.kalacra .card-body {
+    background-color: #ebf0f5;
+    padding: 0 1.25rem 1.25rem!important;
+}
+
+.information aw-wizard-navigation-bar.horizontal ul.steps-indicator li a .label {
+    padding-top: 35px;
+    color: grey;
+}
+
+.information aw-wizard-navigation-bar.horizontal.small ul.steps-indicator li.optional .step-indicator,
+.information aw-wizard-navigation-bar.horizontal.small ul.steps-indicator li.done .step-indicator  {
+    border: 2px solid #e0e0e0;
+    background-color: #496ea4;
+}
+
+.information aw-wizard-navigation-bar.horizontal.small ul.steps-indicator li.current .step-indicator{
+    background-image: url("src/assets/img/step1.png");
+    background-position: center;
+    background-size: cover;
+    border: 0;
+}
+
+.information aw-wizard-navigation-bar.horizontal.small ul.steps-indicator li .step-indicator {
+    position: absolute;
+    top: -24px;
+    left: calc(50% - 35px / 2);
+    width: 39px;
+    height: 39px;
+    border: 2px solid #e0e0e0;
+    background-color: white;
+}
+
+.information aw-wizard-navigation-bar.horizontal ul.steps-indicator li a .label {
+    padding-top: 25px;
+    color: #496ea4;
+    text-transform: initial;
+}
+
+.information aw-wizard-navigation-bar.horizontal.small ul.steps-indicator {
+    padding: 50px 0 20px;
+}
+
+.information aw-wizard-navigation-bar{
+    border: 1px solid #c8c8c8;
+    border-width: 0 0 1px 0;
+    background-color: #ebf0f5;
+}
+
+
+option[value=""][disabled] {
+display: none;
+}
+
+option {
+color: red!important;
+}
+option:first {
+    color: green!important;
+}
+
+.error{
+    color: red;
+}
+
+.autocomplete-container .input-container input{
+    padding: .375rem .75rem!important;
+    line-height: 1.5!important;
+    color: #495057!important;
+    background-color: #fff!important;
+    border: 1px solid #ced4da!important;
+    border-radius: .25rem!important;
+    width: 230px!important;
+    height: 42px!important;
+    display: block!important;
+    margin: 0 auto!important;
+    font-size: 14px!important;
+    font-weight: initial!important;
+}
+
+.autocomplete-container {
+    box-shadow: none!important;
+    height: 42px!important;
+}
+
+.ng-autocomplete {
+    width: 230px!important;
+    margin: 0 auto!important;
+}
+
+.autocomplete-container .suggestions-container {
+    z-index: 100!important;
+}
+
+/* RESPONSIVE*/
+
+/* Small devices (landscape phones, 576px and up)*/
+@media (min-width: 576px) {
+}
+
+/* Medium devices (tablets, 768px and up)*/
+@media (min-width: 768px) {
+
+    section.kalacra.otro .card{
+        width: 518px;
+        margin: 0 auto;
+    }
+
+    .mitad{
+	width: 49%;
+	}
+
+    .module-header-2 {
+    background-image: url("/assets/img/car.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    }
+
+
+    .ul-footer{
+    list-style: none!important;
+    height: 30px!important;
+    }
+
+    .ul-footer > li{
+    float: left!important;
+    }
+}
+
+@media (min-width: 1200px){
+    .navbar .container {
+        max-width: 1340px!important;
+    }
+
+    footer .container {
+        max-width: 1140px!important;
+    }
+}
+
+@media (min-width: 1920px){
+    .navbar .container {
+        max-width: 1800px!important;
+    }
+
+    footer .container {
+        max-width: 1400px!important;
+    }
+}

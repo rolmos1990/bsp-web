@@ -1,0 +1,131 @@
+.contenedor-tarjeta{
+    width: auto;   
+    border: 5px solid #1c8464;
+    border-width: 5px 0 0 0;
+    border-radius: 4px;
+    background-color: #ebf0f5;
+    margin: 0 auto;
+    display: block;
+}
+
+.cvv{
+    width: 120px;
+    height: 39px;
+    padding: 0px 10px;
+    border: 1px solid #c8c8c8;
+    border-radius: 2px;
+    background-color: #ffffff;
+    font-family: Lato;
+    font-size: 16px;
+    color: #374140;
+    font-weight: 700;
+    text-decoration: none solid rgb(55, 65, 64);
+}
+
+i.fas.fa-play{
+    color: #a5adb4;
+}
+
+.btn-primary{
+    width: 100%;
+    height: 47px;
+    padding: 0px 20px 0px 16px!important;
+    border: 1px solid #4e74b0!important;
+    border-radius: 4px;
+    background-color: #ffffff;
+    font-size: 16px;
+    color: #4e74b0;
+    text-decoration: none solid rgb(78, 116, 176);
+    font-weight: 100;
+}
+
+.btn-primary.rojo{
+    border: 1px solid #f25d43!important;
+    color: #f25d43;
+}
+
+
+.btn.agregar{
+    margin-left: 0;
+    color: #13599e;
+    font-size: 14px;
+    color: #13599e;
+    text-decoration: none solid rgb(19, 89, 158);
+    font-weight: bold;
+}
+
+h4{
+    color: #556176;
+    font-weight: 700;
+    font-size: 20px;
+    margin-left: -13px;
+}
+
+.form-control{
+    height: 39px;
+    padding: 0px 10px;
+    border: 1px solid #c8c8c8;
+    border-radius: 2px;
+    background-color: #ffffff;
+    font-family: Lato;
+    font-size: 16px;
+    color: #374140;
+    font-weight: 700;
+    text-decoration: none solid rgb(55, 65, 64);
+}
+
+.contenedor{
+    padding: 0 15px;
+}
+
+.beta{
+    width: 119px;
+    display: inline-block;
+    height: 39px;
+    opacity: 0.7;
+    border: 1px solid #c8c8c8;
+    border-radius: 5px;
+    font-family: Arial;
+    font-size: 14px;
+    color: #000000;
+    font-weight: 400;
+    text-decoration: none solid rgb(0, 0, 0);
+    box-shadow: inset 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+@media (min-width: 768px){
+
+    .btn-primary{
+        width: 180px;
+    }
+
+
+    .contenedor{
+        padding: 0 50px;
+    }
+
+    .btn.agregar{
+        margin-left: 75px;
+    }
+
+    .contenedor-tarjeta{
+        width: 518px;   
+    }
+}
+
+@media (min-width: 1024px){
+    .btn.agregar{
+        margin-left: 195px;
+    }
+}
+@media (min-width: 1300px){
+    .btn.agregar{
+        margin-left: 290px;
+    }
+}
+
+@media (min-width: 1440px){
+    .btn.agregar{
+        margin-left: 285px;
+    }
+}

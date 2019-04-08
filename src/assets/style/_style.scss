@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:300i,400,400i,700,900');
+
+body{
+	margin: 0;
+	padding: 0;
+	font-family: 'Lato', sans-serif!important;
+}
+
+header{
+	background: white!important;
+}
+
+/* Header Menú de Navegación */
+
+.item_contact{
+	color: #13599e;
+	font-size: 16px;
+	padding: .4rem 0.25rem;
+}
+
+.navbar-dark .navbar-nav .nav-link{
+	color: #13599e!important;
+	font-weight: initial;
+	font-size: 14px;
+}
+
+.wrapper{
+	position: relative;
+	min-height: 100%;
+}
+
+/* Page Header */
+.module-header{
+	background-image: url(../img/family.png);
+	background-size: cover;
+	background-position: 60% 50%;
+	background-repeat: no-repeat;
+}
+
+.btn-primary{
+	padding: 17px 20px!important;
+	font-size: 18px;
+	font-weight: 700;
+}
+
+h1{
+	font-weight: 700;
+}
+
+.navbar-expand-md .navbar-nav .dropdown-menu{
+	max-height: 80px!important;
+}
+
+.btn-light{
+	background-color: transparent;
+	border: 0;
+}
+
+.btn-light:hover{
+	background-color: #F6F6F6!important;
+}
+
+
+/*Segundo-Contenido*/
+.h1-azul, .p-azul{
+	color: #3a4454;
+}
+
+.font-size-22{
+	font-size: 22px;
+}
+
+.font-size-48{
+	font-size: 48px;
+	font-weight: 900;
+}
+
+
+.cuarto-contenido{
+	background-color: #3A4454;
+}
+
+.width-212{
+	width: 212px;
+}
+
+.quinto-contenido{
+	height: 100px;
+	background-color: #fafafa;
+}
+
+.font-size-18{
+	font-size: 18px;
+}
+
+.height-70{
+	height: 70px;
+}
+
+.color-verde{
+	color: #1c8464;
+}
+
+
+.ul-footer li a{
+	color: #13599e!important;
+}
+
+.p-footer{
+	font-size: 14px;
+	color: #556176;
+}

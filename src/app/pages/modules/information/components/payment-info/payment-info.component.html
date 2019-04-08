@@ -1,0 +1,178 @@
+<form [formGroup]="formaPayment">
+<section class="kalacra otro d-none">
+  <accordion>
+      <accordion-group [panelClass]="customClass" [isOpen]="isFirstOpen">
+        <button class="btn btn-link btn-block clearfix" accordion-heading>
+          <div class="pull-left float-left" style="margin-left:-15px; margin-top: 5px;"><i class="fas fa-angle-down text-dark"></i> Tarjeta de crédito o débito</div>
+        </button>
+        <div class="container">
+        <p class="subtitulo">Por favor ingresa la información de tu tarjeta de crédito2.</p>
+                <label for="" class="mt-4 mb-3">Nombre de la tarjeta:</label>
+                <input type="text" class="form-control" formControlName="cardName">
+                <div class="error" *ngIf="formaPayment.get('cardName').hasError('required') && formaPayment.get('cardName').dirty">
+                  Nombre de la tarjeta requerido (*)
+                </div>
+        
+                <label for="" class="my-3">Número de tarjeta:</label>
+                <input type="number" class="form-control" formControlName="cardNumber">
+                <div class="error" *ngIf="formaPayment.get('cardNumber').hasError('required') && formaPayment.get('cardNumber').dirty">
+                  Número de tarjeta requerido (*)
+                </div>
+        
+                <label for="" class="my-3 d-block">Fecha de vencimiento:</label>
+                <select name="" id="" class="form-control beta" formControlName="expireMonth">
+                  <option value="01">01</option>
+                  <option value="02">02</option>
+                </select>
+                <div class="error" *ngIf="formaPayment.get('expireMonth').hasError('required') && formaPayment.get('expireMonth').dirty">
+                  Día de vencimiento requerido (*)
+                </div>
+                <select name="" id="" class="form-control beta ml-4" formControlName="expireYear">
+                  <option value="2019">2019</option>
+                  <option value="2018">2018</option>
+                </select>
+                <div class="error" *ngIf="formaPayment.get('expireYear').hasError('required') && formaPayment.get('expireYear').dirty">
+                  Año de vencimiento requerido (*)
+                </div>
+        
+                <label for="" class="my-3 d-block">CVV <i class="fas fa-info-circle" style="color:#4e74b0;"></i></label>
+                <input type="text" class="form-control cvv" formControlName="cvv">
+                <div class="error" *ngIf="formaPayment.get('cvv').hasError('required') && formaPayment.get('cvv').dirty">
+                  CVV requerido (*)
+                </div>
+        
+                <div class="form-check form-check-inline my-4">
+                  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                  <label class="form-check-label" for="inlineCheckbox1" style="font-weight:100;">Seleccionar  tarjeta como predeterminada</label>
+                </div>
+        
+                <button class="btn btn-primary mb-5"><i class="fas fa-save" style="color:#4e74b0;"></i> Guardar tarjeta</button>
+        </div>
+      </accordion-group>
+  </accordion>
+  <button class="btn agregar"><i class="fas fa-play"></i> Agregar otra tarjeta</button>
+</section>
+
+
+<section class="kalacra otro d-none">
+  <accordion>
+      <accordion-group [panelClass]="customClass" [isOpen]="isFirstOpen">
+        <button class="btn btn-link btn-block clearfix" accordion-heading>
+          <div class="pull-left float-left" style="margin-left:-15px; margin-top: 5px;"><i class="fas fa-angle-down text-dark"></i> Tarjeta de crédito o débito</div>
+        </button>
+        <div class="container">
+        <p class="subtitulo">Por favor ingresa la información de tu tarjeta de crédito.</p>
+                <label for="" class="mt-4 mb-3">Nombre de la tarjeta:</label>
+                <input type="text" class="form-control" formControlName="cardName">
+        
+                <label for="" class="my-3">Número de tarjeta:</label>
+                <input type="text" class="form-control" formControlName="cardNumber">
+        
+                <label for="" class="my-3 d-block">Fecha de vencimiento:</label>
+                <select name="" id="" class="form-control beta" formControlName="expireMonth">
+                  <option value="01">01</option>
+                  <option value="02">02</option>
+                </select>
+                <select name="" id="" class="form-control beta ml-4" formControlName="expireYear">
+                  <option value="2019">2019</option>
+                  <option value="2018">2018</option>
+                </select>
+        
+                <label for="" class="my-3 d-block">CVV <i class="fas fa-info-circle" style="color:#4e74b0;"></i></label>
+                <input type="text" class="form-control cvv" formControlName="cvv">
+        
+                <div class="form-check form-check-inline my-4">
+                  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                  <label class="form-check-label" for="inlineCheckbox1" style="font-weight:100;">Seleccionar  tarjeta como predeterminada</label>
+                </div>
+
+                <div class="row">
+                  <div class="col-12 col-md-6">
+                      <button class="btn btn-primary mb-5" ><i class="fas fa-save" style="color:#4e74b0;"></i> Modificar tarjeta</button>
+                  </div>
+                  <div class="col-12 col-md-6">
+                      <button class="btn btn-primary rojo mb-5"><i class="fas fa-trash" style="color:#f25d43;"></i> Eliminar tarjeta</button>
+                  </div>
+                </div>
+        </div>
+      </accordion-group>
+  </accordion>
+  <button class="btn agregar"><i class="fas fa-play"></i> Agregar otra tarjeta</button>
+</section>
+
+<section class="kalacra otro">
+  <accordion>
+      <accordion-group [panelClass]="customClass" [isOpen]="isFirstOpen">
+        <button class="btn btn-link btn-block clearfix" accordion-heading>
+          <div class="pull-left float-left" style="margin-top: 5px;">Tarjeta de crédito o débito</div>
+        </button>
+        <div class="container">
+        <p class="subtitulo">Por favor ingresa la información de tu tarjeta de crédito.</p>
+                <label for="" class="mt-4 mb-3">Nombre de la tarjeta:</label>
+                <input type="text" class="form-control" formControlName="cardName">
+                <div class="error" *ngIf="formaPayment.get('cardName').hasError('required') && formaPayment.get('cardName').dirty">
+                  * Campo requerido
+                </div>
+                <div class="error" *ngIf="formaPayment.controls['cardName'].errors?.minlength && formaPayment.get('cardName').dirty">
+                  * Campo no tiene una longitud válida (*)
+                </div>
+        
+                <label for="" class="my-3">Número de tarjeta:</label>
+                <input type="number" class="form-control" formControlName="cardNumber" maxlength="16">
+                <div class="error" *ngIf="formaPayment.get('cardNumber').hasError('required') && formaPayment.get('cardNumber').dirty">
+                  Número de tarjeta requerido (*)
+                </div>
+                <div class="error" *ngIf="formaPayment.controls['cardNumber'].errors?.maxlength && formaPayment.get('cardNumber').dirty">
+                  * Campo excede una longitud válida (*)
+                </div>
+        
+                <label for="" class="my-3 d-block">Fecha de vencimiento:</label>
+                <select name="" id="" class="form-control beta" formControlName="expireMonth">
+                  <option value="01">01</option>
+                  <option value="02">02</option>
+                </select>
+                <select name="" id="" class="form-control beta ml-4" formControlName="expireYear">
+                  <option value="2019">2019</option>
+                  <option value="2018">2018</option>
+                </select>
+        
+                <label for="" class="my-3 d-block">CVV <i class="fas fa-info-circle" style="color:#4e74b0;"></i></label>
+                <input type="number" class="form-control cvv" formControlName="cvv" maxlength="3">
+                <div class="error" *ngIf="formaPayment.get('cvv').hasError('required') && formaPayment.get('cvv').dirty">
+                  Campo requerido (*)
+                </div>
+        </div>
+      </accordion-group>
+  </accordion>
+</section>
+
+<div class="row d-none">
+  <div class="col-md-12">
+    <div class="contenedor-tarjeta mt-5 mt-2">
+      <div class="container contenedor">
+        <div class="row"></div>
+          <h4 class="mt-4" style="margin-left:1px;"> Tarjeta de crédito o débito</h4>
+          <p class="pl-18">Por favor ingresa la información de tu tarjeta de crédito.</p>
+            <label for="" class="mt-4 mb-3">Nombre de la tarjeta:</label>
+            <input type="text" class="form-control" formControlName="cardName">
+    
+            <label for="" class="my-3">Número de tarjeta:</label>
+            <input type="text" class="form-control" formControlName="cardNumber">
+    
+            <label for="" class="my-3 d-block">Fecha de vencimiento:</label>
+            <select name="" id="" class="form-control beta" formControlName="expireMonth">
+              <option value="01">01</option>
+              <option value="02">02</option>
+            </select>
+            <select name="" id="" class="form-control beta ml-4" formControlName="expireYear">
+              <option value="2019">2019</option>
+              <option value="2018">2018</option>
+            </select>
+    
+            <label for="" class="my-3 d-block">CVV <i class="fas fa-info-circle" style="color:#4e74b0;"></i></label>
+            <input type="text" class="form-control cvv" formControlName="cvv">
+      </div>
+    </div>
+  </div>
+</div>
+</form>
