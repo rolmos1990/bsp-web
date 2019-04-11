@@ -1,339 +1,376 @@
 <section class="kalacra">
   <form [formGroup]="forma">
-    <accordion> <!-- Primer Formulario -->
+    <accordion>
+      <!-- Primer Formulario -->
       <accordion-group [panelClass]="customClass" [isOpen]="isFirstOpen">
         <button class="btn btn-link btn-block clearfix" accordion-heading>
-          <div class="pull-left float-left" style="margin-left:-15px;"><i class="fas fa-angle-down"></i> Datos del contratante</div>
+          <div class="pull-left float-left" style="margin-left:-15px;"><i class="fas fa-angle-down"></i> Datos del
+            contratante</div>
         </button>
         <div class="container">
           <p class="subtitulo">Por favor completa los siguientes datos y continúa con el proceso de solicitud.</p>
-            <div class="row mb-5">
-              <div class="col-md-4">
-                <label for="">Nombre y apellido</label>
-                <input type="text" class="form-control" formControlName="contFullname">
-                <small class="text-muted" *ngIf="!invalid('contFullname', forma)">Ejemplo: Pedro Blanco.</small>
-                <small class="text-danger" *ngIf="invalid('contFullname', forma)">Este campo es requerido.Ejemplo: Pedro Blanco.</small>
-              </div>
-              <div class="col-md-4">
-                <label for="">Provincia</label>
-                <select class="form-control" formControlName="contProvinceId">
-                  <option value="">Seleccione</option>
-                  <option value="1">1</option>
-                </select>
-                <small class="text-danger" *ngIf="invalid('contProvinceId', forma)">Este campo es requerido.</small>
-              </div>
-              <div class="col-md-4">
-                <label for="">Distrito</label>
-                <select class="form-control" formControlName="contDistrictId">
-                  <option value="" selected disabled>Seleccione</option>
-                  <option value="1">1</option>
-                </select>
-                <div class="error" *ngIf="forma.get('contDistrictId').hasError('required') && forma.get('contDistrictId').dirty">
-                    Campo requerido (*)
-                </div>
+          <div class="row mb-5">
+            <div class="col-md-4">
+              <label for="">Nombre y apellido</label>
+              <input type="text" class="form-control" formControlName="contFullname">
+              <small class="text-muted" *ngIf="!invalid('contFullname', forma)">Ejemplo: Pedro Blanco.</small>
+              <small class="text-danger" *ngIf="invalid('contFullname', forma)">Este campo es requerido.Ejemplo: Pedro
+                Blanco.</small>
+            </div>
+            <div class="col-md-4">
+              <label for="">Provincia</label>
+              <select class="form-control" formControlName="contProvinceId">
+                <option value="">Seleccione</option>
+                <option value="1">1</option>
+              </select>
+              <small class="text-danger" *ngIf="invalid('contProvinceId', forma)">Este campo es requerido.</small>
+            </div>
+            <div class="col-md-4">
+              <label for="">Distrito</label>
+              <select class="form-control" formControlName="contDistrictId">
+                <option value="" selected disabled>Seleccione</option>
+                <option value="1">1</option>
+              </select>
+              <div class="error"
+                *ngIf="forma.get('contDistrictId').hasError('required') && forma.get('contDistrictId').dirty">
+                Campo requerido (*)
               </div>
             </div>
-            <div class="row mb-5">
-              <div class="col-md-4">
-                <label for="">Corregimiento: </label>
-                <select class="form-control" formControlName="contCorregimientoId">
-                  <option value="" selected disabled>Seleccione</option>
-                  <option value="1">1</option>
-                </select>
-                <div class="error" *ngIf="forma.get('contCorregimientoId').hasError('required') && forma.get('contCorregimientoId').dirty">
-                    Campo requerido (*)
-                </div>
-              </div>
-              <div class="col-md-4">
-                <label for="">Calle / Avenida: </label>
-                <input type="text" class="form-control" placeholder="Ej: calle 56 C con Av. Brasil" formControlName="contStreet">
-                <div class="error" *ngIf="forma.get('contStreet').hasError('required') && forma.get('contStreet').dirty">
-                    Campo requerido (*)
-                </div>
-              </div>
-              <div class="col-md-4">
-                <label for="">Casa / Apartamento:</label>
-                <input type="text" class="form-control" placeholder="Ej: edificio pacif sea, apto 3C" formControlName="contBuilding">
-                <div class="error" *ngIf="forma.get('contBuilding').hasError('required') && forma.get('contBuilding').dirty">
-                    Campo requerido (*)
-                </div>
+          </div>
+          <div class="row mb-5">
+            <div class="col-md-4">
+              <label for="">Corregimiento: </label>
+              <select class="form-control" formControlName="contCorregimientoId">
+                <option value="" selected disabled>Seleccione</option>
+                <option value="1">1</option>
+              </select>
+              <div class="error"
+                *ngIf="forma.get('contCorregimientoId').hasError('required') && forma.get('contCorregimientoId').dirty">
+                Campo requerido (*)
               </div>
             </div>
-            <div class="row mb-5">
-              <div class="col-md-4">
-                <label for="">Barriada / Urbanización:</label>
-                <input type="text" class="form-control" placeholder="Ej: Marbella" formControlName="contNeighborhood">
-                <div class="error" *ngIf="forma.get('contNeighborhood').hasError('required') && forma.get('contNeighborhood').dirty">
-                    Campo requerido (*)
-                </div>
-              </div>
-              <div class="col-md-4">
-                <label for="">Teléfono</label>
-                <input type="text" class="form-control" formControlName="contCellphone">
-                <div class="error" *ngIf="forma.get('contCellphone').hasError('required') && forma.get('contCellphone').dirty">
-                    Campo requerido (*)
-                </div>
+            <div class="col-md-4">
+              <label for="">Calle / Avenida: </label>
+              <input type="text" class="form-control" placeholder="Ej: calle 56 C con Av. Brasil"
+                formControlName="contStreet">
+              <div class="error" *ngIf="forma.get('contStreet').hasError('required') && forma.get('contStreet').dirty">
+                Campo requerido (*)
               </div>
             </div>
-            <div class="row mb-5">
-              <div class="col-md-4">
-                <label for="">Actividad económica:</label>
-                <select class="form-control" formControlName="contEconomicActivity">
-                  <option value="" selected disabled>Seleccione</option>
-                  <option value="1">1</option>
-                </select>
-                <div class="error" *ngIf="forma.get('contEconomicActivity').hasError('required') && forma.get('contEconomicActivity').dirty">
-                    Campo requerido (*)
-                </div>
-              </div>
-              <div class="col-md-4">
-                <!-- -->
-              </div>
-              <div class="col-md-4">
-                <!-- -->
+            <div class="col-md-4">
+              <label for="">Casa / Apartamento:</label>
+              <input type="text" class="form-control" placeholder="Ej: edificio pacif sea, apto 3C"
+                formControlName="contBuilding">
+              <div class="error"
+                *ngIf="forma.get('contBuilding').hasError('required') && forma.get('contBuilding').dirty">
+                Campo requerido (*)
               </div>
             </div>
+          </div>
+          <div class="row mb-5">
+            <div class="col-md-4">
+              <label for="">Barriada / Urbanización:</label>
+              <input type="text" class="form-control" placeholder="Ej: Marbella" formControlName="contNeighborhood">
+              <div class="error"
+                *ngIf="forma.get('contNeighborhood').hasError('required') && forma.get('contNeighborhood').dirty">
+                Campo requerido (*)
+              </div>
+            </div>
+            <div class="col-md-4">
+              <label for="">Teléfono</label>
+              <input type="text" class="form-control" formControlName="contCellphone">
+              <div class="error"
+                *ngIf="forma.get('contCellphone').hasError('required') && forma.get('contCellphone').dirty">
+                Campo requerido (*)
+              </div>
+            </div>
+          </div>
+          <div class="row mb-5">
+            <div class="col-md-4">
+              <label for="">Actividad económica:</label>
+              <select class="form-control" formControlName="contEconomicActivity">
+                <option value="" selected disabled>Seleccione</option>
+                <option value="1">1</option>
+              </select>
+              <div class="error"
+                *ngIf="forma.get('contEconomicActivity').hasError('required') && forma.get('contEconomicActivity').dirty">
+                Campo requerido (*)
+              </div>
+            </div>
+            <div class="col-md-4">
+              <!-- -->
+            </div>
+            <div class="col-md-4">
+              <!-- -->
+            </div>
+          </div>
         </div>
       </accordion-group>
     </accordion>
 
-    <accordion> <!-- Segundo Formulario -->
+    <accordion>
+      <!-- Segundo Formulario -->
       <accordion-group [panelClass]="customClass" [isOpen]="isFirstOpen">
-          <button class="btn btn-link btn-block clearfix" accordion-heading>
-            <div class="pull-left float-left" style="margin-left:-15px;"><i class="fas fa-angle-down"></i> Datos del solicitante como asegurado principal</div>
-          </button>
-          <div class="container">
-              <div class="row mb-5">
-                <div class="col-md-4">
-                <label for="">Nombres</label>
-                <input type="text" class="form-control" placeholder="" formControlName="insuName">
-                <div class="error" *ngIf="forma.get('insuName').hasError('required') && forma.get('insuName').dirty">
-                    Campo requerido (*)
-                </div>
-                </div>
-                <div class="col-md-4">
-                <label for="">Apellidos</label>
-                <input type="text" class="form-control" formControlName="insuLastName">
-                <div class="error" *ngIf="forma.get('insuLastName').hasError('required') && forma.get('insuLastName').dirty">
-                    Campo requerido (*)
-                </div>
-                </div>
-                <div class="col-md-4">
-                <label for="">Cédula / Pasaporte:</label>
-                <input type="text" class="form-control" formControlName="insuDocument">
-                <div class="error" *ngIf="forma.get('insuDocument').hasError('required') && forma.get('insuDocument').dirty">
-                    Campo requerido (*)
-                </div>
-                </div>
+        <button class="btn btn-link btn-block clearfix" accordion-heading>
+          <div class="pull-left float-left" style="margin-left:-15px;"><i class="fas fa-angle-down"></i> Datos del
+            solicitante como asegurado principal</div>
+        </button>
+        <div class="container">
+          <div class="row mb-5">
+            <div class="col-md-4">
+              <label for="">Nombres</label>
+              <input type="text" class="form-control" placeholder="" formControlName="insuName">
+              <div class="error" *ngIf="forma.get('insuName').hasError('required') && forma.get('insuName').dirty">
+                Campo requerido (*)
               </div>
-              <div class="row mb-5">
-                <div class="col-md-4">
-                <label for="">Sexo: </label>
-                <div class="form-check mb-3">
+            </div>
+            <div class="col-md-4">
+              <label for="">Apellidos</label>
+              <input type="text" class="form-control" formControlName="insuLastName">
+              <div class="error"
+                *ngIf="forma.get('insuLastName').hasError('required') && forma.get('insuLastName').dirty">
+                Campo requerido (*)
+              </div>
+            </div>
+            <div class="col-md-4">
+              <label for="">Cédula / Pasaporte:</label>
+              <input type="text" class="form-control" formControlName="insuDocument">
+              <div class="error"
+                *ngIf="forma.get('insuDocument').hasError('required') && forma.get('insuDocument').dirty">
+                Campo requerido (*)
+              </div>
+            </div>
+          </div>
+          <div class="row mb-5">
+            <div class="col-md-4">
+              <label for="">Sexo: </label>
+              <div class="form-check mb-3">
                 <input class="form-check-input" type="radio" value="masculino" formControlName="insuGender">
                 <label class="form-check-label" for="gender">
                   Masculino
                 </label>
-                </div>
-                <div class="form-check">
+              </div>
+              <div class="form-check">
                 <input class="form-check-input" type="radio" value="femenino" formControlName="insuGender">
                 <label class="form-check-label" for="gender">
                   Femenino
                 </label>
-                </div>
-                </div>
-                <div class="col-md-4">
-                <label for="">Fecha de nacimiento:</label>
-                <input type="date" class="form-control" formControlName="insuBirthday">
-                <div class="error" *ngIf="forma.get('insuBirthday').hasError('required') && forma.get('insuBirthday').dirty">
-                    Campo requerido (*)
-                </div>
-                </div>
-                <div class="col-md-4">
-                <label for="">Estado civil:</label>
-                <select class="form-control" formControlName="insuCivilStatus">
-                  <option value="" selected disabled>Seleccione</option>
-                  <option value="1">1</option>
-                </select>
-                <div class="error" *ngIf="forma.get('insuCivilStatus').hasError('required') && forma.get('insuCivilStatus').dirty">
-                    Campo requerido (*)
-                </div>
-                </div>
               </div>
-              <div class="row mb-5">
-                <div class="col-md-4">
-                <label for="">Lugar de nacimiento (País /Provincia):</label>
-                <input type="text" class="form-control" formControlName="insuBirthplace">
-                <div class="error" *ngIf="forma.get('insuBirthplace').hasError('required') && forma.get('insuBirthplace').dirty">
-                    Campo requerido (*)
-                </div>
-                </div>
-                <div class="col-md-4">
-                <label for="">Nacionalidad:</label>
-                <select class="form-control" formControlName="insuNationalityId">
-                  <option value="" selected disabled>Seleccione</option>
-                  <option value="1">1</option>
-                </select>
-                <div class="error" *ngIf="forma.get('insuNationalityId').hasError('required') && forma.get('insuNationalityId').dirty">
-                    Campo requerido (*)
-                </div>
-                </div>
-                <div class="col-md-4">
-                <label for="">Profesión:</label>
-                <input type="text" class="form-control" formControlName="insuProfession">
-                <div class="error" *ngIf="forma.get('insuProfession').hasError('required') && forma.get('insuProfession').dirty">
-                    Campo requerido (*)
-                </div>
-                </div>
+            </div>
+            <div class="col-md-4">
+              <label for="">Fecha de nacimiento:</label>
+              <input type="date" class="form-control" formControlName="insuBirthday">
+              <div class="error"
+                *ngIf="forma.get('insuBirthday').hasError('required') && forma.get('insuBirthday').dirty">
+                Campo requerido (*)
               </div>
-              <div class="row mb-5">
-                <div class="col-md-4">
-                <label for="">Ocupación:</label>
-                <input type="text" class="form-control" formControlName="insuOccupation">
-                <div class="error" *ngIf="forma.get('insuOccupation').hasError('required') && forma.get('insuOccupation').dirty">
-                    Campo requerido (*)
-                </div>
-                </div>
-                <div class="col-md-8">
-                <label for="">Describa sus funciones:</label>
-                <input type="text" class="form-control" formControlName="insuOccupationDescription">
-                <div class="error" *ngIf="forma.get('insuOccupationDescription').hasError('required') && forma.get('insuOccupationDescription').dirty">
-                    Campo requerido (*)
-                </div>
-                </div>
+            </div>
+            <div class="col-md-4">
+              <label for="">Estado civil:</label>
+              <select class="form-control" formControlName="insuCivilStatus">
+                <option value="" selected disabled>Seleccione</option>
+                <option value="1">1</option>
+              </select>
+              <div class="error"
+                *ngIf="forma.get('insuCivilStatus').hasError('required') && forma.get('insuCivilStatus').dirty">
+                Campo requerido (*)
               </div>
-              <div class="row mb-5">
-                <div class="col-md-4">
-                <label for="">Empresa donde labora:</label>
-                <input type="text" class="form-control" formControlName="insuCompany">
-                <div class="error" *ngIf="forma.get('insuCompany').hasError('required') && forma.get('insuCompany').dirty">
-                    Campo requerido (*)
-                </div>
-                </div>
-                <div class="col-md-4">
-                <label for="">Tiempo en esta ocupación:</label>
-                <input type="text" class="form-control" formControlName="insuOccupationTime">
-                <div class="error" *ngIf="forma.get('insuOccupationTime').hasError('required') && forma.get('insuOccupationTime').dirty">
-                    Campo requerido (*)
-                </div>
-                </div>
-                <div class="col-md-4">
-                <label for="">Otras ocupaciones:</label>
-                <input type="text" class="form-control" formControlName="insuOtherOccupations">
-                <div class="error" *ngIf="forma.get('insuOtherOccupations').hasError('required') && forma.get('insuOtherOccupations').dirty">
-                    Campo requerido (*)
-                </div>
-                </div>
-              </div>
-              <div class="row mb-5">
-                <div class="col-md-4">
-                <label for="">Ocupaciones anteriores:</label>
-                <input type="text" class="form-control" formControlName="insuPreviousOccupations">
-                <div class="error" *ngIf="forma.get('insuPreviousOccupations').hasError('required') && forma.get('insuPreviousOccupations').dirty">
-                    Campo requerido (*)
-                </div>
-                </div>
-                <div class="col-md-4">
-                <label for="">Deportes que practica:</label>
-                <input type="text" class="form-control" formControlName="insuSports">
-                <div class="error" *ngIf="forma.get('insuSports').hasError('required') && forma.get('insuSports').dirty">
-                    Campo requerido (*)
-                </div>
-                </div>
-                <div class="col-md-4">
-                <label for="">Ingreso mensual:</label>
-                <select class="form-control" formControlName="insuIngreso">
-                  <option value="" selected disabled>Seleccione</option>
-                  <option value="1">1</option>
-                </select>
-                <div class="error" *ngIf="forma.get('insuIngreso').hasError('required') && forma.get('insuIngreso').dirty">
-                    Campo requerido (*)
-                </div>
-                </div>
-              </div>
-              <div class="row mb-5">
-                <div class="col-md-4">
-                <label for="">Provincia:</label>
-                <select class="form-control" formControlName="insuProvinceId">
-                  <option value="" selected disabled>Seleccione</option>
-                  <option value="1">1</option>
-                </select>
-                <div class="error" *ngIf="forma.get('insuProvinceId').hasError('required') && forma.get('insuProvinceId').dirty">
-                    Campo requerido (*)
-                </div>
-                </div>
-                <div class="col-md-4">
-                <label for="">Distrito:</label>
-                <select class="form-control" formControlName="insuDistrictId">
-                  <option value="" selected disabled>Seleccione</option>
-                  <option value="1">1</option>
-                </select>
-                <div class="error" *ngIf="forma.get('insuDistrictId').hasError('required') && forma.get('insuDistrictId').dirty">
-                    Campo requerido (*)
-                </div>
-                </div>
-                <div class="col-md-4">
-                <label for="">Corregimiento:</label>
-                <select class="form-control" formControlName="insuCorregimientoId">
-                  <option value="" selected disabled>Seleccione</option>
-                  <option value="1">1</option>
-                </select>
-                <div class="error" *ngIf="forma.get('insuCorregimientoId').hasError('required') && forma.get('insuCorregimientoId').dirty">
-                    Campo requerido (*)
-                </div>
-                </div>
-              </div>
-              <div class="row mb-5">
-                <div class="col-md-4">
-                <label for="">Barriada / Urbanización:</label>
-                <input type="text" class="form-control" placeholder="Ej: Marbella" formControlName="insuNeighbourhood">
-                <div class="error" *ngIf="forma.get('insuNeighbourhood').hasError('required') && forma.get('insuNeighbourhood').dirty">
-                    Campo requerido (*)
-                </div>
-                </div>
-                <div class="col-md-4">
-                <label for="">Calle / Avenida:</label>
-                <input type="text" class="form-control" placeholder="Ej: calle 56 con Av. Brasil" formControlName="insuStreet">
-                <div class="error" *ngIf="forma.get('insuStreet').hasError('required') && forma.get('insuStreet').dirty">
-                    Campo requerido (*)
-                </div>
-                </div>
-                <div class="col-md-4">
-                <label for="">Casa / Apartamento:</label>
-                <input type="text" class="form-control" placeholder="Ej: edificio pacif sea, apto 3C" formControlName="insuBuilding">
-                <div class="error" *ngIf="forma.get('insuBuilding').hasError('required') && forma.get('insuBuilding').dirty">
-                    Campo requerido (*)
-                </div>
-                </div>
-              </div>
-              <div class="row mb-5">
-                <div class="col-md-4">
-                <label for="">Teléfono residencial:</label>
-                <input type="text" class="form-control" formControlName="insuLocalNumber">
-                <div class="error" *ngIf="forma.get('insuLocalNumber').hasError('required') && forma.get('insuLocalNumber').dirty">
-                    Campo requerido (*)
-                </div>
-                </div>
-                <div class="col-md-4">
-                <label for="">Teléfono celular:</label>
-                <input type="text" class="form-control" formControlName="insuCellphone">
-                <div class="error" *ngIf="forma.get('insuCellphone').hasError('required') && forma.get('insuCellphone').dirty">
-                    Campo requerido (*)
-                </div>
-                </div>
-                <div class="col-md-4">
-                <label for="">Email:</label>
-                <input type="text" class="form-control" formControlName="insuEmail">
-                <div class="error" *ngIf="forma.get('insuEmail').hasError('required') && forma.get('insuEmail').dirty">
-                    Campo requerido (*)
-                </div>
-                </div>
-              </div>
+            </div>
           </div>
+          <div class="row mb-5">
+            <div class="col-md-4">
+              <label for="">Lugar de nacimiento (País /Provincia):</label>
+              <input type="text" class="form-control" formControlName="insuBirthplace">
+              <div class="error"
+                *ngIf="forma.get('insuBirthplace').hasError('required') && forma.get('insuBirthplace').dirty">
+                Campo requerido (*)
+              </div>
+            </div>
+            <div class="col-md-4">
+              <label for="">Nacionalidad:</label>
+              <select class="form-control" formControlName="insuNationalityId">
+                <option value="" selected disabled>Seleccione</option>
+                <option value="1">1</option>
+              </select>
+              <div class="error"
+                *ngIf="forma.get('insuNationalityId').hasError('required') && forma.get('insuNationalityId').dirty">
+                Campo requerido (*)
+              </div>
+            </div>
+            <div class="col-md-4">
+              <label for="">Profesión:</label>
+              <input type="text" class="form-control" formControlName="insuProfession">
+              <div class="error"
+                *ngIf="forma.get('insuProfession').hasError('required') && forma.get('insuProfession').dirty">
+                Campo requerido (*)
+              </div>
+            </div>
+          </div>
+          <div class="row mb-5">
+            <div class="col-md-4">
+              <label for="">Ocupación:</label>
+              <input type="text" class="form-control" formControlName="insuOccupation">
+              <div class="error"
+                *ngIf="forma.get('insuOccupation').hasError('required') && forma.get('insuOccupation').dirty">
+                Campo requerido (*)
+              </div>
+            </div>
+            <div class="col-md-8">
+              <label for="">Describa sus funciones:</label>
+              <input type="text" class="form-control" formControlName="insuOccupationDescription">
+              <div class="error"
+                *ngIf="forma.get('insuOccupationDescription').hasError('required') && forma.get('insuOccupationDescription').dirty">
+                Campo requerido (*)
+              </div>
+            </div>
+          </div>
+          <div class="row mb-5">
+            <div class="col-md-4">
+              <label for="">Empresa donde labora:</label>
+              <input type="text" class="form-control" formControlName="insuCompany">
+              <div class="error"
+                *ngIf="forma.get('insuCompany').hasError('required') && forma.get('insuCompany').dirty">
+                Campo requerido (*)
+              </div>
+            </div>
+            <div class="col-md-4">
+              <label for="">Tiempo en esta ocupación:</label>
+              <input type="text" class="form-control" formControlName="insuOccupationTime">
+              <div class="error"
+                *ngIf="forma.get('insuOccupationTime').hasError('required') && forma.get('insuOccupationTime').dirty">
+                Campo requerido (*)
+              </div>
+            </div>
+            <div class="col-md-4">
+              <label for="">Otras ocupaciones:</label>
+              <input type="text" class="form-control" formControlName="insuOtherOccupations">
+              <div class="error"
+                *ngIf="forma.get('insuOtherOccupations').hasError('required') && forma.get('insuOtherOccupations').dirty">
+                Campo requerido (*)
+              </div>
+            </div>
+          </div>
+          <div class="row mb-5">
+            <div class="col-md-4">
+              <label for="">Ocupaciones anteriores:</label>
+              <input type="text" class="form-control" formControlName="insuPreviousOccupations">
+              <div class="error"
+                *ngIf="forma.get('insuPreviousOccupations').hasError('required') && forma.get('insuPreviousOccupations').dirty">
+                Campo requerido (*)
+              </div>
+            </div>
+            <div class="col-md-4">
+              <label for="">Deportes que practica:</label>
+              <input type="text" class="form-control" formControlName="insuSports">
+              <div class="error" *ngIf="forma.get('insuSports').hasError('required') && forma.get('insuSports').dirty">
+                Campo requerido (*)
+              </div>
+            </div>
+            <div class="col-md-4">
+              <label for="">Ingreso mensual:</label>
+              <select class="form-control" formControlName="insuIngreso">
+                <option value="" selected disabled>Seleccione</option>
+                <option value="1">1</option>
+              </select>
+              <div class="error"
+                *ngIf="forma.get('insuIngreso').hasError('required') && forma.get('insuIngreso').dirty">
+                Campo requerido (*)
+              </div>
+            </div>
+          </div>
+          <div class="row mb-5">
+            <div class="col-md-4">
+              <label for="">Provincia:</label>
+              <select class="form-control" formControlName="insuProvinceId">
+                <option value="" selected disabled>Seleccione</option>
+                <option value="1">1</option>
+              </select>
+              <div class="error"
+                *ngIf="forma.get('insuProvinceId').hasError('required') && forma.get('insuProvinceId').dirty">
+                Campo requerido (*)
+              </div>
+            </div>
+            <div class="col-md-4">
+              <label for="">Distrito:</label>
+              <select class="form-control" formControlName="insuDistrictId">
+                <option value="" selected disabled>Seleccione</option>
+                <option value="1">1</option>
+              </select>
+              <div class="error"
+                *ngIf="forma.get('insuDistrictId').hasError('required') && forma.get('insuDistrictId').dirty">
+                Campo requerido (*)
+              </div>
+            </div>
+            <div class="col-md-4">
+              <label for="">Corregimiento:</label>
+              <select class="form-control" formControlName="insuCorregimientoId">
+                <option value="" selected disabled>Seleccione</option>
+                <option value="1">1</option>
+              </select>
+              <div class="error"
+                *ngIf="forma.get('insuCorregimientoId').hasError('required') && forma.get('insuCorregimientoId').dirty">
+                Campo requerido (*)
+              </div>
+            </div>
+          </div>
+          <div class="row mb-5">
+            <div class="col-md-4">
+              <label for="">Barriada / Urbanización:</label>
+              <input type="text" class="form-control" placeholder="Ej: Marbella" formControlName="insuNeighbourhood">
+              <div class="error"
+                *ngIf="forma.get('insuNeighbourhood').hasError('required') && forma.get('insuNeighbourhood').dirty">
+                Campo requerido (*)
+              </div>
+            </div>
+            <div class="col-md-4">
+              <label for="">Calle / Avenida:</label>
+              <input type="text" class="form-control" placeholder="Ej: calle 56 con Av. Brasil"
+                formControlName="insuStreet">
+              <div class="error" *ngIf="forma.get('insuStreet').hasError('required') && forma.get('insuStreet').dirty">
+                Campo requerido (*)
+              </div>
+            </div>
+            <div class="col-md-4">
+              <label for="">Casa / Apartamento:</label>
+              <input type="text" class="form-control" placeholder="Ej: edificio pacif sea, apto 3C"
+                formControlName="insuBuilding">
+              <div class="error"
+                *ngIf="forma.get('insuBuilding').hasError('required') && forma.get('insuBuilding').dirty">
+                Campo requerido (*)
+              </div>
+            </div>
+          </div>
+          <div class="row mb-5">
+            <div class="col-md-4">
+              <label for="">Teléfono residencial:</label>
+              <input type="text" class="form-control" formControlName="insuLocalNumber">
+              <div class="error"
+                *ngIf="forma.get('insuLocalNumber').hasError('required') && forma.get('insuLocalNumber').dirty">
+                Campo requerido (*)
+              </div>
+            </div>
+            <div class="col-md-4">
+              <label for="">Teléfono celular:</label>
+              <input type="text" class="form-control" formControlName="insuCellphone">
+              <div class="error"
+                *ngIf="forma.get('insuCellphone').hasError('required') && forma.get('insuCellphone').dirty">
+                Campo requerido (*)
+              </div>
+            </div>
+            <div class="col-md-4">
+              <label for="">Email:</label>
+              <input type="text" class="form-control" formControlName="insuEmail">
+              <div class="error" *ngIf="forma.get('insuEmail').hasError('required') && forma.get('insuEmail').dirty">
+                Campo requerido (*)
+              </div>
+            </div>
+          </div>
+        </div>
       </accordion-group>
     </accordion>
 
-    <section class="request"> <!-- Tercer Formulario -->
+    <section class="request">
+      <!-- Tercer Formulario -->
       <ng-template #content let-modal>
         <div class="modal-header">
           <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
@@ -349,41 +386,58 @@
                   <div class="form-group">
                     <label>Tipo de Beneficiario</label>
                     <div class="custom-control custom-radio">
-                      <input id="principal" name="type" type="radio" class="custom-control-input" [value]="'principal'" formControlName="type">
+                      <input id="principal" name="type" type="radio" class="custom-control-input" [value]="'principal'"
+                        formControlName="type">
                       <label class="custom-control-label check" for="principal">Principal</label>
                     </div>
                     <div class="custom-control custom-radio">
-                      <input id="contingente" name="type" type="radio" class="custom-control-input" [value]="'contingente'" formControlName="type">
+                      <input id="contingente" name="type" type="radio" class="custom-control-input"
+                        [value]="'contingente'" formControlName="type">
                       <label class="custom-control-label check" for="contingente">Contingente</label>
                     </div>
-                    <small class="text-danger ml-md-2" *ngIf="invalid('type', modalForm)">Este campo es requerido.</small>
+                    <small class="text-danger ml-md-2" *ngIf="invalid('type', modalForm)">Este campo es
+                      requerido.</small>
                   </div>
                   <div class="form-group">
                     <label for="">Cédula/Pasaporte:</label>
                     <div class="form-row">
-                      <div class="{{modalForm.value.documentType === 'Pasaporte' || !modalForm.value.documentType ? 'col-4' : 'col-3'}}">
-                        <select class="form-control" (ngModelChange)="modalValidations(true)" formControlName="documentType">
-                          <option *ngFor="let document of documents; let i=index" [value]="document.itemName">{{document.itemName}}</option>
+                      <div
+                        class="{{modalForm.value.documentType === 'Pasaporte' || !modalForm.value.documentType ? 'col-4' : 'col-3'}}">
+                        <select class="form-control" (ngModelChange)="modalValidations(true)"
+                          formControlName="documentType">
+                          <option *ngFor="let document of documents; let i=index" [value]="document.itemName">
+                            {{document.itemName}}</option>
                         </select>
-                        <small class="text-danger" *ngIf="invalid('documentType', modalForm)">Debe elegir un tipo de documento.</small>
+                        <small class="text-danger" *ngIf="invalid('documentType', modalForm)">Debe elegir un tipo de
+                          documento.</small>
                       </div>
                       <div *ngIf="modalForm.value.documentType" class="d-none d-md-block col-1">
                         -
                       </div>
-                      <div *ngIf="modalForm.value.documentType" class="{{modalForm.value.documentType === 'Pasaporte' || !modalForm.value.documentType ? 'col-7' : 'col-3'}}">
+                      <div *ngIf="modalForm.value.documentType"
+                        class="{{modalForm.value.documentType === 'Pasaporte' || !modalForm.value.documentType ? 'col-7' : 'col-3'}}">
                         <input type="text" class="form-control" formControlName="document">
-                        <small class="text-danger" *ngIf="(modalForm.value.documentType === 'Pasaporte' || !modalForm.value.documentType) && invalid('document', modalForm)">Este campo es requerido. Ejemplo: A084456465 (Máximo 10 caracteres).</small>
-                        <small class="text-danger" *ngIf="modalForm.value.documentType && modalForm.value.documentType !== 'Pasaporte' && invalid('document', modalForm)">Este campo es requerido. Ejemplo: 4564 (Máximo 4 caracteres).</small>
+                        <small class="text-danger"
+                          *ngIf="(modalForm.value.documentType === 'Pasaporte' || !modalForm.value.documentType) && invalid('document', modalForm)">Este
+                          campo es requerido. Ejemplo: A084456465 (Máximo 10 caracteres).</small>
+                        <small class="text-danger"
+                          *ngIf="modalForm.value.documentType && modalForm.value.documentType !== 'Pasaporte' && invalid('document', modalForm)">Este
+                          campo es requerido. Ejemplo: 4564 (Máximo 4 caracteres).</small>
                       </div>
-                      <div *ngIf="modalForm.value.documentType && modalForm.value.documentType !== 'Pasaporte'" class="d-none d-md-block col-1">
+                      <div *ngIf="modalForm.value.documentType && modalForm.value.documentType !== 'Pasaporte'"
+                        class="d-none d-md-block col-1">
                         -
                       </div>
-                      <div *ngIf="modalForm.value.documentType && modalForm.value.documentType !== 'Pasaporte'" class="col-4">
+                      <div *ngIf="modalForm.value.documentType && modalForm.value.documentType !== 'Pasaporte'"
+                        class="col-4">
                         <input type="text" class="form-control" formControlName="document2">
-                        <small class="text-danger" *ngIf="invalid('document2', modalForm)">Este campo es requerido. Ejemplo: 456478 (Máximo 6 caracteres).</small>
+                        <small class="text-danger" *ngIf="invalid('document2', modalForm)">Este campo es requerido.
+                          Ejemplo: 456478 (Máximo 6 caracteres).</small>
                       </div>
                     </div>
-                    <small class="text-muted" *ngIf="!invalid('document', modalForm) && !invalid('documentType', modalForm) && !invalid('document2', modalForm)">Ejemplo: 04-4565-456454/Pasaporte-A084456465.</small>
+                    <small class="text-muted"
+                      *ngIf="!invalid('document', modalForm) && !invalid('documentType', modalForm) && !invalid('document2', modalForm)">Ejemplo:
+                      04-4565-456454/Pasaporte-A084456465.</small>
                   </div>
                   <div class="form-group">
                     <label for="">Nombre(s) y Apellido(s):</label>
@@ -395,9 +449,11 @@
                     <label for="">Nacionalidad:</label>
                     <select class="form-control" formControlName="nationalityId">
                       <option value="" selected disabled>Seleccione</option>
-                      <option *ngFor="let nationality of nationalities; let i=index" [value]="nationality.id">{{nationality.name}}</option>
+                      <option *ngFor="let nationality of nationalities; let i=index" [value]="nationality.id">
+                        {{nationality.name}}</option>
                     </select>
-                    <small class="text-danger" *ngIf="invalid('nationalityId', modalForm)">Este campo es requerido.</small>
+                    <small class="text-danger" *ngIf="invalid('nationalityId', modalForm)">Este campo es
+                      requerido.</small>
                   </div>
                   <div class="form-group">
                     <label for="">Fecha de nacimiento del integrante:</label>
@@ -409,25 +465,33 @@
                     <label for="">Parentesco:</label>
                     <input type="text" class="form-control" formControlName="relationship">
                     <small class="text-muted" *ngIf="!invalid('relationship', modalForm)">Ejemplo: Madre.</small>
-                    <small class="text-danger" *ngIf="invalid('relationship', modalForm)">Este campo es requerido.</small>
+                    <small class="text-danger" *ngIf="invalid('relationship', modalForm)">Este campo es
+                      requerido.</small>
                   </div>
                   <div class="form-group">
-                    <label for="">Porcentaje (%): <span tooltip="Aqui va la información" placement="top" show-delay="500"><i class="fas fa-info-circle mx-2"></i></span> </label>
+                    <label for="">Porcentaje (%): <span tooltip="Aqui va la información" placement="top"
+                        show-delay="500"><i class="fas fa-info-circle mx-2"></i></span> </label>
                     <input type="number" class="form-control" formControlName="percent">
-                    <small class="text-muted" *ngIf="modalForm.value.type && !invalid('percent', modalForm)">Porcentaje restante: {{modalForm.value.type === 'principal' ? remainingPercentMain : remainingPercentContingent}}%.</small>
-                    <small class="text-danger" *ngIf="modalForm.value.type && invalid('percent', modalForm)">Este campo es requerido y solo puede asignarle un {{modalForm.value.type === 'principal' ? remainingPercentMain : remainingPercentContingent}}%.</small>
+                    <small class="text-muted" *ngIf="modalForm.value.type && !invalid('percent', modalForm)">Porcentaje
+                      restante:
+                      {{modalForm.value.type === 'principal' ? remainingPercentMain : remainingPercentContingent}}%.</small>
+                    <small class="text-danger" *ngIf="modalForm.value.type && invalid('percent', modalForm)">Este campo
+                      es requerido y solo puede asignarle un
+                      {{modalForm.value.type === 'principal' ? remainingPercentMain : remainingPercentContingent}}%.</small>
                   </div>
                 </div>
               </div>
               <div *ngIf="isYounger" class="parrafo-final">
-                <p>Cualquier beneficio que corresponda a un menor de edad designado como Beneficiario en esta Póliza, será pagado a:</p>
+                <p>Cualquier beneficio que corresponda a un menor de edad designado como Beneficiario en esta Póliza,
+                  será pagado a:</p>
                 <input type="text" class="form-control col-md-12" formControlName="paymentName">
                 <small class="text-muted" *ngIf="!invalid('paymentName', modalForm)">Ejemplo: Juan Figueira.</small>
                 <small class="text-danger" *ngIf="invalid('paymentName', modalForm)">Este campo es requerido.</small>
                 <p class="d-inline-block">con cédula de identidad N°</p>
                 <input type="text" class="form-control col-md-12" formControlName="paymentDocument">
                 <small class="text-muted" *ngIf="!invalid('paymentDocument', modalForm)">Ejemplo: 5-4444-6666.</small>
-                <small class="text-danger" *ngIf="invalid('paymentDocument', modalForm)">Este campo es requerido.</small>
+                <small class="text-danger" *ngIf="invalid('paymentDocument', modalForm)">Este campo es
+                  requerido.</small>
                 <p class="d-inline-block">, y en su defecto a</p>
                 <input type="text" class="form-control col-md-12" formControlName="paymentName2">
                 <small class="text-muted" *ngIf="!invalid('paymentName2', modalForm)">Ejemplo: Javier Florez.</small>
@@ -436,9 +500,12 @@
                 <p class="d-inline-block">, con cédula de identidad N°</p>
                 <input type="text" class="form-control col-md-12" formControlName="paymentDocument2">
                 <small class="text-muted" *ngIf="!invalid('paymentDocument2', modalForm)">Ejemplo: 5-4444-6666.</small>
-                <small class="text-danger" *ngIf="invalid('paymentDocument2', modalForm)">Este campo es requerido.</small>
-                <p class="d-inline-block">, a quien(es) he instruido sobre la forma que debe(n) disponer del dinero que reciba(n)</p>
-                <p>de la compañía, sin que por esta razón deba(n) considerarse a esta(s) persona(s) como beneficiario(s) de esta póliza.</p>
+                <small class="text-danger" *ngIf="invalid('paymentDocument2', modalForm)">Este campo es
+                  requerido.</small>
+                <p class="d-inline-block">, a quien(es) he instruido sobre la forma que debe(n) disponer del dinero que
+                  reciba(n)</p>
+                <p>de la compañía, sin que por esta razón deba(n) considerarse a esta(s) persona(s) como beneficiario(s)
+                  de esta póliza.</p>
               </div>
             </form>
           </div>
@@ -451,56 +518,61 @@
 
     <accordion>
       <accordion-group [panelClass]="customClass" [isOpen]="isFirstOpen">
-          <button class="btn btn-link btn-block clearfix" accordion-heading>
-            <div class="pull-left float-left" style="margin-left:-15px;"><i class="fas fa-angle-down"></i> Datos de los beneficiarios</div>
-          </button>
-          <div class="container">
-            <div class="row mb-5">
-              <div class="marco-verde uno">
-                <h3 class="text-white">Beneficiarios en caso del Fallecimiento del Asegurado Principal</h3>
+        <button class="btn btn-link btn-block clearfix" accordion-heading>
+          <div class="pull-left float-left" style="margin-left:-15px;"><i class="fas fa-angle-down"></i> Datos de los
+            beneficiarios</div>
+        </button>
+        <div class="container">
+          <div class="row mb-5">
+            <div class="marco-verde uno">
+              <h3 class="text-white">Beneficiarios en caso del Fallecimiento del Asegurado Principal</h3>
+            </div>
+            <button class="btn-mas1" (click)="open(content)"><img src="assets/img/mas.svg" alt="" class="img"></button>
+            <div class="fondo-blanco">
+              <div class="table-responsive">
+                <table *ngIf="forma" class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th scope="col-2">Nombre(s) y apellido(s):</th>
+                      <th scope="col-2">Cédula / Pasaporte:</th>
+                      <th scope="col-2">Nacionalidad:</th>
+                      <th scope="col-2">Fecha de nacimiento:</th>
+                      <th scope="col-1">Parentesco:</th>
+                      <th scope="col-1">Porcentaje (%):</th>
+                      <th scope="col-1">Tipo:</th>
+                      <th scope="col-1"> </th>
+                    </tr>
+                  </thead>
+                  <tbody formArrayName="insuDependents"
+                    *ngFor="let dependent of forma.get('insuDependents').controls; let i = index">
+                    <tr [formGroupName]='i'>
+                      <td scope="row"><span class="font-weight-bold">{{dependent.value.fullName}}</span></td>
+                      <td>
+                        {{dependent.value.documentType === 'Pasaporte' ? dependent.value.document : dependent.value.document.concat('-').concat(dependent.value.document2).concat('-').concat(dependent.value.document3) }}
+                      </td>
+                      <td>{{getNationality(dependent.value.nationalityId).name}}</td>
+                      <td>{{dependent.value.birthday | date:'dd/MM/yyyy'}}</td>
+                      <td>{{dependent.value.relationship}}</td>
+                      <td>{{dependent.value.percent}}</td>
+                      <td>{{dependent.value.type}}</td>
+                      <td><i (click)="open(content, dependent)" class="fas fa-pen"></i> <i
+                          (click)="deleteDependent(dependent.value.dependentId)" class="fas fa-trash ml-3"></i></td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
-              <button class="btn-mas1" (click)="open(content)"><img src="assets/img/mas.svg" alt="" class="img" ></button> 
-                <div class="fondo-blanco">
-                  <div class="table-responsive">
-                    <table *ngIf="forma" class="table table-hover">
-                      <thead>
-                        <tr>
-                          <th scope="col-2">Nombre(s) y apellido(s):</th>
-                          <th scope="col-2">Cédula / Pasaporte:</th>
-                          <th scope="col-2">Nacionalidad:</th>
-                          <th scope="col-2">Fecha de nacimiento:</th>
-                          <th scope="col-1">Parentesco:</th>
-                          <th scope="col-1">Porcentaje (%):</th>
-                          <th scope="col-1">Tipo:</th>
-                          <th scope="col-1"> </th>
-                        </tr>
-                      </thead>
-                      <tbody formArrayName="insuDependents" *ngFor="let dependent of forma.get('insuDependents').controls; let i = index">
-                          <tr [formGroupName]='i'>
-                            <td scope="row"><span class="font-weight-bold">{{dependent.value.fullName}}</span></td>
-                            <td>{{dependent.value.documentType === 'Pasaporte' ? dependent.value.document : dependent.value.document.concat('-').concat(dependent.value.document2).concat('-').concat(dependent.value.document3) }}</td>
-                            <td>{{getNationality(dependent.value.nationalityId).name}}</td>
-                            <td>{{dependent.value.birthday | date:'dd/MM/yyyy'}}</td>
-                            <td>{{dependent.value.relationship}}</td>
-                            <td>{{dependent.value.percent}}</td>
-                            <td>{{dependent.value.type}}</td>
-                            <td><i (click)="open(content, dependent)" class="fas fa-pen"></i> <i (click)="deleteDependent(dependent.value.dependentId)" class="fas fa-trash ml-3"></i></td>
-                          </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
             </div>
           </div>
+        </div>
       </accordion-group>
     </accordion>
   </form>
 </section>
 <div class="row">
-    <div class="col-md-12 text-center">
-        <button class="btn btn-primary" (click)="saveRequest(true)" >CONTINUAR</button>
-        <button class="btn btn-white ml-0 ml-md-4" (click)="saveRequest(false)">
-            <i class="fas fa-save text-dark"></i> GUARDAR PARA DESPUÉS
-        </button>
-    </div>
+  <div class="col-md-12 text-center">
+    <button class="btn btn-primary" (click)="saveRequest(true)">CONTINUAR</button>
+    <button class="btn btn-white ml-0 ml-md-4" (click)="saveRequest(false)">
+      <i class="fas fa-save text-dark"></i> GUARDAR PARA DESPUÉS
+    </button>
+  </div>
 </div>

@@ -94,9 +94,15 @@ header{
 }
 
 .navbar-dark .navbar-nav .nav-link{
-	color: #3a4454!important;
+	color: #13599e !important;
 	font-weight: 400;
 	font-size: 14px;
+}
+
+@media (max-width: 1024px){
+    .navbar-dark .navbar-nav .nav-link {
+        font-size:13px;
+    }
 }
 
 .sizeImgLogo{

@@ -12,6 +12,7 @@ import { SuccessComponent } from './components/success/success.component';
 import { AccordionModule } from 'ngx-bootstrap/accordion';
 import { ArchwizardModule } from 'angular-archwizard';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ThanksComponent } from './components/thanks/thanks.component';
 
 
 
@@ -23,7 +24,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MedicalDataComponent,
     PaymentInfoComponent,
     RequestComponent,
-    SuccessComponent
+    SuccessComponent,
+    ThanksComponent
   ],
   imports: [
     CommonModule,

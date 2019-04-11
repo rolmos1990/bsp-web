@@ -1,0 +1,48 @@
+.img-1 {
+  margin: 0 auto 30px auto;
+  display: block;
+}
+
+h4 {
+  font-size: 24px;
+  color: #556176;
+  text-decoration: none solid rgb(85, 97, 118);
+  font-weight: bold;
+}
+
+p {
+  font-size: 20px;
+  color: #556176;
+  text-decoration: none solid rgb(85, 97, 118);
+}
+
+a {
+  font-size: 14px;
+  color: #1975d1;
+  text-decoration: none solid rgb(25, 117, 209);
+  text-align: center;
+}
+
+.padding-300 {
+  padding: 150px 0;
+}
+
+.anchura {
+  width: 580px;
+  margin: 0 auto;
+  display: block;
+}
+
+
+
+@media (max-width: 767px) {
+  .padding-300 {
+    padding: 100px 0;
+  }
+}
+
+@media (max-width: 1024px) {
+  .anchura {
+    width: 100%;
+  }
+}

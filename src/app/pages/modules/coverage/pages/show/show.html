@@ -397,7 +397,7 @@
   <section class="cobertura">
     <div class="container">
       <div class="row">
-        <div *ngFor="let coverage of coverages; let i = index;" class="{{i === 0 ? 'col-md-12' : 'col-md-4'}}">
+        <div *ngFor="let coverage of coverages; let i = index;" class="{{i === 0 ? 'col-md-12' : 'col-md-6 col-lg-4'}}">
           <ng-template [ngIf]="i === 0">
             <h3 class="titulo-1">¡Coberturas que se adaptan a ti!</h3>
             <h4 class="color-gray text-center">Te ofrecemos flexibilidad y precios accesibles en nuestras coberturas</h4>
@@ -422,8 +422,8 @@
 
             <div class="inferior">
               <div class="container">
-                  <div class="row mb-2">
-                    <div class="col-xs-12 col-md-10">
+                  <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-10">
                       <h5>ACCIDENTES PERSONALES</h5>
                         <p>Adelanto de gastos funerarios: <span>${{ coverage.coverageDetail.funeraryAdvances  }}</span></p>
                         <p>Muerte accidental: <span>${{ coverage.coverageDetail.accidentalDeath  }} </span></p>
@@ -437,11 +437,11 @@
 
             <div class="container">
               <div class="row">
-                <div class="col-md-6">
-                  <button class="btn my-3" (click)="open(content,'0')"><img src="assets/img/flechita.svg" alt=""> Ver detalles</button>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+                  <button class="btn ver-detalle" (click)="open(content,'0')"><img src="assets/img/flechita.svg" alt=""> Ver detalles</button>
                 </div>
-                <div class="col-md-6">
-                  <button class="btn btn-primary solicitar my-3" (click)="createNewRequest(coverage.id)">SOLICITAR</button>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+                  <button class="btn btn-primary solicitar" (click)="createNewRequest(coverage.id)">SOLICITAR</button>
                 </div>
               </div>
             </div>

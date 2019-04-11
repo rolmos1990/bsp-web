@@ -10,7 +10,7 @@ p{
 }
 
 h4{
-    font-size: 22px;
+    font-size: 20px;
 }
 
 header {
@@ -22,7 +22,7 @@ header {
     height: 48px;
     padding: 0!important;
     background-color: #1c8464;
-    font-weight: 100;
+    margin: 16px 0;
     border: 0;
 }
 
@@ -48,7 +48,7 @@ header {
     margin: 20px 0 50px 100px;
     font-family: Lato;
     font-size: 28px;
-    color: #1c8364;
+    color: #1c8464;
     font-weight: 700;
     text-decoration: none solid rgb(87, 98, 120);
 }
@@ -74,9 +74,9 @@ i.fas.fa-angle-down{
 
 .titulo-1{
     text-align: center;
-    margin: 16px 0 24px 0;
+    margin: 16px 0 14px 0;
     font-weight: 700;
-    color: #1c8364;
+    color: #1c8464;
 }
 
 .cuadrado.top{
@@ -91,6 +91,7 @@ i.fas.fa-angle-down{
 .cuadrado{
     border: 2px solid #dce1e9;
     background-size: cover;
+    margin-bottom: 10px;
 }
 
 .cuadrado .superior{
@@ -99,6 +100,13 @@ i.fas.fa-angle-down{
 
 .cuadrado .inferior{
     padding: 15px 0;
+}
+
+.ver-detalle{
+    margin: 20px 0;
+    font-size: 15.8px;
+    color: #4e74b0;
+    font-weight: bold;
 }
 
 .cuadrado .superior img{
@@ -211,14 +219,47 @@ i.fas.fa-angle-down{
     border: 0;
 }
 
+@media (max-width: 480px){
+    .cuadrado{
+        width: 100%;
+    }
+}
 
-@media (max-width: 767px){
+
+@media (max-width: 768px){
     h4{
         font-size: 20px;
     }
 
+    .titulo-1{
+        font-size: 25px;
+    }
+
 
     .cuadrado.top{
-    width: auto;
+    width: 368px;
+    }
+
+    .ver-detalle{
+        border: 2px solid #d2d2d2;
+        width: 100%;
+        margin: 10px 0;
+    }
+
+    .btn.btn-primary.solicitar {
+        margin: 10px 0;
+    }
+
+    .titulo-condiciones {
+      margin: 20px 0 20px 10px;
+      font-size: 22px;
+    }
+
+    .cuadrado {
+      border: 2px solid #dce1e9;
+      background-size: cover;
+      margin-bottom: 10px;
+      width: 340px;
+      margin: 0 auto 10px auto;
     }
 }
