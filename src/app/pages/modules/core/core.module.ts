@@ -6,9 +6,13 @@ import { FooterComponent } from './components/footer/footer.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ServiceDirective } from './directives/service.directive';
-import { CreateUserService } from './services/create-user.service';
+import { UserService } from './services/user.service';
+import { PaymentService } from './services/payment.service';
+import { HealthService } from './services/health.service';
+import { RequestService } from './services/request.service';
 import { CoverageService } from './services/coverage.service';
-import { CreateNewRequestService } from './services/new-request.service';
+import { LocationService } from './services/location.service';
+import { DependentService } from './services/dependent.service';
 
 @NgModule({
   declarations: [NavBarComponent, FooterComponent,ServiceDirective],
@@ -21,9 +25,13 @@ import { CreateNewRequestService } from './services/new-request.service';
   ],
   exports: [NavBarComponent, FooterComponent, FormsModule],
   providers: [
-    CreateUserService,
-    CoverageService,
-    CreateNewRequestService
+    UserService,
+    PaymentService,
+    HealthService,
+    RequestService,
+    LocationService,
+    DependentService,
+    CoverageService
   ]
 })
 export class CoreModule { }

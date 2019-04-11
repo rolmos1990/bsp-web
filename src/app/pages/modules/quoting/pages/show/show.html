@@ -12,11 +12,14 @@
                   <h4 class="cotizador-h2-2 fwb-600">Seguros</h4>
                   <h3 class="">Por favor indícanos tu <br> número de identificación</h3>
                   <img src="assets/img/Tarjeta.svg" alt="" class="my-5">
-                  <input type="text" class="form-control mb-1" placeholder="CÉDULA/PASAPORTE" formControlName="document" minlength="7">
+                  <input type="text" class="form-control mb-2" placeholder="CÉDULA/PASAPORTE" formControlName="document" minlength="7">
                   <div class="error ml-70" *ngIf="forma.get('document').errors && forma.get('document').dirty">
                       <p *ngIf="forma.get('document').hasError('required')">* Campo requerido</p>
                       <p *ngIf="forma.get('document').hasError('minlength')">* Campo no válido</p>
                   </div>
+                  <p style="text-align:center"><small style="color: gray" >Debe contener el formato de una cédula o pasaporte válido <br>
+                    Ejemplo: 8-5555-5555
+                  </small></p>
                   <button [disabled]="forma.controls['document'].invalid" class="btn btn-primary my-5 " (click)="hide1()">SIGUIENTE</button>
               </div>
             </div>
@@ -39,9 +42,7 @@
                       [data]="ocupaciones"
                       [initialValue]=""
                       placeHolder="OCUPACIÓN"
-                      [searchKeyword]="keyword"
                       historyIdentifier="countriesTemplateList"
-                      [historyHeading]="historyHeading"
                       historyListMaxNumber="3"
                       notFoundText="Texto no encontrado"
                       [itemTemplate]="itemTemplateStatic"
@@ -79,13 +80,15 @@
                   <img src="assets/img/edad.png" alt="" class="my-5">
                   <!-- error -->
                   <input type="tel" class="form-control mb-1" placeholder="EDAD" formControlName="age">
-                  <p class="bluesito ml-70">Edad comprendida entre 18 y 69 años.</p>
+                  <!-- <p class="bluesito ml-70">Edad comprendida entre 18 y 69 años.</p> -->
                   <div class="error ml-70" *ngIf="forma.get('age').errors && forma.get('age').dirty">
                       <p *ngIf="forma.get('age').hasError('required')">* Campo requerido</p>
                       <p *ngIf="forma.get('age').hasError('maxlength')">* Campo no válido</p>
                       <p *ngIf="forma.get('age').hasError('min')">* Campo mayor a 18 años</p>
                       <p *ngIf="forma.get('age').hasError('max')">* Campo menor a 69 años</p>
                   </div>
+                  <p style="text-align:center"><small style="color: gray" >Edad comprendida entre 18 y 69 años.
+                  </small></p>
                   <button [disabled]="forma.controls['age'].invalid" class="btn btn-primary my-5" (click)="hide3()">SIGUIENTE</button>
               </div>
             </div>

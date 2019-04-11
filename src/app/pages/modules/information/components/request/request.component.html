@@ -11,9 +11,8 @@
               <div class="col-md-4">
                 <label for="">Nombre y apellido</label>
                 <input type="text" class="form-control" formControlName="contFullname">
-                <div class="error" *ngIf="forma.get('contFullname').hasError('required') && forma.get('contFullname').dirty">
-                Campo requerido (*)
-                </div>
+                <small class="text-muted" *ngIf="!invalid('contFullname', forma)">Ejemplo: Pedro Blanco.</small>
+                <small class="text-danger" *ngIf="invalid('contFullname', forma)">Este campo es requerido.Ejemplo: Pedro Blanco.</small>
               </div>
               <div class="col-md-4">
                 <label for="">Provincia</label>
@@ -21,9 +20,7 @@
                   <option value="">Seleccione</option>
                   <option value="1">1</option>
                 </select>
-                <div class="error" *ngIf="forma.get('contProvinceId').hasError('required') && forma.get('contProvinceId').dirty">
-                    Campo requerido (*)
-                </div>
+                <small class="text-danger" *ngIf="invalid('contProvinceId', forma)">Este campo es requerido.</small>
               </div>
               <div class="col-md-4">
                 <label for="">Distrito</label>
@@ -74,13 +71,6 @@
                 <label for="">Teléfono</label>
                 <input type="text" class="form-control" formControlName="contCellphone">
                 <div class="error" *ngIf="forma.get('contCellphone').hasError('required') && forma.get('contCellphone').dirty">
-                    Campo requerido (*)
-                </div>
-              </div>
-              <div class="col-md-4">
-                <label for="">Fax</label>
-                <input type="text" class="form-control" formControlName="contFax">
-                <div class="error" *ngIf="forma.get('contFax').hasError('required') && forma.get('contFax').dirty">
                     Campo requerido (*)
                 </div>
               </div>
@@ -345,77 +335,117 @@
 
     <section class="request"> <!-- Tercer Formulario -->
       <ng-template #content let-modal>
-      <div class="modal-header">
-        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <div class="container">
-            <div class="row">
-              <div class="col-md-12">
-                <p class="addbene">Agregar Beneficiario</p>
+        <div class="modal-header">
+          <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="container">
+            <form [formGroup]="modalForm">
+              <div class="row">
+                <div class="col-md-12">
+                  <p class="addbene">Agregar Beneficiario</p>
                   <div class="form-group">
-                    <label for="">Tipo de identificación: </label>
+                    <label>Tipo de Beneficiario</label>
                     <div class="custom-control custom-radio">
-                        <input type="radio" class="custom-control-input">
-                        <label class="custom-control-label check" for="cedula">Cédula</label>
-                      </div>
-                      <div class="custom-control custom-radio">
-                        <input type="radio" class="custom-control-input">
-                        <label class="custom-control-label check" for="pasaporte">Pasaporte</label>
-                      </div>
+                      <input id="principal" name="type" type="radio" class="custom-control-input" [value]="'principal'" formControlName="type">
+                      <label class="custom-control-label check" for="principal">Principal</label>
+                    </div>
+                    <div class="custom-control custom-radio">
+                      <input id="contingente" name="type" type="radio" class="custom-control-input" [value]="'contingente'" formControlName="type">
+                      <label class="custom-control-label check" for="contingente">Contingente</label>
+                    </div>
+                    <small class="text-danger ml-md-2" *ngIf="invalid('type', modalForm)">Este campo es requerido.</small>
                   </div>
                   <div class="form-group">
-                    <label for="">Número de identificación:</label>
-                    <div class="row">
-                      <div class="col-4 col-md-4">
-                        <input type="text" class="form-control">
+                    <label for="">Cédula/Pasaporte:</label>
+                    <div class="form-row">
+                      <div class="{{modalForm.value.documentType === 'Pasaporte' || !modalForm.value.documentType ? 'col-4' : 'col-3'}}">
+                        <select class="form-control" (ngModelChange)="modalValidations(true)" formControlName="documentType">
+                          <option *ngFor="let document of documents; let i=index" [value]="document.itemName">{{document.itemName}}</option>
+                        </select>
+                        <small class="text-danger" *ngIf="invalid('documentType', modalForm)">Debe elegir un tipo de documento.</small>
                       </div>
-                      <div class="d-none d-md-block col-md-1">
+                      <div *ngIf="modalForm.value.documentType" class="d-none d-md-block col-1">
                         -
                       </div>
-                      <div class="col-4 col-md-2">
-                          <input type="text" class="form-control">
+                      <div *ngIf="modalForm.value.documentType" class="{{modalForm.value.documentType === 'Pasaporte' || !modalForm.value.documentType ? 'col-7' : 'col-3'}}">
+                        <input type="text" class="form-control" formControlName="document">
+                        <small class="text-danger" *ngIf="(modalForm.value.documentType === 'Pasaporte' || !modalForm.value.documentType) && invalid('document', modalForm)">Este campo es requerido. Ejemplo: A084456465 (Máximo 10 caracteres).</small>
+                        <small class="text-danger" *ngIf="modalForm.value.documentType && modalForm.value.documentType !== 'Pasaporte' && invalid('document', modalForm)">Este campo es requerido. Ejemplo: 4564 (Máximo 4 caracteres).</small>
                       </div>
-                      <div class="d-none d-md-block col-md-1">
+                      <div *ngIf="modalForm.value.documentType && modalForm.value.documentType !== 'Pasaporte'" class="d-none d-md-block col-1">
                         -
                       </div>
-                      <div class="col-4 col-md-4">
-                          <input type="text" class="form-control">
+                      <div *ngIf="modalForm.value.documentType && modalForm.value.documentType !== 'Pasaporte'" class="col-4">
+                        <input type="text" class="form-control" formControlName="document2">
+                        <small class="text-danger" *ngIf="invalid('document2', modalForm)">Este campo es requerido. Ejemplo: 456478 (Máximo 6 caracteres).</small>
                       </div>
                     </div>
+                    <small class="text-muted" *ngIf="!invalid('document', modalForm) && !invalid('documentType', modalForm) && !invalid('document2', modalForm)">Ejemplo: 04-4565-456454/Pasaporte-A084456465.</small>
                   </div>
                   <div class="form-group">
                     <label for="">Nombre(s) y Apellido(s):</label>
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" formControlName="fullName">
+                    <small class="text-muted" *ngIf="!invalid('fullName', modalForm)">Ejemplo: Pedro Blanco.</small>
+                    <small class="text-danger" *ngIf="invalid('fullName', modalForm)">Este campo es requerido.</small>
                   </div>
                   <div class="form-group">
                     <label for="">Nacionalidad:</label>
-                    <select class="form-control">
+                    <select class="form-control" formControlName="nationalityId">
                       <option value="" selected disabled>Seleccione</option>
-                      <option value="1">1</option>
+                      <option *ngFor="let nationality of nationalities; let i=index" [value]="nationality.id">{{nationality.name}}</option>
                     </select>
+                    <small class="text-danger" *ngIf="invalid('nationalityId', modalForm)">Este campo es requerido.</small>
                   </div>
                   <div class="form-group">
                     <label for="">Fecha de nacimiento del integrante:</label>
-                    <input type="date" class="form-control">
+                    <input type="date" class="form-control" formControlName="birthday">
+                    <small class="text-muted" *ngIf="!invalid('birthday', modalForm)">Ejemplo: 05/09/1995.</small>
+                    <small class="text-danger" *ngIf="invalid('birthday', modalForm)">Este campo es requerido.</small>
                   </div>
                   <div class="form-group">
                     <label for="">Parentesco:</label>
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" formControlName="relationship">
+                    <small class="text-muted" *ngIf="!invalid('relationship', modalForm)">Ejemplo: Madre.</small>
+                    <small class="text-danger" *ngIf="invalid('relationship', modalForm)">Este campo es requerido.</small>
                   </div>
                   <div class="form-group">
                     <label for="">Porcentaje (%): <span tooltip="Aqui va la información" placement="top" show-delay="500"><i class="fas fa-info-circle mx-2"></i></span> </label>
-                    <input type="text" class="form-control">
+                    <input type="number" class="form-control" formControlName="percent">
+                    <small class="text-muted" *ngIf="modalForm.value.type && !invalid('percent', modalForm)">Porcentaje restante: {{modalForm.value.type === 'principal' ? remainingPercentMain : remainingPercentContingent}}%.</small>
+                    <small class="text-danger" *ngIf="modalForm.value.type && invalid('percent', modalForm)">Este campo es requerido y solo puede asignarle un {{modalForm.value.type === 'principal' ? remainingPercentMain : remainingPercentContingent}}%.</small>
                   </div>
+                </div>
               </div>
-            </div>
+              <div *ngIf="isYounger" class="parrafo-final">
+                <p>Cualquier beneficio que corresponda a un menor de edad designado como Beneficiario en esta Póliza, será pagado a:</p>
+                <input type="text" class="form-control col-md-12" formControlName="paymentName">
+                <small class="text-muted" *ngIf="!invalid('paymentName', modalForm)">Ejemplo: Juan Figueira.</small>
+                <small class="text-danger" *ngIf="invalid('paymentName', modalForm)">Este campo es requerido.</small>
+                <p class="d-inline-block">con cédula de identidad N°</p>
+                <input type="text" class="form-control col-md-12" formControlName="paymentDocument">
+                <small class="text-muted" *ngIf="!invalid('paymentDocument', modalForm)">Ejemplo: 5-4444-6666.</small>
+                <small class="text-danger" *ngIf="invalid('paymentDocument', modalForm)">Este campo es requerido.</small>
+                <p class="d-inline-block">, y en su defecto a</p>
+                <input type="text" class="form-control col-md-12" formControlName="paymentName2">
+                <small class="text-muted" *ngIf="!invalid('paymentName2', modalForm)">Ejemplo: Javier Florez.</small>
+                <small class="text-danger" *ngIf="invalid('paymentName2', modalForm)">Este campo es requerido.</small>
+                <br>
+                <p class="d-inline-block">, con cédula de identidad N°</p>
+                <input type="text" class="form-control col-md-12" formControlName="paymentDocument2">
+                <small class="text-muted" *ngIf="!invalid('paymentDocument2', modalForm)">Ejemplo: 5-4444-6666.</small>
+                <small class="text-danger" *ngIf="invalid('paymentDocument2', modalForm)">Este campo es requerido.</small>
+                <p class="d-inline-block">, a quien(es) he instruido sobre la forma que debe(n) disponer del dinero que reciba(n)</p>
+                <p>de la compañía, sin que por esta razón deba(n) considerarse a esta(s) persona(s) como beneficiario(s) de esta póliza.</p>
+              </div>
+            </form>
+          </div>
         </div>
-      </div>
-      <div class="modal-footer">
-        <button class="btn btn-primary W-100" (click)="modal.dismiss('Cross click')">GUARDAR</button>
-      </div>
+        <div class="modal-footer">
+          <button class="btn btn-primary W-100" (click)="createDependent(modal)">GUARDAR</button>
+        </div>
       </ng-template>
     </section>
 
@@ -432,84 +462,45 @@
               <button class="btn-mas1" (click)="open(content)"><img src="assets/img/mas.svg" alt="" class="img" ></button> 
                 <div class="fondo-blanco">
                   <div class="table-responsive">
-                    <table class="table table-hover">
+                    <table *ngIf="forma" class="table table-hover">
                       <thead>
                         <tr>
-                          <th scope="col">Nombre(s) y apellido(s):</th>
-                          <th scope="col">Cédula / Pasaporte:</th>
-                          <th scope="col">Nacionalidad:</th>
-                          <th scope="col">Fecha de nacimiento:</th>
-                          <th scope="col">Parentesco:</th>
-                          <th scope="col">Porcentaje (%):</th>
-                          <th scope="col"> </th>
+                          <th scope="col-2">Nombre(s) y apellido(s):</th>
+                          <th scope="col-2">Cédula / Pasaporte:</th>
+                          <th scope="col-2">Nacionalidad:</th>
+                          <th scope="col-2">Fecha de nacimiento:</th>
+                          <th scope="col-1">Parentesco:</th>
+                          <th scope="col-1">Porcentaje (%):</th>
+                          <th scope="col-1">Tipo:</th>
+                          <th scope="col-1"> </th>
                         </tr>
                       </thead>
-                      <tbody>
-                          <tr *ngFor="let number of [0,1,2,3,4]">
-                            <th scope="row"><span class="font-weight-bold">Alexis Suarez</span></th>
-                            <td>E - 8-333-444</td>
-                            <td>Venezolana</td>
-                            <td>05/05/1987</td>
-                            <td>Esposo</td>
-                            <td>50%</td>
-                            <td><i class="fas fa-pen"></i> <i class="fas fa-trash ml-3"></i></td>
+                      <tbody formArrayName="insuDependents" *ngFor="let dependent of forma.get('insuDependents').controls; let i = index">
+                          <tr [formGroupName]='i'>
+                            <td scope="row"><span class="font-weight-bold">{{dependent.value.fullName}}</span></td>
+                            <td>{{dependent.value.documentType === 'Pasaporte' ? dependent.value.document : dependent.value.document.concat('-').concat(dependent.value.document2).concat('-').concat(dependent.value.document3) }}</td>
+                            <td>{{getNationality(dependent.value.nationalityId).name}}</td>
+                            <td>{{dependent.value.birthday | date:'dd/MM/yyyy'}}</td>
+                            <td>{{dependent.value.relationship}}</td>
+                            <td>{{dependent.value.percent}}</td>
+                            <td>{{dependent.value.type}}</td>
+                            <td><i (click)="open(content, dependent)" class="fas fa-pen"></i> <i (click)="deleteDependent(dependent.value.dependentId)" class="fas fa-trash ml-3"></i></td>
                           </tr>
                       </tbody>
                     </table>
                   </div>
                 </div>
             </div>
-
-            <div class="row mb-5">
-              <div class="marco-verde dos">
-                <h3 class="text-white">Beneficiarios contingentes</h3>
-              </div>
-              <button class="btn-mas2" (click)="open(content)"><img src="assets/img/mas.svg" alt="" class="img" ></button> 
-                <div class="fondo-blanco ">
-                  <div class="table-responsive">
-                      <table class="table table-hover">
-                        <thead>
-                          <tr>
-                            <th scope="col">Nombre(s) y apellido(s):</th>
-                            <th scope="col">Cédula / Pasaporte:</th>
-                            <th scope="col">Nacionalidad:</th>
-                            <th scope="col">Fecha de nacimiento:</th>
-                            <th scope="col">Parentesco:</th>
-                            <th scope="col">Porcentaje (%):</th>
-                            <th scope="col"> </th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr *ngFor="let number of [0,1,2,3,4]">
-                            <th scope="row"><span class="font-weight-bold">Alexis Suarez</span></th>
-                            <td>E - 8-333-444</td>
-                            <td>Venezolana</td>
-                            <td>05/05/1987</td>
-                            <td>Esposo</td>
-                            <td>50%</td>
-                            <td><i class="fas fa-pen"></i> <i class="fas fa-trash ml-3"></i></td>
-                          </tr>
-                        </tbody>
-                      </table>
-                  </div>
-                </div>
-            </div>
-
-            <div class="parrafo-final">
-            <p>Cualquier beneficio que corresponda a un menor de edad designado como Beneficiario en esta Póliza, será pagado a:</p>
-            <input type="text" class="form-control parrafo mr-md-2" formControlName="insuPaymentName">
-            <p class="d-inline-block">con cédula de identidad N°</p>
-            <input type="text" class="form-control parrafo mx-md-2" formControlName="insuPaymentDocument">
-            <p class="d-inline-block">, y en su defecto a</p>
-            <input type="text" class="form-control parrafo mx-md-2" formControlName="insuPaymentName2">
-            <br>
-            <p class="d-inline-block">, con cédula de identidad N°</p>
-            <input type="text" class="form-control parrafo mx-md-2" formControlName="insuPaymentDocument2">
-            <p class="d-inline-block">, a quien(es) he instruido sobre la forma que debe(n) disponer del dinero que reciba(n)</p>
-            <p>de la compañía, sin que por esta razón deba(n) considerarse a esta(s) persona(s) como beneficiario(s) de esta póliza.</p>
-            </div>
           </div>
       </accordion-group>
     </accordion>
   </form>
 </section>
+<div class="row">
+    <div class="col-md-12 text-center">
+        <button class="btn btn-primary" (click)="saveRequest(true)" >CONTINUAR</button>
+        <button class="btn btn-white ml-0 ml-md-4" (click)="saveRequest(false)">
+            <i class="fas fa-save text-dark"></i> GUARDAR PARA DESPUÉS
+        </button>
+    </div>
+</div>

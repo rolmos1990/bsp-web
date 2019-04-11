@@ -7,20 +7,12 @@ const routes: Routes = [
     loadChildren: './modules/landing-page/landing-page.module#LandingPageModule'
   },
   {
-    path: 'client-info',
-    loadChildren: './modules/client-info/client-info.module#ClientInfoModule'
-  },
-  {
     path: 'payment',
     loadChildren: './modules/payment/payment.module#PaymentModule'
   },
   {
     path: 'general',
     loadChildren: './modules/general/general.module#GeneralModule'
-  },
-  {
-    path: 'cards',
-    loadChildren: './modules/cards/cards.module#CardsModule'
   },
   {
     path: 'coverage/:userId',

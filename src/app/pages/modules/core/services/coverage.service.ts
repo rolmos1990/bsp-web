@@ -5,16 +5,16 @@ import {  HttpClient } from '@angular/common/http';
 import {  ServiceDirective } from '../directives/service.directive';
 import {  environment } from 'src/environments/environment';
 
+const API_ENDPOINT_GET_ALL_COVERAGES = 'getAllInsurance';
+
 @Injectable()
 export class CoverageService {
-
-    private API_ENDPOINT_GET_ALL_COVERAGES = 'getAllInsurance';
 
     constructor(private _http: HttpClient) { }
 
     public getAllConverages() : Observable<any> {
       return this._http
-        .post(environment.baseUrl.concat(this.API_ENDPOINT_GET_ALL_COVERAGES), null, ServiceDirective.headers)
+        .post(environment.baseUrl.concat(API_ENDPOINT_GET_ALL_COVERAGES), null, ServiceDirective.headers)
         .pipe(
           catchError(err => {
             return ServiceDirective.handleError(err);

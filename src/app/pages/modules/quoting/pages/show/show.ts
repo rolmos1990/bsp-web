@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
-import { CreateUserService } from '../../../core/services/create-user.service';
+import { UserService } from '../../../core/services/user.service';
 import {Router} from '@angular/router';
 
 @Component({
@@ -16,9 +16,9 @@ forma: FormGroup;
 public ocupaciones = ['Administración de empresas', 'Contaduría', 'Ingeniería Industrial', 'Mercadotecnia', 'Relaciones Internacionales', 'Ingeniero en sistemas'];
 
 constructor(
-  public fb: FormBuilder, private _userService: CreateUserService, private _router: Router) {
+  public fb: FormBuilder, private _userService: UserService, private _router: Router) {
   this.forma = this.fb.group({
-    document: ['', Validators.compose([Validators.required, Validators.minLength(7)]) ],
+    document: ['', Validators.compose([Validators.required, Validators.minLength(11)]) ],
     occupationId: ['', Validators.compose([Validators.required, Validators.minLength(5) ]) ],
     age: ['', Validators.compose([Validators.required, Validators.maxLength(2),Validators.min(18),Validators.max(69)]) ],
     email: ['', Validators.compose([Validators.required, Validators.email ]) ]

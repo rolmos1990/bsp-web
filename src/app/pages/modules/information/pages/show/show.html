@@ -38,19 +38,11 @@
 <!-- Padre -->
 <div class="information" [ngClass]="{'d-none': flag == true}">
     <form [formGroup]="formulario">
-        <aw-wizard>
+        <aw-wizard #wizard >
             <aw-wizard-step stepTitle="Solicitud">
                 <div class="container">
                     <!-- Componente Hijo 1-->
-                    <bsp-request [forma]="formulario.get('forma')" ></bsp-request>
-                    <div class="row">
-                        <div class="col-md-12 text-center">
-                            <button class="btn btn-primary" awNextStep (click)="inicio()" >CONTINUAR</button>
-                            <button class="btn btn-white ml-0 ml-md-4">
-                                <i class="fas fa-save text-dark"></i> GUARDAR PARA DESPUÉS
-                            </button>
-                        </div>
-                    </div>
+                    <bsp-request [forma]="formulario.get('forma')" (nextStep)="inicio()" [requestId]="requestId" ></bsp-request>
                 </div>
             </aw-wizard-step>
             <aw-wizard-step stepTitle="Datos médicos">
