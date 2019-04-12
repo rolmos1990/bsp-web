@@ -50,6 +50,12 @@ button{
     margin-right: 320px;
 }
 
+h4.titulo-modal {
+  font-size: 21px;
+  color: #1c8464;
+  text-decoration: none solid rgb(28, 132, 100);
+}
+
 .portada-info{
     height: 186px;
     background-image: url("src/assets/img/landing-info.png");
@@ -70,9 +76,9 @@ button{
     padding: 20px 0 0 60px;
 }
 
-.terminos{
+div.terminos{
     height: 500px;
-    overflow-y: auto;
+    overflow-y: auto!important;
 }
 
 @media (max-width: 1023px){
