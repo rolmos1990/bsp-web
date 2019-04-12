@@ -454,8 +454,8 @@
                           <tr [formGroupName]='i'>
                             <td scope="row"><span class="font-weight-bold">{{dependent.value.fullName}}</span></td>
                             <td>{{dependent.value.documentType === 'Pasaporte' ? dependent.value.document : dependent.value.documentType.concat('-').concat(dependent.value.document).concat('-').concat(dependent.value.document2) }}</td>
-                            <td>{{getNationality(dependent.value.nationalityId).name}}</td>
-                            <td>{{getDateWithFormat(dependent.value.birthday)}}</td>
+                            <td>{{dependent.value.nationalityId ? getNationality(dependent.value.nationalityId).name : 'N/A'}}</td>
+                            <td>{{dependent.value.birthday ? getDateWithFormat(dependent.value.birthday): 'N/A'}}</td>
                             <td>{{dependent.value.relationship}}</td>
                             <td>{{dependent.value.percent}}</td>
                             <td>{{dependent.value.type}}</td>

@@ -12,7 +12,7 @@ import {Router} from '@angular/router';
 
 export class ShowComponent implements OnInit {
 
-forma: FormGroup;
+public forma: FormGroup;
 public ocupaciones = ['Administración de empresas', 'Contaduría', 'Ingeniería Industrial', 'Mercadotecnia', 'Relaciones Internacionales', 'Ingeniero en sistemas'];
 
 constructor(
@@ -41,6 +41,14 @@ submit(){
   }
 }
 
+
+  public invalid(controlName: string, form: FormGroup) {
+    return form.get(controlName).touched && !form.get(controlName).valid;
+  }
+
+  public valid(controlName: string, form: FormGroup) {
+    return form.get(controlName).touched && form.get(controlName).valid;
+  }
 
   selectEvent(item) {
   }
