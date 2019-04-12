@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { ArchwizardModule } from 'angular-archwizard';
+import { ArchwizardModule, WizardComponent } from 'angular-archwizard';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -16,7 +16,7 @@ export class ShowInformationComponent implements OnInit {
 public flag: boolean = false;
 public formulario: FormGroup;
 public requestId: string;
-@ViewChild('wizard') wizard: any;
+@ViewChild('wizard') wizard: WizardComponent;
 
 
   constructor(private modalService: NgbModal, private fb: FormBuilder, private _router: Router, private _route: ActivatedRoute) {
@@ -26,6 +26,7 @@ public requestId: string;
   ngOnInit() {
     this.formulario = this.fb.group({
       forma: this.fb.group({
+      'requestId': this.fb.control(this.requestId),
       'contFullname': this.fb.control(null, [Validators.required]), //Primer Formulario
       'contProvinceId': this.fb.control(null),
       'contDistrictId': this.fb.control(null),
@@ -40,7 +41,6 @@ public requestId: string;
       'insuDocumentType': this.fb.control(null,  Validators.required),
       'insuDocument': this.fb.control(null,  Validators.required),
       'insuDocument2': this.fb.control(null),
-      'insuDocument3': this.fb.control(null),
       'insuGender': this.fb.control(null),
       'insuBirthday': this.fb.control(null, [Validators.required]),
       'insuCivilStatus': this.fb.control(null),
@@ -54,11 +54,11 @@ public requestId: string;
       'insuOtherOccupations': this.fb.control(null),
       'insuPreviousOccupations': this.fb.control(null),
       'insuSports': this.fb.control(null),
-      'insuIngreso': this.fb.control(null),
+      'insuMonthlyIncome': this.fb.control(null),
       'insuProvinceId': this.fb.control(null),
       'insuDistrictId': this.fb.control(null),
       'insuCorregimientoId': this.fb.control(null),
-      'insuNeighbourhood': this.fb.control(null),
+      'insuNeighborhood': this.fb.control(null),
       'insuStreet': this.fb.control(null),
       'insuBuilding': this.fb.control(null),
       'insuLocalNumber': this.fb.control(null),
@@ -109,7 +109,7 @@ public requestId: string;
 }
   public inicio(){
     window.scrollTo(0, 0);
-    console.log(this.wizard);
+    this.wizard.model.navigationMode.goToNextStep();
   }
 
   public getPosition(id: string) {

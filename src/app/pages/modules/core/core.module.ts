@@ -13,9 +13,16 @@ import { RequestService } from './services/request.service';
 import { CoverageService } from './services/coverage.service';
 import { LocationService } from './services/location.service';
 import { DependentService } from './services/dependent.service';
+import { ActivityService } from './services/activities.service';
+import { CustomValidatorDirective } from './directives/validations/custom-validations.directive';
 
 @NgModule({
-  declarations: [NavBarComponent, FooterComponent,ServiceDirective],
+  declarations: [
+    NavBarComponent,
+    FooterComponent,
+    ServiceDirective,
+    CustomValidatorDirective
+  ],
   imports: [
     CommonModule,
     RouterModule,
@@ -31,6 +38,7 @@ import { DependentService } from './services/dependent.service';
     RequestService,
     LocationService,
     DependentService,
+    ActivityService,
     CoverageService
   ]
 })

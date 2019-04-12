@@ -12,8 +12,6 @@ import {TooltipModule} from 'ng2-tooltip-directive';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-
-
 @NgModule({
   declarations: [
     AppComponent,
