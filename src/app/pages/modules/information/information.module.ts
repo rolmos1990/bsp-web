@@ -13,7 +13,7 @@ import { AccordionModule } from 'ngx-bootstrap/accordion';
 import { ArchwizardModule } from 'angular-archwizard';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-
+import {ProgressBarModule} from "angular-progress-bar"
 
 
 @NgModule({
@@ -27,6 +27,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   ],
   imports: [
     CommonModule,
+    ProgressBarModule,
     InformationRoutingModule,
     AccordionModule.forRoot(),
     ArchwizardModule,

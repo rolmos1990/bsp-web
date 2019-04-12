@@ -42,12 +42,11 @@
             <aw-wizard-step stepTitle="Solicitud">
                 <div class="container">
                     <!-- Componente Hijo 1-->
-                    <bsp-request [forma]="formulario.get('forma')" (nextStep)="inicio()" [requestId]="requestId" ></bsp-request>
+                    <bsp-request (nextStep)="inicio()" [requestId]="requestId" ></bsp-request>
                 </div>
             </aw-wizard-step>
-            <aw-wizard-step stepTitle="Datos médicos">
+            <!-- <aw-wizard-step stepTitle="Datos médicos">
                 <div class="container">
-                    <!-- Componente Hijo 2-->
                     <bsp-medical-data [formaMedical]="formulario.get('formaMedical')"></bsp-medical-data>
                     <div class="row">
                         <div class="col-md-12 text-center">
@@ -55,17 +54,16 @@
                         </div>
                     </div>
                 </div>
-            </aw-wizard-step>
+            </aw-wizard-step> -->
             <aw-wizard-step stepTitle="Datos de pago">
                 <div class="container">
-                    <!-- Componente Hijo 3-->
-                    <bsp-payment-info [formaPayment]="formulario.get('formaPayment')"></bsp-payment-info>
-                    <button class="btn btn-primary d-block" awNextStep (click)="inicio()">CONTINUAR</button>
+                        <!-- Componente Hijo 2-->
+                    <bsp-payment-info (nextStep)="inicio()" [requestId]="requestId" ></bsp-payment-info>
                 </div>
             </aw-wizard-step>
             <aw-wizard-step stepTitle="Datos de entrega">
                 <div class="container">
-                    <!-- Componente Hijo 4-->
+                    <!-- Componente Hijo 3-->
                     <bsp-delivery-data [formaDelivery]="formulario.get('formaDelivery')"></bsp-delivery-data>
                     <button class="btn btn-primary d-block" (click)="showSucess()">ENVIAR SOLICITUD</button>
                 </div>

@@ -12,6 +12,7 @@ import {TooltipModule} from 'ng2-tooltip-directive';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     NgbModule,
+    NgxSpinnerModule,
     BrowserAnimationsModule,
     CoreModule,
     TooltipModule,

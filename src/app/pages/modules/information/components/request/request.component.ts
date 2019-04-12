@@ -1,11 +1,14 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, FormControl, Validators, FormBuilder, FormArray } from '@angular/forms';
-import { DOCUMENTS } from '../../../core/utils/select.util';
+import { DOCUMENTS, MONTHLYINCOME, CIVILSTATUS } from '../../../core/utils/select.util';
 import { LocationService } from '../../../core/services/location.service';
 import { RequestService } from '../../../core/services/request.service';
 import { DependentService } from '../../../core/services/dependent.service';
 import * as moment from 'moment';
+import { ActivityService } from '../../../core/services/activities.service';
+import { CustomValidatorDirective } from '../../../core/directives/validations/custom-validations.directive';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 
 @Component({
@@ -16,38 +19,64 @@ import * as moment from 'moment';
 export class RequestComponent implements OnInit {
 
   public customClass: string = 'customClass';
+  public percentsChecked: boolean;
   public isFirstOpen: boolean = true;
   public modalForm: FormGroup;
   public documents = DOCUMENTS;
+  public incomes = MONTHLYINCOME;
+  public civilStatus = CIVILSTATUS;
+  public isLoading: boolean;
   public edit: boolean;
   public nationalities: Array<any>;
-  @Input() forma: FormGroup;
+  public provinces: Array<any>;
+  public districtsCont: Array<any>;
+  public corregimientosCont: Array<any>;
+  public districtsInsu: Array<any>;
+  public corregimientosInsu: Array<any>;
+  public occupations: Array<any>;
+  public forma: FormGroup;
   @Input() requestId: string;
   @Output() nextStep: EventEmitter<any> = new EventEmitter<any>();
 
   constructor(private _modalService: NgbModal,
               private _fb: FormBuilder,
               private _locationService: LocationService,
+              private _activityService: ActivityService,
               private _requestService: RequestService,
               private _dependentService: DependentService) {
                 this.edit = false;
+                this.percentsChecked = false;
+                this.isLoading = false;
   }
   
   ngOnInit() {
-    this.getNationalities();
-    this.getDependents();
+    this.isLoading = true;
+    this.getProvinces();
   }
 
-  public saveRequest(proceed: boolean) {
-    let payload = this.forma.value;
-    payload.insuDependents.forEach((dependent, index) => {
-      payload.insuDependents[index] = dependent.dependentId;
-    });
-    this._requestService.saveRequest(payload).subscribe(
+  public getRequest() {
+    this._requestService.getRequest(this.requestId).subscribe(
       response => {
         console.log(response);
-        if (proceed) {
-          this.nextStep.emit();
+        this.fillMainForm(response.result.request.contractor, response.result.request.insured);
+        this.getDependents();
+      },
+      error => {
+        console.log(error);
+        this.isLoading = false;
+      }
+    )
+  }
+
+  public getCorregimientos(cont: boolean) {
+    this._locationService.getAllCorregimientos(cont ? this.forma.value.contDistrictId : this.forma.value.insuDistrictId).subscribe(
+      response => {
+        if (cont) {
+          this.forma.value.contCorregimientoId = null;
+          this.corregimientosCont = response.result.corregimientos;
+        } else {
+          this.forma.value.insuCorregimientoId = null;
+          this.corregimientosInsu = response.result.corregimientos;
         }
       },
       error => {
@@ -56,13 +85,174 @@ export class RequestComponent implements OnInit {
     )
   }
 
+  public getOccupations() {
+    this._activityService.getAllOcupations().subscribe(
+      response => {
+        this.occupations = response.result.occupations;
+        this.getRequest();
+      },
+      error => {
+        console.log(error);
+        this.isLoading = false;
+      }
+    )
+  }
+
+  public getDistricts(cont: boolean) {
+    this._locationService.getAllDistricts(cont ? this.forma.value.contProvinceId : this.forma.value.insuProvinceId).subscribe(
+      response => {
+        if (cont) {
+          this.forma.value.contDistrictId = null;
+          this.corregimientosCont = [];
+          this.forma.value.contCorregimientoId = null;
+          this.districtsCont = response.result.districts;
+        } else {
+          this.forma.value.insuDistrictId = null;
+          this.corregimientosInsu = [];
+          this.forma.value.insuCorregimientoId = null;
+          this.districtsInsu = response.result.districts;
+        }
+      },
+      error => {
+        console.log(error);
+      }
+    )
+  }
+
+  public getProvinces() {
+    this._locationService.getAllProvinces().subscribe(
+      response => {
+        this.provinces = response.result.provinces;
+        this.getNationalities();
+      },
+      error => {
+        console.log(error);
+        this.isLoading = false;
+      }
+    )
+  }
+
+  public fillMainForm(cont: any, insu: any) {
+    this.forma = this._fb.group({
+    'same': this._fb.control('si', Validators.required),
+    'requestId': this._fb.control(this.requestId),
+    'contName': this._fb.control(cont.name, [Validators.required, CustomValidatorDirective.namesValidator]),
+    'contLastName': this._fb.control(cont.lastName, [Validators.required, CustomValidatorDirective.namesValidator]),
+    'contProvinceId': this._fb.control(cont.province ? cont.province.id : null, Validators.required),
+    'contDistrictId': this._fb.control(cont.district ? cont.district.id : null, Validators.required),
+    'contCorregimientoId': this._fb.control(cont.corregimiento ? cont.corregimiento.id : null, Validators.required),
+    'contStreet': this._fb.control(cont.street, [Validators.required]),
+    'contBuilding': this._fb.control(cont.building, Validators.required),
+    'contNeighborhood': this._fb.control(cont.neighborhood, Validators.required),
+    'contCellphone': this._fb.control(cont.cellphone, [Validators.required, CustomValidatorDirective.cellphoneValidator]),
+    'contEconomicActivity': this._fb.control(cont.economicActivity, [Validators.required]),
+    'insuName': this._fb.control(insu.name, Validators.compose([Validators.required, CustomValidatorDirective.namesValidator])),//Segundo Formulario
+    'insuLastName': this._fb.control(insu.lastName,  Validators.compose([Validators.required, CustomValidatorDirective.namesValidator])),
+    // 'insuDocumentType': [insu ? (insu.documentType === 'Pasaporte' ? insu.documentType : insu.document.split('-')[0]) : null, Validators.required],
+    'insuDocument': [insu.document, [Validators.required, CustomValidatorDirective.documentValidator]],
+    // 'insuDocument2': [!insu || insu.documentType === 'Pasaporte' ? null : insu.document.split('-')[2]],
+    'insuGender': this._fb.control(insu.gender, Validators.required),
+    'insuBirthday': this._fb.control(moment(insu.birthday.iso).format('YYYY-MM-DD'), [Validators.required, CustomValidatorDirective.dateValidator]),
+    'insuCivilStatus': this._fb.control(insu.civilStatus, Validators.required),
+    'insuBirthplace': this._fb.control(insu.birthplace, Validators.required),
+    'insuNationalityId': this._fb.control(insu.nationality ? insu.nationality.id : null, [Validators.required]),
+    'insuProfession': this._fb.control(insu.profession, [Validators.required]),
+    'insuOccupation': this._fb.control(insu.occupation.id, [Validators.required]),
+    'insuOccupationDescription': this._fb.control(insu.occupationDescription, Validators.required),
+    'insuCompany': this._fb.control(insu.company, Validators.required),
+    'insuOccupationTime': this._fb.control(insu.occupationTime, Validators.required),
+    'insuOtherOccupations': this._fb.control(insu.otherOccupation, Validators.required),
+    'insuPreviousOccupations': this._fb.control(insu.previousOccupations, Validators.required),
+    'insuSports': this._fb.control(insu.sports, Validators.required),
+    'insuMonthlyIncome': this._fb.control(insu.monthlyIncome, Validators.required),
+    'insuProvinceId': this._fb.control(insu.province ? insu.province.id : null, Validators.required),
+    'insuDistrictId': this._fb.control(insu.district ? insu.district.id : null, Validators.required),
+    'insuCorregimientoId': this._fb.control(insu.corregimiento ? insu.corregimiento.id : null, Validators.required),
+    'insuNeighborhood': this._fb.control(insu.neighborhood, Validators.required),
+    'insuStreet': this._fb.control(insu.street, Validators.required),
+    'insuBuilding': this._fb.control(insu.building, Validators.required),
+    'insuLocalNumber': this._fb.control(insu.localNumber, [Validators.required, CustomValidatorDirective.cellphoneValidator]),
+    'insuCellphone': this._fb.control(insu.cellphone,  Validators.compose([Validators.required, CustomValidatorDirective.cellphoneValidator])),
+    'insuEmail': this._fb.control(insu.email, Validators.compose([Validators.required, CustomValidatorDirective.customEmailValidator])),
+    'insuDependents': this._fb.array([])
+    })
+  }
+
+  public mainFormValidation() {
+    this.percentsChecked = true;
+    let payload = this.forma.value;
+    this.markAllAsTouched(true);
+    if (payload.same === 'si') {
+      this.forma.get('contName').setValue(payload.insuName);
+      this.forma.get('contLastName').setValue(payload.insuLastName);
+      this.forma.get('contProvinceId').setValue(payload.insuProvinceId);
+      this.forma.get('contDistrictId').setValue(payload.insuDistrictId);
+      this.forma.get('contCorregimientoId').setValue(payload.insuCorregimientoId);
+      this.forma.get('contStreet').setValue(payload.insuStreet);
+      this.forma.get('contBuilding').setValue(payload.insuBuilding);
+      this.forma.get('contNeighborhood').setValue(payload.insuNeighborhood);
+      this.forma.get('contCellphone').setValue(payload.insuCellphone);
+    }
+    let dependents =  this.forma.get('insuDependents') as FormArray;
+    dependents.controls.forEach(dependent => {
+      dependent.get('paymentName').clearValidators();
+      dependent.get('paymentDocument').clearValidators();
+      dependent.get('paymentName2').clearValidators();
+      dependent.get('paymentDocument2').clearValidators();
+      dependent.get('paymentName').updateValueAndValidity();
+      dependent.get('paymentDocument').updateValueAndValidity();
+      dependent.get('paymentName2').updateValueAndValidity();
+      dependent.get('paymentDocument2').updateValueAndValidity();
+      dependent.updateValueAndValidity();
+    });
+    this.forma.updateValueAndValidity();
+  }
+
+  public get isPercentValid() {
+    return this.percentsChecked && ((this.remainingPercentContingent + this.remainingPercentMain) === 0);
+  }
+
+  public get isPercentInvalid() {
+    return this.percentsChecked && ((this.remainingPercentContingent + this.remainingPercentMain) > 0);
+  }
+
+  public saveRequest(proceed: boolean) {
+    this.mainFormValidation();
+    if (this.forma.valid && this.isPercentValid) {
+      this.isLoading = true;
+      let payload = this.forma.value;
+      delete payload.insuDependents;
+      payload.insuOccupationTime = String(payload.insuOccupationTime);
+      payload.insuBirthday =  moment(new Date(payload.insuBirthday)).format('DD/MM/YYYY');
+      this._requestService.saveRequest(payload).subscribe(
+        response => {
+          if (proceed) {
+            this.nextStep.emit();
+          }else {
+            this.isLoading = false;
+          }
+
+        },
+        error => {
+          console.log(error);
+          this.isLoading = false;
+        }
+      );
+    } else {
+      console.log(this.forma);
+      // this.nextStep.emit();
+    }
+  }
+
   public getNationalities() {
     this._locationService.getAllNationalites().subscribe(
       response => {
         this.nationalities = response.result.nationalities;
+        this.getOccupations();
       },
       error => {
         console.log(error);
+        this.isLoading = false;
       }
     )
   }
@@ -77,7 +267,8 @@ export class RequestComponent implements OnInit {
 
   public markAllAsTouched(general: boolean) {
     if (general) {
-      this.forma.get('contFullname').markAsTouched();
+      this.forma.get('contLastName').markAsTouched();
+      this.forma.get('contName').markAsTouched();
       this.forma.get('contProvinceId').markAsTouched();
       this.forma.get('contDistrictId').markAsTouched();
       this.forma.get('contCorregimientoId').markAsTouched();
@@ -88,10 +279,7 @@ export class RequestComponent implements OnInit {
       this.forma.get('contEconomicActivity').markAsTouched();
       this.forma.get('insuName').markAsTouched();
       this.forma.get('insuLastName').markAsTouched();
-      this.forma.get('insuDocumentType').markAsTouched();
       this.forma.get('insuDocument').markAsTouched();
-      this.forma.get('insuDocument2').markAsTouched();
-      this.forma.get('insuDocument3').markAsTouched();
       this.forma.get('insuGender').markAsTouched();
       this.forma.get('insuBirthday').markAsTouched();
       this.forma.get('insuCivilStatus').markAsTouched();
@@ -105,10 +293,10 @@ export class RequestComponent implements OnInit {
       this.forma.get('insuOtherOccupations').markAsTouched();
       this.forma.get('insuPreviousOccupations').markAsTouched();
       this.forma.get('insuSports').markAsTouched();
-      this.forma.get('insuIngreso').markAsTouched();
+      this.forma.get('insuMonthlyIncome').markAsTouched();
       this.forma.get('insuProvinceId').markAsTouched();
       this.forma.get('insuCorregimientoId').markAsTouched();
-      this.forma.get('insuNeighbourhood').markAsTouched();
+      this.forma.get('insuNeighborhood').markAsTouched();
       this.forma.get('insuStreet').markAsTouched();
       this.forma.get('insuBuilding').markAsTouched();
       this.forma.get('insuLocalNumber').markAsTouched();
@@ -141,10 +329,10 @@ export class RequestComponent implements OnInit {
     this.modalForm.get('percent').updateValueAndValidity();
 
     if (this.isYounger) {
-      this.modalForm.get('paymentName').setValidators(Validators.required);
-      this.modalForm.get('paymentDocument').setValidators(Validators.required);
-      this.modalForm.get('paymentName2').setValidators(Validators.required);
-      this.modalForm.get('paymentDocument2').setValidators(Validators.required);
+      this.modalForm.get('paymentName').setValidators([Validators.required, CustomValidatorDirective.namesValidator]);
+      this.modalForm.get('paymentDocument').setValidators([Validators.required, CustomValidatorDirective.documentValidator]);
+      this.modalForm.get('paymentName2').setValidators([Validators.required, CustomValidatorDirective.namesValidator]);
+      this.modalForm.get('paymentDocument2').setValidators([Validators.required, CustomValidatorDirective.documentValidator]);
       this.modalForm.get('paymentName').updateValueAndValidity();
       this.modalForm.get('paymentDocument').updateValueAndValidity();
       this.modalForm.get('paymentName2').updateValueAndValidity();
@@ -179,6 +367,7 @@ export class RequestComponent implements OnInit {
   public getDependents() {
     this._dependentService.getDependentsByRequest(this.requestId).subscribe(
       response => {
+        this.isLoading = false;
         this.forma.setControl('insuDependents', this._fb.array([]));
         let dependents = this.forma.get('insuDependents') as FormArray;
         response.result.dependents.forEach(dependent => {
@@ -187,13 +376,21 @@ export class RequestComponent implements OnInit {
         console.log(dependents);
       },
       error => {
+        this.isLoading = false;
         console.log(error);
       }
     );
   }
 
+  public getDateWithFormat(_date: string) {
+    const date = new Date(_date);
+    _date = moment(_date).add(1, 'day').format('DD/MM/YYYY');
+    return _date;
+  }
+  
   public createDependent(modal: any) {
 
+    this.isLoading = true;
     this.modalValidations();
 
     if (this.modalForm.valid) {
@@ -205,9 +402,8 @@ export class RequestComponent implements OnInit {
         payload.document = payload.documentType.concat('-').concat(payload.document).concat('-').concat(payload.document2);
         delete payload.document2;
       }
-  
-      const date = new Date(payload.birthday);
-      payload.birthday = String(date.getDate() + 1).concat('/').concat(String(date.getMonth() + 1)).concat('/').concat(String(date.getFullYear()));
+      
+      payload.birthday = moment(new Date(payload.birthday)).format('DD/MM/YYYY');
   
       payload.name = String(payload.fullName).split(' ')[0];
       payload.lastName = String(payload.fullName).split(' ')[1];
@@ -229,6 +425,7 @@ export class RequestComponent implements OnInit {
           },
           error => {
             console.log(error);
+            this.isLoading = false;
           }
         );
       } else {
@@ -236,10 +433,12 @@ export class RequestComponent implements OnInit {
         this._dependentService.createDependent(payload).subscribe(
           response => {
             modal.dismiss('Cross click');
+            this.modalForm = null;
             this.getDependents();
           },
           error => {
             console.log(error);
+            this.isLoading = false;
           }
         );
       }
@@ -256,7 +455,7 @@ export class RequestComponent implements OnInit {
     let percent = 100;
     let dependents = this.forma.get('insuDependents') as FormArray;
     dependents.controls.forEach(dependent => {
-      if (dependent.value.type === 'principal' && (dependent.value.dependentId !== this.modalForm.value.dependentId)) {
+      if (dependent.value.type === 'principal' && (!this.modalForm || (dependent.value.dependentId !== this.modalForm.value.dependentId))) {
         percent -= dependent.value.percent;
       }
     });
@@ -267,7 +466,7 @@ export class RequestComponent implements OnInit {
     let percent = 100;
     let dependents = this.forma.get('insuDependents') as FormArray;
     dependents.controls.forEach(dependent => {
-      if (dependent.value.type === 'contingente' && (dependent.value.dependentId !== this.modalForm.value.dependentId)) {
+      if (dependent.value.type === 'contingente' && (!this.modalForm || (dependent.value.dependentId !== this.modalForm.value.dependentId))) {
         percent -= dependent.value.percent;
       }
     });
@@ -292,20 +491,20 @@ export class RequestComponent implements OnInit {
   public generateDependentForm(dependentObject?: any): FormGroup {
     return this._fb.group({
       dependentId: [dependentObject ? dependentObject.id : null],
-      fullName: [dependentObject ? dependentObject.name.concat(' ').concat(dependentObject.lastName) : null, Validators.required],
+      fullName: [dependentObject ? dependentObject.name.concat(' ').concat(dependentObject.lastName) : null, [Validators.required, CustomValidatorDirective.fullNameValidator]],
       type: [dependentObject ? dependentObject.type : null, Validators.required],
       documentType: [dependentObject ? (dependentObject.documentType === 'Pasaporte' ? dependentObject.documentType : dependentObject.document.split('-')[0]) : null, Validators.required],
       document: [dependentObject ? (dependentObject.documentType === 'Pasaporte' ? dependentObject.document : dependentObject.document.split('-')[1]) : null, Validators.required],
       document2: [!dependentObject || dependentObject.documentType === 'Pasaporte' ? null : dependentObject.document.split('-')[2]],
       nationalityId: [dependentObject ? dependentObject.nationality.id : null, Validators.required],
-      birthday: [dependentObject ? new Date(dependentObject.birthday.iso) : null, Validators.required],
+      birthday: [dependentObject ? moment(dependentObject.birthday.iso).format('YYYY-MM-DD') : null, [Validators.required, CustomValidatorDirective.dateValidator]],
       relationship: [dependentObject ? dependentObject.relationship : null, Validators.required],
       percent: [dependentObject ? dependentObject.percent : null, Validators.required],
       requestId: [this.requestId],
-      paymentName: [dependentObject ? dependentObject.paymentName : null],
-      paymentDocument: [dependentObject ? dependentObject.paymentDocument : null],
-      paymentName2: [dependentObject ? dependentObject.paymentName2 : null],
-      paymentDocument2: [dependentObject ? dependentObject.paymentDocument2 : null]
+      paymentName: [dependentObject ? dependentObject.paymentName : null, [Validators.required, CustomValidatorDirective.namesValidator]],
+      paymentDocument: [dependentObject ? dependentObject.paymentDocument : null, [Validators.required, CustomValidatorDirective.documentValidator]],
+      paymentName2: [dependentObject ? dependentObject.paymentName2 : null, [Validators.required, CustomValidatorDirective.namesValidator]],
+      paymentDocument2: [dependentObject ? dependentObject.paymentDocument2 : null, [Validators.required, CustomValidatorDirective.documentValidator]]
     });
   }
 
