@@ -8,7 +8,6 @@ import { DependentService } from '../../../core/services/dependent.service';
 import * as moment from 'moment';
 import { ActivityService } from '../../../core/services/activities.service';
 import { CustomValidatorDirective } from '../../../core/directives/validations/custom-validations.directive';
-import { NgxSpinnerService } from 'ngx-spinner';
 
 
 @Component({
@@ -68,14 +67,18 @@ export class RequestComponent implements OnInit {
     )
   }
 
-  public getCorregimientos(cont: boolean) {
+  public getCorregimientos(cont: boolean, first?: boolean) {
     this._locationService.getAllCorregimientos(cont ? this.forma.value.contDistrictId : this.forma.value.insuDistrictId).subscribe(
       response => {
         if (cont) {
-          this.forma.value.contCorregimientoId = null;
+          if (!first) {
+            this.forma.value.contCorregimientoId = null;
+          }
           this.corregimientosCont = response.result.corregimientos;
         } else {
-          this.forma.value.insuCorregimientoId = null;
+          if (!first) {
+            this.forma.value.insuCorregimientoId = null;
+          }
           this.corregimientosInsu = response.result.corregimientos;
         }
       },
@@ -98,19 +101,33 @@ export class RequestComponent implements OnInit {
     )
   }
 
-  public getDistricts(cont: boolean) {
+  public getDistricts(cont: boolean, first?:boolean) {
     this._locationService.getAllDistricts(cont ? this.forma.value.contProvinceId : this.forma.value.insuProvinceId).subscribe(
       response => {
         if (cont) {
-          this.forma.value.contDistrictId = null;
-          this.corregimientosCont = [];
-          this.forma.value.contCorregimientoId = null;
-          this.districtsCont = response.result.districts;
+          if (first) {
+            this.districtsCont = response.result.districts;
+            if (this.forma.value.contDistrictId) {
+              this.getCorregimientos(true, true);
+            }
+          } else {
+            this.forma.value.contDistrictId = null;
+            this.corregimientosCont = [];
+            this.forma.value.contCorregimientoId = null;
+            this.districtsCont = response.result.districts;
+          }
         } else {
-          this.forma.value.insuDistrictId = null;
-          this.corregimientosInsu = [];
-          this.forma.value.insuCorregimientoId = null;
-          this.districtsInsu = response.result.districts;
+          if (first) {
+            this.districtsInsu = response.result.districts;
+            if (this.forma.value.insuDistrictId) {
+              this.getCorregimientos(false, true);
+            }
+          } else {
+            this.forma.value.insuDistrictId = null;
+            this.corregimientosInsu = [];
+            this.forma.value.insuCorregimientoId = null;
+            this.districtsInsu = response.result.districts;
+          }
         }
       },
       error => {
@@ -134,7 +151,6 @@ export class RequestComponent implements OnInit {
 
   public fillMainForm(cont: any, insu: any) {
     this.forma = this._fb.group({
-    'same': this._fb.control('si', Validators.required),
     'requestId': this._fb.control(this.requestId),
     'contName': this._fb.control(cont.name, [Validators.required, CustomValidatorDirective.namesValidator]),
     'contLastName': this._fb.control(cont.lastName, [Validators.required, CustomValidatorDirective.namesValidator]),
@@ -146,6 +162,7 @@ export class RequestComponent implements OnInit {
     'contNeighborhood': this._fb.control(cont.neighborhood, Validators.required),
     'contCellphone': this._fb.control(cont.cellphone, [Validators.required, CustomValidatorDirective.cellphoneValidator]),
     'contEconomicActivity': this._fb.control(cont.economicActivity, [Validators.required]),
+    'insuSame': this._fb.control(true, Validators.required),
     'insuName': this._fb.control(insu.name, Validators.compose([Validators.required, CustomValidatorDirective.namesValidator])),//Segundo Formulario
     'insuLastName': this._fb.control(insu.lastName,  Validators.compose([Validators.required, CustomValidatorDirective.namesValidator])),
     // 'insuDocumentType': [insu ? (insu.documentType === 'Pasaporte' ? insu.documentType : insu.document.split('-')[0]) : null, Validators.required],
@@ -175,14 +192,20 @@ export class RequestComponent implements OnInit {
     'insuCellphone': this._fb.control(insu.cellphone,  Validators.compose([Validators.required, CustomValidatorDirective.cellphoneValidator])),
     'insuEmail': this._fb.control(insu.email, Validators.compose([Validators.required, CustomValidatorDirective.customEmailValidator])),
     'insuDependents': this._fb.array([])
-    })
+    });
+    if (insu.province) {
+      this.getDistricts(false, true);
+    }
+    if (cont.province) {
+      this.getDistricts(true, true);
+    }
   }
 
   public mainFormValidation() {
     this.percentsChecked = true;
     let payload = this.forma.value;
     this.markAllAsTouched(true);
-    if (payload.same === 'si') {
+    if (payload.insuSame === true) {
       this.forma.get('contName').setValue(payload.insuName);
       this.forma.get('contLastName').setValue(payload.insuLastName);
       this.forma.get('contProvinceId').setValue(payload.insuProvinceId);

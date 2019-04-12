@@ -1,6 +1,6 @@
 <section *ngIf="forma && !isLoading" class="kalacra">
   <form [formGroup]="forma">
-    <accordion  *ngIf="forma.value.same === 'no'"> <!-- Primer Formulario -->
+    <accordion  *ngIf="forma.value.insuSame === false"> <!-- Primer Formulario -->
       <accordion-group [panelClass]="customClass" [isOpen]="isFirstOpen">
         <button class="btn btn-link btn-block clearfix" accordion-heading>
           <div class="pull-left float-left" style="margin-left:-15px;"><i class="fas fa-angle-down"></i> Datos del
@@ -12,18 +12,18 @@
               <div class="col-md-4 mb-5">
                 <label for="">¿Eres el solicitante de la póliza? (*)</label>
                 <div class="form-check mb-3">
-                  <input class="form-check-input" name="same" type="radio" [value]="'si'" formControlName="same">
-                  <label class="form-check-label" for="same">
+                  <input class="form-check-input" name="insuSame" type="radio" [value]="true" formControlName="insuSame">
+                  <label class="form-check-label" for="insuSame">
                     Si
                   </label>
                 </div>
                 <div class="form-check">
-                  <input class="form-check-input" name="same" type="radio" [value]="'no'" formControlName="same">
-                  <label class="form-check-label" for="same">
+                  <input class="form-check-input" name="insuSame" type="radio" [value]="false" formControlName="insuSame">
+                  <label class="form-check-label" for="insuSame">
                     No
                   </label>
                 </div>
-                <small class="text-danger col-12 row" *ngIf="invalid('same', forma)">Campo inválido. Por favor revise.</small>
+                <small class="text-danger col-12 row" *ngIf="invalid('insuSame', forma)">Campo inválido. Por favor revise.</small>
               </div>
               <div class="col-md-4 mb-5">
                 <label for="">Nombre (*)</label>
@@ -85,18 +85,10 @@
               <div class="col-md-4 mb-5">
                 <label for="">Actividad económica: (*)</label>
                 <select class="form-control" formControlName="contEconomicActivity">
-                  <option value="" selected disabled>Seleccione</option>
-                  <option value="1">1</option>
+                  <option *ngFor="let occupation of occupations; let i=index" [value]="occupation.id">{{occupation.name}}</option>
                 </select>
                 <small class="text-danger col-12 row" *ngIf="invalid('contEconomicActivity', forma)">Campo inválido. Por favor revise.</small>
               </div>
-            </div>
-            <div class="col-md-4">
-              <!-- -->
-            </div>
-            <div class="col-md-4">
-              <!-- -->
-            </div>
           </div>
         </div>
       </accordion-group>
@@ -106,26 +98,26 @@
       <!-- Segundo Formulario -->
       <accordion-group [panelClass]="customClass" [isOpen]="isFirstOpen">
           <button class="btn btn-link btn-block clearfix" accordion-heading>
-            <div class="pull-left float-left" style="margin-left:-15px;"><i class="fas fa-angle-down"></i> Datos del <span *ngIf="forma.value.same === 'si'">contratante y</span> solicitante como asegurado principal</div>
+            <div class="pull-left float-left" style="margin-left:-15px;"><i class="fas fa-angle-down"></i> Datos del <span *ngIf="forma.value.insuSame === true">contratante y</span> solicitante como asegurado principal</div>
           </button>
           <div class="container">
-            <p class="subtitulo" *ngIf="forma.value.same === 'si'">Por favor completa los siguientes datos y continúa con el proceso de solicitud. Los campos denotados con un (*) son obligatorios para continuar.</p>
+            <p class="subtitulo" *ngIf="forma.value.insuSame === true">Por favor completa los siguientes datos y continúa con el proceso de solicitud. Los campos denotados con un (*) son obligatorios para continuar.</p>
               <div class="row mb-5">
-                <div *ngIf="forma.value.same === 'si'" class="col-md-4 mb-5">
+                <div *ngIf="forma.value.insuSame === true" class="col-md-4 mb-5">
                   <label for="">¿Eres el solicitante de la póliza? (*)</label>
                   <div class="form-check mb-3">
-                    <input class="form-check-input" name="same" type="radio" [value]="'si'" formControlName="same">
-                    <label class="form-check-label" for="same">
+                    <input class="form-check-input" name="insuSame" type="radio" [value]="true" formControlName="insuSame">
+                    <label class="form-check-label" for="insuSame">
                       Si
                     </label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" name="same" type="radio" [value]="'no'" formControlName="same">
-                    <label class="form-check-label" for="same">
+                    <input class="form-check-input" name="insuSame" type="radio" [value]="false" formControlName="insuSame">
+                    <label class="form-check-label" for="insuSame">
                       No
                     </label>
                   </div>
-                  <small class="text-danger col-12 row" *ngIf="invalid('same', forma)">Campo inválido. Por favor revise.</small>
+                  <small class="text-danger col-12 row" *ngIf="invalid('insuSame', forma)">Campo inválido. Por favor revise.</small>
                 </div>
                 <div class="col-md-4 mb-5">
                   <label for="">Nombres (*)</label>
@@ -218,14 +210,6 @@
                   <small class="text-muted col-12 row">Ejemplo: Liderar proyectos de la empresa.</small>
                   <small class="text-danger col-12 row" *ngIf="invalid('insuOccupationDescription', forma)">Campo inválido. Por favor revise.</small>
                 </div>
-                <div *ngIf="forma.value.same === 'si'" class="col-md-4 mb-5">
-                  <label for="">Actividad económica: (*)</label>
-                  <select class="form-control" formControlName="contEconomicActivity">
-                    <option value="" selected disabled>Seleccione</option>
-                    <option value="1">1</option>
-                  </select>
-                  <small class="text-danger col-12 row" *ngIf="invalid('contEconomicActivity', forma)">Campo inválido. Por favor revise.</small>
-                </div>
                 <div class="col-md-4 mb-5">
                   <label for="">Otras ocupaciones: (*)</label>
                   <input type="text" class="form-control" formControlName="insuOtherOccupations">
@@ -311,7 +295,6 @@
                 </div>
               </div> 
           </div>
-        </div>
       </accordion-group>
     </accordion>
 
@@ -490,7 +473,6 @@
                 </div>
                 <small class="text-danger col-12 row mt-3" *ngIf="isPercentInvalid">La sumatoria total de cada tipo de beneficiario debe ser del 100%.</small>
             </div>
-          </div>
         </div>
       </accordion-group>
     </accordion>
@@ -505,5 +487,7 @@
   </form>
 </section>
 <ng-template [ngIf]="isLoading">
-	<div class='banesco-loader'></div>
+  <div class="container">
+      <div class='banesco-loader'></div>
+  </div>
 </ng-template>
