@@ -3,7 +3,8 @@
     <accordion  *ngIf="forma.value.same === 'no'"> <!-- Primer Formulario -->
       <accordion-group [panelClass]="customClass" [isOpen]="isFirstOpen">
         <button class="btn btn-link btn-block clearfix" accordion-heading>
-          <div class="pull-left float-left" style="margin-left:-15px;"><i class="fas fa-angle-down"></i> Datos del contratante</div>
+          <div class="pull-left float-left" style="margin-left:-15px;"><i class="fas fa-angle-down"></i> Datos del
+            contratante</div>
         </button>
         <div class="container">
           <p class="subtitulo">Por favor completa los siguientes datos y continúa con el proceso de solicitud. Los campos denotados con un (*) son obligatorios para continuar.</p>
@@ -90,11 +91,19 @@
                 <small class="text-danger col-12 row" *ngIf="invalid('contEconomicActivity', forma)">Campo inválido. Por favor revise.</small>
               </div>
             </div>
+            <div class="col-md-4">
+              <!-- -->
+            </div>
+            <div class="col-md-4">
+              <!-- -->
+            </div>
+          </div>
         </div>
       </accordion-group>
     </accordion>
 
-    <accordion> <!-- Segundo Formulario -->
+    <accordion>
+      <!-- Segundo Formulario -->
       <accordion-group [panelClass]="customClass" [isOpen]="isFirstOpen">
           <button class="btn btn-link btn-block clearfix" accordion-heading>
             <div class="pull-left float-left" style="margin-left:-15px;"><i class="fas fa-angle-down"></i> Datos del <span *ngIf="forma.value.same === 'si'">contratante y</span> solicitante como asegurado principal</div>
@@ -302,10 +311,12 @@
                 </div>
               </div> 
           </div>
+        </div>
       </accordion-group>
     </accordion>
 
-    <section class="request"> <!-- Tercer Formulario -->
+    <section class="request">
+      <!-- Tercer Formulario -->
       <ng-template #content let-modal>
         <div class="modal-header">
           <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
@@ -321,11 +332,13 @@
                   <div class="form-group">
                     <label>Tipo de Beneficiario (*)</label>
                     <div class="custom-control custom-radio">
-                      <input id="principal" name="type" type="radio" class="custom-control-input" [value]="'principal'" formControlName="type">
+                      <input id="principal" name="type" type="radio" class="custom-control-input" [value]="'principal'"
+                        formControlName="type">
                       <label class="custom-control-label check" for="principal">Principal</label>
                     </div>
                     <div class="custom-control custom-radio">
-                      <input id="contingente" name="type" type="radio" class="custom-control-input" [value]="'contingente'" formControlName="type">
+                      <input id="contingente" name="type" type="radio" class="custom-control-input"
+                        [value]="'contingente'" formControlName="type">
                       <label class="custom-control-label check" for="contingente">Contingente</label>
                     </div>
                     <small class="text-danger col-12 row ml-md-2" *ngIf="invalid('type', modalForm)">Campo inválido. Por favor revise.</small>
@@ -333,26 +346,32 @@
                   <div class="form-group">
                     <label for="">Cédula/Pasaporte: (*)</label>
                     <div class="form-row">
-                      <div class="{{modalForm.value.documentType === 'Pasaporte' || !modalForm.value.documentType ? 'col-4' : 'col-3'}}">
-                        <select class="form-control" (ngModelChange)="modalValidations(true)" formControlName="documentType">
-                          <option *ngFor="let document of documents; let i=index" [value]="document.itemName">{{document.itemName}}</option>
+                      <div
+                        class="{{modalForm.value.documentType === 'Pasaporte' || !modalForm.value.documentType ? 'col-4' : 'col-3'}}">
+                        <select class="form-control" (ngModelChange)="modalValidations(true)"
+                          formControlName="documentType">
+                          <option *ngFor="let document of documents; let i=index" [value]="document.itemName">
+                            {{document.itemName}}</option>
                         </select>
                         <small class="text-danger col-12 row" *ngIf="invalid('documentType', modalForm)">Campo inválido. Por favor revise.</small>
                       </div>
                       <div *ngIf="modalForm.value.documentType" class="d-none d-md-block col-1">
                         -
                       </div>
-                      <div *ngIf="modalForm.value.documentType" class="{{modalForm.value.documentType === 'Pasaporte' || !modalForm.value.documentType ? 'col-7' : 'col-3'}}">
+                      <div *ngIf="modalForm.value.documentType"
+                        class="{{modalForm.value.documentType === 'Pasaporte' || !modalForm.value.documentType ? 'col-7' : 'col-3'}}">
                         <input type="text" class="form-control" formControlName="document">
                         <small class="text-muted col-12 row" *ngIf="modalForm.value.documentType === 'Pasaporte'">Ejemplo: A084456465 (Máximo 10 caracteres).</small>
                         <small class="text-muted col-12 row" *ngIf="modalForm.value.documentType !== 'Pasaporte'">Ejemplo: 4564 (Máximo 4 caracteres).</small>
                         <small class="text-danger col-12 row" *ngIf="invalid('document', modalForm)">Campo inválido. Por favor revise.</small>
                         <!-- <small class="text-danger col-12 row" *ngIf="modalForm.value.documentType && modalForm.value.documentType !== 'Pasaporte' && invalid('document', modalForm)">Campo inválido. Por favor revise.</small> -->
                       </div>
-                      <div *ngIf="modalForm.value.documentType && modalForm.value.documentType !== 'Pasaporte'" class="d-none d-md-block col-1">
+                      <div *ngIf="modalForm.value.documentType && modalForm.value.documentType !== 'Pasaporte'"
+                        class="d-none d-md-block col-1">
                         -
                       </div>
-                      <div *ngIf="modalForm.value.documentType && modalForm.value.documentType !== 'Pasaporte'" class="col-4">
+                      <div *ngIf="modalForm.value.documentType && modalForm.value.documentType !== 'Pasaporte'"
+                        class="col-4">
                         <input type="text" class="form-control" formControlName="document2">
                         <small class="text-muted col-12 row">Ejemplo: 456478 (Máximo 6 caracteres).</small>
                         <small class="text-danger col-12 row" *ngIf="invalid('document2', modalForm)">Campo inválido. Por favor revise.</small>
@@ -472,6 +491,7 @@
                 <small class="text-danger col-12 row mt-3" *ngIf="isPercentInvalid">La sumatoria total de cada tipo de beneficiario debe ser del 100%.</small>
             </div>
           </div>
+        </div>
       </accordion-group>
     </accordion>
     <div class="row">

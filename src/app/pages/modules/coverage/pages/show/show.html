@@ -124,280 +124,11 @@
   </div>
 </ng-template>
 
-<!-- <div class="wrapper">
-  <section class="cobertura">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <h3 class="titulo-1">¡Coberturas que se adaptan a ti!</h3>
-          <h4 class="color-gray text-center">Te ofrecemos flexibilidad y precios accesibles en nuestras coberturas</h4>
-
-          <div class="cuadrado top">
-
-            <div class="superior">
-              <div class="container">
-                <div class="row">
-                  <div class="col-md-12">
-                      <h4 class="xmes">$40 x mes</h4>
-                  </div>
-                </div>
-                  <div class="row">
-                      <div class="col-md-12">
-                        <img src="assets/img/icono1.png" alt="" class="">
-                      </div>
-                  </div>
-              </div>
-            </div>
-
-            <div class="inferior">
-              <div class="container">
-                  <div class="row mb-2">
-                    <div class="col-xs-12 col-md-10">
-                      <h5>ACCIDENTES PERSONALES</h5>
-                      <div class="" *ngFor="let coverage of coverages; let i = index;">
-                        <div class="" *ngIf="i == 0">
-                            <p>Adelanto de gastos funerarios: <span>${{ coverage.coverageDetail.funeraryAdvances  }}</span></p>
-                            <p>Muerte accidental: <span>${{ coverage.coverageDetail.accidentalDeath  }} </span></p>
-                            <p>Incapacidad profesional u Ocupacional:<span>${{ coverage.coverageDetail.professionalInhability  }} </span></p>
-                            <p>Gastos médicos: <span>${{ coverage.coverageDetail.medicalExpenses  }} </span></p>
-                            <p>Asistencia en viajes: <span>Incluido</span></p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-              </div>
-            </div>
-
-            <div class="container">
-              <div class="row">
-                <div class="col-md-6">
-                  <button class="btn my-3" (click)="open(content,'0')"><img src="assets/img/flechita.svg" alt=""> Ver detalles</button>
-                </div>
-                <div class="col-md-6">
-                  <button class="btn btn-primary solicitar my-3" [routerLink]="[ '/information']">SOLICITAR</button>
-                </div>
-              </div>
-            </div>
-
-          </div>
-
-        </div>
-      </div>
-      <h4 class="h4-gris">Otras recomendaciones especiales para ti:</h4>
-      <div class="row">
-          <div class="col-md-6 col-lg-4 mb-3 mb-md-2 mb-lg-0">
-              <div class="cuadrado">
-
-                <div class="superior">
-                  <div class="container">
-                    <div class="row">
-                      <div class="col-md-12">
-                          <h4 class="xmes">$20,44 x mes</h4>
-                      </div>
-                    </div>
-                      <div class="row">
-                          <div class="col-md-12">
-                            <img src="assets/img/icono3.png" alt="" class="">
-                          </div>
-                      </div>
-                  </div>
-                </div>
-    
-                <div class="inferior">
-                  <div class="container">
-                      <div class="row mb-2">
-                        <div class="col-xs-12 col-md-10">
-                            <div class="" *ngFor="let coverage of coverages; let i = index;">
-                              <div class="" *ngIf="i == 1">
-                                  <p>Adelanto de gastos funerarios: <span>${{ coverage.coverageDetail.funeraryAdvances  }}</span></p>
-                                  <p>Muerte accidental: <span>${{ coverage.coverageDetail.funeraryAdvances  }} </span></p>
-                                  <p>Incapacidad profesional u Ocupacional:<span>${{ coverage.coverageDetail.professionalInhability  }} </span></p>
-                                  <p>Gastos médicos: <span>${{ coverage.coverageDetail.medicalExpenses  }} </span></p>
-                                  <p>Asistencia en viajes: <span>Incluido</span></p>
-                              </div>
-                            </div>
-                        </div>
-                      </div>
-                  </div>
-                </div>
-
-                <div class="container">
-                  <div class="row">
-                    <div class="col-md-6">
-                      <button class="btn my-3" (click)="open(content,'1')"><img src="assets/img/flechita.svg" alt=""> Ver detalles</button>
-                    </div>
-                    <div class="col-md-6">
-                      <button class="btn btn-primary solicitar my-3" [routerLink]="[ '/information']">SOLICITAR</button>
-                    </div>
-                  </div>
-                </div>
-                
-              </div>
-          </div>
-          <div class="col-md-6 col-lg-4 mb-3 mb-md-2 mb-lg-0">
-              <div class="cuadrado">
-
-                <div class="superior">
-                  <div class="container">
-                    <div class="row">
-                      <div class="col-md-12">
-                          <h4 class="xmes">$17,23 x mes</h4>
-                      </div>
-                    </div>
-                      <div class="row">
-                          <div class="col-md-12">
-                            <img src="assets/img/icono2.png" alt="" class="">
-                          </div>
-                      </div>
-                  </div>
-                </div>
-    
-                <div class="inferior">
-                  <div class="container">
-                      <div class="row mb-2">
-                        <div class="col-xs-12 col-md-10">
-                            <div class="" *ngFor="let coverage of coverages; let i = index;">
-                              <div class="" *ngIf="i == 2">
-                                  <p>Adelanto de gastos funerarios: <span>${{ coverage.coverageDetail.funeraryAdvances  }}</span></p>
-                                  <p>Muerte accidental: <span>${{ coverage.coverageDetail.funeraryAdvances  }} </span></p>
-                                  <p>Incapacidad profesional u Ocupacional:<span>${{ coverage.coverageDetail.professionalInhability  }} </span></p>
-                                  <p>Gastos médicos: <span>${{ coverage.coverageDetail.medicalExpenses  }} </span></p>
-                                  <p>Asistencia en viajes: <span>Incluido</span></p>
-                              </div>
-                            </div>
-                        </div>
-                      </div>
-                  </div>
-                </div>
-
-                <div class="container">
-                  <div class="row">
-                    <div class="col-md-6">
-                      <button class="btn my-3" (click)="open(content,'2')"><img src="assets/img/flechita.svg" alt=""> Ver detalles</button>
-                    </div>
-                    <div class="col-md-6">
-                      <button class="btn btn-primary solicitar my-3" [routerLink]="[ '/information']">SOLICITAR</button>
-                    </div>
-                  </div>
-                </div>
-    
-              </div>
-          </div>
-          <div class="col-md-6 col-lg-4 mb-3 mb-md-0">
-              <div class="cuadrado">
-
-                <div class="superior">
-                  <div class="container">
-                    <div class="row">
-                      <div class="col-md-12">
-                          <h4 class="xmes">$14,12 x mes</h4>
-                      </div>
-                    </div>
-                      <div class="row">
-                          <div class="col-md-12">
-                            <img src="assets/img/icono4.png" alt="" class="">
-                          </div>
-                      </div>
-                  </div>
-                </div>
-    
-                <div class="inferior">
-                  <div class="container">
-                      <div class="row mb-2">
-                        <div class="col-xs-12 col-md-10">
-                            <div class="" *ngFor="let coverage of coverages; let i = index;">
-                              <div class="" *ngIf="i == 3">
-                                  <p>Adelanto de gastos funerarios: <span>${{ coverage.coverageDetail.funeraryAdvances  }}</span></p>
-                                  <p>Muerte accidental: <span>${{ coverage.coverageDetail.funeraryAdvances  }} </span></p>
-                                  <p>Incapacidad profesional u Ocupacional:<span>${{ coverage.coverageDetail.professionalInhability  }} </span></p>
-                                  <p>Gastos médicos: <span>${{ coverage.coverageDetail.medicalExpenses  }} </span></p>
-                                  <p>Asistencia en viajes: <span>Incluido</span></p>
-                              </div>
-                            </div>
-                        </div>
-                      </div>
-                  </div>
-                </div>
-
-                <div class="container">
-                  <div class="row">
-                    <div class="col-md-6">
-                      <button class="btn my-3" (click)="open(content,'3')"><img src="assets/img/flechita.svg" alt=""> Ver detalles</button>
-                    </div>
-                    <div class="col-md-6">
-                      <button class="btn btn-primary solicitar my-3" [routerLink]="[ '/information']">SOLICITAR</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-          </div>
-          <div class="col-md-6 col-lg-0"></div>
-      </div>
-    </div>
-  </section>
-  <section class="condiciones pb-5">
-      <h3 class="titulo-condiciones">
-          Lo que debes saber de tu póliza...</h3>
-    <div class="container cober">
-        <accordion>
-          <accordion-group [panelClass]="customClass" [isOpen]="isFirstOpen">
-              <button class="btn btn-link btn-block clearfix" accordion-heading>
-                <div class="pull-left float-left blue"><i class="fas fa-angle-down"></i> ¿Qué ventajas tiene?</div>
-              </button>
-            <ul>
-              <li>El Asegurado tiene la opción de seleccionar el tipo de cobertura (total o vida profesional).</li>
-              <li>Alta cobertura a bajo costo.</li>
-              <li>Fácil y rápida contratación.</li>
-              <li>Tarifas diseñadas de acuerdo a la actividad laboral y a la medida de sus posibilidades.</li>
-              <li>Facilidades de pago mediante sus tarjeta de crédito o ACH (cuenta corriente o de ahorros).</li>
-            </ul>
-          </accordion-group>
-        </accordion>
-        
-        <accordion>
-          <accordion-group [panelClass]="customClass">
-              <button class="btn btn-link btn-block clearfix" accordion-heading>
-                <div class="pull-left float-left blue"><i class="fas fa-angle-down"></i> ¿Qué no cubre?</div>
-              </button>
-            This content is straight in the template.
-          </accordion-group>
-        </accordion>
-
-        <accordion>
-          <accordion-group [panelClass]="customClass">
-              <button class="btn btn-link btn-block clearfix" accordion-heading>
-                <div class="pull-left float-left blue"><i class="fas fa-angle-down"></i> ¿Quién puede asegurarse?</div>
-              </button>
-            This content is straight in the template.
-          </accordion-group>
-        </accordion>
-
-          <accordion>
-            <accordion-group [panelClass]="customClass">
-                <button class="btn btn-link btn-block clearfix" accordion-heading>
-                  <div class="pull-left float-left blue"><i class="fas fa-angle-down"></i> ¿Qué coberturas se ofrecen?</div>
-                </button>
-              This content is straight in the template.
-            </accordion-group>
-          </accordion>
-
-        <accordion>
-          <accordion-group [panelClass]="customClass">
-              <button class="btn btn-link btn-block clearfix" accordion-heading>
-                <div class="pull-left float-left blue"><i class="fas fa-angle-down"></i> Términos y condiciones</div>
-              </button>
-            This content is straight in the template.
-          </accordion-group>
-        </accordion>
-    </div>
-    
-  </section>
-</div> -->
 <div class="wrapper">
   <section class="cobertura">
     <div class="container">
       <div class="row">
-        <div *ngFor="let coverage of coverages; let i = index;" class="{{i === 0 ? 'col-md-12' : 'col-md-4'}}">
+        <div *ngFor="let coverage of coverages; let i = index;" class="{{i === 0 ? 'col-md-12' : 'col-md-6 col-lg-4'}}">
           <ng-template [ngIf]="i === 0">
             <h3 class="titulo-1">¡Coberturas que se adaptan a ti!</h3>
             <h4 class="color-gray text-center">Te ofrecemos flexibilidad y precios accesibles en nuestras coberturas</h4>
@@ -422,14 +153,41 @@
 
             <div class="inferior">
               <div class="container">
-                  <div class="row mb-2">
-                    <div class="col-xs-12 col-md-10">
+                  <div class="row">
+                    <div class="col-xs-12 col-md-12">
                       <h5>ACCIDENTES PERSONALES</h5>
-                        <p>Adelanto de gastos funerarios: <span>${{ coverage.coverageDetail.funeraryAdvances  }}</span></p>
-                        <p>Muerte accidental: <span>${{ coverage.coverageDetail.accidentalDeath  }} </span></p>
-                        <p>Incapacidad profesional u Ocupacional:<span>${{ coverage.coverageDetail.professionalInhability  }} </span></p>
-                        <p>Gastos médicos: <span>${{ coverage.coverageDetail.medicalExpenses  }} </span></p>
-                        <p>Asistencia en viajes: <span>Incluido</span></p>
+                        <p>Adelanto de gastos funerarios: 
+                          <span>
+                            $ {{ coverage.coverageDetail.funeraryAdvances !== undefined  &&
+                                coverage.coverageDetail.funeraryAdvances !== null ?
+                                coverage.coverageDetail.funeraryAdvances : N/A }}
+                          </span>
+                        </p>
+                        <p>Adelanto de gastos funerarios: 
+                          <span>
+                            $ {{ coverage.coverageDetail.accidentalDeath !== undefined  &&
+                                coverage.coverageDetail.accidentalDeath !== null ?
+                                coverage.coverageDetail.accidentalDeath : N/A }}
+                          </span>
+                        </p>
+                        <p>Incapacidad profesional u Ocupacional:
+                          <span>
+                             $ {{ coverage.coverageDetail.professionalInhability !== undefined  &&
+                                coverage.coverageDetail.professionalInhability !== null ?
+                                coverage.coverageDetail.professionalInhability : N/A }}
+                          </span>
+                        </p>
+                        <p>Gastos médicos: 
+                          <span>
+                            $  {{ coverage.coverageDetail.medicalExpenses !== undefined  &&
+                                coverage.coverageDetail.medicalExpenses !== null ?
+                                coverage.coverageDetail.medicalExpenses : N/A }}
+                          </span>
+                          
+                        </p>
+                        <p>Asistencia en viajes: 
+                          <span>Incluido</span>
+                        </p>
                     </div>
                   </div>
               </div>
@@ -437,11 +195,11 @@
 
             <div class="container">
               <div class="row">
-                <div class="col-md-6">
-                  <button class="btn my-3" (click)="open(content,'0')"><img src="assets/img/flechita.svg" alt=""> Ver detalles</button>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+                  <button class="btn ver-detalle" (click)="open(content)"><img src="assets/img/flechita.svg" alt=""> Ver detalles</button>
                 </div>
-                <div class="col-md-6">
-                  <button class="btn btn-primary solicitar my-3" (click)="createNewRequest(coverage.id)">SOLICITAR</button>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+                  <button class="btn btn-primary solicitar" (click)="createNewRequest(coverage.id)">SOLICITAR</button>
                 </div>
               </div>
             </div>
