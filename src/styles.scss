@@ -461,18 +461,6 @@ section.kalacra .card-body {
     background-color: #ebf0f5;
 }
 
-
-option[value=""][disabled] {
-display: none;
-}
-
-option {
-color: red!important;
-}
-option:first {
-    color: green!important;
-}
-
 .error{
     color: red;
 }
