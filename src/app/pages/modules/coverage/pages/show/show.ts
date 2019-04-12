@@ -12,13 +12,16 @@ import { RequestService } from '../../../core/services/request.service';
 export class ShowComponent implements OnInit {
 
   public coverages : any[] = [];
+  public insuranceId: string;
+  public isLoading: boolean;
 
   constructor(private modalService: NgbModal, private _coverageService: CoverageService, private _newrequestService: RequestService,
       private _router: Router, private _route: ActivatedRoute) {
   }
 
 
-  open(content,valor) {
+  open(content,valor, insuranceId) {
+    this.insuranceId = insuranceId;
     parseInt(valor);
     let x:number = parseInt(valor);
     console.log(x);
@@ -29,6 +32,7 @@ export class ShowComponent implements OnInit {
   isFirstOpen = true;
 
   ngOnInit() {
+    this.isLoading = true;
     this.getCoverages();
     
   }
@@ -36,6 +40,7 @@ export class ShowComponent implements OnInit {
   private getCoverages(){
     this._coverageService.getAllConverages().subscribe(
       response => {
+        this.isLoading = false;
         this.coverages = response.result.insurances;
         console.log(response);
       }, error => {
@@ -44,9 +49,12 @@ export class ShowComponent implements OnInit {
     )
   }
 
-  private createNewRequest(insuranceId: string) {
-    this._newrequestService.createNewRequest(insuranceId, this._route.snapshot.paramMap.get('userId')).subscribe(
+  private createNewRequest(modal: any) {
+    this.isLoading = true;
+    this._newrequestService.createNewRequest(this.insuranceId, this._route.snapshot.paramMap.get('userId')).subscribe(
       response => {
+        modal.dismiss('Cross click');
+        this.isLoading = false;
         this._router.navigate(['information', response.result.request.id]);
       }, error => {
         console.error(error)
