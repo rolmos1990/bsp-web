@@ -158,30 +158,30 @@
                       <h5>ACCIDENTES PERSONALES</h5>
                         <p>Adelanto de gastos funerarios: 
                           <span>
-                            {{ coverage.coverageDetail.funeraryAdvances !== undefined  &&
+                            $ {{ coverage.coverageDetail.funeraryAdvances !== undefined  &&
                                 coverage.coverageDetail.funeraryAdvances !== null ?
-                                ${{ coverage.coverageDetail.funeraryAdvances }} : N/A }}
+                                coverage.coverageDetail.funeraryAdvances : N/A }}
                           </span>
                         </p>
                         <p>Adelanto de gastos funerarios:
                           <span>
-                            {{ coverage.coverageDetail.accidentalDeath !== undefined  &&
+                            $ {{ coverage.coverageDetail.accidentalDeath !== undefined  &&
                                 coverage.coverageDetail.accidentalDeath !== null ?
-                                ${{ coverage.coverageDetail.accidentalDeath }} : N/A }}
+                                coverage.coverageDetail.accidentalDeath : N/A }}
                           </span>
                         </p>
                         <p>Incapacidad profesional u Ocupacional:
                           <span>
-                            {{ coverage.coverageDetail.professionalInhability !== undefined  &&
+                            $ {{ coverage.coverageDetail.professionalInhability !== undefined  &&
                                 coverage.coverageDetail.professionalInhability !== null ?
-                                ${{ coverage.coverageDetail.professionalInhability }} : N/A }}
+                                coverage.coverageDetail.professionalInhability : N/A }}
                           </span>
                         </p>
                         <p>Gastos médicos: 
                           <span>
-                            {{ coverage.coverageDetail.medicalExpenses !== undefined  &&
+                            $  {{ coverage.coverageDetail.medicalExpenses !== undefined  &&
                                 coverage.coverageDetail.medicalExpenses !== null ?
-                                ${{ coverage.coverageDetail.medicalExpenses }} : N/A }}
+                                coverage.coverageDetail.medicalExpenses : N/A }}
                           </span>
                           
                         </p>
