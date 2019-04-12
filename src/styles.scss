@@ -3,7 +3,7 @@
 @import "~ngx-tabset/ngx-tabset";
 @import "app/app.component";
 
-body, button,a{
+body, button,a, p, span{
     font-family: 'Lato', sans-serif!important;
 }
 
@@ -25,15 +25,11 @@ label.check{
     display: block;
 }
 
-option[value=""][disabled] {
-display: none;
-}
 option {
 color: black;
 }
 
 .nav-tabset{
-    
     background-color: #f2f3f4;
     margin: 0;
 }
@@ -519,14 +515,21 @@ section.kalacra .card-body {
     background-repeat: no-repeat;
     }
 
-
-    .ul-footer{
-    list-style: none!important;
-    height: 30px!important;
+    /* Page Header */
+    .module-header {
+        background-image: url(../img/family.png);
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
     }
 
-    .ul-footer > li{
-    float: left!important;
+    .ul-footer {
+        list-style: none !important;
+        height: 30px;
+    }
+
+    .ul-footer>li {
+        float: left !important;
     }
 }
 
