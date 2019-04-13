@@ -120,10 +120,15 @@
     </div>
   </div>
   <div class="modal-footer">
-    <button class="btn btn-primary centrado" [routerLink]="[ '/information']" (click)="modal.dismiss('Cross click')">SOLICITAR</button>
+    <button class="btn btn-primary centrado" [routerLink]="[ '/information']" (click)="createNewRequest(modal)">SOLICITAR</button>
   </div>
 </ng-template>
 
+<ng-template [ngIf]="isLoading">
+  <div class="container">
+      <div class='banesco-loader'></div>
+  </div>
+</ng-template>
 <!-- Modal Términos y condiciones -->
 <ng-template #terminos let-modal>
   <div class="modal-body">
@@ -161,8 +166,8 @@
     </div>
   </div>
   <div class="modal-footer">
-    <button class="btn btn-white especial" (click)="modal.dismiss('Cross click')">CANCELAR</button>
-    <button class="btn btn-primary especial" (click)="modal.dismiss('Cross click')">ACEPTO</button>
+    <button class="btn btn-white W-100" (click)="modal.dismiss('Cross click')">CANCELAR</button>
+    <button class="btn btn-primary W-100" (click)="createNewRequest(modal)">ACEPTO</button>
   </div>
 </ng-template>
 <!-- <button class="btn btn-lg btn-outline-primary" (click)="open(content)">Términos y condiciones</button> -->
@@ -242,7 +247,7 @@
                   <button class="btn ver-detalle" (click)="open(content)"><img src="assets/img/flechita.svg" alt=""> Ver detalles</button>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
-                  <button class="btn btn-primary solicitar" (click)="createNewRequest(coverage.id)">SOLICITAR</button>
+                  <button class="btn btn-primary solicitar" (click)="open(terminos,0, coverage.id)">SOLICITAR</button>
                 </div>
               </div>
             </div>

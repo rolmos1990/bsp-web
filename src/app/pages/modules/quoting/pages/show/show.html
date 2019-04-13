@@ -12,14 +12,13 @@
                   <h4 class="cotizador-h2-2 fwb-600">Seguros</h4>
                   <h3 class="">Por favor indícanos tu <br> número de identificación</h3>
                   <img src="assets/img/Tarjeta.svg" alt="" class="my-5">
-                  <input type="text" class="form-control mb-2" placeholder="CÉDULA/PASAPORTE" formControlName="document" minlength="7">
-                  <div class="error ml-70" *ngIf="forma.get('document').errors && forma.get('document').dirty">
-                      <p *ngIf="forma.get('document').hasError('required')">* Campo requerido</p>
-                      <p *ngIf="forma.get('document').hasError('minlength')">* Campo no válido</p>
+                  <input type="text" class="form-control mb-2" [ngClass]="{'is-invalid': invalid('document', forma), 'is-valid': valid('document', forma)}" placeholder="CÉDULA/PASAPORTE" formControlName="document">
+                  <div *ngIf="invalid('document', forma)" class="invalid-feedback ml-70">
+                    Por favor introduce un formato correcto. Ejemplo: 4-5454-455645.
                   </div>
-                  <p style="text-align:center"><small style="color: gray" >Debe contener el formato de una cédula o pasaporte válido <br>
-                    Ejemplo: 8-5555-5555
-                  </small></p>
+                  <div *ngIf="valid('document', forma)" class="valid-feedback ml-70">
+                    ¡Excelente!
+                  </div>
                   <button [disabled]="forma.controls['document'].invalid" class="btn btn-primary my-5 " (click)="hide1()">SIGUIENTE</button>
               </div>
             </div>
@@ -97,7 +96,12 @@
             <!-- -->
             </div>
           </div>
-          <div class="row" [ngClass]="{'d-none': flag4 == false}">
+          <ng-template [ngIf]="isLoading">
+            <div class="container">
+                <div class='banesco-loader'></div>
+            </div>
+          </ng-template>
+          <div *ngIf="!isLoading" class="row" [ngClass]="{'d-none': flag4 == false}">
             <div class="col-1 col-md-2">
                 <button (click)="atras4()" class="btn-flecha"><i class="fas fa-angle-left"></i></button>
             </div>
