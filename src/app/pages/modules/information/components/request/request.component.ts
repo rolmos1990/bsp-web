@@ -264,6 +264,7 @@ export class RequestComponent implements OnInit {
       );
     } else {
       console.log(this.forma);
+      this.nextStep.emit();
     }
   }
 

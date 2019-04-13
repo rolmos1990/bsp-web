@@ -23,14 +23,14 @@
           <!-- -->
         </div>
       </div>
-      <div class="" *ngFor="let coverage of coverages; let i = index">
+      <div class="">
         <div class="">
           <div class="row mt-3">
             <div class="col-8 col-md-8">
               <h4>Muerte accidental:</h4>
             </div>
             <div class="col-4 col-md-4">
-              <h4>$ {{ coverage.coverageDetail.accidentalDeath }}</h4>
+              <h4>{{!actualCoverage.coverageDetail.accidentalDeath ? 'N/A' : '$' + actualCoverage.coverageDetail.accidentalDeath }}</h4>
             </div>
           </div>
           <div class="row">
@@ -38,7 +38,7 @@
               <h4>Adelantos de gastos funerarios:</h4>
             </div>
             <div class="col-8 col-md-4">
-              <h4>$ {{ coverage.coverageDetail.funeraryAdvances }}</h4>
+              <h4>{{!actualCoverage.coverageDetail.funeraryAdvances ? 'N/A' :  '$' + actualCoverage.coverageDetail.funeraryAdvances }}</h4>
             </div>
           </div>
           <div class="row">
@@ -46,7 +46,7 @@
               <h4>Doble indemnización por muerte por accidente específico:</h4>
             </div>
             <div class="col-4 col-md-4">
-              <h4 class="especial">$ {{ coverage.coverageDetail.dobleCompensation }}</h4>
+              <h4 class="especial">{{ !actualCoverage.coverageDetail.dobleCompensation ? 'N/A' : '$' + actualCoverage.coverageDetail.dobleCompensation }}</h4>
             </div>
           </div>
           <div class="row">
@@ -54,7 +54,7 @@
               <h4>Gastos médicos:</h4>
             </div>
             <div class="col-4 col-md-4">
-              <h4>$ {{ coverage.coverageDetail.medicalExpenses }}</h4>
+              <h4>{{ !actualCoverage.coverageDetail.medicalExpenses ? 'N/A' : '$' + actualCoverage.coverageDetail.medicalExpenses }}</h4>
             </div>
           </div>
           <div class="row">
@@ -62,7 +62,7 @@
               <h4>Invalidez permanente:</h4>
             </div>
             <div class="col-4 col-md-4">
-              <h4>$ {{ coverage.coverageDetail.permanentInhability }}</h4>
+              <h4>{{ !actualCoverage.coverageDetail.permanentInhability ? 'N/A' : '$' + actualCoverage.coverageDetail.permanentInhability }}</h4>
             </div>
           </div>
           <div class="row">
@@ -70,7 +70,7 @@
               <h4>Incapacidad profesional u ocupacional:</h4>
             </div>
             <div class="col-4 col-md-4">
-              <h4>$ {{ coverage.coverageDetail.professionalInhability }}</h4>
+              <h4>{{ !actualCoverage.coverageDetail.professionalInhability ? 'N/A' : '$' + actualCoverage.coverageDetail.professionalInhability }}</h4>
             </div>
           </div>
           <div class="row">
@@ -78,7 +78,7 @@
               <h4>Renta diaria por incapacidad temporal:</h4>
             </div>
             <div class="col-4 col-md-4">
-              <h4>$ {{ coverage.coverageDetail.dailyRent }}</h4>
+              <h4>{{ !actualCoverage.coverageDetail.dailyRent ? 'N/A' : '$' + actualCoverage.coverageDetail.dailyRent }}</h4>
             </div>
           </div>
         </div>
@@ -88,7 +88,7 @@
           <h4>Servicio de emergencia médica por accidente:</h4>
         </div>
         <div class="col-4 col-md-4">
-          <h4>Incluido</h4>
+          <h4>{{actualCoverage.coverageDetail.emergencyService ? 'Incluido' : 'No incluido'}}</h4>
         </div>
       </div>
       <div class="row">
@@ -96,7 +96,7 @@
           <h4>Asistencias en viajes:</h4>
         </div>
         <div class="col-4 col-md-4">
-          <h4>Incluido</h4>
+          <h4>{{actualCoverage.coverageDetail.travelAssistance ? 'Incluido' : 'No incluido'}}</h4>
         </div>
       </div>
     </div>
@@ -120,7 +120,7 @@
     </div>
   </div>
   <div class="modal-footer">
-    <button class="btn btn-primary centrado" [routerLink]="[ '/information']" (click)="createNewRequest(modal)">SOLICITAR</button>
+    <button class="btn btn-primary centrado" (click)="open(terminos,actualCoverage, modal)">SOLICITAR</button>
   </div>
 </ng-template>
 
@@ -206,35 +206,35 @@
                       <h5>ACCIDENTES PERSONALES</h5>
                         <p>Adelanto de gastos funerarios: 
                           <span>
-                            $ {{ coverage.coverageDetail.funeraryAdvances !== undefined  &&
+                            {{ coverage.coverageDetail.funeraryAdvances !== undefined  &&
                                 coverage.coverageDetail.funeraryAdvances !== null ?
-                                coverage.coverageDetail.funeraryAdvances : N/A }}
+                                ('$' + coverage.coverageDetail.funeraryAdvances) : 'N/A' }}
                           </span>
                         </p>
                         <p>Adelanto de gastos funerarios: 
                           <span>
-                            $ {{ coverage.coverageDetail.accidentalDeath !== undefined  &&
+                            {{ coverage.coverageDetail.accidentalDeath !== undefined  &&
                                 coverage.coverageDetail.accidentalDeath !== null ?
-                                coverage.coverageDetail.accidentalDeath : N/A }}
+                                ('$' + coverage.coverageDetail.accidentalDeath) : 'N/A' }}
                           </span>
                         </p>
                         <p>Incapacidad profesional u Ocupacional:
                           <span>
-                             $ {{ coverage.coverageDetail.professionalInhability !== undefined  &&
+                             {{ coverage.coverageDetail.professionalInhability !== undefined  &&
                                 coverage.coverageDetail.professionalInhability !== null ?
-                                coverage.coverageDetail.professionalInhability : N/A }}
+                                ('$' + coverage.coverageDetail.professionalInhability) : 'N/A' }}
                           </span>
                         </p>
                         <p>Gastos médicos: 
                           <span>
-                            $  {{ coverage.coverageDetail.medicalExpenses !== undefined  &&
+                             {{ coverage.coverageDetail.medicalExpenses !== undefined  &&
                                 coverage.coverageDetail.medicalExpenses !== null ?
-                                coverage.coverageDetail.medicalExpenses : N/A }}
+                                ('$' + coverage.coverageDetail.medicalExpenses) : 'N/A' }}
                           </span>
                           
                         </p>
                         <p>Asistencia en viajes: 
-                          <span>Incluido</span>
+                          <span>{{coverage.coverageDetail.travelAssistance ? 'Incluido' : 'No incluido'}}</span>
                         </p>
                     </div>
                   </div>
@@ -244,10 +244,10 @@
             <div class="container">
               <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
-                  <button class="btn ver-detalle" (click)="open(content)"><img src="assets/img/flechita.svg" alt=""> Ver detalles</button>
+                  <button class="btn ver-detalle" (click)="open(content, coverage)"><img src="assets/img/flechita.svg" alt=""> Ver detalles</button>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
-                  <button class="btn btn-primary solicitar" (click)="open(terminos,0, coverage.id)">SOLICITAR</button>
+                  <button class="btn btn-primary solicitar" (click)="open(terminos,coverage)">SOLICITAR</button>
                 </div>
               </div>
             </div>

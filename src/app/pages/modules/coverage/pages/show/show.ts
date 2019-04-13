@@ -13,6 +13,7 @@ export class ShowComponent implements OnInit {
 
   public coverages : any[] = [];
   public insuranceId: string;
+  public actualCoverage: any;
   public isLoading: boolean;
 
   constructor(private modalService: NgbModal, private _coverageService: CoverageService, private _newrequestService: RequestService,
@@ -20,11 +21,13 @@ export class ShowComponent implements OnInit {
   }
 
 
-  open(content,valor, insuranceId) {
-    this.insuranceId = insuranceId;
-    parseInt(valor);
-    let x: number = parseInt(valor);
-    console.log(x);
+  open(content, insurance, mod?) {
+    if (mod) {
+      mod.dismiss('Cross click');
+    } else {
+    this.actualCoverage = insurance;
+    this.insuranceId = insurance.id;
+    }
     this.modalService.open(content, {centered: true});
   }
 
