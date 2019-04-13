@@ -87,7 +87,7 @@
                       <p *ngIf="forma.get('age').hasError('min')">* Campo mayor a 18 años</p>
                       <p *ngIf="forma.get('age').hasError('max')">* Campo menor a 69 años</p>
                   </div>
-                  <p style="text-align:center"><small style="color: gray" >Edad comprendida entre 18 y 69 años.
+                  <p style="text-align:center"><small style="color: gray" >Edad comprendida entre 18 y 70 años.
                   </small></p>
                   <button [disabled]="forma.controls['age'].invalid" class="btn btn-primary my-5" (click)="hide3()">SIGUIENTE</button>
               </div>

@@ -51,6 +51,12 @@ export const CARDNAME = [
   { "item": 'Maestro' }
 ]
 
+export const SCHEDULES = [
+  { "item": 'Mañana (08:00 AM - 12:00 PM)'},
+  { "item": 'Mediodía (12:00 PM - 1:00 PM)'},
+  { "item": 'Tarde (1:00 PM - 5:00 PM)'}
+]
+
 export const CIVILSTATUS = [
   { "item": 'Soltero'},
   { "item": 'Casado'},

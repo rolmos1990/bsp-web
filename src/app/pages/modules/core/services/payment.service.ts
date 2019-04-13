@@ -11,8 +11,6 @@ const API_ENDPOINT_DELIVERY_INFO = 'assignDeliverInformation';
 @Injectable()
 export class PaymentService {
 
-    private API_ENDPOINT_DELIVERY_INFO = 'assignDeliverInformation';
-
     constructor(private _http: HttpClient) { }
 
     public assignDeliverInformation(form: any) : Observable<any> {

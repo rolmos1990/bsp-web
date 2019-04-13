@@ -105,44 +105,72 @@
           <button class="btn btn-link btn-block clearfix" accordion-heading>
             <div class="pull-left float-left" style="margin-top: 5px;">Tarjeta de crédito o débito</div>
           </button>
-          <div class="container">
+          <ng-template [ngIf]="isLoading">
+            <div class="container">
+                <div class='banesco-loader'></div>
+            </div>
+          </ng-template>
+          <div *ngIf="!isLoading" class="container">
           <p class="subtitulo">Por favor ingresa la información de tu tarjeta de crédito. Los campos denotados con un (*) son obligatorios para continuar.</p>
             <div class="row">
               <div class="form-group col-md-12">
                 <label for="" class="mt-4 mb-3">Nombre de la tarjeta: (*)</label>
-                <select class="form-control" formControlName="cardName">
+                <select class="form-control" [ngClass]="{'is-invalid': invalid('cardName', formaPayment), 'is-valid': valid('cardName', formaPayment)}" formControlName="cardName">
                   <option *ngFor="let card of cards; let i=index" [value]="card.item">{{card.item}}</option>
                 </select>
-                <small class="text-danger col-12 row" *ngIf="invalid('cardName', formaPayment)">Campo inválido. Por favor revise.</small>
+                <div *ngIf="invalid('cardName', formaPayment)" class="invalid-feedback ml-70">
+                  Por favor elija la compañía a la cual pertenece su tarjeta.
+                </div>
+                <div *ngIf="valid('cardName', formaPayment)" class="valid-feedback ml-70">
+                  ¡Excelente!
+                </div>
               </div>
               <div class="form-group col-md-12">
                 <label for="" class="my-3">Número de tarjeta: (*)</label>
-                <input type="text" class="form-control" formControlName="cardNumber" maxlength="16">
-                <small class="text-muted col-12 row">Ejemplo: 4565456545654565.</small>
-                <small class="text-danger col-12 row" *ngIf="invalid('cardNumber', formaPayment)">Campo inválido. Por favor revise.</small>
+                <input type="text" class="form-control" [ngClass]="{'is-invalid': invalid('cardNumber', formaPayment), 'is-valid': valid('cardNumber', formaPayment)}" formControlName="cardNumber">
+                <div *ngIf="invalid('cardNumber', formaPayment)" class="invalid-feedback ml-70">
+                  Por favor introduzca un número de tarjeta válido, entre 13 y 18 dígitos.
+                </div>
+                <div *ngIf="valid('cardNumber', formaPayment)" class="valid-feedback ml-70">
+                  ¡Excelente!
+                </div>
               </div>
               <div class="form-group col-md-12">
                 <label for="" class="my-3 d-block">Fecha de vencimiento: (*)</label>
                 <div class="row">
                   <div class="form-group col-md-6">
-                    <select class="form-control" formControlName="expireMonth">
+                    <select class="form-control" [ngClass]="{'is-invalid': invalid('expireMonth', formaPayment), 'is-valid': valid('expireMonth', formaPayment)}" formControlName="expireMonth">
                       <option *ngFor="let month of months; let i=index" [value]="month.id">{{month.id}}</option>
                     </select>
-                    <small class="text-danger col-12 row" *ngIf="invalid('expireMonth', formaPayment)">Campo inválido. Por favor revise.</small>
+                    <div *ngIf="invalid('expireMonth', formaPayment)" class="invalid-feedback ml-70">
+                      Por favor indique el mes de vencimiento de su tarjeta.
+                    </div>
+                    <div *ngIf="valid('expireMonth', formaPayment)" class="valid-feedback ml-70">
+                      ¡Excelente!
+                    </div>
                   </div>
                   <div class="form-group col-md-6">
-                    <select class="form-control" formControlName="expireYear">
+                    <select class="form-control" [ngClass]="{'is-invalid': invalid('expireYear', formaPayment), 'is-valid': valid('expireYear', formaPayment)}" formControlName="expireYear">
                       <option *ngFor="let year of years; let i=index" [value]="year">{{year}}</option>
                     </select>
-                    <small class="text-danger col-12 row" *ngIf="invalid('expireYear', formaPayment)">Campo inválido. Por favor revise.</small>
+                    <div *ngIf="invalid('expireYear', formaPayment)" class="invalid-feedback ml-70">
+                      Por favor indique el año de vencimiento de su tarjeta.
+                    </div>
+                    <div *ngIf="valid('expireYear', formaPayment)" class="valid-feedback ml-70">
+                      ¡Excelente!
+                    </div>
                   </div>
                 </div>
               </div>
               <div class="form-group col-md-12">
                 <label for="" class="my-3 d-block">CVV (*)<i class="fas fa-info-circle" style="color:#4e74b0;"></i></label>
-                <input type="text" class="form-control cvv" formControlName="cvv">
-                <small class="text-muted col-12 row">Ejemplo: 464.</small>
-                <small class="text-danger col-12 row" *ngIf="invalid('cvv', formaPayment)">Campo inválido. Por favor revise.</small>
+                <input type="text" class="form-control cvv" [ngClass]="{'is-invalid': invalid('cvv', formaPayment), 'is-valid': valid('cvv', formaPayment)}" formControlName="cvv">
+                <div *ngIf="invalid('cvv', formaPayment)" class="invalid-feedback ml-70">
+                  Por favor introduzca un código de seguridad válido, entre 3 y 4 dígitos.
+                </div>
+                <div *ngIf="valid('cvv', formaPayment)" class="valid-feedback ml-70">
+                  ¡Excelente, gracias por sus datos!
+                </div>
               </div>
             </div>
             <button class="btn btn-primary d-block" (click)="assignPaymentCard()">CONTINUAR</button>

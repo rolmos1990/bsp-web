@@ -24,8 +24,7 @@
             <aw-wizard-step stepTitle="Datos de entrega">
                 <div class="container">
                     <!-- Componente Hijo 3-->
-                    <bsp-delivery-data [formaDelivery]="formulario.get('formaDelivery')"></bsp-delivery-data>
-                    <button class="btn btn-primary d-block" (click)="showSucess()">ENVIAR SOLICITUD</button>
+                    <bsp-delivery-data (success)="showSucess()" [requestId]="requestId"></bsp-delivery-data>
                 </div>
             </aw-wizard-step>
         </aw-wizard>

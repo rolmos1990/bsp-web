@@ -178,7 +178,7 @@ export class RequestComponent implements OnInit {
     'insuOccupationDescription': this._fb.control(insu.occupationDescription, Validators.required),
     'insuCompany': this._fb.control(insu.company, Validators.required),
     'insuOccupationTime': this._fb.control(insu.occupationTime, Validators.required),
-    'insuOtherOccupations': this._fb.control(insu.otherOccupation, Validators.required),
+    'insuOtherOccupations': this._fb.control(insu.otherOccupations, Validators.required),
     'insuPreviousOccupations': this._fb.control(insu.previousOccupations, Validators.required),
     'insuSports': this._fb.control(insu.sports, Validators.required),
     'insuMonthlyIncome': this._fb.control(insu.monthlyIncome, Validators.required),
@@ -240,6 +240,7 @@ export class RequestComponent implements OnInit {
   }
 
   public saveRequest(proceed: boolean) {
+    window.scroll(0,0);
     this.mainFormValidation();
     if (this.forma.valid && this.isPercentValid) {
       this.isLoading = true;

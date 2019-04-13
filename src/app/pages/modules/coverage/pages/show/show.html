@@ -166,7 +166,7 @@
     </div>
   </div>
   <div class="modal-footer">
-    <button class="btn btn-white W-100" (click)="modal.dismiss('Cross click')">CANCELAR</button>
+    <button class="btn btn-white W-100" (click)="reject(modal)">NO ACEPTO</button>
     <button class="btn btn-primary W-100" (click)="createNewRequest(modal)">ACEPTO</button>
   </div>
 </ng-template>
@@ -252,6 +252,9 @@
               </div>
             </div>
           </div>
+          <ng-template [ngIf]="i === 0">
+            <h3 class="color-gray text-left">Otras recomendaciones para ti:</h3>
+          </ng-template>
         </div>
       </div>
     </div>

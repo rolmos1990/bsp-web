@@ -49,6 +49,11 @@ export class ShowComponent implements OnInit {
     )
   }
 
+  public reject(modal: any) {
+    modal.dismiss('Cross click');
+    this._router.navigate(['information', this.insuranceId, 'rejection']);
+  }
+
   private createNewRequest(modal: any) {
     this.isLoading = true;
     this._newrequestService.createNewRequest(this.insuranceId, this._route.snapshot.paramMap.get('userId')).subscribe(
