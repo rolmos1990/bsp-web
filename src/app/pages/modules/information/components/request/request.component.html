@@ -3,13 +3,14 @@
     <accordion  *ngIf="forma.value.insuSame === false"> <!-- Primer Formulario -->
       <accordion-group [panelClass]="customClass" [isOpen]="isFirstOpen">
         <button class="btn btn-link btn-block clearfix" accordion-heading>
-          <div class="pull-left float-left" style="margin-left:-15px;"><i class="fas fa-angle-down"></i> Datos del
+          <div class="pull-left float-left titulo-accordion" style="margin-left:-15px;"><i class="fas fa-angle-down"></i> Datos del
             contratante</div>
         </button>
         <div class="container">
-          <p class="subtitulo">Por favor completa los siguientes datos y continúa con el proceso de solicitud. <br> Los campos denotados con un (*) son obligatorios para continuar.</p>
-            <div class="row mb-5">
-              <div class="col-md-4 mb-5">
+          <p class="subtitulo">Por favor completa los siguientes datos y continúa con el proceso de solicitud.</p>
+          <p class="subtitulo">Los campos denotados con un (*) son obligatorios para continuar.</p>
+          <div class="row mb-4">
+              <div class="col-md-4 mb-4">
                 <label for="">¿Eres el solicitante de la póliza? (*)</label>
                 <div class="form-check mb-3">
                   <input class="form-check-input" name="insuSame" type="radio" [value]="true" formControlName="insuSame">
@@ -25,64 +26,64 @@
                 </div>
                 <small class="text-danger col-12 row" *ngIf="invalid('insuSame', forma)">Campo inválido. Por favor revise.</small>
               </div>
-              <div class="col-md-4 mb-5">
+              <div class="col-md-4 mb-4">
                 <label for="">Nombre (*)</label>
                 <input type="text" class="form-control" formControlName="contName">
                 <small class="text-muted col-12 row">Ejemplo: Pedro.</small>
                 <small class="text-danger col-12 row" *ngIf="invalid('contName', forma)">Campo inválido. Por favor revise.</small>
               </div>
-              <div class="col-md-4 mb-5">
+              <div class="col-md-4 mb-4">
                 <label for="">Apellido (*)</label>
                 <input type="text" class="form-control" formControlName="contLastName">
                 <small class="text-muted col-12 row">Ejemplo: Blanco.</small>
                 <small class="text-danger col-12 row" *ngIf="invalid('contLastName', forma)">Campo inválido. Por favor revise.</small>
               </div>
-              <div class="col-md-4 mb-5">
+              <div class="col-md-4 mb-4">
                 <label for="">Provincia (*)</label>
                 <select class="form-control" (ngModelChange)="getDistricts(true)" formControlName="contProvinceId">
                   <option *ngFor="let province of provinces; let i=index" [value]="province.id">{{province.name}}</option>
                 </select>
                 <small class="text-danger col-12 row" *ngIf="invalid('contProvinceId', forma)">Campo inválido. Por favor revise.</small>
               </div>
-              <div class="col-md-4 mb-5">
+              <div class="col-md-4 mb-4">
                 <label for="">Distrito (*)</label>
                 <select class="form-control" (ngModelChange)="getCorregimientos(true)" formControlName="contDistrictId">
                   <option *ngFor="let district of districtsCont; let i=index" [value]="district.id">{{district.name}}</option>
                 </select>
                 <small class="text-danger col-12 row" *ngIf="invalid('contDistrictId', forma)">Campo inválido. Por favor revise.</small>
               </div>
-              <div class="col-md-4 mb-5">
+              <div class="col-md-4 mb-4">
                 <label for="">Corregimiento:  (*)</label>
                 <select class="form-control" formControlName="contCorregimientoId">
                   <option *ngFor="let corregimiento of corregimientosCont; let i=index" [value]="corregimiento.id">{{corregimiento.name}}</option>
                 </select>
                 <small class="text-danger col-12 row" *ngIf="invalid('contCorregimientoId', forma)">Campo inválido. Por favor revise.</small>
               </div>
-              <div class="col-md-4 mb-5">
+              <div class="col-md-4 mb-4">
                 <label for="">Calle / Avenida:  (*)</label>
                 <input type="text" class="form-control" placeholder="Ej: calle 56 C con Av. Brasil" formControlName="contStreet">
                 <small class="text-muted col-12 row">Ejemplo: calle 56 C con Av. Brasil.</small>
                 <small class="text-danger col-12 row" *ngIf="invalid('contStreet', forma)">Campo inválido. Por favor revise.</small>
               </div>
-              <div class="col-md-4 mb-5">
+              <div class="col-md-4 mb-4">
                 <label for="">Casa / Apartamento: (*)</label>
                 <input type="text" class="form-control" placeholder="Ej: edificio pacif sea, apto 3C" formControlName="contBuilding">
                 <small class="text-muted col-12 row">Ejemplo: edificio pacif sea, apto 3C.</small>
                 <small class="text-danger col-12 row" *ngIf="invalid('contBuilding', forma)">Campo inválido. Por favor revise.</small>
               </div>
-              <div class="col-md-4 mb-5">
+              <div class="col-md-4 mb-4">
                 <label for="">Barriada / Urbanización: (*)</label>
                 <input type="text" class="form-control" placeholder="Ej: Marbella" formControlName="contNeighborhood">
                 <small class="text-muted col-12 row">Ejemplo: Marbella.</small>
                 <small class="text-danger col-12 row" *ngIf="invalid('contNeighborhood', forma)">Campo inválido. Por favor revise.</small>
               </div>
-              <div class="col-md-4 mb-5">
+              <div class="col-md-4 mb-4">
                 <label for="">Teléfono (*)</label>
                 <input type="text" class="form-control" formControlName="contCellphone">
                 <small class="text-muted col-12 row">Ejemplo: +50765348555.</small>
                 <small class="text-danger col-12 row" *ngIf="invalid('contCellphone', forma)">Campo inválido. Por favor revise.</small>
               </div>
-              <div class="col-md-4 mb-5">
+              <div class="col-md-4 mb-4">
                 <label for="">Actividad económica: (*)</label>
                 <select class="form-control" formControlName="contEconomicActivity">
                   <option *ngFor="let occupation of occupations; let i=index" [value]="occupation.id">{{occupation.name}}</option>
@@ -101,11 +102,14 @@
             <div class="pull-left float-left" style="margin-left:-15px;"><i class="fas fa-angle-down"></i> Datos del <span *ngIf="forma.value.insuSame === true">contratante y</span> solicitante como asegurado principal</div>
           </button>
           <div class="container">
-            <p class="subtitulo" *ngIf="forma.value.insuSame === true">Por favor completa los siguientes datos y continúa con el proceso de solicitud. Los campos denotados con un (*) son obligatorios para continuar.</p>
-              <div class="row mb-5">
-                <div *ngIf="forma.value.insuSame === true" class="col-md-4 mb-5">
+            <p class="subtitulo" *ngIf="forma.value.insuSame === true">
+              Por favor completa los siguientes datos y continúa con el proceso de solicitud. 
+            </p>
+            <p class="subtitulo">Los campos denotados con un (*) son obligatorios para continuar.</p>
+              <div class="row mb-4">
+                <div *ngIf="forma.value.insuSame === true" class="col-md-6 col-lg-4 mb-4">
                   <label for="">¿Eres el solicitante de la póliza? (*)</label>
-                  <div class="form-check mb-3">
+                  <div class="form-check mb-1">
                     <input class="form-check-input" name="insuSame" type="radio" [value]="true" formControlName="insuSame">
                     <label class="form-check-label" for="insuSame">
                       Si
@@ -119,27 +123,27 @@
                   </div>
                   <small class="text-danger col-12 row" *ngIf="invalid('insuSame', forma)">Campo inválido. Por favor revise.</small>
                 </div>
-                <div class="col-md-4 mb-5">
+                <div class="col-md-6 col-lg-4 mb-4">
                   <label for="">Nombres (*)</label>
                   <input type="text" class="form-control" placeholder="" formControlName="insuName">
                   <small class="text-muted col-12 row">Ejemplo: Sirio.</small>
                   <small class="text-danger col-12 row" *ngIf="invalid('insuName', forma)">Campo inválido. Por favor revise.</small>
                 </div>
-                <div class="col-md-4 mb-5">
+                <div class="col-md-6 col-lg-4 mb-4">
                   <label for="">Apellidos (*)</label>
                   <input type="text" class="form-control" formControlName="insuLastName">
                   <small class="text-muted col-12 row">Ejemplo: Florel.</small>
                   <small class="text-danger col-12 row" *ngIf="invalid('insuLastName', forma)">Campo inválido. Por favor revise.</small>
                 </div>
-                <div class="col-md-4 mb-5">
+                <div class="col-md-6 col-lg-4 mb-4">
                   <label for="">Cédula / Pasaporte: (*)</label>
                   <input type="text" class="form-control" formControlName="insuDocument">
-                  <small class="text-muted col-12 row">Ejemplo: 4-4565-456454/A084456465.</small>
+                  <small class="text-muted col-12 row">Ejemplo: 4-4565-456454 / A084456465.</small>
                   <small class="text-danger col-12 row" *ngIf="invalid('insuDocument', forma)">Campo inválido. Por favor revise.</small>
                 </div>
-                <div class="col-md-4 mb-5">
+                <div class="col-md-6 col-lg-4 mb-4">
                   <label for="">Sexo:  (*)</label>
-                  <div class="form-check mb-3">
+                  <div class="form-check mb-1">
                     <input class="form-check-input" type="radio" value="masculino" formControlName="insuGender">
                     <label class="form-check-label" for="gender">
                       Masculino
@@ -153,141 +157,141 @@
                   </div>
                   <small class="text-danger col-12 row" *ngIf="invalid('insuGender', forma)">Campo inválido. Por favor revise.</small>
                 </div>
-                <div class="col-md-4 mb-5">
+                <div class="col-md-6 col-lg-4 mb-4">
                   <label for="">Fecha de nacimiento: (*)</label>
                   <input type="date" class="form-control" formControlName="insuBirthday">
                   <small class="text-muted col-12 row">Ejemplo: 05/09/1995.</small>
                   <small class="text-danger col-12 row" *ngIf="invalid('insuBirthday', forma)">Campo inválido. Por favor revise.</small>
                 </div>
-                <div class="col-md-4 mb-5">
+                <div class="col-md-6 col-lg-4 mb-4">
                   <label for="">Estado civil: (*)</label>
                   <select class="form-control" formControlName="insuCivilStatus">
                     <option *ngFor="let status of civilStatus; let i=index" [value]="status.item">{{status.item}}</option>
                   </select>
                   <small class="text-danger col-12 row" *ngIf="invalid('insuCivilStatus', forma)">Campo inválido. Por favor revise.</small>
                 </div>
-                <div class="col-md-4 mb-5">
+                <div class="col-md-6 col-lg-4 mb-4">
                   <label for="">Lugar de nacimiento (País /Provincia): (*)</label>
                   <input type="text" class="form-control" formControlName="insuBirthplace">
                   <small class="text-muted col-12 row">Ejemplo: Panamá.</small>
                   <small class="text-danger col-12 row" *ngIf="invalid('insuBirthplace', forma)">Campo inválido. Por favor revise.</small>
                 </div>
-                <div class="col-md-4 mb-5">
+                <div class="col-md-6 col-lg-4 mb-4">
                   <label for="">Nacionalidad: (*)</label>
                   <select class="form-control" formControlName="insuNationalityId">
                     <option *ngFor="let nationality of nationalities; let i=index" [value]="nationality.id">{{nationality.name}}</option>
                   </select>
                   <small class="text-danger col-12 row" *ngIf="invalid('insuNationalityId', forma)">Campo inválido. Por favor revise.</small>
                 </div>
-                <div class="col-md-4 mb-5">
+                <div class="col-md-6 col-lg-4 mb-4">
                   <label for="">Profesión: (*)</label>
                   <input type="text" class="form-control" formControlName="insuProfession">
                   <small class="text-muted col-12 row">Ejemplo: Ingeniero.</small>
                   <small class="text-danger col-12 row" *ngIf="invalid('insuProfession', forma)">Campo inválido. Por favor revise.</small>
                 </div>
-                <div class="col-md-4 mb-5">
+                <div class="col-md-6 col-lg-4 mb-4">
                   <label for="">Ocupación: (*)</label>
                   <select class="form-control" formControlName="insuOccupation">
                     <option *ngFor="let occupation of occupations; let i=index" [value]="occupation.id">{{occupation.name}}</option>
                   </select>
                   <small class="text-danger col-12 row" *ngIf="invalid('insuOccupation', forma)">Campo inválido. Por favor revise.</small>
                 </div>
-                <div class="col-md-4 mb-5">
+                <div class="col-md-6 col-lg-4 mb-4">
                   <label for="">Empresa donde labora: (*)</label>
                   <input type="text" class="form-control" formControlName="insuCompany">
                   <small class="text-muted col-12 row">Ejemplo: Banesco Seguros C.A.</small>
                   <small class="text-danger col-12 row" *ngIf="invalid('insuCompany', forma)">Campo inválido. Por favor revise.</small>
                 </div>
-                <div class="col-md-4 mb-5">
+                <div class="col-md-6 col-lg-4 mb-4">
                   <label for="">Tiempo en esta ocupación (Meses): (*)</label>
                   <input type="number" class="form-control" formControlName="insuOccupationTime">
                   <small class="text-muted col-12 row">Ejemplo: 4 meses.</small>
                   <small class="text-danger col-12 row" *ngIf="invalid('insuOccupationTime', forma)">Campo inválido. Por favor revise.</small>
                 </div>
-                <div class="col-md-8 mb-5">
+                <div class="col-md-6 col-lg-8 mb-4">
                   <label for="">Describa sus funciones: (*)</label>
                   <input type="text" class="form-control" formControlName="insuOccupationDescription">
                   <small class="text-muted col-12 row">Ejemplo: Liderar proyectos de la empresa.</small>
                   <small class="text-danger col-12 row" *ngIf="invalid('insuOccupationDescription', forma)">Campo inválido. Por favor revise.</small>
                 </div>
-                <div class="col-md-4 mb-5">
+                <div class="col-md-6 col-lg-4 mb-4">
                   <label for="">Otras ocupaciones: (*)</label>
                   <input type="text" class="form-control" formControlName="insuOtherOccupations">
                   <small class="text-muted col-12 row">Ejemplo: Carpintero, Mesonero, etc.</small>
                   <small class="text-danger col-12 row" *ngIf="invalid('insuOtherOccupations', forma)">Campo inválido. Por favor revise.</small>
                 </div>
-                <div class="col-md-4 mb-5">
+                <div class="col-md-6 col-lg-4 mb-4">
                   <label for="">Ocupaciones anteriores: (*)</label>
                   <select class="form-control" formControlName="insuPreviousOccupations">
                     <option *ngFor="let occupation of occupations; let i=index" [value]="occupation.id">{{occupation.name}}</option>
                   </select>
                   <small class="text-danger col-12 row" *ngIf="invalid('insuPreviousOccupations', forma)">Campo inválido. Por favor revise.</small>
                 </div>
-                <div class="col-md-4 mb-5">
+                <div class="col-md-6 col-lg-4 mb-4">
                   <label for="">Deportes que practica: (*)</label>
                   <input type="text" class="form-control" formControlName="insuSports">
                   <small class="text-muted col-12 row">Ejemplo: Baloncesto, Kriket, Judo, etc.</small>
                   <small class="text-danger col-12 row" *ngIf="invalid('insuSports', forma)">Campo inválido. Por favor revise.</small>
                 </div>
-                <div class="col-md-4 mb-5">
+                <div class="col-md-6 col-lg-4 mb-4">
                   <label for="">Ingreso mensual: (*)</label>
                   <select class="form-control" formControlName="insuMonthlyIncome">
                     <option *ngFor="let income of incomes; let i=index" [value]="income.item">{{income.item}}</option>
                   </select>
                   <small class="text-danger col-12 row" *ngIf="invalid('insuMonthlyIncome', forma)">Campo inválido. Por favor revise.</small>
                 </div>
-                <div class="col-md-4 mb-5">
+                <div class="col-md-6 col-lg-4 mb-4">
                   <label for="">Provincia: (*)</label>
                   <select class="form-control" (ngModelChange)="getDistricts(false)" formControlName="insuProvinceId">
                     <option *ngFor="let province of provinces; let i=index" [value]="province.id">{{province.name}}</option>
                   </select>
                   <small class="text-danger col-12 row" *ngIf="invalid('insuProvinceId', forma)">Campo inválido. Por favor revise.</small>
                 </div>
-                <div class="col-md-4 mb-5">
+                <div class="col-md-6 col-lg-4 mb-4">
                   <label for="">Distrito: (*)</label>
                   <select class="form-control" (ngModelChange)="getCorregimientos(false)" formControlName="insuDistrictId">
                     <option *ngFor="let district of districtsInsu; let i=index" [value]="district.id">{{district.name}}</option>
                   </select>
                   <small class="text-danger col-12 row" *ngIf="invalid('insuDistrictId', forma)">Campo inválido. Por favor revise.</small>
                 </div>
-                <div class="col-md-4 mb-5">
+                <div class="col-md-6 col-lg-4 mb-4">
                   <label for="">Corregimiento: (*)</label>
                   <select class="form-control" formControlName="insuCorregimientoId">
                     <option *ngFor="let corregimiento of corregimientosInsu; let i=index" [value]="corregimiento.id">{{corregimiento.name}}</option>
                   </select>
                   <small class="text-danger col-12 row" *ngIf="invalid('insuCorregimientoId', forma)">Campo inválido. Por favor revise.</small>
                 </div>
-                <div class="col-md-4 mb-5">
+                <div class="col-md-6 col-lg-4 mb-4">
                   <label for="">Barriada / Urbanización: (*)</label>
                   <input type="text" class="form-control" placeholder="Ej: Marbella" formControlName="insuNeighborhood">
                   <small class="text-muted col-12 row">Ejemplo: Marbella.</small>
                   <small class="text-danger col-12 row" *ngIf="invalid('insuNeighborhood', forma)">Campo inválido. Por favor revise.</small>
                 </div>
-                <div class="col-md-4 mb-5">
+                <div class="col-md-6 col-lg-4 mb-4">
                   <label for="">Calle / Avenida: (*)</label>
                   <input type="text" class="form-control" placeholder="Ej: calle 56 con Av. Brasil" formControlName="insuStreet">
                   <small class="text-muted col-12 row">Ejemplo: calle 56 C con Av. Brasil.</small>
                   <small class="text-danger col-12 row" *ngIf="invalid('insuStreet', forma)">Campo inválido. Por favor revise.</small>
                 </div>
-                <div class="col-md-4 mb-5">
+                <div class="col-md-6 col-lg-4 mb-4">
                   <label for="">Casa / Apartamento: (*)</label>
                   <input type="text" class="form-control" placeholder="Ej: edificio pacif sea, apto 3C" formControlName="insuBuilding">
                   <small class="text-muted col-12 row">Ejemplo: edificio pacif sea, apto 3C.</small>
                   <small class="text-danger col-12 row" *ngIf="invalid('insuBuilding', forma)">Campo inválido. Por favor revise.</small>
                 </div>
-                <div class="col-md-4 mb-5">
+                <div class="col-md-6 col-lg-4 mb-4">
                   <label for="">Teléfono residencial: (*)</label>
                   <input type="text" class="form-control" formControlName="insuLocalNumber">
                   <small class="text-muted col-12 row">Ejemplo: +5077348555.</small>
                   <small class="text-danger col-12 row" *ngIf="invalid('insuLocalNumber', forma)">Campo inválido. Por favor revise.</small>
                 </div>
-                <div class="col-md-4 mb-5">
+                <div class="col-md-6 col-lg-4 mb-4">
                   <label for="">Teléfono celular: (*)</label>
                   <input type="text" class="form-control" formControlName="insuCellphone">
                   <small class="text-muted col-12 row">Ejemplo: +50765348555.</small>
                   <small class="text-danger col-12 row" *ngIf="invalid('insuCellphone', forma)">Campo inválido. Por favor revise.</small>
                 </div>
-                <div class="col-md-4 mb-5">
+                <div class="col-md-6 col-lg-4 mb-4">
                   <label for="">Email: (*)</label>
                   <input type="text" class="form-control" formControlName="insuEmail">
                   <small class="text-muted col-12 row">Ejemplo: persona@email.com.</small>
@@ -427,10 +431,10 @@
     <accordion>
       <accordion-group [panelClass]="customClass" [isOpen]="isFirstOpen">
           <button class="btn btn-link btn-block clearfix" accordion-heading>
-            <div class="pull-left float-left" style="margin-left:-15px;"><i class="fas fa-angle-down"></i> Datos de los beneficiarios</div>
+            <div class="pull-left float-left" style="margin: 10px 0 10px -15px;"><i class="fas fa-angle-down"></i> Datos de los beneficiarios</div>
           </button>
           <div class="container">
-            <div class="row mb-5">
+            <div class="row mb-4">
               <div class="marco-verde uno">
                 <h3 class="text-white">Beneficiarios</h3>
               </div>
@@ -478,7 +482,7 @@
     </accordion>
     <div class="row">
       <div class="col-md-12 text-center">
-          <button class="btn btn-primary" (click)="saveRequest(true)" >CONTINUAR</button>
+          <button class="btn btn-primary mb-2 mb-md-0" (click)="saveRequest(true)" >CONTINUAR</button>
           <button class="btn btn-white ml-0 ml-md-4" (click)="saveRequest(false)">
               <i class="fas fa-save text-dark"></i> GUARDAR PARA DESPUÉS
           </button>

@@ -23,7 +23,7 @@ export class ShowComponent implements OnInit {
   open(content,valor, insuranceId) {
     this.insuranceId = insuranceId;
     parseInt(valor);
-    let x:number = parseInt(valor);
+    let x: number = parseInt(valor);
     console.log(x);
     this.modalService.open(content, {centered: true});
   }
