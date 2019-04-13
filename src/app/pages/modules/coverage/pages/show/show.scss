@@ -18,42 +18,29 @@ h4{
   width: 706px;
 }
 
-.modal-body h4 {
-  font-size: 21px;
-  color: #1c8464;
-  text-decoration: none solid rgb(28, 132, 100);
-  margin: 30px 0;
-}
-
-h4.titulo-modal{
-    font-size: 21px;
-    color: #1c8464!important;
-    text-decoration: none solid rgb(28, 132, 100);
-}
-
-.modal-footer .btn-primary,
-.modal-footer .btn-white {
-  width: 220px;
-  margin: 0;
-}
-
 .modal-footer .btn-white {
   margin-right: 20px;
 }
 
 h4.titulo-modal {
-  font-size: 21px;
-  color: #1c8464;
-  text-decoration: none solid rgb(28, 132, 100);
+    font-size: 21px;
+    color: #1c8464;
+    text-decoration: none solid rgb(28, 132, 100);
+    margin: 20px 0;
 }
 
 .terminos{
-    height: 500px;
+    height: 369px;
     overflow: auto;
+    border: 1px solid #c8c8c8;
 }
 
 header {
     background: #ffffff !important;
+}
+
+.btn.btn-primary.especial{
+    width: 233px;
 }
 
 .btn.btn-primary.solicitar{
@@ -184,47 +171,12 @@ i.fas.fa-angle-down{
 }
 
 .modal-body{
-    h4{
-        font-size: 20px;
-        color: #556176;
-        text-decoration: none solid rgb(85, 97, 118);
-        font-weight: bold;
-    }
 
     .especial{
         margin-top: 45px;
     }
-
 }
 
-
-
-.btn-primary{
-    width: 233px;
-    height: 59px;
-    padding: 0px 16px;
-    border-radius: 4px;
-    background-color: #1c8464;
-    font-family: Lato;
-    font-size: 17px;
-    color: #ffffff;
-    text-decoration: none solid rgb(255, 255, 255);
-    text-align: center;
-}
-
-.btn-white{
-    width: 233px;
-    height: 59px;
-    padding: 0px 16px;
-    border: 1px solid #556176;
-    border-radius: 4px;
-    background-color: #ffffff;
-    font-family: Lato;
-    font-size: 17px;
-    color: #556176;
-    text-decoration: none solid rgb(85, 97, 118);
-    text-align: center;
-}
 
 .modal-header{
     border: 0;

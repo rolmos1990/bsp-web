@@ -3,3 +3,9 @@ header {
     border: 1px solid #e6e6e6;
     border-width: 0 0 1px 0;
 }
+
+@media (min-width: 768px) and (max-width:1023px){
+    .ayuda{
+        display: none;
+    }
+}

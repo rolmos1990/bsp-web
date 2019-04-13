@@ -18,9 +18,9 @@ export class ShowComponent implements OnInit {
   }
 
 
-  open(content,valor) {
+  open(content, valor) {
     parseInt(valor);
-    let x:number = parseInt(valor);
+    let x: number = parseInt(valor);
     console.log(x);
     this.modalService.open(content, {centered: true});
   }

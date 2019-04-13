@@ -47,7 +47,7 @@ export class RequestComponent implements OnInit {
                 this.percentsChecked = false;
                 this.isLoading = false;
   }
-  
+
   ngOnInit() {
     this.isLoading = true;
     this.getProvinces();
@@ -64,7 +64,7 @@ export class RequestComponent implements OnInit {
         console.log(error);
         this.isLoading = false;
       }
-    )
+    );
   }
 
   public getCorregimientos(cont: boolean, first?: boolean) {
@@ -85,7 +85,7 @@ export class RequestComponent implements OnInit {
       error => {
         console.log(error);
       }
-    )
+    );
   }
 
   public getOccupations() {
@@ -98,10 +98,10 @@ export class RequestComponent implements OnInit {
         console.log(error);
         this.isLoading = false;
       }
-    )
+    );
   }
 
-  public getDistricts(cont: boolean, first?:boolean) {
+  public getDistricts(cont: boolean, first?: boolean) {
     this._locationService.getAllDistricts(cont ? this.forma.value.contProvinceId : this.forma.value.insuProvinceId).subscribe(
       response => {
         if (cont) {
@@ -133,7 +133,7 @@ export class RequestComponent implements OnInit {
       error => {
         console.log(error);
       }
-    )
+    );
   }
 
   public getProvinces() {
@@ -146,7 +146,7 @@ export class RequestComponent implements OnInit {
         console.log(error);
         this.isLoading = false;
       }
-    )
+    );
   }
 
   public fillMainForm(cont: any, insu: any) {
