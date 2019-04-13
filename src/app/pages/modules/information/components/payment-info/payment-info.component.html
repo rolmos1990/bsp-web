@@ -118,20 +118,20 @@
                 <select class="form-control" [ngClass]="{'is-invalid': invalid('cardName', formaPayment), 'is-valid': valid('cardName', formaPayment)}" formControlName="cardName">
                   <option *ngFor="let card of cards; let i=index" [value]="card.item">{{card.item}}</option>
                 </select>
-                <div *ngIf="invalid('cardName', formaPayment)" class="invalid-feedback ml-70">
+                <div *ngIf="invalid('cardName', formaPayment)" class="invalid-feedback">
                   Por favor elija la compañía a la cual pertenece su tarjeta.
                 </div>
-                <div *ngIf="valid('cardName', formaPayment)" class="valid-feedback ml-70">
+                <div *ngIf="valid('cardName', formaPayment)" class="valid-feedback">
                   ¡Excelente!
                 </div>
               </div>
               <div class="form-group col-md-12">
                 <label for="" class="my-3">Número de tarjeta: (*)</label>
                 <input type="text" class="form-control" [ngClass]="{'is-invalid': invalid('cardNumber', formaPayment), 'is-valid': valid('cardNumber', formaPayment)}" formControlName="cardNumber">
-                <div *ngIf="invalid('cardNumber', formaPayment)" class="invalid-feedback ml-70">
+                <div *ngIf="invalid('cardNumber', formaPayment)" class="invalid-feedback">
                   Por favor introduzca un número de tarjeta válido, entre 13 y 18 dígitos.
                 </div>
-                <div *ngIf="valid('cardNumber', formaPayment)" class="valid-feedback ml-70">
+                <div *ngIf="valid('cardNumber', formaPayment)" class="valid-feedback">
                   ¡Excelente!
                 </div>
               </div>
@@ -142,10 +142,10 @@
                     <select class="form-control" [ngClass]="{'is-invalid': invalid('expireMonth', formaPayment), 'is-valid': valid('expireMonth', formaPayment)}" formControlName="expireMonth">
                       <option *ngFor="let month of months; let i=index" [value]="month.id">{{month.id}}</option>
                     </select>
-                    <div *ngIf="invalid('expireMonth', formaPayment)" class="invalid-feedback ml-70">
+                    <div *ngIf="invalid('expireMonth', formaPayment)" class="invalid-feedback">
                       Por favor indique el mes de vencimiento de su tarjeta.
                     </div>
-                    <div *ngIf="valid('expireMonth', formaPayment)" class="valid-feedback ml-70">
+                    <div *ngIf="valid('expireMonth', formaPayment)" class="valid-feedback">
                       ¡Excelente!
                     </div>
                   </div>
@@ -153,10 +153,10 @@
                     <select class="form-control" [ngClass]="{'is-invalid': invalid('expireYear', formaPayment), 'is-valid': valid('expireYear', formaPayment)}" formControlName="expireYear">
                       <option *ngFor="let year of years; let i=index" [value]="year">{{year}}</option>
                     </select>
-                    <div *ngIf="invalid('expireYear', formaPayment)" class="invalid-feedback ml-70">
+                    <div *ngIf="invalid('expireYear', formaPayment)" class="invalid-feedback">
                       Por favor indique el año de vencimiento de su tarjeta.
                     </div>
-                    <div *ngIf="valid('expireYear', formaPayment)" class="valid-feedback ml-70">
+                    <div *ngIf="valid('expireYear', formaPayment)" class="valid-feedback">
                       ¡Excelente!
                     </div>
                   </div>
@@ -165,19 +165,23 @@
               <div class="form-group col-md-12">
                 <label for="" class="my-3 d-block">CVV (*)<i class="fas fa-info-circle" style="color:#4e74b0;"></i></label>
                 <input type="text" class="form-control cvv" [ngClass]="{'is-invalid': invalid('cvv', formaPayment), 'is-valid': valid('cvv', formaPayment)}" formControlName="cvv">
-                <div *ngIf="invalid('cvv', formaPayment)" class="invalid-feedback ml-70">
+                <div *ngIf="invalid('cvv', formaPayment)" class="invalid-feedback">
                   Por favor introduzca un código de seguridad válido, entre 3 y 4 dígitos.
                 </div>
-                <div *ngIf="valid('cvv', formaPayment)" class="valid-feedback ml-70">
+                <div *ngIf="valid('cvv', formaPayment)" class="valid-feedback">
                   ¡Excelente, gracias por sus datos!
                 </div>
               </div>
             </div>
-            <button class="btn btn-primary d-block" (click)="assignPaymentCard()">CONTINUAR</button>
           </div>
         </accordion-group>
     </accordion>
   </form>
+  <div class="row">
+    <div class="col-md-12 text-center">
+      <button class="btn btn-primary" (click)="assignPaymentCard()">CONTINUAR</button>
+    </div>
+  </div>
 </section>
 <!-- 
 <div class="row d-none">
