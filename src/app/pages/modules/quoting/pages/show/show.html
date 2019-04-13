@@ -1,129 +1,131 @@
 <div class="wrapper">
-    <section class="quoting">
-      <form action="" [formGroup]="forma">
-        <div class="container">
-          <div class="row" [ngClass]="{'d-none': flag1 == false}">
-            <div class="col-md-2">
-              <!-- -->
-            </div>
-            <div class="col-md-8">
-              <div class="cuadrado">
-                  <h4 class="cotizador-h4">Cotizador Banesco </h4> <img src="assets/img/cruz.svg" alt="" class="m-0">
-                  <h4 class="cotizador-h2-2 fwb-600">Seguros</h4>
-                  <h3 class="">Por favor indícanos tu <br> número de identificación</h3>
-                  <img src="assets/img/Tarjeta.svg" alt="" class="my-5">
-                  <input type="text" class="form-control mb-2" [ngClass]="{'is-invalid': invalid('document', forma), 'is-valid': valid('document', forma)}" placeholder="CÉDULA/PASAPORTE" formControlName="document">
-                  <div *ngIf="invalid('document', forma)" class="invalid-feedback ml-70">
-                    Por favor introduce un formato correcto. Ejemplo: 4-5454-455645.
-                  </div>
-                  <div *ngIf="valid('document', forma)" class="valid-feedback ml-70">
-                    ¡Excelente!
-                  </div>
-                  <button [disabled]="forma.controls['document'].invalid" class="btn btn-primary my-5 " (click)="hide1()">SIGUIENTE</button>
-              </div>
-            </div>
-            <div class="col-md-2">
+  <section class="quoting">
+    <form action="" [formGroup]="forma">
+      <div class="container">
+        <div class="row" [ngClass]="{'d-none': flag1 == false}">
+          <div class="col-md-2">
             <!-- -->
+          </div>
+          <div class="col-md-8">
+            <div class="cuadrado">
+              <h4 class="cotizador-h4">Cotizador Banesco </h4> <img src="assets/img/cruz.svg" alt="" class="m-0">
+              <h4 class="cotizador-h2-2 fwb-600">Seguros</h4>
+              <h3 class="">Por favor indícanos tu <br> número de identificación</h3>
+              <img src="assets/img/Tarjeta.svg" alt="" class="my-5">
+              <input type="text" class="form-control mb-2"
+                [ngClass]="{'is-invalid': invalid('document', forma), 'is-valid': valid('document', forma)}"
+                placeholder="CÉDULA/PASAPORTE" formControlName="document">
+              <div *ngIf="invalid('document', forma)" class="invalid-feedback">
+                Por favor introduce un formato correcto. Ejemplo: 4-5454-455645.
+              </div>
+              <div *ngIf="valid('document', forma)" class="valid-feedback">
+                ¡Excelente!
+              </div>
+              <button [disabled]="forma.controls['document'].invalid" class="btn btn-primary my-5 "
+                (click)="hide1()">SIGUIENTE</button>
             </div>
           </div>
-          <div class="row" [ngClass]="{'d-none': flag2 == false}">
-            <div class="col-1 col-md-2">
-              <button (click)="atras2()" class="btn-flecha"><i class="fas fa-angle-left"></i></button>
-            </div>
-            <div class="col-10 col-md-8">
-              <div class="cuadrado" [ngClass]="{'d-none': flag2 == false}">
-                  <h4 class="cotizador-h4">Cotizador Banesco </h4> <img src="assets/img/cruz.svg" alt="" class="m-0">
-                  <h4 class="cotizador-h2-2 fwb-600">Seguros</h4>
-                  <h3 class="color-negro">¿A qué te dedicas?</h3>
-                  <img src="assets/img/maletin.png" alt="" class="my-5">
-                  <div class="ng-autocomplete">
-                      <ng-autocomplete #ngAutoCompleteStatic
-                      [data]="ocupaciones"
-                      [initialValue]=""
-                      placeHolder="OCUPACIÓN"
-                      historyIdentifier="countriesTemplateList"
-                      historyListMaxNumber="3"
-                      historyHeading="Seleccionado Anteriormente"
-                      notFoundText="Texto no encontrado"
-                      [itemTemplate]="itemTemplateStatic"
-                      formControlName="occupationId"
-                      [notFoundTemplate]="notFoundTemplate">
-                    </ng-autocomplete>
-          
-                    <ng-template #itemTemplateStatic let-item>
-                      <a [innerHTML]="item"></a>
-                    </ng-template>
-          
-                    <ng-template #notFoundTemplate let-notFound>
-                      <div [innerHTML]="notFound"></div>
-                    </ng-template>
-                  </div>
-                  <div class="error ml-70" *ngIf="forma.get('occupationId').errors && forma.get('occupationId').dirty">
-                      <p *ngIf="forma.get('occupationId').hasError('required')">* Campo requerido</p>
-                  </div>
-                  <button [disabled]="forma.controls['occupationId'].invalid" class="btn btn-primary my-5" (click)="hide2()">SIGUIENTE</button>
-              </div>
-            </div>
-            <div class="col-1 col-md-2">
+          <div class="col-md-2">
             <!-- -->
-            </div>
-          </div>
-          <div class="row" [ngClass]="{'d-none': flag3 == false}">
-            <div class="col-1 col-md-2">
-                <button (click)="atras3()" class="btn-flecha"><i class="fas fa-angle-left"></i></button>
-            </div>
-            <div class="col-10 col-md-8">
-              <div class="cuadrado" [ngClass]="{'d-none': flag3 == false}">
-                  <h4 class="cotizador-h4">Cotizador Banesco </h4> <img src="assets/img/cruz.svg" alt="" class="m-0">
-                  <h4 class="cotizador-h2-2 fwb-600">Seguros</h4>
-                  <h3 class="color-negro">¿Qué edad tienes?</h3>
-                  <img src="assets/img/edad.png" alt="" class="my-5">
-                  <!-- error -->
-                  <input type="tel" class="form-control mb-1" placeholder="EDAD" formControlName="age">
-                  <!-- <p class="bluesito ml-70">Edad comprendida entre 18 y 69 años.</p> -->
-                  <div class="error ml-70" *ngIf="forma.get('age').errors && forma.get('age').dirty">
-                      <p *ngIf="forma.get('age').hasError('required')">* Campo requerido</p>
-                      <p *ngIf="forma.get('age').hasError('maxlength')">* Campo no válido</p>
-                      <p *ngIf="forma.get('age').hasError('min')">* Campo mayor a 18 años</p>
-                      <p *ngIf="forma.get('age').hasError('max')">* Campo menor a 69 años</p>
-                  </div>
-                  <p style="text-align:center"><small style="color: gray" >Edad comprendida entre 18 y 70 años.
-                  </small></p>
-                  <button [disabled]="forma.controls['age'].invalid" class="btn btn-primary my-5" (click)="hide3()">SIGUIENTE</button>
-              </div>
-            </div>
-            <div class="col-1 col-md-2">
-            <!-- -->
-            </div>
-          </div>
-          <ng-template [ngIf]="isLoading">
-            <div class="container">
-                <div class='banesco-loader'></div>
-            </div>
-          </ng-template>
-          <div *ngIf="!isLoading" class="row" [ngClass]="{'d-none': flag4 == false}">
-            <div class="col-1 col-md-2">
-                <button (click)="atras4()" class="btn-flecha"><i class="fas fa-angle-left"></i></button>
-            </div>
-            <div class="col-10 col-md-8">
-              <div class="cuadrado" [ngClass]="{'d-none': flag4 == false}">
-                  <h4 class="cotizador-h4">Cotizador Banesco </h4> <img src="assets/img/cruz.svg" alt="" class="m-0">
-                  <h4 class="cotizador-h2-2 fwb-600">Seguros</h4>
-                  <h3 class="color-negro">¿Cuál es tu email?</h3>
-                  <img src="assets/img/Mail.svg" alt="" class="my-5">
-                  <input type="email" class="form-control mb-1" placeholder="EMAIL" formControlName="email">
-                  <div class="error ml-70" *ngIf="forma.get('email').errors && forma.get('email').dirty">
-                      <p *ngIf="forma.get('email').hasError('required')">* Campo requerido</p>
-                      <p *ngIf="forma.get('email').hasError('email')">* Campo no válido</p>
-                  </div>
-                  <button [disabled]="forma.controls['email'].invalid" class="btn btn-primary my-5" (click)="submit()">COTIZAR</button>
-              </div>
-            </div>
-            <div class="col-1 col-md-2">
-            <!-- -->
-            </div>
           </div>
         </div>
-      </form>
-    </section>
-  </div>
+        <div class="row" [ngClass]="{'d-none': flag2 == false}">
+          <div class="col-1 col-md-2">
+            <button (click)="atras2()" class="btn-flecha"><i class="fas fa-angle-left"></i></button>
+          </div>
+          <div class="col-10 col-md-8">
+            <div class="cuadrado" [ngClass]="{'d-none': flag2 == false}">
+              <h4 class="cotizador-h4">Cotizador Banesco </h4> <img src="assets/img/cruz.svg" alt="" class="m-0">
+              <h4 class="cotizador-h2-2 fwb-600">Seguros</h4>
+              <h3 class="color-negro">¿A qué te dedicas?</h3>
+              <img src="assets/img/maletin.png" alt="" class="my-5">
+              <div class="ng-autocomplete">
+                <ng-autocomplete #ngAutoCompleteStatic [data]="ocupaciones" [initialValue]="" placeHolder="OCUPACIÓN"
+                  historyIdentifier="countriesTemplateList" historyListMaxNumber="3"
+                  historyHeading="Seleccionado Anteriormente" notFoundText="Texto no encontrado"
+                  [itemTemplate]="itemTemplateStatic" formControlName="occupationId"
+                  [notFoundTemplate]="notFoundTemplate">
+                </ng-autocomplete>
+
+                <ng-template #itemTemplateStatic let-item>
+                  <a [innerHTML]="item"></a>
+                </ng-template>
+
+                <ng-template #notFoundTemplate let-notFound>
+                  <div [innerHTML]="notFound"></div>
+                </ng-template>
+              </div>
+              <div class="invalid-feedback" *ngIf="forma.get('occupationId').errors && forma.get('occupationId').dirty">
+                <p *ngIf="forma.get('occupationId').hasError('required')">* Campo requerido</p>
+              </div>
+              <button [disabled]="forma.controls['occupationId'].invalid" class="btn btn-primary my-5"
+                (click)="hide2()">SIGUIENTE</button>
+            </div>
+          </div>
+          <div class="col-1 col-md-2">
+            <!-- -->
+          </div>
+        </div>
+        <div class="row" [ngClass]="{'d-none': flag3 == false}">
+          <div class="col-1 col-md-2">
+            <button (click)="atras3()" class="btn-flecha"><i class="fas fa-angle-left"></i></button>
+          </div>
+          <div class="col-10 col-md-8">
+            <div class="cuadrado" [ngClass]="{'d-none': flag3 == false}">
+              <h4 class="cotizador-h4">Cotizador Banesco </h4> <img src="assets/img/cruz.svg" alt="" class="m-0">
+              <h4 class="cotizador-h2-2 fwb-600">Seguros</h4>
+              <h3 class="color-negro">¿Qué edad tienes?</h3>
+              <img src="assets/img/edad.png" alt="" class="my-5">
+              <!-- error -->
+              <input type="number" class="form-control mb-1" placeholder="EDAD" formControlName="age"
+                [ngClass]="{'is-invalid': invalid('age', forma), 'is-valid': valid('age', forma)}">
+              <div *ngIf="invalid('age', forma)" class="invalid-feedback">
+                * Disculpa, esta póliza es sólo para personas con edades
+                entre 18 y 70 años
+              </div>
+              <div *ngIf="valid('age', forma)" class="valid-feedback">
+                ¡Excelente!
+              </div>
+              <button [disabled]="forma.controls['age'].invalid" class="btn btn-primary my-5"
+                (click)="hide3()">SIGUIENTE</button>
+            </div>
+          </div>
+          <div class="col-1 col-md-2">
+            <!-- -->
+          </div>
+        </div>
+        <ng-template [ngIf]="isLoading">
+          <div class="container">
+            <div class='banesco-loader'></div>
+          </div>
+        </ng-template>
+        <div *ngIf="!isLoading" class="row" [ngClass]="{'d-none': flag4 == false}">
+          <div class="col-1 col-md-2">
+            <button (click)="atras4()" class="btn-flecha"><i class="fas fa-angle-left"></i></button>
+          </div>
+          <div class="col-10 col-md-8">
+            <div class="cuadrado" [ngClass]="{'d-none': flag4 == false}">
+              <h4 class="cotizador-h4">Cotizador Banesco </h4> <img src="assets/img/cruz.svg" alt="" class="m-0">
+              <h4 class="cotizador-h2-2 fwb-600">Seguros</h4>
+              <h3 class="color-negro">¿Cuál es tu email?</h3>
+              <img src="assets/img/Mail.svg" alt="" class="my-5">
+              <input type="email" class="form-control mb-1" placeholder="EMAIL" formControlName="email"
+                [ngClass]="{'is-invalid': invalid('email', forma), 'is-valid': valid('email', forma)}">
+              <div *ngIf="invalid('email', forma)" class="invalid-feedback">
+                * Por favor introduce un correo válido
+              </div>
+              <div *ngIf="valid('email', forma)" class="valid-feedback">
+                ¡Excelente!
+              </div>
+              <button [disabled]="forma.controls['email'].invalid" class="btn btn-primary my-5"
+                (click)="submit()">COTIZAR</button>
+            </div>
+          </div>
+          <div class="col-1 col-md-2">
+            <!-- -->
+          </div>
+        </div>
+      </div>
+    </form>
+  </section>
+</div>
