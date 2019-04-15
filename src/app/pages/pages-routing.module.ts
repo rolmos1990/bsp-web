@@ -30,6 +30,10 @@ const routes: Routes = [
   {
     path: 'login',
     loadChildren: './modules/login/login.module#LoginModule'
+  },
+  {
+    path: 'insurance-detail',
+    loadChildren: './modules/insurance-detail/insurance-detail.module#InsuranceDetailModule'
   }
 ];
 
