@@ -1,48 +1,33 @@
 <header>
-  <div class="superior-header">
-      <div class="container">
-        <div class="position-relative">
-            <i class="fas fa-phone fa-flip-horizontal telefono"></i>
-          <div class="row">
-            <div class="col-md-12 text-right">
-              <a href="javascript:void(0)" class="enlance-superior"><strong>WhatsApp</strong> (507) 6534-8555</a>
-              <a href="javascript:void(0)" class="enlance-superior"><strong>Asistencia Contigo</strong> (507) 366-8585</a>
-              <a href="javascript:void(0)" class="enlance-superior"><strong>Buzón Contigo</strong> acliente_pa@banescoseguros.com</a>
-              <a href="javascript:void(0)" class="enlance-superior"><strong>Centro de Atención Personalizada</strong> (507) 366-8555 </a>
-            </div>
-        </div>
-      </div>
-      </div>
-    </div>
-<div class="navbar navbar-expand-md navbar-dark box-shadow">
-  <div class="container d-flex justify-content-between">
-    <a [routerLink]="['/']" class="navbar-brand d-flex align-items-center">
-      <img src="assets/img/logoo.png" alt="" class="sizeImgLogo">
-    </a>
-    <button class="navbar-toggler collapsed" (click)="toggleState()" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
-      aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-      <img src="assets/img/menu.png" alt="">
-    </button>
-    <div class="navbar-collapse collapse" id="navbarsExampleDefault" [ngClass]="{ 'collapse': isCollapse }">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item mx-2 mx-md-1">
-          <a class="nav-link ayuda" href="" [routerLink]="['/']" routerLinkActive="active">
-            ¿Necesitas ayuda?</a>
-        </li>
-        <li class="nav-item mx-2 mx-md-1">
-          <a class="nav-link" href="" [routerLink]="['/']" routerLinkActive="active"><img src="assets/img/telefono.svg" alt="" class="mr-2">
-            +507 830 0000</a>
-        </li>
-        <li class="nav-item mx-2 mx-md-1">
-            <a class="nav-link" href="" [routerLink]="['/']" routerLinkActive="active"><img src="assets/img/whatsapp.svg" alt="" class="mr-2">
+  <div class="navbar navbar-expand-md navbar-dark box-shadow">
+    <div class="container d-flex justify-content-between">
+      <a [routerLink]="['/']" class="navbar-brand d-flex align-items-center">
+        <img src="assets/img/logoo.png" alt="" class="sizeImgLogo">
+      </a>
+      <button class="navbar-toggler collapsed" (click)="toggleState()" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+        aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <img src="assets/img/menu.png" alt="">
+      </button>
+      <div class="navbar-collapse collapse" id="navbarsExampleDefault" [ngClass]="{ 'collapse': isCollapse }">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item mx-2 mx-md-1">
+            <a class="nav-link ayuda" href="" [routerLink]="['/']" routerLinkActive="active">
+              ¿Necesitas ayuda?</a>
+          </li>
+          <li class="nav-item mx-2 mx-md-1">
+            <a class="nav-link" href="" [routerLink]="['/']" routerLinkActive="active"><img src="assets/img/telefono.svg" alt="" class="mr-2">
               +507 830 0000</a>
           </li>
-        <li class="nav-item mx-2 mx-md-1">
-          <a class="nav-link" href="" [routerLink]="['/']" routerLinkActive="active"><img src="assets/img/mensaje.svg" alt="" class="mr-2">
-            acliente_pa@banescoseguros.com</a>
-        </li>
-      </ul>
+          <li class="nav-item mx-2 mx-md-1">
+              <a class="nav-link" href="" [routerLink]="['/']" routerLinkActive="active"><img src="assets/img/whatsapp.svg" alt="" class="mr-2">
+                +507 830 0000</a>
+            </li>
+          <li class="nav-item mx-2 mx-md-1">
+            <a class="nav-link" href="" [routerLink]="['/']" routerLinkActive="active"><img src="assets/img/mensaje.svg" alt="" class="mr-2">
+              acliente_pa@banescoseguros.com</a>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
-</div>
 </header>
