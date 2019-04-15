@@ -115,11 +115,9 @@
             <div class="row">
               <div class="form-group col-md-12">
                 <label for="" class="mt-4 mb-3">Nombre de la tarjeta: (*)</label>
-                <select class="form-control" [ngClass]="{'is-invalid': invalid('cardName', formaPayment), 'is-valid': valid('cardName', formaPayment)}" formControlName="cardName">
-                  <option *ngFor="let card of cards; let i=index" [value]="card.item">{{card.item}}</option>
-                </select>
+                <input class="form-control" [ngClass]="{'is-invalid': invalid('cardName', formaPayment), 'is-valid': valid('cardName', formaPayment)}" formControlName="cardName">
                 <div *ngIf="invalid('cardName', formaPayment)" class="invalid-feedback">
-                  Por favor elija la compañía a la cual pertenece su tarjeta.
+                  Por favor escriba su nombre tal cual se denota en la tarjeta.
                 </div>
                 <div *ngIf="valid('cardName', formaPayment)" class="valid-feedback">
                   ¡Excelente!

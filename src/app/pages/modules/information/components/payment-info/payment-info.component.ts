@@ -81,7 +81,7 @@ export class PaymentInfoComponent implements OnInit {
 
   public generateForm() {
     this.formaPayment = this._fb.group({
-      'cardName': this._fb.control(null, Validators.required),
+      'cardName': this._fb.control(null, [Validators.required, CustomValidatorDirective.fullNameValidator]),
       'cardNumber': this._fb.control(null, Validators.compose([Validators.required, CustomValidatorDirective.creditCardValidator])),
       'expireMonth': this._fb.control(null, [Validators.required]),
       'expireYear': this._fb.control(null, [Validators.required]),
