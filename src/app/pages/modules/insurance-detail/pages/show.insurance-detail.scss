@@ -1,0 +1,57 @@
+.fas.fa-angle-down{
+    color: #1975d1;
+    margin-right: 10px;
+}
+
+.fa-minus{
+    font-size: 9px;
+    color: #1974d1;
+}
+
+.titulo-accordion{
+    color: #1975d1;
+}
+
+.titulo{
+    font-family: Lato;
+    font-size: 28px;
+    color: #1c8464;
+    font-weight: 700;
+    text-decoration: none solid rgb(28, 132, 100);
+    margin: 20px;
+    @media(min-width: 1024px){
+        margin-left: 50px;
+    }
+}
+
+.marco-verde {
+    width: 100%;
+    height: 102px;
+    background-color: #1c8464;
+    background-size: cover;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.2);
+    h3{
+        font-size: 20px;
+        margin: 40px 0 40px 60px;
+    }
+}
+
+.fondo-blanco {
+    width: 100%;
+    background-color: #ffffff;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    table td, .table th {
+    font-size: 14px;
+    color: #556176;
+    text-decoration: none solid rgb(85, 97, 118);
+    @media (max-width: 1024px){
+        font-size: 12px;
+    }
+    }
+
+    .table th {
+    border-top: 0px solid #dee2e6;
+    font-weight: 100;
+    }
+}
