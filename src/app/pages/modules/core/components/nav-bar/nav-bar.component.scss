@@ -9,3 +9,30 @@ header {
         display: none;
     }
 }
+
+.superior-header{
+    padding: 10px 0;
+    .container{
+        @media (min-width: 1340px){
+            max-width: 1340px !important;
+        }
+        @media (min-width: 1920px){
+            max-width: 1800px!important;
+        }
+        
+    }
+    .enlance-superior{
+        font-size: 13px;
+        display: block;
+        width: 100%;
+        color: #003C71;
+        text-decoration: none;
+    }
+    .telefono{
+        position: absolute;
+        top: 5px;
+        right: 210px;
+        color: #003C71;
+        font-size: 27px;
+    }
+}
