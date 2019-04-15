@@ -15,6 +15,7 @@ import { LocationService } from './services/location.service';
 import { DependentService } from './services/dependent.service';
 import { ActivityService } from './services/activities.service';
 import { CustomValidatorDirective } from './directives/validations/custom-validations.directive';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { CustomValidatorDirective } from './directives/validations/custom-valida
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BsDropdownModule.forRoot()
   ],
   exports: [NavBarComponent, FooterComponent, FormsModule],
   providers: [
