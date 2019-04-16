@@ -16,6 +16,7 @@ import { DependentService } from './services/dependent.service';
 import { ActivityService } from './services/activities.service';
 import { CustomValidatorDirective } from './directives/validations/custom-validations.directive';
 import { BspLoaderComponent } from './components/bsp-loader/bsp-loader.component';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { BspLoaderComponent } from './components/bsp-loader/bsp-loader.component
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BsDropdownModule.forRoot()
   ],
   exports: [NavBarComponent, FooterComponent, BspLoaderComponent, FormsModule],
   providers: [

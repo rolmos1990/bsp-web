@@ -11,11 +11,4 @@ export class NavBarComponent implements OnInit {
 
   ngOnInit() {
   }
-
-  isCollapse = true;   // guardamos el valor
-  toggleState() { // manejador del evento
-      let foo = this.isCollapse;
-      this.isCollapse = foo === false ? true : false; 
-  }
-
 }

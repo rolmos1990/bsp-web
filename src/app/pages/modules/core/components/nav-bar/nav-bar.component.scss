@@ -36,3 +36,43 @@ header {
         font-size: 27px;
     }
 }
+
+.menucito-desktop{
+    display: none;
+    @media (min-width: 1024px){
+        display: block;
+    }
+}
+.menucito-movil{
+    display: block;
+    margin: 10px 0;
+        .btn-group, .btn-group-vertical {
+            position: relative;
+            display: inline-flex;
+            vertical-align: middle;
+            width: 100%;
+        }
+        
+        
+        .dropdown-menu{
+            width: 100%;
+            margin: .625rem 0 0;
+            border: 0px solid rgba(0,0,0,.15);
+            border-radius: 0;
+        }
+
+        .navbar-toggler{
+            position: absolute;
+            right: 0;;
+        }
+
+        .nav-link{
+            color: #13599e !important;
+            font-weight: 400;
+            font-size: 14px;
+        }
+    @media (min-width: 1024px){
+        display: none;
+
+    }
+}
