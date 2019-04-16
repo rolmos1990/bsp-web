@@ -11,6 +11,44 @@ label.check{
     font-weight: 100;
 }
 
+
+section.insurance-detail{
+    div.panel-heading.card-header {
+        padding: .75rem 1.25rem;
+        margin-bottom: 0;
+        background-color: #fff;
+        border-top-width: 1px;
+        border-right-width: 1px;
+        border-left-width: 1px;
+        border-style: solid;
+        border-color: #708090;
+        background-size: cover;
+        box-shadow: 0px 3px 7px rgba(0,0,0,0.4);
+    }
+    .card-body{
+        border-right-width: 1px;
+        border-bottom-width: 1px;
+        border-left-width: 1px;
+        border-color: #a5adb4;
+        background-color: #fafafa;
+        background-size: cover;
+        p{
+            font-family: Lato;
+            font-size: 16px;
+            color: #6f6f6f;
+            text-decoration: none solid rgb(58, 68, 84);
+        }
+        h5{
+            font-family: Lato;
+            font-size: 17px;
+            font-weight: bold;
+            margin-bottom: 3px;
+            color: #545454;
+            text-decoration: none solid rgb(85, 97, 118);
+        }
+    }
+}
+
 .blue{
     color: #1975d1;
 }
