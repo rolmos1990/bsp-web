@@ -55,3 +55,165 @@
     font-weight: 100;
     }
 }
+.cuadrado.top {
+  width: 368px;
+  display: block;
+  margin: 32px auto;
+  border: 2px solid #dce1e9;
+  background-size: cover;
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.5);
+}
+
+.cuadrado {
+  border: 2px solid #dce1e9;
+  background-size: cover;
+  margin-bottom: 10px;
+}
+
+.cuadrado .superior {
+  padding: 10px 0;
+}
+
+.cuadrado .inferior {
+  padding: 15px 0;
+}
+
+.ver-detalle {
+  margin: 20px 0;
+  font-size: 15.8px;
+  color: #4e74b0;
+  font-weight: bold;
+}
+
+.cuadrado .superior img {
+    width: 100px;
+    margin: 0 auto;
+    display: block;
+  }
+  
+  .xmes {
+    font-weight: bold;
+    margin: 0;
+    text-align: right;
+    color: #379074;
+  }
+  
+  .cuadrado .inferior {
+    background-color: #ebf0f5;
+    border: 1px solid #d6d6d6;
+    border-width: 0 0 1px 0;
+  }
+  
+  
+  .cuadrado .inferior h5 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #5075b1;
+  }
+  
+  .cuadrado .inferior p span {
+    color: #557ab3;
+    font-weight: bold;
+  }
+  
+  .cuadrado .inferior a {
+    color: #5075b1;
+  }
+  
+  .modal-body{
+  
+      .especial{
+          margin-top: 45px;
+      }
+  }
+  
+  
+  .modal-header{
+      border: 0;
+      padding: 1rem 1rem 0 1rem;
+  }
+  
+  .modal-body {
+    padding: 0rem 1rem 1rem;
+  }
+  
+  .modal-body img {
+    width: 140px;
+    margin: 0 auto;
+    display: block;
+  }
+  
+  .h4-verde {
+    color: #1c8464 !important;
+    margin-top: -30px;
+  }
+  
+  .card.customClass,
+  .card.customClass .card-header,
+  .panel.customClass {
+    background-color: white;
+  }
+  
+  .modal-body .row {
+    margin: 15px 0;
+  }
+  
+  .btn-primary {
+    border: 0;
+  }
+  
+  @media (max-width: 480px) {
+    .cuadrado {
+      width: 100%;
+    }
+  }
+  
+  
+  @media (max-width: 768px) {
+    h4 {
+      font-size: 20px;
+    }
+  
+    .titulo-1 {
+      font-size: 24px;
+    }
+  
+  
+    .cuadrado.top {
+      width: 368px;
+    }
+  
+    .ver-detalle {
+      border: 2px solid #d2d2d2;
+      width: 100%;
+      margin: 10px 0;
+    }
+  
+    .btn.btn-primary.solicitar {
+      margin: 10px 0;
+    }
+  
+    .titulo-condiciones {
+      margin: 20px 0 20px 10px;
+      font-size: 22px;
+    }
+  
+    .cuadrado {
+      border: 2px solid #dce1e9;
+      background-size: cover;
+      margin-bottom: 10px;
+      width: 340px;
+      margin: 0 auto 10px auto;
+    }
+  }
+  
+  @media (max-width: 1024px) {
+    .cuadrado .inferior h5 {
+      font-size: 16px;
+    }
+  
+    p {
+      font-size: 14px;
+    }
+  }
+  

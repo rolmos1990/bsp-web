@@ -199,6 +199,7 @@ export class RequestComponent implements OnInit {
       this.getDistricts(true, true);
     }
   }
+  
 
   public mainFormValidation() {
     this.percentsChecked = true;
@@ -214,6 +215,7 @@ export class RequestComponent implements OnInit {
       this.forma.get('contBuilding').setValue(payload.insuBuilding);
       this.forma.get('contNeighborhood').setValue(payload.insuNeighborhood);
       this.forma.get('contCellphone').setValue(payload.insuCellphone);
+      this.forma.get('contEconomicActivity').setValue(payload.insuOccupation);
     }
     let dependents =  this.forma.get('insuDependents') as FormArray;
     dependents.controls.forEach(dependent => {
