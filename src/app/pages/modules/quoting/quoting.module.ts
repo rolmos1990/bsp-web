@@ -6,6 +6,7 @@ import { QuotingRoutingModule } from './quoting-routing.module';
 import { ShowComponent } from './pages/show/show';
 
 import {AutocompleteLibModule} from 'angular-ng-autocomplete';
+import { CoreModule } from '../core/core.module';
 
 @NgModule({
   declarations: [ShowComponent],
@@ -14,7 +15,8 @@ import {AutocompleteLibModule} from 'angular-ng-autocomplete';
     QuotingRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    AutocompleteLibModule
+    AutocompleteLibModule,
+    CoreModule
   ]
 })
 export class QuotingModule { }

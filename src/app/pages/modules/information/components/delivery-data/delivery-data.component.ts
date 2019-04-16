@@ -13,12 +13,11 @@ export class DeliveryDataComponent implements OnInit {
   public formaDelivery: FormGroup;
   public schedules = SCHEDULES;
   @Input() requestId: string;
+  @Output() isLoading: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() success: EventEmitter<any> = new EventEmitter<any>();
-  public isLoading: boolean;
 
   constructor(private _fb: FormBuilder,
               private _paymentService: PaymentService) {
-                this.isLoading = false;
                }
 
   ngOnInit() {
@@ -62,14 +61,14 @@ export class DeliveryDataComponent implements OnInit {
     this.markAllAsTouched();
     this.validateForm();
     if (this.formaDelivery.valid) {
-      this.isLoading = true;
+      this.isLoading.emit(true);
       this._paymentService.assignDeliverInformation(this.formaDelivery.value).subscribe(
         response => {
           this.success.emit();
-          this.isLoading = false;
+          this.isLoading.emit(false);
         },
         error => {
-          this.isLoading = false;
+          this.isLoading.emit(false);
           console.log(this.formaDelivery);
         }
       )

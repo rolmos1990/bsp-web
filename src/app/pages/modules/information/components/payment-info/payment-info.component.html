@@ -105,12 +105,7 @@
           <button class="btn btn-link btn-block clearfix" accordion-heading>
             <div class="pull-left float-left" style="margin-top: 5px;">Tarjeta de crédito o débito</div>
           </button>
-          <ng-template [ngIf]="isLoading">
-            <div class="container">
-                <div class='banesco-loader'></div>
-            </div>
-          </ng-template>
-          <div *ngIf="!isLoading" class="container">
+          <div class="container">
           <p class="subtitulo">Por favor ingresa la información de tu tarjeta de crédito. Los campos denotados con un (*) son obligatorios para continuar.</p>
             <div class="row">
               <div class="form-group col-md-12">

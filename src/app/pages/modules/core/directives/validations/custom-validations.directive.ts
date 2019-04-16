@@ -12,7 +12,7 @@ export class CustomValidatorDirective {
      */
     static customEmailValidator(control: AbstractControl): ValidationErrors {
         // tslint:disable-next-line:max-line-length
-        const emailRegexp = /^([^\d\s*+@!#$%/{}[:;'"<>,.?¿`~|_^&()\\\]\-]){1,20}(([^\d\s*+!#$%/{}[:;'"<>,?¿`~|^&()\\\]]){1}([^\d\s*+@!#$%/{}[:;'"<>,.?¿`~|^&()\\\]]){1,25}){1,40}@([A-z0-9-]){1,60}(\.+[^\d\s*+@!#$%/{}[:;'"<>,.?¿`~|_^&()\\\]\-]{2,3}){1,3}$/;
+        const emailRegexp = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         if (control.value && !emailRegexp.test(control.value)) {
             return { invalidemail: true };
         }

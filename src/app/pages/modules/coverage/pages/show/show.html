@@ -5,7 +5,10 @@
       <span aria-hidden="true" style="color: #556176;">&times;</span>
     </button>
   </div>
-  <div class="modal-body">
+  <ng-template [ngIf]="isLoading">
+    <bsp-loader></bsp-loader>
+  </ng-template>
+  <div *ngIf="!isLoading" class="modal-body">
     <div class="container">
       <div class="row">
         <div class="col-md-6">
@@ -124,14 +127,12 @@
   </div>
 </ng-template>
 
-<ng-template [ngIf]="isLoading">
-  <div class="container">
-      <div class='banesco-loader'></div>
-  </div>
-</ng-template>
 <!-- Modal Términos y condiciones -->
 <ng-template #terminos let-modal>
-  <div class="modal-body">
+  <ng-template [ngIf]="isLoading">
+    <bsp-loader></bsp-loader>
+  </ng-template>
+  <div *ngIf="!isLoading" class="modal-body">
     <div class="container">
       <h4 class="titulo-modal">Términos y condiciones</h4>
       <div class="terminos">
@@ -172,7 +173,10 @@
 </ng-template>
 <!-- <button class="btn btn-lg btn-outline-primary" (click)="open(content)">Términos y condiciones</button> -->
 
-<div class="wrapper">
+<ng-template [ngIf]="isLoading">
+  <bsp-loader></bsp-loader>
+</ng-template>
+<div *ngIf="!isLoading" class="wrapper">
   <section class="cobertura">
     <div class="container">
       <div class="row">

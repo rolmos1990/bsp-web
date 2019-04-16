@@ -2,6 +2,9 @@
   <section class="quoting">
     <form action="" [formGroup]="forma">
       <div class="container">
+        <ng-template [ngIf]="isLoading">
+          <bsp-loader></bsp-loader>
+        </ng-template>
         <div class="row" [ngClass]="{'d-none': flag1 == false}">
           <div class="col-md-2">
             <!-- -->
@@ -94,11 +97,6 @@
             <!-- -->
           </div>
         </div>
-        <ng-template [ngIf]="isLoading">
-          <div class="container">
-            <div class='banesco-loader'></div>
-          </div>
-        </ng-template>
         <div *ngIf="!isLoading" class="row" [ngClass]="{'d-none': flag4 == false}">
           <div class="col-1 col-md-2">
             <button (click)="atras4()" class="btn-flecha"><i class="fas fa-angle-left"></i></button>

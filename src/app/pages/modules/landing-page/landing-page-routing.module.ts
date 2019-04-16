@@ -6,7 +6,6 @@ const routes: Routes = [
   {
     path: '',
     component: ShowLandingPage,
-    pathMatch: 'full',
     data: { title: 'Banesco Seguros' }
   }
 ];

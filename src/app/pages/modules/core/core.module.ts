@@ -15,11 +15,13 @@ import { LocationService } from './services/location.service';
 import { DependentService } from './services/dependent.service';
 import { ActivityService } from './services/activities.service';
 import { CustomValidatorDirective } from './directives/validations/custom-validations.directive';
+import { BspLoaderComponent } from './components/bsp-loader/bsp-loader.component';
 
 @NgModule({
   declarations: [
     NavBarComponent,
     FooterComponent,
+    BspLoaderComponent,
     ServiceDirective,
     CustomValidatorDirective
   ],
@@ -30,7 +32,7 @@ import { CustomValidatorDirective } from './directives/validations/custom-valida
     ReactiveFormsModule,
     HttpClientModule
   ],
-  exports: [NavBarComponent, FooterComponent, FormsModule],
+  exports: [NavBarComponent, FooterComponent, BspLoaderComponent, FormsModule],
   providers: [
     UserService,
     PaymentService,

@@ -24,7 +24,8 @@ export class RequestComponent implements OnInit {
   public documents = DOCUMENTS;
   public incomes = MONTHLYINCOME;
   public civilStatus = CIVILSTATUS;
-  public isLoading: boolean;
+  public loader = false;
+  @Output() isLoading: EventEmitter<boolean> = new EventEmitter<boolean>();
   public edit: boolean;
   public nationalities: Array<any>;
   public provinces: Array<any>;
@@ -45,11 +46,9 @@ export class RequestComponent implements OnInit {
               private _dependentService: DependentService) {
                 this.edit = false;
                 this.percentsChecked = false;
-                this.isLoading = false;
   }
 
   ngOnInit() {
-    this.isLoading = true;
     this.getProvinces();
   }
 
@@ -62,7 +61,7 @@ export class RequestComponent implements OnInit {
       },
       error => {
         console.log(error);
-        this.isLoading = false;
+        this.isLoading.emit(false);
       }
     );
   }
@@ -96,7 +95,7 @@ export class RequestComponent implements OnInit {
       },
       error => {
         console.log(error);
-        this.isLoading = false;
+        this.isLoading.emit(false);
       }
     );
   }
@@ -144,7 +143,7 @@ export class RequestComponent implements OnInit {
       },
       error => {
         console.log(error);
-        this.isLoading = false;
+        this.isLoading.emit(false);
       }
     );
   }
@@ -243,7 +242,7 @@ export class RequestComponent implements OnInit {
     window.scroll(0,0);
     this.mainFormValidation();
     if (this.forma.valid && this.isPercentValid) {
-      this.isLoading = true;
+      this.isLoading.emit(true);
       let payload = this.forma.value;
       delete payload.insuDependents;
       payload.insuOccupationTime = String(payload.insuOccupationTime);
@@ -252,14 +251,15 @@ export class RequestComponent implements OnInit {
         response => {
           if (proceed) {
             this.nextStep.emit();
+            this.isLoading.emit(false);
           }else {
-            this.isLoading = false;
+            this.isLoading.emit(false);
           }
 
         },
         error => {
           console.log(error);
-          this.isLoading = false;
+          this.isLoading.emit(false);
         }
       );
     } else {
@@ -275,7 +275,7 @@ export class RequestComponent implements OnInit {
       },
       error => {
         console.log(error);
-        this.isLoading = false;
+        this.isLoading.emit(false);
       }
     )
   }
@@ -390,16 +390,16 @@ export class RequestComponent implements OnInit {
   public getDependents() {
     this._dependentService.getDependentsByRequest(this.requestId).subscribe(
       response => {
-        this.isLoading = false;
         this.forma.setControl('insuDependents', this._fb.array([]));
         let dependents = this.forma.get('insuDependents') as FormArray;
         response.result.dependents.forEach(dependent => {
           dependents.push(this.generateDependentForm(dependent));
         });
         console.log(dependents);
+        this.isLoading.emit(false);
       },
       error => {
-        this.isLoading = false;
+        this.isLoading.emit(false);
         console.log(error);
       }
     );
@@ -413,10 +413,11 @@ export class RequestComponent implements OnInit {
   
   public createDependent(modal: any) {
 
-    this.isLoading = true;
     this.modalValidations();
 
     if (this.modalForm.valid) {
+      this.isLoading.emit(true);
+      this.loader = true;
       let payload = this.modalForm.value;
   
       if (payload.documentType === 'Pasaporte') {
@@ -444,11 +445,14 @@ export class RequestComponent implements OnInit {
         this._dependentService.updateDependent(payload).subscribe(
           response => {
             modal.dismiss('Cross click');
+            this.loader = false;
+            this.modalForm = null;
             this.getDependents();
           },
           error => {
             console.log(error);
-            this.isLoading = false;
+            this.loader = false;
+            this.isLoading.emit(false);
           }
         );
       } else {
@@ -456,12 +460,14 @@ export class RequestComponent implements OnInit {
         this._dependentService.createDependent(payload).subscribe(
           response => {
             modal.dismiss('Cross click');
+            this.loader = false;
             this.modalForm = null;
             this.getDependents();
           },
           error => {
             console.log(error);
-            this.isLoading = false;
+            this.loader = false;
+            this.isLoading.emit(false);
           }
         );
       }

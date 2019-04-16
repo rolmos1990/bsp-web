@@ -15,7 +15,7 @@ export class PaymentInfoComponent implements OnInit {
   public formaPayment: FormGroup;
   public cards = CARDNAME;
   public months = MONTHS;
-  public isLoading: boolean;
+  @Output() isLoading: EventEmitter<boolean> = new EventEmitter<boolean>();
   public years: Array<any> = [];
   @Input() requestId: string;
   @Output() nextStep: EventEmitter<any> = new EventEmitter<any>();
@@ -25,7 +25,6 @@ export class PaymentInfoComponent implements OnInit {
 
   ngOnInit() {
     window.scrollTo(0,0);
-    this.isLoading = true;
     this.generateForm();
   }
 
@@ -34,7 +33,6 @@ export class PaymentInfoComponent implements OnInit {
     for (let index = date.getFullYear(); index < (date.getFullYear() + 10); index++) {
       this.years.push(index);
     }
-    this.isLoading = false;
   }
 
   public invalid(controlName: string, form: FormGroup) {
@@ -48,7 +46,7 @@ export class PaymentInfoComponent implements OnInit {
   public assignPaymentCard() {
     this.markAllAsTouched();
     if (this.formaPayment.valid) {
-      this.isLoading = true;
+      this.isLoading.emit(true);
       let payload = this.formaPayment.value;
       payload.expireMonth = Number(payload.expireMonth);
       payload.expireYear = Number(payload.expireYear);
@@ -57,12 +55,12 @@ export class PaymentInfoComponent implements OnInit {
       this._paymentService.assignCreditcard(payload).subscribe(
         response => {
           console.log(response);
-          this.isLoading = false;
+          this.isLoading.emit(false);
           this.nextStep.emit();
         },
         error => {
           console.log(error);
-          this.isLoading = false;
+          this.isLoading.emit(false);
           this.nextStep.emit();
         }
       );

@@ -1,4 +1,4 @@
-<div class="portada-info">
+<div *ngIf="!isLoading" class="portada-info">
     <div class="texto">
         <h3>Accidentes Personales</h3>
         <h5>Obtén tu seguro en tan solo 48 horas</h5>
@@ -6,31 +6,32 @@
 </div>
 
 <!-- Padre -->
-<div class="information" [ngClass]="{'d-none': flag == true}">
-    <form [formGroup]="formulario">
-        <aw-wizard #wizard >
-            <aw-wizard-step stepTitle="Solicitud">
-                <div class="container">
-                    <!-- Componente Hijo 1-->
-                    <bsp-request (nextStep)="inicio()" [requestId]="requestId" ></bsp-request>
-                </div>
-            </aw-wizard-step>
-            <aw-wizard-step stepTitle="Datos de pago">
-                <div class="container">
-                        <!-- Componente Hijo 2-->
-                    <bsp-payment-info (nextStep)="inicio()" [requestId]="requestId" ></bsp-payment-info>
-                </div>
-            </aw-wizard-step>
-            <aw-wizard-step stepTitle="Datos de entrega">
-                <div class="container">
-                    <!-- Componente Hijo 3-->
-                    <bsp-delivery-data (success)="showSucess()" [requestId]="requestId"></bsp-delivery-data>
-                </div>
-            </aw-wizard-step>
-        </aw-wizard>
-    </form>
+<div class="information" [ngClass]="{'d-none': (flag == true) || isLoading}">
+    <aw-wizard #wizard >
+        <aw-wizard-step stepTitle="Solicitud">
+            <div class="container">
+                <!-- Componente Hijo 1-->
+                <bsp-request (nextStep)="inicio()" (isLoading)="isLoading = $event" [requestId]="requestId" ></bsp-request>
+            </div>
+        </aw-wizard-step>
+        <aw-wizard-step stepTitle="Datos de pago">
+            <div class="container">
+                    <!-- Componente Hijo 2-->
+                <bsp-payment-info (nextStep)="inicio()" (isLoading)="isLoading = $event" [requestId]="requestId" ></bsp-payment-info>
+            </div>
+        </aw-wizard-step>
+        <aw-wizard-step stepTitle="Datos de entrega">
+            <div class="container">
+                <!-- Componente Hijo 3-->
+                <bsp-delivery-data (success)="showSucess()" (isLoading)="isLoading = $event" [requestId]="requestId"></bsp-delivery-data>
+            </div>
+        </aw-wizard-step>
+    </aw-wizard>
 </div>
+<ng-template [ngIf]="isLoading">
+  <bsp-loader></bsp-loader>
+</ng-template>
 
-<div class="" [ngClass]="{'d-block': flag,'d-none': !flag}">
+<div *ngIf="!isLoading" class="" [ngClass]="{'d-block': flag,'d-none': !flag}">
     <bsp-success></bsp-success>
 </div>
