@@ -68,6 +68,26 @@ label{
     text-align: center;
 }
 
+aw-wizard-navigation-bar.horizontal.large-filled-symbols ul.steps-indicator li .step-indicator {
+    position: absolute!important;
+    top: -50px!important;
+    left: calc(50% - 50px / 2)!important;
+    width: 50px!important;
+    height: 50px!important;
+    text-align: center!important;
+    vertical-align: middle!important;
+    line-height: 50px;
+    transition: .25s;
+    border-radius: 100%;
+}
+
+@media (min-width: 992px){
+    .modal-lg, .modal-xl {
+      max-width: 706px;
+    }
+  }
+  
+
 p{
     margin-bottom: 0.3rem;
 }
