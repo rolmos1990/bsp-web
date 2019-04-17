@@ -123,7 +123,7 @@
     </div>
   </div>
   <div class="modal-footer">
-    <button class="btn btn-primary centrado" (click)="open(terminos,actualCoverage, modal)">SOLICITAR</button>
+    <button class="btn btn-primary centrado" (click)="openLg(terminos,actualCoverage, modal)">SOLICITAR</button>
   </div>
 </ng-template>
 
@@ -134,7 +134,7 @@
   </ng-template>
   <div *ngIf="!isLoading" class="modal-body terminos">
     <div class="container">
-      <h4 class="titulo-modal">Términos y condiciones</h4>
+      <h4 class="titulo-modal">Términos y condiciones de salud</h4>
       <div class="terminos">
         <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Omnis adipisci, dolorum, veniam a excepturi,
           molestiae eaque obcaecati placeat assumenda dicta facere explicabo atque.
@@ -148,27 +148,37 @@
           aspernatur nihil? Ad dignissimos magni, fugit itaque officiis,
           possimus tempore nemo dicta, iure natus at cumque. Vero dolorem natus ullam vel quae repudiandae aut enim,
           quis debitis vitae velit, recusandae saepe maxime sit distinctio
-          consequatur consequuntur dolores nisi sunt voluptatum necessitatibus. Sed nisi voluptatibus perspiciatis nam
-          eius similique, odit exercitationem, ullam dolores provident
-          deleniti ab aliquam autem deserunt. Voluptates officia error perferendis, illum labore, facere vel, dicta
-          quidem culpa a consequuntur! Minus nesciunt doloremque aspernatur
-          fuga ad similique, reiciendis cupiditate voluptate a beatae. Minima quia ducimus consequatur laudantium quos
-          quasi ab, ad quae error, rem neque, tenetur fuga deserunt sunt
-          adipisci dolore delectus necessitatibus reiciendis cupiditate eligendi facere. Laborum ipsa adipisci expedita
-          facere quasi perferendis distinctio reiciendis obcaecati porro,
-          dicta non, et voluptatum? Sed quaerat natus iure nulla, expedita dolore temporibus autem neque a aliquid
-          soluta! Voluptatum harum sunt amet vel at quae aut animi dicta
-          quia nobis unde corporis asperiores molestias, cum fuga ducimus ut debitis hic alias quaerat aliquid
-          reiciendis ipsam veritatis laudantium! Quo ea reiciendis corrupti
-          temporibus, eligendi odit explicabo perferendis cumque perspiciatis, nostrum quaerat, rem accusantium deserunt
-          aliquid fugiat labore itaque sequi! Facilis,
-          quod.</p>
+          consequatur consequuntur dolores nisi sunt voluptatum necessitatibus. </p>
+          <br>
+          <p>
+            Sed nisi voluptatibus perspiciatis nam
+            eius similique, odit exercitationem, ullam dolores provident
+            deleniti ab aliquam autem deserunt. Voluptates officia error perferendis, illum labore, facere vel, dicta
+            quidem culpa a consequuntur! Minus nesciunt doloremque aspernatur
+            fuga ad similique, reiciendis cupiditate voluptate a beatae. Minima quia ducimus consequatur laudantium quos
+            quasi ab, ad quae error, rem neque, tenetur fuga deserunt sunt
+            adipisci dolore delectus necessitatibus reiciendis cupiditate eligendi facere. Laborum ipsa adipisci expedita
+            facere quasi perferendis distinctio reiciendis obcaecati porro,
+            dicta non, et voluptatum? Sed quaerat natus iure nulla, expedita dolore temporibus autem neque a aliquid
+            soluta! Voluptatum harum sunt amet vel at quae aut animi dicta
+            quia nobis unde corporis asperiores molestias, cum fuga ducimus ut debitis hic alias quaerat aliquid
+            reiciendis ipsam veritatis laudantium! Quo ea reiciendis corrupti
+            temporibus, eligendi odit explicabo perferendis cumque perspiciatis, nostrum quaerat, rem accusantium deserunt
+            aliquid fugiat labore itaque sequi! Facilis,
+            quod.
+          </p>
       </div>
     </div>
   </div>
-  <div class="modal-footer">
-    <button class="btn btn-white W-100" (click)="reject(modal)">NO ACEPTO</button>
-    <button class="btn btn-primary W-100" (click)="createNewRequest(modal)">ACEPTO</button>
+  <div class="px-5 py-3">
+    <div class="row justify-content-between">
+      <div class="col row justify-content-center">
+          <button class="btn btn-white" (click)="reject(modal)">NO ACEPTO</button>
+      </div>
+      <div class="col row justify-content-center">
+          <button class="btn btn-primary" (click)="createNewRequest(modal)">ACEPTO</button>
+      </div>
+    </div>
   </div>
 </ng-template>
 <!-- <button class="btn btn-lg btn-outline-primary" (click)="open(content)">Términos y condiciones</button> -->
@@ -248,16 +258,16 @@
             <div class="container">
               <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
-                  <button class="btn ver-detalle" (click)="open(content, coverage)"><img src="assets/img/flechita.svg" alt=""> Ver detalles</button>
+                  <button class="btn ver-detalle" (click)="openSm(content, coverage)"><img src="assets/img/flechita.svg" alt=""> Ver detalles</button>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
-                  <button class="btn btn-primary solicitar" (click)="open(terminos,coverage)">SOLICITAR</button>
+                  <button class="btn btn-primary solicitar" (click)="openLg(terminos, coverage)">SOLICITAR</button>
                 </div>
               </div>
             </div>
           </div>
           <ng-template [ngIf]="i === 0">
-            <h4 class="recomendaciones">Otras recomendaciones para ti:</h4>
+            <h4 class="recomendaciones">Otras recomendaciones especiales para ti:</h4>
           </ng-template>
         </div>
       </div>

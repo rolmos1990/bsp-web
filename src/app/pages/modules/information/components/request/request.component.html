@@ -7,8 +7,8 @@
             contratante</div>
         </button>
         <div class="container">
-          <p class="subtitulo">Por favor completa los siguientes datos y continúa con el proceso de solicitud.</p>
-          <p class="subtitulo">Los campos denotados con un (*) son obligatorios para continuar.</p>
+          <p class="subtitulo mb-5">Por favor completa los siguientes datos y continúa con el proceso de solicitud.</p>
+          <!-- <p class="subtitulo">Los campos denotados con un (*) son obligatorios para continuar.</p> -->
           <div class="row mb-5">
               <div class="col-md-4 mb-5">
                 <label for="">¿Eres el solicitante de la póliza? (*)</label>
@@ -147,14 +147,14 @@
     <accordion>
       <!-- Segundo Formulario -->
       <accordion-group [panelClass]="customClass" [isOpen]="isFirstOpen">
-          <button class="btn btn-link btn-block clearfix" accordion-heading>
+          <button class="btn btn-link btn-block clearfix {{forma.value.insuSame ? '' : 'mb-5'}}" accordion-heading>
             <div class="pull-left float-left" style="margin-left:-15px;"><i class="fas fa-angle-down"></i> Datos del <span *ngIf="forma.value.insuSame === true">contratante y</span> solicitante como asegurado principal</div>
           </button>
           <div class="container">
-            <p class="subtitulo" *ngIf="forma.value.insuSame === true">
+            <p class="subtitulo mb-5" *ngIf="forma.value.insuSame === true">
               Por favor completa los siguientes datos y continúa con el proceso de solicitud. 
             </p>
-            <p class="subtitulo">Los campos denotados con un (*) son obligatorios para continuar.</p>
+            <!-- <p class="subtitulo">Los campos denotados con un (*) son obligatorios para continuar.</p> -->
               <div class="row mb-5">
                 <div *ngIf="forma.value.insuSame === true" class="col-md-6 col-lg-4 mb-5">
                   <label for="">¿Eres el solicitante de la póliza? (*)</label>

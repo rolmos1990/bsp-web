@@ -16,23 +16,33 @@ export class ShowComponent implements OnInit {
   public actualCoverage: any;
   public isLoading: boolean;
 
+  customClass: string = 'customClass';
+  isFirstOpen = true;
+
   constructor(private modalService: NgbModal, private _coverageService: CoverageService, private _newrequestService: RequestService,
       private _router: Router, private _route: ActivatedRoute) {
   }
 
 
-  open(content, insurance, mod?) {
+  openSm(content, insurance, mod?) {
     if (mod) {
       mod.dismiss('Cross click');
     } else {
     this.actualCoverage = insurance;
     this.insuranceId = insurance.id;
     }
-    this.modalService.open(content, {centered: true});
+    this.modalService.open(content, {centered: true, size: 'sm'});
   }
 
-  customClass: string = 'customClass';
-  isFirstOpen = true;
+  openLg(content, insurance, mod?) {
+    if (mod) {
+      mod.dismiss('Cross click');
+    } else {
+    this.actualCoverage = insurance;
+    this.insuranceId = insurance.id;
+    }
+    this.modalService.open(content, {centered: true, size: 'lg'});
+  }
 
   ngOnInit() {
     this.isLoading = true;
