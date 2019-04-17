@@ -132,7 +132,7 @@
   <ng-template [ngIf]="isLoading">
     <bsp-loader></bsp-loader>
   </ng-template>
-  <div *ngIf="!isLoading" class="modal-body">
+  <div *ngIf="!isLoading" class="modal-body terminos">
     <div class="container">
       <h4 class="titulo-modal">Términos y condiciones</h4>
       <div class="terminos">
@@ -192,7 +192,7 @@
               <div class="container">
                 <div class="row">
                   <div class="col-md-12">
-                      <h4 class="xmes">${{coverage.coverageDetail.monthlyPrime}} x mes</h4>
+                      <h4 class="xmes">${{coverage.coverageDetail.monthlyPrime}}</h4>
                   </div>
                 </div>
                   <div class="row">
@@ -257,7 +257,7 @@
             </div>
           </div>
           <ng-template [ngIf]="i === 0">
-            <h3 class="color-gray text-left">Otras recomendaciones para ti:</h3>
+            <h4 class="recomendaciones">Otras recomendaciones para ti:</h4>
           </ng-template>
         </div>
       </div>
