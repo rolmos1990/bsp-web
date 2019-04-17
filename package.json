@@ -5,6 +5,8 @@
     "ng": "ng",
     "start": "ng serve --o --port=4201",
     "build": "ng build --configuration=production",
+		"buildDev": "ng build --configuration=develop",
+		"buildQA": "ng build --configuration=qa",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"

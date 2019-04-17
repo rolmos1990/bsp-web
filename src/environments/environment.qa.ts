@@ -4,10 +4,10 @@
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 
 export const environment = {
-  production: false,
-  type: 'develop',
-  baseUrl: 'https://bsp-api.azurewebsites.net/parse/functions/',
-  webUrl: 'https://banesco-seguros-dev.azurewebsites.net/',
-  paseApplicationId: 'myappid',
-  contentType: 'application/json'
-};
+    production: false,
+    type: 'qa',
+    baseUrl: 'https://bsp-api-qa.azurewebsites.net/parse/functions/',
+    webUrl: 'https://banesco-seguros-qa.azurewebsites.net/',
+    paseApplicationId: 'BSPAPQA',
+    contentType: 'application/json'
+  };
