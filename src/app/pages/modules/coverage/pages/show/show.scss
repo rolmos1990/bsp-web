@@ -4,7 +4,7 @@ button {
 
 @media (min-width: 1200px){
   .container {
-    max-width: 1300px;
+    max-width: 1270px;
   }
 
   .cober{
@@ -131,7 +131,7 @@ header {
 
 
 .titulo-condiciones {
-  margin: 20px 0 30px 100px;
+  margin: 20px 0 30px 20px;
   font-family: Lato;
   font-size: 28px;
   color: #1c8464;
@@ -294,7 +294,9 @@ i.fas.fa-angle-down {
   .ver-detalle {
     border: 2px solid #d2d2d2;
     width: 100%;
-    margin: 10px 0;
+    margin: 10px 0 0 0;
+    font-size: 16px;
+    padding: 10px 0;
   }
 
   .btn.btn-primary.solicitar {
@@ -307,15 +309,20 @@ i.fas.fa-angle-down {
   }
 
   .cuadrado {
-    border: 2px solid #dce1e9;
-    background-size: cover;
-    margin-bottom: 10px;
     width: 340px;
-    margin: 0 auto 10px auto;
   }
 }
 
 @media (max-width: 1024px) {
+  .cuadrado {
+    width: auto;
+  }
+
+  .ver-detalle{
+    font-size: 14px;
+    padding: 0;
+  }
+
   .cuadrado .inferior h5 {
     font-size: 16px;
   }
