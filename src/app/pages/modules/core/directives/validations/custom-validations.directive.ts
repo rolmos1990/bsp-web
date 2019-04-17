@@ -34,8 +34,9 @@ export class CustomValidatorDirective {
      * @param control FormControl to evaluate.
      */
     static documentValidator(control: AbstractControl): ValidationErrors {
+        const passport = /^(?!^0+$)[a-zA-Z0-9]{3,20}$/g;
         const document = /^P$|^(?:PE|E|N|[23456789]|[23456789](?:A|P)?|1[0123]?|1[0123]?(?:A|P)?)$|^(?:PE|E|N|[23456789]|[23456789](?:AV|PI)?|1[0123]?|1[0123]?(?:AV|PI)?)-?$|^(?:PE|E|N|[23456789](?:AV|PI)?|1[0123]?(?:AV|PI)?)-(?:\d{1,4})-?$|^(PE|E|N|[23456789](?:AV|PI)?|1[0123]?(?:AV|PI)?)-(\d{1,4})-(\d{1,6})$/i;
-        if (control.value && !document.test(control.value)) {
+        if (!document.test(control.value) && !passport.test(control.value) && control.value) {
             return { invalidDocument: true };
         }
     }

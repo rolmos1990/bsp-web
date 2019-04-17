@@ -1,6 +1,6 @@
 <div class="wrapper">
   <section class="quoting">
-    <form action="" [formGroup]="forma">
+    <form [formGroup]="forma">
       <div class="container">
         <ng-template [ngIf]="isLoading">
           <bsp-loader></bsp-loader>
@@ -24,7 +24,7 @@
               <div *ngIf="valid('document', forma)" class="valid-feedback">
                 ¡Excelente!
               </div>
-              <button [disabled]="forma.controls['document'].invalid" class="btn btn-primary my-5 "
+              <button type="submit" [disabled]="forma.controls['document'].invalid || flag1 == false" class="btn btn-primary my-5 "
                 (click)="hide1()">SIGUIENTE</button>
             </div>
           </div>
@@ -61,7 +61,7 @@
               <div class="invalid-feedback" *ngIf="forma.get('occupationId').errors && forma.get('occupationId').dirty">
                 <p *ngIf="forma.get('occupationId').hasError('required')">* Campo requerido</p>
               </div>
-              <button [disabled]="forma.controls['occupationId'].invalid" class="btn btn-primary my-5"
+              <button type="submit" [disabled]="forma.controls['occupationId'].invalid || flag2 == false" class="btn btn-primary my-5"
                 (click)="hide2()">SIGUIENTE</button>
             </div>
           </div>
@@ -89,7 +89,7 @@
               <div *ngIf="valid('age', forma)" class="valid-feedback">
                 ¡Excelente!
               </div>
-              <button [disabled]="forma.controls['age'].invalid" class="btn btn-primary my-5"
+              <button type="submit" [disabled]="forma.controls['age'].invalid || flag3 == false" class="btn btn-primary my-5"
                 (click)="hide3()">SIGUIENTE</button>
             </div>
           </div>
@@ -115,7 +115,7 @@
               <div *ngIf="valid('email', forma)" class="valid-feedback">
                 ¡Excelente!
               </div>
-              <button [disabled]="forma.controls['email'].invalid" class="btn btn-primary my-5"
+              <button type="submit" [disabled]="forma.controls['email'].invalid || flag4 == false" class="btn btn-primary my-5"
                 (click)="submit()">COTIZAR</button>
             </div>
           </div>
