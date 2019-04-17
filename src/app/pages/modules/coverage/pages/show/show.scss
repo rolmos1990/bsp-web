@@ -17,8 +17,9 @@ h4 {
 }
 
 .recomendaciones{
+  font-size: 22px;
   color: #556176;
-  text-align: left;
+  text-decoration: none solid rgb(85, 97, 118);
   margin-bottom: 30px;
 }
 
@@ -41,6 +42,12 @@ ul{
     font-size: 24px;
     color: #1c8464;
     text-decoration: none solid rgb(28, 132, 100);
+    margin-top: -50px;
+  }
+  .modall{
+    h4{
+      font-size: 20px;
+    }
   }
   font-size: 20px;
   color: #556176;
@@ -56,7 +63,7 @@ h4.titulo-modal {
 
 .modal-footer .btn-primary,
 .modal-footer .btn-white {
-  width: 220px;
+  width: 233px;
   margin: 0;
 }
 
