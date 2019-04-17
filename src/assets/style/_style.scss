@@ -1,27 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Lato:300i,400,400i,700,900');
 
-body,.main{
-	margin: 0;
-	padding: 0;
-    font-family: 'Lato', sans-serif;
-    height: -webkit-fill-available !important;
-}
-
-header{
-	background: white!important;
-}
-
 /* Header Menú de Navegación */
 
 .item_contact{
 	color: #13599e;
 	font-size: 16px;
 	padding: .4rem 0.25rem;
-}
-
-.wrapper{
-	position: relative;
-	min-height: 100%;
 }
 
 /* Page Header */
@@ -32,9 +16,6 @@ header{
 	background-repeat: no-repeat;
 }
 
-h1{
-	font-weight: 700;
-}
 
 .navbar-expand-md .navbar-nav .dropdown-menu{
 	max-height: 80px!important;

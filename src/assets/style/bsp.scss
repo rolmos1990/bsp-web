@@ -2,11 +2,17 @@
 @import './responsive';
 @import './style';
 
-body,.main{
+body{
 	margin: 0;
 	padding: 0;
     font-family: 'Lato', sans-serif;
-    height: -webkit-fill-available !important;
+    height: 100%;
+    overflow-x: hidden;
+}
+
+.main{
+    min-height: 100%;
+    height: 100%;
 }
 .titulo-accordion{
     font-family: 'Lato', sans-serif;
