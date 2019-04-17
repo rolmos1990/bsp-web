@@ -241,7 +241,6 @@ export class RequestComponent implements OnInit {
   }
 
   public saveRequest(proceed: boolean) {
-    window.scroll(0,0);
     this.mainFormValidation();
     if (this.forma.valid && this.isPercentValid) {
       this.isLoading.emit(true);
@@ -252,6 +251,7 @@ export class RequestComponent implements OnInit {
       this._requestService.saveRequest(payload).subscribe(
         response => {
           if (proceed) {
+            window.scroll(0, 0);
             this.nextStep.emit();
             this.isLoading.emit(false);
           }else {

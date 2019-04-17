@@ -2,6 +2,16 @@ button {
   font-family: 'Lato', sans-serif !important;
 }
 
+@media (min-width: 1200px){
+  .container {
+    max-width: 1300px;
+  }
+
+  .cober{
+    max-width: 1100px;
+  }
+}
+
 p {
   margin: 0;
   padding: 0;
@@ -168,7 +178,8 @@ i.fas.fa-angle-down {
 .cuadrado {
   border: 2px solid #dce1e9;
   background-size: cover;
-  margin-bottom: 10px;
+  width: 367px;
+  margin: 0 auto 10px auto;
 }
 
 .cuadrado .superior {

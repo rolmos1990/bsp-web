@@ -19,14 +19,14 @@
                 </div>
         
                 <label for="" class="my-3 d-block">Fecha de vencimiento:</label>
-                <select name="" id="" class="form-control beta" formControlName="expireMonth">
+                <select name="" id="" class="form-control inter" formControlName="expireMonth">
                   <option value="01">01</option>
                   <option value="02">02</option>
                 </select>
                 <div class="error" *ngIf="formaPayment.get('expireMonth').hasError('required') && formaPayment.get('expireMonth').dirty">
                   Día de vencimiento requerido (*)
                 </div>
-                <select name="" id="" class="form-control beta ml-4" formControlName="expireYear">
+                <select name="" id="" class="form-control inter ml-4" formControlName="expireYear">
                   <option value="2019">2019</option>
                   <option value="2018">2018</option>
                 </select>
@@ -68,11 +68,11 @@
                 <input type="text" class="form-control" formControlName="cardNumber">
         
                 <label for="" class="my-3 d-block">Fecha de vencimiento:</label>
-                <select name="" id="" class="form-control beta" formControlName="expireMonth">
+                <select name="" id="" class="form-control inter" formControlName="expireMonth">
                   <option value="01">01</option>
                   <option value="02">02</option>
                 </select>
-                <select name="" id="" class="form-control beta ml-4" formControlName="expireYear">
+                <select name="" id="" class="form-control inter ml-4" formControlName="expireYear">
                   <option value="2019">2019</option>
                   <option value="2018">2018</option>
                 </select>
@@ -131,8 +131,8 @@
               <div class="form-group col-md-12">
                 <label for="" class="my-3 d-block">Fecha de vencimiento: (*)</label>
                 <div class="row">
-                  <div class="form-group col-md-6">
-                    <select class="form-control" [ngClass]="{'is-invalid': invalid('expireMonth', formaPayment), 'is-valid': valid('expireMonth', formaPayment)}" formControlName="expireMonth">
+                  <div class="form-group col-6 col-sm- 6 col-md-6 col-lg-6 ">
+                    <select class="form-control reducido" [ngClass]="{'is-invalid': invalid('expireMonth', formaPayment), 'is-valid': valid('expireMonth', formaPayment)}" formControlName="expireMonth">
                       <option *ngFor="let month of months; let i=index" [value]="month.id">{{month.id}}</option>
                     </select>
                     <div *ngIf="invalid('expireMonth', formaPayment)" class="invalid-feedback">
@@ -142,8 +142,8 @@
                       ¡Excelente!
                     </div>
                   </div>
-                  <div class="form-group col-md-6">
-                    <select class="form-control" [ngClass]="{'is-invalid': invalid('expireYear', formaPayment), 'is-valid': valid('expireYear', formaPayment)}" formControlName="expireYear">
+                  <div class="form-group col-6 col-sm- 6 col-md-6 col-lg-6">
+                    <select class="form-control reducido" [ngClass]="{'is-invalid': invalid('expireYear', formaPayment), 'is-valid': valid('expireYear', formaPayment)}" formControlName="expireYear">
                       <option *ngFor="let year of years; let i=index" [value]="year">{{year}}</option>
                     </select>
                     <div *ngIf="invalid('expireYear', formaPayment)" class="invalid-feedback">
@@ -156,7 +156,7 @@
                 </div>
               </div>
               <div class="form-group col-md-12">
-                <label for="" class="my-3 d-block">CVV (*)<i class="fas fa-info-circle" style="color:#4e74b0;"></i></label>
+                <label for="" class="my-3 d-block">CVV (*) <i class="fas fa-info-circle" style="color:#4e74b0;"></i></label>
                 <input type="text" class="form-control cvv" [ngClass]="{'is-invalid': invalid('cvv', formaPayment), 'is-valid': valid('cvv', formaPayment)}" formControlName="cvv">
                 <div *ngIf="invalid('cvv', formaPayment)" class="invalid-feedback">
                   Por favor introduzca un código de seguridad válido, entre 3 y 4 dígitos.
@@ -172,7 +172,7 @@
   </form>
   <div class="row">
     <div class="col-md-12 text-center">
-        <button class="btn btn-primary mb-2 mb-md-0 solicitar" (click)="assignPaymentCard()" >CONTINUAR</button>
+        <button class="btn-primary solicitar" (click)="assignPaymentCard()" >CONTINUAR</button>
     </div>
   </div>
 </section>
@@ -191,11 +191,11 @@
             <input type="text" class="form-control" formControlName="cardNumber">
     
             <label for="" class="my-3 d-block">Fecha de vencimiento:</label>
-            <select name="" id="" class="form-control beta" formControlName="expireMonth">
+            <select name="" id="" class="form-control inter" formControlName="expireMonth">
               <option value="01">01</option>
               <option value="02">02</option>
             </select>
-            <select name="" id="" class="form-control beta ml-4" formControlName="expireYear">
+            <select name="" id="" class="form-control inter ml-4" formControlName="expireYear">
               <option value="2019">2019</option>
               <option value="2018">2018</option>
             </select>

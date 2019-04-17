@@ -3,39 +3,38 @@
 @import './style';
 
 .titulo-accordion{
-font-family: Lato;
-font-size: 20px;
-color: #556176;
-font-weight: 700;
-text-decoration: none solid rgb(85, 97, 118);
+    font-family: 'Lato', sans-serif;
+    font-size: 20px;
+    color: #556176;
+    font-weight: 700;
+    text-decoration: none solid rgb(85, 97, 118);
 }
 
 .subtitulo-azul-accordion{
-font-family: Lato;
-font-size: 16px;
-color: #13599e;
-text-decoration: none solid rgb(19, 89, 158);
+    font-family: 'Lato', sans-serif;
+    font-size: 16px;
+    color: #13599e;
+    text-decoration: none solid rgb(19, 89, 158);
 }
 
 label{
-font-family: Lato;
-font-size: 16px;
-color: #556176;
-text-decoration: none solid rgb(85, 97, 118);
-    @media(max-width: 1024px){
-        font-size: 14px;
-    }
+    font-family: 'Lato', sans-serif;
+    font-size: 16px;
+    color: #556176;
+    text-decoration: none solid rgb(85, 97, 118);
+        @media(max-width: 1024px){
+            font-size: 14px;
+        }
 }
 
 .form-control{
-padding: 0px 10px;
-border: 1px solid #c8c8c8;
-border-radius: 2px;
-background-color: #ffffff;
-font-family: Lato;
-font-size: 16px;
-color: #a5adb4;
-text-decoration: none solid rgb(165, 173, 180);
+    padding: 0px 10px;
+    border: 1px solid #c8c8c8;
+    border-radius: 2px;
+    background-color: #ffffff;
+    font-family: 'Lato', sans-serif;
+    color: #616161;
+    text-decoration: none solid rgb(165, 173, 180);
 }
 
 .btn-primary{
@@ -77,16 +76,24 @@ p{
     padding: .75rem .35rem;
 }
 
-p.subtitulo{
-    font-size: 16px;
-}
+p.subtitulo {
+    color: #13599e;
+    text-decoration: none solid rgb(19, 89, 158);
+  }
 
 .pull-left{
     font-size: 20px;
 }
 
 input, select{
-    color: #a5adb4!important;
+    color: #556176!important;
+}
+
+::placeholder{ 
+	color: #a5adb4!important; 
+	::-webkit-input-placeholder { color: #a5adb4; } /* WebKit */
+	::-moz-placeholder { color: #a5adb4; } /* Firefox 19+ */
+	:-ms-input-placeholder { color: #a5adb4; } /* IE 10+ */
 }
 
 @media (max-width: 1024px){
