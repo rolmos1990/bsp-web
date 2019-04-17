@@ -31,7 +31,7 @@ export class ShowComponent implements OnInit {
     this.actualCoverage = insurance;
     this.insuranceId = insurance.id;
     }
-    this.modalService.open(content, {centered: true, size: 'sm'});
+    this.modalService.open(content, {centered: true});
   }
 
   openLg(content, insurance, mod?) {
