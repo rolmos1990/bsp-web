@@ -36,8 +36,8 @@ export class ShowComponent implements OnInit {
       this.isLoading = true;
       this._userService.createUser(this.forma.value).subscribe(
         response => {
-          this.isLoading = false;
           this._router.navigate(['coverage', response.result.user.id]);
+          this.isLoading = false;
           console.log(response);
         }, error => {
           console.error(error);

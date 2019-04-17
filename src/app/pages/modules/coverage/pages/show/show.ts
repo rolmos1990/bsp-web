@@ -72,8 +72,8 @@ export class ShowComponent implements OnInit {
     this._newrequestService.createNewRequest(this.insuranceId, this._route.snapshot.paramMap.get('userId')).subscribe(
       response => {
         modal.dismiss('Cross click');
-        this.isLoading = false;
         this._router.navigate(['information', response.result.request.id]);
+        this.isLoading = false;
       }, error => {
         console.error(error)
       }

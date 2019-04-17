@@ -55,13 +55,12 @@ export class PaymentInfoComponent implements OnInit {
       this._paymentService.assignCreditcard(payload).subscribe(
         response => {
           console.log(response);
-          this.isLoading.emit(false);
           this.nextStep.emit();
+          this.isLoading.emit(false);
         },
         error => {
           console.log(error);
           this.isLoading.emit(false);
-          this.nextStep.emit();
         }
       );
     } else {

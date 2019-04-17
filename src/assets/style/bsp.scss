@@ -2,6 +2,12 @@
 @import './responsive';
 @import './style';
 
+body,.main{
+	margin: 0;
+	padding: 0;
+    font-family: 'Lato', sans-serif;
+    height: -webkit-fill-available !important;
+}
 .titulo-accordion{
     font-family: 'Lato', sans-serif;
     font-size: 20px;
