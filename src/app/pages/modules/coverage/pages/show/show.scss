@@ -34,13 +34,29 @@ h4 {
   margin-bottom: 30px;
 }
 
+.contenedor{
+  margin: 40px 0 100px 0;
+}
+
 strong{
   color: #6a7988;
 }
 
+.lix{
+  font-size: 20px;
+  color: #1975d1;
+  text-decoration: none solid rgb(25, 117, 209);
+  line-height: 24px;
+  font-weight: 400;
+}
+
 ul{
   li{
-    margin: 10px 0;
+    margin: 5px 0;
+    font-size: 16px;
+    color: #556176;
+    text-decoration: none solid rgb(85, 97, 118);
+    line-height: 24px;
   }
 }
 
@@ -132,7 +148,7 @@ header {
 
 
 .titulo-condiciones {
-  margin: 20px 0 30px 20px;
+  margin: 20px 0 40px 20px;
   font-family: Lato;
   font-size: 28px;
   color: #1c8464;
@@ -160,11 +176,18 @@ i.fas.fa-angle-down {
 }
 
 .titulo-1 {
-  text-align: center;
-  margin: 16px 0 4px 0;
-  font-weight: bold;
+  font-size: 32px;
   color: #1c8464;
-  font-size: 24px
+  font-weight: 700;
+  text-decoration: none solid rgb(28, 132, 100);
+  text-align: center;
+  margin: 30px 0 20px 0;
+}
+
+.subtitulo{
+  text-align: center;
+  color: #556176;
+  font-size: 20px;
 }
 
 .cuadrado.top {
@@ -208,6 +231,14 @@ i.fas.fa-angle-down {
   margin: 0;
   text-align: right;
   color: #379074;
+  font-size: 20px;
+}
+
+.mt-40{
+  margin-top: 0px;
+  @media (min-width: 1024px){
+    margin-top: 40px;
+  }
 }
 
 .cuadrado .inferior {
@@ -216,11 +247,17 @@ i.fas.fa-angle-down {
   border-width: 0 0 1px 0;
 }
 
+.sombra{
+border: 1px solid #c8c8c8;
+box-shadow: 0px 1px 2px 3px rgba(0,0,0,0.2);
+}
+
 
 .cuadrado .inferior h5 {
   font-size: 14px;
+  color: #1c8464;
   font-weight: 700;
-  color: #5075b1;
+  text-decoration: none solid rgb(28, 132, 100);
 }
 
 .cuadrado .inferior p span {

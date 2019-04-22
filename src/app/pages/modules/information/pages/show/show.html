@@ -7,20 +7,20 @@
 
 <!-- Padre -->
 <div class="information" [ngClass]="{'d-none': (flag == true) || isLoading}">
-    <aw-wizard #wizard >
-        <aw-wizard-step stepTitle="Solicitud">
+    <aw-wizard #wizard [navBarLayout]="'large-filled-symbols'">
+        <aw-wizard-step stepTitle="Solicitud" [navigationSymbol]="{ symbol: '1' }">
             <div class="container">
                 <!-- Componente Hijo 1-->
-                <bsp-request (nextStep)="inicio()" (isLoading)="isLoading = $event" [requestId]="requestId" ></bsp-request>
+                <bsp-request (nextStep)="inicio()" (isLoading)="isLoading = $event" [requestId]="requestId"></bsp-request>
             </div>
         </aw-wizard-step>
-        <aw-wizard-step stepTitle="Datos de pago">
+        <aw-wizard-step stepTitle="Datos de pago" [navigationSymbol]="{ symbol: '2' }">
             <div class="container">
                     <!-- Componente Hijo 2-->
                 <bsp-payment-info (nextStep)="inicio()" (isLoading)="isLoading = $event" [requestId]="requestId" ></bsp-payment-info>
             </div>
         </aw-wizard-step>
-        <aw-wizard-step stepTitle="Datos de entrega">
+        <aw-wizard-step stepTitle="Datos de entrega" [navigationSymbol]="{ symbol: '3' }">
             <div class="container">
                 <!-- Componente Hijo 3-->
                 <bsp-delivery-data (success)="showSucess()" (isLoading)="isLoading = $event" [requestId]="requestId"></bsp-delivery-data>

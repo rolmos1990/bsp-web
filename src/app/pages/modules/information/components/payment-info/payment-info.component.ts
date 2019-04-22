@@ -14,6 +14,7 @@ export class PaymentInfoComponent implements OnInit {
   public customClass: string = 'customClass';
   public formaPayment: FormGroup;
   public cards = CARDNAME;
+  public disabled = false;
   public months = MONTHS;
   @Output() isLoading: EventEmitter<boolean> = new EventEmitter<boolean>();
   public years: Array<any> = [];
@@ -42,6 +43,7 @@ export class PaymentInfoComponent implements OnInit {
   public valid(controlName: string, form: FormGroup) {
     return form.get(controlName).touched && form.get(controlName).valid;
   }
+
 
   public assignPaymentCard() {
     this.markAllAsTouched();

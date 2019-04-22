@@ -23,7 +23,8 @@ export class ShowComponent implements OnInit {
       document: ['', Validators.compose([Validators.required, CustomValidatorDirective.documentValidator])],
       occupationId: ['', Validators.compose([Validators.required, Validators.minLength(5)])],
       age: ['', Validators.compose([Validators.required, Validators.maxLength(2), Validators.min(18), Validators.max(70)])],
-      email: ['', Validators.compose([Validators.required, CustomValidatorDirective.customEmailValidator])]
+      email: ['', Validators.compose([Validators.required, CustomValidatorDirective.customEmailValidator])],
+      insurance: ['']
     });
     this.isLoading = false;
   }
@@ -68,6 +69,7 @@ export class ShowComponent implements OnInit {
   flag2: boolean = false;
   flag3: boolean = false;
   flag4: boolean = false;
+  flag5: boolean = false;
 
   public hide1(): void {
     this.flag1 = false;
@@ -84,6 +86,11 @@ export class ShowComponent implements OnInit {
     this.flag4 = true;
   }
 
+  public hide4(): void {
+    this.flag4 = false;
+    this.flag5 = true;
+  }
+
   atras2(): void {
     this.flag2 = false;
     this.flag1 = true;
@@ -97,6 +104,11 @@ export class ShowComponent implements OnInit {
   atras4(): void {
     this.flag4 = false;
     this.flag3 = true;
+  }
+
+  atras4(): void {
+    this.flag5 = false;
+    this.flag4 = true;
   }
 
 }

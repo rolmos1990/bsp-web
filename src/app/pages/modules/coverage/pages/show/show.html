@@ -172,10 +172,10 @@
   </div>
   <div class="px-5 py-3">
     <div class="row justify-content-between">
-      <div class="col row justify-content-center">
+      <div class="col row justify-content-center my-2">
           <button class="btn btn-white" (click)="reject(modal)">CANCELAR</button>
       </div>
-      <div class="col row justify-content-center">
+      <div class="col row justify-content-center my-2">
           <button class="btn btn-primary" (click)="createNewRequest(modal)">ACEPTO</button>
       </div>
     </div>
@@ -189,25 +189,25 @@
 <div *ngIf="!isLoading" class="wrapper">
   <section class="cobertura">
     <div class="container">
-      <div class="row">
-        <div *ngFor="let coverage of coverages; let i = index;" class="{{i === 0 ? 'col-md-12' : 'col-md-6 col-lg-4'}}">
-          <ng-template [ngIf]="i === 0">
-            <h3 class="titulo-1">¡Coberturas que se adaptan a ti!</h3>
-            <h4 class="color-gray text-center">Te ofrecemos flexibilidad y precios accesibles en nuestras coberturas</h4>
-          </ng-template>
-
-          <div class="cuadrado {{i === 0 ? 'top' : ''}}">
-
+        <div class="centrado">
+            <h3 class="titulo-1">¡Coberturas flexibles!</h3>
+            <h4 class="subtitulo">Nuestra recomendación que más se adapta a lo que buscas:</h4>
+        </div>
+      <div class="row contenedor">
+        <div *ngFor="let coverage of coverages; let i = index;" class="{{i === 0 ? 'd-none' : 'col-md-6 col-lg-4'}}">
+          <div class="cuadrado {{ i === 1 || i===3 ? 'mt-40' : 'sombra'}}">
             <div class="superior">
               <div class="container">
                 <div class="row">
                   <div class="col-md-12">
-                      <h4 class="xmes">${{coverage.coverageDetail.monthlyPrime}}</h4>
+                      <h4 class="xmes">Precio: ${{coverage.coverageDetail.monthlyPrime}}</h4>
                   </div>
                 </div>
                   <div class="row">
                       <div class="col-md-12">
-                        <img src="assets/img/icono1.png" alt="" class="">
+                          <img *ngIf="i === 1" src="https://res.cloudinary.com/merchanj/image/upload/v1555549470/banesco/icono3.png" alt="" class="">
+                          <img *ngIf="i === 2" src="https://res.cloudinary.com/merchanj/image/upload/v1555549469/banesco/icono1.png" alt="" class="">
+                          <img *ngIf="i === 3" src="https://res.cloudinary.com/merchanj/image/upload/v1555549470/banesco/icono2.png" alt="" class="">
                       </div>
                   </div>
               </div>
@@ -234,14 +234,14 @@
                         </p>
                         <p>Incapacidad profesional u Ocupacional:
                           <span>
-                             {{ coverage.coverageDetail.professionalInhability !== undefined  &&
+                            {{ coverage.coverageDetail.professionalInhability !== undefined  &&
                                 coverage.coverageDetail.professionalInhability !== null ?
                                 ('$' + coverage.coverageDetail.professionalInhability) : 'N/A' }}
                           </span>
                         </p>
                         <p>Gastos médicos: 
                           <span>
-                             {{ coverage.coverageDetail.medicalExpenses !== undefined  &&
+                            {{ coverage.coverageDetail.medicalExpenses !== undefined  &&
                                 coverage.coverageDetail.medicalExpenses !== null ?
                                 ('$' + coverage.coverageDetail.medicalExpenses) : 'N/A' }}
                           </span>
@@ -266,9 +266,6 @@
               </div>
             </div>
           </div>
-          <ng-template [ngIf]="i === 0">
-            <p class="recomendaciones">Otras recomendaciones especiales para ti:</p>
-          </ng-template>
         </div>
       </div>
     </div>
@@ -282,12 +279,14 @@
         <accordion>
           <accordion-group [panelClass]="customClass" [isOpen]="isFirstOpen">
               <button class="btn btn-link btn-block clearfix" accordion-heading>
-                <div class="pull-left float-left blue"><i class="fas fa-angle-down"></i> ¿Qué ventajas tiene?</div>
+                <div class="pull-left float-left lix"><i class="fas fa-angle-down"></i> ¿Qué ventajas tiene?</div>
               </button>
               <ul>
-                <li>Puedes (el cliente) decidir si las coberturas te amparan 24/7 o bien por un período de 12h continuas durante la vigencia anual del producto (cobertura total o vida profesional).</li>
-                <li>Puedes (el cliente) estar cubierto por esta póliza 24h durante todo el año EN CUALQUIER PARTE DEL MUNDO!.</li>
-                <li>Nuestro producto cuenta con asistencia médica, servicio de ambulancia por alguna emergencia médica y servicio de asistencia en viajes.</li>
+                <li>El Asegurado tiene la opción de seleccionar el tipo de cobertura (total o vida profesional).</li>
+                <li>Alta cobertura a bajo costo.</li>
+                <li>Fácil y rápida contratación.</li>
+                <li>Tarifas diseñadas de acuerdo a la actividad laboral y a la medida de sus posibilidades.</li>
+                <li>Facilidades de pago mediante sus tarjeta de crédito o ACH (cuenta corriente o de ahorros).</li>
               </ul>
           </accordion-group>
         </accordion>
@@ -295,7 +294,7 @@
         <accordion>
           <accordion-group [panelClass]="customClass">
               <button class="btn btn-link btn-block clearfix" accordion-heading>
-                <div class="pull-left float-left blue"><i class="fas fa-angle-down"></i> ¿Qué no cubre?</div>
+                <div class="pull-left float-left lix"><i class="fas fa-angle-down"></i> ¿Qué no cubre?</div>
               </button>
               <ul>
                 <li>Ninguna enfermedad corporal, mental o el agravamiento de la misma, tampoco sus tratamientos médicos o quirúrgicos que no se deriven de un accidente del asegurado.</li>
@@ -315,7 +314,7 @@
         <accordion>
           <accordion-group [panelClass]="customClass">
               <button class="btn btn-link btn-block clearfix" accordion-heading>
-                <div class="pull-left float-left blue"><i class="fas fa-angle-down"></i> ¿Quién puede asegurarse?</div>
+                <div class="pull-left float-left lix"><i class="fas fa-angle-down"></i> ¿Quién puede asegurarse?</div>
               </button>
               <ul>
                 <li>Cualquier persona nacional o extranjera que resida en la República de Panamá, que tenga buena condición de salud, con edad entre dieciocho (18) y setenta (70) años.</li>
@@ -326,7 +325,7 @@
           <accordion>
             <accordion-group [panelClass]="customClass">
                 <button class="btn btn-link btn-block clearfix" accordion-heading>
-                  <div class="pull-left float-left blue"><i class="fas fa-angle-down"></i> ¿Qué coberturas se ofrecen?</div>
+                  <div class="pull-left float-left lix"><i class="fas fa-angle-down"></i> ¿Qué coberturas se ofrecen?</div>
                 </button>
                 <ul>
                   <li>Servicio de Emergencia Médica por Accidente</li>
@@ -370,7 +369,7 @@
           <accordion>
             <accordion-group [panelClass]="customClass">
                 <button class="btn btn-link btn-block clearfix" accordion-heading>
-                  <div class="pull-left float-left blue"><i class="fas fa-angle-down"></i>¿Qué hacer en caso de accidente?</div>
+                  <div class="pull-left float-left lix"><i class="fas fa-angle-down"></i>¿Qué hacer en caso de accidente?</div>
                 </button>
                 <ul>
                   <li>El servicio de emergencia y urgencia médica lo puedes contactar llamando a Asistencia Contigo 24/7 al 366-8585.</li>
@@ -382,7 +381,7 @@
         <accordion>
           <accordion-group [panelClass]="customClass">
               <button class="btn btn-link btn-block clearfix" accordion-heading>
-                <div class="pull-left float-left blue"><i class="fas fa-angle-down"></i> Términos y condiciones</div>
+                <div class="pull-left float-left lix"><i class="fas fa-angle-down"></i> Términos y condiciones</div>
               </button>
               <ul>
                 <li>Puedes (el cliente) decidir si las coberturas te amparan 24/7 o bien por un período de 12h continuas durante la vigencia anual del producto (cobertura total o vida profesional).</li>

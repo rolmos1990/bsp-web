@@ -437,20 +437,28 @@ section.kalacra .card-body {
 }
 
 .information aw-wizard-navigation-bar.horizontal.small ul.steps-indicator li.current .step-indicator{
-    background-image: url("src/assets/img/step1.png");
-    background-position: center;
-    background-size: cover;
     border: 0;
 }
 
-.information aw-wizard-navigation-bar.horizontal.small ul.steps-indicator li .step-indicator {
+
+aw-wizard-navigation-bar.horizontal.large-filled-symbols ul.steps-indicator li .step-indicator {
     position: absolute;
-    top: -24px;
-    left: calc(50% - 35px / 2);
-    width: 39px;
-    height: 39px;
-    border: 2px solid #e0e0e0;
-    background-color: white;
+    top: -50px;
+    left: calc(50% - 50px / 2);
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 50px;
+    transition: .25s;
+    border-radius: 100%;
+    background-color: #e6e6e6;
+    color: #fff;
+}
+
+aw-wizard-navigation-bar.horizontal.large-filled-symbols ul.steps-indicator li .step-indicator {
+    background-color: #e6e6e6!important;
+    color: #708090!important;
 }
 
 .information aw-wizard-navigation-bar.horizontal ul.steps-indicator li a .label {
@@ -467,6 +475,13 @@ section.kalacra .card-body {
     border: 1px solid #c8c8c8;
     border-width: 0 0 1px 0;
     background-color: #ebf0f5;
+}
+
+aw-wizard-navigation-bar.horizontal.large-filled-symbols ul.steps-indicator li.current .step-indicator {
+    color: #fff!important;
+    background-image: url("src/assets/img/step1.png")!important;
+    background-position: center!important;
+    background-size: cover!important;
 }
 
 .error{
@@ -501,6 +516,11 @@ section.kalacra .card-body {
 .autocomplete-container .suggestions-container {
     z-index: 100!important;
 }
+
+.centered-content {
+    margin: auto!important;
+    text-align: center!important;
+  }
 
 /* RESPONSIVE*/
 

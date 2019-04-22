@@ -1,68 +1,69 @@
 <div class="row">
-  <div class="col-md-12">
-    <div class="contenedor-tarjeta my-5">
-      <div class="container contenedor">
-          <h4 class="mt-4"><i class="fas fa-angle-down text-dark"></i> Datos de entrega</h4>
-          <p class="subtitulo">
-              Por favor ingresa la información donde deseas que entreguemos tu tarjeta de afiliación.</p>
-    
-          <form [formGroup]="formaDelivery" class="pb-80">
-
-            <label for="" class="mt-2 mb-3">¿Dónde deseas que te entreguemos tu tarjeta?</label>
-              <div class="form-check">
-                <input class="form-check-input" (ngModelChange)="validateForm()" type="radio" [ngClass]="{'is-invalid': invalid('livingPlace', formaDelivery), 'is-valid': valid('livingPlace', formaDelivery)}" id="exampleRadios1" [value]="'vivienda'" formControlName="livingPlace">
-                <label class="form-check-label fw-100" for="exampleRadios1">
-                  Vivienda
-                </label>
+    <div class="col-md-12">
+      <div class="contenedor-tarjeta my-5">
+        <div class="container contenedor">
+            <h4 class="mt-4"><i class="fas fa-angle-down text-dark"></i> Datos de entrega</h4>
+            <p class="subtitulo">
+                Por favor ingresa la información donde deseas que entreguemos tu tarjeta de afiliación.</p>
+      
+            <form [formGroup]="formaDelivery" class="pb-80">
+  
+              <label for="" class="mt-2 mb-3">¿Dónde deseas que te entreguemos tu tarjeta?</label>
+                <div class="form-check">
+                  <input class="form-check-input" (ngModelChange)="validateForm()" type="radio" [ngClass]="{'is-invalid': invalid('livingPlace', formaDelivery), 'is-valid': valid('livingPlace', formaDelivery)}" id="exampleRadios1" [value]="'vivienda'" formControlName="livingPlace">
+                  <label class="fw-100" for="exampleRadios1">
+                    Vivienda
+                  </label>
+                </div>
+                <div class="form-check my-3">
+                  <input class="form-check-input" (click)="desabilitar()" type="radio" [ngClass]="{'is-invalid': invalid('livingPlace', formaDelivery), 'is-valid': valid('livingPlace', formaDelivery)}" id="exampleRadios2" [value]="'otro'" formControlName="livingPlace">
+                  <label class="fw-100" for="exampleRadios2">
+                    Otro
+                  </label>
+                </div>
+                <div *ngIf="invalid('livingPlace', formaDelivery)" class="invalid-feedback">
+                  Por favor elija su lugar de preferencia para la entrega de su tarjeta.
+                </div>
+                <div *ngIf="valid('livingPlace', formaDelivery)" class="valid-feedback">
+                  ¡Excelente!
+                </div>
+  
+              <input type="text" *ngIf="disabled" [readOnly]="formaDelivery.value.livingPlace === 'vivienda'" class="form-control"[ngClass]="{'is-invalid': formaDelivery.value.livingPlace !== 'vivienda' && invalid('placeDescription', formaDelivery), 'is-valid': valid('placeDescription', formaDelivery)}" formControlName="placeDescription">
+              <input type="text" *ngIf="!disabled" disabled [readOnly]="formaDelivery.value.livingPlace === 'vivienda'" class="form-control"[ngClass]="{'is-invalid': formaDelivery.value.livingPlace !== 'vivienda' && invalid('placeDescription', formaDelivery), 'is-valid': valid('placeDescription', formaDelivery)}" formControlName="placeDescription">
+              <div *ngIf="formaDelivery.value.livingPlace !== 'vivienda' && invalid('placeDescription', formaDelivery)" class="invalid-feedback">
+                Por favor indique que otro lugar de entrega quiere para su tarjeta. Ejemplo: 
+                Avenida San roman, Calle Madrid.
               </div>
-              <div class="form-check my-3">
-                <input class="form-check-input" (ngModelChange)="validateForm()" type="radio" [ngClass]="{'is-invalid': invalid('livingPlace', formaDelivery), 'is-valid': valid('livingPlace', formaDelivery)}" id="exampleRadios2" [value]="'otro'" formControlName="livingPlace">
-                <label class="form-check-label fw-100" for="exampleRadios2">
-                  Otro
-                </label>
-              </div>
-              <div *ngIf="invalid('livingPlace', formaDelivery)" class="invalid-feedback">
-                Por favor elija su lugar de preferencia para la entrega de su tarjeta.
-              </div>
-              <div *ngIf="valid('livingPlace', formaDelivery)" class="valid-feedback">
+              <div *ngIf="formaDelivery.value.livingPlace !== 'vivienda' && valid('placeDescription', formaDelivery)" class="valid-feedback">
                 ¡Excelente!
               </div>
-
-            <input type="text" [readOnly]="formaDelivery.value.livingPlace === 'vivienda'" class="form-control"[ngClass]="{'is-invalid': formaDelivery.value.livingPlace !== 'vivienda' && invalid('placeDescription', formaDelivery), 'is-valid': valid('placeDescription', formaDelivery)}" formControlName="placeDescription">
-            <div *ngIf="formaDelivery.value.livingPlace !== 'vivienda' && invalid('placeDescription', formaDelivery)" class="invalid-feedback">
-              Por favor indique que otro lugar de entrega quiere para su tarjeta. Ejemplo: 
-              Avenida San roman, Calle Madrid.
-            </div>
-            <div *ngIf="formaDelivery.value.livingPlace !== 'vivienda' && valid('placeDescription', formaDelivery)" class="valid-feedback">
-              ¡Excelente!
-            </div>
-    
-            <label for="" class="my-3 d-block">Punto de referencia:</label>
-            <textarea class="form-control" [ngClass]="{'is-invalid': invalid('referencePoint', formaDelivery), 'is-valid': valid('referencePoint', formaDelivery)}" id="exampleFormControlTextarea1" rows="4" formControlName="referencePoint"></textarea>
-            <div *ngIf="invalid('referencePoint', formaDelivery)" class="invalid-feedback">
-              Por favor indique un punto de referencia para el lugar de la entrega. Ejemplo: frente a la tienda Walmart de la 5ta Avenida.
-            </div>
-            <div *ngIf="valid('referencePoint', formaDelivery)" class="valid-feedback">
-              ¡Excelente, nos vemos allí!
-            </div>
-    
-            <label for="" class="my-3 d-block">Horario en el que prefieres la entrega:</label>
-            <select name="" id="" class="form-control w-100" [ngClass]="{'is-invalid': invalid('deliverTime', formaDelivery), 'is-valid': valid('deliverTime', formaDelivery)}" formControlName="deliverTime">
-              <option *ngFor="let schedule of schedules" [value]="schedule.item" >{{schedule.item}}</option>
-            </select>
-            <div *ngIf="invalid('deliverTime', formaDelivery)" class="invalid-feedback">
-              Por favor indique el horario en el cual se pueda llevar a cabo la entrega.
-            </div>
-            <div *ngIf="valid('deliverTime', formaDelivery)" class="valid-feedback">
-              ¡Muchas gracias!
-            </div>
-          </form>
+      
+              <label for="" class="my-3 d-block">Punto de referencia:</label>
+              <textarea class="form-control" [ngClass]="{'is-invalid': invalid('referencePoint', formaDelivery), 'is-valid': valid('referencePoint', formaDelivery)}" id="exampleFormControlTextarea1" rows="4" formControlName="referencePoint"></textarea>
+              <div *ngIf="invalid('referencePoint', formaDelivery)" class="invalid-feedback">
+                Por favor indique un punto de referencia para el lugar de la entrega. Ejemplo: frente a la tienda Walmart de la 5ta Avenida.
+              </div>
+              <div *ngIf="valid('referencePoint', formaDelivery)" class="valid-feedback">
+                ¡Excelente, nos vemos allí!
+              </div>
+      
+              <label for="" class="my-3 d-block">Horario en el que prefieres la entrega:</label>
+              <select name="" id="" class="form-control w-100" [ngClass]="{'is-invalid': invalid('deliverTime', formaDelivery), 'is-valid': valid('deliverTime', formaDelivery)}" formControlName="deliverTime">
+                <option *ngFor="let schedule of schedules" [value]="schedule.item" >{{schedule.item}}</option>
+              </select>
+              <div *ngIf="invalid('deliverTime', formaDelivery)" class="invalid-feedback">
+                Por favor indique el horario en el cual se pueda llevar a cabo la entrega.
+              </div>
+              <div *ngIf="valid('deliverTime', formaDelivery)" class="valid-feedback">
+                ¡Muchas gracias!
+              </div>
+            </form>
+        </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="col-md-12 text-center">
-          <button class="btn btn-primary mb-2 mb-md-0 solicitar" (click)="saveDeliveryData()" >CONTINUAR</button>
+      <div class="row">
+        <div class="col-md-12 text-center">
+            <button class="btn btn-primary mb-2 mb-md-0 solicitar" (click)="saveDeliveryData()" >CONTINUAR</button>
+        </div>
       </div>
     </div>
   </div>
-</div>

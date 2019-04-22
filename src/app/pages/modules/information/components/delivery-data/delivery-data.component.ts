@@ -12,6 +12,7 @@ export class DeliveryDataComponent implements OnInit {
   
   public formaDelivery: FormGroup;
   public schedules = SCHEDULES;
+  public disabled = false;
   @Input() requestId: string;
   @Output() isLoading: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() success: EventEmitter<any> = new EventEmitter<any>();
@@ -23,6 +24,11 @@ export class DeliveryDataComponent implements OnInit {
   ngOnInit() {
     window.scrollTo(0,0);
     this.generateDeliveryForm();
+  }
+
+  desabilitar() {
+    this.disabled = true;
+    console.log(this.disabled);
   }
 
   public generateDeliveryForm() {
