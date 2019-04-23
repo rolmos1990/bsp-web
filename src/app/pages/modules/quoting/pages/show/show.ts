@@ -106,7 +106,7 @@ export class ShowComponent implements OnInit {
     this.flag3 = true;
   }
 
-  atras4(): void {
+  atras5(): void {
     this.flag5 = false;
     this.flag4 = true;
   }

@@ -32,6 +32,10 @@ const routes: Routes = [
     loadChildren: './modules/login/login.module#LoginModule'
   },
   {
+    path: 'apinfo',
+    loadChildren: './modules/apinfo/apinfo.module#ApinfoModule'
+  },
+  {
     path: 'insurance-detail',
     loadChildren: './modules/insurance-detail/insurance-detail.module#InsuranceDetailModule'
   }
