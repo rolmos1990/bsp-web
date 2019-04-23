@@ -33,20 +33,6 @@
     font-size: 20px;
     margin-left: -15px;
   }
-  
-  .form-control{
-    height: 39px;
-    padding: 0px 10px;
-    border: 1px solid #c8c8c8;
-    border-radius: 2px;
-    background-color: #ffffff;
-    font-family: Lato;
-    font-size: 16px;
-    color: #a5adb4;
-    font-weight: 700;
-    text-decoration: none solid rgb(55, 65, 64);
-  }
-  
   .fw-100{
     font-weight: 100;
   }
@@ -93,3 +79,7 @@
         padding: 0 15px;
     }
   }
+
+input:read-only{
+  background-color: #d3d8dc;
+}
