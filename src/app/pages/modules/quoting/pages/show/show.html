@@ -18,9 +18,6 @@
               <div *ngIf="invalid('document', forma)" class="invalid-feedback">
                 Por favor introduce un formato correcto. Ejemplo: 8-1234-1234.
               </div>
-              <div *ngIf="valid('document', forma)" class="valid-feedback">
-                ¡Excelente!
-              </div>
               <button type="submit" [disabled]="forma.controls['document'].invalid || flag1 == false" class="btn btn-primary my-5 "
                 (click)="hide1()">SIGUIENTE</button>
             </div>
@@ -55,8 +52,8 @@
                   <div [innerHTML]="notFound"></div>
                 </ng-template>
               </div>
-              <div class="invalid-feedback" *ngIf="forma.get('occupationId').errors && forma.get('occupationId').dirty">
-                <p *ngIf="forma.get('occupationId').hasError('required')">* Campo requerido</p>
+              <div *ngIf="invalid('occupationId', forma)" class="invalid-feedback">
+                Por favor elija una ocupación.
               </div>
               <button type="submit" [disabled]="forma.controls['occupationId'].invalid || flag2 == false" class="btn btn-primary my-5"
                 (click)="hide2()">SIGUIENTE</button>
@@ -83,9 +80,6 @@
                 * Disculpa, esta póliza es sólo para personas con edades
                 entre 18 y 70 años
               </div>
-              <div *ngIf="valid('age', forma)" class="valid-feedback">
-                ¡Excelente!
-              </div>
               <button type="submit" [disabled]="forma.controls['age'].invalid || flag3 == false" class="btn btn-primary my-5"
                 (click)="hide3()">SIGUIENTE</button>
             </div>
@@ -109,11 +103,8 @@
               <div *ngIf="invalid('email', forma)" class="invalid-feedback">
                 * Por favor introduce un correo válido
               </div>
-              <div *ngIf="valid('email', forma)" class="valid-feedback">
-                ¡Excelente!
-              </div>
               <button type="submit" [disabled]="forma.controls['email'].invalid || flag4 == false" class="btn btn-primary my-5"
-              (click)="hide4()">COTIZAR</button>
+              (click)="hide4()">SIGUIENTE</button>
             </div>
           </div>
           <div class="col-1 col-md-2">
@@ -132,21 +123,18 @@
               <img src="assets/img/insurance.png" alt="" class="my-5">
               <div class="text-center">
                 <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" formControlName="insurance" value="ParaMi">
-                  <label class="form-check-label" for="inlineRadio1">Para mí</label>
+                  <input class="form-check-input" name="same" type="radio" formControlName="same" [value]="true">
+                  <label class="form-check-label" for="same">Para mí</label>
                 </div>
                 <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" formControlName="insurance" value="OtraPersona">
-                  <label class="form-check-label" for="inlineRadio2">Para otra persona</label>
+                  <input class="form-check-input" name="same" type="radio" formControlName="same" [value]="false">
+                  <label class="form-check-label" for="same">Para otra persona</label>
                 </div>
               </div>
-              <div *ngIf="invalid('insurance', forma)" class="invalid-feedback">
+              <div *ngIf="invalid('same', forma)" class="invalid-feedback">
                 Por favor selecciona una opción
               </div>
-              <div *ngIf="valid('insurance', forma)" class="valid-feedback">
-                ¡Excelente!
-              </div>
-              <button type="submit" [disabled]="forma.controls['insurance'].invalid || flag5 == false" class="btn btn-primary my-5 "
+              <button type="submit" [disabled]="forma.controls['same'].invalid || flag5 == false" class="btn btn-primary my-5 "
                 (click)="submit()">COTIZAR</button>
             </div>
           </div>

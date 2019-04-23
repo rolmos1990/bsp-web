@@ -24,7 +24,7 @@ export class ShowComponent implements OnInit {
       occupationId: ['', Validators.compose([Validators.required, Validators.minLength(5)])],
       age: ['', Validators.compose([Validators.required, Validators.maxLength(2), Validators.min(18), Validators.max(70)])],
       email: ['', Validators.compose([Validators.required, CustomValidatorDirective.customEmailValidator])],
-      insurance: ['']
+      same: [true, Validators.required]
     });
     this.isLoading = false;
   }
@@ -35,13 +35,16 @@ export class ShowComponent implements OnInit {
   submit() {
     if (this.forma.valid) {
       this.isLoading = true;
-      this._userService.createUser(this.forma.value).subscribe(
+      let payload = this.forma.value;
+      localStorage.setItem('same', payload.same ? 'true' : 'false');
+      delete payload.same;
+      this._userService.createUser(payload).subscribe(
         response => {
           this._router.navigate(['coverage', response.result.user.id]);
-          this.isLoading = false;
           console.log(response);
         }, error => {
           console.error(error);
+          this.isLoading = false;
         }
       );
     }
@@ -106,7 +109,7 @@ export class ShowComponent implements OnInit {
     this.flag3 = true;
   }
 
-  atras4(): void {
+  atras5(): void {
     this.flag5 = false;
     this.flag4 = true;
   }

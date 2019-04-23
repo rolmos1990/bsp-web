@@ -161,7 +161,7 @@ export class RequestComponent implements OnInit {
     'contNeighborhood': this._fb.control(cont.neighborhood, Validators.required),
     'contCellphone': this._fb.control(cont.cellphone, [Validators.required, CustomValidatorDirective.cellphoneValidator]),
     'contEconomicActivity': this._fb.control(cont.economicActivity, [Validators.required]),
-    'insuSame': this._fb.control(true, Validators.required),
+    'insuSame': this._fb.control(insu.same !== null ? insu.same : localStorage.getItem('same') === 'true', Validators.required),
     'insuName': this._fb.control(insu.name, Validators.compose([Validators.required, CustomValidatorDirective.namesValidator])),//Segundo Formulario
     'insuLastName': this._fb.control(insu.lastName,  Validators.compose([Validators.required, CustomValidatorDirective.namesValidator])),
     // 'insuDocumentType': [insu ? (insu.documentType === 'Pasaporte' ? insu.documentType : insu.document.split('-')[0]) : null, Validators.required],
@@ -178,7 +178,7 @@ export class RequestComponent implements OnInit {
     'insuCompany': this._fb.control(insu.company, Validators.required),
     'insuOccupationTime': this._fb.control(insu.occupationTime, Validators.required),
     'insuOtherOccupations': this._fb.control(insu.otherOccupations, [Validators.required, CustomValidatorDirective.regularText]),
-    'insuPreviousOccupations': this._fb.control(insu.previousOccupations, Validators.required),
+    'insuPreviousOccupations': this._fb.control(insu.previousOccupations.id, Validators.required),
     'insuSports': this._fb.control(insu.sports, [Validators.required, CustomValidatorDirective.regularText]),
     'insuMonthlyIncome': this._fb.control(insu.monthlyIncome, Validators.required),
     'insuProvinceId': this._fb.control(insu.province ? insu.province.id : null, Validators.required),

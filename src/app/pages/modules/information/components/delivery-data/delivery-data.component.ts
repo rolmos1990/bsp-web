@@ -26,14 +26,9 @@ export class DeliveryDataComponent implements OnInit {
     this.generateDeliveryForm();
   }
 
-  desabilitar() {
-    this.disabled = true;
-    console.log(this.disabled);
-  }
-
   public generateDeliveryForm() {
     this.formaDelivery = this._fb.group({
-      'placeDescription': this._fb.control(null),
+      'placeDescription': this._fb.control(null, [Validators.required]),
       'livingPlace': this._fb.control(null, [Validators.required]),
       'deliverTime': this._fb.control(null, [Validators.required]),
       'referencePoint': this._fb.control(null, [Validators.required]),
@@ -49,6 +44,7 @@ export class DeliveryDataComponent implements OnInit {
   }
 
   public validateForm() {
+    console.log(this.formaDelivery.get('livingPlace').value);
     if (this.formaDelivery.get('livingPlace').value === 'vivienda') {
       this.formaDelivery.get('placeDescription').clearValidators();
       this.formaDelivery.get('placeDescription').updateValueAndValidity();

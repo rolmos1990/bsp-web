@@ -10,7 +10,7 @@
             <p class="subtitulo mb-5">Por favor completa los siguientes datos y continúa con el proceso de solicitud.</p>
             <!-- <p class="subtitulo">Los campos denotados con un (*) son obligatorios para continuar.</p> -->
             <div class="row mb-5">
-                <div class="col-md-4 mb-5">
+                <!-- <div class="col-md-4 mb-5">
                   <label for="">¿Eres el solicitante de la póliza? (*)</label>
                   <div class="form-check mb-3">
                     <input class="form-check-input" [ngClass]="{'is-invalid': invalid('insuSame', forma), 'is-valid': valid('insuSame', forma)}" name="insuSame" type="radio" [value]="true" formControlName="insuSame">
@@ -30,7 +30,7 @@
                   <div *ngIf="valid('insuSame', forma)" class="valid-feedback">
                     ¡Excelente!
                   </div>
-                </div>
+                </div> -->
                 <div class="col-md-4 mb-5">
                   <label for="">Nombre (*)</label>
                   <input type="text" class="form-control" [ngClass]="{'is-invalid': invalid('contName', forma), 'is-valid': valid('contName', forma)}" formControlName="contName">
@@ -156,7 +156,7 @@
               </p>
               <!-- <p class="subtitulo">Los campos denotados con un (*) son obligatorios para continuar.</p> -->
                 <div class="row mb-5">
-                  <div *ngIf="forma.value.insuSame === true" class="col-md-6 col-lg-4 mb-5">
+                  <!-- <div *ngIf="forma.value.insuSame === true" class="col-md-6 col-lg-4 mb-5">
                     <label for="">¿Eres el solicitante de la póliza? (*)</label>
                     <div class="form-check mb-1">
                       <input class="form-check-input" [ngClass]="{'is-invalid': invalid('insuSame', forma), 'is-valid': valid('insuSame', forma)}" name="insuSame" type="radio" [value]="true" formControlName="insuSame">
@@ -176,7 +176,7 @@
                     <div *ngIf="valid('insuSame', forma)" class="valid-feedback">
                       ¡Excelente!
                     </div>
-                  </div>
+                  </div> -->
                   <div class="col-md-6 col-lg-4 mb-5">
                     <label for="">Nombre (*)</label>
                     <input type="text" class="form-control" [ngClass]="{'is-invalid': invalid('insuName', forma), 'is-valid': valid('insuName', forma)}" placeholder="" formControlName="insuName">
