@@ -3,14 +3,9 @@
 @import "~ngx-tabset/ngx-tabset";
 @import "app/app.component";
 
-body, button,a, p, span{
-    font-family: 'Lato', sans-serif!important;
-}
-
 label.check{
     font-weight: 100;
 }
-
 
 section.insurance-detail{
     div.panel-heading.card-header {
@@ -370,6 +365,100 @@ accordion-group.panel{
 
 .card-body ul li{
     color: #6b7484;
+}
+
+
+header{
+	background: white!important;
+}
+
+/* Header Menú de Navegación */
+
+.item_contact{
+	color: #13599e;
+	font-size: 16px;
+	padding: .4rem 0.25rem;
+}
+
+.wrapper{
+	position: relative;
+	min-height: 100%;
+}
+
+/* Page Header */
+.module-header{
+	background-image: url(/src/assets/img/family.png);
+	background-size: cover;
+	background-position: 60% 50%;
+	background-repeat: no-repeat;
+}
+
+h1{
+	font-weight: 700;
+}
+
+.navbar-expand-md .navbar-nav .dropdown-menu{
+	max-height: 80px!important;
+}
+
+.btn-light{
+	background-color: transparent;
+	border: 0;
+}
+
+.btn-light:hover{
+	background-color: #F6F6F6!important;
+}
+
+
+/*Segundo-Contenido*/
+.h1-azul, .p-azul{
+	color: #3a4454;
+}
+
+.font-size-22{
+	font-size: 22px;
+}
+
+.font-size-48{
+	font-size: 48px;
+	font-weight: 900;
+}
+
+
+.cuarto-contenido{
+	background-color: #3A4454;
+}
+
+.width-212{
+	width: 212px;
+}
+
+.quinto-contenido{
+	height: 100px;
+	background-color: #fafafa;
+}
+
+.font-size-18{
+	font-size: 18px;
+}
+
+.height-70{
+	height: 70px;
+}
+
+.color-verde{
+	color: #1c8464;
+}
+
+
+.ul-footer li a{
+	color: #13599e!important;
+}
+
+.p-footer{
+	font-size: 14px;
+	color: #556176;
 }
 
 .cober .card {
