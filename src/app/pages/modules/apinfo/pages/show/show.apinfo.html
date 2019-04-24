@@ -20,7 +20,7 @@
         <button class="boton-cuadrado">Coberturas</button>
         <button class="boton-cuadrado">Preguntas Frecuentes</button>
     </div>
-    <div class="container">
+    <div class="container"><!-- aqui debe ir un ancla-->
       <div class="caja">
         <div class="row">
           <div class="col-md-3">
@@ -79,22 +79,23 @@
     </div>
   </div>
 
-  <div class="contenedor-gris">
+  <div class="contenedor-gris"> <!-- aqui debe ir un ancla-->
     <h3>Nuestras Coberturas</h3>
     <div class="container">
       <swiper  class="swiper-container" [config]="config" (indexChange)="onIndexChange($event)" fxFlex="auto">
         <div *ngFor="let slide of slides" class="swiper-slide">
           <div fxLayout="column" fxLayoutAlign="center center" fxFlexFill>
-            {{slide}}
+            <img src="assets/img/{{slide.imagen}}.png" alt="">
+            <p class="green">{{slide.titulo}}</p> 
+            <p class="mensaje">{{slide.mensaje}}</p>
           </div>
         </div>
       </swiper>
+
     </div>
   </div>
 
-
-
-  <div class="contenedor">
+  <div class="contenedor" ><!-- aqui debe ir un ancla-->
     <h3 class="preguntas">Preguntas frecuentes</h3>
     <div class="container cober">
         <accordion>
