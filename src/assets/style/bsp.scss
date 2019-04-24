@@ -2,12 +2,26 @@
 @import './responsive';
 @import './style';
 
+@font-face {
+    font-family: 'Lato', sans-serif;
+    src: url("/src/assets/fonts/lato-regular.woff2");
+}
+
+@font-face {
+    font-family: 'Lato', sans-serif;
+    src: url("/src/assets/fonts/latop-bold.woff2");
+}
+
 body{
 	margin: 0;
 	padding: 0;
-    font-family: 'Lato', sans-serif;
     height: 100%;
 }
+
+body, button, a, p, h1,h2,h3,h4,h5,small{
+    font-family: 'Lato', sans-serif;
+}
+
 .main {
     height: 100%;
     min-height: fill-available;
@@ -126,6 +140,26 @@ input, select{
 	::-webkit-input-placeholder { color: #a5adb4; } /* WebKit */
 	::-moz-placeholder { color: #a5adb4; } /* Firefox 19+ */
 	:-ms-input-placeholder { color: #a5adb4; } /* IE 10+ */
+}
+
+/* Medium devices (tablets, 768px and up)*/
+@media (min-width: 768px) {
+	/* Page Header */
+	.module-header{
+		background-image: url(../img/family.png);
+		background-size: cover;
+		background-position: center;
+		background-repeat: no-repeat;
+	}
+
+	.ul-footer{
+	list-style: none!important;
+	height: 30px;
+	}
+
+	.ul-footer > li{
+	float: left!important;
+	}
 }
 
 @media (max-width: 1024px){
