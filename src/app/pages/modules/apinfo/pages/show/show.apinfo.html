@@ -1,0 +1,227 @@
+
+<section class="apinfo">
+  <div class="portada">
+    <div class="container">
+        <div class="row">
+          <div class="col-md-8">
+            <h1>Explora el seguro de Accidentes Personales</h1>
+            <p>Nuestras pólizas AP te protegen contra cualquier eventualidad, asegurando la estabilidad financiera de tu familia cuando más lo necesitas.</p>
+            <button class="btn" [routerLink]="['/quoting']">COTIZAR</button>
+          </div>
+          <div class="col-md-4">
+            <img src="assets/img/worldwide.png" alt="">
+          </div>
+        </div>
+    </div>
+  </div>
+  <div class="contenedor">
+    <div class="botones">
+        <a href="apinfo#1"><button class="boton-cuadrado">¿Que es AP?</button></a>
+        <a href="apinfo#2"><button class="boton-cuadrado">Coberturas</button></a>
+        <a href="apinfo#3"><button class="boton-cuadrado">Preguntas Frecuentes</button></a>
+    </div>
+    <a name="1"></a>
+    <div class="container"><!-- aqui debe ir un ancla-->
+      <div class="caja">
+        <div class="row">
+          <div class="col-md-6 col-lg-3">
+            <img src="assets/img/medical.png" alt="">
+          </div>
+          <div class="col-md-6 col-lg-9">
+            <h3>¿Que es el seguro AP o Accidentes Personales?</h3>
+            <p>Éste seguro te ampara durante las 24 horas del día por accidentes que pudieras sufrir en el trabajo, en tus actividades profesionales, privadas o recreativas, en la práctica de diversos deportes no extremos, en accidentes de tránsito como peatón, conductor no profesional o pasajero y en viajes, que te originen la muerte o alguna incapacidad.</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-3">
+            <h4>Este seguro te permite...</h4>
+          </div>
+          <div class="col-md-9">
+            <hr>
+          </div>
+        </div>
+        <div class="checkeado">
+            <div class="row mb-2">
+              <div class="col-md-6">
+                <div class="row">
+                  <div class="col-md-2">
+                      <img src="assets/img/checkverde.svg" alt="">
+                  </div>
+                  <div class="col-md-10">
+                    <p>Disponer del capital asegurado, en caso de un accidente (invalidez o pérdida de un miembro) o indemnizar a los beneficiarios del asegurado en caso de muerte accidental.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="row">
+                  <div class="col-md-2">
+                      <img src="assets/img/checkverde.svg" alt="">
+                  </div>
+                  <div class="col-md-10">
+                    <p>Servicios de ambulancia por emergencias médicas, asistencia en viajes al extranjero y asistencia médica.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="row">
+                  <div class="col-md-2">
+                      <img src="assets/img/checkverde.svg" alt="">
+                  </div>
+                  <div class="col-md-10">
+                    <p>Cobertura en cualquier parte del mundo, las 24 horas del día, los 365 días del año.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <a name="2"></a>
+  <div class="contenedor-gris"> <!-- aqui debe ir un ancla-->
+    <h3>Nuestras Coberturas</h3>
+    <div class="container">
+        
+        <div class="position-relative">
+            <button class="derechaaa"><i class="fas fa-angle-right"></i></button>
+            <button class="izquierdaaa"><i class="fas fa-angle-left"></i></button>
+          <swiper  class="swiper-container" [config]="config" (indexChange)="onIndexChange($event)" fxFlex="auto">
+              
+            <div *ngFor="let slide of slides" class="swiper-slide">
+              <div fxLayout="column" fxLayoutAlign="center center" fxFlexFill>
+                <img src="assets/img/{{slide.imagen}}.png" alt="">
+                <p class="green">{{slide.titulo}}</p> 
+                <p class="mensaje">{{slide.mensaje}}</p>
+              </div>
+            </div>
+            
+          </swiper>
+        </div>
+
+    </div>
+  </div>
+
+  <a name="3"></a>
+  <div class="contenedor" ><!-- aqui debe ir un ancla-->
+    <h3 class="preguntas">Preguntas frecuentes</h3>
+    <div class="container cober">
+        <accordion>
+          <accordion-group [panelClass]="customClass" [isOpen]="isFirstOpen">
+              <button class="btn btn-link btn-block clearfix" accordion-heading>
+                <div class="pull-left float-left lix"><i class="fas fa-angle-down"></i> ¿Qué ventajas tiene?</div>
+              </button>
+              <ul>
+                <li>El Asegurado tiene la opción de seleccionar el tipo de cobertura (total o vida profesional).</li>
+                <li>Alta cobertura a bajo costo.</li>
+                <li>Fácil y rápida contratación.</li>
+                <li>Tarifas diseñadas de acuerdo a la actividad laboral y a la medida de sus posibilidades.</li>
+                <li>Facilidades de pago mediante sus tarjeta de crédito o ACH (cuenta corriente o de ahorros).</li>
+              </ul>
+          </accordion-group>
+        </accordion>
+        
+        <accordion>
+          <accordion-group [panelClass]="customClass">
+              <button class="btn btn-link btn-block clearfix" accordion-heading>
+                <div class="pull-left float-left lix"><i class="fas fa-angle-down"></i> ¿Qué no cubre?</div>
+              </button>
+              <ul>
+                <li>Ninguna enfermedad corporal, mental o el agravamiento de la misma, tampoco sus tratamientos médicos o quirúrgicos que no se deriven de un accidente del asegurado.</li>
+                <li>Los casos y consecuencias de desvanecimientos, síncopes, infartos, ataques de apoplejía, epilepsia, roturas de aneurismas, várices, SIDA y toda clase de hernias.</li>
+                <li>Cuando el asegurado sufriera un accidente estando bajo los efectos del alcohol, estupefacientes, medicamento no prescrito por un médico, esta póliza no puede ejecutar sus coberturas o si este accidente tuviera como causa un desorden mental o Delirium Tremens.</li>
+                <li>Suicidio o su intento. Homicidio intencional por parte de los BENEFICIARIOS de la póliza o su relación con el mismo.</li>
+                <li>Cuando el asegurado participe en duelos o riñas, exceptuando si se demuestra que el asegurado no provocó los hechos.</li>
+                <li>La participación del asegurado en competencias de velocidad sean terrestres o náuticos.</li>
+                <li>Cuando el asegurado participe en competencias deportivas a nivel profesional.</li>
+                <li>Accidentes causados por actos de guerra, invasión, levantamiento civil, motines, insurrección, rebelión, revolución de estados o situaciones similares.</li>
+                <li>Accidentes producto de la reacción y radiación  nuclear o contaminación radiactiva.</li>
+                <li>Accidentes causados por infracción de las leyes vigentes en el país donde ocurran.</li>
+              </ul>
+          </accordion-group>
+        </accordion>
+
+        <accordion>
+          <accordion-group [panelClass]="customClass">
+              <button class="btn btn-link btn-block clearfix" accordion-heading>
+                <div class="pull-left float-left lix"><i class="fas fa-angle-down"></i> ¿Quién puede asegurarse?</div>
+              </button>
+              <ul>
+                <li>Cualquier persona nacional o extranjera que resida en la República de Panamá, que tenga buena condición de salud, con edad entre dieciocho (18) y setenta (70) años.</li>
+              </ul>
+          </accordion-group>
+        </accordion>
+
+          <accordion>
+            <accordion-group [panelClass]="customClass">
+                <button class="btn btn-link btn-block clearfix" accordion-heading>
+                  <div class="pull-left float-left lix"><i class="fas fa-angle-down"></i> ¿Qué coberturas se ofrecen?</div>
+                </button>
+                <ul>
+                  <li>Servicio de Emergencia Médica por Accidente</li>
+                  <ul>
+                      <li>Asistencia médica a domicilio: si tienes algún imprevisto y necesitas atención médica urgente, cuentas con un servicio de ambulancia. Si se tratase de un caso no tan urgente, igualmente cuentas con atención médica a domicilio a cambio del pago una pequeña cantidad que podrás acordar previamente en tu póliza.</li>
+                      <li>Orientación médica telefónica: puedes llamar por teléfono a nuestro servicio médico para que realizar consultas sobre tratamientos médicos, posibles efectos secundarios, contraindicaciones de los medicamentos prescritos, pruebas diagnósticas o alguna otra inquietud médica que tengas.</li>
+                  </ul>
+                  <li>Servicio de Asistencia en Viajes</li>
+                  <ul>
+                      <li>Cuentas con asistencia médica durante tu viaje, si por indicación médica debes alojarte en un hotel, cubrimos tu estancia mientras te recuperas. Cubrimos también el transporte de los familiares del asegurado en caso necesario. Si ocurriera el fallecimiento del asegurado, traemos de vuelta sus restos así como a los familiares del asegurado en caso de fallecimiento durante su viaje.</li>
+                  </ul>
+                  <li>Doble Indemnización por Muerte Accidental por Accidente Específico</li>
+                  <ul>
+                      <li>Esta cobertura tiene lugar si el asegurado falleciera en un accidente mientras se transporta en un vehículo público (autobús, metro, taxi, etc.) o si se viera envuelto en un incendio en alguna edificación pública (hotel, museo, cine, teatro).</li>
+                  </ul>
+                  <li>Invalidez Permanente (Total y Parcial)</li>
+                  <ul>
+                      <li>Esta cobertura tiene lugar cuando el asegurado queda incapacitado de forma total o parcial  por lesiones corporales sufridas a causa de un accidente, de forma que no puede continuar desempeñando ninguna función que le permita valerse de sus propios medios para subsistir.</li>
+                  </ul>
+                  <li>Adelanto de Gastos Funerarios</li>
+                  <ul>
+                      <li>Esta cobertura tiene lugar para que los beneficiarios de la póliza puedan cubrir los gastos funerarios correspondientes debido al fallecimiento del asegurado.</li>
+                  </ul>
+                  <li>Coberturas Complementarias</li>
+                  <ul>
+                      <li>Incapacidad Profesional u Ocupacional por Accidente.</li>
+                      <ul>
+                          <li>Gastos médicos por accidente.</li>
+                          <li>Renta diaria por incapacidad temporal por accidente (sólo para trabajadores independientes).</li>
+                      </ul>
+                      <li>Si llegaras a sufrir algún accidente en tu trabajo u oficio donde tuvieras que incapacitarte, cuentas con las opciones a elegir:</li>
+                      <ul>
+                          <li>La cobertura de los gastos médicos en los que incurras debido al accidente sufrido.</li>
+                          <li>Si eres un trabajador independiente puede contar con una renta diaria por incapacidad temporal debido al accidente sufrido.</li>
+                      </ul>
+                  </ul>
+                </ul>
+            </accordion-group>
+          </accordion>
+
+          <accordion>
+            <accordion-group [panelClass]="customClass">
+                <button class="btn btn-link btn-block clearfix" accordion-heading>
+                  <div class="pull-left float-left lix"><i class="fas fa-angle-down"></i>¿Qué hacer en caso de accidente?</div>
+                </button>
+                <ul>
+                  <li>El servicio de emergencia y urgencia médica lo puedes contactar llamando a Asistencia Contigo 24/7 al 366-8585.</li>
+                  <li>El servicio de asistencia médica telefónica en extranjero  y el servicio de asistencia en viajes en el extranjero lo puedes contactar llamando a nuestro Call Center en el 366-8555.</li>
+                </ul>
+            </accordion-group>
+          </accordion>  
+
+        <accordion>
+          <accordion-group [panelClass]="customClass">
+              <button class="btn btn-link btn-block clearfix" accordion-heading>
+                <div class="pull-left float-left lix"><i class="fas fa-angle-down"></i> Términos y condiciones</div>
+              </button>
+              <ul>
+                <li>Puedes (el cliente) decidir si las coberturas te amparan 24/7 o bien por un período de 12h continuas durante la vigencia anual del producto (cobertura total o vida profesional).</li>
+                <li>Puedes (el cliente) estar cubierto por esta póliza 24h durante todo el año EN CUALQUIER PARTE DEL MUNDO!.</li>
+                <li>Nuestro producto cuenta con asistencia médica, servicio de ambulancia por alguna emergencia médica y servicio de asistencia en viajes.</li>
+              </ul>
+          </accordion-group>
+        </accordion>
+    </div>
+  </div>
+</section>
