@@ -49,7 +49,10 @@ export class ShowApinfo implements OnInit {
     keyboard: true,
     mousewheel: true,
     scrollbar: false,
-    navigation: true,
+    navigation: {
+      nextEl: '.derechaaa',
+      prevEl: '.izquierdaaa',
+    },
     pagination: false,
     breakpoints: {
       1024: {

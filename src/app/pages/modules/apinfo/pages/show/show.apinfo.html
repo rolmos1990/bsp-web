@@ -24,10 +24,10 @@
     <div class="container"><!-- aqui debe ir un ancla-->
       <div class="caja">
         <div class="row">
-          <div class="col-md-3">
+          <div class="col-md-6 col-lg-3">
             <img src="assets/img/medical.png" alt="">
           </div>
-          <div class="col-md-9">
+          <div class="col-md-6 col-lg-9">
             <h3>¿Que es el seguro AP o Accidentes Personales?</h3>
             <p>Éste seguro te ampara durante las 24 horas del día por accidentes que pudieras sufrir en el trabajo, en tus actividades profesionales, privadas o recreativas, en la práctica de diversos deportes no extremos, en accidentes de tránsito como peatón, conductor no profesional o pasajero y en viajes, que te originen la muerte o alguna incapacidad.</p>
           </div>
@@ -84,15 +84,22 @@
   <div class="contenedor-gris"> <!-- aqui debe ir un ancla-->
     <h3>Nuestras Coberturas</h3>
     <div class="container">
-      <swiper  class="swiper-container" [config]="config" (indexChange)="onIndexChange($event)" fxFlex="auto">
-        <div *ngFor="let slide of slides" class="swiper-slide">
-          <div fxLayout="column" fxLayoutAlign="center center" fxFlexFill>
-            <img src="assets/img/{{slide.imagen}}.png" alt="">
-            <p class="green">{{slide.titulo}}</p> 
-            <p class="mensaje">{{slide.mensaje}}</p>
-          </div>
+        
+        <div class="position-relative">
+            <button class="derechaaa"><i class="fas fa-angle-right"></i></button>
+            <button class="izquierdaaa"><i class="fas fa-angle-left"></i></button>
+          <swiper  class="swiper-container" [config]="config" (indexChange)="onIndexChange($event)" fxFlex="auto">
+              
+            <div *ngFor="let slide of slides" class="swiper-slide">
+              <div fxLayout="column" fxLayoutAlign="center center" fxFlexFill>
+                <img src="assets/img/{{slide.imagen}}.png" alt="">
+                <p class="green">{{slide.titulo}}</p> 
+                <p class="mensaje">{{slide.mensaje}}</p>
+              </div>
+            </div>
+            
+          </swiper>
         </div>
-      </swiper>
 
     </div>
   </div>

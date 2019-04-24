@@ -276,4 +276,34 @@
     }
 }
 
+.derechaaa{
+    position: absolute;
+    top: 45%;
+    right: -20px;
+    background: transparent;
+    border: 0;
+    font-size: 30px;
+    @media (min-width: 768px){
+        right: -30px;
+    }
+    i{
+        color: #556176;
+    }
+}
+
+.izquierdaaa{
+    position: absolute;
+    top: 45%;
+    left: -20px;
+    background: transparent;
+    border: 0;
+    font-size: 30px;
+    @media (min-width: 768px){
+        left: -30px;
+    }
+    i{
+        color: #556176;
+    }
+}
+
   
