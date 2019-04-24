@@ -149,6 +149,10 @@ export class RequestComponent implements OnInit {
   }
 
   public fillMainForm(cont: any, insu: any) {
+    console.log(insu);
+    if (insu.same !== null) {
+      localStorage.setItem('same', insu.same ? 'true' : 'false')
+    }
     this.forma = this._fb.group({
     'requestId': this._fb.control(this.requestId),
     'contName': this._fb.control(cont.name, [Validators.required, CustomValidatorDirective.namesValidator]),
@@ -161,7 +165,7 @@ export class RequestComponent implements OnInit {
     'contNeighborhood': this._fb.control(cont.neighborhood, Validators.required),
     'contCellphone': this._fb.control(cont.cellphone, [Validators.required, CustomValidatorDirective.cellphoneValidator]),
     'contEconomicActivity': this._fb.control(cont.economicActivity, [Validators.required]),
-    'insuSame': this._fb.control(insu.same !== null ? insu.same : localStorage.getItem('same') === 'true', Validators.required),
+    'insuSame': this._fb.control(localStorage.getItem('same') === 'true' ? true : false, Validators.required),
     'insuName': this._fb.control(insu.name, Validators.compose([Validators.required, CustomValidatorDirective.namesValidator])),//Segundo Formulario
     'insuLastName': this._fb.control(insu.lastName,  Validators.compose([Validators.required, CustomValidatorDirective.namesValidator])),
     // 'insuDocumentType': [insu ? (insu.documentType === 'Pasaporte' ? insu.documentType : insu.document.split('-')[0]) : null, Validators.required],
@@ -230,6 +234,7 @@ export class RequestComponent implements OnInit {
       dependent.updateValueAndValidity();
     });
     this.forma.updateValueAndValidity();
+    
   }
 
   public get isPercentValid() {
@@ -265,6 +270,9 @@ export class RequestComponent implements OnInit {
         }
       );
     } else {
+      if (!this.isPercentInvalid) {
+        window.scroll(0, 500);
+      }
       console.log(this.forma);
     }
   }
@@ -320,6 +328,7 @@ export class RequestComponent implements OnInit {
       this.forma.get('insuSports').markAsTouched();
       this.forma.get('insuMonthlyIncome').markAsTouched();
       this.forma.get('insuProvinceId').markAsTouched();
+      this.forma.get('insuDistrictId').markAsTouched();
       this.forma.get('insuCorregimientoId').markAsTouched();
       this.forma.get('insuNeighborhood').markAsTouched();
       this.forma.get('insuStreet').markAsTouched();
@@ -418,6 +427,8 @@ export class RequestComponent implements OnInit {
     this.modalValidations();
 
     if (this.modalForm.valid) {
+      modal.dismiss('Cross click');
+      window.scroll(0,0);
       this.isLoading.emit(true);
       this.loader = true;
       let payload = this.modalForm.value;
@@ -446,7 +457,6 @@ export class RequestComponent implements OnInit {
       if (this.edit) {
         this._dependentService.updateDependent(payload).subscribe(
           response => {
-            modal.dismiss('Cross click');
             this.loader = false;
             this.modalForm = null;
             this.getDependents();
@@ -455,13 +465,13 @@ export class RequestComponent implements OnInit {
             console.log(error);
             this.loader = false;
             this.isLoading.emit(false);
+            this.open(modal);
           }
         );
       } else {
         delete payload.id;
         this._dependentService.createDependent(payload).subscribe(
           response => {
-            modal.dismiss('Cross click');
             this.loader = false;
             this.modalForm = null;
             this.getDependents();
@@ -470,6 +480,7 @@ export class RequestComponent implements OnInit {
             console.log(error);
             this.loader = false;
             this.isLoading.emit(false);
+            this.open(modal);
           }
         );
       }
