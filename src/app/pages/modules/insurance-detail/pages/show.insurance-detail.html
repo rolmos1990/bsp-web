@@ -10,7 +10,7 @@
                     <div class="container">
                       <div class="row">
                         <div class="col-md-12">
-                            <h4 class="xmes">${{request.insurance.coverageDetail.monthlyPrime}} x mes</h4>
+                            <h4 class="xmes">${{request.insurance.coverageDetail.monthlyPrime}}</h4>
                         </div>
                       </div>
                         <div class="row">
@@ -87,10 +87,10 @@
                         <h5><i class="fas fa-minus"></i>  Ocupación:</h5>
                         <p>{{request.user.occupation.name ? request.user.occupation.name : request.user.occupation.id}}</p>
                     </div>
-                    <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
+                    <!-- <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
                         <h5><i class="fas fa-minus"></i>  Fecha de nacimiento:</h5>
                         <p>{{!request.user.birthday ? 'N/A' : request.user.birthday.iso | date: 'dd/MM/yyyy'}}</p>
-                    </div>
+                    </div> -->
                     <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
                         <h5><i class="fas fa-minus"></i>  Email:</h5>
                         <p>{{request.user.email}}</p>
@@ -217,11 +217,11 @@
                     </div>
                     <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
                         <h5><i class="fas fa-minus"></i>  Ocupaciones anteriores:</h5>
-                        <p>{{request.insured.previousOccupations}}</p>
+                        <p>{{request.insured.previousOccupations.name}}</p>
                     </div>
                     <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
                         <h5><i class="fas fa-minus"></i>  Deportes que práctica:</h5>
-                        <p>{{request.insured.sports}}</p>information
+                        <p>{{request.insured.sports}}</p>
                     </div>
                     <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
                         <h5><i class="fas fa-minus"></i>  Ingreso mensual:</h5>
@@ -466,7 +466,7 @@
                 <div class="row">
                     <div class="col-md-6 col-lg-4 mb-2">
                         <h5><i class="fas fa-minus"></i>  ¿Dónde deseas que te entreguemos tu carnet de afiliación?</h5>
-                        <p>{{request.deliverInformation.livingPlace === 'vivienda' ? 'vivienda' : request.deliverInformation.placeDescription}}</p>
+                        <p>{{request.deliverInformation.livingPlace === 'Vivienda' ? 'Vivienda' : request.deliverInformation.placeDescription}}</p>
                     </div>
                     <div class="col-md-6 col-lg-4 mb-2">
                         <h5><i class="fas fa-minus"></i>  Punto de referencia:</h5>

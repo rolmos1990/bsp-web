@@ -7,7 +7,7 @@ const routes: Routes = [
     loadChildren: './modules/landing-page/landing-page.module#LandingPageModule'
   },
   {
-    path: 'payment',
+    path: 'pago',
     loadChildren: './modules/payment/payment.module#PaymentModule'
   },
   {
@@ -15,28 +15,28 @@ const routes: Routes = [
     loadChildren: './modules/general/general.module#GeneralModule'
   },
   {
-    path: 'coverage/:userId',
+    path: 'cobertura/:userId',
     loadChildren: './modules/coverage/coverage.module#CoverageModule',
     pathMatch: 'full'
   },
   {
-    path: 'quoting',
+    path: 'cotizar',
     loadChildren: './modules/quoting/quoting.module#QuotingModule'
   },
   {
-    path: 'information/:requestId',
+    path: 'formulario/:requestId',
     loadChildren: './modules/information/information.module#InformationModule'
   },
   {
-    path: 'login',
+    path: 'ingreso',
     loadChildren: './modules/login/login.module#LoginModule'
   },
   {
-    path: 'apinfo',
+    path: 'información',
     loadChildren: './modules/apinfo/apinfo.module#ApinfoModule'
   },
   {
-    path: 'insurance-detail',
+    path: 'detalle',
     loadChildren: './modules/insurance-detail/insurance-detail.module#InsuranceDetailModule'
   }
 ];

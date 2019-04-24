@@ -11,7 +11,7 @@ const routes: Routes = [
     data: { title: 'Banesco Seguros - Informacion del Cliente' }
   },
   {
-    path: 'rejection',
+    path: 'rechazo',
     component: ThanksComponent,
     pathMatch: 'full',
     data: { title: 'Banesco Seguros - Informacion del Cliente' }

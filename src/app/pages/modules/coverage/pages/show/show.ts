@@ -64,7 +64,7 @@ export class ShowComponent implements OnInit {
 
   public reject(modal: any) {
     modal.dismiss('Cross click');
-    this._router.navigate(['information', this.insuranceId, 'rejection']);
+    this._router.navigate(['formulario', this.insuranceId, 'rechazo']);
   }
 
   private createNewRequest(modal: any) {
@@ -72,7 +72,7 @@ export class ShowComponent implements OnInit {
     this.isLoading = true;
     this._newrequestService.createNewRequest(this.insuranceId, this._route.snapshot.paramMap.get('userId')).subscribe(
       response => {
-        this._router.navigate(['information', response.result.request.id]);
+        this._router.navigate(['formulario', response.result.request.id]);
       }, error => {
         console.error(error);
         this.isLoading = false;
