@@ -87,10 +87,10 @@
                         <h5><i class="fas fa-minus"></i>  Ocupación:</h5>
                         <p>{{request.user.occupation.name ? request.user.occupation.name : request.user.occupation.id}}</p>
                     </div>
-                    <!-- <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
-                        <h5><i class="fas fa-minus"></i>  Fecha de nacimiento:</h5>
-                        <p>{{!request.user.birthday ? 'N/A' : request.user.birthday.iso | date: 'dd/MM/yyyy'}}</p>
-                    </div> -->
+                    <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
+                        <h5><i class="fas fa-minus"></i>  Edad:</h5>
+                        <p>{{request.user.birthday}}</p>
+                    </div>
                     <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
                         <h5><i class="fas fa-minus"></i>  Email:</h5>
                         <p>{{request.user.email}}</p>

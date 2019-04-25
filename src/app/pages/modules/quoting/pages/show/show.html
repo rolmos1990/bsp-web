@@ -74,13 +74,13 @@
               <h3 class="color-negro">¿Qué edad tiene el asegurado?</h3>
               <img src="assets/img/edad.png" alt="" class="my-5">
               <!-- error -->
-              <input type="number" class="form-control mb-1" placeholder="EDAD" formControlName="age"
-                [ngClass]="{'is-invalid': invalid('age', forma), 'is-valid': valid('age', forma)}">
-              <div *ngIf="invalid('age', forma)" class="invalid-feedback">
+              <input type="number" class="form-control mb-1" placeholder="EDAD" formControlName="birthday"
+                [ngClass]="{'is-invalid': invalid('birthday', forma), 'is-valid': valid('birthday', forma)}">
+              <div *ngIf="invalid('birthday', forma)" class="invalid-feedback">
                 * Disculpa, esta póliza es sólo para personas con edades
                 entre 18 y 70 años
               </div>
-              <button type="submit" [disabled]="forma.controls['age'].invalid || flag3 == false" class="btn btn-primary my-5"
+              <button type="submit" [disabled]="forma.controls['birthday'].invalid || flag3 == false" class="btn btn-primary my-5"
                 (click)="hide3()">SIGUIENTE</button>
             </div>
           </div>
