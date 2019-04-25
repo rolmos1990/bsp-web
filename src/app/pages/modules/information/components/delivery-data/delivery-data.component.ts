@@ -45,7 +45,7 @@ export class DeliveryDataComponent implements OnInit {
 
   public validateForm() {
     console.log(this.formaDelivery.get('livingPlace').value);
-    if (this.formaDelivery.get('livingPlace').value === 'vivienda') {
+    if (this.formaDelivery.get('livingPlace').value === 'Vivienda') {
       this.formaDelivery.get('placeDescription').clearValidators();
       this.formaDelivery.get('placeDescription').updateValueAndValidity();
       this.formaDelivery.get('placeDescription').updateValueAndValidity();

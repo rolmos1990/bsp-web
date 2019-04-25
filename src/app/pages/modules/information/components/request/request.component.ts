@@ -246,8 +246,10 @@ export class RequestComponent implements OnInit {
   }
 
   public saveRequest(proceed: boolean) {
-    this.mainFormValidation();
-    if (this.forma.valid && this.isPercentValid) {
+    if (proceed) {
+      this.mainFormValidation();
+    }
+    if ((this.forma.valid && this.isPercentValid) || !proceed) {
       this.isLoading.emit(true);
       let payload = this.forma.value;
       delete payload.insuDependents;

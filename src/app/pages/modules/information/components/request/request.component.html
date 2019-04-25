@@ -438,7 +438,7 @@
                     <label for="">Teléfono residencial: (*)</label>
                     <input type="text" class="form-control" [ngClass]="{'is-invalid': invalid('insuLocalNumber', forma), 'is-valid': valid('insuLocalNumber', forma)}" formControlName="insuLocalNumber">
                     <div *ngIf="invalid('insuLocalNumber', forma)" class="invalid-feedback">
-                        Por favor escriba un número válido.
+                        Por favor escriba un número válido. Por ejemplo: +50765348555.
                     </div>
                     <div *ngIf="valid('insuLocalNumber', forma)" class="valid-feedback">
                       ¡Excelente!
