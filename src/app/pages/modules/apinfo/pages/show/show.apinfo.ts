@@ -57,11 +57,11 @@ export class ShowApinfo implements OnInit {
     breakpoints: {
       1024: {
         slidesPerView: 3,
-        spaceBetween: 30,
+        spaceBetween: 70,
       },
       768: {
         slidesPerView: 3,
-        spaceBetween: 30,
+        spaceBetween: 70,
       },
       640: {
         slidesPerView: 1,

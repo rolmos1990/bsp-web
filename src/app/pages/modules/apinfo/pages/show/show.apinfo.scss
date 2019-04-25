@@ -66,6 +66,7 @@
         @media (min-width: 1024px){
             display: block;
             margin-top: 60px;
+            float: right
         }
     }
     @media(min-width: 1024px){
@@ -90,9 +91,14 @@
             padding: 5px 15px;
             margin-right: 10px;
             margin-bottom: 10px;
+            background: white;
             @media(min-width: 1024px){
                 height: 40px;
             }
+        }
+
+        .border-green{
+            border: 1px solid #1c8464;
         }
     }
     .caja{
@@ -105,7 +111,7 @@
             height: 559px;
         }
 
-        @media(min-width: 1440px){
+        @media(min-width: 1350px){
             width: 998px;
             height: 559px;
         }
@@ -133,7 +139,6 @@
             margin: 10px auto 10px auto;
             @media(min-width: 1024px){
                 width: 621px;
-                height: 110px;
                 text-align: center;
             }
         }
@@ -173,7 +178,7 @@
         color: #007943;
         font-weight: 700;
         text-decoration: none solid rgb(0, 121, 67);
-        margin: 30px 0 20px 20px;
+        margin: 30px 0 50px 20px;
         @media(min-width: 1024px){
             margin-left: 80px;
         }
@@ -272,6 +277,8 @@
     align-items: center;
     @media (min-width: 1024px){
         height: 250px!important;
+        width: 300px!important;
+        margin: 0 31px!important;
     }
 }
 
