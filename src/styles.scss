@@ -470,11 +470,16 @@ h1{
     box-shadow: 0px 3px 7px rgba(0,0,0,0.2);
 }
 
+.cober.coverage .card{
+    box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
+    border: 0;
+}
+
 .cober .card-header {
         padding: .75rem 0.7rem;
         margin-bottom: 0;
         background-color: #fff;
-        border-bottom: 1px solid rgba(0,0,0,.125);
+        border-bottom: 1px solid #c8c8c8;
 }
 
 .cober .card-body{
@@ -718,5 +723,11 @@ $animation-duration: 1.8s;
   
     100% {
       transform: translateX(40px);
+    }
+  }
+
+  @media (min-width: 576px) {
+    .modal-dialog {
+      max-width: 542px !important;
     }
   }

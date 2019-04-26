@@ -47,11 +47,15 @@ strong{
 }
 
 .lix{
-  font-size: 20px;
-  color: #1975d1;
-  text-decoration: none solid rgb(25, 117, 209);
-  line-height: 24px;
-  font-weight: 400;
+  font-size: 16px;
+  color: #556176;
+  text-decoration: none solid rgb(85, 97, 118);
+  width: 261px;
+  text-align: left;
+}
+
+.btn{
+  padding: 0;
 }
 
 ul{
@@ -174,7 +178,7 @@ header {
 }
 
 i.fas.fa-angle-down {
-  color: #1975d1;
+  color: #708090;
   margin-right: 20px;
 }
 
@@ -295,12 +299,19 @@ box-shadow: 0px 1px 2px 3px rgba(0,0,0,0.2);
   display: block;
 }
 
-
+.cober .card {
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0)!important;
+}
 
 .card.customClass,
 .card.customClass .card-header,
 .panel.customClass {
   background-color: white;
+}
+
+.arrow2 {
+  width: auto!important;
+  float: right;
 }
 
 .modal-body .row {
@@ -310,6 +321,14 @@ box-shadow: 0px 1px 2px 3px rgba(0,0,0,0.2);
 .btn-primary {
   border: 0;
 }
+
+@media (min-width: 576px){
+ .modal-dialog {
+   max-width: 542px;
+   margin: 1.75rem auto;
+ }
+}
+
 
 @media (max-width: 480px) {
   .cuadrado {
@@ -370,5 +389,11 @@ box-shadow: 0px 1px 2px 3px rgba(0,0,0,0.2);
 
   p {
     font-size: 14px;
+  }
+}
+
+@media (min-width: 576px){
+  .modal-dialog {
+    max-width: 542px!important;
   }
 }
