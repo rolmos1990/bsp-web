@@ -135,10 +135,32 @@
                 Por favor selecciona una opción
               </div>
               <button type="submit" [disabled]="forma.controls['same'].invalid || flag5 == false" class="btn btn-primary my-5 "
-                (click)="submit()">COTIZAR</button>
+                (click)="hide5()">SIGUIENTE</button>
             </div>
           </div>
           <div class="col-1 col-md-2">
+            <!-- -->
+          </div>
+        </div>
+        <div class="row" [ngClass]="{'d-none': flag6 == false}">
+          <div class="col-md-2">
+            <!-- -->
+          </div>
+          <div class="col-md-8">
+            <div class="cuadrado">
+              <h4 class="cotizador-h4">Cotizador Banesco </h4> <img src="assets/img/cruz.svg" alt="" class="m-0">
+              <h4 class="cotizador-h2-2 fwb-600">Seguros</h4>
+              <h3 class="">Selecciona el deducible que <br> deseas pagar</h3>
+              <img src="assets/img/pago.png" alt="" class="my-5">
+              <select name="" id="" class="form-control">
+                <option value="">Seleccione</option>
+              </select>
+              
+              <button type="submit" [disabled]="flag6 == false" class="btn btn-primary my-5 "
+                (click)="submit()">COTIZAR</button>
+            </div>
+          </div>
+          <div class="col-md-2">
             <!-- -->
           </div>
         </div>
