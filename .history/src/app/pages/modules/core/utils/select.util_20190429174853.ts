@@ -104,7 +104,7 @@ export const SLIDES = [
   'titulo': 'Gastos médicos por accidente',
   'imagen' : 'cuatroapinfo',
   'mensaje': 'Cobertura opcional donde te reembolsamos hasta un 10% de la suma asegurada para gastos médicos incurridos por accidentes.',
-  'enlace':' '
+  'enlace':'y'
   },
   {
   'id': '5',
