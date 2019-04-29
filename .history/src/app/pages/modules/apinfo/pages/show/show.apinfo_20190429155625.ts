@@ -1,7 +1,7 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
 import { SwiperComponent, SwiperDirective, SwiperConfigInterface,
   SwiperScrollbarInterface, SwiperPaginationInterface } from 'ngx-swiper-wrapper';
-import { SLIDES } from '../../../core/utils/select.util';
+import { SLIDES } from '../../core/utils/select.utils';
 
 @Component({
   selector: 'bsp-show',

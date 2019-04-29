@@ -52,7 +52,7 @@
                   </div>
                 </div>
                 <div class="col-md-4 mb-5">
-                  <label for="">Provincia (*)</label>
+                  <label for="">Provincia donde reside: (*)</label>
                   <select class="form-control" [ngClass]="{'is-invalid': invalid('contProvinceId', forma), 'is-valid': valid('contProvinceId', forma)}" (ngModelChange)="getDistricts(true)" formControlName="contProvinceId">
                     <option *ngFor="let province of provinces; let i=index" [value]="province.id">{{province.name}}</option>
                   </select>
@@ -64,7 +64,7 @@
                   </div>
                 </div>
                 <div class="col-md-4 mb-5">
-                  <label for="">Distrito (*)</label>
+                  <label for="">Distrito donde reside: (*)</label>
                   <select class="form-control" [ngClass]="{'is-invalid': invalid('contDistrictId', forma), 'is-valid': valid('contDistrictId', forma)}" (ngModelChange)="getCorregimientos(true)" formControlName="contDistrictId">
                     <option *ngFor="let district of districtsCont; let i=index" [value]="district.id">{{district.name}}</option>
                   </select>
@@ -76,7 +76,7 @@
                   </div>
                 </div>
                 <div class="col-md-4 mb-5">
-                  <label for="">Corregimiento:  (*)</label>
+                  <label for="">Corregimiento donde reside:  (*)</label>
                   <select class="form-control" [ngClass]="{'is-invalid': invalid('contCorregimientoId', forma), 'is-valid': valid('contCorregimientoId', forma)}" formControlName="contCorregimientoId">
                     <option *ngFor="let corregimiento of corregimientosCont; let i=index" [value]="corregimiento.id">{{corregimiento.name}}</option>
                   </select>
@@ -154,29 +154,7 @@
               <p class="subtitulo mb-5" *ngIf="forma.value.insuSame === true">
                 Por favor completa los siguientes datos y continúa con el proceso de solicitud. 
               </p>
-              <!-- <p class="subtitulo">Los campos denotados con un (*) son obligatorios para continuar.</p> -->
                 <div class="row mb-5">
-                  <!-- <div *ngIf="forma.value.insuSame === true" class="col-md-6 col-lg-4 mb-5">
-                    <label for="">¿Eres el solicitante de la póliza? (*)</label>
-                    <div class="form-check mb-1">
-                      <input class="form-check-input" [ngClass]="{'is-invalid': invalid('insuSame', forma), 'is-valid': valid('insuSame', forma)}" name="insuSame" type="radio" [value]="true" formControlName="insuSame">
-                      <label class="form-check-label" for="insuSame">
-                        Si
-                      </label>
-                    </div>
-                    <div class="form-check">
-                      <input class="form-check-input" [ngClass]="{'is-invalid': invalid('insuSame', forma), 'is-valid': valid('insuSame', forma)}" name="insuSame" type="radio" [value]="false" formControlName="insuSame">
-                      <label class="form-check-label" for="insuSame">
-                        No
-                      </label>
-                    </div>
-                    <div *ngIf="invalid('insuSame', forma)" class="invalid-feedback">
-                        Por favor indiquenos si es usted quien solicita la póliza.
-                    </div>
-                    <div *ngIf="valid('insuSame', forma)" class="valid-feedback">
-                      ¡Excelente!
-                    </div>
-                  </div> -->
                   <div class="col-md-6 col-lg-4 mb-5">
                     <label for="">Nombre (*)</label>
                     <input type="text" class="form-control" [ngClass]="{'is-invalid': invalid('insuName', forma), 'is-valid': valid('insuName', forma)}" placeholder="" formControlName="insuName">
@@ -208,7 +186,7 @@
                     </div>
                   </div>
                   <div class="col-md-6 col-lg-4 mb-5">
-                    <label for="">Provincia: (*)</label>
+                    <label for="">Provincia donde reside: (*)</label>
                     <select class="form-control" [ngClass]="{'is-invalid': invalid('insuProvinceId', forma), 'is-valid': valid('insuProvinceId', forma)}" (ngModelChange)="getDistricts(false)" formControlName="insuProvinceId">
                       <option *ngFor="let province of provinces; let i=index" [value]="province.id">{{province.name}}</option>
                     </select>
@@ -220,7 +198,7 @@
                     </div>
                   </div>
                   <div class="col-md-6 col-lg-4 mb-5">
-                    <label for="">Distrito: (*)</label>
+                    <label for="">Distrito donde reside: (*)</label>
                     <select class="form-control" [ngClass]="{'is-invalid': invalid('insuDistrictId', forma), 'is-valid': valid('insuDistrictId', forma)}" (ngModelChange)="getCorregimientos(false)" formControlName="insuDistrictId">
                       <option *ngFor="let district of districtsInsu; let i=index" [value]="district.id">{{district.name}}</option>
                     </select>
@@ -232,7 +210,7 @@
                     </div>
                   </div>
                   <div class="col-md-6 col-lg-4 mb-5">
-                    <label for="">Corregimiento: (*)</label>
+                    <label for="">Corregimiento donde reside: (*)</label>
                     <select class="form-control" [ngClass]="{'is-invalid': invalid('insuCorregimientoId', forma), 'is-valid': valid('insuCorregimientoId', forma)}" formControlName="insuCorregimientoId">
                       <option *ngFor="let corregimiento of corregimientosInsu; let i=index" [value]="corregimiento.id">{{corregimiento.name}}</option>
                     </select>
@@ -639,8 +617,8 @@
             <div class="container">
               <div class="row mb-5">
                 <div class="marco-verde uno">
-                  <h3 class="">Beneficiarios</h3>
-                  <p class="sumatoria">La sumatoria total de beneficiarios debe ser del 100% hasta un máximo de 5 beneficiarios</p>
+                  <h3 class="">Beneficiarios principales y contingentes</h3>
+                  <p class="sumatoria">Por favor agrega la información de los beneficiarios principales y contingentes (secundarios) para continuar con la solicitud</p>
                 </div>
                 <button *ngIf="((this.remainingPercentContingent + this.remainingPercentMain) > 0)" class="btn-mas1" (click)="open(content)"><img src="assets/img/mas.svg" alt="" class="img" ></button> 
                   <div class="fondo-blanco">

@@ -153,7 +153,7 @@
               <h3 class="">Selecciona el deducible que <br> deseas pagar</h3>
               <img src="assets/img/pago.png" alt="" class="my-5">
               <select name="" id="" class="form-control">
-                <option value="">Seleccione</option>
+                <option value="" *ngFor="let deductible of deductibles; let i = index" [value]="deductible.item">{{deductible.item}}</option>
               </select>
               
               <button type="submit" [disabled]="flag6 == false" class="btn btn-primary my-5 "

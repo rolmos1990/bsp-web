@@ -50,8 +50,11 @@ strong{
   font-size: 16px;
   color: #556176;
   text-decoration: none solid rgb(85, 97, 118);
-  width: 261px;
+  width: 160px;
   text-align: left;
+  @media (min-width: 768px){
+    width: 261px;
+  }
 }
 
 .btn{
@@ -77,7 +80,10 @@ ul{
     font-size: 24px;
     color: #1c8464;
     text-decoration: none solid rgb(28, 132, 100);
-    margin-top: -50px;
+    margin-top: 0px;
+    @media(min-width: 768px){
+      margin-top: -50px;
+    }
   }
   .modall{
     h4{
@@ -210,7 +216,7 @@ i.fas.fa-angle-down {
   border: 2px solid #dce1e9;
   background-size: cover;
   width: 367px;
-  margin: 0 auto 10px auto;
+  margin: 0 auto 20px auto;
 }
 
 .cuadrado .superior {
@@ -222,7 +228,7 @@ i.fas.fa-angle-down {
 }
 
 .ver-detalle {
-  margin: 20px 0;
+  margin: 24px 0;
   font-size: 15.8px;
   color: #4e74b0;
   font-weight: bold;
@@ -290,7 +296,10 @@ box-shadow: 0px 1px 2px 3px rgba(0,0,0,0.2);
 }
 
 .modal-body {
-  padding: 0rem 1rem 1rem;
+  padding: 0rem 0.2rem 0.2rem;
+  @media (min-width: 768px){
+    padding: 0rem 1rem 1rem;
+  }
 }
 
 .modal-body img {
@@ -322,6 +331,17 @@ box-shadow: 0px 1px 2px 3px rgba(0,0,0,0.2);
   border: 0;
 }
 
+div.bolita{
+  width: 15px;
+  height: 15px;
+  background-color: #1975d1;
+  background-size: cover;
+  position: absolute;
+  top: 20px;
+  left: -20px;
+  border-radius: 100%;
+}
+
 @media (min-width: 576px){
  .modal-dialog {
    max-width: 542px;
@@ -338,12 +358,13 @@ box-shadow: 0px 1px 2px 3px rgba(0,0,0,0.2);
 
 
 @media (max-width: 768px) {
+
   h4 {
     font-size: 20px;
   }
 
   .titulo-1 {
-    font-size: 24px;
+    font-size: 22px;
   }
 
 

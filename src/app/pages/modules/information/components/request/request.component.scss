@@ -43,6 +43,7 @@ color: white;
 .sumatoria{
 margin: 10px 0 0 80px;
 color: white;
+font-size: 14px;
 }
 
 i.fas {
@@ -174,27 +175,27 @@ width: 280px;
 }
 
 @media (max-width: 767px) {
-.fondo-blanco {
-  padding: 30px 0 0;
-}
+  .fondo-blanco {
+    padding: 30px 0 0;
+  }
 
-.form-control.parrafo {
-  display: block;
-  width: 100%;
-  margin: 0;
-}
+  .form-control.parrafo {
+    display: block;
+    width: 100%;
+    margin: 0;
+  }
 
-.btn-mas1 {
-  width: 35px;
-  top: 160px;
-}
+  .btn-mas1 {
+    width: 35px;
+    top: 160px;
+  }
 
-.btn-mas1.img {
-  width: 35px;
-}
+  .btn-mas1.img {
+    width: 35px;
+  }
 
-.btn-mas2 {
-  width: 35px;
-  top: 804px;
-}
+  .btn-mas2 {
+    width: 35px;
+    top: 804px;
+  }
 }

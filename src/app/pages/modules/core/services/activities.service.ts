@@ -12,7 +12,7 @@ export class ActivityService {
 
     constructor(private _http: HttpClient) { }
 
-    public getAllOcupations() : Observable<any> {
+    public getAllOcupations(): Observable<any> {
       return this._http
         .post(environment.baseUrl.concat(API_ENDPOINT_GET_ALL_OCCUPATIONS), null, ServiceDirective.headers)
         .pipe(

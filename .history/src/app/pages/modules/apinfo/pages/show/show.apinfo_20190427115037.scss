@@ -52,7 +52,7 @@
             width: 160px;
             height: 55px;
             float: right;
-            margin: -30px -60px 0 0px;
+            margin: -30px 20px 0 0px;
         }
 
         @media (min-width: 1750px){
@@ -78,7 +78,7 @@
         text-align: center;
         margin-top: 10px;
         @media(min-width: 1024px){
-            margin-left: 130px;
+            margin-left: 80px;
             margin-top: 20px;
             text-align: initial;
         }
@@ -137,7 +137,6 @@
             text-decoration: none solid rgb(85, 97, 118);
             text-align: justify;
             margin: 10px auto 10px auto;
-            font-weight: bold;
             @media(min-width: 1024px){
                 width: 621px;
                 text-align: center;
@@ -251,16 +250,6 @@
     }
 }
 
-.enlace{
-    font-size: 12px;
-    color: #556176;
-    text-decoration: none solid rgb(85, 97, 118);
-    text-align: right;
-    margin-top: 20px;
-    display: block;
-    font-weight: bold;
-}
-
 .swiper-container {
     width: 100%;
     height: 100%;
@@ -268,10 +257,9 @@
 .swiper-slide {
     text-align: center;
     font-size: 18px;
-    padding: 3px 10px 3px 5px;
+    padding: 10px;
     height: auto!important;
     background: #fafafa;
-    box-shadow: 0px 1px 2px rgba(0,0,0,0.35);
     background-size: cover;
     border: 1px solid #dce1e9;
     /* Center slide text vertically */
@@ -288,7 +276,7 @@
     -webkit-align-items: center;
     align-items: center;
     @media (min-width: 1024px){
-        height: 260px!important;
+        height: 250px!important;
         width: 300px!important;
         margin: 0 31px!important;
     }

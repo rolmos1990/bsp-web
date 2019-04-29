@@ -17,14 +17,14 @@ export const DOCUMENTS = [
   { 'id': 15, 'itemName': 'N' },
   { 'id': 16, 'itemName': 'E' },
   { 'id': 17, 'itemName': 'Pasaporte' }
-];
+]
 
 export const CARTYPES = [
   { 'id': 'Camioneta', 'itemName': 'Camioneta' },
   { 'id': 'PickUp', 'itemName': 'Pick Up' },
   { 'id': 'Sedan', 'itemName': 'Sedán' },
   { 'id': 'Taxi', 'itemName': 'Taxi' }
-];
+]
 
 export const MONTHS = [
   { 'id': '01', 'item': 'Enero'},
@@ -39,7 +39,7 @@ export const MONTHS = [
   { 'id': '10', 'item': 'Octubre'},
   { 'id': '11', 'item': 'Noviembre'},
   { 'id': '12', 'item': 'Diciembre'}
-];
+]
 
 export const CARDNAME = [
   { 'item': 'MasterCard' },
@@ -49,13 +49,13 @@ export const CARDNAME = [
   { 'item': 'Amex' },
   { 'item': 'Discover' },
   { 'item': 'Maestro' }
-];
+]
 
 export const SCHEDULES = [
   { 'item': 'Mañana (08:00 AM - 12:00 PM)'},
   { 'item': 'Mediodía (12:00 PM - 1:00 PM)'},
   { 'item': 'Tarde (1:00 PM - 5:00 PM)'}
-];
+]
 
 export const CIVILSTATUS = [
   { 'item': 'Soltero'},
@@ -63,21 +63,21 @@ export const CIVILSTATUS = [
   { 'item': 'Divorciado'},
   { 'item': 'Viudo'},
   { 'item': 'Otro'}
-];
+]
 
 export const MONTHLYINCOME = [
   { 'item': 'Menor a $500'},
   { 'item': 'Entre $500 y $1000'},
   { 'item': 'Entre $1000 y $2000'},
   { 'item': 'Mayor a $2000'}
-];
+]
 
 export const DEDUCTIBLES = [
   { 'item': '$200'},
   { 'item': '$300'},
   { 'item': '$400'},
   { 'item': '$500'},
-];
+]
 
 export const SLIDES = [
   {
@@ -117,4 +117,4 @@ export const SLIDES = [
   'imagen' : 'seisapinfo',
   'mensaje': 'Asistencia médica durante tu viaje, si por indicación médica debes alojarte en un hotel, cubrimos tu estancia mientras te recuperas, transporte de los familiares del asegurado en caso necesario. Si ocurriera el fallecimiento del asegurado, traemos de vuelta sus restos así como a los familiares' 
   },
-];
+]

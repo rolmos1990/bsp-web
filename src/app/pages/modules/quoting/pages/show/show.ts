@@ -4,6 +4,7 @@ import { UserService } from '../../../core/services/user.service';
 import { Router } from '@angular/router';
 import { CustomValidatorDirective } from '../../../core/directives/validations/custom-validations.directive';
 import { ActivityService } from '../../../core/services/activities.service';
+import { DEDUCTIBLES } from '../../../core/utils/select.util';
 
 @Component({
   selector: 'bsp-show',
@@ -18,6 +19,7 @@ export class ShowComponent implements OnInit {
   public isLoading: boolean;
   public ocupaciones: Array<any> = [];
   private occupations: Array<any> = [];
+  public deductibles = DEDUCTIBLES;
   public flag1: boolean = true;
   public flag2: boolean = false;
   public flag3: boolean = false;

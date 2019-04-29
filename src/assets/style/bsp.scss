@@ -47,6 +47,19 @@ label{
     text-decoration: none solid rgb(165, 173, 180);
 }
 
+.btn-primary-modal{
+    width: 233px;
+    height: 59px;
+    padding: 0px 16px;
+    border-radius: 4px;
+    background-color: #1c8464;
+    font-family: Lato;
+    font-size: 17px;
+    color: #ffffff;
+    text-decoration: none solid rgba(255, 255, 255, 0.84);
+    text-align: center;
+}
+
 .btn-primary{
     width: 280px;
     height: 59px;
@@ -91,7 +104,7 @@ aw-wizard-navigation-bar.horizontal.large-filled-symbols ul.steps-indicator li .
 
 @media (min-width: 992px){
     .modal-lg, .modal-xl {
-      max-width: 706px;
+      max-width: 706px!important;
     }
   }
   

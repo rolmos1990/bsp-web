@@ -1,7 +1,6 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
 import { SwiperComponent, SwiperDirective, SwiperConfigInterface,
   SwiperScrollbarInterface, SwiperPaginationInterface } from 'ngx-swiper-wrapper';
-import { SLIDES } from '../../../core/utils/select.util';
 
 @Component({
   selector: 'bsp-show',
@@ -11,7 +10,8 @@ import { SLIDES } from '../../../core/utils/select.util';
 export class ShowApinfo implements OnInit {
   customClass = 'customClass';
   isFirstOpen = true;
-  public slides = SLIDES;
+
+
 
   public type: string = 'component';
 
