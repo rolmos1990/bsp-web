@@ -25,6 +25,7 @@ export class ShowComponent implements OnInit {
   public flag3: boolean = false;
   public flag4: boolean = false;
   public flag5: boolean = false;
+  public flag6: boolean = false;
 
 
   constructor(

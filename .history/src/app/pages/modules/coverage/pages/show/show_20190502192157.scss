@@ -134,13 +134,12 @@ header {
 }
 
 .btn.btn-primary.solicitar{
-    width: 120px;
+    width: auto;
     height: 48px;
     padding: 0!important;
     background-color: #1c8464;
     margin: 16px 0;
     float: right;
-    font-size: 14px;
     border: 0;
 }
 
@@ -149,6 +148,9 @@ header {
 }
 
 .btn.ver-detalles {
+  width: 100%;
+  font-size: 16px;
+
   img {
     width: 20px;
   }
@@ -211,16 +213,11 @@ i.fas.fa-angle-down {
   box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.5);
 }
 
-.cuadrado{
+.cuadrado {
   border: 2px solid #dce1e9;
   background-size: cover;
-  width: 284px;
-  height: 321px;
+  width: 310px;
   margin: 0 auto 20px auto;
-  @media (min-width: 768px){
-    width: 284px;
-    height: 321px;
-  }
 }
 
 .cuadrado .superior {
@@ -233,7 +230,7 @@ i.fas.fa-angle-down {
 
 .ver-detalle {
   margin: 24px 0;
-  font-size: 14px;
+  font-size: 15.8px;
   color: #4e74b0;
   font-weight: bold;
   float: left;
@@ -377,6 +374,18 @@ div.bolita{
     width: 368px;
   }
 
+  .ver-detalle {
+    border: 2px solid #d2d2d2;
+    width: 100%;
+    margin: 10px 0 0 0;
+    font-size: 16px;
+    padding: 10px 0;
+  }
+
+  .btn.btn-primary.solicitar {
+    margin: 10px 0;
+  }
+
   .titulo-condiciones {
     margin: 20px 0 20px 10px;
     font-size: 22px;
@@ -390,6 +399,11 @@ div.bolita{
 @media (max-width: 1024px) {
   .cuadrado {
     width: auto;
+  }
+
+  .ver-detalle{
+    font-size: 14px;
+    padding: 0;
   }
 
   .cuadrado .inferior h5 {

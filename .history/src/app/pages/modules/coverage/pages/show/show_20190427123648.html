@@ -30,7 +30,7 @@
                   <accordion-group [panelClass]="customClass" [isOpen]="isFirstOpen">
                     <button class="btn btn-link btn-block clearfix" accordion-heading>
                       <div class="pull-left float-left lix">Muerte accidental</div>
-                      <div class="float-right">{{actualCoverage.coverageDetail.accidentalDeath}}% <img src="assets/img/arrow2.svg" alt="" class="arrow2"> </div>
+                      <div class="float-right">100% <img src="assets/img/arrow2.svg" alt="" class="arrow2"> </div>
                     </button>
                     <p>En caso de sufrir un accidente donde el asegurado falleciera o sufriera lesiones involuntarias
                       debido a un accidente, esta cobertura se haría efectiva con la totalidad del pago de la suma
@@ -45,7 +45,7 @@
                 <accordion-group [panelClass]="customClass">
                   <button class="btn btn-link btn-block clearfix" accordion-heading>
                     <div class="pull-left float-left lix">Adelantos de gastos funerarios</div>
-                    <div class="float-right">{{actualCoverage.coverageDetail.funeraryAdvances}}% <img src="assets/img/arrow2.svg" alt="" class="arrow2"> </div>
+                    <div class="float-right">100% <img src="assets/img/arrow2.svg" alt="" class="arrow2"> </div>
                   </button>
                   <p>En caso de sufrir un accidente donde el asegurado falleciera o sufriera lesiones involuntarias
                     debido a un accidente, esta cobertura se haría efectiva con la totalidad del pago de la suma
@@ -60,7 +60,7 @@
                 <accordion-group [panelClass]="customClass">
                   <button class="btn btn-link btn-block clearfix" accordion-heading>
                     <div class="pull-left float-left lix">Doble indemnización por muerte por accidente específico</div>
-                    <div class="float-right">{{actualCoverage.coverageDetail.dobleCompensation}}%  <img src="assets/img/arrow2.svg" alt="" class="arrow2"> </div>
+                    <div class="float-right">100% <img src="assets/img/arrow2.svg" alt="" class="arrow2"> </div>
                   </button>
                   <p>En caso de sufrir un accidente donde el asegurado falleciera o sufriera lesiones involuntarias
                     debido a un accidente, esta cobertura se haría efectiva con la totalidad del pago de la suma
@@ -75,7 +75,7 @@
                 <accordion-group [panelClass]="customClass">
                   <button class="btn btn-link btn-block clearfix" accordion-heading>
                     <div class="pull-left float-left lix">Gastos médicos por accidente</div>
-                    <div class="float-right">{{actualCoverage.coverageDetail.medicalExpenses}}%  <img src="assets/img/arrow2.svg" alt="" class="arrow2"> </div>
+                    <div class="float-right">100% <img src="assets/img/arrow2.svg" alt="" class="arrow2"> </div>
                   </button>
                   <p>En caso de sufrir un accidente donde el asegurado falleciera o sufriera lesiones involuntarias
                     debido a un accidente, esta cobertura se haría efectiva con la totalidad del pago de la suma
@@ -90,7 +90,7 @@
                 <accordion-group [panelClass]="customClass">
                   <button class="btn btn-link btn-block clearfix" accordion-heading>
                     <div class="pull-left float-left lix">Invalidez permanente (total o parcial)</div>
-                    <div class="float-right">{{actualCoverage.coverageDetail.permanentInhability}}%  <img src="assets/img/arrow2.svg" alt="" class="arrow2"> </div>
+                    <div class="float-right">100% <img src="assets/img/arrow2.svg" alt="" class="arrow2"> </div>
                   </button>
                   <p>En caso de sufrir un accidente donde el asegurado falleciera o sufriera lesiones involuntarias
                     debido a un accidente, esta cobertura se haría efectiva con la totalidad del pago de la suma
@@ -105,7 +105,7 @@
                 <accordion-group [panelClass]="customClass">
                   <button class="btn btn-link btn-block clearfix" accordion-heading>
                     <div class="pull-left float-left lix">Servicio de emergencia médica por accidente</div>
-                    <div class="float-right">{{actualCoverage.coverageDetail.emergencyService}}%  <img src="assets/img/arrow2.svg" alt="" class="arrow2"> </div>
+                    <div class="float-right">100% <img src="assets/img/arrow2.svg" alt="" class="arrow2"> </div>
                   </button>
                   <p>En caso de sufrir un accidente donde el asegurado falleciera o sufriera lesiones involuntarias
                     debido a un accidente, esta cobertura se haría efectiva con la totalidad del pago de la suma
@@ -120,7 +120,7 @@
                 <accordion-group [panelClass]="customClass">
                   <button class="btn btn-link btn-block clearfix" accordion-heading>
                     <div class="pull-left float-left lix">Asistencia en viajes</div>
-                    <div class="float-right">{{actualCoverage.coverageDetail.travelAssistance}}%  <img src="assets/img/arrow2.svg" alt="" class="arrow2"> </div>
+                    <div class="float-right">100% <img src="assets/img/arrow2.svg" alt="" class="arrow2"> </div>
                   </button>
                   <p>En caso de sufrir un accidente donde el asegurado falleciera o sufriera lesiones involuntarias
                     debido a un accidente, esta cobertura se haría efectiva con la totalidad del pago de la suma
@@ -232,10 +232,14 @@
               </div>
             </div>
 
-            <div class="contenedor-blanco">
-              <div class="container">
-                    <button class="btn ver-detalle" (click)="openSm(content, coverage)"><img src="assets/img/flechita.svg" alt=""> Ver detalles</button>
-                    <button class="btn btn-primary solicitar" (click)="openLg(terminos, coverage)">SOLICITAR</button>
+            <div class="container">
+              <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+                  <button class="btn ver-detalle" (click)="openSm(content, coverage)"><img src="assets/img/flechita.svg" alt=""> Ver detalles</button>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+                  <button class="btn btn-primary solicitar" (click)="openLg(terminos, coverage)">SOLICITAR</button>
+                </div>
               </div>
             </div>
           </div>

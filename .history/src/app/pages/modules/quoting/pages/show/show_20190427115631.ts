@@ -25,6 +25,7 @@ export class ShowComponent implements OnInit {
   public flag3: boolean = false;
   public flag4: boolean = false;
   public flag5: boolean = false;
+  public flag6: boolean = false;
 
 
   constructor(
@@ -123,6 +124,10 @@ export class ShowComponent implements OnInit {
     this.flag4 = false;
     this.flag5 = true;
   }
+  public hide5(): void {
+    this.flag5 = false;
+    this.flag6 = true;
+  }
 
   public atras2(): void {
     this.flag2 = false;
@@ -144,5 +149,9 @@ export class ShowComponent implements OnInit {
     this.flag4 = true;
   }
 
+  public atras6(): void {
+    this.flag6 = false;
+    this.flag5 = true;
+  }
 
 }

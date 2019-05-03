@@ -473,118 +473,106 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-md-12">
-          <h4 class="h4-verde">
-            Cobertura completa: </h4>
-
-            <div class="container cober coverage">
-              <div class="position-relative">
-                <div class="bolita"></div>
-                <accordion>
-                  <accordion-group [panelClass]="customClass" [isOpen]="isFirstOpen">
-                    <button class="btn btn-link btn-block clearfix" accordion-heading>
-                      <div class="pull-left float-left lix">Muerte accidental</div>
-                      <div class="float-right">{{request.insurance.coverageDetail.accidentalDeath}}% <img src="assets/img/arrow2.svg" alt="" class="arrow2"> </div>
-                    </button>
-                    <p>En caso de sufrir un accidente donde el asegurado falleciera o sufriera lesiones involuntarias
-                      debido a un accidente, esta cobertura se haría efectiva con la totalidad del pago de la suma
-                      asegurada.</p>
-                  </accordion-group>
-                </accordion>
-              </div>
-
-              <div class="position-relative">
-              <div class="bolita"></div>
-              <accordion>
-                <accordion-group [panelClass]="customClass">
-                  <button class="btn btn-link btn-block clearfix" accordion-heading>
-                    <div class="pull-left float-left lix">Adelantos de gastos funerarios</div>
-                    <div class="float-right">{{request.insurance.coverageDetail.funeraryAdvances}}% <img src="assets/img/arrow2.svg" alt="" class="arrow2"> </div>
-                  </button>
-                  <p>En caso de sufrir un accidente donde el asegurado falleciera o sufriera lesiones involuntarias
-                    debido a un accidente, esta cobertura se haría efectiva con la totalidad del pago de la suma
-                    asegurada.</p>
-                </accordion-group>
-              </accordion>
-              </div>
-
-              <div class="position-relative">
-              <div class="bolita"></div>
-              <accordion>
-                <accordion-group [panelClass]="customClass">
-                  <button class="btn btn-link btn-block clearfix" accordion-heading>
-                    <div class="pull-left float-left lix">Doble indemnización por muerte por accidente específico</div>
-                    <div class="float-right">{{request.insurance.coverageDetail.dobleCompensation}}%  <img src="assets/img/arrow2.svg" alt="" class="arrow2"> </div>
-                  </button>
-                  <p>En caso de sufrir un accidente donde el asegurado falleciera o sufriera lesiones involuntarias
-                    debido a un accidente, esta cobertura se haría efectiva con la totalidad del pago de la suma
-                    asegurada.</p>
-                </accordion-group>
-              </accordion>
-              </div>
-
-              <div class="position-relative">
-              <div class="bolita"></div>
-              <accordion>
-                <accordion-group [panelClass]="customClass">
-                  <button class="btn btn-link btn-block clearfix" accordion-heading>
-                    <div class="pull-left float-left lix">Gastos médicos por accidente</div>
-                    <div class="float-right">{{request.insurance.coverageDetail.medicalExpenses}}%  <img src="assets/img/arrow2.svg" alt="" class="arrow2"> </div>
-                  </button>
-                  <p>En caso de sufrir un accidente donde el asegurado falleciera o sufriera lesiones involuntarias
-                    debido a un accidente, esta cobertura se haría efectiva con la totalidad del pago de la suma
-                    asegurada.</p>
-                </accordion-group>
-              </accordion>
-              </div>
-
-              <div class="position-relative">
-              <div class="bolita"></div>
-              <accordion>
-                <accordion-group [panelClass]="customClass">
-                  <button class="btn btn-link btn-block clearfix" accordion-heading>
-                    <div class="pull-left float-left lix">Invalidez permanente (total o parcial)</div>
-                    <div class="float-right">{{request.insurance.coverageDetail.permanentInhability}}%  <img src="assets/img/arrow2.svg" alt="" class="arrow2"> </div>
-                  </button>
-                  <p>En caso de sufrir un accidente donde el asegurado falleciera o sufriera lesiones involuntarias
-                    debido a un accidente, esta cobertura se haría efectiva con la totalidad del pago de la suma
-                    asegurada.</p>
-                </accordion-group>
-              </accordion>
-              </div>
-
-              <div class="position-relative">
-              <div class="bolita"></div>
-              <accordion>
-                <accordion-group [panelClass]="customClass">
-                  <button class="btn btn-link btn-block clearfix" accordion-heading>
-                    <div class="pull-left float-left lix">Servicio de emergencia médica por accidente</div>
-                    <div class="float-right">{{request.insurance.coverageDetail.emergencyService}}%  <img src="assets/img/arrow2.svg" alt="" class="arrow2"> </div>
-                  </button>
-                  <p>En caso de sufrir un accidente donde el asegurado falleciera o sufriera lesiones involuntarias
-                    debido a un accidente, esta cobertura se haría efectiva con la totalidad del pago de la suma
-                    asegurada.</p>
-                </accordion-group>
-              </accordion>
-              </div>
-
-              <div class="position-relative">
-              <div class="bolita"></div>
-              <accordion>
-                <accordion-group [panelClass]="customClass">
-                  <button class="btn btn-link btn-block clearfix" accordion-heading>
-                    <div class="pull-left float-left lix">Asistencia en viajes</div>
-                    <div class="float-right">{{request.insurance.coverageDetail.travelAssistance}}%  <img src="assets/img/arrow2.svg" alt="" class="arrow2"> </div>
-                  </button>
-                  <p>En caso de sufrir un accidente donde el asegurado falleciera o sufriera lesiones involuntarias
-                    debido a un accidente, esta cobertura se haría efectiva con la totalidad del pago de la suma
-                    asegurada.</p>
-                </accordion-group>
-              </accordion>
-              </div>
-
-            </div>
+        <div class="col-md-6">
+          <h4 class="h4-verde" style="font-size:24px;">Cobertura Completa: </h4>
         </div>
+        <div class="col-md-6">
+          <!-- -->
+        </div>
+      </div>
+      <div class="">
+        <div class="">
+          <div class="row mt-3">
+            <div class="col-8 col-md-8">
+              <h4>Muerte accidental:</h4>
+            </div>
+            <div class="col-4 col-md-4">
+              <h4>{{!request.insurance.coverageDetail.accidentalDeath ? 'N/A' : '$' + request.insurance.coverageDetail.accidentalDeath }}</h4>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-8 col-md-8">
+              <h4>Adelantos de gastos funerarios:</h4>
+            </div>
+            <div class="col-8 col-md-4">
+              <h4>{{!request.insurance.coverageDetail.funeraryAdvances ? 'N/A' :  '$' + request.insurance.coverageDetail.funeraryAdvances }}</h4>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-8 col-md-8">
+              <h4>Doble indemnización por muerte por accidente específico:</h4>
+            </div>
+            <div class="col-4 col-md-4">
+              <h4 class="especial">{{ !request.insurance.coverageDetail.dobleCompensation ? 'N/A' : '$' + request.insurance.coverageDetail.dobleCompensation }}</h4>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-8 col-md-8">
+              <h4>Gastos médicos:</h4>
+            </div>
+            <div class="col-4 col-md-4">
+              <h4>{{ !request.insurance.coverageDetail.medicalExpenses ? 'N/A' : '$' + request.insurance.coverageDetail.medicalExpenses }}</h4>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-8 col-md-8">
+              <h4>Invalidez permanente:</h4>
+            </div>
+            <div class="col-4 col-md-4">
+              <h4>{{ !request.insurance.coverageDetail.permanentInhability ? 'N/A' : '$' + request.insurance.coverageDetail.permanentInhability }}</h4>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-8 col-md-8">
+              <h4>Incapacidad profesional u ocupacional:</h4>
+            </div>
+            <div class="col-4 col-md-4">
+              <h4>{{ !request.insurance.coverageDetail.professionalInhability ? 'N/A' : '$' + request.insurance.coverageDetail.professionalInhability }}</h4>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-8 col-md-8">
+              <h4>Renta diaria por incapacidad temporal:</h4>
+            </div>
+            <div class="col-4 col-md-4">
+              <h4>{{ !request.insurance.coverageDetail.dailyRent ? 'N/A' : '$' + request.insurance.coverageDetail.dailyRent }}</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-8 col-md-8">
+          <h4>Servicio de emergencia médica por accidente:</h4>
+        </div>
+        <div class="col-4 col-md-4">
+          <h4>{{request.insurance.coverageDetail.emergencyService ? 'Incluido' : 'No incluido'}}</h4>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-8 col-md-8">
+          <h4>Asistencias en viajes:</h4>
+        </div>
+        <div class="col-4 col-md-4">
+          <h4>{{request.insurance.coverageDetail.travelAssistance ? 'Incluido' : 'No incluido'}}</h4>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h4 class="h4-verde my-2">Beneficios: </h4>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <img src="assets/img/beneficios.png" alt="" class="w-100">
+        </div>
+        <div class="col-md-4">
+          <img src="assets/img/beneficios3.png" alt="" class="w-100">
+        </div>
+        <div class="col-md-4">
+            <img src="assets/img/beneficios2.png" alt="" class="w-100">
+          </div>
       </div>
     </div>
   </div>
