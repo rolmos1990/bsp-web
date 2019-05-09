@@ -16,11 +16,10 @@ export class ShowInsuranceDetailComponent implements OnInit {
   public isLoading: boolean;
   public request: any;
 
-  // tslint:disable-next-line:max-line-length
-  constructor(private _requestService: RequestService, private modalService: NgbModal, private _activatedRoute: ActivatedRoute, private _dependentsService: DependentService) {
+  constructor(private _requestService: RequestService,private modalService: NgbModal, private _activatedRoute: ActivatedRoute, private _dependentsService: DependentService) {
     this.isLoading = true;
     this.requestId = _activatedRoute.snapshot.paramMap.get('requestId');
-  }
+               }
 
   ngOnInit() {
     this.getRequest();
@@ -31,13 +30,13 @@ export class ShowInsuranceDetailComponent implements OnInit {
       response => {
         this.request = response.result.request;
         this.getDependents();
-        console.log(this.request);
+        console.log(this.request)
       },
       error => {
         console.log(error);
         this.isLoading = false;
       }
-    );
+    )
   }
 
   open(content) {
@@ -54,7 +53,7 @@ export class ShowInsuranceDetailComponent implements OnInit {
         console.log(error);
         this.isLoading = false;
       }
-    );
+    )
   }
 
 }

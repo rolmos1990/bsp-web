@@ -20,7 +20,7 @@ export class ShowInsuranceDetailComponent implements OnInit {
   constructor(private _requestService: RequestService, private modalService: NgbModal, private _activatedRoute: ActivatedRoute, private _dependentsService: DependentService) {
     this.isLoading = true;
     this.requestId = _activatedRoute.snapshot.paramMap.get('requestId');
-  }
+               }
 
   ngOnInit() {
     this.getRequest();

@@ -24,10 +24,6 @@ const routes: Routes = [
     loadChildren: './modules/quoting/quoting.module#QuotingModule'
   },
   {
-    path: 'polizas',
-    loadChildren: './modules/policies/policies.module#PoliciesModule'
-  },
-  {
     path: 'formulario/:requestId',
     loadChildren: './modules/information/information.module#InformationModule'
   },

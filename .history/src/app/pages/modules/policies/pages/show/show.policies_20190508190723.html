@@ -1,0 +1,125 @@
+<main role="main">
+  <div class="container py-xl-5 px-xl-0">
+    <div class="px-4 pb-4 px-xl-0 pt-xl-0">
+      <h1 class="banesco-blue title-text" style="font-weight: bold;">Lista de candidatos</h1>
+      <p class="lead general-text">
+        A continuación se muestra la lista de todos los candidatos que han aplicado para formar parte de nuestro
+        equipo.
+      </p>
+    </div>
+
+    <ng-template [ngIf]="isLoading">
+      <div class='banesco-loader'></div>
+    </ng-template>
+    <ng-template [ngIf]="!isLoading">
+      <!-- TABLE CONTROLS -->
+      <div class="row mb-4">
+        <div class="col-12">
+          <p class="mb-2">
+            <small class="legend-text">Búsqueda de candidatos</small>
+          </p>
+        </div>
+
+        <div class="col-4">
+          <div class="form-group">
+            <input #box type="text" class="form-control" placeholder="Nombre, correo o teléfono del candidato..."
+              (keyup)="searchOnKey(box.value)">
+          </div>
+        </div>
+        <div class="col-3">
+          <div class="form-group">
+            <button class="btn btn-primary">Descargar Excel</button>
+          </div>
+        </div>
+      </div>
+      <!-- / TABLE CONTROLS -->
+
+      <ng-template >
+        <div class='banesco-loader'></div>
+      </ng-template>
+      <ng-template>
+        <ng-template>
+          <div class="row">
+            <div class="container w-100 p-5 text-center">
+              <h1 class="banesco-blue">¡No hay candidatos en este momento!</h1>
+              <h4 class="subtitle-text">Tranquilo, ya llegarán...</h4>
+              <button type="button" class="btn btn-success btn-lg banesco-green-btn mt-5" (click)="refresh()">
+                Volver a cargar
+              </button>
+            </div>
+          </div>
+        </ng-template>
+        <ng-template>
+          <!-- TABLE -->
+          <div class="table-responsive">
+            <table class="table">
+              <thead class="thead-dark">
+                <tr>
+                  <!-- <th scope="col">#</th> -->
+                  <th scope="col">Candidato</th>
+                  <!-- <th scope="col">Edad</th> -->
+                  <th scope="col">Nivel educativo</th>
+                  <th scope="col">Cargo actual</th>
+                  <th scope="col">Industria</th>
+                  <th scope="col">Aspiración ($)</th>
+                  <!-- <th scope="col">Aplicación</th> -->
+                  <th scope="col">CV</th>
+                  <th scope="col">Detalle</th>
+                  <!-- <th scope="col">Acciones</th> -->
+                </tr>
+              </thead>
+              <tbody>
+                <ng-template>
+                  <tr>
+                    <!-- <td scope="row">{{index + 1}}</td> -->
+
+                    <!-- CANDIDATO -->
+                    <td>
+                      <br>
+                      <!-- <i class="fa fa-envelope pr-3 mr-3 contact-icon"></i> -->
+                      <a href="/"></a>
+                      <br>
+                      <!-- <i class="fa fa-phone pr-3 mr-3 contact-icon"></i> -->
+                      <a href="/"></a>
+                      <br>
+                    </td>
+
+                    <!-- EDAD -->
+                    <!-- <td>{{ user.birthday.iso | age }}</td> -->
+
+                    <!-- EDUCACION -->
+                    <td></td>
+
+                    <!-- POSICION ACTUAL -->
+                    <td></td>
+
+                    <!-- INDUSTRIA -->
+                    <td></td>
+
+                    <!-- SALARIO -->
+                    <td></td>
+
+                    <!-- APLICACION -->
+                    <!-- <td>{{ user.createdAt | date }}</td> -->
+
+                    <!-- HOJA DE VIDA -->
+                    <td class="text-center">
+                      <span class="badge badge-warning">Por cargar</span>
+                    </td>
+                    <td class="text-center">
+                      <a href="" target="_blank" class="btn btn-link">Ver CV</a>
+                    </td>
+
+                    <td><button type="button" class="btn btn-primary btn-sm" (click)="showDetail(a)">Ver
+                        detalles</button></td>
+                  </tr>
+                </ng-template>
+              </tbody>
+            </table>
+          </div>
+          <!-- / TABLE -->
+        </ng-template>
+      </ng-template>
+    </ng-template>
+  </div>
+</main>

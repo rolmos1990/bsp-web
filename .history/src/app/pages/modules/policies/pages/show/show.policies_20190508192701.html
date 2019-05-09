@@ -1,0 +1,37 @@
+<section class="polizas">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h1 class="titulo">Lista de pólizas</h1>
+        <p class="subtitulo">A continuación se muestra la lista de todas los pólizas que han aplicado.</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <form>
+          <div class="form-group form-inline">
+              Full text search: <input class="form-control ml-2" type="text" [formControl]="filter"/>
+          </div>
+        </form>
+        
+        <table class="table table-striped">
+          <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Country</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let country of countries$ | async; index as i">
+            <th scope="row">{{ i + 1 }}</th>
+            <td>
+              <img [src]="'https://upload.wikimedia.org/wikipedia/commons/' + country.flag" class="mr-2" style="width: 20px">
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,77 @@
+<main role="main">
+  <ng-template [ngIf]="isLoading">
+    <div class='banesco-loader'></div>
+  </ng-template>
+
+  <ng-template [ngIf]="!isLoading">
+    <div class="container px-xl-5 pt-xl-5 pb-xl-0 col-xl-10 col-md-8 col-10">
+      <div class="row px-4 px-xl-5 pt-xl-0">
+        <button id="backToRRHH" type="button" class="btn btn-default" (click)="backToRRHH()">
+          <img src="assets/back_icon.svg" alt=""> Regresar
+        </button>
+      </div>
+    </div>
+
+    <div class="container p-xl-5 col-xl-10 col-md-8 col-10">
+      <div class="row px-4 pb-4 px-xl-5 pt-xl-0">
+        <div class="col-xl-12">
+          <h1 class="banesco-blue title-text" style="font-weight: bold;">Perfil de </h1>
+          <p class="general-text">
+            Fecha de aplicación: <strong></strong>
+          </p>
+        </div>
+      </div>
+
+      <dl class="row px-4 pb-4 px-xl-5 pt-xl-0">
+        <dt class="col-sm-3 pb-4">Email:</dt>
+        <dd class="col-sm-9">
+          <dl class="row">
+            <dd class="col-sm-4"></dd>
+            <dd class="col-sm-8"><a href="">Contactar por email</a></dd>
+          </dl>
+        </dd>
+
+        <dt class="col-sm-3 pb-4">Número de celular:</dt>
+        <dd class="col-sm-9">
+          <dl class="row">
+            <dd class="col-sm-4"></dd>
+            <dd class="col-sm-8"><a href="">Contactar por télefono</a></dd>
+          </dl>
+        </dd>
+
+        <dt class="col-sm-3 pb-4">Nivel educativo:</dt>
+        <dd class="col-sm-9"></dd>
+
+        <dt class="col-sm-3 pb-4">Su posición o cargo actual:</dt>
+        <dd class="col-sm-9"></dd>
+
+        <dt class="col-sm-3 pb-4">Tipo de industria donde labora:</dt>
+        <dd class="col-sm-9"></dd>
+
+        <dt class="col-sm-3 pb-4">Área en la que le gustaría trabajar:</dt>
+        <dd class="col-sm-9">
+          <ul style="padding-inline-start: 15px;">
+            <ng-template>
+              <li></li>
+            </ng-template>
+          </ul>
+        </dd>
+
+
+
+        <dt class="col-sm-3 pb-4">Aspiración salarial:</dt>
+        <dd class="col-sm-9"></dd>
+      </dl>
+      <hr>
+      <div class="row pb-5">
+        <ng-template [ngIf]="!user?.resume">
+          <div class="col-xl-6 offset-xl-3">
+            <h1 class="banesco-blue title-text" style="font-weight: bold; text-align: center">El candidato aún no ha
+              subido su hoja de
+              vida.</h1>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+  </ng-template>
+</main>
