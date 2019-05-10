@@ -7,6 +7,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ServiceDirective } from './directives/service.directive';
 import { UserService } from './services/user.service';
+import { PoliciesService } from './services/policies.service';
 import { PaymentService } from './services/payment.service';
 import { HealthService } from './services/health.service';
 import { RequestService } from './services/request.service';
@@ -37,6 +38,7 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
   exports: [NavBarComponent, FooterComponent, BspLoaderComponent, FormsModule],
   providers: [
     UserService,
+    PoliciesService,
     PaymentService,
     HealthService,
     RequestService,

@@ -4,10 +4,11 @@ import { PoliciesRoutingModule } from './policies-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ShowPolicies } from './pages/show/show.policies';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { SearchPipe } from '../core/pipes/search.pipe';
 
 
 @NgModule({
-  declarations: [ShowPolicies],
+  declarations: [ShowPolicies, SearchPipe],
   imports: [
     CommonModule,
     NgbModule,

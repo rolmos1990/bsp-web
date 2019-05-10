@@ -246,107 +246,107 @@
                 <div class="row">
                     <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
                         <h5><i class="fas fa-minus"></i>  Nombres:</h5>
-                        <p>{{request.insured.name}}</p>
+                        <p>{{request?.insured?.name}}</p>
                     </div>
                     <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
                         <h5><i class="fas fa-minus"></i>  Apellidos:</h5>
-                        <p>{{request.insured.lastName}}</p>
+                        <p>{{request?.insured?.lastName}}</p>
                     </div>
                     <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
                         <h5><i class="fas fa-minus"></i>  Cédula/Pasaporte:</h5>
-                        <p>{{request.insured.document}}</p>
+                        <p>{{request?.insured?.document}}</p>
                     </div>
                     <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
                         <h5><i class="fas fa-minus"></i>  Sexo:</h5>
-                        <p>{{request.insured.gender}}</p>
+                        <p>{{request?.insured?.gender}}</p>
                     </div>
                     <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
                         <h5><i class="fas fa-minus"></i>  Fecha de nacimiento:</h5>
-                        <p>{{request.insured.birthday.iso | date: 'dd/MM/yyyy'}}</p>
+                        <p>{{request?.insured?.birthday.iso | date: 'dd/MM/yyyy'}}</p>
                     </div>
                     <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
                         <h5><i class="fas fa-minus"></i>  Estado civil:</h5>
-                        <p>{{request.insured.civilStatus}}</p>
+                        <p>{{request?.insured?.civilStatus}}</p>
                     </div>
                     <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
                         <h5><i class="fas fa-minus"></i>  Lugar de nacimiento (País/Provincia):</h5>
-                        <p>{{request.insured.birthplace}}</p>
+                        <p>{{request?.insured?.birthplace}}</p>
                     </div>
                     <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
                         <h5><i class="fas fa-minus"></i>  Nacionalidad:</h5>
-                        <p>{{request.insured.nationality.name}}</p>
+                        <p>{{request?.insured?.nationality.name}}</p>
                     </div>
                     <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
                         <h5><i class="fas fa-minus"></i>  Profesión:</h5>
-                        <p>{{request.insured.profession}}</p>
+                        <p>{{request?.insured?.profession}}</p>
                     </div>
                     <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
                         <h5><i class="fas fa-minus"></i>  Ocupación:</h5>
-                        <p>{{request.insured.occupation.name}}</p>
+                        <p>{{request?.insured?.occupation.name}}</p>
                     </div>
                     <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
                         <h5><i class="fas fa-minus"></i>  Empresa donde labora:</h5>
-                        <p>{{request.insured.company}}</p>
+                        <p>{{request?.insured?.company}}</p>
                     </div>
                     <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
                         <h5><i class="fas fa-minus"></i>  Tiempo en esta ocupación:</h5>
-                        <p>{{request.insured.occupationTime}} meses</p>
+                        <p>{{request?.insured?.occupationTime}} meses</p>
                     </div>
                     <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
                         <h5><i class="fas fa-minus"></i>  Descripción de funciones:</h5>
-                        <p>{{request.insured.occupationDescription}}</p>
+                        <p>{{request?.insured?.occupationDescription}}</p>
                     </div>
                     <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
                         <h5><i class="fas fa-minus"></i>  Otras ocupaciones:</h5>
-                        <p>{{request.insured.otherOccupations}}</p>
+                        <p>{{request?.insured?.otherOccupations}}</p>
                     </div>
                     <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
                         <h5><i class="fas fa-minus"></i>  Ocupaciones anteriores:</h5>
-                        <p>{{request.insured.previousOccupations}}</p>
+                        <p>{{request?.insured?.previousOccupations}}</p>
                     </div>
                     <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
                         <h5><i class="fas fa-minus"></i>  Deportes que práctica:</h5>
-                        <p>{{request.insured.sports}}</p>
+                        <p>{{request?.insured?.sports}}</p>
                     </div>
                     <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
                         <h5><i class="fas fa-minus"></i>  Ingreso mensual:</h5>
-                        <p>{{request.insured.monthlyIncome}}</p>
+                        <p>{{request?.insured?.monthlyIncome}}</p>
                     </div>
                     <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
                         <h5><i class="fas fa-minus"></i>  Provincia:</h5>
-                        <p>{{request.insured.province.name}}</p>
+                        <p>{{request?.insured?.province.name}}</p>
                     </div>
                     <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
                         <h5><i class="fas fa-minus"></i>  Distrito:</h5>
-                        <p>{{request.insured.district.name}}</p>
+                        <p>{{request?.insured?.district.name}}</p>
                     </div>
                     <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
                         <h5><i class="fas fa-minus"></i>  Corregimiento:</h5>
-                        <p>{{request.insured.corregimiento.name}}</p>
+                        <p>{{request?.insured?.corregimiento.name}}</p>
                     </div>
                     <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
                         <h5><i class="fas fa-minus"></i>  Barriada / Urbanización:</h5>
-                        <p>{{request.insured.neighborhood}}</p>
+                        <p>{{request?.insured?.neighborhood}}</p>
                     </div>
                     <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
                         <h5><i class="fas fa-minus"></i>  Calle / Avenida:</h5>
-                        <p>{{request.insured.street}}</p>
+                        <p>{{request?.insured?.street}}</p>
                     </div>
                     <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
                         <h5><i class="fas fa-minus"></i>  Casa / Apartamento:</h5>
-                        <p>{{request.insured.building}}</p>
+                        <p>{{request?.insured?.building}}</p>
                     </div>
                     <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
                         <h5><i class="fas fa-minus"></i>  Teléfono residencial:</h5>
-                        <p>{{request.insured.localNumber}}</p>
+                        <p>{{request?.insured?.localNumber}}</p>
                     </div>
                     <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
                         <h5><i class="fas fa-minus"></i>  Teléfono celular:</h5>
-                        <p>{{request.insured.cellphone}}</p>
+                        <p>{{request?.insured?.cellphone}}</p>
                     </div>
                     <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
                         <h5><i class="fas fa-minus"></i>  Email</h5>
-                        <p>{{request.insured.email}}</p>
+                        <p>{{request?.insured?.email}}</p>
                     </div>
                 </div>
             </accordion-group>

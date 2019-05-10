@@ -13,7 +13,7 @@ export class UserService {
 
     constructor(private _http: HttpClient) { }
 
-    public createUser(user: any) : Observable<any> {
+    public createUser(user: any): Observable<any> {
       return this._http
         .post(environment.baseUrl.concat(API_ENDPOINT_CREATE_USER), user, ServiceDirective.headers)
         .pipe(

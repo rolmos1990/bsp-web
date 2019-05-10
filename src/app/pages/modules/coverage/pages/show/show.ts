@@ -11,12 +11,12 @@ import { RequestService } from '../../../core/services/request.service';
 })
 export class ShowComponent implements OnInit {
 
-  public coverages : any[] = [];
+  public coverages: any[] = [];
   public insuranceId: string;
   public actualCoverage: any;
   public isLoading: boolean;
 
-  customClass: string = 'customClass';
+  customClass = 'customClass';
   isFirstOpen = true;
 
   constructor(private modalService: NgbModal, private _coverageService: CoverageService, private _newrequestService: RequestService,
@@ -47,10 +47,9 @@ export class ShowComponent implements OnInit {
   ngOnInit() {
     this.isLoading = true;
     this.getCoverages();
-    
   }
 
-  private getCoverages(){
+  private getCoverages() {
     this._coverageService.getAllConverages().subscribe(
       response => {
         this.isLoading = false;
@@ -59,7 +58,7 @@ export class ShowComponent implements OnInit {
       }, error => {
         console.log(error);
       }
-    )
+    );
   }
 
   public reject(modal: any) {
