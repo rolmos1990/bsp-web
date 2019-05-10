@@ -9,7 +9,7 @@
 
     <div class="row">
       <div class="col-md-12">
-        <div class="row">
+        <!-- <div class="row">
           <div class="col-md-4">
               <form>
                 <div class="form-group form-inline">
@@ -22,25 +22,29 @@
               <button class="btn-blanco">Descargar Excel</button>
           </div>
         </div>
-          
+           -->
         <div class="table-responsive">
             <table class="table">
               <thead>
                 <tr>
-                  <th scope="col">Nombre</th>
-                  <th scope="col">Apellido</th>
+                  <th scope="col">Nombre y Apellido</th>
                   <th scope="col">Correo electrónico</th>
                   <th scope="col">Teléfonos</th>
+                  <th scope="col">Fecha de Solicitud</th>
+                  <th scope="col">Tipo</th>
+                  <th scope="col">Precio</th>
                   <th scope="col">Detalle</th>
                 </tr>
               </thead>
               <tbody >
                 <tr *ngFor="let request of requests | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize ">
-                  <td>{{request?.insured?.name}}</td>
-                  <td>{{request?.insured?.lastName}}</td>
+                  <td>{{request?.insured?.name}} {{request?.insured?.lastName}}</td>
                   <td>{{request?.insured?.email}}</td>
-                  <td>{{request?.insured?.cellphone}} / {{request?.insured?.localNumber}} </td>
-                  <td><a [routerLink]="[ routerLinkVariable,request.id]" class="btn-primary" target="_blank">Ver Detalle</a></td>
+                  <td>{{request?.insured?.cellphone}} / {{request?.insured?.localNumber}}</td>
+                  <td>{{request?.createdAt.iso | date: 'dd/MM/yyyy'}}</td>
+                  <td>{{request?.insurance?.type}}</td>
+                  <td>{{request?.insurance?.coverageDetail?.monthlyPrime | currency}}</td>
+                  <td><a [routerLink]="[ routerLinkVariable,request.id]" class="btn-primary" target="_blank">Detalle</a></td>
                 </tr>
               </tbody>    
             </table>
