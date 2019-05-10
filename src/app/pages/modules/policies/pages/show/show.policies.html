@@ -40,7 +40,7 @@
                   <td>{{request?.insured?.lastName}}</td>
                   <td>{{request?.insured?.email}}</td>
                   <td>{{request?.insured?.cellphone}} / {{request?.insured?.localNumber}} </td>
-                  <td><a [routerLink]="[ routerLinkVariable,'{request.id}']" class="btn-primary" target="_blank">Ver Detalle</a></td>
+                  <td><a [routerLink]="[ routerLinkVariable,request.id]" class="btn-primary" target="_blank">Ver Detalle</a></td>
                 </tr>
               </tbody>    
             </table>

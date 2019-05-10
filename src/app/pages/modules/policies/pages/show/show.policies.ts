@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { PoliciesService } from '../../../core/services/policies.service';
+import {Router} from '@angular/router';
+
 
 @Component({
   selector: 'bsp-show-policies',
@@ -13,10 +15,10 @@ export class ShowPolicies implements OnInit {
   page = 1;
   pageSize = 5;
   public requests: any[] = [];
-  public searching: boolean = false;
-  public routerLinkVariable = '/detalle'; 
+  public searching = false;
+  public routerLinkVariable = '/detalle';
 
-  constructor(private _getAllRequest: PoliciesService) { }
+  constructor(private _getAllRequest: PoliciesService, private router: Router) { }
 
   ngOnInit() {
     this.getAllRequest();

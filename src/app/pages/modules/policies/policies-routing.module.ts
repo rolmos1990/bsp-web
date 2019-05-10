@@ -4,7 +4,7 @@ import { ShowPolicies } from './pages/show/show.policies';
 
 const routes: Routes = [
   {
-    path: 'detalle', component: ShowPolicies, pathMatch: 'full', data: { title: 'Banesco Seguros' }
+    path: '', component: ShowPolicies, pathMatch: 'full', data: { title: 'Banesco Seguros' }
   }
 ];
 
