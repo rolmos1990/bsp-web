@@ -5,12 +5,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ShowPolicies } from './pages/show/show.policies';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SearchPipe } from '../core/pipes/search.pipe';
+import { CoreModule } from '../core/core.module';
 
 
 @NgModule({
   declarations: [ShowPolicies, SearchPipe],
   imports: [
     CommonModule,
+    CoreModule,
     NgbModule,
     PoliciesRoutingModule,
     FormsModule,

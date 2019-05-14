@@ -1,9 +1,9 @@
-<section class="polizas">
+<section *ngIf="!isLoading" class="polizas">
   <div class="container">
     <div class="row my-5">
       <div class="col-md-12">
-        <h1 class="titulo">Lista de pólizas</h1>
-        <p class="subtitulo">A continuación se muestra la lista de todas los pólizas que han aplicado.</p>
+        <h1 class="titulo">Lista de Solicitudes</h1>
+        <p class="subtitulo">A continuación se muestra la lista de todas las solicitudes que han aplicado por una póliza.</p>
       </div>
     </div>
 
@@ -27,24 +27,66 @@
             <table class="table">
               <thead>
                 <tr>
-                  <th scope="col">Nombre y Apellido</th>
-                  <th scope="col">Correo electrónico</th>
-                  <th scope="col">Teléfonos</th>
-                  <th scope="col">Fecha de Solicitud</th>
-                  <th scope="col">Tipo</th>
+                  <th scope="col">Solicitante</th>
+                  <th scope="col">Fecha de solicitud</th>
+                  <th scope="col">Tipo de Póliza</th>
+                  <th scope="col">Estatus</th>
                   <th scope="col">Precio</th>
-                  <th scope="col">Detalle</th>
+                  <th style="text-align:center" scope="col">Póliza</th>
+                  <th style="text-align:center" scope="col">Detalle</th>
                 </tr>
               </thead>
               <tbody >
-                <tr *ngFor="let request of requests | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize ">
-                  <td>{{request?.insured?.name}} {{request?.insured?.lastName}}</td>
-                  <td>{{request?.insured?.email}}</td>
-                  <td>{{request?.insured?.cellphone}} / {{request?.insured?.localNumber}}</td>
+                <tr *ngFor="let request of requests | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize ;let i=index;">
+                  <td>
+                    <p *ngIf="request?.insured?.name">{{request?.insured?.name}} {{request?.insured?.lastName}}</p>
+                    <p *ngIf="request?.insured?.email">{{request?.insured?.email}}</p>
+                    <p *ngIf="request?.insured?.cellphone">{{request?.insured?.cellphone}}</p>
+                    <p *ngIf="request?.insured?.localNumber">{{request?.insured?.localNumber}}</p>
+                    <p *ngIf="!request?.insured?.name && !request?.insured?.email && !request?.insured?.cellphone && !request?.insured?.localNumber">N/A</p>
+                  </td>
                   <td>{{request?.createdAt.iso | date: 'dd/MM/yyyy'}}</td>
                   <td>{{request?.insurance?.type}}</td>
+                  <td>{{request?.status}}</td>
                   <td>{{request?.insurance?.coverageDetail?.monthlyPrime | currency}}</td>
-                  <td><a [routerLink]="[ routerLinkVariable,request.id]" class="btn-primary" target="_blank">Detalle</a></td>
+                  <td class="{{request?.policyFile ? 'align-button' : ''}}">
+                    <!-- INPUT #0 -->
+                    <div *ngIf="!request?.policyFile" class="input-container justify-content-center d-flex">
+                      <input #fileInput_0 type="file" name="img" class="hiddenFileInput form-control"
+                        (change)="addFile($event.target.files, i, request.id)">
+                      <div *ngIf="!isLoadingFile" class="p-0">
+                        <!-- <ng-template [ngIf]="attachments[i]">
+                          <img class="caret" src="/assets/check.svg" />
+                        </ng-template> -->
+                        <ng-template [ngIf]="true">
+                          <img class="caret" src="/assets/upload.svg" (click)="fileInput_0.click()" />
+                        </ng-template>
+                      </div>
+                      <div *ngIf="isLoadingFile" >
+                        <label class="file-input-label-text mb-0">Cargando adjunto...</label>
+                      </div>
+                      <div *ngIf="!isLoadingFile" class="">
+                        <!-- <ng-template [ngIf]="attachments[i] && fileInput_0?.files[0]">
+                          <label class="file-input-label-text mb-0">{{ fileInput_0?.files[0]?.name?.lenght <= 15 ?
+                              fileInput_0.files[0].name : (fileInput_0.files[0].name | slice:1:10)+'...' }}</label>
+                        </ng-template> -->
+                        <ng-template [ngIf]="true">
+                          <label class="file-input-label-text mb-0" (click)="fileInput_0.click()">Adjuntar Poliza</label>
+                        </ng-template>
+                      </div>
+                      <!-- <div *ngIf="attachments.length" class="p-0">
+                        <ng-template [ngIf]="attachments[i]">
+                          <img class="caret" src="/assets/delete_red.svg" (click)="removeAttachment(i, fileInput_0)" />
+                        </ng-template>
+                      </div> -->
+                    </div>
+                    <a *ngIf="request?.policyFile" [href]="request.policyFile" target="_blank">Ver Póliza</a>
+                  </td>
+                  <td>
+                    <div class="d-flex justify-content-center">
+                      <a [routerLink]="[ routerLinkVariable,request.id]" class="btn-primary" target="_blank">Detalle</a>
+                    </div>
+                  </td>
                 </tr>
               </tbody>    
             </table>
@@ -66,3 +108,6 @@
     </div>
   </div>
 </section>
+<ng-template [ngIf]="isLoading">
+  <bsp-loader></bsp-loader>
+</ng-template>

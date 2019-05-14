@@ -3,22 +3,22 @@
     color: #1c8464;
     font-weight: 700;
     text-decoration: none solid rgb(28, 132, 100);
-    text-align: center;
+    text-align: left;
 }
 
 .subtitulo{
     font-size: 16px;
     color: #556176;
     text-decoration: none solid rgb(85, 97, 118);
-    text-align: center;
+    text-align: left;
     @media (min-width: 768px){
         font-size: 20px;
     }
 }
 
-label{
-    width: 100%;
-}
+// label{
+//     width: 100%;
+// }
 
 @media (min-width: 576px){
     .form-inline .form-control {
@@ -47,7 +47,13 @@ label{
         float: right;
     }
 }
-
+.align-button{
+    text-align: center;
+}
+.align-button-alt{
+    display: flex;
+    justify-content: center;
+}
 table{
     th{
         background-color: #1c8464;
@@ -55,8 +61,9 @@ table{
         font-size: 0.9rem;
         border: 0;
     }
-    td{
-        padding: 1rem;
+    td{    
+        vertical-align: middle !important;
+        border-top: 1px solid #dee2e6;
         .btn-primary{
             width: 150px;
             height: auto;
@@ -64,3 +71,23 @@ table{
         }
     }
 }
+tbody, tr, td {
+    font-size: .85rem!important;
+}
+.card-header {
+    background-color: #fafafa !important;
+
+    img.caret {
+      max-width: 28px;
+      max-height: 28px;
+    }
+  }
+  .hiddenFileInput {
+    display: none;
+  }
+
+  .file-input-label-text {
+    font-family: Lato;
+    font-size: 12px;
+    color: #556176;
+  }
