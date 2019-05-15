@@ -394,8 +394,8 @@ export class RequestComponent implements OnInit {
       this.modalForm.get('document2').updateValueAndValidity();
       this.modalForm.updateValueAndValidity();
     } else {
-      this.modalForm.get('document').setValidators(Validators.compose([Validators.required, Validators.maxLength(4)]));
-      this.modalForm.get('document2').setValidators(Validators.compose([Validators.required, Validators.maxLength(6)]));
+      this.modalForm.get('document').setValidators(Validators.compose([Validators.required, Validators.maxLength(4), CustomValidatorDirective.RegularNumbersPositive]));
+      this.modalForm.get('document2').setValidators(Validators.compose([Validators.required, Validators.maxLength(6), CustomValidatorDirective.RegularNumbersPositive]));
       this.modalForm.get('document').updateValueAndValidity();
       this.modalForm.get('document2').updateValueAndValidity();
       this.modalForm.updateValueAndValidity();

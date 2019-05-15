@@ -6,6 +6,18 @@ import * as moment from 'moment';
     selector: '[appCustomValidator]',
 })
 export class CustomValidatorDirective {
+    
+
+        /**
+     * Validate that the FormControl has this structure "+507 xxxx xxxx".
+     * @param control FormControl to evaluate.
+     */
+    static RegularNumbersPositive(control: AbstractControl): ValidationErrors {
+        const number = /^(0|[1-9]\d*)$/;
+        if (control.value && !number.test(control.value)) {
+            return { invalidText: true };
+        }
+    }
 
     /**
      * Validate that the FormControl has this structure "Example@domain.com".

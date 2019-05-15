@@ -487,12 +487,12 @@
                         </div>
                         <div *ngIf="modalForm.value.documentType"
                           class="{{modalForm.value.documentType === 'Pasaporte' || !modalForm.value.documentType ? 'col-7' : 'col-3'}}">
-                          <input type="text" [ngClass]="{'is-invalid': invalid('document', modalForm), 'is-valid': valid('document', modalForm)}" class="form-control w-100" formControlName="document">
+                          <input type="text" [ngClass]="{'is-invalid': invalid('document', modalForm), 'is-valid': valid('document', modalForm)}" class="form-control w-100" formControlName="document" maxlength="10">
                           <div *ngIf="invalid('document', modalForm) && modalForm.value.documentType === 'Pasaporte'" class="invalid-feedback">
                             Formato incorrecto. Por ejemplo: A084456465 (Máximo 10 caracteres).
                           </div>
                           <div *ngIf="invalid('document', modalForm) && modalForm.value.documentType !== 'Pasaporte'" class="invalid-feedback">
-                              Formato incorrecto. Por ejemplo: 4564 (Máximo 4 caracteres).
+                              Formato incorrecto. (Máximo 4 caracteres numéricos).
                           </div>
                           <div *ngIf="valid('document', modalForm)" class="valid-feedback">
                             ¡Excelente!
@@ -504,9 +504,9 @@
                         </div>
                         <div *ngIf="modalForm.value.documentType && modalForm.value.documentType !== 'Pasaporte'"
                           class="col-4">
-                          <input type="text" [ngClass]="{'is-invalid': invalid('document2', modalForm), 'is-valid': valid('document2', modalForm)}" class="form-control w-100" formControlName="document2">
+                          <input type="text" [ngClass]="{'is-invalid': invalid('document2', modalForm), 'is-valid': valid('document2', modalForm)}" class="form-control w-100" formControlName="document2" maxlength="6">
                           <div *ngIf="invalid('document2', modalForm)" class="invalid-feedback">
-                            Formato incorrecto. Por ejemplo: 456478 (Máximo 6 caracteres).
+                            Formato incorrecto. (Máximo 6 caracteres numéricos).
                           </div>
                           <div *ngIf="valid('document2', modalForm)" class="valid-feedback">
                             ¡Excelente!
