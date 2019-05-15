@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { PaymentService } from '../../../core/services/payment.service';
+import { RequestService } from '../../../core/services/request.service';
 import { MONTHS, CARDNAME } from '../../../core/utils/select.util';
 import { CustomValidatorDirective } from '../../../core/directives/validations/custom-validations.directive';
 
@@ -16,17 +17,19 @@ export class PaymentInfoComponent implements OnInit {
   public cards = CARDNAME;
   public disabled = false;
   public months = MONTHS;
+  public payment: any;
   @Output() isLoading: EventEmitter<boolean> = new EventEmitter<boolean>();
   public years: Array<any> = [];
   @Input() requestId: string;
   @Output() nextStep: EventEmitter<any> = new EventEmitter<any>();
 
-  constructor(private _fb: FormBuilder,
-              private _paymentService: PaymentService) {}
+  constructor(private _fb: FormBuilder, private _paymentService: PaymentService, private _requestService: RequestService) {
+  }
 
   ngOnInit() {
-    window.scrollTo(0,0);
+    window.scrollTo(0, 0);
     this.generateForm();
+    this.getRequest();
   }
 
   public fillYearsList() {
@@ -44,6 +47,16 @@ export class PaymentInfoComponent implements OnInit {
     return form.get(controlName).touched && form.get(controlName).valid;
   }
 
+  public getRequest() {
+    this._requestService.getRequest(this.requestId).subscribe(
+      response => {
+        this.payment = response.result.request.insurance.coverageDetail;
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
 
   public assignPaymentCard() {
     this.markAllAsTouched();

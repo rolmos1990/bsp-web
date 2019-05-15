@@ -22,6 +22,18 @@
     text-decoration: none solid rgb(55, 65, 64);
 }
 
+.pago{
+    font-size: 16px;
+    color: #556176;
+    text-decoration: none solid rgb(85, 97, 118);
+}
+
+.monto{
+    font-size: 20px;
+    color: #13599e;
+    text-decoration: none solid rgb(19, 89, 158);
+}
+
 i.fas.fa-play{
     color: #a5adb4;
 }
@@ -78,6 +90,7 @@ h4{
 
     .btn-primary{
         width: 280px;
+        margin-top: 30px;
     }
 
 

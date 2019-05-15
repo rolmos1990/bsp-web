@@ -67,9 +67,9 @@ export class RequestService {
         );
     }
 
-    public getRequest(requestId: string) : Observable<any> {
+    public getRequest(requestId: string): Observable<any> {
       return this._http
-        .post(environment.baseUrl.concat(API_ENDPOINT_GET_REQUEST), {requestId:requestId}, ServiceDirective.headers)
+        .post(environment.baseUrl.concat(API_ENDPOINT_GET_REQUEST), {requestId: requestId}, ServiceDirective.headers)
         .pipe(
           catchError(err => {
             return ServiceDirective.handleError(err);

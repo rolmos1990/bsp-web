@@ -13,7 +13,7 @@ export class PaymentService {
 
     constructor(private _http: HttpClient) { }
 
-    public assignDeliverInformation(form: any) : Observable<any> {
+    public assignDeliverInformation(form: any): Observable<any> {
       return this._http
         .post(environment.baseUrl.concat(API_ENDPOINT_DELIVERY_INFO), form, ServiceDirective.headers)
         .pipe(
@@ -23,7 +23,7 @@ export class PaymentService {
         );
     }
 
-    public assignCreditcard(form: any) : Observable<any> {
+    public assignCreditcard(form: any): Observable<any> {
       return this._http
         .post(environment.baseUrl.concat(API_ENDPOINT_CREDIT_CARD), form, ServiceDirective.headers)
         .pipe(

@@ -16,6 +16,7 @@ import { ThanksComponent } from './components/thanks/thanks.component';
 import { ProgressBarModule } from 'angular-progress-bar';
 import { CoreModule } from '../core/core.module';
 import { AlertModule } from 'ngx-alerts';
+import { TooltipModule } from 'ng2-tooltip-directive';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { AlertModule } from 'ngx-alerts';
     AccordionModule.forRoot(),
     ArchwizardModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    TooltipModule
   ]
 })
 export class InformationModule { }

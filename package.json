@@ -38,7 +38,7 @@
     "moment": "^2.24.0",
     "ng-animate": "^0.3.4",
     "ng2-completer": "^2.0.8",
-    "ng2-tooltip-directive": "^2.1.8",
+    "ng2-tooltip-directive": "^2.1.9",
     "ngx-alerts": "^3.4.3",
     "ngx-bootstrap": "^3.2.0",
     "ngx-swiper-wrapper": "^7.2.1",
