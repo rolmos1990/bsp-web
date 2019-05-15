@@ -20,5 +20,5 @@ export class PoliciesService {
               return ServiceDirective.handleError(err);
             })
           );
-      }
+    }
 }

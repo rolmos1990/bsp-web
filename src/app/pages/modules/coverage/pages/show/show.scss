@@ -119,10 +119,21 @@ h4.titulo-modal {
     margin: 20px 0;
 }
 
-.terminos {
-  height: 500px;
+.terms{
+  height: 400px;
+  padding: 20px;
+  border: 2px solid #dedede;
   overflow: auto;
-  border: 1px solid #c8c8c8;
+}
+
+.porcentaje{
+  width: 15%;
+  text-align: left;
+  float: right;
+  @media (max-width: 480px){
+    width: 17%;
+    font-size: 15px;
+  }
 }
 
 header {

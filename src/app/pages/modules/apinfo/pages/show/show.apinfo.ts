@@ -34,18 +34,22 @@ export class ShowApinfo implements OnInit {
       1024: {
         slidesPerView: 3,
         spaceBetween: 70,
+        slidesPerGroup: 3,
       },
       768: {
         slidesPerView: 2,
-        spaceBetween: 70,
+        spaceBetween: 50,
+        slidesPerGroup: 2,
       },
       640: {
         slidesPerView: 1,
         spaceBetween: 20,
+        slidesPerGroup: 1,
       },
       320: {
         slidesPerView: 1,
         spaceBetween: 10,
+        slidesPerGroup: 1,
       }
     }
   };

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { PoliciesService } from '../../../core/services/policies.service';
-import {Router} from '@angular/router';
+import {Router, ActivatedRoute} from '@angular/router';
 import { RequestService } from '../../../core/services/request.service';
 import { element } from '@angular/core/src/render3';
 
@@ -13,9 +12,10 @@ import { element } from '@angular/core/src/render3';
 })
 // tslint:disable-next-line:component-class-suffix
 export class ShowPolicies implements OnInit {
-  searchText = '';
-  page = 1;
-  pageSize = 5;
+          searchText = '';
+          page = 1;
+          pageSize = 5;
+          collectionSize = 0;
   public requests: any[] = [];
   public searching = false;
   public routerLinkVariable = '/detalle';
@@ -23,16 +23,24 @@ export class ShowPolicies implements OnInit {
   public isLoading: boolean =true;
   public isLoadingFile: boolean;
 
-  constructor(private _getAllRequest: PoliciesService, private _requestService: RequestService, private router: Router) { }
+  constructor(private _requestService: RequestService, private router: Router, private _route: ActivatedRoute) { }
 
   ngOnInit() {
     this.getAllRequest();
+    this._route.queryParams.forEach(queryParams => {
+      if (queryParams['page']) {
+        this.page = queryParams['page'];
+        console.log('Current param page: ', this.page);
+      }
+    });
   }
 
   private getAllRequest() {
-    this._getAllRequest.getAllRequest().subscribe(
+    this._requestService.getAllRequest().subscribe(
       response => {
         this.requests = response.result.requests;
+        this.collectionSize = this.requests.length * 5;
+        console.log(this.collectionSize);
         this.requests.forEach(element=>{
           this.attachments.push(null);
           this.isLoading = false;

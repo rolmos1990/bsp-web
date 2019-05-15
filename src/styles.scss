@@ -550,14 +550,20 @@ aw-wizard-navigation-bar.horizontal.large-filled-symbols ul.steps-indicator li .
 }
 
 aw-wizard-navigation-bar.horizontal.large-filled-symbols ul.steps-indicator li .step-indicator {
-    background-color: #e6e6e6!important;
-    color: #708090!important;
+    background-color: #ebf0f5 !important;
+    color: #708090 !important;
+    border: 2px solid #a5adb4!important;
 }
 
 .information aw-wizard-navigation-bar.horizontal ul.steps-indicator li a .label {
     padding-top: 25px;
     color: #496ea4;
     text-transform: initial;
+}
+
+.information aw-wizard-navigation-bar.horizontal ul.steps-indicator li.default a .label {
+    color: #a5adb4!important;
+    font-weight: 400!important;
 }
 
 .information aw-wizard-navigation-bar.horizontal.small ul.steps-indicator {

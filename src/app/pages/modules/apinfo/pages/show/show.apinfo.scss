@@ -184,12 +184,14 @@
     }
 
     .cober{
-        
         .lix{
-            font-size: 20px;
+            font-size: 15px;
             color: #1975d1;
             text-decoration: none solid rgb(25, 117, 209);
             line-height: 24px;
+            @media (min-width: 768px){
+            font-size: 20px;
+            }
           }
           i.fas.fa-angle-down {
             color: #1975d1;

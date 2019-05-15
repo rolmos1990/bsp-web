@@ -30,7 +30,12 @@
                   <accordion-group [panelClass]="customClass" [isOpen]="isFirstOpen">
                     <button class="btn btn-link btn-block clearfix" accordion-heading>
                       <div class="pull-left float-left lix">Muerte accidental</div>
-                      <div class="float-right">{{actualCoverage.coverageDetail.accidentalDeath}}% <img src="assets/img/arrow2.svg" alt="" class="arrow2"> </div>
+                      <div class="float-right">
+                        <img src="assets/img/arrow2.svg" alt="" class="arrow2">
+                      </div>
+                      <div class="porcentaje">
+                          {{actualCoverage.coverageDetail.accidentalDeath}}%
+                      </div>
                     </button>
                     <p>Si el asegurado muere en un accidente, a los beneficiarios se les pagará el monto asegurado que
                       contrató (indemnización). Ejm: accidentes de tránsito, sucesos imprevistos, homicidios dolosos y
@@ -45,7 +50,13 @@
                 <accordion-group [panelClass]="customClass">
                   <button class="btn btn-link btn-block clearfix" accordion-heading>
                     <div class="pull-left float-left lix">Adelantos de gastos funerarios</div>
-                    <div class="float-right">{{actualCoverage.coverageDetail.funeraryAdvances}}% <img src="assets/img/arrow2.svg" alt="" class="arrow2"> </div>
+                    <div class="float-right">
+                        <img src="assets/img/arrow2.svg" alt="" class="arrow2"> 
+                    </div>
+                    <div class="porcentaje">
+                      {{actualCoverage.coverageDetail.funeraryAdvances}}%
+                    </div>
+
                   </button>
                   <p>Adelantamos hasta el 25% la suma asegurada de gastos funerarios a los beneficiarios cuando ocurre
                     la muerte accidental del asegurado. Ejm: si tu suma asegurada por muerte accidental es $10.000 te
@@ -60,7 +71,12 @@
                 <accordion-group [panelClass]="customClass">
                   <button class="btn btn-link btn-block clearfix" accordion-heading>
                     <div class="pull-left float-left lix">Doble indemnización por muerte por accidente específico</div>
-                    <div class="float-right">{{actualCoverage.coverageDetail.dobleCompensation}}%  <img src="assets/img/arrow2.svg" alt="" class="arrow2"> </div>
+                    <div class="float-right">
+                      <img src="assets/img/arrow2.svg" alt="" class="arrow2">
+                    </div>
+                    <div class="porcentaje">
+                        {{actualCoverage.coverageDetail.dobleCompensation}}%
+                    </div>
                   </button>
                   <p>Cubrimos un porcentaje según el grado de discapacidad que pudiera presentar el asegurado a causa de
                     un accidente sufrido</p>
@@ -74,7 +90,12 @@
                 <accordion-group [panelClass]="customClass">
                   <button class="btn btn-link btn-block clearfix" accordion-heading>
                     <div class="pull-left float-left lix">Gastos médicos por accidente</div>
-                    <div class="float-right">{{actualCoverage.coverageDetail.medicalExpenses}}%  <img src="assets/img/arrow2.svg" alt="" class="arrow2"> </div>
+                    <div class="float-right">
+                      <img src="assets/img/arrow2.svg" alt="" class="arrow2">
+                    </div>
+                    <div class="porcentaje">
+                        {{actualCoverage.coverageDetail.medicalExpenses}}%
+                    </div>
                   </button>
                   <p>Cobertura opcional donde te reembolsamos hasta un 10% de la suma asegurada para gastos médicos
                     incurridos por accidentes.</p>
@@ -88,7 +109,12 @@
                 <accordion-group [panelClass]="customClass">
                   <button class="btn btn-link btn-block clearfix" accordion-heading>
                     <div class="pull-left float-left lix">Invalidez permanente (total o parcial)</div>
-                    <div class="float-right">{{actualCoverage.coverageDetail.permanentInhability}}%  <img src="assets/img/arrow2.svg" alt="" class="arrow2"> </div>
+                    <div class="float-right">
+                      <img src="assets/img/arrow2.svg" alt="" class="arrow2">
+                    </div>
+                    <div class="porcentaje">
+                        {{actualCoverage.coverageDetail.permanentInhability}}%
+                    </div>
                   </button>
                   <p>Duplicamos la suma asegurada por muerte accidental mientras el asegurado se transporta en un
                     vehículo público (autobús, metro, taxi, etc) o si se ve envuelto en un incendio en algún edificio
@@ -103,7 +129,12 @@
                 <accordion-group [panelClass]="customClass">
                   <button class="btn btn-link btn-block clearfix" accordion-heading>
                     <div class="pull-left float-left lix">Servicio de emergencia médica por accidente</div>
-                    <div class="float-right">{{actualCoverage.coverageDetail.emergencyService}}%  <img src="assets/img/arrow2.svg" alt="" class="arrow2"> </div>
+                    <div class="float-right">
+                      <img src="assets/img/arrow2.svg" alt="" class="arrow2">
+                    </div>
+                    <div class="porcentaje">
+                        {{actualCoverage.coverageDetail.emergencyService}}%
+                    </div>
                   </button>
                   <p></p>
                 </accordion-group>
@@ -116,7 +147,12 @@
                 <accordion-group [panelClass]="customClass">
                   <button class="btn btn-link btn-block clearfix" accordion-heading>
                     <div class="pull-left float-left lix">Asistencia en viajes</div>
-                    <div class="float-right">{{actualCoverage.coverageDetail.travelAssistance}}%  <img src="assets/img/arrow2.svg" alt="" class="arrow2"> </div>
+                    <div class="float-right">
+                      <img src="assets/img/arrow2.svg" alt="" class="arrow2">
+                    </div>
+                    <div class="porcentaje">
+                        {{actualCoverage.coverageDetail.travelAssistance}}%
+                    </div>
                   </button>
                   <p>Asistencia médica durante tu viaje, si por indicación médica debes alojarte en un hotel, cubrimos
                     tu estancia mientras te recuperas, transporte de los familiares del asegurado en caso necesario. Si
@@ -143,38 +179,25 @@
     <div *ngIf="!isLoading" class="modal-body terminos">
       <div class="container">
         <h4 class="titulo-modal">Términos y condiciones de salud</h4>
-        <div class="terminos">
-          <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Omnis adipisci, dolorum, veniam a excepturi,
-            molestiae eaque obcaecati placeat assumenda dicta facere explicabo atque.
-            Voluptates minus tempora sit velit excepturi cupiditate debitis cum eligendi facere id officiis unde non,
-            animi ducimus itaque nulla in sunt voluptatum magnam atque ab sed rem
-            sequi? Eligendi delectus aspernatur sequi autem impedit voluptate tempore nobis nulla at aliquid adipisci
-            repudiandae sint molestiae labore, quisquam voluptatem velit cupiditate
-            sapiente nam itaque! Unde vero excepturi expedita odio libero laudantium nisi tempore accusamus dolore animi
-            enim itaque dolorum deserunt, laborum quia. Nam, voluptates deserunt
-            officiis sit eos minima minus, et quisquam labore eius commodi ut itaque eaque repellendus tenetur, veniam
-            aspernatur nihil? Ad dignissimos magni, fugit itaque officiis,
-            possimus tempore nemo dicta, iure natus at cumque. Vero dolorem natus ullam vel quae repudiandae aut enim,
-            quis debitis vitae velit, recusandae saepe maxime sit distinctio
-            consequatur consequuntur dolores nisi sunt voluptatum necessitatibus. </p>
-            <br>
-            <p>
-              Sed nisi voluptatibus perspiciatis nam
-              eius similique, odit exercitationem, ullam dolores provident
-              deleniti ab aliquam autem deserunt. Voluptates officia error perferendis, illum labore, facere vel, dicta
-              quidem culpa a consequuntur! Minus nesciunt doloremque aspernatur
-              fuga ad similique, reiciendis cupiditate voluptate a beatae. Minima quia ducimus consequatur laudantium quos
-              quasi ab, ad quae error, rem neque, tenetur fuga deserunt sunt
-              adipisci dolore delectus necessitatibus reiciendis cupiditate eligendi facere. Laborum ipsa adipisci expedita
-              facere quasi perferendis distinctio reiciendis obcaecati porro,
-              dicta non, et voluptatum? Sed quaerat natus iure nulla, expedita dolore temporibus autem neque a aliquid
-              soluta! Voluptatum harum sunt amet vel at quae aut animi dicta
-              quia nobis unde corporis asperiores molestias, cum fuga ducimus ut debitis hic alias quaerat aliquid
-              reiciendis ipsam veritatis laudantium! Quo ea reiciendis corrupti
-              temporibus, eligendi odit explicabo perferendis cumque perspiciatis, nostrum quaerat, rem accusantium deserunt
-              aliquid fugiat labore itaque sequi! Facilis,
-              quod.
-            </p>
+        <div class="terms">
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam, deserunt aut obcaecati quos laboriosam sapiente non aspernatur hic distinctio? 
+            Dicta mollitia consequuntur rerum molestiae recusandae et accusamus maiores. Dolorum cum fugit unde commodi quod consequuntur repellendus 
+            cumque sunt aliquam reprehenderit possimus doloribus dolores, perspiciatis quis laboriosam culpa officiis quaerat. Nesciunt magni doloribus
+            exercitationem iure tempora excepturi necessitatibus eaque iste laborum possimus! Quae alias voluptatum, ducimus recusandae accusamus 
+            illo rem, voluptas inventore hic numquam veritatis, quos consequatur ipsa architecto animi unde at corrupti deleniti reprehenderit harum
+            quo possimus expedita? Reiciendis quod tempore incidunt fugit laborum quaerat nulla voluptate eius expedita adipisci!
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Obcaecati illum quidem dolore quibusdam ipsum esse quis sint
+            vitae molestiae aliquam in deserunt error excepturi quam at voluptate ratione dolor nostrum vel quo impedit minus, 
+            consectetur quaerat odio. Alias doloremque pariatur quo debitis eum, neque explicabo facere aliquid assumenda quas culpa.</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam, deserunt aut obcaecati quos laboriosam sapiente non aspernatur hic distinctio? 
+              Dicta mollitia consequuntur rerum molestiae recusandae et accusamus maiores. Dolorum cum fugit unde commodi quod consequuntur repellendus 
+              cumque sunt aliquam reprehenderit possimus doloribus dolores, perspiciatis quis laboriosam culpa officiis quaerat. Nesciunt magni doloribus
+              exercitationem iure tempora excepturi necessitatibus eaque iste laborum possimus! Quae alias voluptatum, ducimus recusandae accusamus 
+              illo rem, voluptas inventore hic numquam veritatis, quos consequatur ipsa architecto animi unde at corrupti deleniti reprehenderit harum
+              quo possimus expedita? Reiciendis quod tempore incidunt fugit laborum quaerat nulla voluptate eius expedita adipisci!
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Obcaecati illum quidem dolore quibusdam ipsum esse quis sint
+              vitae molestiae aliquam in deserunt error excepturi quam at voluptate ratione dolor nostrum vel quo impedit minus, 
+              consectetur quaerat odio. Alias doloremque pariatur quo debitis eum, neque explicabo facere aliquid assumenda quas culpa.</p>
         </div>
       </div>
     </div>
@@ -197,6 +220,7 @@
             <h3 class="titulo-1">¡Coberturas flexibles en tu seguro AP!</h3>
             <h4 class="subtitulo">Nuestra recomendación que más se adapta a lo que buscas:</h4>
         </div>
+
       <div class="row contenedor">
         <div *ngFor="let coverage of coverages; let i = index;" class="col-md-6 col-lg-4">
           <div class="cuadrado {{ i===0 || i===2 ? 'mt-40' : 'sombra'}}">

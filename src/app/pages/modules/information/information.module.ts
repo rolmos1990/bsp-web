@@ -15,6 +15,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ThanksComponent } from './components/thanks/thanks.component';
 import { ProgressBarModule } from 'angular-progress-bar';
 import { CoreModule } from '../core/core.module';
+import { AlertModule } from 'ngx-alerts';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { CoreModule } from '../core/core.module';
   ],
   imports: [
     CommonModule,
+    AlertModule.forRoot({maxMessages: 5, timeout: 5000, position: 'right'}),
     CoreModule,
     ProgressBarModule,
     InformationRoutingModule,

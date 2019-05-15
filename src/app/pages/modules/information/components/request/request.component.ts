@@ -8,6 +8,8 @@ import { DependentService } from '../../../core/services/dependent.service';
 import * as moment from 'moment';
 import { ActivityService } from '../../../core/services/activities.service';
 import { CustomValidatorDirective } from '../../../core/directives/validations/custom-validations.directive';
+import { AlertService } from 'ngx-alerts';
+
 
 
 @Component({
@@ -40,6 +42,7 @@ export class RequestComponent implements OnInit {
 
   constructor(private _modalService: NgbModal,
               private _fb: FormBuilder,
+              private alertService: AlertService,
               private _locationService: LocationService,
               private _activityService: ActivityService,
               private _requestService: RequestService,
@@ -245,7 +248,7 @@ export class RequestComponent implements OnInit {
     return this.percentsChecked && ((this.remainingPercentContingent + this.remainingPercentMain) > 0);
   }
 
-  public saveRequest(proceed: boolean) {
+  public saveRequest(proceed: boolean, tipo: string) {
     if (proceed) {
       this.mainFormValidation();
     }
@@ -257,7 +260,7 @@ export class RequestComponent implements OnInit {
       payload.insuBirthday =  moment(new Date(payload.insuBirthday)).format('DD/MM/YYYY');
       this._requestService.saveRequest(payload).subscribe(
         response => {
-          if (proceed) {
+          if (proceed){
             window.scroll(0, 0);
             this.nextStep.emit();
             this.isLoading.emit(false);
