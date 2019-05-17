@@ -1,3 +1,4 @@
+<button class="button button--primary" (click)="showNotification( 'default', 'Good evening, you lovely person!' )"> Default me! </button>
 <section *ngIf="forma" class="kalacra">
     <form [formGroup]="forma">
       <accordion  *ngIf="forma.value.insuSame === false"> <!-- Primer Formulario -->
@@ -165,6 +166,101 @@
                     </div>
                   </div>
                   <div class="col-md-6 col-lg-4 mb-5">
+                      <label for="">Sexo:  </label>
+                      <div class="form-check mb-1">
+                        <input class="form-check-input" name="insuGender" [ngClass]="{'is-invalid': invalid('insuGender', forma)}" type="radio" [value]="'Masculino'" formControlName="insuGender">
+                        <label class="form-check-label" for="gender">
+                          Masculino
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" name="insuGender" [ngClass]="{'is-invalid': invalid('insuGender', forma)}" type="radio" [value]="'Femenino'" formControlName="insuGender">
+                        <label class="form-check-label" for="gender">
+                          Femenino
+                        </label>
+                      </div>
+                      <div *ngIf="invalid('insuGender', forma)" class="invalid-feedback">
+                          Por favor elija un género.
+                      </div>
+                      <div *ngIf="valid('insuGender', forma)" class="valid-feedback">
+                        ¡Excelente!
+                      </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4 mb-5">
+                      <label for="">Estado civil: </label>
+                      <select class="form-control" [ngClass]="{'is-invalid': invalid('insuCivilStatus', forma), 'is-valid': valid('insuCivilStatus', forma)}" formControlName="insuCivilStatus">
+                        <option *ngFor="let status of civilStatus; let i=index" [value]="status.item">{{status.item}}</option>
+                      </select>
+                      <div *ngIf="invalid('insuCivilStatus', forma)" class="invalid-feedback">
+                          Disculpe, este campo es requerido.
+                      </div>
+                      <div *ngIf="valid('insuCivilStatus', forma)" class="valid-feedback">
+                        ¡Excelente!
+                      </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4 mb-5">
+                      <label for="">Fecha de nacimiento: </label>
+                      <input type="date" class="form-control" [ngClass]="{'is-invalid': invalid('insuBirthday', forma), 'is-valid': valid('insuBirthday', forma)}" formControlName="insuBirthday">
+                      <div *ngIf="invalid('insuBirthday', forma)" class="invalid-feedback">
+                          Por favor escriba su fecha de nacimiento. Por ejemplo: Ejemplo: 05/09/1995.
+                      </div>
+                      <div *ngIf="valid('insuBirthday', forma)" class="valid-feedback">
+                        ¡Excelente!
+                      </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4 mb-5">
+                      <label for="">Lugar de nacimiento (País /Provincia): </label>
+                      <input type="text" class="form-control" [ngClass]="{'is-invalid': invalid('insuBirthplace', forma), 'is-valid': valid('insuBirthplace', forma)}" formControlName="insuBirthplace">
+                      <div *ngIf="invalid('insuBirthplace', forma)" class="invalid-feedback">
+                          Por favor escriba su lugar de nacimiento. Por ejemplo: Panamá.
+                      </div>
+                      <div *ngIf="valid('insuBirthplace', forma)" class="valid-feedback">
+                        ¡Excelente!
+                      </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4 mb-5">
+                      <label for="">Nacionalidad: </label>
+                      <select class="form-control" [ngClass]="{'is-invalid': invalid('insuNationalityId', forma), 'is-valid': valid('insuNationalityId', forma)}" formControlName="insuNationalityId">
+                        <option *ngFor="let nationality of nationalities; let i=index" [value]="nationality.id">{{nationality.name}}</option>
+                      </select>
+                      <div *ngIf="invalid('insuNationalityId', forma)" class="invalid-feedback">
+                          Disculpe, este campo es requerido.
+                      </div>
+                      <div *ngIf="valid('insuNationalityId', forma)" class="valid-feedback">
+                        ¡Excelente!
+                      </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4 mb-5">
+                      <label for="">Teléfono celular: </label>
+                      <input type="text" class="form-control" [ngClass]="{'is-invalid': invalid('insuCellphone', forma), 'is-valid': valid('insuCellphone', forma)}" formControlName="insuCellphone">
+                      <div *ngIf="invalid('insuCellphone', forma)" class="invalid-feedback">
+                          Por favor escriba un número válido. Por ejemplo: +50765348555.
+                      </div>
+                      <div *ngIf="valid('insuCellphone', forma)" class="valid-feedback">
+                        ¡Excelente!
+                      </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4 mb-5">
+                      <label for="">Teléfono residencial: </label>
+                      <input type="text" class="form-control" [ngClass]="{'is-invalid': invalid('insuLocalNumber', forma), 'is-valid': valid('insuLocalNumber', forma)}" formControlName="insuLocalNumber">
+                      <div *ngIf="invalid('insuLocalNumber', forma)" class="invalid-feedback">
+                          Por favor escriba un número válido. Por ejemplo: +50765348555.
+                      </div>
+                      <div *ngIf="valid('insuLocalNumber', forma)" class="valid-feedback">
+                        ¡Excelente!
+                      </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4 mb-5">
+                      <label for="">Deportes que practica: </label>
+                      <input type="text" class="form-control" [ngClass]="{'is-invalid': invalid('insuSports', forma), 'is-valid': valid('insuSports', forma)}" formControlName="insuSports">
+                      <div *ngIf="invalid('insuSports', forma)" class="invalid-feedback">
+                          Por favor indique que deporte(s) practica, de caso contrario coloque "ninguno". Por ejemplo: Baloncesto, Kriket, Judo, etc.
+                      </div>
+                      <div *ngIf="valid('insuSports', forma)" class="valid-feedback">
+                        ¡Excelente!
+                      </div>
+                    </div>
+                  <div class="col-md-6 col-lg-4 mb-5">
                     <label for="">Provincia donde reside: </label>
                     <select class="form-control" [ngClass]="{'is-invalid': invalid('insuProvinceId', forma), 'is-valid': valid('insuProvinceId', forma)}" (ngModelChange)="getDistricts(false)" formControlName="insuProvinceId">
                       <option *ngFor="let province of provinces; let i=index" [value]="province.id">{{province.name}}</option>
@@ -231,77 +327,22 @@
                     </div>
                   </div>
                   <div class="col-md-6 col-lg-4 mb-5">
-                    <label for="">Fecha de nacimiento: </label>
-                    <input type="date" class="form-control" [ngClass]="{'is-invalid': invalid('insuBirthday', forma), 'is-valid': valid('insuBirthday', forma)}" formControlName="insuBirthday">
-                    <div *ngIf="invalid('insuBirthday', forma)" class="invalid-feedback">
-                        Por favor escriba su fecha de nacimiento. Por ejemplo: Ejemplo: 05/09/1995.
-                    </div>
-                    <div *ngIf="valid('insuBirthday', forma)" class="valid-feedback">
-                      ¡Excelente!
-                    </div>
-                  </div>
-                  <div class="col-md-6 col-lg-4 mb-5">
-                    <label for="">Sexo:  </label>
-                    <div class="form-check mb-1">
-                      <input class="form-check-input" name="insuGender" [ngClass]="{'is-invalid': invalid('insuGender', forma)}" type="radio" [value]="'Masculino'" formControlName="insuGender">
-                      <label class="form-check-label" for="gender">
-                        Masculino
-                      </label>
-                    </div>
-                    <div class="form-check">
-                      <input class="form-check-input" name="insuGender" [ngClass]="{'is-invalid': invalid('insuGender', forma)}" type="radio" [value]="'Femenino'" formControlName="insuGender">
-                      <label class="form-check-label" for="gender">
-                        Femenino
-                      </label>
-                    </div>
-                    <div *ngIf="invalid('insuGender', forma)" class="invalid-feedback">
-                        Por favor elija un género.
-                    </div>
-                    <div *ngIf="valid('insuGender', forma)" class="valid-feedback">
-                      ¡Excelente!
-                    </div>
-                  </div>
-                  <div class="col-md-6 col-lg-4 mb-5">
-                    <label for="">Estado civil: </label>
-                    <select class="form-control" [ngClass]="{'is-invalid': invalid('insuCivilStatus', forma), 'is-valid': valid('insuCivilStatus', forma)}" formControlName="insuCivilStatus">
-                      <option *ngFor="let status of civilStatus; let i=index" [value]="status.item">{{status.item}}</option>
-                    </select>
-                    <div *ngIf="invalid('insuCivilStatus', forma)" class="invalid-feedback">
-                        Disculpe, este campo es requerido.
-                    </div>
-                    <div *ngIf="valid('insuCivilStatus', forma)" class="valid-feedback">
-                      ¡Excelente!
-                    </div>
-                  </div>
-                  <div class="col-md-6 col-lg-4 mb-5">
-                    <label for="">Lugar de nacimiento (País /Provincia): </label>
-                    <input type="text" class="form-control" [ngClass]="{'is-invalid': invalid('insuBirthplace', forma), 'is-valid': valid('insuBirthplace', forma)}" formControlName="insuBirthplace">
-                    <div *ngIf="invalid('insuBirthplace', forma)" class="invalid-feedback">
-                        Por favor escriba su lugar de nacimiento. Por ejemplo: Panamá.
-                    </div>
-                    <div *ngIf="valid('insuBirthplace', forma)" class="valid-feedback">
-                      ¡Excelente!
-                    </div>
-                  </div>
-                  <div class="col-md-6 col-lg-4 mb-5">
-                    <label for="">Nacionalidad: </label>
-                    <select class="form-control" [ngClass]="{'is-invalid': invalid('insuNationalityId', forma), 'is-valid': valid('insuNationalityId', forma)}" formControlName="insuNationalityId">
-                      <option *ngFor="let nationality of nationalities; let i=index" [value]="nationality.id">{{nationality.name}}</option>
-                    </select>
-                    <div *ngIf="invalid('insuNationalityId', forma)" class="invalid-feedback">
-                        Disculpe, este campo es requerido.
-                    </div>
-                    <div *ngIf="valid('insuNationalityId', forma)" class="valid-feedback">
-                      ¡Excelente!
-                    </div>
-                  </div>
-                  <div class="col-md-6 col-lg-4 mb-5">
                     <label for="">Profesión: </label>
                     <input type="text" class="form-control" [ngClass]="{'is-invalid': invalid('insuProfession', forma), 'is-valid': valid('insuProfession', forma)}" formControlName="insuProfession">
                     <div *ngIf="invalid('insuProfession', forma)" class="invalid-feedback">
                         Por favor escriba su profesión. Por ejemplo: Ingeniero.
                     </div>
                     <div *ngIf="valid('insuProfession', forma)" class="valid-feedback">
+                      ¡Excelente!
+                    </div>
+                  </div>
+                  <div class="col-md-6 col-lg-4 mb-5">
+                    <label for="">Empresa donde labora: </label>
+                    <input type="text" class="form-control" [ngClass]="{'is-invalid': invalid('insuCompany', forma), 'is-valid': valid('insuCompany', forma)}" formControlName="insuCompany">
+                    <div *ngIf="invalid('insuCompany', forma)" class="invalid-feedback">
+                        Por favor escriba el nombre de la empresa a la cual le presta sus servicios. Por ejemplo: Banesco Seguros C.A..
+                    </div>
+                    <div *ngIf="valid('insuCompany', forma)" class="valid-feedback">
                       ¡Excelente!
                     </div>
                   </div>
@@ -318,28 +359,6 @@
                     </div>
                   </div>
                   <div class="col-md-6 col-lg-4 mb-5">
-                    <label for="">Empresa donde labora: </label>
-                    <input type="text" class="form-control" [ngClass]="{'is-invalid': invalid('insuCompany', forma), 'is-valid': valid('insuCompany', forma)}" formControlName="insuCompany">
-                    <div *ngIf="invalid('insuCompany', forma)" class="invalid-feedback">
-                        Por favor escriba el nombre de la empresa a la cual le presta sus servicios. Por ejemplo: Banesco Seguros C.A..
-                    </div>
-                    <div *ngIf="valid('insuCompany', forma)" class="valid-feedback">
-                      ¡Excelente!
-                    </div>
-                  </div>
-                  <div class="col-md-6 col-lg-4 mb-5">
-                    <label for="">Email: </label>
-                    <input type="text" class="form-control" [ngClass]="{'is-invalid': invalid('insuEmail', forma), 'is-valid': valid('insuEmail', forma)}" formControlName="insuEmail">
-                    <div *ngIf="invalid('insuEmail', forma)" class="invalid-feedback">
-                        Por favor indique una dirección de correo válida. Por ejemplo: persona@email.com.
-                    </div>
-                    <div *ngIf="valid('insuEmail', forma)" class="valid-feedback">
-                      ¡Excelente!
-                    </div>
-                  </div>
-                  
-                  
-                  <div class="col-md-6 col-lg-4 mb-5">
                     <label for="">Otras ocupaciones: </label>
                     <input type="text" class="form-control" [ngClass]="{'is-invalid': invalid('insuOtherOccupations', forma), 'is-valid': valid('insuOtherOccupations', forma)}" formControlName="insuOtherOccupations">
                     <div *ngIf="invalid('insuOtherOccupations', forma)" class="invalid-feedback">
@@ -349,6 +368,16 @@
                       ¡Excelente!
                     </div>
                   </div>
+                  <div class="col-md-6 col-lg-4 mb-5">
+                      <label for="">Tiempo en esta ocupación (Meses): </label>
+                      <input type="number" class="form-control" [ngClass]="{'is-invalid': invalid('insuOccupationTime', forma), 'is-valid': valid('insuOccupationTime', forma)}" formControlName="insuOccupationTime">
+                      <div *ngIf="invalid('insuOccupationTime', forma)" class="invalid-feedback">
+                          Por favor indique el tiempo que lleva en esta ocupación. Por ejemplo: 4 meses.
+                      </div>
+                      <div *ngIf="valid('insuOccupationTime', forma)" class="valid-feedback">
+                        ¡Excelente!
+                      </div>
+                    </div>
                   <div class="col-md-6 col-lg-8 mb-5">
                     <label for="">Describa sus funciones: </label>
                     <input type="text" class="form-control especial" [ngClass]="{'is-invalid': invalid('insuOccupationDescription', forma), 'is-valid': valid('insuOccupationDescription', forma)}" formControlName="insuOccupationDescription">
@@ -380,46 +409,6 @@
                         Disculpe, este campo es requerido.
                     </div>
                     <div *ngIf="valid('insuMonthlyIncome', forma)" class="valid-feedback">
-                      ¡Excelente!
-                    </div>
-                  </div>
-                  <div class="col-md-6 col-lg-4 mb-5">
-                    <label for="">Teléfono celular: </label>
-                    <input type="text" class="form-control" [ngClass]="{'is-invalid': invalid('insuCellphone', forma), 'is-valid': valid('insuCellphone', forma)}" formControlName="insuCellphone">
-                    <div *ngIf="invalid('insuCellphone', forma)" class="invalid-feedback">
-                        Por favor escriba un número válido. Por ejemplo: +50765348555.
-                    </div>
-                    <div *ngIf="valid('insuCellphone', forma)" class="valid-feedback">
-                      ¡Excelente!
-                    </div>
-                  </div>
-                  <div class="col-md-6 col-lg-4 mb-5">
-                    <label for="">Teléfono residencial: </label>
-                    <input type="text" class="form-control" [ngClass]="{'is-invalid': invalid('insuLocalNumber', forma), 'is-valid': valid('insuLocalNumber', forma)}" formControlName="insuLocalNumber">
-                    <div *ngIf="invalid('insuLocalNumber', forma)" class="invalid-feedback">
-                        Por favor escriba un número válido. Por ejemplo: +50765348555.
-                    </div>
-                    <div *ngIf="valid('insuLocalNumber', forma)" class="valid-feedback">
-                      ¡Excelente!
-                    </div>
-                  </div>
-                  <div class="col-md-6 col-lg-4 mb-5">
-                    <label for="">Deportes que practica: </label>
-                    <input type="text" class="form-control" [ngClass]="{'is-invalid': invalid('insuSports', forma), 'is-valid': valid('insuSports', forma)}" formControlName="insuSports">
-                    <div *ngIf="invalid('insuSports', forma)" class="invalid-feedback">
-                        Por favor indique que deporte(s) practica, de caso contrario coloque "ninguno". Por ejemplo: Baloncesto, Kriket, Judo, etc.
-                    </div>
-                    <div *ngIf="valid('insuSports', forma)" class="valid-feedback">
-                      ¡Excelente!
-                    </div>
-                  </div>
-                  <div class="col-md-6 col-lg-4 mb-5">
-                    <label for="">Tiempo en esta ocupación (Meses): </label>
-                    <input type="number" class="form-control" [ngClass]="{'is-invalid': invalid('insuOccupationTime', forma), 'is-valid': valid('insuOccupationTime', forma)}" formControlName="insuOccupationTime">
-                    <div *ngIf="invalid('insuOccupationTime', forma)" class="invalid-feedback">
-                        Por favor indique el tiempo que lleva en esta ocupación. Por ejemplo: 4 meses.
-                    </div>
-                    <div *ngIf="valid('insuOccupationTime', forma)" class="valid-feedback">
                       ¡Excelente!
                     </div>
                   </div>
@@ -465,11 +454,15 @@
                       </div>
                       <small class="text-danger col-12 row ml-md-2" *ngIf="invalid('type', modalForm)">Campo inválido. Por favor revise.</small>
                     </div>
+                    <tooltip-content #myTooltip [animation]="true" placement="bottom">
+                        <b>Very</b> <span style="color: #C21F39">Dynamic</span> <span style="color: #00b3ee">Reusable</span>
+                        <b><i><span style="color: #ffc520">Tooltip With</span></i></b> <small>Html support</small>.
+                        </tooltip-content>
+                        <button [tooltip]="myTooltip">Element on which this tooltip is applied.</button>
                     <div class="form-group">
                       <label for="">Cédula/Pasaporte: </label>
                       <div class="form-row">
-                        <div
-                          class="{{modalForm.value.documentType === 'Pasaporte' || !modalForm.value.documentType ? 'col-4' : 'col-3'}}">
+                        <div class="{{modalForm.value.documentType === 'Pasaporte' || !modalForm.value.documentType ? 'col-4' : 'col-3'}}">
                           <select class="form-control w-100" [ngClass]="{'is-invalid': invalid('documentType', modalForm), 'is-valid': valid('documentType', modalForm)}" (ngModelChange)="modalValidations(true)"
                             formControlName="documentType">
                             <option *ngFor="let document of documents; let i=index" [value]="document.itemName">
@@ -488,25 +481,27 @@
                         <div *ngIf="modalForm.value.documentType"
                           class="{{modalForm.value.documentType === 'Pasaporte' || !modalForm.value.documentType ? 'col-7' : 'col-3'}}">
                           <input type="text" [ngClass]="{'is-invalid': invalid('document', modalForm), 'is-valid': valid('document', modalForm)}" class="form-control w-100" formControlName="document" maxlength="10">
+                          <small *ngIf="modalForm.value.documentType !== 'Pasaporte'" style="color: #797979"> Ejemplo: 2564</small>
                           <div *ngIf="invalid('document', modalForm) && modalForm.value.documentType === 'Pasaporte'" class="invalid-feedback">
                             Formato incorrecto. Por ejemplo: A084456465 (Máximo 10 caracteres).
                           </div>
                           <div *ngIf="invalid('document', modalForm) && modalForm.value.documentType !== 'Pasaporte'" class="invalid-feedback">
-                              Formato incorrecto. (Máximo 4 caracteres numéricos).
+                              Formato incorrecto.
                           </div>
                           <div *ngIf="valid('document', modalForm)" class="valid-feedback">
                             ¡Excelente!
                           </div>
                         </div>
                         <div *ngIf="modalForm.value.documentType && modalForm.value.documentType !== 'Pasaporte'"
-                          class="d-none d-md-block col-1">
+                          class="d-none d-md-block col-1 text-center">
                           -
                         </div>
                         <div *ngIf="modalForm.value.documentType && modalForm.value.documentType !== 'Pasaporte'"
                           class="col-4">
                           <input type="text" [ngClass]="{'is-invalid': invalid('document2', modalForm), 'is-valid': valid('document2', modalForm)}" class="form-control w-100" formControlName="document2" maxlength="6">
+                          <small *ngIf="modalForm.value.documentType && modalForm.value.documentType !== 'Pasaporte'" style="color: #797979">Ejemplo: 641434</small>
                           <div *ngIf="invalid('document2', modalForm)" class="invalid-feedback">
-                            Formato incorrecto. (Máximo 6 caracteres numéricos).
+                            Formato incorrecto.
                           </div>
                           <div *ngIf="valid('document2', modalForm)" class="valid-feedback">
                             ¡Excelente!
