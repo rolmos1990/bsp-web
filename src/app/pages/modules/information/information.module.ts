@@ -15,9 +15,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ThanksComponent } from './components/thanks/thanks.component';
 import { ProgressBarModule } from 'angular-progress-bar';
 import { CoreModule } from '../core/core.module';
-import { AlertModule } from 'ngx-alerts';
-import { TooltipModule } from 'ngx-tooltip';
-import { NotifierModule } from 'angular-notifier';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
 
 
 @NgModule({
@@ -32,16 +30,14 @@ import { NotifierModule } from 'angular-notifier';
   ],
   imports: [
     CommonModule,
-    AlertModule.forRoot({maxMessages: 5, timeout: 5000, position: 'right'}),
     CoreModule,
     ProgressBarModule,
     InformationRoutingModule,
-    NotifierModule,
     AccordionModule.forRoot(),
     ArchwizardModule,
     FormsModule,
     ReactiveFormsModule,
-    TooltipModule
+    TooltipModule.forRoot()
   ]
 })
 export class InformationModule { }

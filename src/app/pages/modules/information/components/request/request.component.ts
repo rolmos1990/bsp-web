@@ -8,8 +8,6 @@ import { DependentService } from '../../../core/services/dependent.service';
 import * as moment from 'moment';
 import { ActivityService } from '../../../core/services/activities.service';
 import { CustomValidatorDirective } from '../../../core/directives/validations/custom-validations.directive';
-import { AlertService } from 'ngx-alerts';
-import { NotifierService } from 'angular-notifier';
 
 
 @Component({
@@ -39,30 +37,23 @@ export class RequestComponent implements OnInit {
   public forma: FormGroup;
   @Input() requestId: string;
   @Output() nextStep: EventEmitter<any> = new EventEmitter<any>();
+  content = 'Vivamus sagittis lacus vel augue laoreet rutrum faucibus.';
 
-  private notifier: NotifierService;
 
   constructor(private _modalService: NgbModal,
               private _fb: FormBuilder,
-              private alertService: AlertService,
               private _locationService: LocationService,
-              notifier: NotifierService,
               private _activityService: ActivityService,
               private _requestService: RequestService,
               private _dependentService: DependentService) {
                 this.edit = false;
                 this.percentsChecked = false;
-                this.notifier = notifier;
   }
 
   ngOnInit() {
     this.getProvinces();
-    this.notifier.notify( 'success', 'You are awesome! I mean it!' );
   }
 
-  public showNotification( type: string, message: string ): void {
-    this.notifier.notify( type, message );
-  }
 
   public getRequest() {
     this._requestService.getRequest(this.requestId).subscribe(

@@ -31,7 +31,7 @@ padding: 30px 0 0 40px;
 }
 
 i.fas.fa-info-circle {
-color: #4e74b0 !important;
+color: #2b5f8c!important;
 }
 
 .marco-verde h3 {
@@ -70,6 +70,15 @@ h3.menores{
   color: #556176;
   text-decoration: none solid rgb(85, 97, 118);
   text-align: justify;
+}
+
+.form-width{
+  padding-right: 0px;
+  padding-left: 0px;
+  @media (min-width: 1024px){
+    padding-right: 30px;
+    padding-left: 10px;
+  }
 }
 
 .form-control.parrafo {

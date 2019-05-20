@@ -156,7 +156,16 @@
                 </div>
               </div>
                   <div class="form-group col-md-4">
-                    <label for="" class="my-2 d-block">CVV  <i class="fas fa-info-circle" style="color:#4e74b0;"></i></label>
+                      <ng-template #cvv>
+                        <div class="text-justify">
+                            <strong>¿Que es el CVV?</strong> <br> Son los 3 o 4 digitos que se encuentran en la parte de atrás de tu tarjeta de crédito o débito
+                        </div>
+                      </ng-template>
+                    <label for="" class="my-2 d-block">CVV
+                        <button type="button" class="btn" [tooltip]="cvv" containerClass="customClass">
+                          <i class="fas fa-info-circle mx-2"></i>
+                        </button>
+                    </label>
                     <input type="text" class="form-control cvv" [ngClass]="{'is-invalid': invalid('cvv', formaPayment), 'is-valid': valid('cvv', formaPayment)}" formControlName="cvv">
                     <div *ngIf="invalid('cvv', formaPayment)" class="invalid-feedback">
                       Introduzca un código de seguridad válido, entre 3 y 4 dígitos.
