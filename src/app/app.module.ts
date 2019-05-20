@@ -7,7 +7,6 @@ import { AppComponent } from './app.component';
 import { CoreModule } from './pages/modules/core/core.module';
 
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import {TooltipModule} from 'ng2-tooltip-directive';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -22,7 +21,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     NgbModule,
     BrowserAnimationsModule,
     CoreModule,
-    TooltipModule,
     FormsModule,
     HttpModule,
     ReactiveFormsModule,

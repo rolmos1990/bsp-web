@@ -194,7 +194,7 @@ export class RequestComponent implements OnInit {
     'insuNeighborhood': this._fb.control(insu.neighborhood, Validators.required),
     'insuStreet': this._fb.control(insu.street, Validators.required),
     'insuBuilding': this._fb.control(insu.building, Validators.required),
-    'insuLocalNumber': this._fb.control(insu.localNumber, [Validators.required, CustomValidatorDirective.cellphoneValidator]),
+    'insuLocalNumber': this._fb.control(insu.localNumber, [Validators.required, CustomValidatorDirective.localphoneValidator]),
     'insuCellphone': this._fb.control(insu.cellphone,  Validators.compose([Validators.required, CustomValidatorDirective.cellphoneValidator])),
     'insuEmail': this._fb.control(insu.email, Validators.compose([Validators.required, CustomValidatorDirective.customEmailValidator])),
     'insuDependents': this._fb.array([])

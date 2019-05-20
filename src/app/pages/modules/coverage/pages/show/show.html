@@ -172,14 +172,23 @@
 </ng-template>
 
 <!-- Modal Términos y condiciones -->
-  <ng-template #terminos let-modal>
-    <ng-template [ngIf]="isLoading">
-      <bsp-loader></bsp-loader>
-    </ng-template>
-    <div *ngIf="!isLoading" class="modal-body terminos">
-      <div class="container">
-        <h4 class="titulo-modal">Términos y condiciones de salud</h4>
-        <div class="terms">
+<ng-template #terminos let-modal>
+  <ng-template [ngIf]="isLoading">
+    <bsp-loader></bsp-loader>
+  </ng-template>
+  <div *ngIf="!isLoading" class="modal-body terminos">
+    <div class="container">
+      <h4 class="titulo-modal">Términos y condiciones de salud</h4>
+      <div class="terms">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam, deserunt aut obcaecati quos laboriosam sapiente non aspernatur hic distinctio? 
+          Dicta mollitia consequuntur rerum molestiae recusandae et accusamus maiores. Dolorum cum fugit unde commodi quod consequuntur repellendus 
+          cumque sunt aliquam reprehenderit possimus doloribus dolores, perspiciatis quis laboriosam culpa officiis quaerat. Nesciunt magni doloribus
+          exercitationem iure tempora excepturi necessitatibus eaque iste laborum possimus! Quae alias voluptatum, ducimus recusandae accusamus 
+          illo rem, voluptas inventore hic numquam veritatis, quos consequatur ipsa architecto animi unde at corrupti deleniti reprehenderit harum
+          quo possimus expedita? Reiciendis quod tempore incidunt fugit laborum quaerat nulla voluptate eius expedita adipisci!
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Obcaecati illum quidem dolore quibusdam ipsum esse quis sint
+          vitae molestiae aliquam in deserunt error excepturi quam at voluptate ratione dolor nostrum vel quo impedit minus, 
+          consectetur quaerat odio. Alias doloremque pariatur quo debitis eum, neque explicabo facere aliquid assumenda quas culpa.</p>
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam, deserunt aut obcaecati quos laboriosam sapiente non aspernatur hic distinctio? 
             Dicta mollitia consequuntur rerum molestiae recusandae et accusamus maiores. Dolorum cum fugit unde commodi quod consequuntur repellendus 
             cumque sunt aliquam reprehenderit possimus doloribus dolores, perspiciatis quis laboriosam culpa officiis quaerat. Nesciunt magni doloribus
@@ -189,26 +198,16 @@
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Obcaecati illum quidem dolore quibusdam ipsum esse quis sint
             vitae molestiae aliquam in deserunt error excepturi quam at voluptate ratione dolor nostrum vel quo impedit minus, 
             consectetur quaerat odio. Alias doloremque pariatur quo debitis eum, neque explicabo facere aliquid assumenda quas culpa.</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam, deserunt aut obcaecati quos laboriosam sapiente non aspernatur hic distinctio? 
-              Dicta mollitia consequuntur rerum molestiae recusandae et accusamus maiores. Dolorum cum fugit unde commodi quod consequuntur repellendus 
-              cumque sunt aliquam reprehenderit possimus doloribus dolores, perspiciatis quis laboriosam culpa officiis quaerat. Nesciunt magni doloribus
-              exercitationem iure tempora excepturi necessitatibus eaque iste laborum possimus! Quae alias voluptatum, ducimus recusandae accusamus 
-              illo rem, voluptas inventore hic numquam veritatis, quos consequatur ipsa architecto animi unde at corrupti deleniti reprehenderit harum
-              quo possimus expedita? Reiciendis quod tempore incidunt fugit laborum quaerat nulla voluptate eius expedita adipisci!
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Obcaecati illum quidem dolore quibusdam ipsum esse quis sint
-              vitae molestiae aliquam in deserunt error excepturi quam at voluptate ratione dolor nostrum vel quo impedit minus, 
-              consectetur quaerat odio. Alias doloremque pariatur quo debitis eum, neque explicabo facere aliquid assumenda quas culpa.</p>
-        </div>
       </div>
     </div>
-    <div class="px-5 py-3">
-      <div class="row justify-content-between">
-        <button class="btn-white" (click)="reject(modal)">CANCELAR</button>
-        <button class="btn-primary-modal" (click)="createNewRequest(modal)">ACEPTO</button>
-      </div>
+  </div>
+  <div class="px-5 py-3">
+    <div class="row justify-content-between">
+      <button class="btn-white" (click)="reject(modal)">CANCELAR</button>
+      <button class="btn-primary-modal" (click)="createNewRequest(modal)">ACEPTO</button>
     </div>
-  </ng-template>
-
+  </div>
+</ng-template>
 
 <ng-template [ngIf]="isLoading">
   <bsp-loader></bsp-loader>
