@@ -8,6 +8,7 @@ import { CoreModule } from './pages/modules/core/core.module';
 
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 

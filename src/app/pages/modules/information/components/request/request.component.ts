@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewContainerRef } from '@angular/core';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, FormControl, Validators, FormBuilder, FormArray } from '@angular/forms';
 import { DOCUMENTS, MONTHLYINCOME, CIVILSTATUS } from '../../../core/utils/select.util';
@@ -39,7 +39,6 @@ export class RequestComponent implements OnInit {
   @Output() nextStep: EventEmitter<any> = new EventEmitter<any>();
   content = 'Vivamus sagittis lacus vel augue laoreet rutrum faucibus.';
 
-
   constructor(private _modalService: NgbModal,
               private _fb: FormBuilder,
               private _locationService: LocationService,
@@ -48,12 +47,16 @@ export class RequestComponent implements OnInit {
               private _dependentService: DependentService) {
                 this.edit = false;
                 this.percentsChecked = false;
+                this.toastr.setRootViewContainerRef(vcr);
   }
 
   ngOnInit() {
     this.getProvinces();
   }
 
+  showSuccess() {
+    this.toastr.success('You are awesome!', 'Success!');
+  }
 
   public getRequest() {
     this._requestService.getRequest(this.requestId).subscribe(
