@@ -47,15 +47,10 @@ export class RequestComponent implements OnInit {
               private _dependentService: DependentService) {
                 this.edit = false;
                 this.percentsChecked = false;
-                this.toastr.setRootViewContainerRef(vcr);
   }
 
   ngOnInit() {
     this.getProvinces();
-  }
-
-  showSuccess() {
-    this.toastr.success('You are awesome!', 'Success!');
   }
 
   public getRequest() {
