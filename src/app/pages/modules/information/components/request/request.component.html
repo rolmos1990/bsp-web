@@ -33,9 +33,10 @@
                         </div>
                         <div class="col-md-4 mb-5">
                             <label for="">Provincia donde reside: </label>
-                            <select class="form-control" [ngClass]="{'is-invalid': invalid('contProvinceId', forma), 'is-valid': valid('contProvinceId', forma)}" (ngModelChange)="getDistricts(true)" formControlName="contProvinceId">
-                  <option *ngFor="let province of provinces; let i=index" [value]="province.id">{{province.name}}</option>
-                </select>
+                                <select class="form-control {{forma.value.insuNationalityId === null ? 'placeholder' : ''}}" [ngClass]="{'is-invalid': invalid('contProvinceId', forma), 'is-valid': valid('contProvinceId', forma)}" (ngModelChange)="getDistricts(true)" formControlName="contProvinceId">
+                                  <option class="placeholder" [value]="null" disabled>Seleccione</option>
+                                  <option *ngFor="let province of provinces; let i=index" [value]="province.id">{{province.name}}</option>
+                            </select>
                             <div *ngIf="invalid('contProvinceId', forma)" class="invalid-feedback">
                                 Disculpe, este campo es requerido.
                             </div>
@@ -45,9 +46,10 @@
                         </div>
                         <div class="col-md-4 mb-5">
                             <label for="">Distrito donde reside: </label>
-                            <select class="form-control" [ngClass]="{'is-invalid': invalid('contDistrictId', forma), 'is-valid': valid('contDistrictId', forma)}" (ngModelChange)="getCorregimientos(true)" formControlName="contDistrictId">
-                  <option *ngFor="let district of districtsCont; let i=index" [value]="district.id">{{district.name}}</option>
-                </select>
+                            <select class="form-control {{forma.value.insuNationalityId === null ? 'placeholder' : ''}}" [ngClass]="{'is-invalid': invalid('contDistrictId', forma), 'is-valid': valid('contDistrictId', forma)}" (ngModelChange)="getCorregimientos(true)" formControlName="contDistrictId">
+                              <option class="placeholder" [value]="null" disabled>Seleccione</option>
+                              <option *ngFor="let district of districtsCont; let i=index" [value]="district.id">{{district.name}}</option>
+                            </select>
                             <div *ngIf="invalid('contDistrictId', forma)" class="invalid-feedback">
                                 Disculpe, este campo es requerido.
                             </div>
@@ -177,14 +179,14 @@
                                 <div class="form-check mb-1">
                                     <input class="form-check-input" name="insuGender" [ngClass]="{'is-invalid': invalid('insuGender', forma)}" type="radio" [value]="'Masculino'" formControlName="insuGender">
                                     <label class="form-check-label" for="gender">
-                          Masculino
-                        </label>
+                                      Masculino
+                                    </label>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" name="insuGender" [ngClass]="{'is-invalid': invalid('insuGender', forma)}" type="radio" [value]="'Femenino'" formControlName="insuGender">
                                     <label class="form-check-label" for="gender">
-                          Femenino
-                        </label>
+                                  Femenino
+                                </label>
                                 </div>
                                 <div *ngIf="invalid('insuGender', forma)" class="invalid-feedback">
                                     Por favor elija un género.
@@ -197,10 +199,10 @@
                         <div class="col-md-6 col-lg-4 mb-5">
                             <div class="form-group form-width">
                                 <label for="">Estado civil: </label>
-
-                                <select class="form-control" [ngClass]="{'is-invalid': invalid('insuCivilStatus', forma), 'is-valid': valid('insuCivilStatus', forma)}" formControlName="insuCivilStatus">
-                        <option *ngFor="let status of civilStatus; let i=index" [value]="status.item">{{status.item}}</option>
-                      </select>
+                                <select class="form-control {{forma.value.insuCivilStatus === null ? 'placeholder' : ''}}" [ngClass]="{'is-invalid': invalid('insuCivilStatus', forma), 'is-valid': valid('insuCivilStatus', forma)}" formControlName="insuCivilStatus">
+                                  <option class="placeholder" [value]="null" disabled>Seleccione</option>
+                                  <option *ngFor="let status of civilStatus; let i=index" [value]="status.item">{{status.item}}</option>
+                                </select>
                                 <div *ngIf="invalid('insuCivilStatus', forma)" class="invalid-feedback">
                                     Disculpe, este campo es requerido.
                                 </div>
@@ -237,9 +239,9 @@
                             <div class="form-group form-width">
                                 <label for="">Nacionalidad: </label>
                                 <select class="form-control {{forma.value.insuNationalityId === null ? 'placeholder' : ''}}" [ngClass]="{'is-invalid': invalid('insuNationalityId', forma), 'is-valid': valid('insuNationalityId', forma)}" [value]="null" formControlName="insuNationalityId">
-                        <option class="placeholder" [value]="null" disabled>Seleccione</option>
-                        <option *ngFor="let nationality of nationalities; let i=index" [value]="nationality.id">{{nationality.name}}</option>
-                      </select>
+                                  <option class="placeholder" [value]="null" disabled>Seleccione</option>
+                                  <option *ngFor="let nationality of nationalities; let i=index" [value]="nationality.id">{{nationality.name}}</option>
+                                </select>
                                 <div *ngIf="invalid('insuNationalityId', forma)" class="invalid-feedback">
                                     Disculpe, este campo es requerido.
                                 </div>
@@ -287,9 +289,10 @@
                         <div class="col-md-6 col-lg-4 mb-5">
                             <div class="form-group form-width">
                                 <label for="">Provincia donde reside: </label>
-                                <select class="form-control" [ngClass]="{'is-invalid': invalid('insuProvinceId', forma), 'is-valid': valid('insuProvinceId', forma)}" (ngModelChange)="getDistricts(false)" formControlName="insuProvinceId">
-                      <option *ngFor="let province of provinces; let i=index" [value]="province.id">{{province.name}}</option>
-                    </select>
+                                <select class="form-control {{forma.value.insuProvinceId === null ? 'placeholder' : ''}}" [ngClass]="{'is-invalid': invalid('insuProvinceId', forma), 'is-valid': valid('insuProvinceId', forma)}" (ngModelChange)="getDistricts(false)" formControlName="insuProvinceId">
+                                  <option class="placeholder" [value]="null" disabled>Seleccione</option>
+                                  <option *ngFor="let province of provinces; let i=index" [value]="province.id">{{province.name}}</option>
+                                </select>
                                 <div *ngIf="invalid('insuProvinceId', forma)" class="invalid-feedback">
                                     Disculpe, este campo es requerido.
                                 </div>
@@ -301,9 +304,10 @@
                         <div class="col-md-6 col-lg-4 mb-5">
                             <div class="form-group form-width">
                                 <label for="">Distrito donde reside: </label>
-                                <select class="form-control" [ngClass]="{'is-invalid': invalid('insuDistrictId', forma), 'is-valid': valid('insuDistrictId', forma)}" (ngModelChange)="getCorregimientos(false)" formControlName="insuDistrictId">
-                      <option *ngFor="let district of districtsInsu; let i=index" [value]="district.id">{{district.name}}</option>
-                    </select>
+                                <select class="form-control {{forma.value.insuDistrictId === null ? 'placeholder' : ''}}" [ngClass]="{'is-invalid': invalid('insuDistrictId', forma), 'is-valid': valid('insuDistrictId', forma)}" (ngModelChange)="getCorregimientos(false)" formControlName="insuDistrictId">
+                                  <option class="placeholder" [value]="null" disabled>Seleccione</option>
+                                  <option *ngFor="let district of districtsInsu; let i=index" [value]="district.id">{{district.name}}</option>
+                                </select>
                                 <div *ngIf="invalid('insuDistrictId', forma)" class="invalid-feedback">
                                     Disculpe, este campo es requerido.
                                 </div>
@@ -315,9 +319,10 @@
                         <div class="col-md-6 col-lg-4 mb-5">
                             <div class="form-group form-width">
                                 <label for="">Corregimiento donde reside: </label>
-                                <select class="form-control" [ngClass]="{'is-invalid': invalid('insuCorregimientoId', forma), 'is-valid': valid('insuCorregimientoId', forma)}" formControlName="insuCorregimientoId">
-                      <option *ngFor="let corregimiento of corregimientosInsu; let i=index" [value]="corregimiento.id">{{corregimiento.name}}</option>
-                    </select>
+                                <select class="form-control {{forma.value.insuCorregimientoId === null ? 'placeholder' : ''}}" [ngClass]="{'is-invalid': invalid('insuCorregimientoId', forma), 'is-valid': valid('insuCorregimientoId', forma)}" formControlName="insuCorregimientoId">
+                                  <option class="placeholder" [value]="null" disabled>Seleccione</option>
+                                  <option *ngFor="let corregimiento of corregimientosInsu; let i=index" [value]="corregimiento.id">{{corregimiento.name}}</option>
+                                </select>
                                 <div *ngIf="invalid('insuCorregimientoId', forma)" class="invalid-feedback">
                                     Disculpe, este campo es requerido.
                                 </div>
@@ -389,9 +394,10 @@
                         <div class="col-md-6 col-lg-4 mb-5">
                             <div class="form-group form-width">
                                 <label for="">Ocupación: </label>
-                                <select class="form-control" [ngClass]="{'is-invalid': invalid('insuOccupation', forma), 'is-valid': valid('insuOccupation', forma)}" formControlName="insuOccupation">
-                      <option *ngFor="let occupation of occupations; let i=index" [value]="occupation.id">{{occupation.name}}</option>
-                    </select>
+                                <select class="form-control {{forma.value.insuNationalityId === null ? 'placeholder' : ''}}" [ngClass]="{'is-invalid': invalid('insuOccupation', forma), 'is-valid': valid('insuOccupation', forma)}" formControlName="insuOccupation">
+                                  <option class="placeholder" [value]="null" disabled>Seleccione</option>
+                                  <option *ngFor="let occupation of occupations; let i=index" [value]="occupation.id">{{occupation.name}}</option>
+                                </select>
                                 <div *ngIf="invalid('insuOccupation', forma)" class="invalid-feedback">
                                     Disculpe, este campo es requerido.
                                 </div>
@@ -439,9 +445,10 @@
                         <div class="col-md-6 col-lg-4 mb-5">
                             <div class="form-group form-width">
                                 <label for="">Ocupaciones anteriores: </label>
-                                <select class="form-control" [ngClass]="{'is-invalid': invalid('insuPreviousOccupations', forma), 'is-valid': valid('insuPreviousOccupations', forma)}" formControlName="insuPreviousOccupations">
-                      <option *ngFor="let occupation of occupations; let i=index" [value]="occupation.id">{{occupation.name}}</option>
-                    </select>
+                                <select class="form-control {{forma.value.insuPreviousOccupations === null ? 'placeholder' : ''}}" [ngClass]="{'is-invalid': invalid('insuPreviousOccupations', forma), 'is-valid': valid('insuPreviousOccupations', forma)}" formControlName="insuPreviousOccupations">
+                                  <option class="placeholder" [value]="null" disabled>Seleccione</option>
+                                  <option *ngFor="let occupation of occupations; let i=index" [value]="occupation.id">{{occupation.name}}</option>
+                                </select>
                                 <div *ngIf="invalid('insuPreviousOccupations', forma)" class="invalid-feedback">
                                     Disculpe, este campo es requerido.
                                 </div>
@@ -453,9 +460,10 @@
                         <div class="col-md-6 col-lg-4 mb-5">
                             <div class="form-group form-width">
                                 <label for="">Ingreso mensual: </label>
-                                <select class="form-control" [ngClass]="{'is-invalid': invalid('insuMonthlyIncome', forma), 'is-valid': valid('insuMonthlyIncome', forma)}" formControlName="insuMonthlyIncome">
-                      <option *ngFor="let income of incomes; let i=index" [value]="income.item">{{income.item}}</option>
-                    </select>
+                                <select class="form-control {{forma.value.insuMonthlyIncome === null ? 'placeholder' : ''}}" [ngClass]="{'is-invalid': invalid('insuMonthlyIncome', forma), 'is-valid': valid('insuMonthlyIncome', forma)}" formControlName="insuMonthlyIncome">
+                                  <option class="placeholder" [value]="null" disabled>Seleccione</option>
+                                  <option *ngFor="let income of incomes; let i=index" [value]="income.item">{{income.item}}</option>
+                                </select>
                                 <div *ngIf="invalid('insuMonthlyIncome', forma)" class="invalid-feedback">
                                     Disculpe, este campo es requerido.
                                 </div>
@@ -508,10 +516,11 @@
                                         <label for="">Cédula/Pasaporte: </label>
                                         <div class="form-row">
                                             <div class="{{modalForm.value.documentType === 'Pasaporte' || !modalForm.value.documentType ? 'col-4' : 'col-3'}}">
-                                                <select class="form-control w-100" [ngClass]="{'is-invalid': invalid('documentType', modalForm), 'is-valid': valid('documentType', modalForm)}" (ngModelChange)="modalValidations(true)" formControlName="documentType">
-                          <option *ngFor="let document of documents; let i=index" [value]="document.itemName">
-                            {{document.itemName}}</option>
-                        </select>
+                                                <select class="form-control w-100 {{forma.value.documentType === null ? 'placeholder' : ''}}" [ngClass]="{'is-invalid': invalid('documentType', modalForm), 'is-valid': valid('documentType', modalForm)}" (ngModelChange)="modalValidations(true)" formControlName="documentType">
+                                                  <option class="placeholder" [value]="null" disabled>Seleccione</option>
+                                                  <option *ngFor="let document of documents; let i=index" [value]="document.itemName">
+                                                    {{document.itemName}}</option>
+                                                </select>
                                                 <div *ngIf="invalid('documentType', modalForm)" class="invalid-feedback">
                                                     Disculpe, este campo es requerido.
                                                 </div>
@@ -562,10 +571,10 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="">Nacionalidad: </label>
-                                        <select class="form-control w-100" [ngClass]="{'is-invalid': invalid('nationalityId', modalForm), 'is-valid': valid('nationalityId', modalForm)}" formControlName="nationalityId">
-                      <option disabled>Seleccione:</option>
-                      <option *ngFor="let nationality of nationalities; let i=index" [value]="nationality.id">{{nationality.name}}</option>
-                    </select>
+                                        <select class="form-control {{forma.value.nationalityId === null ? 'placeholder' : ''}}" [ngClass]="{'is-invalid': invalid('nationalityId', modalForm), 'is-valid': valid('nationalityId', modalForm)}" formControlName="nationalityId">
+                                          <option class="placeholder" [value]="null" disabled>Seleccione</option>
+                                          <option *ngFor="let nationality of nationalities; let i=index" [value]="nationality.id">{{nationality.name}}</option>
+                                        </select>
                                         <div *ngIf="invalid('nationalityId', modalForm)" class="invalid-feedback">
                                             Disculpe, este campo es requerido.
                                         </div>
@@ -592,10 +601,10 @@
                                             </div>
                                         </ng-template>
                                         <label for="">Parentesco: 
-                        <button type="button" class="btn" [tooltip]="beneficiario" containerClass="customClass">
-                          <i class="fas fa-info-circle mx-2"></i>
-                        </button>
-                    </label>
+                                            <button type="button" class="btn" [tooltip]="beneficiario" containerClass="customClass">
+                                              <i class="fas fa-info-circle mx-2"></i>
+                                            </button>
+                                        </label>
                                         <input type="text" [ngClass]="{'is-invalid': invalid('relationship', modalForm), 'is-valid': valid('relationship', modalForm)}" class="form-control w-100" formControlName="relationship">
                                         <div *ngIf="invalid('relationship', modalForm)" class="invalid-feedback">
                                             Por favor escriba el parentezco entre el dependiente y el asegurado. Por ejemplo: Madre.
@@ -611,17 +620,17 @@
                                             </div>
                                         </ng-template>
                                         <label for="">Porcentaje (%) : 
-                      <button type="button" class="btn" [tooltip]="porcentaje" containerClass="customClass">
-                        <i class="fas fa-info-circle mx-2"></i>
-                      </button>
-                  </label>
-                    <input type="number" [ngClass]="{'is-invalid': invalid('percent', modalForm), 'is-valid': valid('percent', modalForm)}" class="form-control w-100" formControlName="percent">
-                    <div *ngIf="modalForm.value.type && invalid('percent', modalForm)" class="invalid-feedback">
-                      Disculpe su porcentaje restante es de: {{modalForm.value.type === 'principal' ? remainingPercentMain : remainingPercentContingent}}%.
-                    </div>
-                    <div *ngIf="modalForm.value.type && valid('percent', modalForm)" class="valid-feedback">
-                      ¡Excelente!
-                    </div>
+                                          <button type="button" class="btn" [tooltip]="porcentaje" containerClass="customClass">
+                                            <i class="fas fa-info-circle mx-2"></i>
+                                          </button>
+                                        </label>
+                                    <input type="number" [ngClass]="{'is-invalid': invalid('percent', modalForm), 'is-valid': valid('percent', modalForm)}" class="form-control w-100" formControlName="percent">
+                                    <div *ngIf="modalForm.value.type && invalid('percent', modalForm)" class="invalid-feedback">
+                                      Disculpe su porcentaje restante es de: {{modalForm.value.type === 'principal' ? remainingPercentMain : remainingPercentContingent}}%.
+                                    </div>
+                                    <div *ngIf="modalForm.value.type && valid('percent', modalForm)" class="valid-feedback">
+                                      ¡Excelente!
+                                    </div>
                   </div>
                 </div>
               </div>
@@ -663,120 +672,70 @@
       </ng-template>
     </section>
 
-        <accordion>
-            <accordion-group [panelClass]="customClass" [isOpen]="isFirstOpen">
-                <button class="btn btn-link btn-block clearfix" accordion-heading>
-            <div class="pull-left float-left" style="margin: 10px 0 10px -15px;"><i class="fas fa-angle-down"></i> Datos de los beneficiarios</div>
-          </button>
-                <div class="container">
-                    <div class="row mb-5">
-                        <div class="marco-verde uno">
-                            <ng-template #tolTemplate>
-                                <div class="text-justify">
-                                    <strong>Beneficiario Principal:</strong> <br> Persona o personas designadas por el asegurado para recibir el monto asegurado al momento de la muerte.
-                                    <strong>Beneficiario Contingente:</strong> <br> Persona o personas designadas para recibir el monto asegurado por fallecimiento en caso de que el beneficiario principal haya fallecido para el momento de la reclamación
-                                    o durante dicho proceso.
-                                </div>
-                            </ng-template>
-                            <h3 class="">Beneficiarios principales y contingentes
-                                <button type="button" class="btn" [tooltip]="tolTemplate" containerClass="customClass">
-                      <i class="fas fa-info-circle mx-2"></i>
-                  </button>
-<<<<<<< HEAD
-                </h3>
-                
-                <p class="sumatoria">Por favor agrega la información de los beneficiarios principales y contingentes (secundarios) para continuar con la solicitud</p>
-              </div>
-              <button *ngIf="((this.remainingPercentContingent + this.remainingPercentMain) > 0)" class="btn-mas1" (click)="open(content)"><img src="assets/img/mas.svg" alt="" class="img" ></button> 
-                <div class="fondo-blanco">
-                  <div class="table-responsive">
-                    <table *ngIf="forma" class="table table-hover">
-                      <thead>
-                        <tr>
-                          <th scope="col-2">Nombre(s) y apellido(s):</th>
-                          <th scope="col-2">Cédula / Pasaporte:</th>
-                          <th scope="col-2">Nacionalidad:</th>
-                          <th scope="col-2">Fecha de nacimiento:</th>
-                          <th scope="col-1">Parentesco:</th>
-                          <th scope="col-1">Porcentaje (%):</th>
-                          <th scope="col-1">Tipo:</th>
-                          <th scope="col-1"> </th>
-                        </tr>
-                      </thead>
-                      <tbody formArrayName="insuDependents" *ngFor="let dependent of forma.get('insuDependents').controls; let i = index">
-                          <tr [formGroupName]='i'>
-                            <td scope="row"><span class="font-weight-bold">{{dependent.value.fullName}}</span></td>
-                            <td>{{dependent.value.documentType === 'Pasaporte' ? dependent.value.document : dependent.value.documentType.concat('-').concat(dependent.value.document).concat('-').concat(dependent.value.document2) }}</td>
-                            <td>{{dependent.value.nationalityId ? getNationality(dependent.value.nationalityId).name : 'N/A'}}</td>
-                            <td>{{dependent.value.birthday ? getDateWithFormat(dependent.value.birthday): 'N/A'}}</td>
-                            <td>{{dependent.value.relationship}}</td>
-                            <td>{{dependent.value.percent}}</td>
-                            <td>{{dependent.value.type}}</td>
-                            <td><i (click)="open(content, dependent)" class="fas fa-pen"></i> <i (click)="deleteDependent(dependent.value.dependentId)" class="fas fa-trash ml-3"></i></td>
+    <accordion>
+        <accordion-group [panelClass]="customClass" [isOpen]="isFirstOpen">
+            <button class="btn btn-link btn-block clearfix" accordion-heading>
+              <div class="pull-left float-left" style="margin: 10px 0 10px -15px;"><i class="fas fa-angle-down"></i> Datos de los beneficiarios</div>
+            </button>
+            <div class="container">
+              <div class="row mb-5">
+                <div class="marco-verde uno">
+                    <ng-template #tolTemplate>
+                      <div class="text-justify">
+                          <strong>Beneficiario Principal:</strong> <br> Persona o personas designadas por el asegurado para recibir el monto asegurado al momento de la muerte.
+                          <strong>Beneficiario Contingente:</strong> <br> Persona o personas designadas para recibir el monto asegurado por fallecimiento en caso de que el beneficiario principal haya fallecido para el momento de la reclamación o durante dicho proceso.
+                      </div>
+                    </ng-template>
+                  <h3 class="">Beneficiarios principales y contingentes 
+                    <button type="button" class="btn" [tooltip]="tolTemplate" containerClass="customClass">
+                        <i class="fas fa-info-circle mx-2"></i>
+                    </button>
+                  </h3>
+                  
+                  <p class="sumatoria">Por favor agrega la información de los beneficiarios principales y contingentes (secundarios) para continuar con la solicitud</p>
+                </div>
+                <button *ngIf="((this.remainingPercentContingent + this.remainingPercentMain) > 0)" class="btn-mas1" (click)="open(content)"><img src="assets/img/mas.svg" alt="" class="img" ></button> 
+                  <div class="fondo-blanco">
+                    <div class="table-responsive">
+                      <table *ngIf="forma" class="table table-hover">
+                        <thead>
+                          <tr>
+                            <th scope="col-2">Nombre(s) y apellido(s):</th>
+                            <th scope="col-2">Cédula / Pasaporte:</th>
+                            <th scope="col-2">Nacionalidad:</th>
+                            <th scope="col-2">Fecha de nacimiento:</th>
+                            <th scope="col-1">Parentesco:</th>
+                            <th scope="col-1">Porcentaje (%):</th>
+                            <th scope="col-1">Tipo:</th>
+                            <th scope="col-1"> </th>
                           </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-                <div class="row justify-content-center col-md-6">
-                  <span class="col-md-6 mt-3">Beneficiarios principales</span><div class="col-md-6"><progress-bar [progress]="100 - remainingPercentMain" [color]="'rgb(0, 60, 113)'"></progress-bar></div>
-                </div>
-                <div class="row justify-content-center col-md-6">
-                  <span class="col-md-6 mt-3">Beneficiarios contingentes</span><div class="col-md-6"><progress-bar [progress]="100 - remainingPercentContingent" [color]="'rgb(0, 60, 113)'"></progress-bar></div>
-=======
-                            </h3>
-
-                            <p class="sumatoria">Por favor agrega la información de los beneficiarios principales y contingentes (secundarios) para continuar con la solicitud</p>
-                        </div>
-                        <button *ngIf="((this.remainingPercentContingent + this.remainingPercentMain) > 0)" class="btn-mas1" (click)="open(content)"><img src="assets/img/mas.svg" alt="" class="img" ></button>
-                        <div class="fondo-blanco">
-                            <div class="table-responsive">
-                                <table *ngIf="forma" class="table table-hover">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col-2">Nombre(s) y apellido(s):</th>
-                                            <th scope="col-2">Cédula / Pasaporte:</th>
-                                            <th scope="col-2">Nacionalidad:</th>
-                                            <th scope="col-2">Fecha de nacimiento:</th>
-                                            <th scope="col-1">Parentesco:</th>
-                                            <th scope="col-1">Porcentaje (%):</th>
-                                            <th scope="col-1">Tipo:</th>
-                                            <th scope="col-1"> </th>
-                                        </tr>
-                                    </thead>
-                                    <tbody formArrayName="insuDependents" *ngFor="let dependent of forma.get('insuDependents').controls; let i = index">
-                                        <tr [formGroupName]='i'>
-                                            <td scope="row"><span class="font-weight-bold">{{dependent.value.fullName}}</span></td>
-                                            <td>{{dependent.value.documentType === 'Pasaporte' ? dependent.value.document : dependent.value.documentType.concat('-').concat(dependent.value.document).concat('-').concat(dependent.value.document2) }}</td>
-                                            <td>{{dependent.value.nationalityId ? getNationality(dependent.value.nationalityId).name : 'N/A'}}</td>
-                                            <td>{{dependent.value.birthday ? getDateWithFormat(dependent.value.birthday): 'N/A'}}</td>
-                                            <td>{{dependent.value.relationship}}</td>
-                                            <td>{{dependent.value.percent}}</td>
-                                            <td>{{dependent.value.type}}</td>
-                                            <td><i (click)="open(content, dependent)" class="fas fa-pen"></i> <i (click)="deleteDependent(dependent.value.dependentId)" class="fas fa-trash ml-3"></i></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                        <div class="row justify-content-center col-md-6">
-                            <span class="col-md-6 mt-3">Beneficiarios principales</span>
-                            <div class="col-md-6">
-                                <progress-bar [progress]="100 - remainingPercentMain" [color]="'#1c8464'"></progress-bar>
-                            </div>
-                        </div>
-                        <div class="row justify-content-center col-md-6">
-                            <span class="col-md-6 mt-3">Beneficiarios contingentes</span>
-                            <div class="col-md-6">
-                                <progress-bar [progress]="100 - remainingPercentContingent" [color]="'#1c8464'"></progress-bar>
-                            </div>
-                        </div>
-                        <small class="text-danger col-12 row mt-3" *ngIf="isPercentInvalid">Disculpa, la sumatoria de participación de los beneficiarios debe ser del 100 %, tanto para los principales como para los contingentes.</small>
+                        </thead>
+                        <tbody formArrayName="insuDependents" *ngFor="let dependent of forma.get('insuDependents').controls; let i = index">
+                            <tr [formGroupName]='i'>
+                              <td scope="row"><span class="font-weight-bold">{{dependent.value.fullName}}</span></td>
+                              <td>{{dependent.value.documentType === 'Pasaporte' ? dependent.value.document : dependent.value.documentType.concat('-').concat(dependent.value.document).concat('-').concat(dependent.value.document2) }}</td>
+                              <td>{{dependent.value.nationalityId ? getNationality(dependent.value.nationalityId).name : 'N/A'}}</td>
+                              <td>{{dependent.value.birthday ? getDateWithFormat(dependent.value.birthday): 'N/A'}}</td>
+                              <td>{{dependent.value.relationship}}</td>
+                              <td>{{dependent.value.percent}}</td>
+                              <td>{{dependent.value.type}}</td>
+                              <td><i (click)="open(content, dependent)" class="fas fa-pen"></i> <i (click)="deleteDependent(dependent.value.dependentId)" class="fas fa-trash ml-3"></i></td>
+                            </tr>
+                        </tbody>
+                      </table>
                     </div>
->>>>>>> ab90a5bafc64d145441660317997853d070d5f4e
-                </div>
-            </accordion-group>
-        </accordion>
+                  </div>
+                  <div class="row justify-content-center col-md-6">
+                    <span class="col-md-6 mt-3">Beneficiarios principales</span><div class="col-md-6"><progress-bar [progress]="100 - remainingPercentMain" [color]="'#003c71'"></progress-bar></div>
+                  </div>
+                  <div class="row justify-content-center col-md-6">
+                    <span class="col-md-6 mt-3">Beneficiarios contingentes</span><div class="col-md-6"><progress-bar [progress]="100 - remainingPercentContingent" [color]="'#003c71'"></progress-bar></div>
+                  </div>
+                  <small class="text-danger col-12 row mt-3" *ngIf="isPercentInvalid">Disculpa, la sumatoria de participación de los beneficiarios debe ser del 100 %, tanto para los principales como para los contingentes.</small>
+              </div>
+          </div>
+        </accordion-group>
+      </accordion>
         <div class="row">
             <div class="col-md-12 text-center">
                 <button class="btn btn-primary mb-2 mb-md-0 solicitar" (click)="saveRequest(true)">CONTINUAR</button>
