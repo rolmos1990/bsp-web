@@ -660,6 +660,7 @@
             </form>
           </div>
         </div>
+        <hr>
         <div class="modal-footer">
           <button [disabled]="loader" class="btn btn-primary W-100" (click)="createDependent(modal)">GUARDAR</button>
         </div>
@@ -720,10 +721,10 @@
                   </div>
                 </div>
                 <div class="row justify-content-center col-md-6">
-                  <span class="col-md-6 mt-3">Beneficiarios principales</span><div class="col-md-6"><progress-bar [progress]="100 - remainingPercentMain" [color]="'#1c8464'"></progress-bar></div>
+                  <span class="col-md-6 mt-3">Beneficiarios principales</span><div class="col-md-6"><progress-bar [progress]="100 - remainingPercentMain" [color]="'rgb(0, 60, 113)'"></progress-bar></div>
                 </div>
                 <div class="row justify-content-center col-md-6">
-                  <span class="col-md-6 mt-3">Beneficiarios contingentes</span><div class="col-md-6"><progress-bar [progress]="100 - remainingPercentContingent" [color]="'#1c8464'"></progress-bar></div>
+                  <span class="col-md-6 mt-3">Beneficiarios contingentes</span><div class="col-md-6"><progress-bar [progress]="100 - remainingPercentContingent" [color]="'rgb(0, 60, 113)'"></progress-bar></div>
                 </div>
                 <small class="text-danger col-12 row mt-3" *ngIf="isPercentInvalid">Disculpa, la sumatoria de participación de los beneficiarios debe ser del 100 %, tanto para los principales como para los contingentes.</small>
             </div>

@@ -499,7 +499,7 @@ section.kalacra .card.customClass, section.kalacra .card.customClass .card-heade
 
 section.kalacra .card-header{
     padding: 1rem 1.25rem 0!important;
-    border: 5px solid #1c8464;
+    border: 5px solid #003c71;
     border-width: 5px 0 0 0;
     border-bottom: 0!important;
 }
@@ -735,6 +735,6 @@ $animation-duration: 1.8s;
 
   @media (min-width: 576px) {
     .modal-dialog {
-      max-width: 542px!important;
+      max-width: 580px!important;
     }
   }

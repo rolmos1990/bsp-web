@@ -5,7 +5,7 @@ p {
 }
 
 .bluesito {
-  color: #13599e;
+  color: #003c71;
 }
 
 .quoting {
@@ -31,20 +31,17 @@ i.fas.fa-angle-left {
 .cotizador-h4 {
   float: left;
   margin: 0 0 0 70px;
-  font-weight: 600;
+  font-weight: 400;
   color: #1c8464;
   text-decoration: none solid rgb(87, 98, 120);
 }
 
 .cotizador-h2-2 {
-  font-weight: 600;
+  font-weight: 400;
   color: #1c8464;
   text-decoration: none solid rgb(87, 98, 120);
   text-align: center;
-}
-
-.fwb-600 {
-  font-weight: 600;
+  margin-bottom: 30px;
 }
 
 .cuadrado img {
@@ -57,7 +54,7 @@ i.fas.fa-angle-left {
 .cuadrado h3 {
   margin-top: 15px;
   font-size: 24px;
-  color: #13599e;
+  color: #003c71;
   font-weight: 400;
   text-decoration: none solid rgb(19, 89, 158);
   text-align: center;
@@ -85,8 +82,7 @@ i.fas.fa-angle-left {
 
 .btn-primary {
   color: #fff;
-  background-color: #1c8364;
-  border-color: #1c8364;
+  background-color: #003c71;
   width: 281px;
   display: block;
   margin: 0 auto;
