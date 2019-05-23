@@ -72,7 +72,7 @@ label {
     height: 59px;
     padding: 0px 16px;
     border-radius: 4px;
-    background-color: #1c8464;
+    background-color: #003c71;
     font-family: Lato;
     font-size: 17px;
     color: #ffffff;
@@ -85,7 +85,7 @@ label {
     height: 59px;
     padding: 0px 16px;
     border-radius: 4px;
-    background-color: #1c8464;
+    background-color: #003c71;
     font-size: 17px;
     color: #ffffff;
     text-decoration: none solid rgba(255, 255, 255, 0.84);
@@ -93,7 +93,7 @@ label {
 }
 
 .btn-primary:hover {
-    background-color: #137054;
+    background-color: #0c3355;
 }
 
 .btn-white {
@@ -112,6 +112,7 @@ label {
 aw-wizard-navigation-bar.horizontal.large-filled-symbols ul.steps-indicator li .step-indicator {
     position: absolute!important;
     top: -50px!important;
+    font-size: 14px;
     left: calc(50% - 50px / 2)!important;
     width: 50px!important;
     height: 50px!important;
@@ -139,7 +140,7 @@ p {
 }
 
 p.subtitulo {
-    color: #13599e;
+    color: #707372;
     text-decoration: none solid rgb(19, 89, 158);
 }
 
@@ -154,15 +155,15 @@ select {
 
 ::placeholder {
     color: #a5adb4!important;
-    ::-webkit-input-placeholder {
+     ::-webkit-input-placeholder {
         color: #a5adb4;
     }
     /* WebKit */
-    ::-moz-placeholder {
+     ::-moz-placeholder {
         color: #a5adb4;
     }
     /* Firefox 19+ */
-    :-ms-input-placeholder {
+     :-ms-input-placeholder {
         color: #a5adb4;
     }
     /* IE 10+ */

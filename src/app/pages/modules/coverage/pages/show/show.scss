@@ -20,7 +20,7 @@ p {
 
 h2{
   font-size: 24px;
-  color: #13599e;
+  color: #003c71;
   font-weight: 700;
   text-decoration: none solid rgb(19, 89, 158);
 }
@@ -78,7 +78,7 @@ ul{
 .modal-body {
   .h4-verde {
     font-size: 24px;
-    color: #1c8464;
+    color: #003c71;
     text-decoration: none solid rgb(28, 132, 100);
     margin-top: 0px;
     @media(min-width: 768px){
@@ -98,13 +98,14 @@ ul{
 
 h4.titulo-modal {
   font-size: 21px;
-  color: #1c8464 !important;
+  color: #003c71 !important;
   text-decoration: none solid rgb(28, 132, 100);
 }
 
 .modal-footer .btn-primary,
 .modal-footer .btn-white {
   width: 233px;
+  border: 0;
   margin: 0;
 }
 
@@ -148,15 +149,15 @@ header {
     width: 120px;
     height: 48px;
     padding: 0!important;
-    background-color: #1c8464;
-    margin: 16px 0;
+    background-color: #003c71;
+    margin: 19px 0;
     float: right;
     font-size: 14px;
     border: 0;
 }
 
 .btn.btn-primary.solicitar:hover {
-  background-color: #0f644b;
+  background-color: #0c3152;
 }
 
 .btn.ver-detalles {
@@ -222,6 +223,10 @@ i.fas.fa-angle-down {
   box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.5);
 }
 
+.flechita{
+  width: 25px;
+}
+
 .cuadrado{
   border: 2px solid #dce1e9;
   background-size: cover;
@@ -245,7 +250,7 @@ i.fas.fa-angle-down {
 .ver-detalle {
   margin: 24px 0;
   font-size: 14px;
-  color: #4e74b0;
+  color: #007a53;
   font-weight: bold;
   float: left;
 }
@@ -343,14 +348,10 @@ box-shadow: 0px 1px 2px 3px rgba(0,0,0,0.2);
   margin: 15px 0;
 }
 
-.btn-primary {
-  border: 0;
-}
-
 div.bolita{
   width: 15px;
   height: 15px;
-  background-color: #1975d1;
+  background-color: rgb(0, 163, 224);
   background-size: cover;
   position: absolute;
   top: 20px;
