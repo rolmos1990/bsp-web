@@ -218,13 +218,51 @@
         </div>
 
       <div class="row contenedor">
-        <div *ngFor="let coverage of coverages; let i = index;" class="col-md-6 col-lg-4">
+        <div *ngFor="let coverage of coverages; let i = index;" class="col-md-6 col-lg-4 d-none d-md-block">
           <div class="cuadrado {{ i===0 || i===2 ? 'mt-40' : 'sombra'}}">
             <div class="superior">
               <div class="container">
                 <div class="row">
                   <div class="col-md-12">
                       <h4 class="xmes">Precio: {{coverage.coverageDetail.monthlyPrime | currency}}</h4>
+                  </div>
+                </div>
+                  <div class="row">
+                      <div class="col-md-12">
+                          <img *ngIf="i === 0" src="https://res.cloudinary.com/merchanj/image/upload/v1555549470/banesco/icono3.png" alt="" class="">
+                          <img *ngIf="i === 1" src="https://res.cloudinary.com/merchanj/image/upload/v1555549469/banesco/icono1.png" alt="" class="">
+                          <img *ngIf="i === 2" src="https://res.cloudinary.com/merchanj/image/upload/v1555549470/banesco/icono2.png" alt="" class="">
+                      </div>
+                  </div>
+              </div>
+            </div>
+
+            <div class="inferior">
+              <div class="container">
+                  <div class="row">
+                    <div class="col-xs-12 col-md-12">
+                        <p class="text-center">Suma asegurada</p>
+                        <h2 class="text-center">${{coverage.coverageDetail.insuredAmount | number:'1.0-0'}}</h2>
+                    </div>
+                  </div>
+              </div>
+            </div>
+
+            <div class="contenedor-blanco">
+              <div class="container">
+                    <button class="btn ver-detalle" (click)="openSm(content, coverage)"><img src="assets/img/flechita.png" alt="" class="flechita"> Ver detalles</button>
+                    <button class="btn btn-primary solicitar" (click)="openLg(terminos, coverage)">SOLICITAR</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div *ngFor="let coverage of coverages; let i = index;" class="col-md-6 col-lg-4 d-block d-md-none">
+          <div class="cuadrado {{ i===0 || i===2 ? 'mt-40' : 'sombra'}}">
+            <div class="superior">
+              <div class="container">
+                <div class="row">
+                  <div class="col-md-12">
+                      <h4 class="xmes">PrecioSSS: {{coverage.coverageDetail.monthlyPrime | currency}}</h4>
                   </div>
                 </div>
                   <div class="row">
