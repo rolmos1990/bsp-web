@@ -4,6 +4,7 @@ import { PaymentService } from '../../../core/services/payment.service';
 import { RequestService } from '../../../core/services/request.service';
 import { MONTHS, CARDNAME } from '../../../core/utils/select.util';
 import { CustomValidatorDirective } from '../../../core/directives/validations/custom-validations.directive';
+import { NotifierService } from 'angular-notifier';
 
 @Component({
   selector: 'bsp-payment-info',
@@ -23,7 +24,8 @@ export class PaymentInfoComponent implements OnInit {
   @Input() requestId: string;
   @Output() nextStep: EventEmitter<any> = new EventEmitter<any>();
 
-  constructor(private _fb: FormBuilder, private _paymentService: PaymentService, private _requestService: RequestService) {
+  constructor(private _fb: FormBuilder, private _paymentService: PaymentService,
+  private _requestService: RequestService, private _toastr: NotifierService) {
   }
 
   ngOnInit() {
@@ -80,6 +82,7 @@ export class PaymentInfoComponent implements OnInit {
         }
       );
     } else {
+      this._toastr.notify('error', 'Faltan campos por completar. Por favor, revise y vuelva a enviar el formulario.');
       console.log(this.formaPayment);
     }
   }

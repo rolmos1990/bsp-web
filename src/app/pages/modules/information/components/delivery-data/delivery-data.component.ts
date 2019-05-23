@@ -2,6 +2,7 @@ import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { PaymentService } from '../../../core/services/payment.service';
 import { SCHEDULES } from '../../../core/utils/select.util';
+import { NotifierService } from 'angular-notifier';
 
 @Component({
   selector: 'bsp-delivery-data',
@@ -18,8 +19,9 @@ export class DeliveryDataComponent implements OnInit {
   @Output() success: EventEmitter<any> = new EventEmitter<any>();
 
   constructor(private _fb: FormBuilder,
-              private _paymentService: PaymentService) {
-               }
+              private _paymentService: PaymentService,
+              private _toastr: NotifierService) {
+  }
 
   ngOnInit() {
     window.scrollTo(0,0);
@@ -77,6 +79,7 @@ export class DeliveryDataComponent implements OnInit {
       )
       
     } else {
+      this._toastr.notify('error', 'Faltan campos por completar. Por favor, revise y vuelva a enviar el formulario.');
       console.log(this.formaDelivery);
     }
   }

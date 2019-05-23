@@ -250,7 +250,7 @@ export class RequestComponent implements OnInit {
     if (proceed) {
       this.mainFormValidation();
     }
-    if ((this.forma.valid && this.isPercentValid) || !proceed) {
+    if((this.forma.valid && this.isPercentValid) || !proceed) {
       //if (true) {
       this.isLoading.emit(true);
       let payload = this.forma.value;
@@ -274,7 +274,7 @@ export class RequestComponent implements OnInit {
         }
       );
     } else {
-      this._toastr.notify('error', 'Usted puede tener errores en el formulario.');
+      this._toastr.notify('error', 'Faltan campos por completar. Por favor, revise y vuelva a enviar el formulario.');
       console.log(this.forma);
     }
   }

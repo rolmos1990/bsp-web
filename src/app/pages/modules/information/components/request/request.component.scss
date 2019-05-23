@@ -11,11 +11,15 @@ span {
 }
 
 .marco-verde {
-width: 100%;
-height: 102px;
-background-color: #003c71;
-background-size: cover;
-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    height: auto;
+    background-color: #003c71;
+    background-size: cover;
+    padding: 20px 0;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.2);
+    @media(min-width: 768px){
+        height: 102px;
+    }
 }
 
 .uno,
@@ -36,7 +40,7 @@ color: #ffffff!important;
 
 .marco-verde h3 {
     font-size: 20px;
-    margin: 20px 0 0px 80px;
+    margin: 0px 0 0px 80px;
     color: white;
 }
 
@@ -185,6 +189,7 @@ table td,
     .btn-mas1 {
         width: 40px;
         top: 160px;
+        
     }
     .btn-mas1.img {
         width: 40px;
@@ -205,8 +210,8 @@ table td,
         margin: 0;
     }
     .btn-mas1 {
-        width: 35px;
-        top: 160px;
+        width: 45px;
+        top: 210px;
     }
     .btn-mas1.img {
         width: 35px;
