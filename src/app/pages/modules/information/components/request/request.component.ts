@@ -8,7 +8,7 @@ import { DependentService } from '../../../core/services/dependent.service';
 import * as moment from 'moment';
 import { ActivityService } from '../../../core/services/activities.service';
 import { CustomValidatorDirective } from '../../../core/directives/validations/custom-validations.directive';
-
+import { NotifierService } from 'angular-notifier';
 
 @Component({
   selector: 'bsp-request',
@@ -41,6 +41,7 @@ export class RequestComponent implements OnInit {
 
   constructor(private _modalService: NgbModal,
               private _fb: FormBuilder,
+              private _toastr: NotifierService,
               private _locationService: LocationService,
               private _activityService: ActivityService,
               private _requestService: RequestService,
@@ -273,9 +274,7 @@ export class RequestComponent implements OnInit {
         }
       );
     } else {
-      if (!this.isPercentInvalid) {
-        window.scroll(0, 500);
-      }
+      this._toastr.notify('error', 'Usted puede tener errores en el formulario.');
       console.log(this.forma);
     }
   }
