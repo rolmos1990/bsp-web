@@ -63,6 +63,7 @@ export class DeliveryDataComponent implements OnInit {
     this.markAllAsTouched();
     this.validateForm();
     if (this.formaDelivery.valid) {
+    //if (true) {
       this.isLoading.emit(true);
       this._paymentService.assignDeliverInformation(this.formaDelivery.value).subscribe(
         response => {

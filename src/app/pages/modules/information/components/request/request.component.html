@@ -33,7 +33,7 @@
                         </div>
                         <div class="col-md-4 mb-5">
                             <label for="">Provincia donde reside: </label>
-                                <select class="form-control {{forma.value.insuNationalityId === null ? 'placeholder' : ''}}" [ngClass]="{'is-invalid': invalid('contProvinceId', forma), 'is-valid': valid('contProvinceId', forma)}" (ngModelChange)="getDistricts(true)" formControlName="contProvinceId">
+                                <select class="form-control {{forma.value.contProvinceId === null ? 'placeholder' : ''}}" [ngClass]="{'is-invalid': invalid('contProvinceId', forma), 'is-valid': valid('contProvinceId', forma)}" (ngModelChange)="getDistricts(true)" formControlName="contProvinceId">
                                   <option class="placeholder" [value]="null" disabled>Seleccione</option>
                                   <option *ngFor="let province of provinces; let i=index" [value]="province.id">{{province.name}}</option>
                             </select>
@@ -46,7 +46,7 @@
                         </div>
                         <div class="col-md-4 mb-5">
                             <label for="">Distrito donde reside: </label>
-                            <select class="form-control {{forma.value.insuNationalityId === null ? 'placeholder' : ''}}" [ngClass]="{'is-invalid': invalid('contDistrictId', forma), 'is-valid': valid('contDistrictId', forma)}" (ngModelChange)="getCorregimientos(true)" formControlName="contDistrictId">
+                            <select class="form-control {{forma.value.contDistrictId === null ? 'placeholder' : ''}}" [ngClass]="{'is-invalid': invalid('contDistrictId', forma), 'is-valid': valid('contDistrictId', forma)}" (ngModelChange)="getCorregimientos(true)" formControlName="contDistrictId">
                               <option class="placeholder" [value]="null" disabled>Seleccione</option>
                               <option *ngFor="let district of districtsCont; let i=index" [value]="district.id">{{district.name}}</option>
                             </select>
@@ -59,9 +59,10 @@
                         </div>
                         <div class="col-md-4 mb-5">
                             <label for="">Corregimiento donde reside:  </label>
-                            <select class="form-control" [ngClass]="{'is-invalid': invalid('contCorregimientoId', forma), 'is-valid': valid('contCorregimientoId', forma)}" formControlName="contCorregimientoId">
-                  <option *ngFor="let corregimiento of corregimientosCont; let i=index" [value]="corregimiento.id">{{corregimiento.name}}</option>
-                </select>
+                            <select class="form-control {{forma.value.contCorregimientoId === null ? 'placeholder' : ''}} " [ngClass]="{'is-invalid': invalid('contCorregimientoId', forma), 'is-valid': valid('contCorregimientoId', forma)}" formControlName="contCorregimientoId">
+                                <option class="placeholder" [value]="null" disabled>Seleccione</option>
+                                <option *ngFor="let corregimiento of corregimientosCont; let i=index" [value]="corregimiento.id">{{corregimiento.name}}</option>
+                            </select>
                             <div *ngIf="invalid('contCorregimientoId', forma)" class="invalid-feedback">
                                 Disculpe, este campo es requerido.
                             </div>
@@ -111,9 +112,10 @@
                         </div>
                         <div class="col-md-4 mb-5">
                             <label for="">Actividad económica: </label>
-                            <select class="form-control" [ngClass]="{'is-invalid': invalid('contEconomicActivity', forma), 'is-valid': valid('contEconomicActivity', forma)}" formControlName="contEconomicActivity">
-                  <option *ngFor="let occupation of occupations; let i=index" [value]="occupation.id">{{occupation.name}}</option>
-                </select>
+                            <select class="form-control {{forma.value.contEconomicActivity === null ? 'placeholder' : ''}}" [ngClass]="{'is-invalid': invalid('contEconomicActivity', forma), 'is-valid': valid('contEconomicActivity', forma)}" formControlName="contEconomicActivity">
+                                <option class="placeholder" [value]="null" disabled>Seleccione</option>
+                                <option *ngFor="let occupation of occupations; let i=index" [value]="occupation.id">{{occupation.name}}</option>
+                            </select>
                             <div *ngIf="invalid('contEconomicActivity', forma)" class="invalid-feedback">
                                 Disculpe, este campo es requerido.
                             </div>
@@ -267,7 +269,7 @@
                                 <label for="">Teléfono residencial: </label>
                                 <input type="text" class="form-control" [ngClass]="{'is-invalid': invalid('insuLocalNumber', forma), 'is-valid': valid('insuLocalNumber', forma)}" formControlName="insuLocalNumber">
                                 <div *ngIf="invalid('insuLocalNumber', forma)" class="invalid-feedback">
-                                    Por favor escriba un número válido. Por ejemplo: +50765348555.
+                                    Por favor escriba un número válido. Por ejemplo: +5072123456.
                                 </div>
                                 <div *ngIf="valid('insuLocalNumber', forma)" class="valid-feedback">
                                     ¡Excelente!
@@ -394,7 +396,7 @@
                         <div class="col-md-6 col-lg-4 mb-5">
                             <div class="form-group form-width">
                                 <label for="">Ocupación: </label>
-                                <select class="form-control {{forma.value.insuNationalityId === null ? 'placeholder' : ''}}" [ngClass]="{'is-invalid': invalid('insuOccupation', forma), 'is-valid': valid('insuOccupation', forma)}" formControlName="insuOccupation">
+                                <select class="form-control {{forma.value.insuOccupation === null ? 'placeholder' : ''}}" [ngClass]="{'is-invalid': invalid('insuOccupation', forma), 'is-valid': valid('insuOccupation', forma)}" formControlName="insuOccupation">
                                   <option class="placeholder" [value]="null" disabled>Seleccione</option>
                                   <option *ngFor="let occupation of occupations; let i=index" [value]="occupation.id">{{occupation.name}}</option>
                                 </select>
@@ -421,7 +423,7 @@
                         <div class="col-md-6 col-lg-4 mb-5">
                             <div class="form-group form-width">
                                 <label for="">Tiempo en esta ocupación (Meses): </label>
-                                <input type="number" class="form-control" [ngClass]="{'is-invalid': invalid('insuOccupationTime', forma), 'is-valid': valid('insuOccupationTime', forma)}" formControlName="insuOccupationTime">
+                                <input type="text" class="form-control" [ngClass]="{'is-invalid': invalid('insuOccupationTime', forma), 'is-valid': valid('insuOccupationTime', forma)}" formControlName="insuOccupationTime">
                                 <div *ngIf="invalid('insuOccupationTime', forma)" class="invalid-feedback">
                                     Por favor indique el tiempo que lleva en esta ocupación. Por ejemplo: 4 meses.
                                 </div>

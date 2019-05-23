@@ -57,19 +57,24 @@ h3{
 
 
 .h1-segundo{
-    font-size: 48px;
+    font-size: 40px;
     color: #3a4454;
     font-weight: 900;
     text-decoration: none solid rgb(58, 68, 84);
-    line-height: 48px;
     text-align: center;
+    @media (min-width: 768px){
+        font-size: 48px;
+    }
 }
 
 .p-segundo{
-    font-size: 22px;
+    font-size: 18px;
     color: #556176;
     text-decoration: none solid rgb(85, 97, 118);
     text-align: center;
+    @media (min-width: 768px){
+        font-size: 22px;
+    }
 }
 
 .padding{

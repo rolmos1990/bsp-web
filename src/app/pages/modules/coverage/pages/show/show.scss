@@ -117,7 +117,7 @@ h4.titulo-modal {
     font-size: 21px;
     color: #1c8464;
     text-decoration: none solid rgb(28, 132, 100);
-    margin: 20px 0;
+    margin: 25px 0;
 }
 
 .terms{
@@ -211,7 +211,10 @@ i.fas.fa-angle-down {
 .subtitulo{
   text-align: center;
   color: #556176;
-  font-size: 20px;
+  font-size: 16px;
+  @media (min-width: 768px){
+    font-size: 20px;
+  }
 }
 
 .cuadrado.top {
@@ -248,7 +251,7 @@ i.fas.fa-angle-down {
 }
 
 .ver-detalle {
-  margin: 24px 0;
+  margin: 26px 0;
   font-size: 14px;
   color: #007a53;
   font-weight: bold;

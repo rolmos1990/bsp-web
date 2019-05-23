@@ -194,7 +194,6 @@ export class RequestComponent implements OnInit {
     'insuBuilding': this._fb.control(insu.building, Validators.required),
     'insuLocalNumber': this._fb.control(insu.localNumber, [Validators.required, CustomValidatorDirective.localphoneValidator]),
     'insuCellphone': this._fb.control(insu.cellphone,  Validators.compose([Validators.required, CustomValidatorDirective.cellphoneValidator])),
-    'insuEmail': this._fb.control(insu.email, Validators.compose([Validators.required, CustomValidatorDirective.customEmailValidator])),
     'insuDependents': this._fb.array([])
     });
     if (insu.province) {
@@ -251,6 +250,7 @@ export class RequestComponent implements OnInit {
       this.mainFormValidation();
     }
     if ((this.forma.valid && this.isPercentValid) || !proceed) {
+      //if (true) {
       this.isLoading.emit(true);
       let payload = this.forma.value;
       delete payload.insuDependents;
@@ -338,7 +338,6 @@ export class RequestComponent implements OnInit {
       this.forma.get('insuBuilding').markAsTouched();
       this.forma.get('insuLocalNumber').markAsTouched();
       this.forma.get('insuCellphone').markAsTouched();
-      this.forma.get('insuEmail').markAsTouched();
     } else {
       this.modalForm.get('type').markAsTouched();
       this.modalForm.get('documentType').markAsTouched();

@@ -19,8 +19,9 @@ export class ShowComponent implements OnInit {
   customClass = 'customClass';
   isFirstOpen = true;
 
-  constructor(private modalService: NgbModal, private _coverageService: CoverageService, private _newrequestService: RequestService,
-      private _router: Router, private _route: ActivatedRoute) {
+  constructor(private modalService: NgbModal, private _coverageService: CoverageService, 
+  private _newrequestService: RequestService,private _router: Router, private _route: ActivatedRoute) {
+    this.isLoading = true;
   }
 
 
@@ -45,7 +46,6 @@ export class ShowComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.isLoading = true;
     this.getCoverages();
   }
 

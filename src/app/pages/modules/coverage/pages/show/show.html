@@ -209,9 +209,6 @@
   </div>
 </ng-template>
 
-<ng-template [ngIf]="isLoading">
-  <bsp-loader></bsp-loader>
-</ng-template>
 <div *ngIf="!isLoading" class="wrapper">
   <section class="cobertura">
     <div class="container">
@@ -263,3 +260,7 @@
     </div>
   </section>
 </div> 
+
+<ng-template [ngIf]="isLoading">
+  <bsp-loader></bsp-loader>
+</ng-template>

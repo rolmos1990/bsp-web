@@ -41,9 +41,12 @@ color: #ffffff!important;
 }
 
 .sumatoria{
-margin: 0px 0 0 80px;
-color: white;
-font-size: 14px;
+    margin: 0px 0 0 80px;
+    color: white;
+    font-size: 12px;
+    @media (min-width: 1024px){
+        font-size: 14px;
+    }
 }
 
 i.fas {

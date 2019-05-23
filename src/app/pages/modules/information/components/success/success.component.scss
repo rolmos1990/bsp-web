@@ -12,8 +12,13 @@
   }
 }
 
+.flechi{
+  width: 30px;
+}
+
 .imgcheck{
   float: left;
+  width: 30px;
 }
 
 .titulo {
@@ -58,7 +63,7 @@ p {
 
 .enlace {
   font-size: 14px;
-  color: #1975d1;
+  color: #3498db;
   text-decoration: none solid rgb(25, 117, 209);
   text-align: center;
   margin-top: 75px;
@@ -122,7 +127,7 @@ li {
 
 h3.subtitulo {
   font-size: 24px;
-  color: #1c8464;
+  color: #003c71;
   font-weight: 700;
   text-decoration: none solid rgb(28, 132, 100);
   margin-bottom: 50px;
@@ -168,6 +173,7 @@ h3.subtitulo {
 
   .imgcheck{
     margin-left: 20px;
+    width: 30px;
   }
 
   .red{
