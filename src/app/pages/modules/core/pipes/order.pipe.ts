@@ -25,7 +25,5 @@ export class SortingCompaniesPipe implements PipeTransform {
       });
 
       return value;
-    })
+    }
   }
-
-}

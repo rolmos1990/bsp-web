@@ -9,7 +9,7 @@ import { CoreModule } from '../core/core.module';
 
 
 @NgModule({
-  declarations: [ShowPolicies, SearchPipe],
+  declarations: [ShowPolicies],
   imports: [
     CommonModule,
     CoreModule,

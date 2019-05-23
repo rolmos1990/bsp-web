@@ -18,6 +18,8 @@ import { ActivityService } from './services/activities.service';
 import { CustomValidatorDirective } from './directives/validations/custom-validations.directive';
 import { BspLoaderComponent } from './components/bsp-loader/bsp-loader.component';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { SortingCompaniesPipe } from './pipes/order.pipe';
+import { SearchPipe } from './pipes/search.pipe';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
     FooterComponent,
     BspLoaderComponent,
     ServiceDirective,
-    CustomValidatorDirective
+    CustomValidatorDirective,
+    SortingCompaniesPipe,
+    SearchPipe
   ],
   imports: [
     CommonModule,
@@ -35,7 +39,7 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
     HttpClientModule,
     BsDropdownModule.forRoot()
   ],
-  exports: [NavBarComponent, FooterComponent, BspLoaderComponent, FormsModule],
+  exports: [NavBarComponent, FooterComponent, BspLoaderComponent, FormsModule, SortingCompaniesPipe, SearchPipe],
   providers: [
     UserService,
     PoliciesService,
