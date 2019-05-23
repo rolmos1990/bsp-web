@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
+import { NotifierModule } from 'angular-notifier';
 
 import { AppRoutingModule } from './app.routing';
 import { AppComponent } from './app.component';
@@ -22,6 +23,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     NgbModule,
     BrowserAnimationsModule,
     CoreModule,
+    NotifierModule,
     FormsModule,
     HttpModule,
     ReactiveFormsModule,
