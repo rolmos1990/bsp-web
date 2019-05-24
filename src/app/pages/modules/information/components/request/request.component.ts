@@ -253,8 +253,8 @@ export class RequestComponent implements OnInit {
     if (proceed) {
       this.mainFormValidation();
     }
-    //if((this.forma.valid && this.isPercentValid) || !proceed) {
-      if (true) {
+    if((this.forma.valid && this.isPercentValid) || !proceed) {
+      //if (true) {
       this.isLoading.emit(true);
       let payload = this.forma.value;
       delete payload.insuDependents;

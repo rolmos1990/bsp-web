@@ -28,14 +28,14 @@
                             <accordion>
                                 <accordion-group [panelClass]="customClass" [isOpen]="isFirstOpen">
                                     <button class="btn btn-link btn-block clearfix" accordion-heading>
-                      <div class="pull-left float-left lix">Muerte accidental</div>
-                      <div class="float-right">
-                        <img src="assets/img/arrow2.svg" alt="" class="arrow2">
-                      </div>
-                      <div class="porcentaje">
-                          {{actualCoverage.coverageDetail.accidentalDeath}}%
-                      </div>
-                    </button>
+                                    <div class="pull-left float-left lix">Muerte accidental</div>
+                                    <div class="float-right">
+                                        <img src="assets/img/arrow2.svg" alt="" class="arrow2">
+                                    </div>
+                                    <div class="porcentaje">
+                                        {{actualCoverage.coverageDetail.accidentalDeath}}%
+                                    </div>
+                                    </button>
                                     <p>Si el asegurado muere en un accidente, a los beneficiarios se les pagará el monto asegurado que contrató (indemnización). Ejm: accidentes de tránsito, sucesos imprevistos, homicidios dolosos y culposos.
                                     </p>
                                 </accordion-group>
@@ -251,12 +251,12 @@
                     </div>
                 </div>
                 <div *ngFor="let coverage of coverages | coveragesSort; let i = index;" class="col-md-6 col-lg-4 d-block d-md-none">
-                    <div class="cuadrado {{ i===0 || i===2 ? 'mt-40' : 'sombra'}}">
+                    <div class="cuadrado {{ coverage.recommended ? 'sombra' : ' '}}">
                         <div class="superior">
                             <div class="container">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <h4 class="xmes">PrecioSSS: {{coverage.coverageDetail.monthlyPrime | currency}}</h4>
+                                        <h4 class="xmes">Precio: {{coverage.coverageDetail.monthlyPrime | currency}}</h4>
                                     </div>
                                 </div>
                                 <div class="row">
