@@ -8,9 +8,6 @@ export class CoveragesSortPipe implements PipeTransform {
 
   transform(coverages: Array<any>): any[] {
     let _coverages = [];
-    console.log(this._isMobile);
-    console.log(this.getRecommended(coverages));
-    
     if (this._isMobile) {
       _coverages.push(this.getRecommended(coverages));
       coverages.forEach(coverage => {
@@ -21,8 +18,6 @@ export class CoveragesSortPipe implements PipeTransform {
     } else {
       _coverages = coverages;
     }
-    console.log(_coverages);
-    
     return _coverages;
   }
 
