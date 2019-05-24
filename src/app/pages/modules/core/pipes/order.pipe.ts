@@ -8,6 +8,8 @@ export class CoveragesSortPipe implements PipeTransform {
 
   transform(coverages: Array<any>): any[] {
     let _coverages = [];
+    console.log(this._isMobile);
+    console.log(this.isMobile);
 
     if (this._isMobile || this.isMobile) {
       _coverages.push(this.getRecommended(coverages));
