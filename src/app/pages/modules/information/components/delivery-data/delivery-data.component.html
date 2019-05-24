@@ -3,12 +3,11 @@
       <div class="contenedor-tarjeta my-5">
         <div class="container contenedor">
             <h4 class="mt-4"><i class="fas fa-angle-down text-dark"></i> Datos de entrega</h4>
-            <p class="subtitulo">
-                Por favor ingresa la información donde deseas que entreguemos tu tarjeta de afiliación.</p>
+            <p class="subtitulo mb-3">Por favor ingresa la información donde deseas que entreguemos tu tarjeta de afiliación.</p>
       
             <form [formGroup]="formaDelivery" class="pb-80">
   
-              <label for="" class="mt-2 mb-3">¿Dónde deseas que te entreguemos tu tarjeta?</label>
+              <label for="" class="mt-2 mb-3">¿Dónde deseas que te entreguemos tu carnet de afiliación?</label>
                 <div class="form-check">
                   <input class="form-check-input" name="livingPlace" (ngModelChange)="validateForm()" type="radio" [ngClass]="{'is-invalid': invalid('livingPlace', formaDelivery), '': valid('livingPlace', formaDelivery)}" id="exampleRadios1" [value]="'Vivienda'" formControlName="livingPlace">
                   <label class="fw-100" for="livingPlace">
@@ -45,8 +44,8 @@
               </div>
       
               <label for="" class="my-3 d-block">Horario en el que prefieres la entrega:</label>
-              <select name="" id="" class="form-control 2-100 {{formaDelivery.value.deliverTime === null ? 'placeholder' : ''}}" [ngClass]="{'is-invalid': invalid('deliverTime', formaDelivery), 'is-valid': valid('deliverTime', formaDelivery)}" formControlName="deliverTime">
-                <option class="placeholder" [value]="null" disabled>Seleccione</option>
+              <select name="" class="form-control 2-100 {{formaDelivery.value.deliverTime === null ? 'placeholder' : ''}}" [ngClass]="{'is-invalid': invalid('deliverTime', formaDelivery), 'is-valid': valid('deliverTime', formaDelivery)}" formControlName="deliverTime">
+                <option class="placeholder" [value]="null" disabled>Elige un horario</option>
                 <option *ngFor="let schedule of schedules" [value]="schedule.item" >{{schedule.item}}</option>
               </select>
               <div *ngIf="invalid('deliverTime', formaDelivery)" class="invalid-feedback">
@@ -60,7 +59,7 @@
       </div>
       <div class="row">
         <div class="col-md-12 text-center mb-3">
-            <button class="btn btn-primary mb-2 mb-md-0 solicitar" (click)="saveDeliveryData()" >CONTINUAR</button>
+            <button class="btn btn-primary mb-2 mb-md-0 solicitar" (click)="saveDeliveryData()">ENVIAR SOLICITUD</button>
         </div>
       </div>
     </div>

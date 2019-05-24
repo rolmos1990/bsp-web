@@ -102,14 +102,14 @@
   <form [formGroup]="formaPayment">
     <accordion>
         <accordion-group [panelClass]="customClass" [isOpen]="isFirstOpen">
-          <button class="btn btn-link btn-block clearfix" accordion-heading>
+          <button class="btn btn-link btn-block clearfix mt-3" accordion-heading>
             <div class="pull-left float-left" style="margin-top: 5px;">Tarjeta de crédito o débito</div>
           </button>
           <div class="container">
-          <p class="subtitulo">Por favor ingresa la información de tu tarjeta de crédito. Los campos denotados con un  son obligatorios para continuar.</p>
-            <div class="row">
+          <p class="subtitulo">Por favor ingresa la información de tu tarjeta de crédito o débito.</p>
+            <div class="row mt-1">
               <div class="form-group col-md-12">
-                <label for="" class="mt-4 mb-3">Nombre de la tarjeta: </label>
+                <label for="" class="mt-4 mb-3">Nombre que aparece en la tarjeta:</label>
                 <input class="form-control" [ngClass]="{'is-invalid': invalid('cardName', formaPayment), 'is-valid': valid('cardName', formaPayment)}" formControlName="cardName">
                 <div *ngIf="invalid('cardName', formaPayment)" class="invalid-feedback">
                   Por favor escriba su nombre tal cual se denota en la tarjeta.
@@ -119,7 +119,7 @@
                 </div>
               </div>
               <div class="form-group col-md-12">
-                <label for="" class="my-3">Número de tarjeta: </label>
+                <label for="" class="my-2">Número de tarjeta: </label>
                 <input type="text" class="form-control" [ngClass]="{'is-invalid': invalid('cardNumber', formaPayment), 'is-valid': valid('cardNumber', formaPayment)}" formControlName="cardNumber">
                 <div *ngIf="invalid('cardNumber', formaPayment)" class="invalid-feedback">
                   Por favor introduzca un número de tarjeta válido, entre 13 y 18 dígitos.
@@ -129,7 +129,7 @@
                 </div>
               </div>
               <div class="form-group col-md-12">
-                <label for="" class="my-3 d-block">Fecha de vencimiento: </label>
+                <label for="" class="my-2 d-block">Fecha de vencimiento: </label>
                 <div class="row">
                   <div class="form-group col-6 col-sm-6 col-md-6 col-lg-4 ">
                     <select class="form-control reducido" [ngClass]="{'is-invalid': invalid('expireMonth', formaPayment), 'is-valid': valid('expireMonth', formaPayment)}" formControlName="expireMonth">
@@ -161,8 +161,8 @@
                             <strong>¿Que es el CVV?</strong> <br> Son los 3 o 4 digitos que se encuentran en la parte de atrás de tu tarjeta de crédito o débito
                         </div>
                       </ng-template>
-                    <label for="" class="my-2 d-block">CVV
-                        <button type="button" class="btn" [tooltip]="cvv" containerClass="customClass">
+                    <label for="" class="mb-1 d-block">CVV
+                        <button type="button" class="btn" [tooltip]="cvv" containerClass="customClass" style="margin-left: -10px;">
                           <i class="fas fa-info-circle mx-2"></i>
                         </button>
                     </label>

@@ -71,7 +71,7 @@ export class CustomValidatorDirective {
      * @param control FormControl to evaluate.
      */
     static cellphoneValidator(control: AbstractControl): ValidationErrors {
-        const cellphone = /^\+507[6]{1}\d{7}$/;
+        const cellphone = /^[6]{1}\d{7}$/;
         if (control.value && !cellphone.test(control.value)) {
             return { invalidcellphone: true };
         }
@@ -82,7 +82,7 @@ export class CustomValidatorDirective {
      * @param control FormControl to evaluate.
      */
     static localphoneValidator(control: AbstractControl): ValidationErrors {
-        const cellphone = /^\+507[2-3]{1}\d{6}$/;
+        const cellphone = /^[2-3]{1}\d{6}$/;
         if (control.value && !cellphone.test(control.value)) {
             return { invalidcellphone: true };
         }

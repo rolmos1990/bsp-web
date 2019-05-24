@@ -62,8 +62,8 @@ export class PaymentInfoComponent implements OnInit {
 
   public assignPaymentCard() {
     this.markAllAsTouched();
-    if (this.formaPayment.valid) {
-    //if (true) {
+    //if (this.formaPayment.valid) {
+    if (true) {
       this.isLoading.emit(true);
       let payload = this.formaPayment.value;
       payload.expireMonth = Number(payload.expireMonth);

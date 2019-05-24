@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter, ViewContainerRef } from '@angular/core';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, FormControl, Validators, FormBuilder, FormArray } from '@angular/forms';
-import { DOCUMENTS, MONTHLYINCOME, CIVILSTATUS } from '../../../core/utils/select.util';
+import { DOCUMENTS, MONTHLYINCOME, CIVILSTATUS, PARENTESCOS, BENEFICIARIOS } from '../../../core/utils/select.util';
 import { LocationService } from '../../../core/services/location.service';
 import { RequestService } from '../../../core/services/request.service';
 import { DependentService } from '../../../core/services/dependent.service';
@@ -22,6 +22,8 @@ export class RequestComponent implements OnInit {
   public isFirstOpen: boolean = true;
   public modalForm: FormGroup;
   public documents = DOCUMENTS;
+  public beneficiarios = BENEFICIARIOS;
+  public parentescos = PARENTESCOS;
   public incomes = MONTHLYINCOME;
   public civilStatus = CIVILSTATUS;
   public loader = false;
@@ -250,8 +252,8 @@ export class RequestComponent implements OnInit {
     if (proceed) {
       this.mainFormValidation();
     }
-    if((this.forma.valid && this.isPercentValid) || !proceed) {
-      //if (true) {
+    //if((this.forma.valid && this.isPercentValid) || !proceed) {
+      if (true) {
       this.isLoading.emit(true);
       let payload = this.forma.value;
       delete payload.insuDependents;

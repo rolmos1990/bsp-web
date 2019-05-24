@@ -26,6 +26,18 @@ export const CARTYPES = [
   { 'id': 'Taxi', 'itemName': 'Taxi' }
 ];
 
+export const PARENTESCOS = [
+  { 'id': '1', 'itemName': 'Cónyuge' },
+  { 'id': '2', 'itemName': 'Madre' },
+  { 'id': '3', 'itemName': 'Padre' },
+  { 'id': '4', 'itemName': 'Hijo(a)' }
+];
+
+export const BENEFICIARIOS = [
+  { 'id': '1', 'itemName': 'Principal' },
+  { 'id': '2', 'itemName': 'Contingente' },
+];
+
 export const MONTHS = [
   { 'id': '01', 'item': 'Enero'},
   { 'id': '02', 'item': 'Febrero'},
