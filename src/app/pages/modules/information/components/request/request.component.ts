@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter, ViewContainerRef } from '@angular/core';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, FormControl, Validators, FormBuilder, FormArray } from '@angular/forms';
-import { DOCUMENTS, MONTHLYINCOME, CIVILSTATUS, PARENTESCOS, BENEFICIARIOS } from '../../../core/utils/select.util';
+import { DOCUMENTS, MONTHLYINCOME, CIVILSTATUS, PARENTESCOS, BENEFICIARIOS, DEPORTES } from '../../../core/utils/select.util';
 import { LocationService } from '../../../core/services/location.service';
 import { RequestService } from '../../../core/services/request.service';
 import { DependentService } from '../../../core/services/dependent.service';
@@ -23,6 +23,7 @@ export class RequestComponent implements OnInit {
   public modalForm: FormGroup;
   public documents = DOCUMENTS;
   public beneficiarios = BENEFICIARIOS;
+  public deportes = DEPORTES;
   public parentescos = PARENTESCOS;
   public incomes = MONTHLYINCOME;
   public civilStatus = CIVILSTATUS;

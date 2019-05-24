@@ -295,7 +295,10 @@
                         <div class="col-md-6 col-lg-4 mb-5">
                             <div class="form-group form-width">
                                 <label for="">Deportes que practica: </label>
-                                <input type="text" class="form-control" [ngClass]="{'is-invalid': invalid('insuSports', forma), 'is-valid': valid('insuSports', forma)}" formControlName="insuSports">
+                                <select class="form-control {{forma.value.insuSports === null ? 'placeholder' : ''}}" [ngClass]="{'is-invalid': invalid('insuSports', forma), 'is-valid': valid('insuSports', forma)}" formControlName="insuSports">
+                                    <option class="placeholder" [value]="null" disabled>Seleccione</option>
+                                    <option *ngFor="let deporte of deportes; let i=index" [value]="deporte.itemName">{{deporte.itemName}}</option>
+                                </select>
                                 <div *ngIf="invalid('insuSports', forma)" class="invalid-feedback">
                                     Por favor indique que deporte(s) practica, de caso contrario coloque "ninguno". Por ejemplo: Baloncesto, Kriket, Judo, etc.
                                 </div>

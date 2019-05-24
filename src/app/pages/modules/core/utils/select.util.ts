@@ -33,6 +33,16 @@ export const PARENTESCOS = [
   { 'id': '4', 'itemName': 'Hijo(a)' }
 ];
 
+export const DEPORTES = [
+  { 'id': '1', 'itemName': 'Tenis' },
+  { 'id': '2', 'itemName': 'Fútbol' },
+  { 'id': '3', 'itemName': 'Baloncesto' },
+  { 'id': '4', 'itemName': 'Natación' },
+  { 'id': '5', 'itemName': 'Voleibol' },
+  { 'id': '6', 'itemName': 'Béisbol' },
+  { 'id': '7', 'itemName': 'Otros' },
+];
+
 export const BENEFICIARIOS = [
   { 'id': '1', 'itemName': 'Principal' },
   { 'id': '2', 'itemName': 'Contingente' },
