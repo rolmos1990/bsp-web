@@ -250,7 +250,7 @@
                         </div>
                     </div>
                 </div>
-                <div *ngFor="let coverage of coverages; let i = index;" class="col-md-6 col-lg-4 d-block d-md-none">
+                <div *ngFor="let coverage of coverages | coveragesSort; let i = index;" class="col-md-6 col-lg-4 d-block d-md-none">
                     <div class="cuadrado {{ i===0 || i===2 ? 'mt-40' : 'sombra'}}">
                         <div class="superior">
                             <div class="container">
