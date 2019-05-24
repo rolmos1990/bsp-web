@@ -18,7 +18,7 @@ import { ActivityService } from './services/activities.service';
 import { CustomValidatorDirective } from './directives/validations/custom-validations.directive';
 import { BspLoaderComponent } from './components/bsp-loader/bsp-loader.component';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
-import { SortingCompaniesPipe } from './pipes/order.pipe';
+import { CoveragesSortPipe } from './pipes/order.pipe';
 import { SearchPipe } from './pipes/search.pipe';
 
 @NgModule({
@@ -28,7 +28,7 @@ import { SearchPipe } from './pipes/search.pipe';
     BspLoaderComponent,
     ServiceDirective,
     CustomValidatorDirective,
-    SortingCompaniesPipe,
+    CoveragesSortPipe,
     SearchPipe
   ],
   imports: [
@@ -39,7 +39,7 @@ import { SearchPipe } from './pipes/search.pipe';
     HttpClientModule,
     BsDropdownModule.forRoot()
   ],
-  exports: [NavBarComponent, FooterComponent, BspLoaderComponent, FormsModule, SortingCompaniesPipe, SearchPipe],
+  exports: [NavBarComponent, FooterComponent, BspLoaderComponent, FormsModule, CoveragesSortPipe, SearchPipe],
   providers: [
     UserService,
     PoliciesService,

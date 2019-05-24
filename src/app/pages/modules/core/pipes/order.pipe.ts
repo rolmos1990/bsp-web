@@ -1,29 +1,37 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'sorting'
+  name: 'coveragesSort'
 })
 
-export class SortingCompaniesPipe implements PipeTransform {
+export class CoveragesSortPipe implements PipeTransform {
 
-  transform(value: Array<any>, args: any[]): any[] {
+  transform(coverages: Array<any>): any[] {
+    let _coverages = [];
 
-    let field: string = args.toString();
-    if(value == null) {
-      return null;
-    }
-
-
-    value.sort((a: any, b: any) => {
-        if (a[field] < b[field]) {
-          return -1;
-        } else if (a[field] > b[field]) {
-          return 1;
-        } else {
-          return 0;
+    if (this._isMobile || this.isMobile) {
+      _coverages.push(this.getRecommended(coverages));
+      coverages.forEach(coverage => {
+        if (this.getRecommended(coverages) !== coverage) {
+          _coverages.push(coverage);
         }
       });
-
-      return value;
+    } else {
+      _coverages = coverages;
     }
+    return _coverages;
+  }
+
+  get isMobile() {
+    return window.screen.width <= 900 || window.screen.availHeight <= 900;
+  }
+
+  get _isMobile() {
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+  }
+
+  getRecommended(coverages: Array<any>): any {
+    return coverages.find(obj => {return obj.recommended});
+  }
+  
   }
