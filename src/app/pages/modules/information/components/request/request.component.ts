@@ -188,7 +188,7 @@ export class RequestComponent implements OnInit {
     'insuOccupationTime': this._fb.control(insu.occupationTime, Validators.required),
     'insuOtherOccupations': this._fb.control(insu.otherOccupations, [Validators.required, CustomValidatorDirective.regularText]),
     'insuPreviousOccupations': this._fb.control(insu.previousOccupations ? insu.previousOccupations.id : null, Validators.required),
-    'insuSports': this._fb.control(insu.sports, [Validators.required, CustomValidatorDirective.regularText]),
+    'insuSports': this._fb.control(insu.sports, [Validators.required]),
     'insuMonthlyIncome': this._fb.control(insu.monthlyIncome, Validators.required),
     'insuProvinceId': this._fb.control(insu.province ? insu.province.id : null, Validators.required),
     'insuDistrictId': this._fb.control(insu.district ? insu.district.id : null, Validators.required),
@@ -345,6 +345,7 @@ export class RequestComponent implements OnInit {
       this.modalForm.get('documentType').markAsTouched();
       this.modalForm.get('document').markAsTouched();
       this.modalForm.get('document2').markAsTouched();
+      this.modalForm.get('document3').markAsTouched();
       this.modalForm.get('fullName').markAsTouched();
       this.modalForm.get('nationalityId').markAsTouched();
       this.modalForm.get('birthday').markAsTouched();
@@ -361,8 +362,8 @@ export class RequestComponent implements OnInit {
     if (!select) {
       this.markAllAsTouched(false);
     }
-
-    const remaining = this.modalForm.value.type === 'principal' ? this.remainingPercentMain : this.remainingPercentContingent;
+    console.log('entropalo');
+    const remaining = this.modalForm.value.type === 'Principal' ? this.remainingPercentMain : this.remainingPercentContingent;
     this.modalForm.get('percent').setValidators(Validators.compose([Validators.required, Validators.max(remaining)]));
     this.modalForm.get('percent').updateValueAndValidity();
 
@@ -387,16 +388,20 @@ export class RequestComponent implements OnInit {
     }
 
     if (this.modalForm.value.documentType === 'Pasaporte') {
-      this.modalForm.get('document').setValidators(Validators.compose([Validators.required, Validators.maxLength(10)]));
+      this.modalForm.get('document').setValidators(Validators.compose([Validators.required, CustomValidatorDirective.documentValidator]));
       this.modalForm.get('document2').clearValidators();
+      this.modalForm.get('document3').clearValidators();
       this.modalForm.get('document').updateValueAndValidity();
       this.modalForm.get('document2').updateValueAndValidity();
+      this.modalForm.get('document3').updateValueAndValidity();
       this.modalForm.updateValueAndValidity();
     } else {
-      this.modalForm.get('document').setValidators(Validators.compose([Validators.required, Validators.maxLength(4), CustomValidatorDirective.RegularNumbersPositive]));
-      this.modalForm.get('document2').setValidators(Validators.compose([Validators.required, Validators.maxLength(6), CustomValidatorDirective.RegularNumbersPositive]));
+      this.modalForm.get('document').setValidators(Validators.compose([Validators.required, CustomValidatorDirective.shortDocumentValidator]));
+      this.modalForm.get('document2').setValidators(Validators.compose([Validators.required, Validators.maxLength(4), CustomValidatorDirective.RegularNumbersPositive]));
+      this.modalForm.get('document3').setValidators(Validators.compose([Validators.required, Validators.maxLength(6), CustomValidatorDirective.RegularNumbersPositive]));
       this.modalForm.get('document').updateValueAndValidity();
       this.modalForm.get('document2').updateValueAndValidity();
+      this.modalForm.get('document3').updateValueAndValidity();
       this.modalForm.updateValueAndValidity();
     }
 
@@ -410,7 +415,6 @@ export class RequestComponent implements OnInit {
         response.result.dependents.forEach(dependent => {
           dependents.push(this.generateDependentForm(dependent));
         });
-        console.log(dependents);
         this.isLoading.emit(false);
       },
       error => {
@@ -437,12 +441,12 @@ export class RequestComponent implements OnInit {
       this.loader = true;
       let payload = this.modalForm.value;
   
-      if (payload.documentType === 'Pasaporte') {
-        delete payload.document2;
-      } else {
-        payload.document = payload.documentType.concat('-').concat(payload.document).concat('-').concat(payload.document2);
-        delete payload.document2;
+      if (payload.documentType !== 'Pasaporte') {
+        payload.document = payload.document.concat('-').concat(payload.document2).concat('-').concat(payload.document3);
       }
+      delete payload.document2;
+      delete payload.document3;
+      
       
       payload.birthday = moment(new Date(payload.birthday)).format('DD/MM/YYYY');
   
@@ -456,7 +460,6 @@ export class RequestComponent implements OnInit {
         delete payload.paymentName2;
         delete payload.paymentDocument2;
       }
-
       console.log(payload);
       if (this.edit) {
         this._dependentService.updateDependent(payload).subscribe(
@@ -501,7 +504,7 @@ export class RequestComponent implements OnInit {
     let percent = 100;
     let dependents = this.forma.get('insuDependents') as FormArray;
     dependents.controls.forEach(dependent => {
-      if (dependent.value.type === 'principal' && (!this.modalForm || (dependent.value.dependentId !== this.modalForm.value.dependentId))) {
+      if (dependent.value.type === 'Principal' && (!this.modalForm || (dependent.value.dependentId !== this.modalForm.value.dependentId))) {
         percent -= dependent.value.percent;
       }
     });
@@ -512,7 +515,7 @@ export class RequestComponent implements OnInit {
     let percent = 100;
     let dependents = this.forma.get('insuDependents') as FormArray;
     dependents.controls.forEach(dependent => {
-      if (dependent.value.type === 'contingente' && (!this.modalForm || (dependent.value.dependentId !== this.modalForm.value.dependentId))) {
+      if (dependent.value.type === 'Contingente' && (!this.modalForm || (dependent.value.dependentId !== this.modalForm.value.dependentId))) {
         percent -= dependent.value.percent;
       }
     });
@@ -539,9 +542,10 @@ export class RequestComponent implements OnInit {
       dependentId: [dependentObject ? dependentObject.id : null],
       fullName: [dependentObject ? dependentObject.name.concat(' ').concat(dependentObject.lastName) : null, [Validators.required, CustomValidatorDirective.fullNameValidator]],
       type: [dependentObject ? dependentObject.type : null, Validators.required],
-      documentType: [dependentObject ? (dependentObject.documentType === 'Pasaporte' ? dependentObject.documentType : dependentObject.document.split('-')[0]) : null, Validators.required],
-      document: [dependentObject ? (dependentObject.documentType === 'Pasaporte' ? dependentObject.document : dependentObject.document.split('-')[1]) : null, Validators.required],
-      document2: [!dependentObject || dependentObject.documentType === 'Pasaporte' ? null : dependentObject.document.split('-')[2]],
+      documentType: [dependentObject ? dependentObject.documentType : null, Validators.required],
+      document: [dependentObject ? (dependentObject.documentType === 'Pasaporte' ? dependentObject.document : dependentObject.document.split('-')[0]) : null, Validators.required],
+      document2: [!dependentObject || dependentObject.documentType === 'Pasaporte' ? null : dependentObject.document.split('-')[1]],
+      document3: [!dependentObject || dependentObject.documentType === 'Pasaporte' ? null : dependentObject.document.split('-')[2]],
       nationalityId: [dependentObject ? dependentObject.nationality.id : null, Validators.required],
       birthday: [dependentObject && dependentObject.birthday ? moment(dependentObject.birthday.iso).format('YYYY-MM-DD') : null, [Validators.required, CustomValidatorDirective.dateValidator]],
       relationship: [dependentObject ? dependentObject.relationship : null, Validators.required],

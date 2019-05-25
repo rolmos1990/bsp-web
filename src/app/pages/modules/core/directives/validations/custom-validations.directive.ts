@@ -58,6 +58,18 @@ export class CustomValidatorDirective {
      * Validate that the FormControl has this structure "+507 xxxx xxxx".
      * @param control FormControl to evaluate.
      */
+    static shortDocumentValidator(control: AbstractControl): ValidationErrors {
+        const document = /^(PE|N|E|([1-9]{1,2}))$/i;
+        const document2 = /^[1-9]{1,2}PI|^[1-9]{1,2}AV$/i;
+        if (!document.test(control.value) && !document2.test(control.value) && control.value) {
+            return { invalidDocument: true };
+        }
+    }
+
+    /**
+     * Validate that the FormControl has this structure "+507 xxxx xxxx".
+     * @param control FormControl to evaluate.
+     */
     static documentValidator(control: AbstractControl): ValidationErrors {
         const passport = /^(?!^0+$)[a-zA-Z0-9]{3,20}$/g;
         const document = /^(PE|E|N|[23456789](?:AV|PI)?|1[0123]?(?:AV|PI)?)-(\d{1,4})-(\d{1,6})$/i;
