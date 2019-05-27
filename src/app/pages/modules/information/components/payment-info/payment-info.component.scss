@@ -8,6 +8,12 @@
     display: block;
 }
 
+p.subtitulo{
+    @media(min-width: 1024px){
+        padding-right: 50px;
+    }
+}
+
 .cvv{
     width: 120px;
     height: 39px;
@@ -31,6 +37,7 @@
 .monto{
     font-size: 20px;
     color: #13599e;
+    font-weight: 700;
     text-decoration: none solid rgb(19, 89, 158);
 }
 
