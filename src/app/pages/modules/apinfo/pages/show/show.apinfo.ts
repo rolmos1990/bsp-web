@@ -1,13 +1,14 @@
-import { Component, ViewChild, OnInit } from '@angular/core';
+import { Component, ViewChild, OnInit, Injectable } from '@angular/core';
 import { SwiperComponent, SwiperDirective, SwiperConfigInterface,
   SwiperScrollbarInterface, SwiperPaginationInterface } from 'ngx-swiper-wrapper';
 import { SLIDES } from '../../../core/utils/select.util';
-
+import { ScrollToService } from '@nicky-lenaers/ngx-scroll-to';
 @Component({
   selector: 'bsp-show',
   templateUrl: './show.apinfo.html',
   styleUrls: ['./show.apinfo.scss']
 })
+@Injectable()
 export class ShowApinfo implements OnInit {
   customClass = 'customClass';
   isFirstOpen = true;
@@ -69,14 +70,10 @@ export class ShowApinfo implements OnInit {
   @ViewChild(SwiperComponent) componentRef: SwiperComponent;
   @ViewChild(SwiperDirective) directiveRef: SwiperDirective;
 
-  constructor(){}
+  constructor(private _scrollToService: ScrollToService){}
 
   ngOnInit() {
     window.scrollTo(0, 0);
-  }
-
-  public toggleType() {
-    this.type = (this.type === 'component') ? 'directive' : 'component';
   }
 
   public toggleDisabled() {
