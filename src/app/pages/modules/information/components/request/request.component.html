@@ -5,19 +5,11 @@
             <accordion-group [panelClass]="customClass" [isOpen]="isFirstOpen">
                 <button class="btn btn-link btn-block clearfix" accordion-heading>
           <div class="pull-left float-left titulo-accordion" style="margin-left:-15px;"><i class="fas fa-angle-down"></i> Datos del
-            contratante</div>
+            solicitante</div>
         </button>
                 <div class="container">
-                    <p class="subtitulo mb-5">Por favor completa los siguientes datos y continúa con el proceso de solicitud.</p>
+                    <p class="subtitulo mb-4">Por favor completa los siguientes datos del solicitante del seguro y continúa con el proceso de solicitud.</p>
                     <!-- <p class="subtitulo">Los campos denotados con un  son obligatorios para continuar.</p> -->
-                    <div class="row">
-                        <div class="col-md-2">
-                            <h5 class="datos mb-3">Datos personales</h5>
-                        </div>
-                        <div class="col-md-10">
-                            <hr>
-                        </div>
-                    </div>
                     <div class="row mb-5">
                         <div class="col-md-4 mb-5">
                             <label for="">Nombre </label>
@@ -36,6 +28,16 @@
                                 Por favor escriba su apellido. Por ejemplo: Blanco.
                             </div>
                             <div *ngIf="valid('contLastName', forma)" class="valid-feedback">
+                                ¡Excelente!
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-5">
+                            <label for="">Teléfono celular</label>
+                            <input type="text" placeholder="Ej: 26778900" class="form-control" [ngClass]="{'is-invalid': invalid('contCellphone', forma), 'is-valid': valid('contCellphone', forma)}" formControlName="contCellphone">
+                            <div *ngIf="invalid('contCellphone', forma)" class="invalid-feedback">
+                                Por favor escriba un número válido. Por ejemplo: +50765348555.
+                            </div>
+                            <div *ngIf="valid('contCellphone', forma)" class="valid-feedback">
                                 ¡Excelente!
                             </div>
                         </div>
@@ -79,16 +81,6 @@
                             </div>
                         </div>
                         <div class="col-md-4 mb-5">
-                            <label for="">Barriada / Urbanización: </label>
-                            <input type="text" class="form-control" [ngClass]="{'is-invalid': invalid('contNeighborhood', forma), 'is-valid': valid('contNeighborhood', forma)}" placeholder="Ej: Marbella" formControlName="contNeighborhood">
-                            <div *ngIf="invalid('contNeighborhood', forma)" class="invalid-feedback">
-                                Por favor indique una dirección válida. Ejemplo: Marbella.
-                            </div>
-                            <div *ngIf="valid('contNeighborhood', forma)" class="valid-feedback">
-                                ¡Excelente!
-                            </div>
-                        </div>
-                        <div class="col-md-4 mb-5">
                             <label for="">Calle / Avenida:  </label>
                             <input type="text" class="form-control" [ngClass]="{'is-invalid': invalid('contStreet', forma), 'is-valid': valid('contStreet', forma)}" placeholder="Ej: calle 56 C con Av. Brasil" formControlName="contStreet">
                             <div *ngIf="invalid('contStreet', forma)" class="invalid-feedback">
@@ -109,12 +101,12 @@
                             </div>
                         </div>
                         <div class="col-md-4 mb-5">
-                            <label for="">Teléfono </label>
-                            <input type="text" placeholder="Ej: 26778900" class="form-control" [ngClass]="{'is-invalid': invalid('contCellphone', forma), 'is-valid': valid('contCellphone', forma)}" formControlName="contCellphone">
-                            <div *ngIf="invalid('contCellphone', forma)" class="invalid-feedback">
-                                Por favor escriba un número válido. Por ejemplo: +50765348555.
+                            <label for="">Barriada / Urbanización: </label>
+                            <input type="text" class="form-control" [ngClass]="{'is-invalid': invalid('contNeighborhood', forma), 'is-valid': valid('contNeighborhood', forma)}" placeholder="Ej: Marbella" formControlName="contNeighborhood">
+                            <div *ngIf="invalid('contNeighborhood', forma)" class="invalid-feedback">
+                                Por favor indique una dirección válida. Ejemplo: Marbella.
                             </div>
-                            <div *ngIf="valid('contCellphone', forma)" class="valid-feedback">
+                            <div *ngIf="valid('contNeighborhood', forma)" class="valid-feedback">
                                 ¡Excelente!
                             </div>
                         </div>
@@ -139,12 +131,14 @@
         <accordion>
             <!-- Segundo Formulario -->
             <accordion-group [panelClass]="customClass" [isOpen]="isFirstOpen">
-                <button class="btn btn-link btn-block clearfix {{forma.value.insuSame ? '' : 'mb-5'}}" accordion-heading>
-                    <div class="pull-left float-left" style="margin-left:-15px;"><i class="fas fa-angle-down"></i> Datos del <span *ngIf="forma.value.insuSame === true">contratante y</span> solicitante como asegurado principal</div>
+                <button class="btn btn-link btn-block clearfix" accordion-heading>
+                    <div class="pull-left float-left" style="margin-left:-15px;"><i class="fas fa-angle-down"></i>Datos del asegurado</div>
                 </button>
                 <div class="container">
-                    <p class="subtitulo mb-3" *ngIf="forma.value.insuSame === true">
-                        Por favor completa los siguientes datos y continúa con el proceso de solicitud.
+                    <p class="subtitulo mb-4">
+                        Por favor completa los siguientes datos
+                        <ng-template [ngIf]="!forma.value.insuSame">del asegurado</ng-template>
+                        y continúa con el proceso de solicitud.
                     </p>
                     <div class="row">
                         <div class="col-md-2">
