@@ -138,11 +138,6 @@ header {
 
 /* Page Header */
 
-.module-header {
-    background-image: url("/assets/img/family.jpg");
-    background-size: cover;
-}
-
 h1 {
     font-weight: 700;
 }
@@ -384,12 +379,6 @@ header {
 
 
 /* Page Header */
-.module-header{
-	background-image: url('/family.png');
-	background-size: cover;
-	background-position: 60% 50%;
-	background-repeat: no-repeat;
-}
 
 h1 {
     font-weight: 700;
@@ -650,11 +639,6 @@ aw-wizard-navigation-bar.horizontal.large-filled-symbols ul.steps-indicator li.c
         background-repeat: no-repeat;
     }
     /* Page Header */
-    .module-header {
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-    }
     .ul-footer {
         list-style: none !important;
         height: 30px;
