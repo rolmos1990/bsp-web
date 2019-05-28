@@ -760,7 +760,10 @@
 
                             <p class="sumatoria">Por favor agrega la información de los beneficiarios principales y contingentes (secundarios) para continuar con la solicitud</p>
                         </div>
-                        <button *ngIf="((this.remainingPercentContingent + this.remainingPercentMain) > 0)" class="btn-mas1" (click)="open(content)"><img src="assets/img/mas.svg" alt="" class="img" ></button>
+                        <button class="btn-mas1">
+                            <i *ngIf="!loader" class="fas fa-spinner fa-spin" style="color: white;font-size: 3vmax;"></i>
+                        </button>
+                        <button *ngIf="((this.remainingPercentContingent + this.remainingPercentMain) > 0) && loader" class="btn-mas1" (click)="open(content)"> <img src="assets/img/mas.svg" alt="" class="img" ></button>
                         <div class="fondo-blanco">
                             <div class="table-responsive">
                                 <table *ngIf="forma" class="table table-hover">

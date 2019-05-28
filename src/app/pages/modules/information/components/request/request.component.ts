@@ -442,7 +442,7 @@ export class RequestComponent implements OnInit {
       modal.dismiss('Cross click');
       //this.isLoading.emit(true);
       let payload = this.modalForm.value;
-  
+      this.loader = true;
       if (payload.documentType !== 'Pasaporte') {
         payload.document = payload.document.concat('-').concat(payload.document2).concat('-').concat(payload.document3);
       }
@@ -468,11 +468,11 @@ export class RequestComponent implements OnInit {
           response => {
             this.modalForm = null;
             this.getDependents();
-            this.isLoading.emit(false);
+            this.loader = false;
           },
           error => {
             console.log(error);
-            this.isLoading.emit(false);
+            this.loader = false;
             this.open(modal);
           }
         );
@@ -482,11 +482,11 @@ export class RequestComponent implements OnInit {
           response => {
             this.modalForm = null;
             this.getDependents();
-            this.isLoading.emit(false);
+            this.loader = false;
           },
           error => {
             console.log(error);
-            this.isLoading.emit(false);
+            this.loader = false;
             this.open(modal);
           }
         );
