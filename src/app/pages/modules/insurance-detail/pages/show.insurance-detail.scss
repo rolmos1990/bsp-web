@@ -12,6 +12,14 @@
     color: #1975d1;
 }
 
+.mayu{
+  text-transform: lowercase;
+}
+
+.mayu::first-letter{
+  text-transform: uppercase;
+}
+
 .inferior{
   p{
   font-size: 16px;

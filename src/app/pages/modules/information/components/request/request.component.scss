@@ -15,7 +15,7 @@ span {
     height: auto;
     background-color: #003c71;
     background-size: cover;
-    padding: 20px 0;
+    padding: 30px 0;
     box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.2);
     @media(min-width: 768px){
         height: 102px;
@@ -48,22 +48,27 @@ i.fas.fa-info-circle.blue{
 
 .marco-verde h3 {
     font-size: 20px;
-    margin: 0px 0 0px 80px;
+    margin: 0px 0 0px 20px;
     color: white;
+    @media (min-width: 1024px){
+        margin: 0px 0 0px 80px;
+    }
 }
 
 .sumatoria{
-    margin: 0px 0 0 80px;
+    margin: 0px 0 0 20px;
     color: white;
     font-size: 12px;
     @media (min-width: 1024px){
         font-size: 14px;
+        margin: 0px 0 0 80px;
     }
 }
 
 i.fas {
     cursor: pointer;
     color: #576278;
+    margin-right: 10px;
 }
 
 .parrafo-final {
@@ -192,7 +197,7 @@ table td,
     }
     .btn-mas1 {
         width: 52px;
-        top: 140px;
+        top: 150px;
     }
     .btn-mas1.img {
         width: 52px;
@@ -231,7 +236,7 @@ table td,
     }
     .btn-mas1 {
         width: 45px;
-        top: 210px;
+        top: 235px;
     }
     .btn-mas1.img {
         width: 35px;

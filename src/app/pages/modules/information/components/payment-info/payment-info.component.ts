@@ -69,7 +69,6 @@ export class PaymentInfoComponent implements OnInit {
       payload.expireMonth = Number(payload.expireMonth);
       payload.expireYear = Number(payload.expireYear);
       payload.cardNumber = Number(payload.cardNumber);
-      payload.cvv = Number(payload.cvv);
       this._paymentService.assignCreditcard(payload).subscribe(
         response => {
           console.log(response);
@@ -92,16 +91,17 @@ export class PaymentInfoComponent implements OnInit {
     this.formaPayment.get('cardNumber').markAsTouched();
     this.formaPayment.get('expireMonth').markAsTouched();
     this.formaPayment.get('expireYear').markAsTouched();
-    this.formaPayment.get('cvv').markAsTouched();
   }
 
   public generateForm() {
     this.formaPayment = this._fb.group({
       'cardName': this._fb.control(null, [Validators.required, CustomValidatorDirective.fullNameValidator]),
-      'cardNumber': this._fb.control(null, Validators.compose([Validators.required, CustomValidatorDirective.creditCardValidator])),
+      'cardNumber': this._fb.control(null,
+        Validators.compose([Validators.required,
+        CustomValidatorDirective.creditCardValidator,
+        Validators.maxLength(16)])),
       'expireMonth': this._fb.control(null, [Validators.required]),
       'expireYear': this._fb.control(null, [Validators.required]),
-      'cvv': this._fb.control(null, Validators.compose([Validators.required, CustomValidatorDirective.cvvValidator])),
       'requestId': this._fb.control(this.requestId)
     });
     this.fillYearsList();
