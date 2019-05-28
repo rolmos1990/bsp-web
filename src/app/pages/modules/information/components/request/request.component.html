@@ -200,12 +200,12 @@
                                   Femenino
                                 </label>
                                 </div>
-                                <div *ngIf="invalid('insuGender', forma)" class="invalid-feedback">
+                                <small *ngIf="invalid('insuGender', forma)" class="text-danger">
                                     Por favor elija un género.
-                                </div>
-                                <div *ngIf="valid('insuGender', forma)" class="valid-feedback">
+                                </small>
+                                <small *ngIf="valid('insuGender', forma)" class="text-success">
                                     ¡Excelente!
-                                </div>
+                                </small>
                             </div>
                         </div>
                         <div class="col-md-6 col-lg-4 mb-5">
@@ -497,6 +497,33 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="col-md-6 col-lg-4 mb-5">
+                            <div class="form-group form-width">
+                                <label for="">Actividad económica: </label>
+                                <select class="form-control {{forma.value.contEconomicActivity === null ? 'placeholder' : ''}}" [ngClass]="{'is-invalid': invalid('contEconomicActivity', forma), 'is-valid': valid('contEconomicActivity', forma)}" formControlName="contEconomicActivity">
+                                    <option class="placeholder" [value]="null" disabled>Seleccione</option>
+                                    <option *ngFor="let occupation of occupations; let i=index" [value]="occupation.id">{{occupation.name}}</option>
+                                </select>
+                                <div *ngIf="invalid('contEconomicActivity', forma)" class="invalid-feedback">
+                                    Disculpe, este campo es requerido.
+                                </div>
+                                <div *ngIf="valid('contEconomicActivity', forma)" class="valid-feedback">
+                                    ¡Excelente!
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4 mb-5">
+                            <div class="form-group form-width">
+                                <label for="">Teléfono oficina: </label>
+                                <input type="text" placeholder="Ej: 2336789" class="form-control" [ngClass]="{'is-invalid': invalid('insuOfficeNumber', forma), 'is-valid': valid('insuOfficeNumber', forma)}" formControlName="insuOfficeNumber">
+                                <div *ngIf="invalid('insuOfficeNumber', forma)" class="invalid-feedback">
+                                    Por favor escriba un número válido. Por ejemplo: 2123456.
+                                </div>
+                                <div *ngIf="valid('insuOfficeNumber', forma)" class="valid-feedback">
+                                    ¡Excelente!
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </accordion-group>
@@ -510,17 +537,14 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
                 </div>
-                <ng-template [ngIf]="loader">
-                    <bsp-loader></bsp-loader>
-                </ng-template>
-                <div *ngIf="!loader" class="modal-body">
+                <div class="modal-body">
                     <div class="container">
                         <form [formGroup]="modalForm">
                             <div class="row">
                                 <div class="col-md-12">
                                     <p class="addbene mb-4">Agregar Beneficiario</p>
                                     <div class="form-group">
-                                        <label>Tipo de Documento</label>
+                                        <label>Tipo de identificación</label>
                                         <div class="form-check">
                                             <input class="form-check-input" type="radio" (ngModelChange)="modalValidations(true)" name="documentType" id="documentType" [value]="'Cedula'" formControlName="documentType" checked>
                                             <label class="form-check-label" for="Cedula">
@@ -533,45 +557,42 @@
                                             Pasaporte
                                         </label>
                                         </div>
-                                        <div *ngIf="invalid('documentType', modalForm)" class="invalid-feedback">
-                                            Por favor elija un tipo de documento.
-                                        </div>
-                                        <div *ngIf="valid('documentType', modalForm)" class="valid-feedback">
+                                        <small *ngIf="invalid('documentType', modalForm)" class="text-danger">
+                                            Por favor elija un tipo de identificación.
+                                        </small>
+                                        <small *ngIf="valid('documentType', modalForm)" class="text-success">
                                             ¡Excelente!
-                                        </div>
-                                        <small class="text-danger col-12 row ml-md-2" *ngIf="invalid('documentType', modalForm)">Campo inválido. Por favor revise.</small>
+                                        </small>
                                     </div>
                                     <div *ngIf="modalForm.value.documentType" class="form-group">
-                                        <label for="">{{modalForm.value.documentType === 'Cedula' ? 'Cédula' : 'Pasaporte'}}: </label>
+                                        <label for="">{{modalForm.value.documentType === 'Cedula' ? 'Número de identificación' : 'Pasaporte'}}: </label>
                                         <div class="form-row">
                                             <ng-template [ngIf]="modalForm.value.documentType === 'Cedula'">
                                                 <div class="col-2">
                                                     <input type="text" class="form-control w-100" [ngClass]="{'is-invalid': invalid('document', modalForm), 'is-valid': valid('document', modalForm)}" formControlName="document">
-                                                    <div *ngIf="invalid('document', modalForm)" class="invalid-feedback">
-                                                        Por favor introduzca un número o letra válid@ para este segmento de la Cédula. Por ejemplo: N, E, 1, etc.
-                                                    </div>
-                                                    <div *ngIf="valid('document', modalForm)" class="valid-feedback">
-                                                        ¡Excelente!
-                                                    </div>
                                                 </div>
-                                                <div class="col-4">
+                                                <div class="col-1 d-flex justify-content-center align-items-center">
+                                                    <strong><b>-</b></strong>
+                                                </div>
+                                                <div class="col-3">
                                                     <input type="text" class="form-control w-100" [ngClass]="{'is-invalid': invalid('document2', modalForm), 'is-valid': valid('document2', modalForm)}" formControlName="document2">
-                                                    <div *ngIf="invalid('document2', modalForm)" class="invalid-feedback">
-                                                        Por favor introduzca un número válido para este segmento de la Cédula (Máximo 4 números). Por ejemplo: 4128.
-                                                    </div>
-                                                    <div *ngIf="valid('document2', modalForm)" class="valid-feedback">
-                                                        ¡Excelente!
-                                                    </div>
                                                 </div>
-                                                <div class="col-6">
+                                                <div class="col-1 d-flex justify-content-center align-items-center">
+                                                    <strong><b>-</b></strong>
+                                                </div>
+                                                <div class="col-5">
                                                     <input type="text" class="form-control w-100" [ngClass]="{'is-invalid': invalid('document3', modalForm), 'is-valid': valid('document3', modalForm)}" formControlName="document3">
-                                                    <div *ngIf="invalid('document3', modalForm)" class="invalid-feedback">
-                                                        Por favor introduzca un número válido para este segmento de la Cédula (Máximo 6 números). Por ejemplo: 74128.
-                                                    </div>
-                                                    <div *ngIf="valid('document3', modalForm)" class="valid-feedback">
-                                                        ¡Excelente!
-                                                    </div>
                                                 </div>
+                                                <ng-template [ngIf]="modalForm.value.documentType !== 'Pasaporte'">
+                                                    <div class="col-12">
+                                                        <small *ngIf="invalid('document', modalForm) || invalid('document2', modalForm) || invalid('document3', modalForm)" class="text-danger">
+                                                            Por favor introduzca un formato válido de Cédula. Por ejemplo: N-4556-1465.
+                                                        </small>
+                                                        <small *ngIf="valid('document', modalForm) && valid('document2', modalForm) && valid('document3', modalForm)" class="text-success">
+                                                            ¡Excelente!
+                                                        </small>
+                                                    </div>
+                                                </ng-template>
                                             </ng-template>
                                             <ng-template [ngIf]="modalForm.value.documentType === 'Pasaporte'">
                                                 <div class="col-12">
@@ -585,6 +606,7 @@
                                                 </div>
                                             </ng-template>
                                         </div>
+
                                     </div>
                                     <div class="form-group">
                                         <label for="">Nombre(s) y Apellido(s): </label>
@@ -670,7 +692,7 @@
                                     </label>
                                         <input type="number" [ngClass]="{'is-invalid': modalForm.value.type && invalid('percent', modalForm), 'is-valid': modalForm.value.type && valid('percent', modalForm)}" class="form-control w-100" formControlName="percent">
                                         <div *ngIf="modalForm.value.type && invalid('percent', modalForm)" class="invalid-feedback">
-                                            Disculpe su porcentaje restante es de: {{modalForm.value.type === 'Principal' ? remainingPercentMain : remainingPercentContingent}}%.
+                                            Disculpe su porcentaje restante para este tipo de beneficiario es de: {{modalForm.value.type === 'Principal' ? remainingPercentMain : remainingPercentContingent}}%.
                                         </div>
                                         <div *ngIf="modalForm.value.type && valid('percent', modalForm)" class="valid-feedback">
                                             ¡Excelente!

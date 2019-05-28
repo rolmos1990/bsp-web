@@ -169,7 +169,7 @@ export class RequestComponent implements OnInit {
     'contBuilding': this._fb.control(cont.building, Validators.required),
     'contNeighborhood': this._fb.control(cont.neighborhood, Validators.required),
     'contCellphone': this._fb.control(cont.cellphone, [Validators.required, CustomValidatorDirective.cellphoneValidator]),
-    'contEconomicActivity': this._fb.control(cont.economicActivity, [Validators.required]),
+    'contEconomicActivity': this._fb.control(cont.economicActivity ? cont.economicActivity.id : null, [Validators.required]),
     'insuSame': this._fb.control(localStorage.getItem('same') === 'true' ? true : false, Validators.required),
     'insuName': this._fb.control(insu.name, Validators.compose([Validators.required, CustomValidatorDirective.namesValidator])),//Segundo Formulario
     'insuLastName': this._fb.control(insu.lastName,  Validators.compose([Validators.required, CustomValidatorDirective.namesValidator])),
@@ -183,7 +183,7 @@ export class RequestComponent implements OnInit {
     'insuNationalityId': this._fb.control(insu.nationality ? insu.nationality.id : null, [Validators.required]),
     'insuProfession': this._fb.control(insu.profession, [Validators.required]),
     'insuOccupation': this._fb.control(insu.occupation ? insu.occupation.id : null, [Validators.required]),
-    'insuOccupationDescription': this._fb.control(insu.occupationDescription, [Validators.required, CustomValidatorDirective.regularText]),
+    'insuOccupationDescription': this._fb.control(insu.occupationDescription, [Validators.required]),
     'insuCompany': this._fb.control(insu.company, Validators.required),
     'insuOccupationTime': this._fb.control(insu.occupationTime, Validators.required),
     'insuOtherOccupations': this._fb.control(insu.otherOccupations, [Validators.required, CustomValidatorDirective.regularText]),
@@ -197,6 +197,7 @@ export class RequestComponent implements OnInit {
     'insuStreet': this._fb.control(insu.street, Validators.required),
     'insuBuilding': this._fb.control(insu.building, Validators.required),
     'insuLocalNumber': this._fb.control(insu.localNumber, [Validators.required, CustomValidatorDirective.localphoneValidator]),
+    'insuOfficeNumber': this._fb.control(insu.officeNumber, [Validators.required, CustomValidatorDirective.localphoneValidator]),
     'insuCellphone': this._fb.control(insu.cellphone,  Validators.compose([Validators.required, CustomValidatorDirective.cellphoneValidator])),
     'insuDependents': this._fb.array([])
     });
@@ -223,7 +224,9 @@ export class RequestComponent implements OnInit {
       this.forma.get('contBuilding').setValue(payload.insuBuilding);
       this.forma.get('contNeighborhood').setValue(payload.insuNeighborhood);
       this.forma.get('contCellphone').setValue(payload.insuCellphone);
-      this.forma.get('contEconomicActivity').setValue(payload.insuOccupation);
+      if (!this.forma.value.contEconomicActivity) {
+        this.forma.get('contEconomicActivity').setValue(payload.insuOccupation);
+      }
     }
     let dependents =  this.forma.get('insuDependents') as FormArray;
     dependents.controls.forEach(dependent => {
@@ -339,6 +342,7 @@ export class RequestComponent implements OnInit {
       this.forma.get('insuStreet').markAsTouched();
       this.forma.get('insuBuilding').markAsTouched();
       this.forma.get('insuLocalNumber').markAsTouched();
+      this.forma.get('insuOfficeNumber').markAsTouched();
       this.forma.get('insuCellphone').markAsTouched();
     } else {
       this.modalForm.get('type').markAsTouched();
@@ -436,9 +440,7 @@ export class RequestComponent implements OnInit {
 
     if (this.modalForm.valid) {
       modal.dismiss('Cross click');
-      window.scroll(0,0);
-      this.isLoading.emit(true);
-      this.loader = true;
+      //this.isLoading.emit(true);
       let payload = this.modalForm.value;
   
       if (payload.documentType !== 'Pasaporte') {
@@ -464,13 +466,12 @@ export class RequestComponent implements OnInit {
       if (this.edit) {
         this._dependentService.updateDependent(payload).subscribe(
           response => {
-            this.loader = false;
             this.modalForm = null;
             this.getDependents();
+            this.isLoading.emit(false);
           },
           error => {
             console.log(error);
-            this.loader = false;
             this.isLoading.emit(false);
             this.open(modal);
           }
@@ -479,13 +480,12 @@ export class RequestComponent implements OnInit {
         delete payload.id;
         this._dependentService.createDependent(payload).subscribe(
           response => {
-            this.loader = false;
             this.modalForm = null;
             this.getDependents();
+            this.isLoading.emit(false);
           },
           error => {
             console.log(error);
-            this.loader = false;
             this.isLoading.emit(false);
             this.open(modal);
           }
