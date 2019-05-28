@@ -1,5 +1,9 @@
-
-
+section.module-header{
+    background-image: url("/family.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
 
 
 .btn-primary{
@@ -17,7 +21,7 @@
 
 .titulo{
     margin: 0 auto;
-    font-size: 23px;
+    font-size: 18px;
     color: #556176;
     text-decoration: none solid rgb(85, 97, 118);
     text-align: justify;

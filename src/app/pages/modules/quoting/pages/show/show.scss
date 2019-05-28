@@ -31,13 +31,13 @@ i.fas.fa-angle-left {
 .cotizador-h4 {
   float: left;
   margin: 0 0 0 70px;
-  font-weight: 400;
+  font-weight: 700;
   color: #1c8464;
   text-decoration: none solid rgb(87, 98, 120);
 }
 
 .cotizador-h2-2 {
-  font-weight: 400;
+  font-weight: 700;
   color: #1c8464;
   text-decoration: none solid rgb(87, 98, 120);
   text-align: center;
@@ -53,11 +53,14 @@ i.fas.fa-angle-left {
 
 .cuadrado h3 {
   margin-top: 15px;
-  font-size: 24px;
+  font-size: 22px;
   color: #003c71;
   font-weight: 400;
   text-decoration: none solid rgb(19, 89, 158);
   text-align: center;
+  @media (min-width: 1024px){
+    font-size: 24px;
+  }
 }
 
 .form-control {
@@ -113,6 +116,6 @@ i.fas {
   }
 
   .cotizador-h4 {
-    margin: 0 0 0 80px;
+    margin: 0 0 0 40px;
   }
 }
