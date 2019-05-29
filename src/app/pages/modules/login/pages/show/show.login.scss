@@ -1,17 +1,17 @@
-.contenedor-tarjeta{
+.contenedor-tarjeta {
     width: auto;
-    @media (min-width: 768px){
+    @media (min-width: 768px) {
         width: 500px;
     }
 }
 
-p{
+p {
     color: #556176;
 }
 
 .btn-primary {
     color: #fff;
-    background-color: #1c8364;
+    background-color: #003c71;
     width: 220px;
     display: block;
     margin: 0 auto;
@@ -19,13 +19,13 @@ p{
     font-weight: initial;
 }
 
-.btn-primary:hover{
+.btn-primary:hover {
     color: #fff;
-    background-color: #0d5640;
-    border-color: #0d5640;
+    background-color: #003c71;
+    background-color: #003c71;
 }
 
-.titulo{
+.titulo {
     color: #556176;
 }
 
@@ -33,14 +33,14 @@ p{
     height: 100vh;
 }
 
-.advertencia{
+.advertencia {
     margin: 0 auto 20px auto;
     display: block;
 }
 
 .modal-footer {
     justify-content: initial;
-    .btn-white{
+    .btn-white {
         width: 233px;
         height: 59px;
         padding: 0px 16px;
@@ -59,7 +59,7 @@ p{
     color: #556176;
 }
 
-.registrarse{
+.registrarse {
     display: block;
     text-align: center;
     color: #13599e;
