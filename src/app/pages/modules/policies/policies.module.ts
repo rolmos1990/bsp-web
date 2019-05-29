@@ -6,6 +6,7 @@ import { ShowPolicies } from './pages/show/show.policies';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SearchPipe } from '../core/pipes/search.pipe';
 import { CoreModule } from '../core/core.module';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
 
 
 @NgModule({
@@ -14,6 +15,7 @@ import { CoreModule } from '../core/core.module';
     CommonModule,
     CoreModule,
     NgbModule,
+    TooltipModule.forRoot(),
     PoliciesRoutingModule,
     FormsModule,
     ReactiveFormsModule,

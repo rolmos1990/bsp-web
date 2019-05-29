@@ -74,6 +74,7 @@ export class ShowComponent implements OnInit {
       payload.occupationId = this.getOccupation(payload.occupationId).id;
       localStorage.setItem('same', payload.same ? 'true' : 'false');
       delete payload.same;
+      payload.type = 'cliente';
       this._userService.createUser(payload).subscribe(
         response => {
           this._router.navigate(['cobertura', response.result.user.id]);

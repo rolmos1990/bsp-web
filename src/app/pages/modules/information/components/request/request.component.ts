@@ -60,7 +60,6 @@ export class RequestComponent implements OnInit {
   public getRequest() {
     this._requestService.getRequest(this.requestId).subscribe(
       response => {
-        console.log(response);
         this.fillMainForm(response.result.request.contractor, response.result.request.insured);
         this.getDependents();
       },
@@ -154,7 +153,6 @@ export class RequestComponent implements OnInit {
   }
 
   public fillMainForm(cont: any, insu: any) {
-    console.log(insu);
     if (insu.same !== null) {
       localStorage.setItem('same', insu.same ? 'true' : 'false')
     }
@@ -281,7 +279,6 @@ export class RequestComponent implements OnInit {
       );
     } else {
       this._toastr.notify('error', 'Faltan campos por completar. Por favor, revise y vuelva a enviar el formulario.');
-      console.log(this.forma);
     }
   }
 
@@ -366,7 +363,6 @@ export class RequestComponent implements OnInit {
     if (!select) {
       this.markAllAsTouched(false);
     }
-    console.log('entropalo');
     const remaining = this.modalForm.value.type === 'Principal' ? this.remainingPercentMain : this.remainingPercentContingent;
     this.modalForm.get('percent').setValidators(Validators.compose([Validators.required, Validators.max(remaining)]));
     this.modalForm.get('percent').updateValueAndValidity();
@@ -420,9 +416,11 @@ export class RequestComponent implements OnInit {
           dependents.push(this.generateDependentForm(dependent));
         });
         this.isLoading.emit(false);
+        this.loader = false;
       },
       error => {
         this.isLoading.emit(false);
+        this.loader = false;
         console.log(error);
       }
     );
@@ -462,13 +460,11 @@ export class RequestComponent implements OnInit {
         delete payload.paymentName2;
         delete payload.paymentDocument2;
       }
-      console.log(payload);
       if (this.edit) {
         this._dependentService.updateDependent(payload).subscribe(
           response => {
             this.modalForm = null;
             this.getDependents();
-            this.loader = false;
           },
           error => {
             console.log(error);
@@ -482,7 +478,6 @@ export class RequestComponent implements OnInit {
           response => {
             this.modalForm = null;
             this.getDependents();
-            this.loader = false;
           },
           error => {
             console.log(error);
@@ -492,7 +487,7 @@ export class RequestComponent implements OnInit {
         );
       }
     } else {
-      console.log(this.modalForm);
+      this._toastr.notify('error', 'Faltan campos por completar. Por favor, revise y vuelva a enviar el formulario.');
     }
   }
 
@@ -527,11 +522,13 @@ export class RequestComponent implements OnInit {
   }
 
   public deleteDependent(dependentId: string) {
+    this.loader = true;
     this._dependentService.deleteDependents(dependentId, this.requestId).subscribe(
       response => {
         this.getDependents();
       },
       error => {
+        this.loader = false;
         console.log(error);
       }
     )

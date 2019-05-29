@@ -34,6 +34,11 @@ export class ShowPolicies implements OnInit {
     });
   }
 
+  public logOut() {
+    localStorage.removeItem('bspAdminToken');
+    this.router.navigate(['/login']);
+  }
+
   private getAllRequest() {
     this._requestService.getAllRequest().subscribe(
       response => {
@@ -42,9 +47,9 @@ export class ShowPolicies implements OnInit {
         console.log(this.collectionSize);
         this.requests.forEach(element=>{
           this.attachments.push(null);
-          this.isLoading = false;
         })
         console.log(response);
+        this.isLoading = false;
       }, error => {
         this.isLoading = false;
         console.log(error);
