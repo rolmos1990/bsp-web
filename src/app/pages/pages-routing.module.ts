@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AuthorizatedGuard } from './modules/core/guards/authorizated.guard';
+import { PublicGuard } from './modules/core/guards/public.guard';
 
 const routes: Routes = [
   {
@@ -12,7 +14,8 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    loadChildren: './modules/login/login.module#LoginModule'
+    loadChildren: './modules/login/login.module#LoginModule',
+    canActivate: [PublicGuard]
   },
   {
     path: 'general',
@@ -29,7 +32,8 @@ const routes: Routes = [
   },
   {
     path: 'polizas',
-    loadChildren: './modules/policies/policies.module#PoliciesModule'
+    loadChildren: './modules/policies/policies.module#PoliciesModule',
+    canActivate: [AuthorizatedGuard]
   },
   {
     path: 'formulario/:requestId',

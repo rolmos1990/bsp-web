@@ -1,37 +1,40 @@
 <ng-template #content let-modal>
-  <div class="modal-header">
-    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+    <div class="modal-header">
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
-  </div>
-  <div class="modal-body">
-    <img src="assets/img/error.svg" alt="" class="advertencia">
-    <p class="text-center">Disculpa, tu <strong>contraseña</strong> es inválida. Por favor ingrésala nuevamente.</p>
-  </div>
-  <div class="modal-footer">
-    <button class="btn-white" (click)="modal.close('Save click')">OK</button>
-  </div>
+    </div>
+    <div class="modal-body">
+        <img src="assets/img/error.svg" alt="" class="advertencia">
+        <p class="text-center">Disculpa, tu <strong>usuario</strong> y/o <strong>contraseña</strong> son inválidos. Por favor ingrésalos nuevamente.</p>
+    </div>
+    <div class="modal-footer">
+        <button class="btn-white" (click)="modal.close('Save click')">OK</button>
+    </div>
 </ng-template>
 
 <section>
-  <div class="container">
-    <div class="row justify-content-center align-items-center minh-100">
-      <div class="col-md-12">
-        <div class="contenedor-tarjeta">
-          <div class="container p-5">
-            <h4 class="titulo"> Inicio de sesión</h4>
-            <form [formGroup]="myForm" (ngSubmit)="signIn()">
-              <label for="" class="mt-4 mb-3">Ingresa tu usuario:</label>
-              <input type="text" class="form-control" formControlName="username" placeholder="Usuario">
-      
-              <label for="" class="my-3">Ingresa tu contraseña:</label>
-              <input type="password" class="form-control" formControlName="password" placeholder="Contraseña">
-    
-              <button class="btn-primary mt-5" (click)="signIn(content)"> INICIAR SESIÓN </button>
-            </form>
-          </div>
+    <div class="container">
+        <div class="row justify-content-center align-items-center minh-100">
+            <div class="col-md-12">
+                <div class="contenedor-tarjeta">
+                    <div class="container p-5">
+                        <h4 class="titulo"> Inicio de sesión</h4>
+                        <form [formGroup]="myForm" (ngSubmit)="logIn(content)">
+                            <label for="" class="mt-4 mb-3">Ingresa tu usuario:</label>
+                            <input type="text" class="form-control" formControlName="username" placeholder="Usuario">
+
+                            <label for="" class="my-3">Ingresa tu contraseña:</label>
+                            <input type="password" class="form-control" formControlName="password" placeholder="Contraseña">
+
+                            <button type="submit" class="btn-primary mt-5 row" [disabled]="loading">
+                              <ng-template [ngIf]="loading"><i class="fas fa-spinner fa-spin mr-2"></i></ng-template>
+                              <span>INICIAR SESIÓN</span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 </section>

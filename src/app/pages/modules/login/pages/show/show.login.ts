@@ -12,8 +12,9 @@ import { NotifierService } from 'angular-notifier';
 })
 export class ShowComponent implements OnInit {
 
-  closeResult: string;
-  myForm: FormGroup;
+  public closeResult: string;
+  public myForm: FormGroup;
+  public loading: boolean = false;
 
   constructor(private modalService: NgbModal, public fb: FormBuilder, private userService: UserService,
      private router: Router, private _toastr: NotifierService,) {
@@ -26,23 +27,27 @@ export class ShowComponent implements OnInit {
   ngOnInit() {
   }
 
-  get f() { return this.myForm.controls; }
-
-  signIn(content) {
-    console.log(this.myForm.value);
+  public logIn(content: any) {
     if (this.myForm.valid) {
-      this.userService.logIn(this.f.username.value, this.f.password.value).subscribe(
+      this.loading = true;
+      let request = this.myForm.value;
+      this.userService.logIn(request.username, request.password).subscribe(
         response => {
           if (response) {
             this._toastr.notify('success', 'Inicio de sesión éxitoso. Se redirigirá al dashboard de polizas.');
             setTimeout(() => {
+              this.loading = false;
+              localStorage.setItem('bspAdminToken', response.result.user.id)
               this.router.navigateByUrl('/polizas');
             }, 3000);
           } else { //El usuario no está registrado
+            this.loading = false;
             const modalRef = this.modalService.open(content);
           }
         }, error => {
-          this._toastr.notify('error', 'Error al conectarse al sistema. Intente en unos minutos.');
+          this.loading = false;
+          const modalRef = this.modalService.open(content);
+          //this._toastr.notify('error', error.error.message);
           console.log(error);
         }
       );
@@ -51,7 +56,7 @@ export class ShowComponent implements OnInit {
     }
   }
 
-  open(content) {
+  private open(content) {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title' , centered: true }).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {

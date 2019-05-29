@@ -20,6 +20,8 @@ import { BspLoaderComponent } from './components/bsp-loader/bsp-loader.component
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { CoveragesSortPipe } from './pipes/order.pipe';
 import { SearchPipe } from './pipes/search.pipe';
+import { AuthorizatedGuard } from './guards/authorizated.guard';
+import { PublicGuard } from './guards/public.guard';
 
 @NgModule({
   declarations: [
@@ -49,7 +51,9 @@ import { SearchPipe } from './pipes/search.pipe';
     LocationService,
     DependentService,
     ActivityService,
-    CoverageService
+    CoverageService,
+    AuthorizatedGuard,
+    PublicGuard
   ]
 })
 export class CoreModule { }
