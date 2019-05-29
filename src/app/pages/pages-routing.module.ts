@@ -11,6 +11,10 @@ const routes: Routes = [
     loadChildren: './modules/payment/payment.module#PaymentModule'
   },
   {
+    path: 'login',
+    loadChildren: './modules/login/login.module#LoginModule'
+  },
+  {
     path: 'general',
     loadChildren: './modules/general/general.module#GeneralModule'
   },

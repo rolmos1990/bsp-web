@@ -4,9 +4,9 @@ import {  catchError } from 'rxjs/operators';
 import {  HttpClient } from '@angular/common/http';
 import {  ServiceDirective } from '../directives/service.directive';
 import {  environment } from 'src/environments/environment';
-import { User } from '../interfaces/user';
 
 const API_ENDPOINT_CREATE_USER = 'createUser';
+const API_ENDPOINT_LOGIN = 'logIn';
 
 @Injectable()
 export class UserService {
@@ -21,6 +21,16 @@ export class UserService {
             return ServiceDirective.handleError(err);
           })
         );
+    }
+
+    public logIn(username: string, password: string): Observable<any> {
+      return this._http
+      .post(environment.baseUrl.concat(API_ENDPOINT_LOGIN), {username: username, password: password}, ServiceDirective.headers)
+      .pipe(
+        catchError(err => {
+          return ServiceDirective.handleError(err);
+        })
+      );
     }
 
 }

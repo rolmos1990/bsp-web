@@ -1,21 +1,37 @@
-<section class="contenedor">
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <img src="assets/img/error.svg" alt="" class="advertencia">
+    <p class="text-center">Disculpa, tu <strong>contraseña</strong> es inválida. Por favor ingrésala nuevamente.</p>
+  </div>
+  <div class="modal-footer">
+    <button class="btn-white" (click)="modal.close('Save click')">OK</button>
+  </div>
+</ng-template>
+
+<section>
   <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="contenedor-tarjeta">
-            <div class="container p-5">
-              <div class="row"></div>
-                <h4 class="titulo"> Inicio de sesión</h4>
-                <label for="" class="mt-4 mb-3">Ingresa tu usuario:</label>
-                <input type="text" class="form-control" formControlName="username" placeholder="Usuario">
-        
-                <label for="" class="my-3">Ingresa tu contraseña:</label>
-                <input type="text" class="form-control" formControlName="password" placeholder="Contraseña">
+    <div class="row justify-content-center align-items-center minh-100">
+      <div class="col-md-12">
+        <div class="contenedor-tarjeta">
+          <div class="container p-5">
+            <h4 class="titulo"> Inicio de sesión</h4>
+            <form [formGroup]="myForm" (ngSubmit)="signIn()">
+              <label for="" class="mt-4 mb-3">Ingresa tu usuario:</label>
+              <input type="text" class="form-control" formControlName="username" placeholder="Usuario">
       
-                <button class="btn btn-primary mt-5"> INICIAR SESIÓN </button>
-            </div>
+              <label for="" class="my-3">Ingresa tu contraseña:</label>
+              <input type="password" class="form-control" formControlName="password" placeholder="Contraseña">
+    
+              <button class="btn-primary mt-5" (click)="signIn(content)"> INICIAR SESIÓN </button>
+            </form>
           </div>
         </div>
       </div>
+    </div>
   </div>
 </section>

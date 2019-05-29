@@ -30,7 +30,6 @@ export class ShowPolicies implements OnInit {
     this._route.queryParams.forEach(queryParams => {
       if (queryParams['page']) {
         this.page = queryParams['page'];
-        console.log('Current param page: ', this.page);
       }
     });
   }

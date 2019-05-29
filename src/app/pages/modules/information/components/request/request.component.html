@@ -754,16 +754,15 @@
                             </ng-template>
                             <h3 class="">Beneficiarios principales y contingentes
                                 <button type="button" class="btn" [tooltip]="tolTemplate" containerClass="customClass">
-                        <i class="fas fa-info-circle mx-2"></i>
-                    </button>
+                                    <i class="fas fa-info-circle mx-2"></i>
+                                </button>
                             </h3>
-
                             <p class="sumatoria">Por favor agrega la información de los beneficiarios principales y contingentes (secundarios) para continuar con la solicitud</p>
                         </div>
-                        <button class="btn-mas1">
-                            <i *ngIf="!loader" class="fas fa-spinner fa-spin" style="color: white;font-size: 3vmax;"></i>
+                        <button class="btn-mas2">
+                            <i *ngIf="loader" class="fas fa-spinner fa-spin" style="color: white;font-size: 3vmax;"></i>
                         </button>
-                        <button *ngIf="((this.remainingPercentContingent + this.remainingPercentMain) > 0) && loader" class="btn-mas1" (click)="open(content)"> <img src="assets/img/mas.svg" alt="" class="img" ></button>
+                        <button *ngIf="((this.remainingPercentContingent + this.remainingPercentMain) > 0) && !loader" class="btn-mas1" (click)="open(content)"> <img src="assets/img/btnmas.png" alt="" class="img" ></button>
                         <div class="fondo-blanco">
                             <div class="table-responsive">
                                 <table *ngIf="forma" class="table table-hover">
