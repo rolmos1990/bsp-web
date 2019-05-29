@@ -298,7 +298,7 @@
                     </div>
                     <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
                         <h5><i class="fas fa-minus"></i> Ocupaciones anteriores:</h5>
-                        <p class="mayu">{{request?.insured?.previousOccupations}}</p>
+                        <p class="mayu">{{request?.insured?.previousOccupations.name}}</p>
                     </div>
                     <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
                         <h5><i class="fas fa-minus"></i> Deportes que práctica:</h5>
@@ -341,9 +341,13 @@
                         <p class="mayu">{{request?.insured?.cellphone}}</p>
                     </div>
                     <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
+                        <h5><i class="fas fa-minus"></i> Teléfono oficina:</h5>
+                        <p class="mayu">{{request?.insured?.officeNumber}}</p>
+                    </div>
+                    <!-- <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
                         <h5><i class="fas fa-minus"></i> Email</h5>
                         <p class="mayu">{{request?.insured?.email}}</p>
-                    </div>
+                    </div> -->
                 </div>
             </accordion-group>
         </accordion>
