@@ -27,6 +27,7 @@
                     <table class="table">
                         <thead>
                             <tr>
+                                <th scope="col">Nº</th>
                                 <th scope="col">Solicitante</th>
                                 <th scope="col">Fecha de solicitud</th>
                                 <th scope="col">Tipo de Póliza</th>
@@ -34,10 +35,12 @@
                                 <th scope="col">Precio</th>
                                 <th style="text-align:center" scope="col">Póliza</th>
                                 <th style="text-align:center" scope="col">Detalle</th>
+                                <th style="text-align:center" scope="col">Descargar</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr *ngFor="let request of requests | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize ;let i=index;">
+                                <td><strong>Nº {{i+1}} BSP-SL</strong></td>
                                 <td>
                                     <p *ngIf="request?.insured?.name">{{request?.insured?.name}} {{request?.insured?.lastName}}</p>
                                     <p *ngIf="request?.insured?.email">{{request?.insured?.email}}</p>
@@ -47,7 +50,11 @@
                                 </td>
                                 <td>{{request?.createdAt.iso | date: 'dd/MM/yyyy'}}</td>
                                 <td>{{request?.insurance?.type}}</td>
-                                <td>{{request?.status}}</td>
+                                <td>
+                                    <div class="ibox-tools">
+                                        <span class="label label-warning-light float-right">{{request?.status}}</span>
+                                    </div>
+                                </td>
                                 <td>{{request?.insurance?.coverageDetail?.monthlyPrime | currency}}</td>
                                 <td class="{{request?.policyFile ? 'align-button' : ''}}">
                                     <!-- INPUT #0 -->
@@ -70,7 +77,7 @@
                               fileInput_0.files[0].name : (fileInput_0.files[0].name | slice:1:10)+'...' }}</label>
                         </ng-template> -->
                                             <ng-template [ngIf]="true">
-                                                <label class="file-input-label-text mb-0" (click)="fileInput_0.click()">Adjuntar Poliza</label>
+                                                <label class="file-input-label-text mb-0" (click)="fileInput_0.click()" style="cursor: pointer;">Adjuntar Poliza</label>
                                             </ng-template>
                                         </div>
                                         <!-- <div *ngIf="attachments.length" class="p-0">
@@ -84,6 +91,11 @@
                                 <td>
                                     <div class="d-flex justify-content-center">
                                         <a [routerLink]="[ routerLinkVariable,request.id]" class="btn-primary" target="_blank">Detalle</a>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="d-flex justify-content-center">
+                                    <a href="" class="btn-primary">Descargar</a>
                                     </div>
                                 </td>
                             </tr>

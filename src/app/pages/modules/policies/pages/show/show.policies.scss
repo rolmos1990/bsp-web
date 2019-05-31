@@ -67,8 +67,8 @@ table {
         border-top: 1px solid #dee2e6;
         .btn-primary {
             width: 150px;
-            height: auto;
-            padding: 10px;
+            height: 45px;
+            padding: 10px 20px;
         }
     }
 }
@@ -95,4 +95,29 @@ td {
     font-family: Lato;
     font-size: 12px;
     color: #556176;
+}
+
+.ibox-tools {
+    display: block;
+    float: left;
+    margin-top: 0;
+    padding: 0;
+}
+
+.ibox-title .label {
+    margin-left: 4px;
+}
+
+.label-warning-light {
+    background-color: #007a53;
+    color: #ffffff;
+}
+
+.label {
+    font-weight: 600;
+    padding: 3px 8px;
+    text-shadow: none;
+    border-radius: 0.25em;
+    line-height: 1;
+    white-space: nowrap;
 }

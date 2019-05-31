@@ -60,6 +60,11 @@ export class PaymentInfoComponent implements OnInit {
     );
   }
 
+  public continuar(){
+    this.nextStep.emit();
+    this.isLoading.emit(false);
+  }
+
   public assignPaymentCard() {
     this.markAllAsTouched();
     if (this.formaPayment.valid) {
