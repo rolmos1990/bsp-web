@@ -6,6 +6,18 @@
     text-align: left;
 }
 
+.btn-dashboard {
+    padding: 0.3vmax;
+    border: 0;
+    border-radius: 4px;
+    background-color: #003c71;
+    font-size: 13.6px;
+    color: #ffffff;
+    font-weight: bold;
+    text-decoration: none solid rgb(255, 255, 255);
+    text-align: center;
+}
+
 .subtitulo {
     font-size: 16px;
     color: #556176;
@@ -39,7 +51,7 @@
     text-align: center;
     @media (min-width: 768px) {
         margin-bottom: 0px;
-        margin-top: 22px;
+        margin-top: 2pxpx;
         width: 280px;
         height: 38px;
         float: right;

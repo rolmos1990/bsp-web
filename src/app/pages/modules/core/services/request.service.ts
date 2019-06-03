@@ -59,7 +59,7 @@ export class RequestService {
 
     public updateRequest(requestId: string, file: any): Observable<any>{
       return this._http
-        .post(environment.baseUrl.concat(API_ENDPOINT_UPDATE_REQUEST), {requestId: requestId, policyFile: file}, ServiceDirective.headers)
+        .post(environment.baseUrl.concat(API_ENDPOINT_UPDATE_REQUEST), {requestId: requestId, policyFile: file, status: 'Emitida'}, ServiceDirective.headers)
         .pipe(
           catchError(err => {
             return ServiceDirective.handleError(err);
