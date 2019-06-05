@@ -7,15 +7,16 @@
 }
 
 .btn-dashboard {
-    padding: 0.3vmax;
+    padding: 0.4vmax;
     border: 0;
     border-radius: 4px;
     background-color: #003c71;
     font-size: 13.6px;
-    color: #ffffff;
+    color: #ffffff !important;
     font-weight: bold;
     text-decoration: none solid rgb(255, 255, 255);
     text-align: center;
+    cursor: pointer;
 }
 
 .subtitulo {
@@ -103,12 +104,11 @@ td {
     display: none;
 }
 
-.file-input-label-text {
-    font-family: Lato;
-    font-size: 12px;
-    color: #556176;
-}
-
+// .file-input-label-text {
+//     font-family: Lato;
+//     font-size: 12px;
+//     color: #556176;
+// }
 .ibox-tools {
     display: block;
     float: left;
@@ -120,8 +120,18 @@ td {
     margin-left: 4px;
 }
 
-.label-warning-light {
+.emitida {
     background-color: #007a53;
+    color: #ffffff;
+}
+
+.proceso {
+    background-color: #2E86C1;
+    color: #ffffff;
+}
+
+.recibida {
+    background-color: #D68910;
     color: #ffffff;
 }
 

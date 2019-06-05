@@ -1,62 +1,65 @@
 <header>
-  <div class="navbar navbar-expand-md navbar-dark box-shadow menucito-desktop">
-    <div class="container d-flex justify-content-between">
-      <a [routerLink]="['/']" class="navbar-brand d-flex align-items-center">
-        <img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/logoo.png" alt="" class="sizeImgLogo">
-      </a>
-      <button class="navbar-toggler collapsed" type="button">
+    <div class="navbar navbar-expand-md navbar-dark box-shadow menucito-desktop">
+        <div class="container d-flex justify-content-between">
+            <a [routerLink]="['/']" class="navbar-brand d-flex align-items-center">
+                <img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/logoo.png" alt="" class="sizeImgLogo">
+            </a>
+            <button class="navbar-toggler collapsed" type="button">
         <img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/menu.png" alt="">
       </button>
-      <div class="navbar-collapse collapse">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item mx-md-1">
-            <a class="nav-link ayuda" href="" [routerLink]="['/']" routerLinkActive="active">
+            <div class="navbar-collapse collapse">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item mx-md-1">
+                        <a class="nav-link ayuda" href="" [routerLink]="['/']" routerLinkActive="active">
               ¿Necesitas ayuda?</a>
-          </li>
-          <li class="nav-item mx-md-1">
-            <a class="nav-link" href="" [routerLink]="['/']" routerLinkActive="active"><img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/telefono.svg" alt="" class="mr-2">
-              +507 366 8585</a>
-          </li>
-          <li class="nav-item mx-md-1">
-              <a class="nav-link" href="" [routerLink]="['/']" routerLinkActive="active"><img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/whatsapp.svg" alt="" class="mr-2">
-                +507 6534 8555</a>
-            </li>
-          <li class="nav-item mx-md-1">
-            <a class="nav-link" href="" [routerLink]="['/']" routerLinkActive="active"><img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/mensaje.svg" alt="" class="mr-2">
-              acliente_pa@banescoseguros.com</a>
-          </li>
-        </ul>
-      </div>
+                    </li>
+                    <li class="nav-item mx-md-1">
+                        <a class="nav-link" href="" [routerLink]="['/']" routerLinkActive="active"><img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/telefono.svg" alt="" class="mr-2"> +507 366 8585</a>
+                    </li>
+                    <li class="nav-item mx-md-1">
+                        <a class="nav-link" href="" [routerLink]="['/']" routerLinkActive="active"><img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/whatsapp.svg" alt="" class="mr-2"> +507 6534 8555</a>
+                    </li>
+                    <li class="nav-item mx-md-1">
+                        <a class="nav-link" href="" [routerLink]="['/']" routerLinkActive="active"><img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/mensaje.svg" alt="" class="mr-2"> acliente_pa@banescoseguros.com
+                        </a>
+                    </li>
+                    <li *ngIf="isDashboard" class="nav-item mx-md-1">
+                        <a (click)="logOut()" class="nav-link" style="cursor:pointer;"><i class="mr-2 fas fa-sign-out-alt"></i>
+                        Cerrar sesión</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </div>
-  </div>
-  <div class="navbar-movil menucito-movil">
-    
-      <div class="btn-group" dropdown>
-          <a [routerLink]="['/']" class="navbar-brand d-flex align-items-center">
-            <img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/logoo.png" alt="" class="sizeImgLogo ml-2">
-          </a>
-        <button id="button-basic" dropdownToggle type="button" class="navbar-toggler collapsed" aria-controls="dropdown-basic">
+    <div class="navbar-movil menucito-movil">
+
+        <div class="btn-group" dropdown>
+            <a [routerLink]="['/']" class="navbar-brand d-flex align-items-center">
+                <img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/logoo.png" alt="" class="sizeImgLogo ml-2">
+            </a>
+            <button id="button-basic" dropdownToggle type="button" class="navbar-toggler collapsed" aria-controls="dropdown-basic">
           <img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/menu.png" alt="">
         </button>
-        <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu"
-            role="menu" aria-labelledby="button-basic">
-            <li class="nav-item mx-2 mx-md-1">
-                <a class="nav-link ayuda" href="" [routerLink]="['/']" routerLinkActive="active">
+            <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-basic">
+                <li class="nav-item mx-2 mx-md-1">
+                    <a class="nav-link ayuda" href="" [routerLink]="['/']" routerLinkActive="active">
                   ¿Necesitas ayuda?</a>
-              </li>
-              <li class="nav-item mx-2 mx-md-1">
-                  <a class="nav-link" href="" [routerLink]="['/']" routerLinkActive="active"><img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/telefono.svg" alt="" class="mr-2">
-                    +507 830 0000</a>
                 </li>
                 <li class="nav-item mx-2 mx-md-1">
-                    <a class="nav-link" href="" [routerLink]="['/']" routerLinkActive="active"><img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/whatsapp.svg" alt="" class="mr-2">
-                      +507 830 0000</a>
-                  </li>
-                <li class="nav-item mx-2 mx-md-1">
-                  <a class="nav-link" href="" [routerLink]="['/']" routerLinkActive="active"><img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/mensaje.svg" alt="" class="mr-2">
-                    acliente_pa@banescoseguros.com</a>
+                    <a class="nav-link" href="" [routerLink]="['/']" routerLinkActive="active"><img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/telefono.svg" alt="" class="mr-2"> +507 830 0000</a>
                 </li>
-        </ul>
-      </div>
-  </div>
+                <li class="nav-item mx-2 mx-md-1">
+                    <a class="nav-link" href="" [routerLink]="['/']" routerLinkActive="active"><img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/whatsapp.svg" alt="" class="mr-2"> +507 830 0000</a>
+                </li>
+                <li class="nav-item mx-2 mx-md-1">
+                    <a class="nav-link" href="" [routerLink]="['/']" routerLinkActive="active"><img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/mensaje.svg" alt="" class="mr-2"> acliente_pa@banescoseguros.com
+                    </a>
+                </li>
+                <li *ngIf="isDashboard" class="nav-item mx-2 mx-md-1">
+                    <a (click)="logOut()" class="nav-link"><i class="mr-2 fas fa-sign-out-alt"></i>
+                    Cerrar sesión</a>
+                </li>
+            </ul>
+        </div>
+    </div>
 </header>

@@ -1,77 +1,77 @@
-<!-- <section *ngIf="formaPayment" class="kalacra otro">
-  <form [formGroup]="formaPayment">
-    <accordion>
-        <accordion-group [panelClass]="customClass" [isOpen]="isFirstOpen">
-          <button class="btn btn-link btn-block clearfix mt-3" accordion-heading>
+<section *ngIf="formaPayment" class="kalacra otro">
+    <form [formGroup]="formaPayment">
+        <accordion>
+            <accordion-group [panelClass]="customClass" [isOpen]="isFirstOpen">
+                <button class="btn btn-link btn-block clearfix mt-3" accordion-heading>
             <div class="pull-left float-left" style="margin-top: 5px;">Tarjeta de crédito o débito</div>
           </button>
-          <div class="container">
-          <p class="subtitulo">Por favor ingresa la información de tu tarjeta de crédito o débito.</p>
-            <div class="row mt-1">
-              <div class="form-group col-md-12">
-                <label for="" class="mt-4 mb-3">Nombre que aparece en la tarjeta:</label>
-                <input class="form-control" [ngClass]="{'is-invalid': invalid('cardName', formaPayment), 'is-valid': valid('cardName', formaPayment)}" formControlName="cardName">
-                <div *ngIf="invalid('cardName', formaPayment)" class="invalid-feedback">
-                  Por favor escriba su nombre tal cual se denota en la tarjeta.
-                </div>
-                <div *ngIf="valid('cardName', formaPayment)" class="valid-feedback">
-                  ¡Excelente!
-                </div>
-              </div>
-              <div class="form-group col-md-12">
-                <label for="" class="my-2">Número de tarjeta: </label>
-                <input type="text" class="form-control" [ngClass]="{'is-invalid': invalid('cardNumber', formaPayment), 'is-valid': valid('cardNumber', formaPayment)}" formControlName="cardNumber" maxlength="16">
-                <div *ngIf="invalid('cardNumber', formaPayment)" class="invalid-feedback">
-                  Por favor introduzca un número de tarjeta válido, entre 13 y 18 dígitos.
-                </div>
-                <div *ngIf="valid('cardNumber', formaPayment)" class="valid-feedback">
-                  ¡Excelente!
-                </div>
-              </div>
-              <div class="form-group col-md-12">
-                <label for="" class="my-2 d-block">Fecha de vencimiento: </label>
-                <div class="row">
-                  <div class="form-group col-6 col-sm-6 col-md-6 col-lg-4 ">
-                    <select class="form-control reducido" [ngClass]="{'is-invalid': invalid('expireMonth', formaPayment), 'is-valid': valid('expireMonth', formaPayment)}" formControlName="expireMonth">
+                <div class="container">
+                    <p class="subtitulo">Por favor ingresa la información de tu tarjeta de crédito o débito.</p>
+                    <div class="row mt-1">
+                        <div class="form-group col-md-12">
+                            <label for="" class="mt-4 mb-3">Nombre que aparece en la tarjeta:</label>
+                            <input class="form-control" [ngClass]="{'is-invalid': invalid('cardName', formaPayment), 'is-valid': valid('cardName', formaPayment)}" formControlName="cardName">
+                            <div *ngIf="invalid('cardName', formaPayment)" class="invalid-feedback">
+                                Por favor escriba su nombre tal cual se denota en la tarjeta.
+                            </div>
+                            <div *ngIf="valid('cardName', formaPayment)" class="valid-feedback">
+                                ¡Excelente!
+                            </div>
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label for="" class="my-2">Número de tarjeta: </label>
+                            <input type="text" class="form-control" [ngClass]="{'is-invalid': invalid('cardNumber', formaPayment), 'is-valid': valid('cardNumber', formaPayment)}" formControlName="cardNumber" maxlength="16">
+                            <div *ngIf="invalid('cardNumber', formaPayment)" class="invalid-feedback">
+                                Por favor introduzca un número de tarjeta válido, entre 13 y 18 dígitos.
+                            </div>
+                            <div *ngIf="valid('cardNumber', formaPayment)" class="valid-feedback">
+                                ¡Excelente!
+                            </div>
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label for="" class="my-2 d-block">Fecha de vencimiento: </label>
+                            <div class="row">
+                                <div class="form-group col-6 col-sm-6 col-md-6 col-lg-4 ">
+                                    <select class="form-control reducido" [ngClass]="{'is-invalid': invalid('expireMonth', formaPayment), 'is-valid': valid('expireMonth', formaPayment)}" formControlName="expireMonth">
                       <option *ngFor="let month of months; let i=index" [value]="month.id">{{month.id}}</option>
                     </select>
-                    <div *ngIf="invalid('expireMonth', formaPayment)" class="invalid-feedback">
-                      Por favor indique el mes de vencimiento de su tarjeta.
-                    </div>
-                    <div *ngIf="valid('expireMonth', formaPayment)" class="valid-feedback">
-                      ¡Excelente!
-                    </div>
-                  </div>
-                  <div class="form-group col-6 col-sm- 6 col-md-6 col-lg-4">
-                    <select class="form-control reducido" [ngClass]="{'is-invalid': invalid('expireYear', formaPayment), 'is-valid': valid('expireYear', formaPayment)}" formControlName="expireYear">
+                                    <div *ngIf="invalid('expireMonth', formaPayment)" class="invalid-feedback">
+                                        Por favor indique el mes de vencimiento de su tarjeta.
+                                    </div>
+                                    <div *ngIf="valid('expireMonth', formaPayment)" class="valid-feedback">
+                                        ¡Excelente!
+                                    </div>
+                                </div>
+                                <div class="form-group col-6 col-sm- 6 col-md-6 col-lg-4">
+                                    <select class="form-control reducido" [ngClass]="{'is-invalid': invalid('expireYear', formaPayment), 'is-valid': valid('expireYear', formaPayment)}" formControlName="expireYear">
                       <option *ngFor="let year of years; let i=index" [value]="year">{{year}}</option>
                     </select>
-                    <div *ngIf="invalid('expireYear', formaPayment)" class="invalid-feedback">
-                      Indique el año de vencimiento de su tarjeta.
+                                    <div *ngIf="invalid('expireYear', formaPayment)" class="invalid-feedback">
+                                        Indique el año de vencimiento de su tarjeta.
+                                    </div>
+                                    <div *ngIf="valid('expireYear', formaPayment)" class="valid-feedback">
+                                        ¡Excelente!
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="" class="my-2 d-block">Total a pagar:</label>
+                            <p class="monto ml-2">${{payment?.monthlyPrime}}</p>
+                        </div>
                     </div>
-                    <div *ngIf="valid('expireYear', formaPayment)" class="valid-feedback">
-                      ¡Excelente!
-                    </div>
-                  </div>
                 </div>
-              </div>
-              <div class="col-md-4">
-                  <label for="" class="my-2 d-block">Total a pagar:</label>
-                  <p class="monto ml-2">${{payment?.monthlyPrime}}</p>
-              </div>
-            </div>
-          </div>
-        </accordion-group>
-    </accordion>
-  </form>
-  <div class="row">
-    <div class="col-md-12 text-center mb-3">
-        <button class="btn-primary solicitar" (click)="assignPaymentCard()" >PAGAR Y CONTINUAR</button>
+            </accordion-group>
+        </accordion>
+    </form>
+    <div class="row">
+        <div class="col-md-12 text-center mb-3">
+            <button class="btn-primary solicitar" (click)="assignPaymentCard()">PAGAR Y CONTINUAR</button>
+        </div>
     </div>
-  </div>
-</section> -->
+</section>
 
-<section class="payment">
+<!-- <section class="payment">
   <div class="container">
     <div class="row">
       <div class="col-md-12">
@@ -80,7 +80,6 @@
             por ser un cliente Banesco Seguros, solo tienes que darnos tu aprobación para realizar el
             pago de tu nueva póliza en el siguiente número de tarjeta:
           </h5>
-          <!--[formGroup]="formaPayment" formControlName="payment1"  -->
           <form  class="form">
             <div class="inputGroup">
               <input id="radio1" name="radio" type="radio" />
@@ -95,4 +94,4 @@
       </div>
     </div>
   </div>
-</section>
+</section> -->
