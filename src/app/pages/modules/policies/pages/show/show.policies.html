@@ -31,8 +31,8 @@
                                 <th scope="col">Solicitante</th>
                                 <th scope="col">Fecha de solicitud</th>
                                 <th scope="col">Tipo de Póliza</th>
-                                <th scope="col">Estatus</th>
                                 <th scope="col">Precio</th>
+                                <th style="text-align:center" scope="col">Estatus</th>
                                 <th style="text-align:center" scope="col">Póliza</th>
                                 <th style="text-align:center" scope="col">Acciones</th>
                                 <!-- <th style="text-align:center" scope="col">Descargar</th> -->
@@ -50,34 +50,36 @@
                                 </td>
                                 <td>{{request?.createdAt.iso | date: 'dd/MM/yyyy'}}</td>
                                 <td>{{request?.insurance?.type}}</td>
-                                <td>
-                                    <div class="ibox-tools">
-                                        <span class="label label-warning-light float-right">{{request?.status}}</span>
+                                <td>{{request?.insurance?.coverageDetail?.monthlyPrime | currency}}</td>
+                                <td class="align-items-center">
+                                    <div class="row justify-content-center">
+                                        <div class="ibox-tools">
+                                            <span class="label float-right" [ngClass]="{'recibida': request.status === 'Recibida','emitida': request.status === 'Emitida','proceso': request.status === 'En Proceso'}">{{request?.status}}</span>
+                                        </div>
                                     </div>
                                 </td>
-                                <td>{{request?.insurance?.coverageDetail?.monthlyPrime | currency}}</td>
                                 <td class="{{request?.policyFile ? 'align-button' : ''}}">
                                     <!-- INPUT #0 -->
                                     <div *ngIf="!request?.policyFile" class="input-container justify-content-center d-flex">
-                                        <input #fileInput_0 type="file" name="img" class="hiddenFileInput form-control" (change)="addFile($event.target.files, i, request.id)">
+                                        <input #fileInput_0 type="file" name="img" class="hiddenFileInput form-control" (change)="addFile($event.target.files, i, request)">
                                         <div *ngIf="!isLoadingFile" class="p-0">
                                             <!-- <ng-template [ngIf]="attachments[i]">
                           <img class="caret" src="/assets/check.svg" />
                         </ng-template> -->
-                                            <ng-template [ngIf]="true">
-                                                <img class="caret" src="/assets/upload.svg" (click)="fileInput_0.click()" />
-                                            </ng-template>
+                                            <!-- <ng-template [ngIf]="true">
+                                                <img src="/assets/upload.svg" (click)="fileInput_0.click()" />
+                                            </ng-template> -->
                                         </div>
-                                        <div *ngIf="isLoadingFile">
-                                            <label class="file-input-label-text mb-0">Cargando adjunto...</label>
+                                        <div *ngIf="isLoadingFile === request" class="btn-dashboard m-0">
+                                            <label class="p-0" style="cursor: pointer;color:#ffffff;font-size: 13.6px;">Cargando adjunto...</label>
                                         </div>
-                                        <div *ngIf="!isLoadingFile" class="">
+                                        <div *ngIf="!isLoadingFile" class="btn-dashboard m-0">
                                             <!-- <ng-template [ngIf]="attachments[i] && fileInput_0?.files[0]">
                           <label class="file-input-label-text mb-0">{{ fileInput_0?.files[0]?.name?.lenght <= 15 ?
                               fileInput_0.files[0].name : (fileInput_0.files[0].name | slice:1:10)+'...' }}</label>
                         </ng-template> -->
                                             <ng-template [ngIf]="true">
-                                                <label class="file-input-label-text mb-0" (click)="fileInput_0.click()" style="cursor: pointer;">Adjuntar Poliza</label>
+                                                <label class="m-0" (click)="fileInput_0.click()" style="cursor: pointer;color:#ffffff;font-size: 13.6px;">Adjuntar Poliza</label>
                                             </ng-template>
                                         </div>
                                         <!-- <div *ngIf="attachments.length" class="p-0">
@@ -90,11 +92,8 @@
                                 </td>
                                 <td class="align-items-center">
                                     <div class="d-flex justify-content-center">
-                                        <div class="d-flex justify-content-center mr-2">
-                                            <a [routerLink]="[ routerLinkVariable,request.id]" class="btn-dashboard" target="_blank">Detalle</a>
-                                        </div>
                                         <div class="d-flex justify-content-center">
-                                            <a href="" class="btn-dashboard">Descargar</a>
+                                            <a [routerLink]="[ routerLinkVariable,request.id]" class="btn-dashboard" target="_blank">Ver Detalle</a>
                                         </div>
                                     </div>
                                 </td>
@@ -103,23 +102,17 @@
                     </table>
                 </div>
                 <div class="row">
-                    <div class="d-flex col-6 justify-content-between p-2">
-                        <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [directionLinks]="false"></ngb-pagination>
-                        <select class="custom-select" style="width: auto" [value]="'10'" [(ngModel)]="pageSize">
+                    <div class="d-flex col-6 justify-content-start p-2">
+                        <ngb-pagination class="mr-4" [collectionSize]="collectionSize" [(page)]="page" [directionLinks]="false"></ngb-pagination>
+                        <select class="custom-select" style="width: auto" [value]="5" [(ngModel)]="pageSize">
+                            <option [value]="5">5 registros</option>
                           <option [value]="10">10 registros</option>
                           <option [value]="20">20 registros</option>
-                          <option [value]="30">30 registros</option>
                         </select>
                     </div>
                     <div class="col-6 d-flex">
-                        <ng-template #signOut>
-                            <div class="text-justify">
-                                <strong>Cerrar sesión</strong>
-                            </div>
-                        </ng-template>
-                        <button style="max-height:45px !important" (click)="logOut()" class="btn-primary col-4 ml-auto">
-                          Cerrar sesión
-                          <!-- <i class="fas fa-sign-out-alt"></i> -->
+                        <button style="max-height:45px !important" (click)="getRequestWithDependents()" class="btn-primary col-4 ml-auto">
+                            Descargar en excel
                         </button>
                     </div>
                 </div>

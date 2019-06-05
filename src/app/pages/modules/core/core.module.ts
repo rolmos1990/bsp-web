@@ -22,6 +22,7 @@ import { CoveragesSortPipe } from './pipes/order.pipe';
 import { SearchPipe } from './pipes/search.pipe';
 import { AuthorizatedGuard } from './guards/authorizated.guard';
 import { PublicGuard } from './guards/public.guard';
+import { ExcelService } from './services/excel.service';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { PublicGuard } from './guards/public.guard';
     PaymentService,
     HealthService,
     RequestService,
+    ExcelService,
     LocationService,
     DependentService,
     ActivityService,
