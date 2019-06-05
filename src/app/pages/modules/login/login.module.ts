@@ -4,9 +4,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { LoginRoutingModule } from './login-routing.module';
 import { ShowComponent } from './pages/show/show.login';
+import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
+import { ChangePasswordComponent } from './pages/change-password/change-password.component';
 
 @NgModule({
-  declarations: [ShowComponent],
+  declarations: [ShowComponent,
+    ForgotPasswordComponent,
+    ChangePasswordComponent
+  ],
   imports: [
     CommonModule,
     LoginRoutingModule,
