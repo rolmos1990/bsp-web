@@ -173,18 +173,19 @@ export class ShowPolicies implements OnInit {
   private getRequestAndDependentsWithFormat(request: any) {
 
     request.Dependents.forEach((dependent, i) => {
-          request['Nombre_Completo_Dependiente_' + i] = !dependent.name ? 'N/A' : dependent.name + ' ' + dependent.lastName;
-          request['Documento_Dependiente_' + i] = !dependent.document ? 'N/A' : dependent.document;
-          request['Tipo_Dependiente_' + i] = !dependent.type ? 'N/A' : dependent.type;
-          request['Parentesco_Dependiente_' + i] = !dependent.relationship ? 'N/A' : dependent.relationship;
-          request['Porcentaje_Dependiente_' + i] = !dependent.percent ? 'N/A' : (dependent.percent + '%');
-          request['Fecha_Nacimiento_Dependiente_' + i] = !dependent.birthday ? 'N/A' : moment(dependent.birthday.iso).format('DD/MM/YYYY');
-          request['Nacionalidad_Dependiente_' + i] = !dependent.nationality ? 'N/A' : dependent.nationality.name;
-          request['Nombre_Representante_1_Dependiente_' + i] = dependent.paymentName ? dependent.paymentName : 'N/A';
-          request['Documento_Representante_1_Dependiente_' + i] = dependent.paymentDocument ? dependent.paymentDocument : 'N/A';
-          request['Nombre_Representante_2_Dependiente_' + i] = dependent.paymentName2 ? dependent.paymentName2 : 'N/A';
-          request['Documento_Representante_2_Dependiente_' + i] = dependent.paymentDocument2 ? dependent.paymentDocument2 : 'N/A';
+          request['Nombre_Completo_Dependiente_' + String(i + 1)] = !dependent.name ? 'N/A' : dependent.name + ' ' + dependent.lastName;
+          request['Documento_Dependiente_' + String(i + 1)] = !dependent.document ? 'N/A' : dependent.document;
+          request['Tipo_Dependiente_' + String(i + 1)] = !dependent.type ? 'N/A' : dependent.type;
+          request['Parentesco_Dependiente_' + String(i + 1)] = !dependent.relationship ? 'N/A' : dependent.relationship;
+          request['Porcentaje_Dependiente_' + String(i + 1)] = !dependent.percent ? 'N/A' : (dependent.percent + '%');
+          request['Fecha_Nacimiento_Dependiente_' + String(i + 1)] = !dependent.birthday ? 'N/A' : moment(dependent.birthday.iso).format('DD/MM/YYYY');
+          request['Nacionalidad_Dependiente_' + String(i + 1)] = !dependent.nationality ? 'N/A' : dependent.nationality.name;
+          request['Nombre_Representante_1_Dependiente_' + String(i + 1)] = dependent.paymentName ? dependent.paymentName : 'N/A';
+          request['Documento_Representante_1_Dependiente_' + String(i + 1)] = dependent.paymentDocument ? dependent.paymentDocument : 'N/A';
+          request['Nombre_Representante_2_Dependiente_' + String(i + 1)] = dependent.paymentName2 ? dependent.paymentName2 : 'N/A';
+          request['Documento_Representante_2_Dependiente_' + String(i + 1)] = dependent.paymentDocument2 ? dependent.paymentDocument2 : 'N/A';
     });
+    delete request.Dependents;
     return request;
   }
 
