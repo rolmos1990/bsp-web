@@ -60,19 +60,23 @@ export class ChangePasswordComponent {
 	}
 
 	submit(content: any) {
-		if (this.form.valid) {
-			this.loading = true;
-			this.userService.updatePassword(this.form.value).subscribe(
-				response => {
-					this._toastr.notify('success', 'Su contraseña ha sido cambiada satisfactoriamente.');
-					this.router.navigate(['/login']);
-				}, error => {
-					this.loading = false;
-					const modalRef = this.modalService.open(content);
-				}
-			);
+		if (this.form.value.passwordConfirmed !== this.form.value.password) {
+			this._toastr.notify('error', 'La contraseña debe ser igual a su verificación');
 		} else {
-			this._toastr.notify('error', 'Ingrese una contraseña y su verificación');
+			if (this.form.valid) {
+				this.loading = true;
+				this.userService.updatePassword(this.form.value).subscribe(
+					response => {
+						this._toastr.notify('success', 'Su contraseña ha sido cambiada satisfactoriamente.');
+						this.router.navigate(['/login']);
+					}, error => {
+						this.loading = false;
+						const modalRef = this.modalService.open(content);
+					}
+				);
+			} else {
+				this._toastr.notify('error', 'Ingrese una contraseña y su verificación');
+			}
 		}
 	}
 	private open(content) {

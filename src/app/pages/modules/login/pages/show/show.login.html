@@ -21,24 +21,36 @@
       <div class="col-md-12">
         <div class="contenedor-tarjeta">
           <div class="container p-5">
-            <h4 class="titulo"> Inicio de sesión</h4>
+            <h4 class="titulo"> {{firtsTime ? "Restro de usuario" : "Inicio de sesión" }}</h4>
             <form [formGroup]="myForm" (ngSubmit)="logIn(content)">
-              <label for="" class="mt-4 mb-3">Ingresa tu usuario:</label>
-              <input type="text" class="form-control" formControlName="username" placeholder="Usuario">
+              <label for="" class="mt-4 mb-3">Ingresa tu correo electronico:</label>
+              <input type="text" class="form-control" formControlName="username" placeholder="Correo electronico">
 
               <label for="" class="my-3">Ingresa tu contraseña:</label>
               <input type="password" class="form-control" formControlName="password" placeholder="Contraseña">
-
-              <button type="submit" class="btn-primary mt-5 row" [disabled]="loading">
+              <ng-template [ngIf]="firtsTime">
+                <label for="" class="my-3">Ingresa tu confirmación de contraseña:</label>
+                <input type="password" class="form-control" formControlName="passwordConfirmed"
+                  placeholder="Confirmación de contraseña">
+              </ng-template>
+              <ng-template [ngIf]="!firtsTime">
+                <a routerLink="/login/recuperar_clave" routerLinkActive="active"><small
+                    class="link_password text-center text-sm-right my-2">¿Olvidaste tu
+                    contraseña?</small></a>
+              </ng-template>
+              <button type="submit" class="btn-primary mt-3 row" [disabled]="loading">
                 <ng-template [ngIf]="loading"><i style="color: #ffffff !important"
                     class="fas fa-spinner fa-spin mr-2"></i></ng-template>
-                <span>INICIAR SESIÓN</span>
+                <span>{{firtsTime ? "REGISTRAR" : "INICIAR SESIÓN" }}</span>
               </button>
             </form>
             <div class="row mt-3">
-              <div class="col-6">
-                <a routerLink="/login/recuperar_clave" routerLinkActive="active"><small>¿Olvidaste tu
-                    contraseña?</small></a>
+              <div class="col-12 text-center">
+                <span class="titulo">
+                  {{ firtsTime ? "¿Ya posees contraseña?" : "¿Primera vez que ingresas?"}}
+                </span>&nbsp;&nbsp;
+                <a (click)="firtsTimeForm()" routerLinkActive="active"><small class="link_style">Haz click
+                    aquí</small></a>
               </div>
             </div>
           </div>
