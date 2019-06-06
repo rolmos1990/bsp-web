@@ -55,7 +55,7 @@
                     <a class="nav-link" href="" [routerLink]="['/']" routerLinkActive="active"><img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/mensaje.svg" alt="" class="mr-2"> acliente_pa@banescoseguros.com
                     </a>
                 </li>
-                <li *ngIf="isDashboard" class="nav-item mx-2 mx-md-1">
+                <li *ngIf="isDashboard && isLogged" class="nav-item mx-2 mx-md-1">
                     <a (click)="logOut()" class="nav-link"><i class="mr-2 fas fa-sign-out-alt"></i>
                     Cerrar sesión</a>
                 </li>

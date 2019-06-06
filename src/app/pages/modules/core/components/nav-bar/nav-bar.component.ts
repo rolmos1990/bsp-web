@@ -19,6 +19,10 @@ export class NavBarComponent implements OnInit {
     this.router.navigate(['/login']);
   }
 
+  public get isLogged() {
+    return !!localStorage.getItem('bspAdminToken');
+  }
+
   public get isDashboard() {
     return this.location.isCurrentPathEqualTo('/polizas');
   }
