@@ -417,6 +417,11 @@ export class RequestComponent implements OnInit {
         });
         this.isLoading.emit(false);
         this.loader = false;
+        if (!this.remainingPercentMain && (this.remainingPercentContingent === 100)) {
+          this._toastr.notify('info', 'Recueda agregar beneficiarios contingentes');
+        } else if (!this.remainingPercentContingent && (this.remainingPercentMain === 100)) {
+          this._toastr.notify('info', 'Recueda agregar beneficiarios principales');
+        }
       },
       error => {
         this.isLoading.emit(false);

@@ -251,7 +251,7 @@
                         <div class="col-md-6 col-lg-4 mb-5">
                             <div class="form-group form-width">
                                 <label for="">Nacionalidad: </label>
-                                <select class="form-control {{forma.value.insuNationalityId === null ? 'placeholder' : ''}}" [ngClass]="{'is-invalid': invalid('insuNationalityId', forma), 'is-valid': valid('insuNationalityId', forma)}" [value]="null" formControlName="insuNationalityId">
+                                <select class="form-control {{forma.value.insuNationalityId === null ? 'placeholder' : ''}}" [ngClass]="{'is-invalid': invalid('insuNationalityId', forma), 'is-valid': valid('insuNationalityId', forma)}" formControlName="insuNationalityId">
                                   <option class="placeholder" [value]="null" disabled>Seleccione</option>
                                   <option *ngFor="let nationality of nationalities; let i=index" [value]="nationality.id">{{nationality.name}}</option>
                                 </select>

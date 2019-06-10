@@ -10,7 +10,7 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-md-12">
-                                <h4 class="xmes">{{request.insurance.coverageDetail.monthlyPrime | currency}}</h4>
+                                <h4 class="xmes">USD {{request.insurance.coverageDetail.monthlyPrime}}</h4>
                             </div>
                         </div>
                         <div class="row">
@@ -26,7 +26,7 @@
                         <div class="row">
                             <div class="col-xs-12 col-md-12">
                                 <p class="text-center">Suma asegurada</p>
-                                <h2 class="text-center">${{(request.insurance.coverageDetail.insuredAmount | number:'1.0-0')}}</h2>
+                                <h2 class="text-center">USD {{(request.insurance.coverageDetail.insuredAmount | number:'1.0-0')}}</h2>
                             </div>
                         </div>
                     </div>
@@ -174,7 +174,7 @@
                     </div>
                     <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
                         <h5><i class="fas fa-minus"></i> Tiempo en esta ocupación:</h5>
-                        <p class="mayu">{{request.insured.occupationTime}} meses</p>
+                        <p class="mayu">{{request.insured.occupationTime}}</p>
                     </div>
                     <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
                         <h5><i class="fas fa-minus"></i> Descripción de funciones:</h5>
@@ -286,7 +286,7 @@
                     </div>
                     <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
                         <h5><i class="fas fa-minus"></i> Tiempo en esta ocupación:</h5>
-                        <p class="mayu">{{request?.insured?.occupationTime}} meses</p>
+                        <p class="mayu">{{request?.insured?.occupationTime}}</p>
                     </div>
                     <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
                         <h5><i class="fas fa-minus"></i> Descripción de funciones:</h5>
@@ -473,19 +473,27 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <h4 class="h4-verde">
-                        Cobertura completa: </h4>
+                    <h4 class="h4-verde">Cobertura completa: </h4>
+                    <p>* Se índican los porcentajes de la suma asegurada <br> contratada segun el tipo de cobertura.</p>
 
                     <div class="container cober coverage">
                         <div class="position-relative">
                             <div class="bolita"></div>
                             <accordion>
-                                <accordion-group [panelClass]="customClass" [isOpen]="isFirstOpen">
+                                <accordion-group #muerte [panelClass]="customClass" [isOpen]="isFirstOpen">
                                     <button class="btn btn-link btn-block clearfix" accordion-heading>
-                      <div class="pull-left float-left lix">Muerte accidental</div>
-                      <div class="float-right">{{request.insurance.coverageDetail.accidentalDeath}}% <img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/arrow2.svg" alt="" class="arrow2"> </div>
-                    </button>
-                                    <p class="mayu">En caso de sufrir un accidente donde el asegurado falleciera o sufriera lesiones involuntarias debido a un accidente, esta cobertura se haría efectiva con la totalidad del pago de la suma asegurada.
+                                    <div class="pull-left float-left lix">Muerte Accidental</div>
+                                    <div *ngIf="!muerte.isOpen" class="float-right">
+                                        <img src="https://res.cloudinary.com/merchanj/image/upload/v1559937359/Banesco_Seguros_Panama/AP/arrow3.png" alt="" class="arrow2">
+                                    </div>
+                                    <div *ngIf="muerte.isOpen" class="float-right">
+                                        <img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/arrow2.svg" alt="" class="arrow2">
+                                    </div>
+                                    <div class="porcentaje">
+                                        {{request.insurance.coverageDetail.accidentalDeath}}%
+                                    </div>
+                                    </button>
+                                    <p>Si el asegurado muere en un accidente, a los beneficiarios se les pagará el monto asegurado que contrató (indemnización). Ej.: accidentes de tránsito, sucesos imprevistos, homicidios dolosos y culposos.
                                     </p>
                                 </accordion-group>
                             </accordion>
@@ -494,13 +502,22 @@
                         <div class="position-relative">
                             <div class="bolita"></div>
                             <accordion>
-                                <accordion-group [panelClass]="customClass">
+                                <accordion-group #funerarios [panelClass]="customClass">
                                     <button class="btn btn-link btn-block clearfix" accordion-heading>
-                    <div class="pull-left float-left lix">Adelantos de gastos funerarios</div>
-                    <div class="float-right">{{request.insurance.coverageDetail.funeraryAdvances}}% <img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/arrow2.svg" alt="" class="arrow2"> </div>
+                    <div class="pull-left float-left lix">Adelantos de Gastos Funerarios</div>
+                    <div *ngIf="!funerarios.isOpen" class="float-right">
+                        <img src="https://res.cloudinary.com/merchanj/image/upload/v1559937359/Banesco_Seguros_Panama/AP/arrow3.png" alt="" class="arrow2">
+                    </div>
+                    <div *ngIf="funerarios.isOpen" class="float-right">
+                        <img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/arrow2.svg" alt="" class="arrow2">
+                    </div>
+                    <div class="porcentaje">
+                      {{request.insurance.coverageDetail.funeraryAdvances}}%
+                    </div>
+
                   </button>
-                                    <p class="mayu">En caso de sufrir un accidente donde el asegurado falleciera o sufriera lesiones involuntarias debido a un accidente, esta cobertura se haría efectiva con la totalidad del pago de la suma asegurada.
-                                    </p>
+                                    <p>Adelantamos hasta el 25% la suma asegurada de gastos funerarios a los beneficiarios cuando ocurre la muerte accidental del asegurado. Ej.: si tu suma asegurada por muerte accidental es USD 10,000 te adelantamos hasta
+                                        USD 2,500</p>
                                 </accordion-group>
                             </accordion>
                         </div>
@@ -508,13 +525,20 @@
                         <div class="position-relative">
                             <div class="bolita"></div>
                             <accordion>
-                                <accordion-group [panelClass]="customClass">
+                                <accordion-group #doble [panelClass]="customClass">
                                     <button class="btn btn-link btn-block clearfix" accordion-heading>
-                    <div class="pull-left float-left lix">Doble indemnización por muerte por accidente específico</div>
-                    <div class="float-right">{{request.insurance.coverageDetail.dobleCompensation}}%  <img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/arrow2.svg" alt="" class="arrow2"> </div>
+                    <div class="pull-left float-left lix">Doble Indemnización por Muerte por Accidente Específico</div>
+                    <div *ngIf="!doble.isOpen" class="float-right">
+                        <img src="https://res.cloudinary.com/merchanj/image/upload/v1559937359/Banesco_Seguros_Panama/AP/arrow3.png" alt="" class="arrow2">
+                    </div>
+                    <div *ngIf="doble.isOpen" class="float-right">
+                        <img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/arrow2.svg" alt="" class="arrow2">
+                    </div>
+                    <div class="porcentaje">
+                        {{request.insurance.coverageDetail.dobleCompensation}}%
+                    </div>
                   </button>
-                                    <p class="mayu">En caso de sufrir un accidente donde el asegurado falleciera o sufriera lesiones involuntarias debido a un accidente, esta cobertura se haría efectiva con la totalidad del pago de la suma asegurada.
-                                    </p>
+                                    <p>Cubrimos un porcentaje según el grado de discapacidad que pudiera presentar el asegurado a causa de un accidente sufrido</p>
                                 </accordion-group>
                             </accordion>
                         </div>
@@ -522,13 +546,20 @@
                         <div class="position-relative">
                             <div class="bolita"></div>
                             <accordion>
-                                <accordion-group [panelClass]="customClass">
+                                <accordion-group #gastos [panelClass]="customClass">
                                     <button class="btn btn-link btn-block clearfix" accordion-heading>
-                    <div class="pull-left float-left lix">Gastos médicos por accidente</div>
-                    <div class="float-right">{{request.insurance.coverageDetail.medicalExpenses}}%  <img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/arrow2.svg" alt="" class="arrow2"> </div>
+                    <div class="pull-left float-left lix">Gastos Médicos por Accidente</div>
+                    <div *ngIf="!gastos.isOpen" class="float-right">
+                        <img src="https://res.cloudinary.com/merchanj/image/upload/v1559937359/Banesco_Seguros_Panama/AP/arrow3.png" alt="" class="arrow2">
+                    </div>
+                    <div *ngIf="gastos.isOpen" class="float-right">
+                        <img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/arrow2.svg" alt="" class="arrow2">
+                    </div>
+                    <div class="porcentaje">
+                        {{request.insurance.coverageDetail.medicalExpenses}}%
+                    </div>
                   </button>
-                                    <p class="mayu">En caso de sufrir un accidente donde el asegurado falleciera o sufriera lesiones involuntarias debido a un accidente, esta cobertura se haría efectiva con la totalidad del pago de la suma asegurada.
-                                    </p>
+                                    <p>Cobertura complementaria donde te reembolsamos hasta un 10% de la suma asegurada para gastos médicos incurridos por accidentes.</p>
                                 </accordion-group>
                             </accordion>
                         </div>
@@ -536,13 +567,21 @@
                         <div class="position-relative">
                             <div class="bolita"></div>
                             <accordion>
-                                <accordion-group [panelClass]="customClass">
+                                <accordion-group #permanente [panelClass]="customClass">
                                     <button class="btn btn-link btn-block clearfix" accordion-heading>
-                    <div class="pull-left float-left lix">Invalidez permanente (total o parcial)</div>
-                    <div class="float-right">{{request.insurance.coverageDetail.permanentInhability}}%  <img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/arrow2.svg" alt="" class="arrow2"> </div>
+                    <div class="pull-left float-left lix">Invalidez Permanente (Total o Parcial)</div>
+                    <div *ngIf="!permanente.isOpen" class="float-right">
+                        <img src="https://res.cloudinary.com/merchanj/image/upload/v1559937359/Banesco_Seguros_Panama/AP/arrow3.png" alt="" class="arrow2">
+                    </div>
+                    <div *ngIf="permanente.isOpen" class="float-right">
+                        <img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/arrow2.svg" alt="" class="arrow2">
+                    </div>
+                    <div class="porcentaje">
+                        {{request.insurance.coverageDetail.permanentInhability}}%
+                    </div>
                   </button>
-                                    <p class="mayu">En caso de sufrir un accidente donde el asegurado falleciera o sufriera lesiones involuntarias debido a un accidente, esta cobertura se haría efectiva con la totalidad del pago de la suma asegurada.
-                                    </p>
+                                    <p>Duplicamos la suma asegurada por muerte accidental mientras el asegurado se transporta en un vehículo público (autobús, metro, taxi, etc) o si se ve envuelto en un incendio en algún edificio público (hotel, museo, cine,
+                                        teatro, etc)</p>
                                 </accordion-group>
                             </accordion>
                         </div>
@@ -550,13 +589,20 @@
                         <div class="position-relative">
                             <div class="bolita"></div>
                             <accordion>
-                                <accordion-group [panelClass]="customClass">
+                                <accordion-group #emergencia [panelClass]="customClass">
                                     <button class="btn btn-link btn-block clearfix" accordion-heading>
-                    <div class="pull-left float-left lix">Servicio de emergencia médica por accidente</div>
-                    <div class="float-right">{{request.insurance.coverageDetail.emergencyService}}%  <img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/arrow2.svg" alt="" class="arrow2"> </div>
+                    <div class="pull-left float-left lix">Servicio de Emergencia Médica por Accidente</div>
+                    <div *ngIf="!emergencia.isOpen" class="float-right">
+                        <img src="https://res.cloudinary.com/merchanj/image/upload/v1559937359/Banesco_Seguros_Panama/AP/arrow3.png" alt="" class="arrow2">
+                    </div>
+                    <div *ngIf="emergencia.isOpen" class="float-right">
+                        <img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/arrow2.svg" alt="" class="arrow2">
+                    </div>
+                    <div class="porcentaje">
+                        {{request.insurance.coverageDetail.emergencyService}}%
+                    </div>
                   </button>
-                                    <p class="mayu">En caso de sufrir un accidente donde el asegurado falleciera o sufriera lesiones involuntarias debido a un accidente, esta cobertura se haría efectiva con la totalidad del pago de la suma asegurada.
-                                    </p>
+                                    <p></p>
                                 </accordion-group>
                             </accordion>
                         </div>
@@ -564,13 +610,21 @@
                         <div class="position-relative">
                             <div class="bolita"></div>
                             <accordion>
-                                <accordion-group [panelClass]="customClass">
+                                <accordion-group #viajes [panelClass]="customClass">
                                     <button class="btn btn-link btn-block clearfix" accordion-heading>
-                    <div class="pull-left float-left lix">Asistencia en viajes</div>
-                    <div class="float-right">{{request.insurance.coverageDetail.travelAssistance}}%  <img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/arrow2.svg" alt="" class="arrow2"> </div>
+                    <div class="pull-left float-left lix">Asistencia en Viajes</div>
+                    <div *ngIf="!viajes.isOpen" class="float-right">
+                        <img src="https://res.cloudinary.com/merchanj/image/upload/v1559937359/Banesco_Seguros_Panama/AP/arrow3.png" alt="" class="arrow2">
+                    </div>
+                    <div *ngIf="viajes.isOpen" class="float-right">
+                        <img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/arrow2.svg" alt="" class="arrow2">
+                    </div>
+                    <div class="porcentaje">
+                        {{request.insurance.coverageDetail.travelAssistance}}%
+                    </div>
                   </button>
-                                    <p class="mayu">En caso de sufrir un accidente donde el asegurado falleciera o sufriera lesiones involuntarias debido a un accidente, esta cobertura se haría efectiva con la totalidad del pago de la suma asegurada.
-                                    </p>
+                                    <p>Asistencia médica durante tu viaje, si por indicación médica debes alojarte en un hotel, cubrimos tu estancia mientras te recuperas, transporte de los familiares del asegurado en caso necesario. Si ocurriera el fallecimiento
+                                        del asegurado, traemos de vuelta sus restos así como a los familiares</p>
                                 </accordion-group>
                             </accordion>
                         </div>

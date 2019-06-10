@@ -48,7 +48,7 @@ export class CustomValidatorDirective {
      * @param control FormControl to evaluate.
      */
     static regularText(control: AbstractControl): ValidationErrors {
-        const text = /((^[A-z\s\,\.]{2,50})$)/g;
+        const text = /((^[ÁÉÍÓÚñÑóáéíúA-z\s\,\.]{2,50})$)/g;
         if (control.value && !text.test(control.value)) {
             return { invalidText: true };
         }
@@ -138,7 +138,7 @@ export class CustomValidatorDirective {
      * @param control FormControl to evaluate.
      */
     static fullNameValidator(control: AbstractControl): ValidationErrors {
-        const name = /((^[A-z\s]{2,25}) [A-z\s]{2,25}$)/;
+        const name = /((^[ÁÉÍÓÚñÑóáéíúA-z\s]{2,25}) [ÁÉÍÓÚñÑóáéíúA-z\s]{2,25}$)/;
         if (control.value && !name.test(control.value)) {
             return { invalidname: true };
         }
