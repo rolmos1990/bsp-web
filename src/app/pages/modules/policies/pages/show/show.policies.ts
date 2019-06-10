@@ -84,7 +84,7 @@ export class ShowPolicies implements OnInit {
   public exportAsXLSX(): void {
     this._excelService.exportAsExcelFile(this.requests.map(request => {
       return this.structureXLSX(request);
-    }), 'Solicitud de polizas de accidentes personales ' + moment().format('DD-MM-YYYY HH:mm:ss'));
+    }), 'Solicitud de pólizas de accidentes personales ' + moment().format('DD-MM-YYYY HH:mm:ss'));
   }
 
   public getRequestWithDependents() {

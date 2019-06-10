@@ -1,7 +1,7 @@
 <div *ngIf="!isLoading" class="portada-info">
     <div class="texto">
         <h3>Accidentes Personales</h3>
-        <h5>Obtén tu seguro en tan solo 48 horas</h5>
+        <h5>Obtén tu seguro en tan solo 24 horas</h5>
     </div>
 </div>
 
@@ -16,8 +16,8 @@
         </aw-wizard-step>
         <aw-wizard-step stepTitle="Datos de pago" [navigationSymbol]="{ symbol: '2' }">
             <div class="container">
-                    <!-- Componente Hijo 2-->
-                <bsp-payment-info (nextStep)="inicio()" (isLoading)="isLoading = $event" [requestId]="requestId" ></bsp-payment-info>
+                <!-- Componente Hijo 2-->
+                <bsp-payment-info (nextStep)="inicio()" (isLoading)="isLoading = $event" [requestId]="requestId"></bsp-payment-info>
             </div>
         </aw-wizard-step>
         <aw-wizard-step stepTitle="Datos de entrega" [navigationSymbol]="{ symbol: '3' }">
@@ -29,7 +29,7 @@
     </aw-wizard>
 </div>
 <ng-template [ngIf]="isLoading">
-  <bsp-loader></bsp-loader>
+    <bsp-loader></bsp-loader>
 </ng-template>
 
 <div *ngIf="!isLoading" class="" [ngClass]="{'d-block': flag,'d-none': !flag}">

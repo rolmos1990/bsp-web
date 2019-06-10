@@ -1,46 +1,42 @@
-.portada{
+.portada {
     background-color: #fafafa;
     background-size: cover;
-    h1{
+    h1 {
         font-size: 36px;
         color: #007943;
         font-weight: 700;
         text-decoration: none solid rgb(0, 121, 67);
         letter-spacing: -2px;
-        @media (min-width: 1024px){
+        @media (min-width: 1024px) {
             margin-top: 60px;
-
         }
-        @media (min-width: 1440px){
+        @media (min-width: 1440px) {
             width: 723px;
             margin-top: 60px;
             margin-left: -30px;
             font-size: 42px;
         }
-        @media (min-width: 1750px){
+        @media (min-width: 1750px) {
             margin-left: -280px;
         }
     }
-    p{
+    p {
         font-size: 18px;
         color: #556176;
         text-decoration: none solid rgb(85, 97, 118);
         line-height: 38px;
-
-        @media(min-width: 1024px){
+        @media(min-width: 1024px) {
             font-size: 20px;
             padding-right: 60px;
         }
-
-        @media (min-width: 1440px){
+        @media (min-width: 1440px) {
             margin-left: -30px;
         }
-
-        @media (min-width: 1750px){
+        @media (min-width: 1750px) {
             margin-left: -280px;
         }
     }
-    button{
+    button {
         border-radius: 4px;
         background-color: #003c71;
         font-size: 20px;
@@ -51,41 +47,51 @@
         width: 160px;
         height: 55px;
         margin-bottom: 20px;
-        @media (min-width: 1024px){
+        @media (min-width: 1024px) {
             width: 160px;
             height: 55px;
             float: right;
             margin: -30px -20px 0 0px;
         }
-
-        @media (min-width: 1750px){
+        @media (min-width: 1750px) {
             margin: -30px 260px 0 0px;
         }
-    } 
-
-    img{
+    }
+    img {
         display: none;
-        @media (min-width: 1024px){
+        @media (min-width: 1024px) {
             display: block;
             margin-top: 60px;
             float: right
         }
     }
-    @media(min-width: 1024px){
+    @media(min-width: 1024px) {
         height: 288px;
     }
 }
 
-.contenedor{
-    .botones{
+.btn-abajo {
+    border-radius: 4px;
+    background-color: #003c71;
+    font-size: 20px;
+    color: #ffffff;
+    font-weight: 700;
+    text-decoration: none solid rgb(255, 255, 255);
+    text-align: center;
+    width: 160px;
+    height: 55px;
+}
+
+.contenedor {
+    .botones {
         text-align: center;
         margin-top: 10px;
-        @media(min-width: 1024px){
+        @media(min-width: 1024px) {
             margin-left: 130px;
             margin-top: 20px;
             text-align: initial;
         }
-        .boton-cuadrado{
+        .boton-cuadrado {
             border: 1px solid #556176;
             background-size: cover;
             color: #556176;
@@ -94,126 +100,121 @@
             margin-right: 10px;
             margin-bottom: 10px;
             background: white;
-            @media(min-width: 1024px){
+            @media(min-width: 1024px) {
                 height: 40px;
             }
         }
-
-        .todo-green{
+        .todo-green {
             border: 1px solid #007a53;
             color: #007a53;
         }
     }
-    .caja{
+    .caja {
         background-color: #fafafa;
         background-size: cover;
-        box-shadow: 0px 1px 3px 1px rgba(0,0,0,0.35);
+        box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.35);
         padding: 50px;
         margin: 40px auto 40px auto;
-        @media(min-width: 1024px){
+        @media(min-width: 1024px) {
             height: 559px;
         }
-
-        @media(min-width: 1350px){
+        @media(min-width: 1350px) {
             width: 998px;
             height: 559px;
         }
-        img{
+        img {
             margin: 0 auto;
             display: block;
         }
-        h3{
+        h3 {
             font-size: 23px;
             color: #003c71;
             text-decoration: none solid rgb(19, 89, 158);
             text-align: center;
             margin: 10px auto 10px auto;
-            @media(min-width: 1024px){
+            @media(min-width: 1024px) {
                 width: 496px;
                 height: 68px;
                 font-size: 28px;
             }
         }
-        p{
+        p {
             font-size: 18px;
             color: #556176;
             text-decoration: none solid rgb(85, 97, 118);
             text-align: justify;
             margin: 10px auto 10px auto;
             font-weight: bold;
-            @media(min-width: 1024px){
+            @media(min-width: 1024px) {
                 width: 621px;
                 text-align: center;
             }
         }
-
-        h4{
+        h4 {
             font-size: 16px;
             color: #556176;
             text-decoration: none solid rgb(85, 97, 118);
             margin: 20px 0;
-            @media(min-width: 1024px){
+            @media(min-width: 1024px) {
                 width: 180px;
                 height: 19px;
             }
         }
-
-        hr{
+        hr {
             margin: 30px 0;
         }
-        .checkeado{
-            img{
+        .checkeado {
+            img {
                 margin-top: 20px;
             }
-            p{
+            p {
                 font-size: 14px;
                 color: #556176;
                 text-decoration: none solid rgb(85, 97, 118);
                 text-align: justify;
-                @media(min-width: 1024px){
+                @media(min-width: 1024px) {
                     width: 364px;
                     height: 51px;
                 }
             }
         }
     }
-    h3.preguntas{
+    h3.preguntas {
         font-size: 28px;
         color: #007943;
         font-weight: 700;
         text-decoration: none solid rgb(0, 121, 67);
         margin: 30px 0 50px 20px;
-        @media(min-width: 1024px){
+        @media(min-width: 1024px) {
             margin-left: 80px;
         }
     }
-
-    .cober{
-        .lix{
+    .cober {
+        .lix {
             font-size: 15px;
             color: #003c71;
             text-decoration: none solid rgb(25, 117, 209);
             line-height: 24px;
-            @media (min-width: 768px){
-            font-size: 20px;
+            @media (min-width: 768px) {
+                font-size: 20px;
             }
-          }
-          i.fas.fa-angle-down {
+        }
+        i.fas.fa-angle-down {
             color: #003c71;
             margin-right: 20px;
-          }
-          ul{
-              li{
+        }
+        ul {
+            li {
                 font-size: 16px;
                 color: #556176;
                 text-decoration: none solid rgb(85, 97, 118);
                 line-height: 24px;
-              }
-          }
+            }
+        }
     }
 }
 
-.contenedor-gris{
+.contenedor-gris {
     border-top-width: 1px;
     border-bottom-width: 1px;
     border-style: solid;
@@ -221,34 +222,31 @@
     background-color: #fafafa;
     background-size: cover;
     padding: 20px 0;
-    @media (min-width: 1024px){
+    @media (min-width: 1024px) {
         height: 469px;
     }
-    h3{
+    h3 {
         font-size: 28px;
         color: #007943;
         font-weight: 700;
         text-decoration: none solid rgb(0, 121, 67);
         margin: 0px 0 20px 20px;
-        @media (min-width: 1024px){
+        @media (min-width: 1024px) {
             margin: 30px 0 70px 80px;
         }
     }
-
-    img{
+    img {
         display: block;
         margin: 0 auto;
         width: 80px;
     }
-
-    p.green{
+    p.green {
         font-size: 14px;
         color: #1c8464;
         text-decoration: none solid rgb(28, 132, 100);
         margin: 10px 0;
     }
-
-    p.mensaje{
+    p.mensaje {
         font-size: 12px;
         color: #556176;
         text-decoration: none solid rgb(85, 97, 118);
@@ -256,7 +254,7 @@
     }
 }
 
-.enlace{
+.enlace {
     font-size: 12px;
     color: #556176;
     text-decoration: none solid rgb(85, 97, 118);
@@ -270,13 +268,14 @@
     width: 100%;
     height: 100%;
 }
+
 .swiper-slide {
     text-align: center;
     font-size: 18px;
     padding: 3px 10px 3px 5px;
     height: auto!important;
     background: #fafafa;
-    box-shadow: 0px 1px 2px rgba(0,0,0,0.35);
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.35);
     background-size: cover;
     border: 1px solid #dce1e9;
     /* Center slide text vertically */
@@ -292,41 +291,39 @@
     -ms-flex-align: center;
     -webkit-align-items: center;
     align-items: center;
-    @media (min-width: 1024px){
+    @media (min-width: 1024px) {
         height: 260px!important;
         width: 300px!important;
         margin: 0 37px!important;
     }
 }
 
-.derechaaa{
+.derechaaa {
     position: absolute;
     top: 45%;
     right: -20px;
     background: transparent;
     border: 0;
     font-size: 30px;
-    @media (min-width: 768px){
+    @media (min-width: 768px) {
         right: -30px;
     }
-    i{
+    i {
         color: #556176;
     }
 }
 
-.izquierdaaa{
+.izquierdaaa {
     position: absolute;
     top: 45%;
     left: -20px;
     background: transparent;
     border: 0;
     font-size: 30px;
-    @media (min-width: 768px){
+    @media (min-width: 768px) {
         left: -30px;
     }
-    i{
+    i {
         color: #556176;
     }
 }
-
-  

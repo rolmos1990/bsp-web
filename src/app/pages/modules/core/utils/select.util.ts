@@ -88,17 +88,17 @@ export const CIVILSTATUS = [
 ];
 
 export const MONTHLYINCOME = [
-  { 'item': 'Menor a $500'},
-  { 'item': 'Entre $500 y $1000'},
-  { 'item': 'Entre $1000 y $2000'},
-  { 'item': 'Mayor a $2000'}
+  { 'item': 'Menor a USD 500'},
+  { 'item': 'Entre USD 500 y USD 1,000'},
+  { 'item': 'Entre USD 1,000 y USD 2,000'},
+  { 'item': 'Mayor a USD 2,000'}
 ];
 
 export const DEDUCTIBLES = [
-  { 'item': '$200'},
-  { 'item': '$300'},
-  { 'item': '$400'},
-  { 'item': '$500'},
+  { 'item': 'USD 200'},
+  { 'item': 'USD 300'},
+  { 'item': 'USD 400'},
+  { 'item': 'USD 500'},
 ];
 
 export const SLIDES = [
@@ -106,13 +106,13 @@ export const SLIDES = [
   'id': '1',
   'titulo': 'Muerte accidental',
   'imagen' : 'unoapinfo',
-  'mensaje': 'Si el asegurado muere en un accidente, a los beneficiarios se les pagará el monto asegurado que contrató (indemnización). Ejm: accidentes de tránsito, sucesos imprevistos, homicidios dolosos y culposos.' 
+  'mensaje': 'Si el asegurado muere en un accidente, a los beneficiarios se les pagará el monto asegurado que contrató (indemnización). Ej.: accidentes de tránsito, sucesos imprevistos, homicidios dolosos y culposos.' 
   },
   {
   'id': '2',
-  'titulo': 'Adelantos de gastos funerarios',
+  'titulo': 'Adelantos de Gastos Funerarios',
   'imagen' : 'dosapinfo',
-  'mensaje': 'Adelantamos hasta el 25% la suma asegurada de gastos funerarios a los beneficiarios cuando ocurre la muerte accidental del asegurado. Ejm: si tu suma asegurada por muerte accidental es $10.000 te adelantamos hasta $2500' 
+  'mensaje': 'Adelantamos hasta el 25% la suma asegurada de gastos funerarios a los beneficiarios cuando ocurre la muerte accidental del asegurado. Ej.: si tu suma asegurada por muerte accidental es USD 10,000 te adelantamos hasta USD 2,500' 
   },
   {
   'id': '3',

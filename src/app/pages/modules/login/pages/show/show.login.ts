@@ -74,7 +74,7 @@ export class ShowComponent implements OnInit {
         this.userService.logIn(request.username, request.password).subscribe(
           response => {
             if (response) {
-              this._toastr.notify('success', 'Inicio de sesión éxitoso. Se redirigirá al dashboard de polizas.');
+              this._toastr.notify('success', 'Inicio de sesión éxitoso. Se redirigirá al dashboard de pólizas.');
               setTimeout(() => {
                 this.loading = false;
                 localStorage.setItem('bspAdminToken', response.result.user.id)

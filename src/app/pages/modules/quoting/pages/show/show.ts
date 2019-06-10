@@ -56,7 +56,7 @@ export class ShowComponent implements OnInit {
     this.forma = this.fb.group({
       document: [null, Validators.compose([Validators.required, CustomValidatorDirective.documentValidator])],
       occupationId: ['', Validators.compose([Validators.required, Validators.minLength(5)])],
-      birthday: ['', Validators.compose([Validators.required, Validators.maxLength(2), Validators.min(18), Validators.max(70)])],
+      birthday: ['', Validators.compose([Validators.required, Validators.maxLength(2), Validators.min(18), Validators.max(60)])],
       email: ['', Validators.compose([Validators.required, CustomValidatorDirective.customEmailValidator])],
       same: [true, Validators.required]
     });

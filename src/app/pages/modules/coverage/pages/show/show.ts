@@ -25,26 +25,6 @@ export class ShowComponent implements OnInit {
   }
 
 
-  openSm(content, insurance, mod?) {
-    if (mod) {
-      mod.dismiss('Cross click');
-    } else {
-    this.actualCoverage = insurance;
-    this.insuranceId = insurance.id;
-    }
-    this.modalService.open(content, {centered: true});
-  }
-
-  openLg(content, insurance, mod?) {
-    if (mod) {
-      mod.dismiss('Cross click');
-    } else {
-    this.actualCoverage = insurance;
-    this.insuranceId = insurance.id;
-    }
-    this.modalService.open(content, {centered: true, size: 'lg'});
-  }
-
   ngOnInit() {
     this.getCoverages();
   }
@@ -78,4 +58,24 @@ export class ShowComponent implements OnInit {
       }
     );
   }
+  openSm(content, insurance, mod?) {
+    if (mod) {
+      mod.dismiss('Cross click');
+    } else {
+    this.actualCoverage = insurance;
+    this.insuranceId = insurance.id;
+    }
+    this.modalService.open(content, {centered: true});
+  }
+
+  openLg(content, insurance, mod?) {
+    if (mod) {
+      mod.dismiss('Cross click');
+    } else {
+    this.actualCoverage = insurance;
+    this.insuranceId = insurance.id;
+    }
+    this.modalService.open(content, {centered: true, size: 'lg'});
+  }
+
 }
