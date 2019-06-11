@@ -132,7 +132,7 @@ export const DEDUCTIBLES = [
 export const SLIDES = [
   {
   'id': '1',
-  'titulo': 'Muerte accidental',
+  'titulo': 'Muerte Accidental',
   'imagen' : 'unoapinfo',
   'mensaje': 'Si el asegurado muere en un accidente, a los beneficiarios se les pagará el monto asegurado que contrató (indemnización). Ej.: accidentes de tránsito, sucesos imprevistos, homicidios dolosos y culposos.' 
   },
@@ -144,27 +144,27 @@ export const SLIDES = [
   },
   {
   'id': '3',
-  'titulo': 'Invalidez permanente',
+  'titulo': 'Invalidez Permanente',
   'imagen' : 'tresapinfo',
   'mensaje': 'Cubrimos un porcentaje según el grado de discapacidad que pudiera presentar el asegurado a causa de un accidente sufrido',
   'enlace' : 'Ver condiciones'
   },
   {
   'id': '4',
-  'titulo': 'Gastos médicos por accidente',
+  'titulo': 'Gastos Médicos por Accidente',
   'imagen' : 'cuatroapinfo',
   'mensaje': 'Cobertura opcional donde te reembolsamos hasta un 10% de la suma asegurada para gastos médicos incurridos por accidentes.',
   'enlace':' '
   },
   {
   'id': '5',
-  'titulo': 'Doble indemnización por muerte por accidente específico',
+  'titulo': 'Doble Indemnización por Muerte por Accidente Específico',
   'imagen' : 'cincoapinfo',
   'mensaje': 'Duplicamos la suma asegurada por muerte accidental mientras el asegurado se transporta en un vehículo público (autobús, metro, taxi, etc) o si se ve envuelto en un incendio en algún edificio público (hotel, museo, cine, teatro, etc)' 
   },
   {
   'id': '6',
-  'titulo': 'Asistencia en viajes',
+  'titulo': 'Asistencia en Viajes',
   'imagen' : 'seisapinfo',
   'mensaje': 'Asistencia médica durante tu viaje, si por indicación médica debes alojarte en un hotel, cubrimos tu estancia mientras te recuperas, transporte de los familiares del asegurado en caso necesario. Si ocurriera el fallecimiento del asegurado, traemos de vuelta sus restos así como a los familiares' 
   },

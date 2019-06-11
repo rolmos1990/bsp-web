@@ -84,12 +84,12 @@
     <a id="2"></a>
     <div class="contenedor-gris">
         <!-- aqui debe ir un ancla-->
-        <div class="d-flex justify-content-between">
-            <div class="col">
-                <h3>Nuestras Coberturas</h3>
+        <div class="row">
+            <div class="col-md-6 col-sm-6 col-12">
+                <h3 [ngClass]="{'mb-0': _isMobile}">Nuestras Coberturas</h3>
             </div>
-            <div class="col d-flex">
-                <button class="btn-abajo ml-auto" style="margin-top:3.5vh" [routerLink]="['/cotizar']">COTIZAR</button>
+            <div class="col-md-6 col-sm-6 col-12 d-flex" [ngClass]="{'pr-5': !_isMobile}">
+                <button class="btn-abajo" [ngClass]="{'ml-auto mr-5': !_isMobile, 'mb-5 ml-4': _isMobile}" style="margin-top:3.5vh" [routerLink]="['/cotizar']">COTIZAR</button>
             </div>
         </div>
         <div class="container">
@@ -97,7 +97,7 @@
             <div class="position-relative">
                 <button class="derechaaa"><i class="fas fa-angle-right"></i></button>
                 <button class="izquierdaaa"><i class="fas fa-angle-left"></i></button>
-                <swiper class="swiper-container" [config]="config" (indexChange)="onIndexChange($event)" fxFlex="auto">
+                <swiper class="swiper-container col-sm-10 col-10 col-md-12" [config]="config" (indexChange)="onIndexChange($event)" fxFlex="auto">
 
                     <div *ngFor="let slide of slides" class="swiper-slide">
                         <div fxLayout="column" fxLayoutAlign="center center" fxFlexFill>
