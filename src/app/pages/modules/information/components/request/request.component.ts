@@ -171,9 +171,10 @@ export class RequestComponent implements OnInit {
     'insuSame': this._fb.control(localStorage.getItem('same') === 'true' ? true : false, Validators.required),
     'insuName': this._fb.control(insu.name, Validators.compose([Validators.required, CustomValidatorDirective.namesValidator])),//Segundo Formulario
     'insuLastName': this._fb.control(insu.lastName,  Validators.compose([Validators.required, CustomValidatorDirective.namesValidator])),
-    // 'insuDocumentType': [insu ? (insu.documentType === 'Pasaporte' ? insu.documentType : insu.document.split('-')[0]) : null, Validators.required],
-    'insuDocument': [insu.document, [Validators.required, CustomValidatorDirective.documentValidator]],
-    // 'insuDocument2': [!insu || insu.documentType === 'Pasaporte' ? null : insu.document.split('-')[2]],
+    'insuDocumentType': [insu && insu.documentType ? insu.documentType : null, Validators.required],
+    'insuDocument': [insu && insu.document ? (insu.documentType === 'Pasaporte' ? insu.document : insu.document.split('-')[0]) : null, Validators.required],
+    'insuDocument2': [!insu || !insu.document || insu.documentType === 'Pasaporte' ? null : insu.document.split('-')[1]],
+    'insuDocument3': [!insu || !insu.document || insu.documentType === 'Pasaporte' ? null : insu.document.split('-')[2]],
     'insuGender': this._fb.control(insu.gender, Validators.required),
     'insuBirthday': this._fb.control(insu.birthday ? moment(insu.birthday.iso).format('YYYY-MM-DD') : null, [Validators.required, CustomValidatorDirective.dateValidator]),
     'insuCivilStatus': this._fb.control(insu.civilStatus, Validators.required),
@@ -226,6 +227,7 @@ export class RequestComponent implements OnInit {
         this.forma.get('contEconomicActivity').setValue(payload.insuOccupation);
       }
     }
+    this.validations();
     let dependents =  this.forma.get('insuDependents') as FormArray;
     dependents.controls.forEach(dependent => {
       dependent.get('paymentName').clearValidators();
@@ -258,6 +260,11 @@ export class RequestComponent implements OnInit {
       //if (true) {
       this.isLoading.emit(true);
       let payload = this.forma.value;
+      if (payload.documentType !== 'Pasaporte') {
+        payload.document = payload.document.concat('-').concat(payload.document2).concat('-').concat(payload.document3);
+      }
+      delete payload.document2;
+      delete payload.document3;
       delete payload.insuDependents;
       payload.insuOccupationTime = String(payload.insuOccupationTime);
       payload.insuBirthday =  moment(new Date(payload.insuBirthday)).format('DD/MM/YYYY');
@@ -436,7 +443,27 @@ export class RequestComponent implements OnInit {
     _date = moment(_date).add(1, 'day').format('DD/MM/YYYY');
     return _date;
   }
-  
+
+  public validations() {
+    if (this.forma.value.documentType === 'Pasaporte') {
+      this.forma.get('document').setValidators(Validators.compose([Validators.required, CustomValidatorDirective.documentValidator]));
+      this.forma.get('document2').clearValidators();
+      this.forma.get('document3').clearValidators();
+      this.forma.get('document').updateValueAndValidity();
+      this.forma.get('document2').updateValueAndValidity();
+      this.forma.get('document3').updateValueAndValidity();
+      this.forma.updateValueAndValidity();
+    } else {
+      this.forma.get('document').setValidators(Validators.compose([Validators.required, CustomValidatorDirective.shortDocumentValidator]));
+      this.forma.get('document2').setValidators(Validators.compose([Validators.required, Validators.maxLength(4), CustomValidatorDirective.RegularNumbersPositive]));
+      this.forma.get('document3').setValidators(Validators.compose([Validators.required, Validators.maxLength(6), CustomValidatorDirective.RegularNumbersPositive]));
+      this.forma.get('document').updateValueAndValidity();
+      this.forma.get('document2').updateValueAndValidity();
+      this.forma.get('document3').updateValueAndValidity();
+      this.forma.updateValueAndValidity();
+    }
+  }
+
   public createDependent(modal: any) {
 
     this.modalValidations();

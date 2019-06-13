@@ -52,9 +52,32 @@ export class ShowComponent implements OnInit {
     );
   }
 
+  public validations() {
+    if (this.forma.value.documentType === 'Pasaporte') {
+      this.forma.get('document').setValidators(Validators.compose([Validators.required, CustomValidatorDirective.documentValidator]));
+      this.forma.get('document2').clearValidators();
+      this.forma.get('document3').clearValidators();
+      this.forma.get('document').updateValueAndValidity();
+      this.forma.get('document2').updateValueAndValidity();
+      this.forma.get('document3').updateValueAndValidity();
+      this.forma.updateValueAndValidity();
+    } else {
+      this.forma.get('document').setValidators(Validators.compose([Validators.required, CustomValidatorDirective.shortDocumentValidator]));
+      this.forma.get('document2').setValidators(Validators.compose([Validators.required, Validators.maxLength(4), CustomValidatorDirective.RegularNumbersPositive]));
+      this.forma.get('document3').setValidators(Validators.compose([Validators.required, Validators.maxLength(6), CustomValidatorDirective.RegularNumbersPositive]));
+      this.forma.get('document').updateValueAndValidity();
+      this.forma.get('document2').updateValueAndValidity();
+      this.forma.get('document3').updateValueAndValidity();
+      this.forma.updateValueAndValidity();
+    }
+  }
+
   private initForm() {
     this.forma = this.fb.group({
-      document: [null, Validators.compose([Validators.required, CustomValidatorDirective.documentValidator])],
+      documentType: [null, Validators.required],
+      document: [null],
+      document2: [null],
+      document3: [null],
       occupationId: ['', Validators.compose([Validators.required, Validators.minLength(5)])],
       birthday: ['', Validators.compose([Validators.required, Validators.maxLength(2), Validators.min(18), Validators.max(60)])],
       email: ['', Validators.compose([Validators.required, CustomValidatorDirective.customEmailValidator])],
@@ -71,9 +94,13 @@ export class ShowComponent implements OnInit {
     if (this.forma.valid) {
       this.isLoading = true;
       let payload = this.forma.value;
+      if (payload.documentType !== 'Pasaporte') {
+        payload.document = payload.document.concat('-').concat(payload.document2).concat('-').concat(payload.document3);
+      }
+      delete payload.document2;
+      delete payload.document3;
       payload.occupationId = this.getOccupation(payload.occupationId).id;
       localStorage.setItem('same', payload.same ? 'true' : 'false');
-      delete payload.same;
       payload.type = 'cliente';
       this._userService.createUser(payload).subscribe(
         response => {

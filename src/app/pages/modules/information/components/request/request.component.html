@@ -176,18 +176,6 @@
                         </div>
                         <div class="col-md-6 col-lg-4 mb-5">
                             <div class="form-group form-width">
-                                <label for="">Cédula / Pasaporte: </label>
-                                <input type="text" placeholder="Ej: E-8-675-908" class="form-control" [ngClass]="{'is-invalid': invalid('insuDocument', forma), 'is-valid': valid('insuDocument', forma)}" formControlName="insuDocument">
-                                <div *ngIf="invalid('insuDocument', forma)" class="invalid-feedback">
-                                    Por favor introduce un formato correcto. Ejemplo: 4-5454-455645.
-                                </div>
-                                <div *ngIf="valid('insuDocument', forma)" class="valid-feedback">
-                                    ¡Excelente!
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-4 mb-5">
-                            <div class="form-group form-width">
                                 <label for="">Sexo:  </label>
                                 <div class="form-check mb-1">
                                     <input class="form-check-input" name="insuGender" [ngClass]="{'is-invalid': invalid('insuGender', forma)}" type="radio" [value]="'Masculino'" formControlName="insuGender">
@@ -207,6 +195,70 @@
                                 <small *ngIf="valid('insuGender', forma)" class="text-success">
                                     ¡Excelente!
                                 </small>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4 mb-5">
+                            <div class="form-group form-width">
+                                <label>Tipo de identificación</label>
+                                <div class="form-check mb-1">
+                                    <input class="form-check-input" type="radio" (ngModelChange)="validations()" name="insuDocumentType" id="insuDocumentType" [value]="'Cedula'" formControlName="insuDocumentType" checked>
+                                    <label class="form-check-label" for="Cedula">Cédula </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" (ngModelChange)="validations()" name="insuDocumentType" id="insuDocumentType" [value]="'Pasaporte'" formControlName="insuDocumentType">
+                                    <label class="form-check-label" for="Pasaporte">Pasaporte</label>
+                                </div>
+                                <small *ngIf="invalid('insuDocumentType', forma)" class="text-danger">
+                                    Por favor elija un tipo de identificación.
+                                </small>
+                                <small *ngIf="valid('insuDocumentType', forma)" class="text-success">
+                                    ¡Excelente!
+                                </small>
+                            </div>
+                        </div>
+                        <div *ngIf="forma.value.insuDocumentType" class="col-md-6 col-lg-4 mb-5">
+                            <div class="form-group form-width">
+                                <label for="">{{forma.value.insuDocumentType === 'Cedula' ? 'Número de identificación' : 'Pasaporte'}}: </label>
+                                <div class="form-row mx-0 justify-content-between">
+                                    <ng-template [ngIf]="forma.value.insuDocumentType === 'Cedula'">
+                                        <div class="treinta">
+                                            <input type="text" class="form-control w-100" [ngClass]="{'is-invalid': invalid('insuDocument', forma), 'is-valid': valid('insuDocument', forma)}" formControlName="insuDocument">
+                                        </div>
+                                        <div class="tres d-flex justify-content-center align-items-center">
+                                            <strong><b>-</b></strong>
+                                        </div>
+                                        <div class="treinta">
+                                            <input type="text" class="form-control w-100" [ngClass]="{'is-invalid': invalid('insuDocument2', forma), 'is-valid': valid('insuDocument2', forma)}" formControlName="insuDocument2">
+                                        </div>
+                                        <div class="tres d-flex justify-content-center align-items-center">
+                                            <strong><b>-</b></strong>
+                                        </div>
+                                        <div class="cuarenta">
+                                            <input type="text" class="form-control w-100" [ngClass]="{'is-invalid': invalid('insuDocument3', forma), 'is-valid': valid('insuDocument3', forma)}" formControlName="insuDocument3">
+                                        </div>
+                                        <ng-template [ngIf]="forma.value.insuDocumentType !== 'Pasaporte'">
+                                            <div class="col-12">
+                                                <small *ngIf="invalid('insuDocument', forma) || invalid('insuDocument2', forma) || invalid('insuDocument3', forma)" class="text-danger">
+                                                    Por favor introduzca un formato válido de Cédula. Por ejemplo: N-4556-1465.
+                                                </small>
+                                                <small *ngIf="valid('insuDocument', forma) && valid('insuDocument2', forma) && valid('insuDocument3', forma)" class="text-success">
+                                                    ¡Excelente!
+                                                </small>
+                                            </div>
+                                        </ng-template>
+                                    </ng-template>
+                                    <ng-template [ngIf]="forma.value.insuDocumentType === 'Pasaporte'">
+                                        <div class="col-12 p-0">
+                                            <input type="text" class="form-control w-100" [ngClass]="{'is-invalid': invalid('insuDocument', forma), 'is-valid': valid('insuDocument', forma)}" formControlName="insuDocument">
+                                            <div *ngIf="invalid('insuDocument', forma)" class="invalid-feedback">
+                                                Por favor introduzca un número de pasaporte válido. Por ejemplo: 458456684.
+                                            </div>
+                                            <div *ngIf="valid('insuDocument', forma)" class="valid-feedback">
+                                                ¡Excelente!
+                                            </div>
+                                        </div>
+                                    </ng-template>
+                                </div>
                             </div>
                         </div>
                         <div class="col-md-6 col-lg-4 mb-5">
@@ -295,7 +347,7 @@
                                     <option *ngFor="let deporte of deportes; let i=index" [value]="deporte.itemName">{{deporte.itemName}}</option>
                                 </select>
                                 <div *ngIf="invalid('insuSports', forma)" class="invalid-feedback">
-                                    Por favor indique que deporte(s) practica, de caso contrario coloque "ninguno". Por ejemplo: Baloncesto, Kriket, Judo, etc.
+                                    Por favor indique que deporte practica, de caso contrario seleccione "ninguno". Por ejemplo: Fútbol.
                                 </div>
                                 <div *ngIf="valid('insuSports', forma)" class="valid-feedback">
                                     ¡Excelente!

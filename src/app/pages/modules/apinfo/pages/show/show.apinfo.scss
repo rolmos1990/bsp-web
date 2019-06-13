@@ -70,6 +70,33 @@
     }
 }
 
+.contenedor-pantalla {
+    width: 100% !important;
+    height: -webkit-fill-available !important;
+    position: fixed;
+    display: flex;
+    padding-bottom: 80px;
+    padding-right: 15px;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.btn-fixed {
+    width: 80px;
+    height: 80px;
+    border: none;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    cursor: pointer;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url(https://res.cloudinary.com/merchanj/image/upload/v1560354331/Banesco_Seguros_Panama/AP/Icon_7.svg);
+    background-size: 60px !important;
+    z-index: 10000;
+}
+
 .btn-abajo {
     border-radius: 4px;
     background-color: #003c71;

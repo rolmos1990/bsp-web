@@ -1,4 +1,4 @@
-import { Component, ViewChild, OnInit, Injectable } from '@angular/core';
+import { Component, ViewChild, OnInit, Injectable, HostListener } from '@angular/core';
 import { SwiperComponent, SwiperDirective, SwiperConfigInterface,
   SwiperScrollbarInterface, SwiperPaginationInterface } from 'ngx-swiper-wrapper';
 import { SLIDES } from '../../../core/utils/select.util';
@@ -130,6 +130,12 @@ export class ShowApinfo implements OnInit {
   }
   public get _isMobile() {
     return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+  }
+
+
+  @HostListener('window:scroll')
+  public showScrollButton() {
+    return window.scrollY && (window.scrollY >= 298);
   }
 
 

@@ -17,9 +17,21 @@ span {
     background-size: cover;
     padding: 30px 0;
     box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.2);
-    @media(min-width: 768px){
+    @media(min-width: 768px) {
         height: 102px;
     }
+}
+
+.tres {
+    width: 3.2% !important;
+}
+
+.treinta {
+    width: 29.1% !important;
+}
+
+.cuarenta {
+    width: 35.4% !important;
 }
 
 .uno,
@@ -35,14 +47,14 @@ span {
 }
 
 i.fas.fa-info-circle {
-color: #ffffff;
+    color: #ffffff;
 }
 
-i.fas.fa-info-circle.blue{
+i.fas.fa-info-circle.blue {
     color: #4e74b0;
 }
 
-.ml--10{
+.ml--10 {
     margin-left: -10px;
 }
 
@@ -50,16 +62,16 @@ i.fas.fa-info-circle.blue{
     font-size: 20px;
     margin: 0px 0 0px 20px;
     color: white;
-    @media (min-width: 1024px){
+    @media (min-width: 1024px) {
         margin: 0px 0 0px 80px;
     }
 }
 
-.sumatoria{
+.sumatoria {
     margin: 0px 0 0 20px;
     color: white;
     font-size: 12px;
-    @media (min-width: 1024px){
+    @media (min-width: 1024px) {
         font-size: 14px;
         margin: 0px 0 0 80px;
     }
@@ -120,30 +132,30 @@ h3.menores {
     text-decoration: none solid rgb(165, 173, 180);
 }
 
-.datos{
+.datos {
     font-size: 18px;
     color: #707372;
     font-weight: 700;
 }
 
 .addbene {
-font-size: 21px;
-font-weight: 700;
-color: #003c71;
-text-decoration: none solid rgb(28, 132, 100);
+    font-size: 21px;
+    font-weight: 700;
+    color: #003c71;
+    text-decoration: none solid rgb(28, 132, 100);
 }
 
 .modal-footer .btn-primary {
-width: 232px;
-height: 59px;
-padding: 0px 16px;
-border-radius: 4px;
-background-color: #003c71;
-font-size: 17px;
-color: #ffffff;
-text-decoration: none solid rgba(255, 255, 255, 0.84);
-text-align: center;
-margin: 40px auto;
+    width: 232px;
+    height: 59px;
+    padding: 0px 16px;
+    border-radius: 4px;
+    background-color: #003c71;
+    font-size: 17px;
+    color: #ffffff;
+    text-decoration: none solid rgba(255, 255, 255, 0.84);
+    text-align: center;
+    margin: 40px auto;
 }
 
 .btn-mas1 {
@@ -214,7 +226,6 @@ table td,
     .btn-mas1 {
         width: 40px;
         top: 160px;
-        
     }
     .btn-mas1.img {
         width: 40px;

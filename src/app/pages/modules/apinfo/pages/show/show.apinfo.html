@@ -1,7 +1,13 @@
 <section class="apinfo">
+    <div id="scroll" class="contenedor-pantalla">
+        <ng-template [ngIf]="showScrollButton()">
+            <a [ngx-scroll-to]="'#portada'" class="btn-fixed">
+                <span style="color:#708090; font-size: 12px; font-weight: 700;">Ir al tope</span></a>
+        </ng-template>
+    </div>
     <div class="portada">
         <div class="container">
-            <div class="row">
+            <div id="portada" class="row">
                 <div class="col-md-8">
                     <h1>Explora el seguro de Accidentes Personales</h1>
                     <p>Nuestras pólizas AP te protegen contra cualquier eventualidad, asegurando la estabilidad financiera de tu familia cuando más lo necesitas.</p>
@@ -84,14 +90,7 @@
     <a id="2"></a>
     <div class="contenedor-gris">
         <!-- aqui debe ir un ancla-->
-        <div class="row">
-            <div class="col-md-6 col-sm-6 col-12">
-                <h3 [ngClass]="{'mb-0': _isMobile}">Nuestras Coberturas</h3>
-            </div>
-            <div class="col-md-6 col-sm-6 col-12 d-flex" [ngClass]="{'pr-5': !_isMobile}">
-                <button class="btn-abajo" [ngClass]="{'ml-auto mr-5': !_isMobile, 'mb-5 ml-4': _isMobile}" style="margin-top:3.5vh" [routerLink]="['/cotizar']">COTIZAR</button>
-            </div>
-        </div>
+        <h3>Nuestras Coberturas</h3>
         <div class="container">
 
             <div class="position-relative">
