@@ -71,6 +71,43 @@ export const DEPORTES = [
   { 'id': '35', 'itemName': 'Ninguno' },
 ];
 
+export const TOTALDISABILITY = [
+  { description: 'Lesiones en la médula espinal que imposibiliten permanentemente caminar; Parálisis completa', percent: '100%' },
+  { description: 'Enajenación mental absoluta e incurable', percent: '100%' },
+  { description: 'Ceguera absoluta de ambos ojos', percent: '100%' },
+  { description: 'Pérdida por amputación o inutilización absoluta de ambos brazos, ambas piernas, ambos pies o una mano conjuntamente con una pierna o un pie', percent: '100%' }
+];
+
+export const PARTIALDISABILITY = [
+  { description: 'Sordera total bilateral', percent: '65%' },
+  { description: 'Pérdida del habla', percent: '60%' },
+  { description: 'Pérdida de un ojo con enucleación', percent: '50%' },
+  { description: 'Reducción de la visión de ambos ojos en más de 50% cada uno', percent: '50%' },
+  { description: 'Pérdida de la visión de un ojo', percent: '40%' },
+  { description: 'Pérdida total del maxilar inferior o ablación total de la mandíbula', percent: '40%' },
+  { description: 'Sordera total unilateral', percent: '35%' },
+  { description: 'Pérdida total del olfato o del gusto', percent: '30%' },
+  { description: 'Pérdida total de un brazo o una mano', percent: '70%' },
+  { description: 'Pérdida total de un dedo pulgar o índice', percent: '30%' },
+  { description: 'Pérdida total de cualquier otro dedo de una mano', percent: '20%' },
+  { description: 'Pérdida de una falange del dedo pulgar', percent: '15%' },
+  { description: 'Pérdida de cada falange de cualquier otro dedo', percent: '5%' },
+  { description: 'Pérdida total del movimiento del hombro o del codo', percent: '40%' },
+  { description: 'Fractura mal consolidada de un brazo, que afecte su movilidad', percent: '30%' },
+  { description: 'Fractura mal consolidada del antebrazo, que afecte su movilidad de los dos huesos', percent: '30%' },
+  { description: 'Fractura mal consolidada del antebrazo, que afecte su movilidad de un solo hueso', percent: '20%' },
+  { description: 'Pérdida total por amputación o inutilización de una pierna por encima de la rodilla', percent: '70%' },
+  { description: 'Pérdida total por amputación o inutilización de una pierna por debajo de la rodilla o de un pie', percent: '60%' },
+  { description: 'Pérdida total por amputación o inutilización del dedo gordo del pie', percent: '20%' },
+  { description: 'Pérdida total por amputación o inutilización de cualquier otro dedo del pie', percent: '15%' },
+  { description: 'Pérdida total del movimiento de la cadera', percent: '65%' },
+  { description: 'Pérdida total del movimiento de la rodilla', percent: '50%' },
+  { description: 'Pérdida total de los movimientos del tobillo', percent: '30%' },
+  { description: 'Pérdida total de los movimientos de la articulación subastragalina', percent: '20%' },
+  { description: 'Fractura mal consolidada del fémur o de los huesos de la pierna que afecte su movilidad', percent: '50%' },
+  { description: 'Fractura mal consolidada de un pie que afecte su movilidad', percent: '30%' }
+];
+
 export const BENEFICIARIOS = [
   { 'id': '1', 'itemName': 'Principal' },
   { 'id': '2', 'itemName': 'Contingente' },

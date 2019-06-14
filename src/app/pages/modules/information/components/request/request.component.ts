@@ -260,11 +260,11 @@ export class RequestComponent implements OnInit {
       //if (true) {
       this.isLoading.emit(true);
       let payload = this.forma.value;
-      if (payload.documentType !== 'Pasaporte') {
-        payload.document = payload.document.concat('-').concat(payload.document2).concat('-').concat(payload.document3);
+      if (payload.insuDocumentType !== 'Pasaporte') {
+        payload.insuDocument = payload.insuDocument.concat('-').concat(payload.insuDocument2).concat('-').concat(payload.insuDocument3);
       }
-      delete payload.document2;
-      delete payload.document3;
+      delete payload.insuDocument2;
+      delete payload.insuDocument3;
       delete payload.insuDependents;
       payload.insuOccupationTime = String(payload.insuOccupationTime);
       payload.insuBirthday =  moment(new Date(payload.insuBirthday)).format('DD/MM/YYYY');
@@ -324,7 +324,10 @@ export class RequestComponent implements OnInit {
       this.forma.get('contEconomicActivity').markAsTouched();
       this.forma.get('insuName').markAsTouched();
       this.forma.get('insuLastName').markAsTouched();
+      this.forma.get('insuDocumentType').markAsTouched();
       this.forma.get('insuDocument').markAsTouched();
+      this.forma.get('insuDocument2').markAsTouched();
+      this.forma.get('insuDocument3').markAsTouched();
       this.forma.get('insuGender').markAsTouched();
       this.forma.get('insuBirthday').markAsTouched();
       this.forma.get('insuCivilStatus').markAsTouched();
@@ -425,9 +428,9 @@ export class RequestComponent implements OnInit {
         this.isLoading.emit(false);
         this.loader = false;
         if (!this.remainingPercentMain && (this.remainingPercentContingent === 100)) {
-          this._toastr.notify('info', 'Recueda agregar beneficiarios contingentes');
+          this._toastr.notify('info', 'Recuerda agregar beneficiarios contingentes');
         } else if (!this.remainingPercentContingent && (this.remainingPercentMain === 100)) {
-          this._toastr.notify('info', 'Recueda agregar beneficiarios principales');
+          this._toastr.notify('info', 'Recuerda agregar beneficiarios principales');
         }
       },
       error => {
@@ -446,20 +449,20 @@ export class RequestComponent implements OnInit {
 
   public validations() {
     if (this.forma.value.documentType === 'Pasaporte') {
-      this.forma.get('document').setValidators(Validators.compose([Validators.required, CustomValidatorDirective.documentValidator]));
-      this.forma.get('document2').clearValidators();
-      this.forma.get('document3').clearValidators();
-      this.forma.get('document').updateValueAndValidity();
-      this.forma.get('document2').updateValueAndValidity();
-      this.forma.get('document3').updateValueAndValidity();
+      this.forma.get('insuDocument').setValidators(Validators.compose([Validators.required, CustomValidatorDirective.documentValidator]));
+      this.forma.get('insuDocument2').clearValidators();
+      this.forma.get('insuDocument3').clearValidators();
+      this.forma.get('insuDocument').updateValueAndValidity();
+      this.forma.get('insuDocument2').updateValueAndValidity();
+      this.forma.get('insuDocument3').updateValueAndValidity();
       this.forma.updateValueAndValidity();
     } else {
-      this.forma.get('document').setValidators(Validators.compose([Validators.required, CustomValidatorDirective.shortDocumentValidator]));
-      this.forma.get('document2').setValidators(Validators.compose([Validators.required, Validators.maxLength(4), CustomValidatorDirective.RegularNumbersPositive]));
-      this.forma.get('document3').setValidators(Validators.compose([Validators.required, Validators.maxLength(6), CustomValidatorDirective.RegularNumbersPositive]));
-      this.forma.get('document').updateValueAndValidity();
-      this.forma.get('document2').updateValueAndValidity();
-      this.forma.get('document3').updateValueAndValidity();
+      this.forma.get('insuDocument').setValidators(Validators.compose([Validators.required, CustomValidatorDirective.shortDocumentValidator]));
+      this.forma.get('insuDocument2').setValidators(Validators.compose([Validators.required, Validators.maxLength(4), CustomValidatorDirective.RegularNumbersPositive]));
+      this.forma.get('insuDocument3').setValidators(Validators.compose([Validators.required, Validators.maxLength(6), CustomValidatorDirective.RegularNumbersPositive]));
+      this.forma.get('insuDocument').updateValueAndValidity();
+      this.forma.get('insuDocument2').updateValueAndValidity();
+      this.forma.get('insuDocument3').updateValueAndValidity();
       this.forma.updateValueAndValidity();
     }
   }

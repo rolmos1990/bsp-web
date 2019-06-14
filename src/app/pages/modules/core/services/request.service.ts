@@ -49,7 +49,7 @@ export class RequestService {
 
     public createNewRequest(insuranceId: string, userId: string) : Observable<any> {
       return this._http
-        .post(environment.baseUrl.concat(API_ENDPOINT_CREATE_NEW_REQUEST), {insuranceId:insuranceId, userId:userId}, ServiceDirective.headers)
+        .post(environment.baseUrl.concat(API_ENDPOINT_CREATE_NEW_REQUEST), {insuranceId:insuranceId, userId:userId, same: localStorage.getItem('same') === 'true'}, ServiceDirective.headers)
         .pipe(
           catchError(err => {
             return ServiceDirective.handleError(err);

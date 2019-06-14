@@ -27,23 +27,23 @@
                             <small *ngIf="invalid('documentType', forma)" class="text-danger">
                                 Por favor elija un tipo de identificación.
                             </small>
-                            <div style="margin: 0 auto;" [ngStyle]="{'width': forma.value.documentType === 'Pasaporte' ? '230px' : '350px'}" *ngIf="forma.value.documentType" class="form-group mt-3">
+                            <div style="margin: 0 auto;" [ngStyle]="{'width': forma.value.documentType === 'Pasaporte' ? '230px' : '260px'}" *ngIf="forma.value.documentType" class="form-group mt-3">
                                 <!-- <label for="">{{forma.value.documentType === 'Cedula' ? 'Número de identificación' : 'Pasaporte'}}: </label> -->
                                 <div class="form-row">
                                     <ng-template [ngIf]="forma.value.documentType === 'Cedula'">
-                                        <div class="col-3">
+                                        <div class="treinta">
                                             <input type="text" class="form-control w-100" [ngClass]="{'is-invalid': invalid('document', forma), 'is-valid': valid('document', forma)}" formControlName="document">
                                         </div>
-                                        <div class="col-1 d-flex justify-content-center align-items-center">
+                                        <div class="tres d-flex justify-content-center align-items-center">
                                             <strong><b>-</b></strong>
                                         </div>
-                                        <div class="col-3">
+                                        <div class="treinta">
                                             <input type="text" class="form-control w-100" [ngClass]="{'is-invalid': invalid('document2', forma), 'is-valid': valid('document2', forma)}" formControlName="document2">
                                         </div>
-                                        <div class="col-1 d-flex justify-content-center align-items-center">
+                                        <div class="tres d-flex justify-content-center align-items-center">
                                             <strong><b>-</b></strong>
                                         </div>
-                                        <div class="col-4">
+                                        <div class="cuarenta">
                                             <input type="text" class="form-control w-100" [ngClass]="{'is-invalid': invalid('document3', forma), 'is-valid': valid('document3', forma)}" formControlName="document3">
                                         </div>
                                         <ng-template [ngIf]="forma.value.documentType !== 'Pasaporte'">
