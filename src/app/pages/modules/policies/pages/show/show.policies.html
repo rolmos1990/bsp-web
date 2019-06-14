@@ -3,121 +3,130 @@
         <div class="row my-5">
             <div class="col-md-12">
                 <h1 class="titulo">Lista de Solicitudes</h1>
-                <p class="subtitulo">A continuación se muestra la lista de todas las solicitudes que han aplicado por una póliza.</p>
+                <p *ngIf="requests.length > 0" class="subtitulo">A continuación se muestra la lista de todas las solicitudes que han aplicado por una póliza.</p>
+                <p *ngIf="requests.length === 0" class="subtitulo">No existen solicitudes creadas actualmente.</p>
             </div>
         </div>
-
-        <div class="row">
-            <div class="col-md-12">
-                <!-- <div class="row">
-          <div class="col-md-4">
-              <form>
-                <div class="form-group form-inline">
-                  <label for="" class="d-block">Busqueda de pólizas: </label>
-                  <input class="form-control" type="text" placeholder="Buscar" [(ngModel)]="searchText" name="searchText" (keyup)="showSearchResults($event)"/>
+        <ng-template [ngIf]="requests.length === 0">
+            <div class="row align-items-center" style="height:350px">
+                <div class="col-md-12 d-flex justify-content-center">
+                    <button class="btn-primary" [routerLink]="['/']">Volver al Inicio</button>
                 </div>
-              </form>
-          </div>
-          <div class="col-md-8">
-              <button class="btn-blanco">Descargar Excel</button>
-          </div>
-        </div>
-           -->
-                <div class="table-responsive">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th scope="col">Nº</th>
-                                <th scope="col">Solicitante</th>
-                                <th scope="col">Fecha de solicitud</th>
-                                <th scope="col">Tipo de Póliza</th>
-                                <th scope="col">Precio</th>
-                                <th style="text-align:center" scope="col">Estatus</th>
-                                <th style="text-align:center" scope="col">Póliza</th>
-                                <th style="text-align:center" scope="col">Acciones</th>
-                                <!-- <th style="text-align:center" scope="col">Descargar</th> -->
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr *ngFor="let request of requests | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize ;let i=index;">
-                                <td><strong>Nº {{request.number}} BSP-SL</strong></td>
-                                <td>
-                                    <p *ngIf="request?.insured?.name">{{request?.insured?.name}} {{request?.insured?.lastName}}</p>
-                                    <p *ngIf="request?.insured?.email">{{request?.insured?.email}}</p>
-                                    <p *ngIf="request?.insured?.cellphone">{{request?.insured?.cellphone}}</p>
-                                    <p *ngIf="request?.insured?.localNumber">{{request?.insured?.localNumber}}</p>
-                                    <p *ngIf="!request?.insured?.name && !request?.insured?.email && !request?.insured?.cellphone && !request?.insured?.localNumber">N/A</p>
-                                </td>
-                                <td>{{request?.createdAt.iso | date: 'dd/MM/yyyy'}}</td>
-                                <td>{{request?.insurance?.type}}</td>
-                                <td>{{request?.insurance?.coverageDetail?.monthlyPrime | currency}}</td>
-                                <td class="align-items-center">
-                                    <div class="row justify-content-center">
-                                        <div class="ibox-tools">
-                                            <span class="label float-right" [ngClass]="{'recibida': request.status === 'Recibida','emitida': request.status === 'Emitida','proceso': request.status === 'En Proceso'}">{{request?.status}}</span>
+            </div>
+        </ng-template>
+        <ng-template [ngIf]="requests.length > 0">
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- <div class="row">
+                  <div class="col-md-4">
+                      <form>
+                        <div class="form-group form-inline">
+                          <label for="" class="d-block">Busqueda de pólizas: </label>
+                          <input class="form-control" type="text" placeholder="Buscar" [(ngModel)]="searchText" name="searchText" (keyup)="showSearchResults($event)"/>
+                        </div>
+                      </form>
+                  </div>
+                  <div class="col-md-8">
+                      <button class="btn-blanco">Descargar Excel</button>
+                  </div>
+                </div>
+                   -->
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Nº</th>
+                                    <th scope="col">Solicitante</th>
+                                    <th scope="col">Fecha de solicitud</th>
+                                    <th scope="col">Tipo de Póliza</th>
+                                    <th scope="col">Precio</th>
+                                    <th style="text-align:center" scope="col">Estatus</th>
+                                    <th style="text-align:center" scope="col">Póliza</th>
+                                    <th style="text-align:center" scope="col">Acciones</th>
+                                    <!-- <th style="text-align:center" scope="col">Descargar</th> -->
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let request of requests | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize ;let i=index;">
+                                    <td><strong>Nº {{request.number}} BSP-SL</strong></td>
+                                    <td>
+                                        <p *ngIf="request?.insured?.name">{{request?.insured?.name}} {{request?.insured?.lastName}}</p>
+                                        <p *ngIf="request?.insured?.email">{{request?.insured?.email}}</p>
+                                        <p *ngIf="request?.insured?.cellphone">{{request?.insured?.cellphone}}</p>
+                                        <p *ngIf="request?.insured?.localNumber">{{request?.insured?.localNumber}}</p>
+                                        <p *ngIf="!request?.insured?.name && !request?.insured?.email && !request?.insured?.cellphone && !request?.insured?.localNumber">N/A</p>
+                                    </td>
+                                    <td>{{request?.createdAt.iso | date: 'dd/MM/yyyy'}}</td>
+                                    <td>{{request?.insurance?.type}}</td>
+                                    <td>{{request?.insurance?.coverageDetail?.monthlyPrime | currency}}</td>
+                                    <td class="align-items-center">
+                                        <div class="row justify-content-center">
+                                            <div class="ibox-tools">
+                                                <span class="label float-right" [ngClass]="{'recibida': request.status === 'Recibida','emitida': request.status === 'Emitida','proceso': request.status === 'En Proceso'}">{{request?.status}}</span>
+                                            </div>
                                         </div>
-                                    </div>
-                                </td>
-                                <td class="{{request?.policyFile ? 'align-button' : ''}}">
-                                    <!-- INPUT #0 -->
-                                    <div *ngIf="!request?.policyFile" class="input-container justify-content-center d-flex">
-                                        <input #fileInput_0 type="file" name="img" class="hiddenFileInput form-control" (change)="addFile($event.target.files, i, request)">
-                                        <div *ngIf="!isLoadingFile" class="p-0">
-                                            <!-- <ng-template [ngIf]="attachments[i]">
-                          <img class="caret" src="/assets/check.svg" />
-                        </ng-template> -->
-                                            <!-- <ng-template [ngIf]="true">
-                                                <img src="/assets/upload.svg" (click)="fileInput_0.click()" />
-                                            </ng-template> -->
+                                    </td>
+                                    <td class="{{request?.policyFile ? 'align-button' : ''}}">
+                                        <!-- INPUT #0 -->
+                                        <div *ngIf="!request?.policyFile" class="input-container justify-content-center d-flex">
+                                            <input #fileInput_0 type="file" name="img" class="hiddenFileInput form-control" (change)="addFile($event.target.files, i, request)">
+                                            <div *ngIf="!isLoadingFile" class="p-0">
+                                                <!-- <ng-template [ngIf]="attachments[i]">
+                                  <img class="caret" src="/assets/check.svg" />
+                                </ng-template> -->
+                                                <!-- <ng-template [ngIf]="true">
+                                                        <img src="/assets/upload.svg" (click)="fileInput_0.click()" />
+                                                    </ng-template> -->
+                                            </div>
+                                            <div *ngIf="isLoadingFile === request" class="btn-dashboard m-0">
+                                                <label class="p-0" style="cursor: pointer;color:#ffffff;font-size: 13.6px;">Cargando adjunto...</label>
+                                            </div>
+                                            <div *ngIf="!isLoadingFile" class="btn-dashboard m-0">
+                                                <!-- <ng-template [ngIf]="attachments[i] && fileInput_0?.files[0]">
+                                  <label class="file-input-label-text mb-0">{{ fileInput_0?.files[0]?.name?.length <= 15 ?
+                                      fileInput_0.files[0].name : (fileInput_0.files[0].name | slice:1:10)+'...' }}</label>
+                                </ng-template> -->
+                                                <ng-template [ngIf]="true">
+                                                    <label class="m-0" (click)="fileInput_0.click()" style="cursor: pointer;color:#ffffff;font-size: 13.6px;">Adjuntar Póliza</label>
+                                                </ng-template>
+                                            </div>
+                                            <!-- <div *ngIf="attachments.length" class="p-0">
+                                <ng-template [ngIf]="attachments[i]">
+                                  <img class="caret" src="/assets/delete_red.svg" (click)="removeAttachment(i, fileInput_0)" />
+                                </ng-template>
+                              </div> -->
                                         </div>
-                                        <div *ngIf="isLoadingFile === request" class="btn-dashboard m-0">
-                                            <label class="p-0" style="cursor: pointer;color:#ffffff;font-size: 13.6px;">Cargando adjunto...</label>
-                                        </div>
-                                        <div *ngIf="!isLoadingFile" class="btn-dashboard m-0">
-                                            <!-- <ng-template [ngIf]="attachments[i] && fileInput_0?.files[0]">
-                          <label class="file-input-label-text mb-0">{{ fileInput_0?.files[0]?.name?.lenght <= 15 ?
-                              fileInput_0.files[0].name : (fileInput_0.files[0].name | slice:1:10)+'...' }}</label>
-                        </ng-template> -->
-                                            <ng-template [ngIf]="true">
-                                                <label class="m-0" (click)="fileInput_0.click()" style="cursor: pointer;color:#ffffff;font-size: 13.6px;">Adjuntar Póliza</label>
-                                            </ng-template>
-                                        </div>
-                                        <!-- <div *ngIf="attachments.length" class="p-0">
-                        <ng-template [ngIf]="attachments[i]">
-                          <img class="caret" src="/assets/delete_red.svg" (click)="removeAttachment(i, fileInput_0)" />
-                        </ng-template>
-                      </div> -->
-                                    </div>
-                                    <a *ngIf="request?.policyFile" [href]="request.policyFile" class="btn-dashboard" target="_blank">Ver Póliza</a>
-                                </td>
-                                <td class="align-items-center">
-                                    <div class="d-flex justify-content-center">
+                                        <a *ngIf="request?.policyFile" [href]="request.policyFile" class="btn-dashboard" target="_blank">Ver Póliza</a>
+                                    </td>
+                                    <td class="align-items-center">
                                         <div class="d-flex justify-content-center">
-                                            <a [routerLink]="[ routerLinkVariable,request.id]" class="btn-dashboard" target="_blank">Ver Detalle</a>
+                                            <div class="d-flex justify-content-center">
+                                                <a [routerLink]="[ routerLinkVariable,request.id]" class="btn-dashboard" target="_blank">Ver Detalle</a>
+                                            </div>
                                         </div>
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="row">
-                    <div class="d-flex col-6 justify-content-start p-2">
-                        <ngb-pagination class="mr-4" [collectionSize]="collectionSize" [(page)]="page" [directionLinks]="false"></ngb-pagination>
-                        <select class="custom-select" style="width: auto" [value]="5" [(ngModel)]="pageSize">
-                            <option [value]="5">5 registros</option>
-                          <option [value]="10">10 registros</option>
-                          <option [value]="20">20 registros</option>
-                        </select>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
-                    <div class="col-6 d-flex">
-                        <button style="max-height:45px !important" (click)="getRequestWithDependents()" class="btn-primary col-4 ml-auto">
-                            Descargar en excel
-                        </button>
+                    <div class="row">
+                        <div class="d-flex col-6 justify-content-start p-2">
+                            <ngb-pagination class="mr-4" [collectionSize]="collectionSize" [(page)]="page" [directionLinks]="false"></ngb-pagination>
+                            <select class="custom-select" style="width: auto" [value]="5" [(ngModel)]="pageSize">
+                                    <option [value]="5">5 registros</option>
+                                  <option [value]="10">10 registros</option>
+                                  <option [value]="20">20 registros</option>
+                                </select>
+                        </div>
+                        <div class="col-6 d-flex">
+                            <button style="max-height:45px !important" (click)="getRequestWithDependents()" class="btn-primary col-4 ml-auto">
+                                    Descargar en excel
+                                </button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </ng-template>
     </div>
 </section>
 <ng-template [ngIf]="isLoading">

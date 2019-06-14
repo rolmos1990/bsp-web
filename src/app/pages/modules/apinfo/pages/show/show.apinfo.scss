@@ -79,6 +79,7 @@
     padding-right: 15px;
     justify-content: flex-end;
     align-items: flex-end;
+    z-index: 0;
 }
 
 .btn-fixed {
@@ -94,7 +95,7 @@
     background-position: center;
     background-image: url(https://res.cloudinary.com/merchanj/image/upload/v1560354331/Banesco_Seguros_Panama/AP/Icon_7.svg);
     background-size: 60px !important;
-    z-index: 10000;
+    z-index: 9000;
 }
 
 .btn-abajo {
