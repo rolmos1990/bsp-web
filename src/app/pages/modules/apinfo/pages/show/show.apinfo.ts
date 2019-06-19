@@ -132,10 +132,14 @@ export class ShowApinfo implements OnInit {
     return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
   }
 
+  @HostListener('window:scroll')
+  public onBottom() {
+    return window.scrollY && (window.scrollY >= 1580);
+  }
 
   @HostListener('window:scroll')
   public showScrollButton() {
-    return window.scrollY && (window.scrollY >= 298);
+    return document.getElementById('scroll') && window.scrollY && (window.scrollY >= 315);
   }
 
 

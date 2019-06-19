@@ -1,10 +1,12 @@
-<div id="scroll" class="contenedor-pantalla">
-    <ng-template [ngIf]="showScrollButton()">
-        <a [ngx-scroll-to]="'#portada'" class="btn-fixed">
-            <span style="color:#708090; font-size: 12px; font-weight: 700;">Ir al tope</span></a>
-    </ng-template>
-</div>
-<section class="apinfo">
+<!-- <div id="scroll" class="contenedor-pantalla" [ngStyle]="{'height': !showScrollButton() ? '0%': onBottom() ? '65%' : '100%', 'padding-bottom': !onBottom() ? '80px' : '10px'}">
+
+</div> -->
+<ng-template [ngIf]="showScrollButton()">
+    <a [ngx-scroll-to]="'#portada'" class="btn-fixed">
+        <span style="color:#708090; font-size: 12px; font-weight: 700;">Ir al tope</span>
+    </a>
+</ng-template>
+<section id="scroll" class="apinfo">
     <div class="portada">
         <div class="container">
             <div id="portada" class="row">
