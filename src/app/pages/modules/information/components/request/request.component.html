@@ -329,7 +329,7 @@
                         </div>
                         <div class="col-md-6 col-lg-4 mb-5">
                             <div class="form-group form-width">
-                                <label for="">Teléfono residencial: </label>
+                                <label for="">Teléfono residencial (opcional):  </label>
                                 <input type="text" placeholder="Ej: 2336789" class="form-control" [ngClass]="{'is-invalid': invalid('insuLocalNumber', forma), 'is-valid': valid('insuLocalNumber', forma)}" formControlName="insuLocalNumber">
                                 <div *ngIf="invalid('insuLocalNumber', forma)" class="invalid-feedback">
                                     Por favor escriba un número válido. Por ejemplo: 2123456.
@@ -567,7 +567,7 @@
                         </div>
                         <div class="col-md-6 col-lg-4 mb-5">
                             <div class="form-group form-width">
-                                <label for="">Teléfono oficina: </label>
+                                <label for="">Teléfono oficina (opcional): </label>
                                 <input type="text" placeholder="Ej: 2336789" class="form-control" [ngClass]="{'is-invalid': invalid('insuOfficeNumber', forma), 'is-valid': valid('insuOfficeNumber', forma)}" formControlName="insuOfficeNumber">
                                 <div *ngIf="invalid('insuOfficeNumber', forma)" class="invalid-feedback">
                                     Por favor escriba un número válido. Por ejemplo: 2123456.
@@ -865,7 +865,7 @@
         <div class="row">
             <div class="col-md-12 text-center">
                 <button class="btn btn-primary mb-2 mb-md-0 solicitar" (click)="saveRequest(true)">CONTINUAR</button>
-                <button class="btn btn-white ml-0 ml-md-4" (click)="saveRequest(false, 'success')">
+                <button class="btn btn-white ml-0 ml-md-4" style="display: none;" (click)="saveRequest(false, 'success')">
               <i class="fas fa-save text-dark"></i> GUARDAR PARA DESPUÉS
           </button>
             </div>
