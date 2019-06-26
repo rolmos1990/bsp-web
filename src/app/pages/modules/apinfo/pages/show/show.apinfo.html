@@ -23,9 +23,9 @@
     </div>
     <div class="contenedor">
         <div class="botones">
-            <button [ngx-scroll-to]="'#1'" class="boton-cuadrado todo-green"><strong>¿En qué consiste nuestro seguro de AP?</strong></button>
-            <button [ngx-scroll-to]="'#2'" class="boton-cuadrado">Coberturas</button>
-            <button [ngx-scroll-to]="'#3'" class="boton-cuadrado">Preguntas Frecuentes</button>
+            <button [ngx-scroll-to]="'#1'" [ngClass]="{'todo-green': (greenActivate==='1')}" (click)="greenActivate = '1'" class="boton-cuadrado">¿En qué consiste nuestro seguro de AP?</button>
+            <button [ngx-scroll-to]="'#2'" [ngClass]="{'todo-green': (greenActivate==='2')}" (click)="greenActivate = '2'" class="boton-cuadrado">Coberturas</button>
+            <button [ngx-scroll-to]="'#3'" [ngClass]="{'todo-green': (greenActivate==='3')}" (click)="greenActivate = '3'" class="boton-cuadrado">Preguntas Frecuentes</button>
         </div>
         <a id="1"></a>
         <div class="container">

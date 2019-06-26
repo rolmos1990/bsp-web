@@ -13,6 +13,7 @@ export class ShowApinfo implements OnInit {
   customClass = 'customClass';
   isFirstOpen = true;
   public slides = SLIDES;
+  public greenActivate = '1';
 
   public type: string = 'component';
 
