@@ -7,6 +7,7 @@ import {  environment } from 'src/environments/environment';
 
 const API_ENDPOINT_CREDIT_CARD= 'assignCreditcard';
 const API_ENDPOINT_DELIVERY_INFO = 'assignDeliverInformation';
+const API_ENDPOINT_FINISHREQUEST = 'finishRequest';
 
 @Injectable()
 export class PaymentService {
@@ -16,6 +17,16 @@ export class PaymentService {
     public assignDeliverInformation(form: any): Observable<any> {
       return this._http
         .post(environment.baseUrl.concat(API_ENDPOINT_DELIVERY_INFO), form, ServiceDirective.headers)
+        .pipe(
+          catchError(err => {
+            return ServiceDirective.handleError(err);
+          })
+        );
+    }
+
+    public finishRequest(form: any): Observable<any> {
+      return this._http
+        .post(environment.baseUrl.concat(API_ENDPOINT_FINISHREQUEST), form, ServiceDirective.headers)
         .pipe(
           catchError(err => {
             return ServiceDirective.handleError(err);

@@ -18,20 +18,25 @@ export class PaymentInfoComponent implements OnInit {
   public cards = CARDNAME;
   public disabled = false;
   public months = MONTHS;
+  public selectedBy = null;
+  public invalidForm = false;
   public payment: any;
   @Output() isLoading: EventEmitter<boolean> = new EventEmitter<boolean>();
   public years: Array<any> = [];
   @Input() requestId: string;
   @Output() nextStep: EventEmitter<any> = new EventEmitter<any>();
+  @Output() previousStep: EventEmitter<any> = new EventEmitter<any>();
 
   constructor(private _fb: FormBuilder, private _paymentService: PaymentService,
-  private _requestService: RequestService, private _toastr: NotifierService) {
+    private _requestService: RequestService, private _toastr: NotifierService) {
   }
 
   ngOnInit() {
-    window.scrollTo(0, 0);
-    this.generateForm();
-    this.getRequest();
+    console.log(this.selectedBy, this.invalidForm);
+    console.log(!this.selectedBy && this.invalidForm);
+    // window.scrollTo(0, 0);
+    // this.generateForm();
+    // this.getRequest();
   }
 
   public fillYearsList() {
@@ -55,20 +60,39 @@ export class PaymentInfoComponent implements OnInit {
         this.payment = response.result.request.insurance.coverageDetail;
       },
       error => {
-        console.log(error);
       }
     );
   }
 
-  public continuar(){
-    this.nextStep.emit();
-    this.isLoading.emit(false);
+  public continuar() {
+    if (this.selectedBy) {
+      let targetInformation = this.selectedBy.split(';');
+      let payload = { expireMonth: null, expireYear: null, cardNumber: null, requestId: null };
+      payload.expireMonth = Number(targetInformation[1]);
+      payload.expireYear = Number(targetInformation[2]);
+      payload.cardNumber = Number(targetInformation[0]);
+      payload.requestId = this.requestId;
+      this._paymentService.assignCreditcard(payload).subscribe(
+        response => {
+          this.nextStep.emit();
+          this.isLoading.emit(false);
+        },
+        error => {
+          this.isLoading.emit(false);
+        }
+      );
+      // this.nextStep.emit();
+      // this.isLoading.emit(false);
+    } else {
+      this.invalidForm = true;
+    }
+    console.log(!this.selectedBy && this.invalidForm);
   }
 
   public assignPaymentCard() {
     this.markAllAsTouched();
     if (this.formaPayment.valid) {
-    //if (true) {
+      //if (true) {
       this.isLoading.emit(true);
       let payload = this.formaPayment.value;
       payload.expireMonth = Number(payload.expireMonth);
@@ -76,18 +100,15 @@ export class PaymentInfoComponent implements OnInit {
       payload.cardNumber = Number(payload.cardNumber);
       this._paymentService.assignCreditcard(payload).subscribe(
         response => {
-          console.log(response);
           this.nextStep.emit();
           this.isLoading.emit(false);
         },
         error => {
-          console.log(error);
           this.isLoading.emit(false);
         }
       );
     } else {
       this._toastr.notify('error', 'Faltan campos por completar. Por favor, revise y vuelva a enviar el formulario.');
-      console.log(this.formaPayment);
     }
   }
 
@@ -111,5 +132,7 @@ export class PaymentInfoComponent implements OnInit {
     });
     this.fillYearsList();
   }
-
+  public previus() {
+    this.previousStep.emit();
+  }
 }

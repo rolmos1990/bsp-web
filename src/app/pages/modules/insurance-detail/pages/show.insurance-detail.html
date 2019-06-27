@@ -408,26 +408,26 @@
                     </div>
                 </button>
                 <div class="row">
-                    <div class="col-md-6 col-lg-3 mb-2">
+                    <!-- <div class="col-md-6 col-lg-3 mb-2">
                         <h5><i class="fas fa-minus"></i> Nombre de la tarjeta:</h5>
                         <p class="mayu">{{request.creditCard.cardName}}</p>
-                    </div>
-                    <div class="col-md-6 col-lg-3 mb-2">
+                    </div> -->
+                    <div class="col col-md-6 mb-2">
                         <h5><i class="fas fa-minus"></i> Número de la tarjeta:</h5>
                         <p class="mayu">{{request.creditCard.cardNumber}}</p>
                     </div>
-                    <div class="col-md-6 col-lg-3 mb-2">
+                    <div class="col col-md-6 mb-2">
                         <h5><i class="fas fa-minus"></i> Fecha de vencimiento:</h5>
                         <p class="mayu">{{request.creditCard.expireMonth}}/{{request.creditCard.expireYear}}</p>
                     </div>
-                    <div class="col-md-6 col-lg-3 mb-2">
+                    <!-- <div class="col-md-6 col-lg-3 mb-2">
                         <h5><i class="fas fa-minus"></i> Tarjeta seleccionada para efectuar la póliza</h5>
-                    </div>
+                    </div> -->
                 </div>
             </accordion-group>
         </accordion>
 
-        <accordion>
+        <!-- <accordion>
             <accordion-group [panelClass]="customClass" [isOpen]="isFirstOpen">
                 <button class="btn btn-link btn-block clearfix" accordion-heading>
                     <div class="pull-left float-left titulo-accordion" style="margin-left:-15px;">
@@ -449,7 +449,7 @@
                     </div>
                 </div>
             </accordion-group>
-        </accordion>
+        </accordion> -->
     </div>
 </section>
 <ng-template [ngIf]="isLoading">

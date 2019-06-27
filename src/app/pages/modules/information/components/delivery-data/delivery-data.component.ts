@@ -1,8 +1,9 @@
-import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output, AfterViewInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { PaymentService } from '../../../core/services/payment.service';
 import { SCHEDULES } from '../../../core/utils/select.util';
 import { NotifierService } from 'angular-notifier';
+import { RequestService } from '../../../core/services/request.service';
 
 @Component({
   selector: 'bsp-delivery-data',
@@ -10,22 +11,27 @@ import { NotifierService } from 'angular-notifier';
   styleUrls: ['./delivery-data.component.scss']
 })
 export class DeliveryDataComponent implements OnInit {
-  
+
   public formaDelivery: FormGroup;
   public schedules = SCHEDULES;
   public disabled = false;
+  public date;
   @Input() requestId: string;
+  @Input() request: any;
   @Output() isLoading: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() success: EventEmitter<any> = new EventEmitter<any>();
+  @Output() previousStep: EventEmitter<any> = new EventEmitter<any>();
 
   constructor(private _fb: FormBuilder,
-              private _paymentService: PaymentService,
-              private _toastr: NotifierService) {
+    private _paymentService: PaymentService,
+    private _toastr: NotifierService) {
   }
 
   ngOnInit() {
-    window.scrollTo(0,0);
-    this.generateDeliveryForm();
+    // window.scrollTo(0, 0);
+    // this.generateDeliveryForm();
+    // this.getRequest();
+    this.date = new Date();
   }
 
   public generateDeliveryForm() {
@@ -46,7 +52,6 @@ export class DeliveryDataComponent implements OnInit {
   }
 
   public validateForm() {
-    console.log(this.formaDelivery.get('livingPlace').value);
     if (this.formaDelivery.get('livingPlace').value === 'Vivienda') {
       this.formaDelivery.get('placeDescription').clearValidators();
       this.formaDelivery.get('placeDescription').updateValueAndValidity();
@@ -65,7 +70,7 @@ export class DeliveryDataComponent implements OnInit {
     this.markAllAsTouched();
     this.validateForm();
     if (this.formaDelivery.valid) {
-    //if (true) {
+      //if (true) {
       this.isLoading.emit(true);
       this._paymentService.assignDeliverInformation(this.formaDelivery.value).subscribe(
         response => {
@@ -74,13 +79,11 @@ export class DeliveryDataComponent implements OnInit {
         },
         error => {
           this.isLoading.emit(false);
-          console.log(this.formaDelivery);
         }
       )
-      
+
     } else {
       this._toastr.notify('error', 'Faltan campos por completar. Por favor, revise y vuelva a enviar el formulario.');
-      console.log(this.formaDelivery);
     }
   }
 
@@ -90,6 +93,24 @@ export class DeliveryDataComponent implements OnInit {
 
   public valid(controlName: string, form: FormGroup) {
     return form.get(controlName).touched && form.get(controlName).valid;
+  }
+
+  public previus() {
+    this.previousStep.emit();
+
+  }
+
+  continuar() {
+    this.isLoading.emit(true);
+    this._paymentService.finishRequest({ requestId: this.requestId }).subscribe(
+      response => {
+        this.success.emit();
+        this.isLoading.emit(false);
+      },
+      error => {
+        this.isLoading.emit(false);
+      }
+    )
   }
 
 }

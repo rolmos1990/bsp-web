@@ -31,7 +31,6 @@ export class ShowInsuranceDetailComponent implements OnInit {
       response => {
         this.request = response.result.request;
         this.getDependents();
-        console.log(this.request);
       },
       error => {
         console.log(error);

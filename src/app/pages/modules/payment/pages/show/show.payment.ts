@@ -26,7 +26,6 @@ export class ShowPayment implements OnInit{
   }
 
   guardarCambios(){
-    console.log(this.forma);
   }
 
   navegarThanks(){

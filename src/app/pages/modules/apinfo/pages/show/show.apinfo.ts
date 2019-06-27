@@ -127,7 +127,6 @@ export class ShowApinfo implements OnInit {
   }
 
   public onIndexChange(index: number) {
-    console.log('Swiper index: ', index);
   }
   public get _isMobile() {
     return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);

@@ -44,11 +44,9 @@ export class ShowPolicies implements OnInit {
       response => {
         this.requests = response.result.requests;
         this.collectionSize = this.requests.length * 5;
-        console.log(this.collectionSize);
         this.requests.forEach(element=>{
           this.attachments.push(null);
         })
-        console.log(response);
         this.isLoading = false;
       }, error => {
         this.isLoading = false;

@@ -34,9 +34,7 @@ export class ShowComponent implements OnInit {
       response => {
         this.isLoading = false;
         this.coverages = response.result.insurances;
-        console.log(response);
       }, error => {
-        console.log(error);
       }
     );
   }

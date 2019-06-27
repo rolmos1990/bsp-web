@@ -105,7 +105,6 @@ export class ShowComponent implements OnInit {
       this._userService.createUser(payload).subscribe(
         response => {
           this._router.navigate(['cobertura', response.result.user.id]);
-          console.log(response);
         }, error => {
           console.error(error);
           this.isLoading = false;

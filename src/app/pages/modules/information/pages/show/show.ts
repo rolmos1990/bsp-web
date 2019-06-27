@@ -1,8 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ArchwizardModule, WizardComponent } from 'angular-archwizard';
-import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
+import { RequestService } from '../../../core/services/request.service';
 
 
 @Component({
@@ -13,23 +14,29 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class ShowInformationComponent implements OnInit {
 
-public flag: boolean = false;
-public formulario: FormGroup;
-public requestId: string;
-public isLoading: boolean;
-@ViewChild('wizard') wizard: WizardComponent;
+  public flag: boolean = false;
+  public formulario: FormGroup;
+  public requestId: string;
+  public request: any = null;
+  public isLoading: boolean;
+  @ViewChild('wizard') wizard: WizardComponent;
 
 
-  constructor(private modalService: NgbModal, private fb: FormBuilder, private _router: Router, private _route: ActivatedRoute) {
+  constructor(private modalService: NgbModal, private fb: FormBuilder, private _requestService: RequestService,
+    private _router: Router, private _route: ActivatedRoute) {
     this.requestId = _route.snapshot.paramMap.get('requestId');
   }
 
   ngOnInit() {
     this.isLoading = true;
-}
-  public inicio(){
+  }
+  public inicio() {
     window.scrollTo(0, 0);
     this.wizard.model.navigationMode.goToNextStep();
+    if (this.wizard.model.currentStepIndex === 1) {
+      this.getRequest();
+    }
+
   }
 
   public getPosition(id: string) {
@@ -59,12 +66,27 @@ public isLoading: boolean;
     }, 25);
   }
 
-  showSucess():void{
-    window.scrollTo(0, 0); 
+  showSucess(): void {
+    window.scrollTo(0, 0);
     this.flag = true;
   }
 
-  open(content) {
-    this.modalService.open(content, {centered: true,size: 'lg'});
+  public anterior() {
+    window.scrollTo(0, 0);
+    this.wizard.model.navigationMode.goToPreviousStep();
   }
+
+  open(content) {
+    this.modalService.open(content, { centered: true, size: 'lg' });
+  }
+  public getRequest() {
+    this._requestService.getRequest(this.requestId).subscribe(
+      response => {
+        this.request = response;
+      },
+      error => {
+      }
+    );
+  }
+
 }
