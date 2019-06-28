@@ -66,6 +66,7 @@ export class PaymentInfoComponent implements OnInit {
 
   public continuar() {
     if (this.selectedBy) {
+      this.isLoading.emit(true);
       let targetInformation = this.selectedBy.split(';');
       let payload = { expireMonth: null, expireYear: null, cardNumber: null, requestId: null };
       payload.expireMonth = Number(targetInformation[1]);

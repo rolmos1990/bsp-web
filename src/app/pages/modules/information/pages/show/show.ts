@@ -80,11 +80,14 @@ export class ShowInformationComponent implements OnInit {
     this.modalService.open(content, { centered: true, size: 'lg' });
   }
   public getRequest() {
+    this.isLoading = true;
     this._requestService.getRequest(this.requestId).subscribe(
       response => {
         this.request = response;
+        this.isLoading = false;
       },
       error => {
+        this.isLoading = false;
       }
     );
   }
