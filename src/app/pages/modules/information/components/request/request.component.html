@@ -290,12 +290,15 @@
                         </div>
                         <div class="col-md-6 col-lg-4 mb-5">
                             <div class="form-group form-width">
-                                <label for="">Lugar de nacimiento (País /Provincia): </label>
-                                <input type="text" class="form-control" [ngClass]="{'is-invalid': invalid('insuBirthplace', forma), 'is-valid': valid('insuBirthplace', forma)}" formControlName="insuBirthplace">
-                                <div *ngIf="invalid('insuBirthplace', forma)" class="invalid-feedback">
-                                    Por favor escriba su lugar de nacimiento. Por ejemplo: Panamá.
+                                <label for="">Lugar de nacimiento: </label>
+                                <select class="form-control {{forma.value.insuCountryId === null ? 'placeholder' : ''}}" [ngClass]="{'is-invalid': invalid('insuCountryId', forma), 'is-valid': valid('insuCountryId', forma)}" formControlName="insuCountryId">
+                                    <option class="placeholder" [value]="null" disabled>Seleccione</option>
+                                    <option *ngFor="let country of countries; let i=index" [value]="country.id">{{country.name}}</option>
+                                  </select>
+                                  <div *ngIf="invalid('insuCountryId', forma)" class="invalid-feedback">
+                                    Disculpe, este campo es requerido.
                                 </div>
-                                <div *ngIf="valid('insuBirthplace', forma)" class="valid-feedback">
+                                <div *ngIf="valid('insuCountryId', forma)" class="valid-feedback">
                                     ¡Excelente!
                                 </div>
                             </div>
@@ -486,10 +489,10 @@
                         </div>
                         <div class="col-md-6 col-lg-4 mb-5">
                             <div class="form-group form-width">
-                                <label for="">Tiempo en esta ocupación (Meses): </label>
-                                <input type="text" placeholder="4 meses" class="form-control" [ngClass]="{'is-invalid': invalid('insuOccupationTime', forma), 'is-valid': valid('insuOccupationTime', forma)}" formControlName="insuOccupationTime">
+                                <label style="font-size: 14px;" for="">Tiempo en esta ocupación (meses o años): </label>
+                                <input type="text" placeholder="4 Meses" class="form-control" [ngClass]="{'is-invalid': invalid('insuOccupationTime', forma), 'is-valid': valid('insuOccupationTime', forma)}" formControlName="insuOccupationTime">
                                 <div *ngIf="invalid('insuOccupationTime', forma)" class="invalid-feedback">
-                                    Por favor indique el tiempo que lleva en esta ocupación. Por ejemplo: 4 meses.
+                                    Por favor indique el tiempo que lleva en esta ocupación. Por ejemplo: 4 Meses.
                                 </div>
                                 <div *ngIf="valid('insuOccupationTime', forma)" class="valid-feedback">
                                     ¡Excelente!
@@ -552,14 +555,20 @@
                         </div>
                         <div class="col-md-6 col-lg-4 mb-5">
                             <div class="form-group form-width">
-                                <label for="">Actividad económica: </label>
-                                <select class="form-control {{forma.value.contEconomicActivity === null ? 'placeholder' : ''}}" [ngClass]="{'is-invalid': invalid('contEconomicActivity', forma), 'is-valid': valid('contEconomicActivity', forma)}" formControlName="contEconomicActivity">
+                                <label for="">Actividad económica de la empresa donde labora: </label>
+
+                                <input type="text" class="form-control especial" [ngClass]="{'is-invalid': invalid('contEconomicActivity', forma), 'is-valid': valid('contEconomicActivity', forma)}" formControlName="contEconomicActivity">
+                                <div *ngIf="invalid('contEconomicActivity', forma)" class="invalid-feedback">
+                                    Disculpe, este campo es requerido.
+                                </div>
+
+                                <!-- <select class="form-control {{forma.value.contEconomicActivity === null ? 'placeholder' : ''}}" [ngClass]="{'is-invalid': invalid('contEconomicActivity', forma), 'is-valid': valid('contEconomicActivity', forma)}" formControlName="contEconomicActivity">
                                     <option class="placeholder" [value]="null" disabled>Seleccione</option>
                                     <option *ngFor="let occupation of occupations; let i=index" [value]="occupation.id">{{occupation.name}}</option>
                                 </select>
                                 <div *ngIf="invalid('contEconomicActivity', forma)" class="invalid-feedback">
                                     Disculpe, este campo es requerido.
-                                </div>
+                                </div> -->
                                 <div *ngIf="valid('contEconomicActivity', forma)" class="valid-feedback">
                                     ¡Excelente!
                                 </div>
@@ -567,7 +576,7 @@
                         </div>
                         <div class="col-md-6 col-lg-4 mb-5">
                             <div class="form-group form-width">
-                                <label for="">Teléfono oficina (opcional): </label>
+                                <label style="height: 48px;" for="">Teléfono oficina (opcional): </label>
                                 <input type="text" placeholder="Ej: 2336789" class="form-control" [ngClass]="{'is-invalid': invalid('insuOfficeNumber', forma), 'is-valid': valid('insuOfficeNumber', forma)}" formControlName="insuOfficeNumber">
                                 <div *ngIf="invalid('insuOfficeNumber', forma)" class="invalid-feedback">
                                     Por favor escriba un número válido. Por ejemplo: 2123456.
@@ -577,6 +586,56 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="col-md-6 col-lg-4 mb-5">
+                                <div style="height: 48px;" class="form-group form-width">
+                                    <label for="" style="font-size: 14px;" >Tax ID Number E.E.U.U. (solo si aplica):</label>
+                                    <input type="text"  [ngClass]="{'is-invalid': invalid('insuTaxIdentificationNumber', forma), 'is-valid': valid('insuTaxIdentificationNumber', forma)}" formControlName="insuTaxIdentificationNumber" placeholder="Ej: 123456789" class="form-control">
+                                    <div *ngIf="invalid('insuTaxIdentificationNumber', forma)" class="invalid-feedback">
+                                        Disculpe, este campo es requerido.
+                                    </div>
+                                    <div *ngIf="valid('insuTaxIdentificationNumber', forma)" class="valid-feedback">
+                                        ¡Excelente!
+                                    </div>
+                                </div>
+                            </div>
+                        <div class="col-md-6 mb-5">
+                            <div class="form-group form-width">
+                                <label for="">¿Tienes obligaciones fiscales con un país que no sea Panamá?:  </label>
+                                <div class="form-check mb-1">
+                                    <!-- <input class="form-check-input" name="insuGender" [ngClass]="{'is-invalid': invalid('insuGender', forma)}" type="radio" [value]="true" formControlName="insuGender"> -->
+                                    <input class="form-check-input" name="insuFiscalObligations" (click)="obligationTaxValidation(true)"  [value]="true" formControlName="insuFiscalObligations" type="radio"> 
+                                    <label class="form-check-label">
+                                      Si
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" name="insuFiscalObligations" (click)="obligationTaxValidation(false)"  [value]="false" formControlName="insuFiscalObligations" type="radio" checked>
+                                    <label class="form-check-label">
+                                  No
+                                </label>
+                                </div>
+                                <!-- <small *ngIf="invalid('insuGender', forma)" class="text-danger">
+                                    Por favor elija una respuesta.
+                                </small>
+                                <small *ngIf="valid('insuGender', forma)" class="text-success">
+                                    ¡Excelente!
+                                </small> -->
+                            </div>
+                        </div>
+                        <ng-template [ngIf]="obligationTax">
+                                <div class="col-md-6 mb-5">
+                                        <div class="form-group form-width">
+                                            <label for="" >Detalle el(los) país(es): </label>
+                                            <input type="text" [ngClass]="{'is-invalid': invalid('insuCountriesFiscalObligations', forma), 'is-valid': valid('insuCountriesFiscalObligations', forma)}" formControlName="insuCountriesFiscalObligations" placeholder="Ej: Colombia, Venezuela, Argentina" class="form-control">
+                                            <div *ngIf="invalid('insuCountriesFiscalObligations', forma)" class="invalid-feedback">
+                                                Disculpe, este campo es requerido.
+                                            </div>
+                                            <div *ngIf="valid('insuCountriesFiscalObligations', forma)" class="valid-feedback">
+                                                ¡Excelente!
+                                            </div>
+                                        </div>
+                                    </div>
+                        </ng-template>
                     </div>
                 </div>
             </accordion-group>

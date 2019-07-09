@@ -32,8 +32,6 @@ export class PaymentInfoComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.selectedBy, this.invalidForm);
-    console.log(!this.selectedBy && this.invalidForm);
     // window.scrollTo(0, 0);
     // this.generateForm();
     // this.getRequest();
@@ -87,7 +85,6 @@ export class PaymentInfoComponent implements OnInit {
     } else {
       this.invalidForm = true;
     }
-    console.log(!this.selectedBy && this.invalidForm);
   }
 
   public assignPaymentCard() {

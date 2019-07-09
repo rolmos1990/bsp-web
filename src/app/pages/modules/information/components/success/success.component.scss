@@ -1,22 +1,23 @@
 .cartel {
-  
+
   border: 1px solid #666666;
   background-color: #ebebeb;
   background-size: cover;
   padding: 15px;
   margin: 30px auto 30px auto;
   display: block;
-  @media (min-width: 1440px){
+
+  @media (min-width: 1440px) {
     width: 1062px;
     height: 126px;
   }
 }
 
-.flechi{
+.flechi {
   width: 30px;
 }
 
-.imgcheck{
+.imgcheck {
   float: left;
   width: 30px;
 }
@@ -27,7 +28,8 @@
   text-decoration: none solid rgb(58, 68, 84);
   font-weight: bold;
   margin-bottom: 4px;
-  @media (max-width: 768px){
+
+  @media (max-width: 768px) {
     text-align: center;
   }
 }
@@ -36,7 +38,8 @@
   font-size: 20px;
   color: #556176;
   text-decoration: none solid rgb(85, 97, 118);
-  @media (max-width: 768px){
+
+  @media (max-width: 768px) {
     text-align: center;
   }
 }
@@ -46,7 +49,8 @@ p {
   font-size: 20px;
   color: #556176;
   text-decoration: none solid rgb(85, 97, 118);
-  @media (max-width: 768px){
+
+  @media (max-width: 768px) {
     font-size: 16px;
   }
 }
@@ -55,7 +59,8 @@ p {
   width: 50px;
   height: 50px;
   margin-top: 20px;
-  @media (max-width: 768px){
+
+  @media (max-width: 768px) {
     margin: 0 auto;
     display: block;
   }
@@ -68,15 +73,17 @@ p {
   text-align: center;
   margin-top: 75px;
   display: block;
-  @media (max-width: 768px){
+
+  @media (max-width: 768px) {
     margin-top: 10px;
   }
-  
+
 }
 
 .contenedor {
   padding: 0 60px;
-  @media (max-width: 768px){
+
+  @media (max-width: 768px) {
     padding: 0 20px;
   }
 }
@@ -91,14 +98,15 @@ li {
   font-size: 20px;
   color: #556176;
   text-decoration: none solid rgb(85, 97, 118);
-  @media (max-width: 768px){
+
+  @media (max-width: 768px) {
     font-size: 18px;
   }
 }
 
 
-.numero-azul{
-  font-size: 32px;
+.numero-azul {
+  font-size: 24px;
   font-weight: 700;
   color: #003c71;
   text-decoration: none solid rgb(25, 117, 209);
@@ -109,18 +117,20 @@ li {
   color: #556176;
   text-decoration: none solid rgb(85, 97, 118);
   margin-bottom: 50px;
-  @media (max-width: 768px){
+
+  @media (max-width: 768px) {
     margin-bottom: 10px;
     font-size: 18px;
   }
 }
 
-.en-caso-two{
+.en-caso-two {
   font-size: 22px;
   color: #556176;
   text-decoration: none solid rgb(85, 97, 118);
   margin-bottom: 20px;
-  @media (max-width: 768px){
+
+  @media (max-width: 768px) {
     margin-bottom: 10px;
     font-size: 18px;
   }
@@ -134,10 +144,11 @@ h3.subtitulo {
   margin-bottom: 50px;
   display: inline-block;
   margin-right: 10px;
-  @media (max-width: 768px){
+
+  @media (max-width: 768px) {
     margin-bottom: 10px;
   }
-  
+
 }
 
 .informacion {
@@ -152,14 +163,15 @@ h3.subtitulo {
 
 
 
-.abajo{
-  div.col-md-6.pad{
-    @media (max-width: 1024px){
-      padding: 0!important;
+.abajo {
+  div.col-md-6.pad {
+    @media (max-width: 1024px) {
+      padding: 0 !important;
     }
   }
-  ul{
-    li{
+
+  ul {
+    li {
       li {
         list-style: none;
         font-size: 20px;
@@ -168,32 +180,132 @@ h3.subtitulo {
       }
     }
   }
-  p.informacion{
+
+  p.informacion {
     margin: 10px 0px 10px 60px;
   }
 
-  .imgcheck{
+  .imgcheck {
     margin-left: 20px;
     width: 30px;
   }
 
-  .red{
-    @media (max-width: 768px){
+  .red {
+    @media (max-width: 768px) {
       width: 20px;
     }
   }
 
-  .my-40{
+  .my-40 {
     margin: 40px 0;
-    @media (max-width: 768px){
+
+    @media (max-width: 768px) {
       margin: 0;
     }
   }
-  
-  .ml-40{
-    margin-left: 60px ;
-    @media (max-width: 768px){
+
+  .ml-40 {
+    margin-left: 60px;
+
+    @media (max-width: 768px) {
       margin: 0;
     }
   }
+}
+
+
+@media (max-width: 1200px) {
+  .img1 {
+    background-color: rgb(235, 235, 235);
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    display: flex;
+  }
+
+  .img_top {
+    position: absolute;
+    top: 20px;
+    right: 10px;
+    left: auto;
+  }
+
+  .img_bot {
+    position: absolute;
+    top: auto;
+    right: 10px;
+    left: auto;
+    bottom: 10px;
+  }
+
+  .img2 {
+    width: 60px;
+    height: 60px;
+    display: block;
+    margin: auto auto;
+  }
+
+  .img3 {
+    width: 100px;
+    height: 100px;
+    display: block;
+    margin: auto auto;
+  }
+}
+
+@media (max-width: 768px) {
+
+  .columnContainer {
+    display: none;
+  }
+}
+
+@media (min-width: 1200px) {
+  .img1 {
+    background-color: rgb(235, 235, 235);
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    display: flex;
+  }
+
+  .img_top {
+    position: absolute;
+    top: 0px;
+    right: 100px;
+    left: auto;
+  }
+
+  .img_bot {
+    position: absolute;
+    top: auto;
+    right: 10px;
+    left: auto;
+    bottom: 10px;
+  }
+
+  .img2 {
+    width: 90px;
+    height: 90px;
+    display: block;
+    margin: auto auto;
+  }
+
+  .img3 {
+    width: 130px;
+    height: 130px;
+    display: block;
+    margin: auto auto;
+  }
+}
+
+.columnContainer {
+  position: relative;
+  margin: 10px 0;
+}
+
+.columnDivider {
+  height: 100%;
+  border-right: 1px dashed #666;
+  position: absolute;
 }
