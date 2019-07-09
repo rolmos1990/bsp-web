@@ -587,8 +587,8 @@
                             </div>
                         </div>
                         <div class="col-md-6 col-lg-4 mb-5">
-                                <div style="height: 48px;" class="form-group form-width">
-                                    <label for="" style="font-size: 14px;" >Tax ID Number E.E.U.U. (solo si aplica):</label>
+                                <div class="form-group form-width">
+                                    <label for="" style="height: 48px;" >Tax ID Number E.E.U.U. (solo si aplica):</label>
                                     <input type="text"  [ngClass]="{'is-invalid': invalid('insuTaxIdentificationNumber', forma), 'is-valid': valid('insuTaxIdentificationNumber', forma)}" formControlName="insuTaxIdentificationNumber" placeholder="Ej: 123456789" class="form-control">
                                     <div *ngIf="invalid('insuTaxIdentificationNumber', forma)" class="invalid-feedback">
                                         Disculpe, este campo es requerido.

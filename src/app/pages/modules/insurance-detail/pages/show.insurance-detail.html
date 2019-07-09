@@ -116,8 +116,8 @@
                         <p class="mayu">{{request.contractor.cellphone}}</p>
                     </div>
                     <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
-                        <h5><i class="fas fa-minus"></i> Actividad económica:</h5>
-                        <p class="mayu">{{request.contractor.economicActivity.name}}</p>
+                        <h5><i class="fas fa-minus"></i> Actividad económica de la empresa donde labora:</h5>
+                        <p class="mayu">{{request?.contractor?.economicActivity}}</p>
                     </div>
                 </div>
             </accordion-group>
@@ -269,7 +269,7 @@
                     </div>
                     <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
                         <h5><i class="fas fa-minus"></i> Lugar de nacimiento:</h5>
-                        <p class="mayu">{{request?.insured?.birthplace}}</p>
+                        <p class="mayu">{{request?.insured?.country.name}}</p>
                     </div>
                     <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
                         <h5><i class="fas fa-minus"></i> Nacionalidad:</h5>
@@ -335,18 +335,34 @@
                         <h5><i class="fas fa-minus"></i> Casa / Apartamento:</h5>
                         <p class="mayu">{{request?.insured?.building}}</p>
                     </div>
-                    <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
-                        <h5><i class="fas fa-minus"></i> Teléfono residencial:</h5>
-                        <p class="mayu">{{request?.insured?.localNumber}}</p>
-                    </div>
+                    <ng-template [ngIf]="request && request.insured && request.insured.localNumber">
+                        <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
+                            <h5><i class="fas fa-minus"></i> Teléfono residencial:</h5>
+                            <p class="mayu">{{request?.insured?.localNumber}}</p>
+                        </div>
+                    </ng-template>
                     <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
                         <h5><i class="fas fa-minus"></i> Teléfono celular:</h5>
                         <p class="mayu">{{request?.insured?.cellphone}}</p>
                     </div>
-                    <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
-                        <h5><i class="fas fa-minus"></i> Teléfono oficina:</h5>
-                        <p class="mayu">{{request?.insured?.officeNumber}}</p>
-                    </div>
+                    <ng-template [ngIf]="request && request.insured && request.insured.officeNumber">
+                        <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
+                            <h5><i class="fas fa-minus"></i> Teléfono oficina:</h5>
+                            <p class="mayu">{{request?.insured?.officeNumber}}</p>
+                        </div>
+                    </ng-template>
+                    <ng-template [ngIf]="request && request.insured && request.insured.taxIdentificationNumber">
+                        <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
+                            <h5><i class="fas fa-minus"></i> Tax ID Number E.E.U.U. :</h5>
+                            <p class="mayu">{{request?.insured?.taxIdentificationNumber}}</p>
+                        </div>
+                    </ng-template>
+                    <ng-template [ngIf]="request && request.insured && request.insured.fiscalObligations">
+                        <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
+                            <h5><i class="fas fa-minus"></i> Obligaciones fiscales en otros países:</h5>
+                            <p class="mayu text-capitalize">{{request?.insured?.countriesFiscalObligations}}</p>
+                        </div>
+                    </ng-template>
                     <!-- <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
                         <h5><i class="fas fa-minus"></i> Email</h5>
                         <p class="mayu">{{request?.insured?.email}}</p>

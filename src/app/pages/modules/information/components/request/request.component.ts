@@ -194,7 +194,7 @@ export class RequestComponent implements OnInit {
       'insuGender': this._fb.control(insu.gender, Validators.required),
       'insuBirthday': this._fb.control(insu.birthday ? moment(insu.birthday.iso).format('YYYY-MM-DD') : null, [Validators.required, CustomValidatorDirective.dateValidator]),
       'insuCivilStatus': this._fb.control(insu.civilStatus, Validators.required),
-      'insuCountryId': this._fb.control(insu.country, Validators.required),
+      'insuCountryId': this._fb.control(insu.country ? insu.country.id : null, Validators.required),
       'insuNationalityId': this._fb.control(insu.nationality ? insu.nationality.id : null, [Validators.required]),
       'insuProfession': this._fb.control(insu.profession, [Validators.required]),
       'insuOccupation': this._fb.control(insu.occupation ? insu.occupation.id : null, [Validators.required]),
