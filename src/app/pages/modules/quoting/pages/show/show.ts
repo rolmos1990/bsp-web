@@ -16,6 +16,7 @@ import { DEDUCTIBLES } from '../../../core/utils/select.util';
 export class ShowComponent implements OnInit {
 
   public forma: FormGroup;
+  public invalidRadioSelect = false;
   public isLoading: boolean;
   public ocupaciones: Array<any> = [];
   private occupations: Array<any> = [];
@@ -81,7 +82,7 @@ export class ShowComponent implements OnInit {
       occupationId: ['', Validators.compose([Validators.required, Validators.minLength(5)])],
       birthday: ['', Validators.compose([Validators.required, Validators.maxLength(2), Validators.min(18), Validators.max(60)])],
       email: ['', Validators.compose([Validators.required, CustomValidatorDirective.customEmailValidator])],
-      same: [true, Validators.required]
+      same: [null, Validators.required]
     });
     this.getOccupations();
   }
@@ -93,6 +94,7 @@ export class ShowComponent implements OnInit {
   public submit() {
     if (this.forma.valid) {
       this.isLoading = true;
+      this.invalidRadioSelect = false;
       let payload = this.forma.value;
       if (payload.documentType !== 'Pasaporte') {
         payload.document = payload.document.concat('-').concat(payload.document2).concat('-').concat(payload.document3);
@@ -110,6 +112,8 @@ export class ShowComponent implements OnInit {
           this.isLoading = false;
         }
       );
+    } else {
+      this.invalidRadioSelect = true;
     }
   }
 
@@ -117,7 +121,9 @@ export class ShowComponent implements OnInit {
   public invalid(controlName: string, form: FormGroup) {
     return form.get(controlName).touched && !form.get(controlName).valid;
   }
-
+  public invalidRadio(controlName: string, form: FormGroup) {
+    return !form.get(controlName).valid;
+  }
   public valid(controlName: string, form: FormGroup) {
     return form.get(controlName).touched && form.get(controlName).valid;
   }

@@ -13,7 +13,7 @@
                     <!-- <p class="subtitulo">Los campos denotados con un  son obligatorios para continuar.</p> -->
                     <div class="row mb-5">
                         <div class="col-md-4 mb-5">
-                            <label for="">Nombre </label>
+                            <label for="">Nombres </label>
                             <input type="text" class="form-control" [ngClass]="{'is-invalid': invalid('contName', forma), 'is-valid': valid('contName', forma)}" formControlName="contName">
                             <div *ngIf="invalid('contName', forma)" class="invalid-feedback">
                                 Por favor escriba su nombre. Por ejemplo: Pedro.
@@ -23,7 +23,7 @@
                             </div>
                         </div>
                         <div class="col-md-4 mb-5">
-                            <label for="">Apellido </label>
+                            <label for="">Apellidos </label>
                             <input type="text" class="form-control" [ngClass]="{'is-invalid': invalid('contLastName', forma), 'is-valid': valid('contLastName', forma)}" formControlName="contLastName">
                             <div *ngIf="invalid('contLastName', forma)" class="invalid-feedback">
                                 Por favor escriba su apellido. Por ejemplo: Blanco.
@@ -290,7 +290,7 @@
                         </div>
                         <div class="col-md-6 col-lg-4 mb-5">
                             <div class="form-group form-width">
-                                <label for="">Lugar de nacimiento: </label>
+                                <label for="">País de nacimiento: </label>
                                 <select class="form-control {{forma.value.insuCountryId === null ? 'placeholder' : ''}}" [ngClass]="{'is-invalid': invalid('insuCountryId', forma), 'is-valid': valid('insuCountryId', forma)}" formControlName="insuCountryId">
                                     <option class="placeholder" [value]="null" disabled>Seleccione</option>
                                     <option *ngFor="let country of countries; let i=index" [value]="country.id">{{country.name}}</option>
@@ -487,7 +487,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6 col-lg-4 mb-5">
+                        <!-- <div class="col-md-6 col-lg-4 mb-5">
                             <div class="form-group form-width">
                                 <label style="font-size: 14px;" for="">Tiempo en esta ocupación (meses o años): </label>
                                 <input type="text" placeholder="4 Meses" class="form-control" [ngClass]="{'is-invalid': invalid('insuOccupationTime', forma), 'is-valid': valid('insuOccupationTime', forma)}" formControlName="insuOccupationTime">
@@ -537,7 +537,7 @@
                                     ¡Excelente!
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="col-md-6 col-lg-4 mb-5">
                             <div class="form-group form-width">
                                 <label for="">Ingreso mensual: </label>
@@ -553,7 +553,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6 col-lg-4 mb-5">
+                        <!-- <div class="col-md-6 col-lg-4 mb-5">
                             <div class="form-group form-width">
                                 <label for="">Actividad económica de la empresa donde labora: </label>
 
@@ -561,22 +561,14 @@
                                 <div *ngIf="invalid('contEconomicActivity', forma)" class="invalid-feedback">
                                     Disculpe, este campo es requerido.
                                 </div>
-
-                                <!-- <select class="form-control {{forma.value.contEconomicActivity === null ? 'placeholder' : ''}}" [ngClass]="{'is-invalid': invalid('contEconomicActivity', forma), 'is-valid': valid('contEconomicActivity', forma)}" formControlName="contEconomicActivity">
-                                    <option class="placeholder" [value]="null" disabled>Seleccione</option>
-                                    <option *ngFor="let occupation of occupations; let i=index" [value]="occupation.id">{{occupation.name}}</option>
-                                </select>
-                                <div *ngIf="invalid('contEconomicActivity', forma)" class="invalid-feedback">
-                                    Disculpe, este campo es requerido.
-                                </div> -->
                                 <div *ngIf="valid('contEconomicActivity', forma)" class="valid-feedback">
                                     ¡Excelente!
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="col-md-6 col-lg-4 mb-5">
                             <div class="form-group form-width">
-                                <label style="height: 48px;" for="">Teléfono oficina (opcional): </label>
+                                <label for="">Teléfono oficina (opcional): </label>
                                 <input type="text" placeholder="Ej: 2336789" class="form-control" [ngClass]="{'is-invalid': invalid('insuOfficeNumber', forma), 'is-valid': valid('insuOfficeNumber', forma)}" formControlName="insuOfficeNumber">
                                 <div *ngIf="invalid('insuOfficeNumber', forma)" class="invalid-feedback">
                                     Por favor escriba un número válido. Por ejemplo: 2123456.
@@ -588,7 +580,7 @@
                         </div>
                         <div class="col-md-6 col-lg-4 mb-5">
                                 <div class="form-group form-width">
-                                    <label for="" style="height: 48px;" >Tax ID Number E.E.U.U. (solo si aplica):</label>
+                                    <label for="" >Tax ID Number E.E.U.U. (solo si aplica):</label>
                                     <input type="text"  [ngClass]="{'is-invalid': invalid('insuTaxIdentificationNumber', forma), 'is-valid': valid('insuTaxIdentificationNumber', forma)}" formControlName="insuTaxIdentificationNumber" placeholder="Ej: 123456789" class="form-control">
                                     <div *ngIf="invalid('insuTaxIdentificationNumber', forma)" class="invalid-feedback">
                                         Disculpe, este campo es requerido.
@@ -600,7 +592,7 @@
                             </div>
                         <div class="col-md-6 mb-5">
                             <div class="form-group form-width">
-                                <label for="">¿Tienes obligaciones fiscales con un país que no sea Panamá?:  </label>
+                                <label for="">¿Tienes obligaciones fiscales con un país que no sea Panamá? <br> En caso afirmativo indicar el(los) país(es):  </label>
                                 <div class="form-check mb-1">
                                     <!-- <input class="form-check-input" name="insuGender" [ngClass]="{'is-invalid': invalid('insuGender', forma)}" type="radio" [value]="true" formControlName="insuGender"> -->
                                     <input class="form-check-input" name="insuFiscalObligations" (click)="obligationTaxValidation(true)"  [value]="true" formControlName="insuFiscalObligations" type="radio"> 
@@ -768,8 +760,8 @@
                                     </div>
                                     <div class="form-group">
                                         <ng-template #beneficiario>
-                                            <div class="text-justify">
-                                                <strong>Beneficiario Principal:</strong> <br> Persona o personas designadas por el asegurado para recibir el monto asegurado al momento de la muerte.
+                                            <div class="text-left">
+                                                <strong>Beneficiario Principal:</strong> <br> Persona o personas designadas por el asegurado para recibir el monto asegurado al momento de la muerte. <br>
                                                 <strong>Beneficiario Contingente:</strong> <br> Persona o personas designadas para recibir el monto asegurado por fallecimiento en caso de que el beneficiario principal haya fallecido para el momento de
                                                 la reclamación o durante dicho proceso.
                                             </div>
@@ -792,7 +784,7 @@
                                     </div>
                                     <div class="form-group">
                                         <ng-template #porcentaje>
-                                            <div class="text-justify">
+                                            <div class="text-left">
                                                 La suma total de participación de beneficiarios principales y contingentes no debe exceder el 100% cada uno; y estos no deben exceder de 5 beneficiarios. <br> Ejem: <br> Beneficiario principal #1 50%, Beneficiario
                                                 principal #2 50%, Beneficiario contingente #1 50%, Beneficiario contingente #2 50%. <br> Cada tipo de beneficiario suma 100% y no exceden los 5 beneficiarios.
                                             </div>
@@ -857,8 +849,8 @@
                     <div class="row mb-5">
                         <div class="marco-verde uno">
                             <ng-template #tolTemplate>
-                                <div class="text-justify">
-                                    <strong>Beneficiario Principal:</strong> <br> Persona o personas designadas por el asegurado para recibir el monto asegurado al momento de la muerte.
+                                <div class="text-left">
+                                    <strong>Beneficiario Principal:</strong> <br> Persona o personas designadas por el asegurado para recibir el monto asegurado al momento de la muerte. <br>
                                     <strong>Beneficiario Contingente:</strong> <br> Persona o personas designadas para recibir el monto asegurado por fallecimiento en caso de que el beneficiario principal haya fallecido para el momento de la reclamación
                                     o durante dicho proceso.
                                 </div>
@@ -916,7 +908,7 @@
                                 <progress-bar [progress]="100 - remainingPercentContingent" [color]="'#003c71'"></progress-bar>
                             </div>
                         </div>
-                        <small class="text-danger col-12 row mt-3" *ngIf="isPercentInvalid">Disculpa, la sumatoria de participación de los beneficiarios debe ser del 100 %, tanto para los principales como para los contingentes.</small>
+                        <small class="text-danger col-12 row mt-3" *ngIf="isPercentInvalid">Disculpa, la sumatoria de participación de los beneficiarios debe ser del 100 %, para los principales.</small>
                     </div>
                 </div>
             </accordion-group>

@@ -174,8 +174,8 @@
                                     <label class="form-check-label" for="same">Para otra persona</label>
                                 </div>
                             </div>
-                            <div *ngIf="invalid('same', forma)" class="invalid-feedback">
-                                Por favor selecciona una opción
+                            <div *ngIf="invalidRadioSelect && invalidRadio('same', forma)" style="display: block" class="invalid-feedback">
+                                * Por favor selecciona una opción
                             </div>
                             <button type="submit" [disabled]="flag6 == false" class="btn btn-primary my-5 " (click)="submit()">COTIZAR</button>
                         </div>
