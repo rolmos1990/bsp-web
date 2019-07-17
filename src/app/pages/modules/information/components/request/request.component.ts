@@ -262,12 +262,13 @@ export class RequestComponent implements OnInit {
 
   public get isPercentValid() {
     // return this.percentsChecked && ((this.remainingPercentContingent + this.remainingPercentMain) === 0);
-    return this.percentsChecked && (this.remainingPercentMain === 0);
+    return this.percentsChecked && ((this.remainingPercentMain === 0) && (this.remainingPercentContingent === 100 || this.remainingPercentContingent === 0) );
   }
 
   public get isPercentInvalid() {
     // return this.percentsChecked && ((this.remainingPercentContingent + this.remainingPercentMain) > 0);
-    return this.percentsChecked && (this.remainingPercentMain > 0);
+    // tslint:disable-next-line: max-line-length
+    return this.percentsChecked && ((this.remainingPercentMain > 0) || !(this.remainingPercentContingent === 100 || this.remainingPercentContingent === 0));
   }
 
   public saveRequest(proceed: boolean, tipo: string) {
