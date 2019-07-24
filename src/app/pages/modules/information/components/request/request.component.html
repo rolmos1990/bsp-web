@@ -111,7 +111,7 @@
                                 ¡Excelente!
                             </div>
                         </div>
-                        <div class="col-md-4 mb-5">
+                        <!-- <div class="col-md-4 mb-5">
                             <label for="">Actividad económica: </label>
                             <select class="form-control {{forma.value.contEconomicActivity === null ? 'placeholder' : ''}}" [ngClass]="{'is-invalid': invalid('contEconomicActivity', forma), 'is-valid': valid('contEconomicActivity', forma)}" formControlName="contEconomicActivity">
                                 <option class="placeholder" [value]="null" disabled>Seleccione</option>
@@ -123,7 +123,7 @@
                             <div *ngIf="valid('contEconomicActivity', forma)" class="valid-feedback">
                                 ¡Excelente!
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </accordion-group>
@@ -152,7 +152,7 @@
                     <div class="row">
                         <div class="col-md-6 col-lg-4 mb-5">
                             <div class="form-group form-width">
-                                <label for="">Nombre </label>
+                                <label for="">Nombres </label>
                                 <input type="text" class="form-control" [ngClass]="{'is-invalid': invalid('insuName', forma), 'is-valid': valid('insuName', forma)}" placeholder="" formControlName="insuName">
                                 <div *ngIf="invalid('insuName', forma)" class="invalid-feedback">
                                     Por favor escriba su nombre. Por ejemplo: Eduardo.
@@ -164,7 +164,7 @@
                         </div>
                         <div class="col-md-6 col-lg-4 mb-5">
                             <div class="form-group form-width">
-                                <label for="">Apellido </label>
+                                <label for="">Apellidos </label>
                                 <input type="text" class="form-control" [ngClass]="{'is-invalid': invalid('insuLastName', forma), 'is-valid': valid('insuLastName', forma)}" formControlName="insuLastName">
                                 <div *ngIf="invalid('insuLastName', forma)" class="invalid-feedback">
                                     Por favor escriba su nombre. Por ejemplo: Florez.

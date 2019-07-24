@@ -14,9 +14,8 @@
         <bsp-request (nextStep)="inicio()" (isLoading)="isLoading = $event" [requestId]="requestId"></bsp-request>
       </div>
     </aw-wizard-step>
-    <aw-wizard-step stepTitle="Datos de pago" [navigationSymbol]="{ symbol: '2' }">
+    <aw-wizard-step  stepTitle="Datos de pago" (stepEnter)="enterSecondStep($event)" [navigationSymbol]="{ symbol: '2' }">
       <div class="container">
-        <!-- Componente Hijo 2-->
         <bsp-payment-info (nextStep)="inicio()" (previousStep)="anterior()" (isLoading)="isLoading = $event"
           [requestId]="requestId">
         </bsp-payment-info>

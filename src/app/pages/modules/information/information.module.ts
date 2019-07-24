@@ -16,6 +16,7 @@ import { ThanksComponent } from './components/thanks/thanks.component';
 import { ProgressBarModule } from 'angular-progress-bar';
 import { CoreModule } from '../core/core.module';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
+import { ShowService } from './pages/show/show.service';
 
 
 @NgModule({
@@ -38,6 +39,9 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
     FormsModule,
     ReactiveFormsModule,
     TooltipModule.forRoot()
+  ],
+  providers: [
+    ShowService
   ]
 })
 export class InformationModule { }

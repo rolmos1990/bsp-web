@@ -1,17 +1,18 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { PaymentService } from '../../../core/services/payment.service';
 import { RequestService } from '../../../core/services/request.service';
 import { MONTHS, CARDNAME } from '../../../core/utils/select.util';
 import { CustomValidatorDirective } from '../../../core/directives/validations/custom-validations.directive';
 import { NotifierService } from 'angular-notifier';
+import { ShowService } from '../../pages/show/show.service';
 
 @Component({
   selector: 'bsp-payment-info',
   templateUrl: './payment-info.component.html',
   styleUrls: ['./payment-info.component.scss']
 })
-export class PaymentInfoComponent implements OnInit {
+export class PaymentInfoComponent {
   public isFirstOpen: boolean = true;
   public customClass: string = 'customClass';
   public formaPayment: FormGroup;
@@ -21,20 +22,18 @@ export class PaymentInfoComponent implements OnInit {
   public selectedBy = null;
   public invalidForm = false;
   public payment: any;
+  public creditCardsList;
   @Output() isLoading: EventEmitter<boolean> = new EventEmitter<boolean>();
   public years: Array<any> = [];
   @Input() requestId: string;
   @Output() nextStep: EventEmitter<any> = new EventEmitter<any>();
   @Output() previousStep: EventEmitter<any> = new EventEmitter<any>();
 
-  constructor(private _fb: FormBuilder, private _paymentService: PaymentService,
+  constructor(private _fb: FormBuilder, private _paymentService: PaymentService, private _showService: ShowService,
     private _requestService: RequestService, private _toastr: NotifierService) {
-  }
-
-  ngOnInit() {
-    // window.scrollTo(0, 0);
-    // this.generateForm();
-    // this.getRequest();
+    this._showService.changeToCreditCard.subscribe(values => {
+      this.getRequest();
+    });
   }
 
   public fillYearsList() {
@@ -53,11 +52,15 @@ export class PaymentInfoComponent implements OnInit {
   }
 
   public getRequest() {
+    this.isLoading.emit(true);
     this._requestService.getRequest(this.requestId).subscribe(
       response => {
         this.payment = response.result.request.insurance.coverageDetail;
+        let documentInfo = response.result.request.insured;
+        this.getClientByDocument(documentInfo);
       },
       error => {
+        this.isLoading.emit(false);
       }
     );
   }
@@ -65,11 +68,11 @@ export class PaymentInfoComponent implements OnInit {
   public continuar() {
     if (this.selectedBy) {
       this.isLoading.emit(true);
-      let targetInformation = this.selectedBy.split(';');
+      //let targetInformation = this.selectedBy.split(';');
       let payload = { expireMonth: null, expireYear: null, cardNumber: null, requestId: null };
-      payload.expireMonth = Number(targetInformation[1]);
-      payload.expireYear = Number(targetInformation[2]);
-      payload.cardNumber = Number(targetInformation[0]);
+      payload.expireMonth = Number('12');
+      payload.expireYear = Number('2020');
+      payload.cardNumber = Number(this.selectedBy.split('*').join('').trim());
       payload.requestId = this.requestId;
       this._paymentService.assignCreditcard(payload).subscribe(
         response => {
@@ -132,5 +135,44 @@ export class PaymentInfoComponent implements OnInit {
   }
   public previus() {
     this.previousStep.emit();
+  }
+  public getClientByDocument(documentInfo) {
+    if (documentInfo) {
+      this.isLoading.emit(true);
+      const payloadDocument = {
+        document: this.formatDocument(documentInfo)
+      };
+      this._paymentService.getClientByDocument(payloadDocument).subscribe(
+        response => {
+          this.creditCardsList = response.result.client.creditCard;
+
+          this.isLoading.emit(false);
+        },
+        error => {
+          this.isLoading.emit(false);
+        }
+      );
+    }
+  }
+
+  public formatDocument(documentInfo: any): any {
+    if (documentInfo && documentInfo.documentType && documentInfo.document) {
+      const document = documentInfo.document.split('-');
+      let newDocument = '';
+      document.forEach(element => {
+        newDocument = newDocument + element.toUpperCase().trim();
+      });
+      switch (documentInfo.documentType) {
+        case 'Cedula':
+          return newDocument;
+          break;
+        case 'Pasaporte':
+          return ('P' + newDocument);
+          break;
+        default:
+          return '';
+          break;
+      }
+    }
   }
 }

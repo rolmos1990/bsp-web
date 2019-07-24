@@ -4,6 +4,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { RequestService } from '../../../core/services/request.service';
+import { ShowService } from './show.service';
 
 
 @Component({
@@ -22,7 +23,7 @@ export class ShowInformationComponent implements OnInit {
   @ViewChild('wizard') wizard: WizardComponent;
 
 
-  constructor(private modalService: NgbModal, private fb: FormBuilder, private _requestService: RequestService,
+  constructor(private modalService: NgbModal, private fb: FormBuilder, private _requestService: RequestService, private _showService: ShowService,
     private _router: Router, private _route: ActivatedRoute) {
     this.requestId = _route.snapshot.paramMap.get('requestId');
   }
@@ -32,6 +33,7 @@ export class ShowInformationComponent implements OnInit {
   }
   public inicio() {
     window.scrollTo(0, 0);
+    this._showService.stepCredit = false;
     this.wizard.model.navigationMode.goToNextStep();
     if (this.wizard.model.currentStepIndex === 1) {
       this.getRequest();
@@ -73,6 +75,7 @@ export class ShowInformationComponent implements OnInit {
 
   public anterior() {
     window.scrollTo(0, 0);
+    this._showService.stepCredit = false;
     this.wizard.model.navigationMode.goToPreviousStep();
   }
 
@@ -90,6 +93,12 @@ export class ShowInformationComponent implements OnInit {
         this.isLoading = false;
       }
     );
+  }
+
+  public enterSecondStep(event) {
+    if (!this._showService.stepCredit) {
+      this._showService.changeCreditCard(true);
+    }
   }
 
 }

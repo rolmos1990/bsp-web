@@ -188,7 +188,7 @@ export class RequestComponent implements OnInit {
       'insuName': this._fb.control(insu.name, Validators.compose([Validators.required, CustomValidatorDirective.namesValidator])),//Segundo Formulario
       'insuLastName': this._fb.control(insu.lastName, Validators.compose([Validators.required, CustomValidatorDirective.namesValidator])),
       'insuDocumentType': [insu && insu.documentType ? insu.documentType : null, Validators.required],
-      'insuDocument': [insu && insu.document ? (insu.documentType === 'Pasaporte' ? insu.document : insu.document.split('-')[0]) : null, Validators.required],
+      'insuDocument': [(insu && insu.document ? (insu.documentType === 'Pasaporte' ? insu.document : insu.document.split('-')[0]) : null), Validators.required],
       'insuDocument2': [!insu || !insu.document || insu.documentType === 'Pasaporte' ? null : insu.document.split('-')[1]],
       'insuDocument3': [!insu || !insu.document || insu.documentType === 'Pasaporte' ? null : insu.document.split('-')[2]],
       'insuGender': this._fb.control(insu.gender, Validators.required),
@@ -219,6 +219,7 @@ export class RequestComponent implements OnInit {
       'insuCellphone': this._fb.control(insu.cellphone, Validators.compose([Validators.required, CustomValidatorDirective.cellphoneValidator])),
       'insuDependents': this._fb.array([])
     });
+    this.validations(insu);
     if (insu.province) {
       this.getDistricts(false, true);
     }
@@ -243,7 +244,7 @@ export class RequestComponent implements OnInit {
       this.forma.get('contNeighborhood').setValue(payload.insuNeighborhood);
       this.forma.get('contCellphone').setValue(payload.insuCellphone);
     }
-    this.validations();
+    //this.validations();
     let dependents = this.forma.get('insuDependents') as FormArray;
     dependents.controls.forEach(dependent => {
       dependent.get('paymentName').clearValidators();
@@ -322,10 +323,12 @@ export class RequestComponent implements OnInit {
   }
 
   public invalid(controlName: string, form: FormGroup) {
+    // console.log(form, controlName , form.get(controlName));
     return form.get(controlName).touched && !form.get(controlName).valid;
   }
 
   public valid(controlName: string, form: FormGroup) {
+    // console.log(form);
     return form.get(controlName).touched && form.get(controlName).valid;
   }
 
@@ -470,22 +473,32 @@ export class RequestComponent implements OnInit {
     return _date;
   }
 
-  public validations() {
-    if (this.forma.value.documentType === 'Pasaporte') {
-      this.forma.get('insuDocument').setValidators(Validators.compose([Validators.required, CustomValidatorDirective.documentValidator]));
+  public validations(insu?: any) {
+    if (this.forma.get('insuDocumentType').value  === 'Pasaporte') {
+      this.forma.controls['insuDocument'].setValue((insu && insu.document ? (insu.documentType === 'Pasaporte' ? insu.document : insu.document.split('-')[0]) : null));
+      this.forma.controls['insuDocument2'].setValue(!insu || !insu.document || insu.documentType === 'Pasaporte' ? null : insu.document.split('-')[1]);
+      this.forma.controls['insuDocument3'].setValue(!insu || !insu.document || insu.documentType === 'Pasaporte' ? null : insu.document.split('-')[2]);
       this.forma.get('insuDocument2').clearValidators();
       this.forma.get('insuDocument3').clearValidators();
-      this.forma.get('insuDocument').updateValueAndValidity();
-      this.forma.get('insuDocument2').updateValueAndValidity();
-      this.forma.get('insuDocument3').updateValueAndValidity();
+      this.forma.get('insuDocument').clearValidators();
+      this.forma.get('insuDocument').setValidators(Validators.compose([Validators.required, CustomValidatorDirective.documentValidator]));
+      //this.forma.get('insuDocument').updateValueAndValidity();
+      //this.forma.get('insuDocument2').updateValueAndValidity();
+      //this.forma.get('insuDocument3').updateValueAndValidity();
       this.forma.updateValueAndValidity();
     } else {
+      this.forma.controls['insuDocument'].setValue((insu && insu.document ? (insu.documentType === 'Pasaporte' ? insu.document : insu.document.split('-')[0]) : null));
+      this.forma.controls['insuDocument2'].setValue(!insu || !insu.document || insu.documentType === 'Pasaporte' ? null : insu.document.split('-')[1]);
+      this.forma.controls['insuDocument3'].setValue(!insu || !insu.document || insu.documentType === 'Pasaporte' ? null : insu.document.split('-')[2]);
+      this.forma.get('insuDocument').clearValidators();
+      this.forma.get('insuDocument2').clearValidators();
+      this.forma.get('insuDocument3').clearValidators();
       this.forma.get('insuDocument').setValidators(Validators.compose([Validators.required, CustomValidatorDirective.shortDocumentValidator]));
       this.forma.get('insuDocument2').setValidators(Validators.compose([Validators.required, Validators.maxLength(4), CustomValidatorDirective.RegularNumbersPositive]));
       this.forma.get('insuDocument3').setValidators(Validators.compose([Validators.required, Validators.maxLength(6), CustomValidatorDirective.RegularNumbersPositive]));
-      this.forma.get('insuDocument').updateValueAndValidity();
-      this.forma.get('insuDocument2').updateValueAndValidity();
-      this.forma.get('insuDocument3').updateValueAndValidity();
+      //this.forma.get('insuDocument').updateValueAndValidity();
+      //this.forma.get('insuDocument2').updateValueAndValidity();
+      //this.forma.get('insuDocument3').updateValueAndValidity();
       this.forma.updateValueAndValidity();
     }
   }
