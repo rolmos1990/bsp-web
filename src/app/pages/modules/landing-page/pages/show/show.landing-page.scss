@@ -1,189 +1,208 @@
 section.module-header {
-    //background-image: url("https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/family.png");
-    background-image: url("https://res.cloudinary.com/merchanj/image/upload/v1569942954/Banesco_Seguros_Panama/AP/Group_2.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+  //background-image: url("https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/family.png");
+  background-image: url("https://res.cloudinary.com/merchanj/image/upload/v1569942954/Banesco_Seguros_Panama/AP/Group_2.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .btn-primary {
-    width: 309px;
-    height: 59px;
-    border: 0;
-    border-radius: 4px;
-    background-color: #003c71;
-    font-size: 20px;
-    color: #ffffff;
-    font-weight: 400;
-    text-decoration: none solid rgb(255, 255, 255);
-    text-align: center;
+  width: 309px;
+  padding: 15px;
+  border: 0;
+  border-radius: 4px;
+  background-color: #003c71;
+  font-size: 20px;
+  color: #ffffff;
+  font-weight: 400;
+  text-decoration: none solid rgb(255, 255, 255);
+  text-align: center;
+  margin: 10px;
+}
+
+.btn-secondary {
+  width: 309px;
+  border: 0;
+  padding: 15px;
+  border-radius: 4px;
+  background-color: #f38d21;
+  font-size: 20px;
+  color: #ffffff;
+  font-weight: 400;
+  text-decoration: none solid rgb(255, 255, 255);
+  text-align: center;
+  margin: 10px;
 }
 
 .titulo {
-    margin: 0 auto;
-    font-size: 18px;
-    color: #556176;
-    text-decoration: none solid rgb(85, 97, 118);
-    text-align: justify;
-    @media (min-width: 1024px) {
-        width: 736px;
-        font-size: 26px;
-        text-align: center;
-    }
+  margin: 0 auto;
+  font-size: 18px;
+  color: #556176;
+  text-decoration: none solid rgb(85, 97, 118);
+  text-align: justify;
+  @media (min-width: 1024px) {
+    width: 736px;
+    font-size: 26px;
+    text-align: center;
+  }
 }
 
 .enlace {
-    font-size: 14px;
-    color: #003c71;
-    text-decoration: none solid rgb(19, 89, 158);
-    line-height: 38px;
-    text-align: right;
-    margin-left: 20px;
+  font-size: 14px;
+  color: #003c71;
+  text-decoration: none solid rgb(19, 89, 158);
+  line-height: 38px;
+  text-align: right;
+  margin-left: 20px;
 }
 
 h1 {
-    font-size: 42px;
-    color: #ffffff;
-    font-weight: 400;
-    text-decoration: none solid rgb(255, 255, 255);
-    letter-spacing: -2px;
+  font-size: 42px;
+  color: #ffffff;
+  font-weight: 400;
+  text-decoration: none solid rgb(255, 255, 255);
+  letter-spacing: -2px;
 }
 
 h3 {
-    font-size: 28px;
-    color: #ffffff;
-    text-decoration: none solid rgb(255, 255, 255);
-    line-height: 38px;
-    font-weight: 400;
+  font-size: 28px;
+  color: #ffffff;
+  text-decoration: none solid rgb(255, 255, 255);
+  line-height: 38px;
+  font-weight: 400;
 }
 
 h2.solicitud {
-    font-weight: 900;
+  font-weight: 900;
 }
 
 .negro {
-    color: #3a4454;
+  color: #3a4454;
 }
 
 .h1-segundo {
-    font-size: 40px;
-    color: #3a4454;
-    font-weight: 900;
-    text-decoration: none solid rgb(58, 68, 84);
-    text-align: center;
-    @media (min-width: 768px) {
-        font-size: 48px;
-    }
+  font-size: 40px;
+  color: #3a4454;
+  font-weight: 900;
+  text-decoration: none solid rgb(58, 68, 84);
+  text-align: center;
+  @media (min-width: 768px) {
+    font-size: 48px;
+  }
 }
 
 .p-segundo {
-    font-size: 18px;
-    color: #556176;
-    text-decoration: none solid rgb(85, 97, 118);
-    text-align: center;
-    @media (min-width: 768px) {
-        font-size: 22px;
-    }
+  font-size: 18px;
+  color: #556176;
+  text-decoration: none solid rgb(85, 97, 118);
+  text-align: center;
+  @media (min-width: 768px) {
+    font-size: 22px;
+  }
 }
 
 .padding {
-    padding: 180px 10px;
+  padding: 180px 10px;
 }
 
 .font-size-36 {
-    font-size: 36px
+  font-size: 36px;
 }
 
 .contenedor .texto {
-    width: 100%;
-    float: initial;
+  width: 100%;
+  float: initial;
 }
 
 .contenedor .imagen {
-    width: 100%;
-    float: initial;
+  width: 100%;
+  float: initial;
 }
 
 .texto {
-    padding: 0 20px;
+  padding: 0 20px;
 }
 
 .imagen.right img {
-    float: initial;
-    width: 100%;
+  float: initial;
+  width: 100%;
 }
 
 .imagen.left img {
-    float: initial;
-    width: 100%;
+  float: initial;
+  width: 100%;
 }
 
 .tercer-contenido {
-    background-image: linear-gradient(0deg, rgba(200, 200, 200, 0.41) 1%, #ffffff 100%);
-    background-position: center center;
-    padding: 0 0 130px 0;
+  background-image: linear-gradient(
+    0deg,
+    rgba(200, 200, 200, 0.41) 1%,
+    #ffffff 100%
+  );
+  background-position: center center;
+  padding: 0 0 130px 0;
 }
 
 .primer-contenido {
-    padding: 10px 0;
+  padding: 10px 0;
 }
 
 @media (min-width: 768px) {
-    .padding {
-        padding: 120px 60px;
-    }
-    h2.solicitud {
-        font-size: 36px;
-        color: #3a4454;
-        text-decoration: none solid rgb(58, 68, 84);
-        line-height: 36px;
-        text-align: center
-    }
+  .padding {
+    padding: 120px 60px;
+  }
+  h2.solicitud {
+    font-size: 36px;
+    color: #3a4454;
+    text-decoration: none solid rgb(58, 68, 84);
+    line-height: 36px;
+    text-align: center;
+  }
 }
 
 @media (min-width: 1024px) {
-    .contenedor {
-        width: 100%;
-        height: 500px;
-    }
-    .contenedor .texto {
-        width: 50%;
-        float: left;
-    }
-    .contenedor .imagen {
-        width: 50%;
-        float: left;
-    }
-    .texto {
-        padding: 50px 70px;
-    }
-    .imagen.right img {
-        float: right;
-        width: 566px;
-    }
-    .imagen.left img {
-        float: left;
-        width: 566px;
-    }
-    .primer-contenido {
-        padding: 70px 0;
-    }
+  .contenedor {
+    width: 100%;
+    height: 500px;
+  }
+  .contenedor .texto {
+    width: 50%;
+    float: left;
+  }
+  .contenedor .imagen {
+    width: 50%;
+    float: left;
+  }
+  .texto {
+    padding: 50px 70px;
+  }
+  .imagen.right img {
+    float: right;
+    width: 566px;
+  }
+  .imagen.left img {
+    float: left;
+    width: 566px;
+  }
+  .primer-contenido {
+    padding: 70px 0;
+  }
 }
 
 @media (min-width: 1200px) {
-    .container {
-        max-width: 1340px!important;
-    }
+  .container {
+    max-width: 1340px !important;
+  }
 }
 
 @media (min-width: 1440px) {
-    .texto {
-        padding: 50px 110px;
-    }
+  .texto {
+    padding: 50px 110px;
+  }
 }
 
 @media (min-width: 1920px) {
-    .texto {
-        padding: 50px 250px;
-    }
+  .texto {
+    padding: 50px 250px;
+  }
 }
