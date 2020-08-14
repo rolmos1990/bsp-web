@@ -17,6 +17,7 @@ import { DependentService } from './services/dependent.service';
 import { ActivityService } from './services/activities.service';
 import { CustomValidatorDirective } from './directives/validations/custom-validations.directive';
 import { BspLoaderComponent } from './components/bsp-loader/bsp-loader.component';
+import { BspLoaderxsComponent } from './components/bsp-loaderxs/bsp-loaderxs.component';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { CoveragesSortPipe } from './pipes/order.pipe';
 import { SearchPipe } from './pipes/search.pipe';
@@ -29,6 +30,7 @@ import { ExcelService } from './services/excel.service';
     NavBarComponent,
     FooterComponent,
     BspLoaderComponent,
+    BspLoaderxsComponent,
     ServiceDirective,
     CustomValidatorDirective,
     CoveragesSortPipe,
@@ -42,7 +44,7 @@ import { ExcelService } from './services/excel.service';
     HttpClientModule,
     BsDropdownModule.forRoot()
   ],
-  exports: [NavBarComponent, FooterComponent, BspLoaderComponent, FormsModule, CoveragesSortPipe, SearchPipe],
+  exports: [NavBarComponent, FooterComponent, BspLoaderComponent,BspLoaderxsComponent, FormsModule, CoveragesSortPipe, SearchPipe],
   providers: [
     UserService,
     PoliciesService,

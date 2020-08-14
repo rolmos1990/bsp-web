@@ -15,13 +15,15 @@ export class ShowComponent implements OnInit {
   public insuranceId: string;
   public actualCoverage: any;
   public isLoading: boolean;
+  public requestId: string;
 
   customClass = 'customClass';
   isFirstOpen = true;
 
   constructor(private modalService: NgbModal, private _coverageService: CoverageService,
-  private _newrequestService: RequestService, private _router: Router, private _route: ActivatedRoute) {
+  private _requestService: RequestService, private _router: Router, private _route: ActivatedRoute) {
     this.isLoading = true;
+    this.requestId = _route.snapshot.paramMap.get('requestId');
   }
 
 
@@ -44,10 +46,14 @@ export class ShowComponent implements OnInit {
     this._router.navigate(['formulario', this.insuranceId, 'rechazo']);
   }
 
-  private createNewRequest(modal: any) {
+  private updateRequest(modal: any) {
         modal.dismiss('Cross click');
     this.isLoading = true;
-    this._newrequestService.createNewRequest(this.insuranceId, this._route.snapshot.paramMap.get('userId')).subscribe(
+    const payload = {
+      insuranceId: this.insuranceId,
+      requestId: this.requestId
+    };
+    this._requestService.saveRequest(payload).subscribe(
       response => {
         this._router.navigate(['formulario', response.result.request.id]);
       }, error => {

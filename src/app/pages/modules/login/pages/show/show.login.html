@@ -21,9 +21,9 @@
       <div class="col-md-12">
         <div class="contenedor-tarjeta">
           <div class="container p-5">
-            <h4 class="titulo"> {{firtsTime ? "Restro de usuario" : "Inicio de sesión" }}</h4>
+            <h4 class="titulo"> {{firtsTime ? "Registro de usuario" : "Inicio de sesión" }}</h4>
             <form [formGroup]="myForm" (ngSubmit)="logIn(content)">
-              <label for="" class="mt-4 mb-3">Ingresa tu correo electronico:</label>
+              <label for="" class="mt-4 mb-3">Ingresa tu correo electrónico:</label>
               <input type="text" class="form-control" formControlName="username" placeholder="Correo electronico">
 
               <label for="" class="my-3">Ingresa tu contraseña:</label>

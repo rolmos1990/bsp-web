@@ -1,659 +1,712 @@
 <section *ngIf="!isLoading" class="insurance-detail">
-    <h3 class="titulo">Datos de la póliza y del asegurado</h3>
-    <div class="container">
-        <div class="pull-left float-left titulo-accordion my-4" style="margin-left:-15px;">
-            Información de la poliza
+  <h3 class="titulo">Datos de la póliza y del asegurado</h3>
+  <div class="container">
+    <div
+      class="pull-left float-left titulo-accordion my-4"
+      style="margin-left: -15px;"
+    >
+      Información de la póliza
+    </div>
+    <div class="row col-md-12 justify-content-center">
+      <div class="cuadrado top">
+        <div class="superior">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-12">
+                <h5
+                  style="
+                    font-weight: 700;
+                    font-size: 14px !important;
+                    text-align: end;
+                    color: #556176;
+                  "
+                >
+                  3 cuotas mensuales de:
+                </h5>
+              </div>
+              <div class="col-md-12">
+                <h4 class="xmes">
+                  USD {{request?.insurance?.coverageDetail?.monthlyPrime}}
+                </h4>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <img
+                  src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/icono1.png"
+                  alt=""
+                  class=""
+                />
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="row col-md-12 justify-content-center">
-            <div class="cuadrado top">
-                <div class="superior">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <h5 style="font-weight: 700; font-size: 14px !important; text-align: end; color:#556176;">3 cuotas mensuales de:</h5>
-                            </div>
-                            <div class="col-md-12">
-                                <h4 class="xmes">USD {{request.insurance.coverageDetail.monthlyPrime}}</h4>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/icono1.png" alt="" class="">
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="inferior">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-xs-12 col-md-12">
-                                <p class="text-center">Suma asegurada</p>
-                                <h2 class="text-center">USD {{(request.insurance.coverageDetail.insuredAmount | number:'1.0-0')}}</h2>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xs-12 col-md-12">
-                            <button class="btn ver-detalle" (click)="open(content)"><img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/flechita.svg" alt=""> Ver detalles</button>
-                        </div>
-                    </div>
-                </div>
+        <div class="inferior">
+          <div class="container">
+            <div class="row">
+              <div class="col-xs-12 col-md-12">
+                <p class="text-center">Suma asegurada</p>
+                <h2 class="text-center">
+                  USD {{(request?.insurance?.coverageDetail?.insuredAmount |
+                  number:'1.0-0')}}
+                </h2>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="container">
+          <div class="row">
+            <div class="col-xs-12 col-md-12">
+              <button class="btn ver-detalle" (click)="open(content)">
+                <img
+                  src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/flechita.svg"
+                  alt=""
+                />
+                Ver detalles
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <accordion *ngIf="!request.insured.same">
+      <accordion-group [panelClass]="customClass" [isOpen]="isFirstOpen">
+        <button class="btn btn-link btn-block clearfix" accordion-heading>
+          <div
+            class="pull-left float-left titulo-accordion"
+            style="margin-left: -15px;"
+          >
+            <i class="fas fa-angle-down"></i> Datos del solicitante
+          </div>
+        </button>
+        <div class="row">
+          <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
+            <h5><i class="fas fa-minus"></i> Nombre:</h5>
+            <p class="mayu">{{request?.contractor?.name}}</p>
+          </div>
+          <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
+            <h5><i class="fas fa-minus"></i> Apellido:</h5>
+            <p class="mayu">{{request?.contractor?.lastName}}</p>
+          </div>
+          <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
+            <h5><i class="fas fa-minus"></i> Provincia:</h5>
+            <p class="mayu">{{request?.contractor?.province?.name}}</p>
+          </div>
+          <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
+            <h5><i class="fas fa-minus"></i> Distrito:</h5>
+            <p class="mayu">{{request?.contractor?.district?.name}}</p>
+          </div>
+          <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
+            <h5><i class="fas fa-minus"></i> Corregimiento:</h5>
+            <p class="mayu">{{request?.contractor?.corregimiento?.name}}</p>
+          </div>
+          <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
+            <h5><i class="fas fa-minus"></i> Barriada / Urbanización:</h5>
+            <p class="mayu">{{request?.contractor?.neighborhood}}</p>
+          </div>
+          <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
+            <h5><i class="fas fa-minus"></i> Calle / Avenida:</h5>
+            <p class="mayu">{{request?.contractor?.street}}</p>
+          </div>
+          <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
+            <h5><i class="fas fa-minus"></i> Casa / Apartamento:</h5>
+            <p class="mayu">{{request?.contractor?.building}}</p>
+          </div>
+          <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
+            <h5><i class="fas fa-minus"></i> Teléfono:</h5>
+            <p class="mayu">{{request?.contractor?.cellphone}}</p>
+          </div>
+        </div>
+    </accordion-group>
+    </accordion>
+
+    <accordion *ngIf="!request.insured.same">
+      <accordion-group [panelClass]="customClass" [isOpen]="isFirstOpen">
+        <button class="btn btn-link btn-block clearfix" accordion-heading>
+          <div
+            class="pull-left float-left titulo-accordion"
+            style="margin-left: -15px;"
+          >
+            <i class="fas fa-angle-down"></i> Datos del asegurado principal
+          </div>
+        </button>
+        <div class="row">
+          <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
+            <h5><i class="fas fa-minus"></i> Nombres:</h5>
+            <p class="mayu">{{request?.insured?.name}}</p>
+          </div>
+          <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
+            <h5><i class="fas fa-minus"></i> Apellidos:</h5>
+            <p class="mayu">{{request?.insured?.lastName}}</p>
+          </div>
+          <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
+            <h5><i class="fas fa-minus"></i> Cédula/Pasaporte:</h5>
+            <p class="mayu">{{request?.insured?.document}}</p>
+          </div>
+          <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
+            <h5><i class="fas fa-minus"></i> Sexo:</h5>
+            <p class="mayu">{{request?.insured?.gender}}</p>
+          </div>
+          <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
+            <h5><i class="fas fa-minus"></i> Fecha de nacimiento:</h5>
+            <p class="mayu">
+              {{request?.insured?.birthday?.iso | date: 'dd/MM/yyyy'}}
+            </p>
+          </div>
+          <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
+            <h5><i class="fas fa-minus"></i> Estado civil:</h5>
+            <p class="mayu">{{request?.insured?.civilStatus}}</p>
+          </div>
+          <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
+            <h5><i class="fas fa-minus"></i> País de nacimiento:</h5>
+            <p class="mayu">{{request?.insured?.country?.name}}</p>
+          </div>
+          <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
+            <h5><i class="fas fa-minus"></i> Nacionalidad:</h5>
+            <p class="mayu">{{request?.insured?.nationality?.name}}</p>
+          </div>
+          <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
+            <h5><i class="fas fa-minus"></i> Profesión:</h5>
+            <p class="mayu">{{request?.insured?.profession}}</p>
+          </div>
+          <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
+            <h5><i class="fas fa-minus"></i> Ocupación:</h5>
+            <p class="mayu">{{request?.insured?.occupation?.name}}</p>
+          </div>
+          <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
+            <h5><i class="fas fa-minus"></i> Empresa donde labora:</h5>
+            <p class="mayu">{{request?.insured?.company}}</p>
+          </div>
+          <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
+            <h5><i class="fas fa-minus"></i> Deportes que práctica:</h5>
+            <p class="mayu">{{request?.insured?.sports}}</p>
+          </div>
+          <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
+            <h5><i class="fas fa-minus"></i> Ingreso mensual:</h5>
+            <p>{{request?.insured?.monthlyIncome}}</p>
+          </div>
+          <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
+            <h5><i class="fas fa-minus"></i> Provincia:</h5>
+            <p class="mayu">{{request?.insured?.province?.name}}</p>
+          </div>
+          <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
+            <h5><i class="fas fa-minus"></i> Distrito:</h5>
+            <p class="mayu">{{request?.insured?.district?.name}}</p>
+          </div>
+          <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
+            <h5><i class="fas fa-minus"></i> Corregimiento:</h5>
+            <p class="mayu">{{request?.insured?.corregimiento?.name}}</p>
+          </div>
+          <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
+            <h5><i class="fas fa-minus"></i> Barriada / Urbanización:</h5>
+            <p class="mayu">{{request?.insured?.neighborhood}}</p>
+          </div>
+          <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
+            <h5><i class="fas fa-minus"></i> Calle / Avenida:</h5>
+            <p class="mayu">{{request?.insured?.street}}</p>
+          </div>
+          <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
+            <h5><i class="fas fa-minus"></i> Casa / Apartamento:</h5>
+            <p class="mayu">{{request?.insured?.building}}</p>
+          </div>
+          <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
+            <h5><i class="fas fa-minus"></i> Teléfono residencial:</h5>
+            <p class="mayu">{{request?.insured?.localNumber}}</p>
+          </div>
+          <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
+            <h5><i class="fas fa-minus"></i> Teléfono celular:</h5>
+            <p class="mayu">{{request?.insured?.cellphone}}</p>
+          </div>
+          <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
+            <h5><i class="fas fa-minus"></i> Teléfono residencial:</h5>
+            <p class="mayu">{{request?.insured?.officeNumber}}</p>
+          </div>
+          <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
+            <h5><i class="fas fa-minus"></i> Correo Electrónico:</h5>
+            <p class="mayu">{{request?.insured?.email}}</p>
+          </div>
+          <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
+            <h5><i class="fas fa-minus"></i> Tax ID Number E.E.U.U:</h5>
+            <p class="mayu">{{request?.insured?.taxIdentificationNumber}}</p>
+          </div>
+        </div>
+    </accordion-group>
+    </accordion>
+
+    <accordion *ngIf="request.insured.same">
+      <accordion-group [panelClass]="customClass" [isOpen]="isFirstOpen">
+        <button class="btn btn-link btn-block clearfix" accordion-heading>
+          <div
+            class="pull-left float-left titulo-accordion"
+            style="margin-left: -15px;"
+          >
+            <i class="fas fa-angle-down"></i> Datos del contratante como
+            asegurado principal
+          </div>
+        </button>
+        <div class="row">
+          <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
+            <h5><i class="fas fa-minus"></i> Nombres:</h5>
+            <p class="mayu">{{request?.insured?.name}}</p>
+          </div>
+          <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
+            <h5><i class="fas fa-minus"></i> Apellidos:</h5>
+            <p class="mayu">{{request?.insured?.lastName}}</p>
+          </div>
+          <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
+            <h5><i class="fas fa-minus"></i> Cédula/Pasaporte:</h5>
+            <p class="mayu">{{request?.insured?.document}}</p>
+          </div>
+          <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
+            <h5><i class="fas fa-minus"></i> Sexo:</h5>
+            <p class="mayu">{{request?.insured?.gender}}</p>
+          </div>
+          <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
+            <h5><i class="fas fa-minus"></i> Fecha de nacimiento:</h5>
+            <p class="mayu">
+              {{request?.insured?.birthday.iso | date: 'dd/MM/yyyy'}}
+            </p>
+          </div>
+          <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
+            <h5><i class="fas fa-minus"></i> Estado civil:</h5>
+            <p class="mayu">{{request?.insured?.civilStatus}}</p>
+          </div>
+          <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
+            <h5><i class="fas fa-minus"></i> Lugar de nacimiento:</h5>
+            <p class="mayu">{{request?.insured?.country.name}}</p>
+          </div>
+          <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
+            <h5><i class="fas fa-minus"></i> Nacionalidad:</h5>
+            <p class="mayu">{{request?.insured?.nationality.name}}</p>
+          </div>
+          <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
+            <h5><i class="fas fa-minus"></i> Profesión:</h5>
+            <p class="mayu">{{request?.insured?.profession}}</p>
+          </div>
+          <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
+            <h5><i class="fas fa-minus"></i> Ocupación:</h5>
+            <p class="mayu">{{request?.insured?.occupation.name}}</p>
+          </div>
+          <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
+            <h5><i class="fas fa-minus"></i> Empresa donde labora:</h5>
+            <p class="mayu">{{request?.insured?.company}}</p>
+          </div>
+          <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
+            <h5><i class="fas fa-minus"></i> Deportes que práctica:</h5>
+            <p class="mayu">{{request?.insured?.sports}}</p>
+          </div>
+          <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
+            <h5><i class="fas fa-minus"></i> Ingreso mensual:</h5>
+            <p>{{request?.insured?.monthlyIncome}}</p>
+          </div>
+          <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
+            <h5><i class="fas fa-minus"></i> Provincia:</h5>
+            <p class="mayu">{{request?.insured?.province.name}}</p>
+          </div>
+          <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
+            <h5><i class="fas fa-minus"></i> Distrito:</h5>
+            <p class="mayu">{{request?.insured?.district.name}}</p>
+          </div>
+          <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
+            <h5><i class="fas fa-minus"></i> Corregimiento:</h5>
+            <p class="mayu">{{request?.insured?.corregimiento.name}}</p>
+          </div>
+          <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
+            <h5><i class="fas fa-minus"></i> Barriada / Urbanización:</h5>
+            <p class="mayu">{{request?.insured?.neighborhood}}</p>
+          </div>
+          <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
+            <h5><i class="fas fa-minus"></i> Calle / Avenida:</h5>
+            <p class="mayu">{{request?.insured?.street}}</p>
+          </div>
+          <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
+            <h5><i class="fas fa-minus"></i> Casa / Apartamento:</h5>
+            <p class="mayu">{{request?.insured?.building}}</p>
+          </div>
+            <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
+              <h5><i class="fas fa-minus"></i> Teléfono residencial:</h5>
+              <p class="mayu">{{request?.insured?.localNumber}}</p>
+            </div>
+          <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
+            <h5><i class="fas fa-minus"></i> Teléfono celular:</h5>
+            <p class="mayu">{{request?.insured?.cellphone}}</p>
+          </div>
+            <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
+              <h5><i class="fas fa-minus"></i> Teléfono oficina:</h5>
+              <p class="mayu">{{request?.insured?.officeNumber}}</p>
+            </div>
+            <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
+              <h5><i class="fas fa-minus"></i> Tax ID Number E.E.U.U. :</h5>
+              <p class="mayu">{{request?.insured?.taxIdentificationNumber}}</p>
             </div>
         </div>
+      </accordion-group>
+    </accordion>
+    <ng-template [ngIf]="request.insured.documentFile">
         <accordion>
-            <accordion-group [panelClass]="customClass" [isOpen]="isFirstOpen">
-                <button class="btn btn-link btn-block clearfix" accordion-heading>
-                    <div class="pull-left float-left titulo-accordion" style="margin-left:-15px;">
-                        <i class="fas fa-angle-down"></i> Información del usuario
-                    </div>
-                </button>
-                <div class="row">
-                    <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
-                        <h5><i class="fas fa-minus"></i> Cedula / Pasaporte:</h5>
-                        <p class="mayu">{{request.user.document}}</p>
-                    </div>
-                    <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
-                        <h5><i class="fas fa-minus"></i> Ocupación:</h5>
-                        <p class="mayu">{{request.user.occupation.name ? request.user.occupation.name : request.user.occupation.id}}</p>
-                    </div>
-                    <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
-                        <h5><i class="fas fa-minus"></i> Edad:</h5>
-                        <p class="mayu">{{request.user.birthday}}</p>
-                    </div>
-                    <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
-                        <h5><i class="fas fa-minus"></i> Email:</h5>
-                        <p class="mayu">{{request.user.email}}</p>
-                    </div>
-                </div>
-            </accordion-group>
-        </accordion>
-
-        <accordion *ngIf="!request.insured.same">
-            <accordion-group [panelClass]="customClass" [isOpen]="isFirstOpen">
-                <button class="btn btn-link btn-block clearfix" accordion-heading>
-                    <div class="pull-left float-left titulo-accordion" style="margin-left:-15px;">
-                        <i class="fas fa-angle-down"></i> Datos del solicitante
-                    </div>
-                </button>
-                <div class="row">
-                    <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
-                        <h5><i class="fas fa-minus"></i> Nombre:</h5>
-                        <p class="mayu">{{request.contractor.name}}</p>
-                    </div>
-                    <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
-                        <h5><i class="fas fa-minus"></i> Apellido:</h5>
-                        <p class="mayu">{{request.contractor.lastName}}</p>
-                    </div>
-                    <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
-                        <h5><i class="fas fa-minus"></i> Provincia:</h5>
-                        <p class="mayu">{{request.contractor.province.name}}</p>
-                    </div>
-                    <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
-                        <h5><i class="fas fa-minus"></i> Distrito:</h5>
-                        <p class="mayu">{{request.contractor.district.name}}</p>
-                    </div>
-                    <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
-                        <h5><i class="fas fa-minus"></i> Corregimiento:</h5>
-                        <p class="mayu">{{request.contractor.corregimiento.name}}</p>
-                    </div>
-                    <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
-                        <h5><i class="fas fa-minus"></i> Barriada / Urbanización:</h5>
-                        <p class="mayu">{{request.contractor.neighborhood}}</p>
-                    </div>
-                    <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
-                        <h5><i class="fas fa-minus"></i> Calle / Avenida:</h5>
-                        <p class="mayu">{{request.contractor.street}}</p>
-                    </div>
-                    <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
-                        <h5><i class="fas fa-minus"></i> Casa / Apartamento:</h5>
-                        <p class="mayu">{{request.contractor.building}}</p>
-                    </div>
-                    <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
-                        <h5><i class="fas fa-minus"></i> Teléfono:</h5>
-                        <p class="mayu">{{request.contractor.cellphone}}</p>
-                    </div>
-                    <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
-                        <h5><i class="fas fa-minus"></i> Actividad económica de la empresa donde labora:</h5>
-                        <p class="mayu">{{request?.contractor?.economicActivity}}</p>
-                    </div>
-                </div>
-            </accordion-group>
-        </accordion>
-
-        <accordion *ngIf="!request.insured.same">
-            <accordion-group [panelClass]="customClass" [isOpen]="isFirstOpen">
-                <button class="btn btn-link btn-block clearfix" accordion-heading>
-                    <div class="pull-left float-left titulo-accordion" style="margin-left:-15px;">
-                        <i class="fas fa-angle-down"></i> Datos del asegurado principal
-                    </div>
-                </button>
-                <div class="row">
-                    <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
-                        <h5><i class="fas fa-minus"></i> Nombres:</h5>
-                        <p class="mayu">{{request.insured.name}}</p>
-                    </div>
-                    <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
-                        <h5><i class="fas fa-minus"></i> Apellidos:</h5>
-                        <p class="mayu">{{request.insured.lastName}}</p>
-                    </div>
-                    <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
-                        <h5><i class="fas fa-minus"></i> Cédula/Pasaporte:</h5>
-                        <p class="mayu">{{request.insured.document}}</p>
-                    </div>
-                    <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
-                        <h5><i class="fas fa-minus"></i> Sexo:</h5>
-                        <p class="mayu">{{request.insured.gender}}</p>
-                    </div>
-                    <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
-                        <h5><i class="fas fa-minus"></i> Fecha de nacimiento:</h5>
-                        <p class="mayu">{{request.insured.birthday.iso | date: 'dd/MM/yyyy'}}</p>
-                    </div>
-                    <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
-                        <h5><i class="fas fa-minus"></i> Estado civil:</h5>
-                        <p class="mayu">{{request.insured.civilStatus}}</p>
-                    </div>
-                    <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
-                        <h5><i class="fas fa-minus"></i> Lugar de nacimiento:</h5>
-                        <p class="mayu">{{request.insured.birthplace}}</p>
-                    </div>
-                    <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
-                        <h5><i class="fas fa-minus"></i> Nacionalidad:</h5>
-                        <p class="mayu">{{request.insured.nationality.name}}</p>
-                    </div>
-                    <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
-                        <h5><i class="fas fa-minus"></i> Profesión:</h5>
-                        <p class="mayu">{{request.insured.profession}}</p>
-                    </div>
-                    <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
-                        <h5><i class="fas fa-minus"></i> Ocupación:</h5>
-                        <p class="mayu">{{request.insured.occupation.name}}</p>
-                    </div>
-                    <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
-                        <h5><i class="fas fa-minus"></i> Empresa donde labora:</h5>
-                        <p class="mayu">{{request.insured.company}}</p>
-                    </div>
-                    <!-- <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
-                        <h5><i class="fas fa-minus"></i> Tiempo en esta ocupación:</h5>
-                        <p class="mayu">{{request.insured.occupationTime}}</p>
-                    </div> -->
-                    <!-- <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
-                        <h5><i class="fas fa-minus"></i> Descripción de funciones:</h5>
-                        <p class="mayu">{{request.insured.occupationDescription}}</p>
-                    </div> -->
-                    <!-- <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
-                        <h5><i class="fas fa-minus"></i> Otras ocupaciones:</h5>
-                        <p class="mayu">{{request.insured.otherOccupations}}</p>
-                    </div> -->
-                    <!-- <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
-                        <h5><i class="fas fa-minus"></i> Ocupaciones anteriores:</h5>
-                        <p class="mayu">{{request.insured.previousOccupations.name}}</p>
-                    </div> -->
-                    <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
-                        <h5><i class="fas fa-minus"></i> Deportes que práctica:</h5>
-                        <p class="mayu">{{request.insured.sports}}</p>
-                    </div>
-                    <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
-                        <h5><i class="fas fa-minus"></i> Ingreso mensual:</h5>
-                        <p>{{request.insured.monthlyIncome}}</p>
-                    </div>
-                    <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
-                        <h5><i class="fas fa-minus"></i> Provincia:</h5>
-                        <p class="mayu">{{request.insured.province.name}}</p>
-                    </div>
-                    <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
-                        <h5><i class="fas fa-minus"></i> Distrito:</h5>
-                        <p class="mayu">{{request.insured.district.name}}</p>
-                    </div>
-                    <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
-                        <h5><i class="fas fa-minus"></i> Corregimiento:</h5>
-                        <p class="mayu">{{request.insured.corregimiento.name}}</p>
-                    </div>
-                    <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
-                        <h5><i class="fas fa-minus"></i> Barriada / Urbanización:</h5>
-                        <p class="mayu">{{request.insured.neighborhood}}</p>
-                    </div>
-                    <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
-                        <h5><i class="fas fa-minus"></i> Calle / Avenida:</h5>
-                        <p class="mayu">{{request.insured.street}}</p>
-                    </div>
-                    <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
-                        <h5><i class="fas fa-minus"></i> Casa / Apartamento:</h5>
-                        <p class="mayu">{{request.insured.building}}</p>
-                    </div>
-                    <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
-                        <h5><i class="fas fa-minus"></i> Teléfono residencial:</h5>
-                        <p class="mayu">{{request.insured.localNumber}}</p>
-                    </div>
-                    <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
-                        <h5><i class="fas fa-minus"></i> Teléfono celular:</h5>
-                        <p class="mayu">{{request.insured.cellphone}}</p>
-                    </div>
-                </div>
-            </accordion-group>
-        </accordion>
-
-        <accordion *ngIf="request.insured.same">
-            <accordion-group [panelClass]="customClass" [isOpen]="isFirstOpen">
-                <button class="btn btn-link btn-block clearfix" accordion-heading>
-                    <div class="pull-left float-left titulo-accordion" style="margin-left:-15px;">
-                        <i class="fas fa-angle-down"></i> Datos del contratante como asegurado principal
-                    </div>
-                </button>
-                <div class="row">
-                    <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
-                        <h5><i class="fas fa-minus"></i> Nombres:</h5>
-                        <p class="mayu">{{request?.insured?.name}}</p>
-                    </div>
-                    <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
-                        <h5><i class="fas fa-minus"></i> Apellidos:</h5>
-                        <p class="mayu">{{request?.insured?.lastName}}</p>
-                    </div>
-                    <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
-                        <h5><i class="fas fa-minus"></i> Cédula/Pasaporte:</h5>
-                        <p class="mayu">{{request?.insured?.document}}</p>
-                    </div>
-                    <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
-                        <h5><i class="fas fa-minus"></i> Sexo:</h5>
-                        <p class="mayu">{{request?.insured?.gender}}</p>
-                    </div>
-                    <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
-                        <h5><i class="fas fa-minus"></i> Fecha de nacimiento:</h5>
-                        <p class="mayu">{{request?.insured?.birthday.iso | date: 'dd/MM/yyyy'}}</p>
-                    </div>
-                    <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
-                        <h5><i class="fas fa-minus"></i> Estado civil:</h5>
-                        <p class="mayu">{{request?.insured?.civilStatus}}</p>
-                    </div>
-                    <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
-                        <h5><i class="fas fa-minus"></i> Lugar de nacimiento:</h5>
-                        <p class="mayu">{{request?.insured?.country.name}}</p>
-                    </div>
-                    <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
-                        <h5><i class="fas fa-minus"></i> Nacionalidad:</h5>
-                        <p class="mayu">{{request?.insured?.nationality.name}}</p>
-                    </div>
-                    <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
-                        <h5><i class="fas fa-minus"></i> Profesión:</h5>
-                        <p class="mayu">{{request?.insured?.profession}}</p>
-                    </div>
-                    <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
-                        <h5><i class="fas fa-minus"></i> Ocupación:</h5>
-                        <p class="mayu">{{request?.insured?.occupation.name}}</p>
-                    </div>
-                    <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
-                        <h5><i class="fas fa-minus"></i> Empresa donde labora:</h5>
-                        <p class="mayu">{{request?.insured?.company}}</p>
-                    </div>
-                    <!-- <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
-                        <h5><i class="fas fa-minus"></i> Tiempo en esta ocupación:</h5>
-                        <p class="mayu">{{request?.insured?.occupationTime}}</p>
-                    </div> -->
-                    <!-- <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
-                        <h5><i class="fas fa-minus"></i> Descripción de funciones:</h5>
-                        <p class="mayu">{{request?.insured?.occupationDescription}}</p>
-                    </div> -->
-                    <!-- <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
-                        <h5><i class="fas fa-minus"></i> Otras ocupaciones:</h5>
-                        <p class="mayu">{{request?.insured?.otherOccupations}}</p>
-                    </div> -->
-                    <!-- <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
-                        <h5><i class="fas fa-minus"></i> Ocupaciones anteriores:</h5>
-                        <p class="mayu">{{request?.insured?.previousOccupations.name}}</p>
-                    </div> -->
-                    <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
-                        <h5><i class="fas fa-minus"></i> Deportes que práctica:</h5>
-                        <p class="mayu">{{request?.insured?.sports}}</p>
-                    </div>
-                    <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
-                        <h5><i class="fas fa-minus"></i> Ingreso mensual:</h5>
-                        <p>{{request?.insured?.monthlyIncome}}</p>
-                    </div>
-                    <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
-                        <h5><i class="fas fa-minus"></i> Provincia:</h5>
-                        <p class="mayu">{{request?.insured?.province.name}}</p>
-                    </div>
-                    <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
-                        <h5><i class="fas fa-minus"></i> Distrito:</h5>
-                        <p class="mayu">{{request?.insured?.district.name}}</p>
-                    </div>
-                    <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
-                        <h5><i class="fas fa-minus"></i> Corregimiento:</h5>
-                        <p class="mayu">{{request?.insured?.corregimiento.name}}</p>
-                    </div>
-                    <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
-                        <h5><i class="fas fa-minus"></i> Barriada / Urbanización:</h5>
-                        <p class="mayu">{{request?.insured?.neighborhood}}</p>
-                    </div>
-                    <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
-                        <h5><i class="fas fa-minus"></i> Calle / Avenida:</h5>
-                        <p class="mayu">{{request?.insured?.street}}</p>
-                    </div>
-                    <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
-                        <h5><i class="fas fa-minus"></i> Casa / Apartamento:</h5>
-                        <p class="mayu">{{request?.insured?.building}}</p>
-                    </div>
-                    <ng-template [ngIf]="request && request.insured && request.insured.localNumber">
-                        <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
-                            <h5><i class="fas fa-minus"></i> Teléfono residencial:</h5>
-                            <p class="mayu">{{request?.insured?.localNumber}}</p>
-                        </div>
+        <accordion-group [panelClass]="customClass" [isOpen]="isFirstOpen">
+            <button class="btn btn-link btn-block clearfix" accordion-heading>
+            <div
+                class="pull-left float-left titulo-accordion"
+                style="margin-left: -15px;"
+            >
+                <i class="fas fa-angle-down"></i> Datos Adjuntos Requeridos
+            </div>
+            </button>
+            <div class="row">
+            <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
+                <h5><i class="fas fa-minus"></i> Cédula / Pasaporte </h5>
+                <p class="mayu">
+                <a
+                    href="{{ request.insured.documentFile }}"
+                    download="{{ getFileInfo(request.insured.documentFile).url }}"
+                    target="_blank"
+                >
+                    <ng-template [ngIf]="getFileInfo(request.insured.documentFile).isImage">
+                    <img alt="logo" src="{{ getFileInfo(request.insured.documentFile).url }}" />
                     </ng-template>
-                    <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
-                        <h5><i class="fas fa-minus"></i> Teléfono celular:</h5>
-                        <p class="mayu">{{request?.insured?.cellphone}}</p>
-                    </div>
-                    <ng-template [ngIf]="request && request.insured && request.insured.officeNumber">
-                        <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
-                            <h5><i class="fas fa-minus"></i> Teléfono oficina:</h5>
-                            <p class="mayu">{{request?.insured?.officeNumber}}</p>
-                        </div>
+                    <ng-template [ngIf]="!getFileInfo(request.insured.documentFile).isImage">
+                        <img src="../../../../../../assets/img/pdf-logo.png" />
                     </ng-template>
-                    <ng-template [ngIf]="request && request.insured && request.insured.taxIdentificationNumber">
-                        <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
-                            <h5><i class="fas fa-minus"></i> Tax ID Number E.E.U.U. :</h5>
-                            <p class="mayu">{{request?.insured?.taxIdentificationNumber}}</p>
-                        </div>
-                    </ng-template>
-                    <ng-template [ngIf]="request && request.insured && request.insured.fiscalObligations">
-                        <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
-                            <h5><i class="fas fa-minus"></i> Obligaciones fiscales en otros países:</h5>
-                            <p class="mayu text-capitalize">{{request?.insured?.countriesFiscalObligations}}</p>
-                        </div>
-                    </ng-template>
-                    <!-- <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
-                        <h5><i class="fas fa-minus"></i> Email</h5>
-                        <p class="mayu">{{request?.insured?.email}}</p>
-                    </div> -->
-                </div>
-            </accordion-group>
+                    <br />
+                    <span style="text-transform: capitalize;">Ver Documento</span>
+                </a>
+                </p>
+            </div>
+            </div>
+        </accordion-group>
         </accordion>
-
-        <accordion>
-            <accordion-group [panelClass]="customClass" [isOpen]="isFirstOpen">
-                <button class="btn btn-link btn-block clearfix" accordion-heading>
-                        <div class="pull-left float-left titulo-accordion" style="margin-left:-15px;">
-                            <i class="fas fa-angle-down"></i> Datos de los beneficiarios
-                        </div>
-                    </button>
-                <div class="container">
-                    <div class="row mb-4">
-                        <div class="marco-verde uno">
-                            <h3 class="text-white">Beneficiarios</h3>
-                        </div>
-                        <div class="fondo-blanco">
-                            <div class="table-responsive">
-                                <table class="table table-hover">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col-2">Nombre(s) y apellido(s):</th>
-                                            <th scope="col-2">Cédula / Pasaporte:</th>
-                                            <th scope="col-2">Nacionalidad:</th>
-                                            <th scope="col-2">Fecha de nacimiento:</th>
-                                            <th scope="col-1">Parentesco:</th>
-                                            <th scope="col-1">Porcentaje (%):</th>
-                                            <th scope="col-1">Tipo:</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr *ngFor="let dependent of request.insured.dependents">
-                                            <td scope="row"><span class="font-weight-bold">{{dependent.name}} {{dependent.lastName}}</span></td>
-                                            <td>{{dependent.document}}</td>
-                                            <td>{{dependent.nationality.name}}</td>
-                                            <td>{{dependent.birthday.iso | date: 'dd/MM/yyyy'}}</td>
-                                            <td>{{dependent.relationship}}</td>
-                                            <td>{{dependent.percent}}</td>
-                                            <td>{{dependent.type}}</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </accordion-group>
-        </accordion>
-
-        <accordion>
-            <accordion-group [panelClass]="customClass" [isOpen]="isFirstOpen">
-                <button class="btn btn-link btn-block clearfix" accordion-heading>
-                    <div class="pull-left float-left titulo-accordion" style="margin-left:-15px;">
-                        <i class="fas fa-angle-down"></i> Tarjeta de crédito o débito
-                    </div>
-                </button>
-                <div class="row">
-                    <!-- <div class="col-md-6 col-lg-3 mb-2">
-                        <h5><i class="fas fa-minus"></i> Nombre de la tarjeta:</h5>
-                        <p class="mayu">{{request.creditCard.cardName}}</p>
-                    </div> -->
-                    <div class="col col-md-6 mb-2">
-                        <h5><i class="fas fa-minus"></i> Número de la tarjeta:</h5>
-                        <p class="mayu">{{request.creditCard.cardNumber}}</p>
-                    </div>
-                    <div class="col col-md-6 mb-2">
-                        <h5><i class="fas fa-minus"></i> Fecha de vencimiento:</h5>
-                        <p class="mayu">{{request.creditCard.expireMonth}}/{{request.creditCard.expireYear}}</p>
-                    </div>
-                    <!-- <div class="col-md-6 col-lg-3 mb-2">
-                        <h5><i class="fas fa-minus"></i> Tarjeta seleccionada para efectuar la póliza</h5>
-                    </div> -->
-                </div>
-            </accordion-group>
-        </accordion>
-
-        <!-- <accordion>
-            <accordion-group [panelClass]="customClass" [isOpen]="isFirstOpen">
-                <button class="btn btn-link btn-block clearfix" accordion-heading>
-                    <div class="pull-left float-left titulo-accordion" style="margin-left:-15px;">
-                        <i class="fas fa-angle-down"></i> Datos de entrega
-                    </div>
-                </button>
-                <div class="row">
-                    <div class="col-md-6 col-lg-4 mb-2">
-                        <h5><i class="fas fa-minus"></i> ¿Dónde deseas que te entreguemos tu carnet de afiliación?</h5>
-                        <p class="mayu">{{request.deliverInformation.livingPlace === 'Vivienda' ? 'Vivienda' : request.deliverInformation.placeDescription}}</p>
-                    </div>
-                    <div class="col-md-6 col-lg-4 mb-2">
-                        <h5><i class="fas fa-minus"></i> Punto de referencia:</h5>
-                        <p class="mayu">{{request.deliverInformation.referencePoint}}</p>
-                    </div>
-                    <div class="col-md-6 col-lg-4 mb-2">
-                        <h5><i class="fas fa-minus"></i> Horario en el que prefieres la entrega:</h5>
-                        <p class="mayu">{{request.deliverInformation.deliverTime}}</p>
-                    </div>
-                </div>
-            </accordion-group>
-        </accordion> -->
-    </div>
+    </ng-template>
+  </div>
 </section>
 <ng-template [ngIf]="isLoading">
-    <bsp-loader></bsp-loader>
+  <bsp-loader></bsp-loader>
 </ng-template>
 <ng-template #content let-modal>
-    <div class="modal-header">
-        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+  <div class="modal-header">
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
       <span aria-hidden="true" style="color: #556176;">&times;</span>
     </button>
-    </div>
-    <ng-template [ngIf]="isLoading">
-        <bsp-loader></bsp-loader>
-    </ng-template>
-    <div *ngIf="!isLoading" class="modal-body">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <!-- -->
-                </div>
-                <div class="col-md-6">
-                    <img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/menor.png" alt="" class="">
-                </div>
+  </div>
+  <ng-template [ngIf]="isLoading">
+    <bsp-loader></bsp-loader>
+  </ng-template>
+  <div *ngIf="!isLoading" class="modal-body">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <!-- -->
+        </div>
+        <div class="col-md-6">
+          <img
+            src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/menor.png"
+            alt=""
+            class=""
+          />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <h4 class="h4-verde">Cobertura completa:</h4>
+          <p>
+            * Se indican los porcentajes de la suma asegurada <br />
+            contratada segun el tipo de cobertura.
+          </p>
+
+          <div class="container cober coverage">
+            <div class="position-relative">
+              <div class="bolita"></div>
+              <accordion>
+                <accordion-group
+                  #muerte
+                  [panelClass]="customClass"
+                  [isOpen]="isFirstOpen"
+                >
+                  <button
+                    class="btn btn-link btn-block clearfix"
+                    accordion-heading
+                  >
+                    <div class="pull-left float-left lix">
+                      Muerte Accidental
+                    </div>
+                    <div *ngIf="!muerte.isOpen" class="float-right">
+                      <img
+                        src="https://res.cloudinary.com/merchanj/image/upload/v1559937359/Banesco_Seguros_Panama/AP/arrow3.png"
+                        alt=""
+                        class="arrow2"
+                      />
+                    </div>
+                    <div *ngIf="muerte.isOpen" class="float-right">
+                      <img
+                        src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/arrow2.svg"
+                        alt=""
+                        class="arrow2"
+                      />
+                    </div>
+                    <div class="porcentaje">
+                      {{request.insurance.coverageDetail.accidentalDeath}}%
+                    </div>
+                  </button>
+                  <p>
+                    Si el asegurado muere en un accidente, a los beneficiarios
+                    se les pagará el monto asegurado que contrató
+                    (indemnización). Ej.: accidentes de tránsito, sucesos
+                    imprevistos, homicidios dolosos y culposos.
+                  </p>
+                </accordion-group>
+              </accordion>
             </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <h4 class="h4-verde">Cobertura completa: </h4>
-                    <p>* Se indican los porcentajes de la suma asegurada <br> contratada segun el tipo de cobertura.</p>
 
-                    <div class="container cober coverage">
-                        <div class="position-relative">
-                            <div class="bolita"></div>
-                            <accordion>
-                                <accordion-group #muerte [panelClass]="customClass" [isOpen]="isFirstOpen">
-                                    <button class="btn btn-link btn-block clearfix" accordion-heading>
-                                    <div class="pull-left float-left lix">Muerte Accidental</div>
-                                    <div *ngIf="!muerte.isOpen" class="float-right">
-                                        <img src="https://res.cloudinary.com/merchanj/image/upload/v1559937359/Banesco_Seguros_Panama/AP/arrow3.png" alt="" class="arrow2">
-                                    </div>
-                                    <div *ngIf="muerte.isOpen" class="float-right">
-                                        <img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/arrow2.svg" alt="" class="arrow2">
-                                    </div>
-                                    <div class="porcentaje">
-                                        {{request.insurance.coverageDetail.accidentalDeath}}%
-                                    </div>
-                                    </button>
-                                    <p>Si el asegurado muere en un accidente, a los beneficiarios se les pagará el monto asegurado que contrató (indemnización). Ej.: accidentes de tránsito, sucesos imprevistos, homicidios dolosos y culposos.
-                                    </p>
-                                </accordion-group>
-                            </accordion>
-                        </div>
-
-                        <div class="position-relative">
-                            <div class="bolita"></div>
-                            <accordion>
-                                <accordion-group #funerarios [panelClass]="customClass">
-                                    <button class="btn btn-link btn-block clearfix" accordion-heading>
-                    <div class="pull-left float-left lix">Adelantos de Gastos Funerarios</div>
+            <div class="position-relative">
+              <div class="bolita"></div>
+              <accordion>
+                <accordion-group #funerarios [panelClass]="customClass">
+                  <button
+                    class="btn btn-link btn-block clearfix"
+                    accordion-heading
+                  >
+                    <div class="pull-left float-left lix">
+                      Adelantos de Gastos Funerarios
+                    </div>
                     <div *ngIf="!funerarios.isOpen" class="float-right">
-                        <img src="https://res.cloudinary.com/merchanj/image/upload/v1559937359/Banesco_Seguros_Panama/AP/arrow3.png" alt="" class="arrow2">
+                      <img
+                        src="https://res.cloudinary.com/merchanj/image/upload/v1559937359/Banesco_Seguros_Panama/AP/arrow3.png"
+                        alt=""
+                        class="arrow2"
+                      />
                     </div>
                     <div *ngIf="funerarios.isOpen" class="float-right">
-                        <img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/arrow2.svg" alt="" class="arrow2">
+                      <img
+                        src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/arrow2.svg"
+                        alt=""
+                        class="arrow2"
+                      />
                     </div>
                     <div class="porcentaje">
                       {{request.insurance.coverageDetail.funeraryAdvances}}%
                     </div>
-
                   </button>
-                                    <p>Adelantamos hasta el 25% la suma asegurada de gastos funerarios a los beneficiarios cuando ocurre la muerte accidental del asegurado. Ej.: si tu suma asegurada por muerte accidental es USD 10,000 te adelantamos hasta
-                                        USD 2,500.</p>
-                                </accordion-group>
-                            </accordion>
-                        </div>
+                  <p>
+                    Adelantamos hasta el 25% la suma asegurada de gastos
+                    funerarios a los beneficiarios cuando ocurre la muerte
+                    accidental del asegurado. Ej.: si tu suma asegurada por
+                    muerte accidental es USD 10,000 te adelantamos hasta USD
+                    2,500.
+                  </p>
+                </accordion-group>
+              </accordion>
+            </div>
 
-                        <div class="position-relative">
-                            <div class="bolita"></div>
-                            <accordion>
-                                <accordion-group #doble [panelClass]="customClass">
-                                    <button class="btn btn-link btn-block clearfix" accordion-heading>
-                    <div class="pull-left float-left lix">Doble Indemnización por Muerte por Accidente Específico</div>
+            <div class="position-relative">
+              <div class="bolita"></div>
+              <accordion>
+                <accordion-group #doble [panelClass]="customClass">
+                  <button
+                    class="btn btn-link btn-block clearfix"
+                    accordion-heading
+                  >
+                    <div class="pull-left float-left lix">
+                      Doble Indemnización por Muerte por Accidente Específico
+                    </div>
                     <div *ngIf="!doble.isOpen" class="float-right">
-                        <img src="https://res.cloudinary.com/merchanj/image/upload/v1559937359/Banesco_Seguros_Panama/AP/arrow3.png" alt="" class="arrow2">
+                      <img
+                        src="https://res.cloudinary.com/merchanj/image/upload/v1559937359/Banesco_Seguros_Panama/AP/arrow3.png"
+                        alt=""
+                        class="arrow2"
+                      />
                     </div>
                     <div *ngIf="doble.isOpen" class="float-right">
-                        <img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/arrow2.svg" alt="" class="arrow2">
+                      <img
+                        src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/arrow2.svg"
+                        alt=""
+                        class="arrow2"
+                      />
                     </div>
                     <div class="porcentaje">
-                        {{request.insurance.coverageDetail.dobleCompensation}}%
+                      {{request.insurance.coverageDetail.dobleCompensation}}%
                     </div>
                   </button>
-                                    <p>Cubrimos un porcentaje según el grado de discapacidad que pudiera presentar el asegurado a causa de un accidente sufrido.</p>
-                                </accordion-group>
-                            </accordion>
-                        </div>
+                  <p>
+                    Cubrimos un porcentaje según el grado de discapacidad que
+                    pudiera presentar el asegurado a causa de un accidente
+                    sufrido.
+                  </p>
+                </accordion-group>
+              </accordion>
+            </div>
 
-                        <div class="position-relative">
-                            <div class="bolita"></div>
-                            <accordion>
-                                <accordion-group #gastos [panelClass]="customClass">
-                                    <button class="btn btn-link btn-block clearfix" accordion-heading>
-                    <div class="pull-left float-left lix">Gastos Médicos por Accidente</div>
+            <div class="position-relative">
+              <div class="bolita"></div>
+              <accordion>
+                <accordion-group #gastos [panelClass]="customClass">
+                  <button
+                    class="btn btn-link btn-block clearfix"
+                    accordion-heading
+                  >
+                    <div class="pull-left float-left lix">
+                      Gastos Médicos por Accidente
+                    </div>
                     <div *ngIf="!gastos.isOpen" class="float-right">
-                        <img src="https://res.cloudinary.com/merchanj/image/upload/v1559937359/Banesco_Seguros_Panama/AP/arrow3.png" alt="" class="arrow2">
+                      <img
+                        src="https://res.cloudinary.com/merchanj/image/upload/v1559937359/Banesco_Seguros_Panama/AP/arrow3.png"
+                        alt=""
+                        class="arrow2"
+                      />
                     </div>
                     <div *ngIf="gastos.isOpen" class="float-right">
-                        <img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/arrow2.svg" alt="" class="arrow2">
+                      <img
+                        src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/arrow2.svg"
+                        alt=""
+                        class="arrow2"
+                      />
                     </div>
                     <div class="porcentaje">
-                        {{request.insurance.coverageDetail.medicalExpenses}}%
+                      {{request.insurance.coverageDetail.medicalExpenses}}%
                     </div>
                   </button>
-                                    <p>Cobertura complementaria donde te reembolsamos hasta un 10% de la suma asegurada para gastos médicos incurridos por accidentes.</p>
-                                </accordion-group>
-                            </accordion>
-                        </div>
+                  <p>
+                    Cobertura complementaria donde te reembolsamos hasta un 10%
+                    de la suma asegurada para gastos médicos incurridos por
+                    accidentes.
+                  </p>
+                </accordion-group>
+              </accordion>
+            </div>
 
-                        <div class="position-relative">
-                            <div class="bolita"></div>
-                            <accordion>
-                                <accordion-group #permanente [panelClass]="customClass">
-                                    <button class="btn btn-link btn-block clearfix" accordion-heading>
-                    <div class="pull-left float-left lix">Invalidez Permanente (Total o Parcial)</div>
+            <div class="position-relative">
+              <div class="bolita"></div>
+              <accordion>
+                <accordion-group #permanente [panelClass]="customClass">
+                  <button
+                    class="btn btn-link btn-block clearfix"
+                    accordion-heading
+                  >
+                    <div class="pull-left float-left lix">
+                      Invalidez Permanente (Total o Parcial)
+                    </div>
                     <div *ngIf="!permanente.isOpen" class="float-right">
-                        <img src="https://res.cloudinary.com/merchanj/image/upload/v1559937359/Banesco_Seguros_Panama/AP/arrow3.png" alt="" class="arrow2">
+                      <img
+                        src="https://res.cloudinary.com/merchanj/image/upload/v1559937359/Banesco_Seguros_Panama/AP/arrow3.png"
+                        alt=""
+                        class="arrow2"
+                      />
                     </div>
                     <div *ngIf="permanente.isOpen" class="float-right">
-                        <img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/arrow2.svg" alt="" class="arrow2">
+                      <img
+                        src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/arrow2.svg"
+                        alt=""
+                        class="arrow2"
+                      />
                     </div>
                     <div class="porcentaje">
-                        {{request.insurance.coverageDetail.permanentInhability}}%
+                      {{request.insurance.coverageDetail.permanentInhability}}%
                     </div>
                   </button>
-                                    <p>Duplicamos la suma asegurada por muerte accidental mientras el asegurado se transporta en un vehículo público (autobús, metro, taxi, etc) o si se ve envuelto en un incendio en algún edificio público (hotel, museo, cine,
-                                        teatro, etc).</p>
-                                </accordion-group>
-                            </accordion>
-                        </div>
+                  <p>
+                    Duplicamos la suma asegurada por muerte accidental mientras
+                    el asegurado se transporta en un vehículo público (autobús,
+                    metro, taxi, etc) o si se ve envuelto en un incendio en
+                    algún edificio público (hotel, museo, cine, teatro, etc).
+                  </p>
+                </accordion-group>
+              </accordion>
+            </div>
 
-                        <div class="position-relative">
-                            <div class="bolita"></div>
-                            <accordion>
-                                <accordion-group #emergencia [panelClass]="customClass">
-                                    <button class="btn btn-link btn-block clearfix" accordion-heading>
-                    <div class="pull-left float-left lix">Servicio de Emergencia Médica por Accidente</div>
+            <div class="position-relative">
+              <div class="bolita"></div>
+              <accordion>
+                <accordion-group #emergencia [panelClass]="customClass">
+                  <button
+                    class="btn btn-link btn-block clearfix"
+                    accordion-heading
+                  >
+                    <div class="pull-left float-left lix">
+                      Servicio de Emergencia Médica por Accidente
+                    </div>
                     <div *ngIf="!emergencia.isOpen" class="float-right">
-                        <img src="https://res.cloudinary.com/merchanj/image/upload/v1559937359/Banesco_Seguros_Panama/AP/arrow3.png" alt="" class="arrow2">
+                      <img
+                        src="https://res.cloudinary.com/merchanj/image/upload/v1559937359/Banesco_Seguros_Panama/AP/arrow3.png"
+                        alt=""
+                        class="arrow2"
+                      />
                     </div>
                     <div *ngIf="emergencia.isOpen" class="float-right">
-                        <img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/arrow2.svg" alt="" class="arrow2">
+                      <img
+                        src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/arrow2.svg"
+                        alt=""
+                        class="arrow2"
+                      />
                     </div>
                     <div class="porcentaje">
-                        {{request.insurance.coverageDetail.emergencyService}}%
+                      {{request.insurance.coverageDetail.emergencyService}}%
                     </div>
                   </button>
-                                    <p>Cuentas con un servicio de ambulancia por emergencia y urgencia médica sin costo adicional, así como con atención médica a domicilio para casos no urgentes mediante un copago. (ver Términos y Condiciones a continuación).</p>
-                                </accordion-group>
-                            </accordion>
-                        </div>
+                  <p>
+                    Cuentas con un servicio de ambulancia por emergencia y
+                    urgencia médica sin costo adicional, así como con atención
+                    médica a domicilio para casos no urgentes mediante un
+                    copago. (ver Términos y Condiciones a continuación).
+                  </p>
+                </accordion-group>
+              </accordion>
+            </div>
 
-                        <div class="position-relative">
-                            <div class="bolita"></div>
-                            <accordion>
-                                <accordion-group #viajes [panelClass]="customClass">
-                                    <button class="btn btn-link btn-block clearfix" accordion-heading>
-                    <div class="pull-left float-left lix">Asistencia en Viajes</div>
+            <div class="position-relative">
+              <div class="bolita"></div>
+              <accordion>
+                <accordion-group #viajes [panelClass]="customClass">
+                  <button
+                    class="btn btn-link btn-block clearfix"
+                    accordion-heading
+                  >
+                    <div class="pull-left float-left lix">
+                      Asistencia en Viajes
+                    </div>
                     <div *ngIf="!viajes.isOpen" class="float-right">
-                        <img src="https://res.cloudinary.com/merchanj/image/upload/v1559937359/Banesco_Seguros_Panama/AP/arrow3.png" alt="" class="arrow2">
+                      <img
+                        src="https://res.cloudinary.com/merchanj/image/upload/v1559937359/Banesco_Seguros_Panama/AP/arrow3.png"
+                        alt=""
+                        class="arrow2"
+                      />
                     </div>
                     <div *ngIf="viajes.isOpen" class="float-right">
-                        <img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/arrow2.svg" alt="" class="arrow2">
+                      <img
+                        src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/arrow2.svg"
+                        alt=""
+                        class="arrow2"
+                      />
                     </div>
                     <div class="porcentaje">
-                        {{request.insurance.coverageDetail.travelAssistance}}%
+                      {{request.insurance.coverageDetail.travelAssistance}}%
                     </div>
                   </button>
-                                    <p>Asistencia médica durante tu viaje, si por indicación médica debes alojarte en un hotel, cubrimos tu estancia mientras te recuperas, transporte de los familiares del asegurado en caso necesario. Si ocurriera el fallecimiento
-                                        del asegurado, traemos de vuelta sus restos así como a los familiares.</p>
-                                </accordion-group>
-                            </accordion>
-                        </div>
-
-                    </div>
-                </div>
+                  <p>
+                    Asistencia médica durante tu viaje, si por indicación médica
+                    debes alojarte en un hotel, cubrimos tu estancia mientras te
+                    recuperas, transporte de los familiares del asegurado en
+                    caso necesario. Si ocurriera el fallecimiento del asegurado,
+                    traemos de vuelta sus restos así como a los familiares.
+                  </p>
+                </accordion-group>
+              </accordion>
             </div>
+          </div>
         </div>
+      </div>
     </div>
-    <div class="modal-footer">
-        <button class="btn btn-primary centrado" (click)="modal.dismiss('Cross click')">CERRAR</button>
-    </div>
+  </div>
+  <div class="modal-footer">
+    <button
+      class="btn btn-primary centrado"
+      (click)="modal.dismiss('Cross click')"
+    >
+      CERRAR
+    </button>
+  </div>
 </ng-template>

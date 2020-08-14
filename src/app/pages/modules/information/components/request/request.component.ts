@@ -18,6 +18,7 @@ import { NotifierService } from 'angular-notifier';
 export class RequestComponent implements OnInit {
 
   public customClass: string = 'customClass';
+  public is_beneficiaries: boolean = false;
   public percentsChecked: boolean;
   public obligationTax: boolean = false;
   public isFirstOpen: boolean = true;
@@ -40,6 +41,7 @@ export class RequestComponent implements OnInit {
   public corregimientosInsu: Array<any>;
   public occupations: Array<any>;
   public forma: FormGroup;
+  public attachment: any = {};
   @Input() requestId: string;
   @Output() nextStep: EventEmitter<any> = new EventEmitter<any>();
   content = 'Vivamus sagittis lacus vel augue laoreet rutrum faucibus.';
@@ -53,11 +55,22 @@ export class RequestComponent implements OnInit {
     private _dependentService: DependentService) {
     this.edit = false;
     this.percentsChecked = false;
+    this.attachment = {
+      name: null,
+      size: 0,
+      hasPreview: false,
+      defaultImage: "../../../../../../assets/img/pdf-logo.png",
+      data: false
+    };
   }
 
   ngOnInit() {
     // this.getProvinces();
     this.getAllCountries();
+  }
+
+  public hasBeneficiaries() {
+    return this.is_beneficiaries;
   }
 
   public getRequest() {
@@ -172,6 +185,9 @@ export class RequestComponent implements OnInit {
     if (insu.same !== null) {
       localStorage.setItem('same', insu.same ? 'true' : 'false')
     }
+    if (insu.documentFile) {
+      this.hasPreview(insu.documentFile);
+    }
     this.forma = this._fb.group({
       'requestId': this._fb.control(this.requestId),
       'contName': this._fb.control(cont.name, [Validators.required, CustomValidatorDirective.namesValidator]),
@@ -192,7 +208,7 @@ export class RequestComponent implements OnInit {
       'insuDocument2': [!insu || !insu.document || insu.documentType === 'Pasaporte' ? null : insu.document.split('-')[1]],
       'insuDocument3': [!insu || !insu.document || insu.documentType === 'Pasaporte' ? null : insu.document.split('-')[2]],
       'insuGender': this._fb.control(insu.gender, Validators.required),
-      'insuBirthday': this._fb.control(insu.birthday ? moment(insu.birthday.iso).format('YYYY-MM-DD') : null, [Validators.required, CustomValidatorDirective.dateValidator]),
+      'insuBirthday': this._fb.control(insu.birthday ? moment(insu.birthday.iso).format('YYYY-MM-DD') : null, [Validators.required, CustomValidatorDirective.dateValidator, CustomValidatorDirective.tooOld]),
       'insuCivilStatus': this._fb.control(insu.civilStatus, Validators.required),
       'insuCountryId': this._fb.control(insu.country ? insu.country.id : null, Validators.required),
       'insuNationalityId': this._fb.control(insu.nationality ? insu.nationality.id : null, [Validators.required]),
@@ -212,12 +228,13 @@ export class RequestComponent implements OnInit {
       'insuStreet': this._fb.control(insu.street, Validators.required),
       'insuBuilding': this._fb.control(insu.building, Validators.required),
       'insuLocalNumber': this._fb.control(insu.localNumber, [CustomValidatorDirective.localphoneValidator]),
-      'insuFiscalObligations': this._fb.control(false, Validators.required),
-      'insuCountriesFiscalObligations': this._fb.control(insu.countriesFiscalObligations),
+      //'insuFiscalObligations': this._fb.control(false, Validators.required),
+      //'insuCountriesFiscalObligations': this._fb.control(insu.countriesFiscalObligations),
       'insuTaxIdentificationNumber': this._fb.control(insu.taxIdentificationNumber),
       'insuOfficeNumber': this._fb.control(insu.officeNumber, [CustomValidatorDirective.localphoneValidator]),
       'insuCellphone': this._fb.control(insu.cellphone, Validators.compose([Validators.required, CustomValidatorDirective.cellphoneValidator])),
-      'insuDependents': this._fb.array([])
+      'documentFile': this._fb.control(insu.documentFile, [Validators.required, CustomValidatorDirective.customFileValidator]),
+      //'insuDependents': this._fb.array([])
     });
     this.validations(insu);
     if (insu.province) {
@@ -245,25 +262,30 @@ export class RequestComponent implements OnInit {
       this.forma.get('contCellphone').setValue(payload.insuCellphone);
     }
     //this.validations();
-    let dependents = this.forma.get('insuDependents') as FormArray;
-    dependents.controls.forEach(dependent => {
-      dependent.get('paymentName').clearValidators();
-      dependent.get('paymentDocument').clearValidators();
-      dependent.get('paymentName2').clearValidators();
-      dependent.get('paymentDocument2').clearValidators();
-      dependent.get('paymentName').updateValueAndValidity();
-      dependent.get('paymentDocument').updateValueAndValidity();
-      dependent.get('paymentName2').updateValueAndValidity();
-      dependent.get('paymentDocument2').updateValueAndValidity();
-      dependent.updateValueAndValidity();
-    });
+    if (this.hasBeneficiaries()) {
+      let dependents = this.forma.get('insuDependents') as FormArray;
+      dependents.controls.forEach(dependent => {
+        dependent.get('paymentName').clearValidators();
+        dependent.get('paymentDocument').clearValidators();
+        dependent.get('paymentName2').clearValidators();
+        dependent.get('paymentDocument2').clearValidators();
+        dependent.get('paymentName').updateValueAndValidity();
+        dependent.get('paymentDocument').updateValueAndValidity();
+        dependent.get('paymentName2').updateValueAndValidity();
+        dependent.get('paymentDocument2').updateValueAndValidity();
+        dependent.updateValueAndValidity();
+      });
+    }
     this.forma.updateValueAndValidity();
 
   }
 
   public get isPercentValid() {
+    if (!this.hasBeneficiaries()) {
+      return true;
+    }
     // return this.percentsChecked && ((this.remainingPercentContingent + this.remainingPercentMain) === 0);
-    return this.percentsChecked && ((this.remainingPercentMain === 0) && (this.remainingPercentContingent === 100 || this.remainingPercentContingent === 0) );
+    return this.percentsChecked && ((this.remainingPercentMain === 0) && (this.remainingPercentContingent === 100 || this.remainingPercentContingent === 0));
   }
 
   public get isPercentInvalid() {
@@ -276,6 +298,7 @@ export class RequestComponent implements OnInit {
     if (proceed) {
       this.mainFormValidation();
     }
+
     if ((this.forma.valid && this.isPercentValid) || !proceed) {
       //if (true) {
       this.isLoading.emit(true);
@@ -286,6 +309,9 @@ export class RequestComponent implements OnInit {
       delete payload.insuDocument2;
       delete payload.insuDocument3;
       delete payload.insuDependents;
+
+      payload.documentFile = this.attachment.data;
+
       //payload.insuOccupationTime = String(payload.insuOccupationTime);
       payload.insuBirthday = moment(new Date(payload.insuBirthday)).format('DD/MM/YYYY');
       this._requestService.saveRequest(payload).subscribe(
@@ -322,8 +348,13 @@ export class RequestComponent implements OnInit {
     )
   }
 
+  public customInvalid(customValidation: string, controlName: string, form: FormGroup) {
+    if (form.get(controlName) && form.get(controlName).errors) {
+      return form.get(controlName).errors[customValidation];
+    }
+  }
+
   public invalid(controlName: string, form: FormGroup) {
-    // console.log(form, controlName , form.get(controlName));
     return form.get(controlName).touched && !form.get(controlName).valid;
   }
 
@@ -373,9 +404,11 @@ export class RequestComponent implements OnInit {
       this.forma.get('insuLocalNumber').markAsTouched();
       this.forma.get('insuOfficeNumber').markAsTouched();
       this.forma.get('insuCellphone').markAsTouched();
-      this.forma.get('insuFiscalObligations').markAsTouched();
-      this.forma.get('insuCountriesFiscalObligations').markAsTouched();
+      this.forma.get('documentFile').markAsTouched();
+      //this.forma.get('insuFiscalObligations').markAsTouched();
+      //this.forma.get('insuCountriesFiscalObligations').markAsTouched();
       this.forma.get('insuTaxIdentificationNumber').markAsTouched();
+      this.forma.get('documentFile').markAsTouched();
     } else {
       this.modalForm.get('type').markAsTouched();
       this.modalForm.get('documentType').markAsTouched();
@@ -474,14 +507,13 @@ export class RequestComponent implements OnInit {
   }
 
   public validations(insu?: any) {
-    if (this.forma.get('insuDocumentType').value  === 'Pasaporte') {
+    if (this.forma.get('insuDocumentType').value === 'Pasaporte') {
       this.forma.controls['insuDocument'].setValue((insu && insu.document ? (insu.documentType === 'Pasaporte' ? insu.document : insu.document.split('-')[0]) : null));
       this.forma.controls['insuDocument2'].setValue(!insu || !insu.document || insu.documentType === 'Pasaporte' ? null : insu.document.split('-')[1]);
       this.forma.controls['insuDocument3'].setValue(!insu || !insu.document || insu.documentType === 'Pasaporte' ? null : insu.document.split('-')[2]);
       this.forma.get('insuDocument2').clearValidators();
       this.forma.get('insuDocument3').clearValidators();
       this.forma.get('insuDocument').clearValidators();
-      this.forma.get('insuDocument').setValidators(Validators.compose([Validators.required, CustomValidatorDirective.documentValidator]));
       //this.forma.get('insuDocument').updateValueAndValidity();
       //this.forma.get('insuDocument2').updateValueAndValidity();
       //this.forma.get('insuDocument3').updateValueAndValidity();
@@ -632,17 +664,33 @@ export class RequestComponent implements OnInit {
     this._modalService.open(content, { centered: true });
   }
 
-  public obligationTaxValidation(value) {
-    if (value && (this.forma.get('insuFiscalObligations').value === false)) {
-      const validators = [Validators.required];
-      this.forma.get('insuCountriesFiscalObligations').setValidators(validators);
-      // addControl('optionBExtra', new FormControl('', validators));
-    } else if (!value && (this.forma.get('insuFiscalObligations').value === true)) {
-      this.forma.get('insuCountriesFiscalObligations').setValue(null);
-      this.forma.get('insuCountriesFiscalObligations').clearValidators();
+  public checkFileValidator() {
+    this.forma.get('documentFile').markAsTouched();
+  }
+
+  public hasPreview(filePathOrName = "") {
+    const _ext = filePathOrName.toLowerCase().split('.').pop();
+    this.attachment.hasPreview = ['png', 'jpg', 'jpeg'].includes(_ext);
+  }
+
+  public addFile(attachment: FileList, position: number) {
+    var reader = new FileReader();
+    reader.onload = (e: any) => {
+      this.forma.value.documentFile = e.target.result;
+      this.attachment.data = this.forma.value.documentFile;
+      this.attachment.name = attachment[0].name;
+      this.hasPreview(attachment[0].name);
+      this.checkFileValidator();
+    };
+    reader.onerror = (event: any) => {
+      this.attachment.name = null;
+      this.attachment.data = false;
     }
-    this.forma.updateValueAndValidity();
-    this.obligationTax = value;
+    try {
+      reader.readAsDataURL(attachment[0]);
+    } catch (e) {
+      this.forma.value.documentFile = false;
+    }
   }
 
 }

@@ -10,8 +10,7 @@
       <h3 class="mt-5">Haz tu solicitud:</h3>
       <a
         class="btn btn-primary my-2"
-        href="http://accidentes.banescoseguros.com.pa/"
-        target="_blank"
+        href="" [routerLink]="['/informacion']"
       >
         <i class="fas fa-plus-square text-white"></i> Accidentes Personales
       </a>
@@ -30,7 +29,7 @@
     ><img
       src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/flechaleft.svg"
       alt=""
-    />Regresar a <strong>banescoseguros.com.pa</strong></a
+    />Regresar a <strong>Banescoseguros.com.pa</strong></a
   >
 
   <!-- Primer-Contenido -->
@@ -120,25 +119,6 @@
           class=""
           style="width: 400px;"
         />
-      </div>
-    </div>
-  </section>
-
-  <section class="tercer-contenido">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12 text-center">
-          <h2 class="solicitud mt-2 mb-4">Haz tu solicitud:</h2>
-          <button class="btn btn-primary my-2" [routerLink]="['/informacion']">
-            <i class="fas fa-plus-square text-white"></i> Accidentes Personales
-          </button>
-          <button
-            class="btn btn-secondary my-2"
-            [routerLink]="['/informacion']"
-          >
-            <i class="fas fa-plus-square text-white"></i> Seguro de Cáncer
-          </button>
-        </div>
       </div>
     </div>
   </section>

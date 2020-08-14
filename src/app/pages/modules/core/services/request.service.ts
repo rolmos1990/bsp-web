@@ -57,9 +57,10 @@ export class RequestService {
         );
     }
 
-    public updateRequest(requestId: string, file: any): Observable<any>{
+    public updateRequest(payload): Observable<any>{
+      const _body = {...payload, status: "Emitida"};
       return this._http
-        .post(environment.baseUrl.concat(API_ENDPOINT_UPDATE_REQUEST), {requestId: requestId, policyFile: file, status: 'Emitida'}, ServiceDirective.headers)
+        .post(environment.baseUrl.concat(API_ENDPOINT_UPDATE_REQUEST),_body, ServiceDirective.headers)
         .pipe(
           catchError(err => {
             return ServiceDirective.handleError(err);

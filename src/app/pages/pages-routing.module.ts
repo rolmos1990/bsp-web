@@ -22,7 +22,7 @@ const routes: Routes = [
     loadChildren: './modules/general/general.module#GeneralModule'
   },
   {
-    path: 'cobertura/:userId',
+    path: 'cobertura/:requestId',
     loadChildren: './modules/coverage/coverage.module#CoverageModule',
     pathMatch: 'full'
   },

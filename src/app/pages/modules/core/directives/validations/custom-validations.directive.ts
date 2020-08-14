@@ -6,12 +6,12 @@ import * as moment from 'moment';
     selector: '[appCustomValidator]',
 })
 export class CustomValidatorDirective {
-    
 
-        /**
-     * Validate that the FormControl has this structure "+507 xxxx xxxx".
-     * @param control FormControl to evaluate.
-     */
+
+    /**
+ * Validate that the FormControl has this structure "+507 xxxx xxxx".
+ * @param control FormControl to evaluate.
+ */
     static RegularNumbersPositive(control: AbstractControl): ValidationErrors {
         const number = /^(0|[1-9]\d*)$/;
         if (control.value && !number.test(control.value)) {
@@ -32,14 +32,27 @@ export class CustomValidatorDirective {
     }
 
     /**
-     * Validate that the FormControl has this structure "+507 xxxx xxxx".
+     * Validate that the FormControl has this structure "00-00-0000 and less than 70 years".
      * @param control FormControl to evaluate.
      */
     static dateValidator(control: AbstractControl): ValidationErrors {
         const date = /([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/;
         const _date = moment(control.value);
-        if (control.value && (!date.test(control.value) || _date.isAfter(moment.now(), 'day'))) {
+        const moreThanToday = _date.isAfter(moment.now(), 'day');
+        if (control.value && (!date.test(control.value) || moreThanToday)) {
             return { invalidDate: true };
+        }
+    }
+
+     /**
+     * Validate that the FormControl has this structure "00-00-0000 and less than 70 years".
+     * @param control FormControl to evaluate.
+     */
+    static tooOld(control: AbstractControl): ValidationErrors {
+        const _date = moment(control.value);
+        const itsTooOld = _date.isBefore(moment().subtract(70, 'years'));
+        if (itsTooOld) {
+            return { tooOld: true };
         }
     }
 
@@ -140,6 +153,59 @@ export class CustomValidatorDirective {
     static fullNameValidator(control: AbstractControl): ValidationErrors {
         const name = /((^[ÁÉÍÓÚñÑóáéíúA-z\s]{2,25}) [ÁÉÍÓÚñÑóáéíúA-z\s]{2,25}$)/;
         if (control.value && !name.test(control.value)) {
+            return { invalidname: true };
+        }
+    }
+
+    /**
+ * Validate that the FormControl has this structure "Example@domain.com".
+ * @param control FormControl to evaluate.
+ */
+    static customFileValidator(control: AbstractControl): ValidationErrors {
+        try {
+            if (control.value && control.value !== null) {
+                const filePath = control.value + "";
+                const _ext = filePath.toLowerCase().split('.').pop();
+                const allowedTypes = ["jpg", "jpeg", "png", "pdf"];
+                if (!allowedTypes.includes(_ext)) {
+                    return { invaliddocumentFile: true };
+                }
+            }
+        } catch (e) {
+            return { invaliddocumentFile: true };
+        }
+    }
+
+    /**
+     * Validate that the FormControl has this structure "Example@domain.com".
+     * @param control FormControl to evaluate.
+     */
+    static customFilePDFValidator(control: AbstractControl): ValidationErrors {
+        try {
+            if (control.value && control.value !== null) {
+                const filePath = control.value + "";
+                const _ext = filePath.toLowerCase().split('.').pop();
+                const allowedTypes = ["pdf"];
+                if (!allowedTypes.includes(_ext)) {
+                    return { invaliddocumentFile: true };
+                }
+            }
+        } catch (e) {
+            return { invaliddocumentFile: true };
+        }
+    }
+
+        /**
+     * Validate that the FormControl has two name. 
+     * @param control FormControl to evaluate.
+     */
+    static urlValidator(control: AbstractControl): ValidationErrors {
+        let urlToCheck = control.value;
+        if((control.value && control.value !== null) && (!control.value.startsWith("http://") && !control.value.startsWith("https://"))){
+            urlToCheck = "http://" + control.value;
+        }
+        const url = /^(?:(?:(?:https?|ftp):)?\/\/)(?:\S+(?::\S*)?@)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:[/?#]\S*)?$/i;
+        if (control.value && !url.test(urlToCheck)) {
             return { invalidname: true };
         }
     }

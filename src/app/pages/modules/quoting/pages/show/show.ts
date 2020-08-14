@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
-import { UserService } from '../../../core/services/user.service';
+import { RequestService } from '../../../core/services/request.service';
 import { Router } from '@angular/router';
 import { CustomValidatorDirective } from '../../../core/directives/validations/custom-validations.directive';
 import { ActivityService } from '../../../core/services/activities.service';
@@ -29,7 +29,7 @@ export class ShowComponent implements OnInit {
 
 
   constructor(
-    public fb: FormBuilder, private _userService: UserService, private _router: Router, private _activityService: ActivityService) {
+    public fb: FormBuilder, private _requestService: RequestService, private _router: Router, private _activityService: ActivityService) {
     this.isLoading = true;
   }
 
@@ -75,20 +75,21 @@ export class ShowComponent implements OnInit {
 
   private initForm() {
     this.forma = this.fb.group({
-      documentType: [null, Validators.required],
+      documentType: ['Cedula', Validators.required],
       document: [null],
       document2: [null],
       document3: [null],
       occupationId: ['', Validators.compose([Validators.required, Validators.minLength(5)])],
-      birthday: ['', Validators.compose([Validators.required, Validators.maxLength(2), Validators.min(18), Validators.max(60)])],
+      //birthday: ['', Validators.compose([Validators.required, Validators.maxLength(2), Validators.min(18), Validators.max(60)])],
       email: ['', Validators.compose([Validators.required, CustomValidatorDirective.customEmailValidator])],
-      same: [null, Validators.required]
+      //same: [null, Validators.required]
     });
     this.getOccupations();
+    this.validations();
   }
 
   private getOccupation(occupationName: string) {
-    return this.occupations.find(obj => {return occupationName === obj.name});
+    return this.occupations.find(obj => { return occupationName === obj.name });
   }
 
   public submit() {
@@ -101,12 +102,18 @@ export class ShowComponent implements OnInit {
       }
       delete payload.document2;
       delete payload.document3;
+      
+      const requestId = localStorage.getItem('requestId');
+
       payload.occupationId = this.getOccupation(payload.occupationId).id;
+      payload.requestId = requestId;
+
+      console.log("requestId", payload);
       localStorage.setItem('same', payload.same ? 'true' : 'false');
       payload.type = 'cliente';
-      this._userService.createUser(payload).subscribe(
+      this._requestService.saveRequest(payload).subscribe(
         response => {
-          this._router.navigate(['cobertura', response.result.user.id]);
+          this._router.navigate(['cobertura', requestId]);
         }, error => {
           console.error(error);
           this.isLoading = false;
@@ -137,6 +144,36 @@ export class ShowComponent implements OnInit {
   public onFocused(e) {
   }
 
+  public startQuoting(): void {
+
+    let payload = this.forma.value;
+    if (payload.documentType !== 'Pasaporte') {
+      payload.document = payload.document.concat('-').concat(payload.document2).concat('-').concat(payload.document3);
+    }
+    delete payload.document2;
+    delete payload.document3;
+
+    this._requestService.saveRequest(payload).subscribe(
+      response => {
+        const { result } = response;
+        //if client was created (result.clientCreated)
+        const requestId = result.request.id;
+        if (requestId) {
+          localStorage.setItem('requestId', requestId);
+          this.hide1();
+        }
+        else {
+          console.error("[show] - error on save polize");
+          this.isLoading = false;
+        }
+      }, error => {
+        console.error(error);
+        this.isLoading = false;
+      }
+    );
+
+  }
+
   public hide1(): void {
     this.flag1 = false;
     this.flag2 = true;
@@ -147,34 +184,9 @@ export class ShowComponent implements OnInit {
     this.flag3 = true;
   }
 
-  public hide3(): void {
-    this.flag3 = false;
-    this.flag4 = true;
-  }
-
-  public hide4(): void {
-    this.flag4 = false;
-    this.flag5 = true;
-  }
-
   public atras2(): void {
     this.flag2 = false;
     this.flag1 = true;
-  }
-
-  public atras3(): void {
-    this.flag3 = false;
-    this.flag2 = true;
-  }
-
-  public atras4(): void {
-    this.flag4 = false;
-    this.flag3 = true;
-  }
-
-  public atras5(): void {
-    this.flag5 = false;
-    this.flag4 = true;
   }
 
 

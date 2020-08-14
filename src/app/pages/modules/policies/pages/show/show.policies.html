@@ -1,4 +1,89 @@
 <section *ngIf="!isLoading" class="polizas">
+
+    <ng-template #content let-modal>
+        <div class="modal-header">
+          <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true" style="color: #556176;">&times;</span>
+          </button>
+        </div>
+        <ng-template [ngIf]="isLoading">
+          <bsp-loader></bsp-loader>
+        </ng-template>
+        <div *ngIf="!isLoading" class="modal-body">
+            <form [formGroup]="forma">
+                <div class="container">
+                        <p class="subtitulo mb-4">
+                            Por favor completa los siguientes datos de la solicitud del seguro para emitir la Póliza.
+                        </p>
+                        <div class="row mt-5 pl-5 pr-5">
+                            <div class="col-md-12 mb-5">
+                              <label for="">Número de Póliza</label>
+                              <input
+                                type="text"
+                                class="form-control"
+                                [ngClass]="{
+                                  'is-invalid': invalid('policyNumber', forma),
+                                  'is-valid': valid('policyNumber', forma)
+                                }"
+                                formControlName="policyNumber"
+                              />
+                              <div *ngIf="invalid('policyNumber', forma)" class="invalid-feedback">
+                                Por favor ingrese el número de Póliza.
+                              </div>
+                              <div *ngIf="valid('policyNumber', forma)" class="valid-feedback">
+                                ¡Excelente!
+                              </div>
+                            </div>
+                            <div class="col-md-12 mb-5">
+                                <label for="">Enlace (Opcional)</label>
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  [ngClass]="{
+                                    'is-invalid': invalid('policyUrl', forma),
+                                    'is-valid': valid('policyUrl', forma)
+                                  }"
+                                  formControlName="policyUrl"
+                                />
+                                <div *ngIf="invalid('policyUrl', forma)" class="invalid-feedback">
+                                  Por favor ingrese una dirección url valida. <br /> Ejemplo: Banesco.com.pa
+                                </div>
+                                <div *ngIf="valid('policyUrl', forma)" class="valid-feedback">
+                                  ¡Excelente!
+                                </div>
+                            </div>
+
+                            <div class="col-md-12 mb-5">
+                                <div class="form-group">
+                                    <label for="">Póliza (Opcional)</label>
+                                    <div style="display:block;" >
+                                        <button class="btn-dashboard m-0" 
+                                        style="cursor: pointer;color:#ffffff;font-size: 13.6px;" 
+                                        (click)="fileInput_0.click()" >
+                                        <ng-template [ngIf]="!attachment.name"><i class="fa fa-plus mr-1" ></i> Adjuntar documento</ng-template>
+                                        <ng-template [ngIf]="invalid('policyFile', forma)"><i class="fa fa-plus mr-1" ></i> Adjuntar documento</ng-template>
+                                        <ng-template [ngIf]="valid('policyFile', forma) && attachment.name"><i class="fa fa-plus mr-1" ></i> Cambiar Adjunto</ng-template>
+                                    </button>
+                                    </div>
+                                    <input formControlName="policyFile" #fileInput_0 type="file" name="img" [ngClass]="{'is-invalid': invalid('policyFile', forma),'is-valid': valid('policyFile', forma)}" class="hiddenFileInput form-control" (change)="addFile($event.target.files)">
+                                    <div *ngIf="invalid('policyFile', forma)" class="invalid-feedback">
+                                    Por favor ingrese un documento PDF Valido.
+                                    </div>
+                                    <div *ngIf="valid('policyFile', forma) && attachment.name" class="valid-feedback">
+                                    El Documento '{{ attachment.name }}' ha sido adjuntado!
+                                    </div>
+                                </div>
+                            </div>  
+                        </div>      
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary centrado" (click)="submit()"> EMITIR POLIZA </button>
+        </div>
+      </ng-template>
+
+
     <div class="container">
         <div class="row my-5">
             <div class="col-md-12">
@@ -17,20 +102,6 @@
         <ng-template [ngIf]="requests.length > 0">
             <div class="row">
                 <div class="col-md-12">
-                    <!-- <div class="row">
-                  <div class="col-md-4">
-                      <form>
-                        <div class="form-group form-inline">
-                          <label for="" class="d-block">Busqueda de pólizas: </label>
-                          <input class="form-control" type="text" placeholder="Buscar" [(ngModel)]="searchText" name="searchText" (keyup)="showSearchResults($event)"/>
-                        </div>
-                      </form>
-                  </div>
-                  <div class="col-md-8">
-                      <button class="btn-blanco">Descargar Excel</button>
-                  </div>
-                </div>
-                   -->
                     <div class="table-responsive">
                         <table class="table">
                             <thead>
@@ -69,32 +140,16 @@
                                     <td class="{{request?.policyFile ? 'align-button' : ''}}">
                                         <!-- INPUT #0 -->
                                         <div *ngIf="!request?.policyFile" class="input-container justify-content-center d-flex">
-                                            <input #fileInput_0 type="file" name="img" class="hiddenFileInput form-control" (change)="addFile($event.target.files, i, request)">
                                             <div *ngIf="!isLoadingFile" class="p-0">
-                                                <!-- <ng-template [ngIf]="attachments[i]">
-                                  <img class="caret" src="/assets/check.svg" />
-                                </ng-template> -->
-                                                <!-- <ng-template [ngIf]="true">
-                                                        <img src="/assets/upload.svg" (click)="fileInput_0.click()" />
-                                                    </ng-template> -->
                                             </div>
                                             <div *ngIf="isLoadingFile === request" class="btn-dashboard m-0">
                                                 <label class="p-0" style="cursor: pointer;color:#ffffff;font-size: 13.6px;">Cargando adjunto...</label>
                                             </div>
                                             <div *ngIf="!isLoadingFile" class="btn-dashboard m-0">
-                                                <!-- <ng-template [ngIf]="attachments[i] && fileInput_0?.files[0]">
-                                  <label class="file-input-label-text mb-0">{{ fileInput_0?.files[0]?.name?.length <= 15 ?
-                                      fileInput_0.files[0].name : (fileInput_0.files[0].name | slice:1:10)+'...' }}</label>
-                                </ng-template> -->
                                                 <ng-template [ngIf]="true">
-                                                    <label class="m-0" (click)="fileInput_0.click()" style="cursor: pointer;color:#ffffff;font-size: 13.6px;">Adjuntar Póliza</label>
+                                                    <label class="m-0" (click)="openSm(content, request)" style="cursor: pointer;color:#ffffff;font-size: 13.6px;">Adjuntar Póliza</label>
                                                 </ng-template>
                                             </div>
-                                            <!-- <div *ngIf="attachments.length" class="p-0">
-                                <ng-template [ngIf]="attachments[i]">
-                                  <img class="caret" src="/assets/delete_red.svg" (click)="removeAttachment(i, fileInput_0)" />
-                                </ng-template>
-                              </div> -->
                                         </div>
                                         <a *ngIf="request?.policyFile" [href]="request.policyFile" class="btn-dashboard" target="_blank">Ver Póliza</a>
                                     </td>

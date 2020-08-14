@@ -153,10 +153,8 @@ export const CIVILSTATUS = [
 ];
 
 export const MONTHLYINCOME = [
-  { 'item': 'Menor a USD 500'},
-  { 'item': 'Entre USD 500 y USD 1,000'},
-  { 'item': 'Entre USD 1,000 y USD 2,000'},
-  { 'item': 'Mayor a USD 2,000'}
+  { 'item': 'Entre USD 0 a USD 10,000'},
+  { 'item': 'Mayor a USD 10,000'}
 ];
 
 export const DEDUCTIBLES = [

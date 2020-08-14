@@ -10,8 +10,11 @@
                         <div class="cuadrado">
                             <h4 class="cotizador-h4">Cotizador Banesco </h4> <img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/cruz.svg" alt="" class="m-0">
                             <h4 class="cotizador-h2-2">Seguros</h4>
-                            <h3 class="">Por favor indícanos el número de identificación del asegurado</h3>
-                            <img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/Tarjeta.svg" alt="" class="my-5">
+                            <h3 class="">Por favor indícanos el número de identificación y correo electrónico del asegurado</h3>
+                            
+                            <div style="display:flex;flex-direction:row;align-items: center;justify-content: center;">
+                            <img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/Tarjeta.svg" alt="" class="my-5" style="margin:0px;">
+                            <div style="margin-left:25px;">
                             <div class="text-center">
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" (ngModelChange)="validations()" name="documentType" id="documentType" [value]="'Cedula'" formControlName="documentType" checked>
@@ -27,7 +30,7 @@
                             <small *ngIf="invalid('documentType', forma)" class="text-danger">
                                 Por favor elija un tipo de identificación.
                             </small>
-                            <div style="margin: 0 auto;" [ngStyle]="{'width': forma.value.documentType === 'Pasaporte' ? '230px' : '260px'}" *ngIf="forma.value.documentType" class="form-group mt-3">
+                            <div style="margin: 0 auto;" [ngStyle]="{'width': forma.value.documentType === 'Pasaporte' ? '260px' : '260px'}" *ngIf="forma.value.documentType" class="form-group mt-3">
                                 <!-- <label for="">{{forma.value.documentType === 'Cedula' ? 'Número de identificación' : 'Pasaporte'}}: </label> -->
                                 <div class="form-row">
                                     <ng-template [ngIf]="forma.value.documentType === 'Cedula'">
@@ -54,6 +57,9 @@
                                                 <small *ngIf="valid('document', forma) && valid('document2', forma) && valid('document3', forma)" class="text-success">
                                                     ¡Excelente!
                                                 </small>
+                                                <small>
+                                                    &nbsp;
+                                                </small>
                                             </div>
                                         </ng-template>
                                     </ng-template>
@@ -69,9 +75,19 @@
                                         </div>
                                     </ng-template>
                                 </div>
-
                             </div>
-                            <button type="submit" [disabled]="forma.controls['document'].invalid || forma.controls['documentType'].invalid || flag1 == false" class="btn btn-primary my-5 " (click)="hide1()">SIGUIENTE</button>
+                            </div>    
+                            </div>
+                            <div style="display:flex;flex-direction:row;align-items:center;justify-content: center;margin-top:-40px;">
+                                <img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/Mail.svg" alt="" class="my-5" style="margin:0px;height:78px;width:86px;">
+                                <div style="margin-left:25px;width:260px;">
+                                <input type="email" class="form-control mb-1" placeholder="EMAIL" formControlName="email" [ngClass]="{'is-invalid': invalid('email', forma), 'is-valid': valid('email', forma)}" style="width:260px;">
+                                <div *ngIf="invalid('email', forma)" class="invalid-feedback">
+                                    * Por favor introduce un correo válido
+                                </div>
+                                </div>
+                            </div>
+                            <button type="submit" [disabled]="forma.controls['document'].invalid || forma.controls['documentType'].invalid || flag1 == false" class="btn btn-primary my-5 " (click)="startQuoting()">SIGUIENTE</button>
                         </div>
                     </div>
                     <div class="col-1 col-md-2">
@@ -104,80 +120,8 @@
                             <div *ngIf="invalid('occupationId', forma)" class="invalid-feedback">
                                 Por favor elija una ocupación.
                             </div>
-                            <button type="submit" [disabled]="forma.controls['occupationId'].invalid || flag2 == false" class="btn btn-primary my-5" (click)="hide2()">SIGUIENTE</button>
-                        </div>
-                    </div>
-                    <div class="col-1 col-md-2">
-                        <!-- -->
-                    </div>
-                </div>
-                <div class="row" [ngClass]="{'d-none': flag3 == false}">
-                    <div class="col-1 col-md-2">
-                        <button (click)="atras3()" class="btn-flecha"><i class="fas fa-angle-left"></i></button>
-                    </div>
-                    <div class="col-10 col-md-8">
-                        <div class="cuadrado" [ngClass]="{'d-none': flag3 == false}">
-                            <h4 class="cotizador-h4">Cotizador Banesco </h4> <img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/cruz.svg" alt="" class="m-0">
-                            <h4 class="cotizador-h2-2">Seguros</h4>
-                            <h3 class="color-negro">¿Qué edad tiene el asegurado?</h3>
-                            <img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/edad.png" alt="" class="my-5">
-                            <!-- error -->
-                            <input type="number" class="form-control mb-1" placeholder="EDAD" formControlName="birthday" [ngClass]="{'is-invalid': invalid('birthday', forma), 'is-valid': valid('birthday', forma)}">
-                            <div *ngIf="invalid('birthday', forma)" class="invalid-feedback">
-                                * Disculpa, esta póliza es sólo para personas con edades entre 18 y 60 años
-                            </div>
-                            <button type="submit" [disabled]="forma.controls['birthday'].invalid || flag3 == false" class="btn btn-primary my-5" (click)="hide3()">SIGUIENTE</button>
-                        </div>
-                    </div>
-                    <div class="col-1 col-md-2">
-                        <!-- -->
-                    </div>
-                </div>
-                <div class="row" [ngClass]="{'d-none': flag4 == false}">
-                    <div class="col-1 col-md-2">
-                        <button (click)="atras4()" class="btn-flecha"><i class="fas fa-angle-left"></i></button>
-                    </div>
-                    <div class="col-10 col-md-8">
-                        <div class="cuadrado" [ngClass]="{'d-none': flag4 == false}">
-                            <h4 class="cotizador-h4">Cotizador Banesco </h4> <img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/cruz.svg" alt="" class="m-0">
-                            <h4 class="cotizador-h2-2">Seguros</h4>
-                            <h3 class="color-negro">¿Cual es el correo electrónico del asegurado?</h3>
-                            <img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/Mail.svg" alt="" class="my-5">
-                            <input type="email" class="form-control mb-1" placeholder="EMAIL" formControlName="email" [ngClass]="{'is-invalid': invalid('email', forma), 'is-valid': valid('email', forma)}">
-                            <div *ngIf="invalid('email', forma)" class="invalid-feedback">
-                                * Por favor introduce un correo válido
-                            </div>
-                            <button type="submit" [disabled]="forma.controls['email'].invalid || flag4 == false" class="btn btn-primary my-5" (click)="hide4()">SIGUIENTE</button>
-                        </div>
-                    </div>
-                    <div class="col-1 col-md-2">
-                        <!-- -->
-                    </div>
-                </div>
-                <div class="row" [ngClass]="{'d-none': flag5 == false}">
-                    <div class="col-1 col-md-2">
-                        <button (click)="atras5()" class="btn-flecha"><i class="fas fa-angle-left"></i></button>
-                    </div>
-                    <div class="col-10 col-md-8">
-                        <div class="cuadrado">
-                            <h4 class="cotizador-h4">Cotizador Banesco </h4> <img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/cruz.svg" alt="" class="m-0">
-                            <h4 class="cotizador-h2-2">Seguros</h4>
-                            <h3 class="">¿El seguro es para ti o para otra persona?</h3>
-                            <img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/insurance.png" alt="" class="my-5">
-                            <div class="text-center">
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" name="same" type="radio" formControlName="same" [value]="true">
-                                    <label class="form-check-label" for="same">Para mí</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" name="same" type="radio" formControlName="same" [value]="false">
-                                    <label class="form-check-label" for="same">Para otra persona</label>
-                                </div>
-                            </div>
-                            <div *ngIf="invalidRadioSelect && invalidRadio('same', forma)" style="display: block" class="invalid-feedback">
-                                * Por favor selecciona una opción
-                            </div>
-                            <button type="submit" [disabled]="flag6 == false" class="btn btn-primary my-5 " (click)="submit()">COTIZAR</button>
+                            <button type="submit" [disabled]="forma.controls['occupationId'].invalid || flag2 == false" class="btn btn-primary my-5 " (click)="submit()">COTIZAR</button>
+
                         </div>
                     </div>
                     <div class="col-1 col-md-2">

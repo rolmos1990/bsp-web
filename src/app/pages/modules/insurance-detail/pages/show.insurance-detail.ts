@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RequestService } from '../../core/services/request.service';
 import { ActivatedRoute } from '@angular/router';
 import { DependentService } from '../../core/services/dependent.service';
@@ -30,6 +30,7 @@ export class ShowInsuranceDetailComponent implements OnInit {
     this._requestService.getRequest(this.requestId).subscribe(
       response => {
         this.request = response.result.request;
+        console.log("request", this.request);
         this.getDependents();
       },
       error => {
@@ -40,7 +41,7 @@ export class ShowInsuranceDetailComponent implements OnInit {
   }
 
   open(content) {
-    this.modalService.open(content, {centered: true});
+    this.modalService.open(content, { centered: true });
   }
 
   private getDependents() {
@@ -54,6 +55,22 @@ export class ShowInsuranceDetailComponent implements OnInit {
         this.isLoading = false;
       }
     );
+  }
+
+  getFileInfo(filePath = "") {
+    const fileExtension = filePath.toLowerCase().split(".").pop();
+    const validImage = ["jpg", "jpeg", "png"];
+    const fileName = "documento-adjunto" + "." + fileExtension;
+    let _documentAttachment = {
+      name: fileName,
+      size: 0,
+      url: filePath,
+      isImage: false
+    };
+    if (validImage.includes(fileExtension)) {
+      _documentAttachment.isImage = true;
+    }
+    return _documentAttachment;
   }
 
 }
