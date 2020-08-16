@@ -300,9 +300,9 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-md-6 col-lg-4 mb-5">
+            <div class="col-md-6 col-lg-3 mb-5">
               <div class="form-group form-width">
-                <label for="">Nombres </label>
+                <label for="">Primer Nombre </label>
                 <input
                   type="text"
                   class="form-control"
@@ -324,9 +324,33 @@
                 </div>
               </div>
             </div>
-            <div class="col-md-6 col-lg-4 mb-5">
+            <div class="col-md-6 col-lg-3 mb-5">
               <div class="form-group form-width">
-                <label for="">Apellidos </label>
+                <label for="">Segundo Nombre </label>
+                <input
+                  type="text"
+                  class="form-control"
+                  [ngClass]="{
+                    'is-invalid': invalid('insuSecondName', forma),
+                    'is-valid': valid('insuSecondName', forma)
+                  }"
+                  placeholder=""
+                  formControlName="insuSecondName"
+                />
+                <div
+                  *ngIf="invalid('insuSecondName', forma)"
+                  class="invalid-feedback"
+                >
+                  Por favor escriba su segundo nombre. Por ejemplo: Alexandre.
+                </div>
+                <div *ngIf="valid('insuSecondName', forma)" class="valid-feedback">
+                  ¡Excelente!
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-3 mb-5">
+              <div class="form-group form-width">
+                <label for="">Primer Apellido </label>
                 <input
                   type="text"
                   class="form-control"
@@ -340,10 +364,36 @@
                   *ngIf="invalid('insuLastName', forma)"
                   class="invalid-feedback"
                 >
-                  Por favor escriba su nombre. Por ejemplo: Florez.
+                  Por favor escriba su primer apellido. Por ejemplo: Florez.
                 </div>
                 <div
                   *ngIf="valid('insuLastName', forma)"
+                  class="valid-feedback"
+                >
+                  ¡Excelente!
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-3 mb-5">
+              <div class="form-group form-width">
+                <label for="">Segundo Apellido </label>
+                <input
+                  type="text"
+                  class="form-control"
+                  [ngClass]="{
+                    'is-invalid': invalid('insuSecondLastName', forma),
+                    'is-valid': valid('insuSecondLastName', forma)
+                  }"
+                  formControlName="insuSecondLastName"
+                />
+                <div
+                  *ngIf="invalid('insuSecondLastName', forma)"
+                  class="invalid-feedback"
+                >
+                  Por favor escriba su segundo apellido. Por ejemplo: Gonzalez.
+                </div>
+                <div
+                  *ngIf="valid('insuSecondLastName', forma)"
                   class="valid-feedback"
                 >
                   ¡Excelente!
@@ -1979,15 +2029,7 @@
             </div>
             <ng-template [ngIf]="forma.value.documentFile && !invalid('documentFile', forma)">
               <div class="col-md-6 col-lg-8">
-                <div
-                  style="
-                    border: 1px rgba(220, 220, 220, 0.8) solid;
-                    box-shadow: 1px 1px gray solid;
-                    height: 132px;
-                    width: 322px;
-                    border-radius: 10px;
-                  "
-                >
+                <div class="request-attachment-container">
                   <ng-template [ngIf]="!attachment.hasPreview">
                     <img
                       src="{{ attachment.defaultImage }}"
@@ -1996,17 +2038,8 @@
                   </ng-template>
                   <ng-template [ngIf]="attachment.hasPreview">
                     <div
-                      [ngStyle]="{
-                        'background-image':
-                          'url(' + forma.value.documentFile + ')'
-                      }"
-                      style="
-                        height: 130px;
-                        width: 320px;
-                        background-size: cover;
-                        background-position: center;
-                        border-radius: 10px;
-                      "
+                      [ngStyle]="{'background-image': 'url(' + forma.value.documentFile + ')'}"
+                      class="request-attachment"
                     ></div>
                   </ng-template>
                 </div>

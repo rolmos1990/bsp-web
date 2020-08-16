@@ -26,6 +26,25 @@ export class ShowInformationComponent implements OnInit {
   constructor(private modalService: NgbModal, private fb: FormBuilder, private _requestService: RequestService, private _showService: ShowService,
     private _router: Router, private _route: ActivatedRoute) {
     this.requestId = _route.snapshot.paramMap.get('requestId');
+    this.redirectInsureNotExist(this.requestId);
+  }
+
+  redirectInsureNotExist(requestId: string) {
+    this._requestService.getRequest(requestId).subscribe(
+      response => {
+        if(response.result.request.id){
+          this.isLoading = false;
+        }
+        else{
+          this.isLoading = true;
+          this._router.navigate([`/`]);
+        }
+      },
+      error => {
+        this.isLoading = true;
+        this._router.navigate([`/`]);
+      }
+    );
   }
 
   ngOnInit() {

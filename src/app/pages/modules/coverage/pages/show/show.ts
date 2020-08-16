@@ -15,7 +15,7 @@ export class ShowComponent implements OnInit {
   public insuranceId: string;
   public actualCoverage: any;
   public isLoading: boolean;
-  public requestId: string;
+  public insureType: string;
 
   customClass = 'customClass';
   isFirstOpen = true;
@@ -23,7 +23,7 @@ export class ShowComponent implements OnInit {
   constructor(private modalService: NgbModal, private _coverageService: CoverageService,
   private _requestService: RequestService, private _router: Router, private _route: ActivatedRoute) {
     this.isLoading = true;
-    this.requestId = _route.snapshot.paramMap.get('requestId');
+    this.insureType = _route.snapshot.paramMap.get('insureType');
   }
 
 
@@ -32,11 +32,13 @@ export class ShowComponent implements OnInit {
   }
 
   private getCoverages() {
-    this._coverageService.getAllConverages().subscribe(
+    this._coverageService.getAllConverages({type: this.insureType}).subscribe(
       response => {
         this.isLoading = false;
         this.coverages = response.result.insurances;
       }, error => {
+        this.isLoading = false;
+        this.coverages = [];
       }
     );
   }
@@ -49,15 +51,19 @@ export class ShowComponent implements OnInit {
   private updateRequest(modal: any) {
         modal.dismiss('Cross click');
     this.isLoading = true;
-    const payload = {
-      insuranceId: this.insuranceId,
-      requestId: this.requestId
-    };
+
+    const payload = { insuranceId: this.insuranceId };
     this._requestService.saveRequest(payload).subscribe(
       response => {
-        this._router.navigate(['formulario', response.result.request.id]);
+        const requestId = response && response.result && response.request && response.result.request.id;
+        if(!requestId){
+          console.error("[pages.show.ts]", "requestId not found");
+          this.isLoading = false;
+        }
+        localStorage.setItem('requestId', response.result)
+        this._router.navigate(['cotizar', response.result.request.id]);
       }, error => {
-        console.error(error);
+        console.error("[pages.show.ts]", error);
         this.isLoading = false;
       }
     );

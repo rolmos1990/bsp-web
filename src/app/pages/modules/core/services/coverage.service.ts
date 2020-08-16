@@ -12,9 +12,9 @@ export class CoverageService {
 
     constructor(private _http: HttpClient) { }
 
-    public getAllConverages() : Observable<any> {
+    public getAllConverages(payload) : Observable<any> {
       return this._http
-        .post(environment.baseUrl.concat(API_ENDPOINT_GET_ALL_COVERAGES), null, ServiceDirective.headers)
+        .post(environment.baseUrl.concat(API_ENDPOINT_GET_ALL_COVERAGES), payload, ServiceDirective.headers)
         .pipe(
           catchError(err => {
             return ServiceDirective.handleError(err);

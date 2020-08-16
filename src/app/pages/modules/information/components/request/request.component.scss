@@ -203,6 +203,22 @@ table td,
     width: 280px;
 }
 
+.request-attachment{
+    height: 130px;
+    width: 320px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+}
+
+.request-attachment-container{
+    border: 1px rgba(220, 220, 220, 0.8) solid;
+    box-shadow: 1px 1px gray solid;
+    height: 132px;
+    width: 322px;
+    border-radius: 10px;
+}
+
 @media (max-width: 1200px) {
     .form-control.parrafo {
         width: 150px;
@@ -255,6 +271,13 @@ table td,
     .btn-mas2 {
         width: 35px;
         top: 804px;
+    }
+    .request-attachment-container{
+        width: 100%!important;
+        margin: 10px;
+    }
+    .request-attachment{
+        width: 100%!important;
     }
 }
 

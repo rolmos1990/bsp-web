@@ -11,9 +11,15 @@
         <div class="container">
             <div id="portada" class="row">
                 <div class="col-md-8">
-                    <h1>Explora el seguro de Accidentes Personales</h1>
-                    <p>Nuestras pólizas AP te protegen contra cualquier eventualidad, asegurando la estabilidad financiera de tu familia cuando más lo necesitas.</p>
-                    <button class="btn" [routerLink]="['/cotizar']">COTIZAR</button>
+                    <ng-template [ngIf]="insureType === 'accidentes-personales'">
+                        <h1>Explora el seguro de Accidentes Personales</h1>
+                        <p>Nuestras pólizas AP te protegen contra cualquier eventualidad, asegurando la estabilidad financiera de tu familia cuando más lo necesitas.</p>
+                    </ng-template>
+                    <ng-template [ngIf]="insureType === 'cancer'">
+                        <h1>Explora el seguro de Cancer</h1>
+                        <p>Nuestras pólizas Cancer te protegen contra el Cancer, asegurando la estabilidad financiera de tu familia cuando más lo necesitas.</p>
+                    </ng-template>
+                    <button class="btn" [routerLink]="['/cobertura/',insureType]">COTIZAR</button>
                 </div>
                 <div class="col-md-4">
                     <img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/worldwide.png" alt="">

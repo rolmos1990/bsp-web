@@ -22,12 +22,12 @@ const routes: Routes = [
     loadChildren: './modules/general/general.module#GeneralModule'
   },
   {
-    path: 'cobertura/:requestId',
+    path: 'cobertura/:insureType',
     loadChildren: './modules/coverage/coverage.module#CoverageModule',
     pathMatch: 'full'
   },
   {
-    path: 'cotizar',
+    path: 'cotizar/:requestId',
     loadChildren: './modules/quoting/quoting.module#QuotingModule'
   },
   {
@@ -44,7 +44,7 @@ const routes: Routes = [
     loadChildren: './modules/login/login.module#LoginModule'
   },
   {
-    path: 'informacion',
+    path: 'informacion/:insureType',
     loadChildren: './modules/apinfo/apinfo.module#ApinfoModule'
   },
   {

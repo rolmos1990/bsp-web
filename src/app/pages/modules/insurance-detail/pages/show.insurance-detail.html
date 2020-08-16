@@ -9,9 +9,15 @@
     </div>
     <div class="row col-md-12 justify-content-center">
       <div class="cuadrado top">
-        <div class="superior">
+        <div class="superior" ngClass="{'pt-0' : request.policyNumber }">
           <div class="container">
             <div class="row">
+              <ng-template [ngIf]="request.policyNumber">
+              <div class="col-md-12 text-center mt-0 mb-4 inferior">
+                <p>Número de Póliza</p>
+                <h2>{{ request.policyNumber }}</h2>
+              </div>
+              </ng-template>
               <div class="col-md-12">
                 <h5
                   style="
@@ -70,7 +76,7 @@
         </div>
       </div>
     </div>
-    <accordion *ngIf="!request.insured.same">
+    <accordion *ngIf="!true">
       <accordion-group [panelClass]="customClass" [isOpen]="isFirstOpen">
         <button class="btn btn-link btn-block clearfix" accordion-heading>
           <div
@@ -133,12 +139,20 @@
         </button>
         <div class="row">
           <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
-            <h5><i class="fas fa-minus"></i> Nombres:</h5>
+            <h5><i class="fas fa-minus"></i> Primer Nombre:</h5>
             <p class="mayu">{{request?.insured?.name}}</p>
           </div>
           <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
-            <h5><i class="fas fa-minus"></i> Apellidos:</h5>
+            <h5><i class="fas fa-minus"></i> Segundo Nombre:</h5>
+            <p class="mayu">{{request?.insured?.secondname}}</p>
+          </div>
+          <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
+            <h5><i class="fas fa-minus"></i> Primer Apellido:</h5>
             <p class="mayu">{{request?.insured?.lastName}}</p>
+          </div>
+          <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
+            <h5><i class="fas fa-minus"></i> Segundo Apellido:</h5>
+            <p class="mayu">{{request?.insured?.secondLastName}}</p>
           </div>
           <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
             <h5><i class="fas fa-minus"></i> Cédula/Pasaporte:</h5>
@@ -219,7 +233,7 @@
             <p class="mayu">{{request?.insured?.cellphone}}</p>
           </div>
           <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
-            <h5><i class="fas fa-minus"></i> Teléfono residencial:</h5>
+            <h5><i class="fas fa-minus"></i> Teléfono de Oficina:</h5>
             <p class="mayu">{{request?.insured?.officeNumber}}</p>
           </div>
           <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
@@ -247,12 +261,20 @@
         </button>
         <div class="row">
           <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
-            <h5><i class="fas fa-minus"></i> Nombres:</h5>
+            <h5><i class="fas fa-minus"></i> Primer Nombre:</h5>
             <p class="mayu">{{request?.insured?.name}}</p>
           </div>
           <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
-            <h5><i class="fas fa-minus"></i> Apellidos:</h5>
+            <h5><i class="fas fa-minus"></i> Segundo Nombre:</h5>
+            <p class="mayu">{{request?.insured?.secondName}}</p>
+          </div>
+          <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
+            <h5><i class="fas fa-minus"></i> Primer Apellido:</h5>
             <p class="mayu">{{request?.insured?.lastName}}</p>
+          </div>
+          <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
+            <h5><i class="fas fa-minus"></i> Segundo Apellido:</h5>
+            <p class="mayu">{{request?.insured?.secondLastName}}</p>
           </div>
           <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
             <h5><i class="fas fa-minus"></i> Cédula/Pasaporte:</h5>
@@ -324,10 +346,6 @@
             <h5><i class="fas fa-minus"></i> Casa / Apartamento:</h5>
             <p class="mayu">{{request?.insured?.building}}</p>
           </div>
-            <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
-              <h5><i class="fas fa-minus"></i> Teléfono residencial:</h5>
-              <p class="mayu">{{request?.insured?.localNumber}}</p>
-            </div>
           <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
             <h5><i class="fas fa-minus"></i> Teléfono celular:</h5>
             <p class="mayu">{{request?.insured?.cellphone}}</p>
@@ -364,7 +382,7 @@
                     target="_blank"
                 >
                     <ng-template [ngIf]="getFileInfo(request.insured.documentFile).isImage">
-                    <img alt="logo" src="{{ getFileInfo(request.insured.documentFile).url }}" />
+                    <img alt="logo" style="max-width:260px;object-fit: cover;" src="{{ getFileInfo(request.insured.documentFile).url }}" />
                     </ng-template>
                     <ng-template [ngIf]="!getFileInfo(request.insured.documentFile).isImage">
                         <img src="../../../../../../assets/img/pdf-logo.png" />

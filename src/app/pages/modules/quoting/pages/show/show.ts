@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { RequestService } from '../../../core/services/request.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { CustomValidatorDirective } from '../../../core/directives/validations/custom-validations.directive';
 import { ActivityService } from '../../../core/services/activities.service';
 import { DEDUCTIBLES } from '../../../core/utils/select.util';
@@ -18,7 +18,7 @@ export class ShowComponent implements OnInit {
   public forma: FormGroup;
   public invalidRadioSelect = false;
   public isLoading: boolean;
-  public ocupaciones: Array<any> = [];
+  //public ocupaciones: Array<any> = [];
   private occupations: Array<any> = [];
   public deductibles = DEDUCTIBLES;
   public flag1: boolean = true;
@@ -26,32 +26,57 @@ export class ShowComponent implements OnInit {
   public flag3: boolean = false;
   public flag4: boolean = false;
   public flag5: boolean = false;
+  private requestId: string;
 
 
   constructor(
-    public fb: FormBuilder, private _requestService: RequestService, private _router: Router, private _activityService: ActivityService) {
+    public fb: FormBuilder, private _requestService: RequestService, private _router: Router, private _activityService: ActivityService, private _route: ActivatedRoute) {
     this.isLoading = true;
+    this.requestId = _route.snapshot.paramMap.get('requestId');
   }
 
   ngOnInit() {
     this.initForm();
+    this.redirectInsureNotExist(this.requestId);
   }
 
-  private getOccupations() {
-    this._activityService.getAllOcupations().subscribe(
+  redirectInsureNotExist(requestId: string) {
+    this._requestService.getRequest(requestId).subscribe(
       response => {
-        this.occupations = response.result.occupations;
-        this.occupations.forEach(occupation => {
-          this.ocupaciones.push(occupation.name);
-        });
-        this.isLoading = false;
+        if(response.result.request.id){
+          this.isLoading = false;
+        }
+        else{
+          this.isLoading = true;
+          this._router.navigate([`/`]);
+        }
       },
       error => {
-        console.log(error);
-        this.isLoading = false;
+        this.isLoading = true;
+        this._router.navigate([`/`]);
       }
     );
   }
+
+  // private getOccupations() {
+  //   this._activityService.getAllOcupations().subscribe(
+  //     response => {
+  //       this.occupations = response.result.occupations;
+  //       this.occupations.forEach(occupation => {
+  //         this.ocupaciones.push(occupation.name);
+  //       });
+  //       this.isLoading = false;
+  //     },
+  //     error => {
+  //       console.log(error);
+  //       this.isLoading = false;
+  //     }
+  //   );
+  // }
+
+  // private getOccupation(occupationName: string) {
+  //   return this.occupations.find(obj => { return occupationName === obj.name });
+  // }
 
   public validations() {
     if (this.forma.value.documentType === 'Pasaporte') {
@@ -79,17 +104,13 @@ export class ShowComponent implements OnInit {
       document: [null],
       document2: [null],
       document3: [null],
-      occupationId: ['', Validators.compose([Validators.required, Validators.minLength(5)])],
+      //occupationId: ['', Validators.compose([Validators.required, Validators.minLength(5)])],
       //birthday: ['', Validators.compose([Validators.required, Validators.maxLength(2), Validators.min(18), Validators.max(60)])],
       email: ['', Validators.compose([Validators.required, CustomValidatorDirective.customEmailValidator])],
       //same: [null, Validators.required]
     });
-    this.getOccupations();
+    //this.getOccupations();
     this.validations();
-  }
-
-  private getOccupation(occupationName: string) {
-    return this.occupations.find(obj => { return occupationName === obj.name });
   }
 
   public submit() {
@@ -102,20 +123,16 @@ export class ShowComponent implements OnInit {
       }
       delete payload.document2;
       delete payload.document3;
-      
-      const requestId = localStorage.getItem('requestId');
 
-      payload.occupationId = this.getOccupation(payload.occupationId).id;
-      payload.requestId = requestId;
-
-      console.log("requestId", payload);
+      //payload.occupationId = this.getOccupation(payload.occupationId).id;
+      payload.requestId = this.requestId;
       localStorage.setItem('same', payload.same ? 'true' : 'false');
       payload.type = 'cliente';
       this._requestService.saveRequest(payload).subscribe(
         response => {
-          this._router.navigate(['cobertura', requestId]);
+          this._router.navigate(['formulario', this.requestId]);
         }, error => {
-          console.error(error);
+          console.error("[quoting.pages.show]", error);
           this.isLoading = false;
         }
       );
@@ -144,50 +161,49 @@ export class ShowComponent implements OnInit {
   public onFocused(e) {
   }
 
-  public startQuoting(): void {
+  // public startQuoting(): void {
 
-    let payload = this.forma.value;
-    if (payload.documentType !== 'Pasaporte') {
-      payload.document = payload.document.concat('-').concat(payload.document2).concat('-').concat(payload.document3);
-    }
-    delete payload.document2;
-    delete payload.document3;
+  //   let payload = this.forma.value;
+  //   if (payload.documentType !== 'Pasaporte') {
+  //     payload.document = payload.document.concat('-').concat(payload.document2).concat('-').concat(payload.document3);
+  //   }
+  //   delete payload.document2;
+  //   delete payload.document3;
 
-    this._requestService.saveRequest(payload).subscribe(
-      response => {
-        const { result } = response;
-        //if client was created (result.clientCreated)
-        const requestId = result.request.id;
-        if (requestId) {
-          localStorage.setItem('requestId', requestId);
-          this.hide1();
-        }
-        else {
-          console.error("[show] - error on save polize");
-          this.isLoading = false;
-        }
-      }, error => {
-        console.error(error);
-        this.isLoading = false;
-      }
-    );
+  //   this._requestService.saveRequest({ ...payload, requestId: this.requestId }).subscribe(
+  //     response => {
+  //       const { result } = response;
+  //       //if client was created (result.clientCreated)
+  //       const requestId = result.request.id;
+  //       if (requestId) {
+  //         this.hide1();
+  //       }
+  //       else {
+  //         console.error("[show] - error on save polize");
+  //         this.isLoading = false;
+  //       }
+  //     }, error => {
+  //       console.error(error);
+  //       this.isLoading = false;
+  //     }
+  //   );
 
-  }
+  // }
 
-  public hide1(): void {
-    this.flag1 = false;
-    this.flag2 = true;
-  }
+  // public hide1(): void {
+  //   this.flag1 = false;
+  //   this.flag2 = true;
+  // }
 
-  public hide2(): void {
-    this.flag2 = false;
-    this.flag3 = true;
-  }
+  // public hide2(): void {
+  //   this.flag2 = false;
+  //   this.flag3 = true;
+  // }
 
-  public atras2(): void {
-    this.flag2 = false;
-    this.flag1 = true;
-  }
+  // public atras2(): void {
+  //   this.flag2 = false;
+  //   this.flag1 = true;
+  // }
 
 
 }

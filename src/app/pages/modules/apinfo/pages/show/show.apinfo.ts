@@ -3,6 +3,7 @@ import { SwiperComponent, SwiperDirective, SwiperConfigInterface,
   SwiperScrollbarInterface, SwiperPaginationInterface } from 'ngx-swiper-wrapper';
 import { SLIDES } from '../../../core/utils/select.util';
 import { ScrollToService } from '@nicky-lenaers/ngx-scroll-to';
+import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'bsp-show',
   templateUrl: './show.apinfo.html',
@@ -14,6 +15,7 @@ export class ShowApinfo implements OnInit {
   isFirstOpen = true;
   public slides = SLIDES;
   public greenActivate = '1';
+  public insureType = null;
 
   public type: string = 'component';
 
@@ -71,9 +73,13 @@ export class ShowApinfo implements OnInit {
   @ViewChild(SwiperComponent) componentRef: SwiperComponent;
   @ViewChild(SwiperDirective) directiveRef: SwiperDirective;
 
-  constructor(private _scrollToService: ScrollToService){}
+  constructor(private _scrollToService: ScrollToService, private _route: ActivatedRoute){
+    this.insureType = _route.snapshot.paramMap.get('insureType');
+    this.insureType = this.insureType.replace("seguros-", "");
+  }
 
   ngOnInit() {
+
     window.scrollTo(0, 0);
   }
 

@@ -107,6 +107,7 @@
                             <thead>
                                 <tr>
                                     <th scope="col">Nº</th>
+                                    <th scope="col">Número Poliza</th>
                                     <th scope="col">Solicitante</th>
                                     <th scope="col">Fecha de solicitud</th>
                                     <th scope="col">Tipo de Póliza</th>
@@ -120,6 +121,7 @@
                             <tbody>
                                 <tr *ngFor="let request of requests | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize ;let i=index;">
                                     <td><strong>Nº {{request.number}} BSP-SL</strong></td>
+                                    <td><strong>{{request.policyNumber}}</strong></td>
                                     <td>
                                         <p *ngIf="request?.insured?.name">{{request?.insured?.name}} {{request?.insured?.lastName}}</p>
                                         <p *ngIf="request?.insured?.email">{{request?.insured?.email}}</p>
@@ -128,7 +130,7 @@
                                         <p *ngIf="!request?.insured?.name && !request?.insured?.email && !request?.insured?.cellphone && !request?.insured?.localNumber">N/A</p>
                                     </td>
                                     <td>{{request?.createdAt.iso | date: 'dd/MM/yyyy'}}</td>
-                                    <td>{{request?.insurance?.type}}</td>
+                                    <td>{{request?.insurance?.insuranceType}}</td>
                                     <td>{{request?.insurance?.coverageDetail?.monthlyPrime | currency}}</td>
                                     <td class="align-items-center">
                                         <div class="row justify-content-center">
@@ -145,7 +147,7 @@
                                             <div *ngIf="isLoadingFile === request" class="btn-dashboard m-0">
                                                 <label class="p-0" style="cursor: pointer;color:#ffffff;font-size: 13.6px;">Cargando adjunto...</label>
                                             </div>
-                                            <div *ngIf="!isLoadingFile" class="btn-dashboard m-0">
+                                            <div *ngIf="!isLoadingFile && canBeClosed(request)" class="btn-dashboard m-0">
                                                 <ng-template [ngIf]="true">
                                                     <label class="m-0" (click)="openSm(content, request)" style="cursor: pointer;color:#ffffff;font-size: 13.6px;">Adjuntar Póliza</label>
                                                 </ng-template>

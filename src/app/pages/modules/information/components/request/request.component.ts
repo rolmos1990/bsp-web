@@ -200,9 +200,12 @@ export class RequestComponent implements OnInit {
       'contNeighborhood': this._fb.control(cont.neighborhood, Validators.required),
       'contCellphone': this._fb.control(cont.cellphone, [Validators.required, CustomValidatorDirective.cellphoneValidator]),
       //'contEconomicActivity': this._fb.control(cont.economicActivity ? cont.economicActivity : null, [Validators.required]),
-      'insuSame': this._fb.control(localStorage.getItem('same') === 'true' ? true : false, Validators.required),
+      // 'insuSame': this._fb.control(localStorage.getItem('same') === 'true' ? true : false, Validators.required),
+      'insuSame': this._fb.control(true, Validators.required),
       'insuName': this._fb.control(insu.name, Validators.compose([Validators.required, CustomValidatorDirective.namesValidator])),//Segundo Formulario
+      'insuSecondName': this._fb.control(insu.secondName, Validators.compose([Validators.required, CustomValidatorDirective.namesValidator])),//Segundo Formulario
       'insuLastName': this._fb.control(insu.lastName, Validators.compose([Validators.required, CustomValidatorDirective.namesValidator])),
+      'insuSecondLastName': this._fb.control(insu.secondlastName, Validators.compose([Validators.required, CustomValidatorDirective.namesValidator])),
       'insuDocumentType': [insu && insu.documentType ? insu.documentType : null, Validators.required],
       'insuDocument': [(insu && insu.document ? (insu.documentType === 'Pasaporte' ? insu.document : insu.document.split('-')[0]) : null), Validators.required],
       'insuDocument2': [!insu || !insu.document || insu.documentType === 'Pasaporte' ? null : insu.document.split('-')[1]],
@@ -376,7 +379,9 @@ export class RequestComponent implements OnInit {
       this.forma.get('contCellphone').markAsTouched();
       // this.forma.get('contEconomicActivity').markAsTouched();
       this.forma.get('insuName').markAsTouched();
+      this.forma.get('insuSecondName').markAsTouched();
       this.forma.get('insuLastName').markAsTouched();
+      this.forma.get('insuSecondLastName').markAsTouched();
       this.forma.get('insuDocumentType').markAsTouched();
       this.forma.get('insuDocument').markAsTouched();
       this.forma.get('insuDocument2').markAsTouched();

@@ -87,13 +87,14 @@
                                 </div>
                                 </div>
                             </div>
-                            <button type="submit" [disabled]="forma.controls['document'].invalid || forma.controls['documentType'].invalid || flag1 == false" class="btn btn-primary my-5 " (click)="startQuoting()">SIGUIENTE</button>
+                            <button type="submit" [disabled]="forma.controls['document'].invalid" class="btn btn-primary my-5 " (click)="submit()">COTIZAR</button>
                         </div>
                     </div>
                     <div class="col-1 col-md-2">
                         <!-- -->
                     </div>
                 </div>
+                <!--
                 <div class="row" [ngClass]="{'d-none': flag2 == false}">
                     <div class="col-1 col-md-2">
                         <button (click)="atras2()" class="btn-flecha"><i class="fas fa-angle-left"></i></button>
@@ -125,9 +126,9 @@
                         </div>
                     </div>
                     <div class="col-1 col-md-2">
-                        <!-- -->
                     </div>
                 </div>
+                -->
             </div>
         </form>
     </section>

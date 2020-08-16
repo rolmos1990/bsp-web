@@ -189,11 +189,16 @@ export class ShowPolicies implements OnInit {
   }
 
   private structureXLSX(request: any): any {
+    function getFullName(_request){
+      const insured = _request.insured || {};
+      return `${insured.name || ""} ${insured.secondName || ""} ${insured.lastName || ""} ${insured.secondLastName || ""}`;
+    }
     let _request;
     _request = {
       Numero_Solicitud: request.number,
+      Numero_Poliza: request.policyNumber,
       Estatus: request.status,
-      Tipo_Seguro: request.insurance.type,
+      Tipo_Seguro: request.insurance && request.insurance.insuranceType,
       Monto_Asegurado_Cobertura: !request.insurance ? 'N/A' : ('$' + request.insurance.coverageDetail.insuredAmount),
       Prima_Mensual_Cobertura: !request.insurance ? 'N/A' : ('$' + request.insurance.coverageDetail.monthlyPrime),
       Doble_Compensacion_Cobertura: !request.insurance ? 'N/A' : ('$' + request.insurance.coverageDetail.dobleCompensation),
@@ -203,16 +208,17 @@ export class ShowPolicies implements OnInit {
       Asistencia_Viaje_Cobertura: !request.insurance ? 'N/A' : ('$' + request.insurance.coverageDetail.travelAssistance),
       Muerte_Accidental_Cobertura: !request.insurance ? 'N/A' : ('$' + request.insurance.coverageDetail.accidentalDeath),
       Gastos_Medicos_Cobertura: !request.insurance ? 'N/A' : ('$' + request.insurance.coverageDetail.medicalExpenses),
-      Nombre_Completo_Contratante: !request.contractor || !request.contractor.name ? 'N/A' : (request.contractor.name + ' ' + request.contractor.lastName),
-      Telefono_Celular_Contratante: !request.contractor || !request.contractor.cellphone ? 'N/A' : request.contractor.cellphone,
-      Provincia_Contratante: !request.contractor || !request.contractor.province ? 'N/A' : request.contractor.province.name,
-      Distrito_Contratante: !request.contractor || !request.contractor.district ? 'N/A' : request.contractor.district.name,
-      Corregimiento_Contratante: !request.contractor || !request.contractor.corregimiento ? 'N/A' : request.contractor.corregimiento.name,
-      Urbanizacion_Contratante: !request.contractor || !request.contractor.neighborhood ? 'N/A' : request.contractor.neighborhood,
-      Calle_Contratante: !request.contractor || !request.contractor.street ? 'N/A' : request.contractor.street,
-      Vivienda_Contratante: !request.contractor || !request.contractor.building ? 'N/A' : request.contractor.building,
-      Nombre_Completo_Asegurado: !request.insured || !request.insured.name ? 'N/A' : (request.insured.name + ' ' + request.insured.lastName),
+      //Nombre_Completo_Contratante: !request.contractor || !request.contractor.name ? 'N/A' : (request.contractor.name + ' ' + request.contractor.lastName),
+      //Telefono_Celular_Contratante: !request.contractor || !request.contractor.cellphone ? 'N/A' : request.contractor.cellphone,
+      //Provincia_Contratante: !request.contractor || !request.contractor.province ? 'N/A' : request.contractor.province.name,
+      //Distrito_Contratante: !request.contractor || !request.contractor.district ? 'N/A' : request.contractor.district.name,
+      //Corregimiento_Contratante: !request.contractor || !request.contractor.corregimiento ? 'N/A' : request.contractor.corregimiento.name,
+      //Urbanizacion_Contratante: !request.contractor || !request.contractor.neighborhood ? 'N/A' : request.contractor.neighborhood,
+      //Calle_Contratante: !request.contractor || !request.contractor.street ? 'N/A' : request.contractor.street,
+      //Vivienda_Contratante: !request.contractor || !request.contractor.building ? 'N/A' : request.contractor.building,
+      Nombre_Completo_Asegurado: getFullName(request),
       Documento_Asegurado: !request.insured || !request.insured.document ? 'N/A' : request.insured.document,
+      Correo_Electronico_Asegurado: (request.insured && request.insured.email) || "N/A",
       Fecha_Nacimiento_Asegurado: !request.insured || !request.insured.birthday ? 'N/A' : moment(request.insured.birthday.iso).format('DD/MM/YYYY'),
       Genero_Asegurado: !request.insured || !request.insured.gender ? 'N/A' : request.insured.gender,
       Estado_Civil_Asegurado: !request.insured || !request.insured.civilStatus ? 'N/A' : request.insured.civilStatus,
@@ -232,6 +238,8 @@ export class ShowPolicies implements OnInit {
       Telefono_Oficina_Asegurado: !request.insured || !request.insured.officeNumber ? 'N/A' : request.insured.officeNumber,
       Profesion_Asegurado: !request.insured || !request.insured.profession ? 'N/A' : request.insured.profession,
       Deportes_Asegurado: !request.insured || !request.insured.sports ? 'N/A' : request.insured.sports,
+      Tax_ID_Number_EEUU: !request.insured || !request.insured.taxIdentificationNumber ? 'N/A' : request.insured.taxIdentificationNumber,
+
     };
 
     return _request;
@@ -269,6 +277,13 @@ export class ShowPolicies implements OnInit {
     } else {
       this.searching = false;
     }
+  }
+
+  public canBeClosed(request: any){
+    if(request.status === "En Proceso"){
+      return true;
+    }
+      return false;
   }
 
 }
