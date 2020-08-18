@@ -86,7 +86,6 @@ export class ShowPolicies implements OnInit {
             const _errorMessage = response.error.message;
             this._toastr.notify('error', _errorMessage);
           }
-          console.log("saved successful", response);
           this.isLoading = false;
           //this._router.navigate(['cobertura', requestId]);
         }, error => {
@@ -98,7 +97,9 @@ export class ShowPolicies implements OnInit {
 
     }
     else{
-      console.log("error to show", this.forma);
+      this._toastr.notify('error', "No se ha podido emitir la poliza");
+      this.isLoading = false;
+      return false;
     }
 }
 
