@@ -53,7 +53,7 @@ export class ShowComponent implements OnInit {
     this.isLoading = true;
 
     const payload = { insuranceId: this.insuranceId };
-    this._requestService.saveRequest(payload).subscribe(
+    this._requestService.saveRequest(payload, this.insureType).subscribe(
       response => {
         const requestId = response && response.result && response.request && response.result.request.id;
         if(!requestId){

@@ -1,10 +1,9 @@
 import { Component, OnInit, ViewChild, Output } from '@angular/core';
-import { ArchwizardModule, WizardComponent } from 'angular-archwizard';
+import { WizardComponent } from 'angular-archwizard';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { RequestService } from '../../../core/services/request.service';
-import { ShowService } from './show.service';
+import { ShowSuccessService } from './show.service';
 
 
 @Component({
@@ -13,32 +12,34 @@ import { ShowService } from './show.service';
   styleUrls: ['./show.scss']
 
 })
-export class ShowInformationComponent implements OnInit {
+export class SuccessInformationComponent implements OnInit {
 
   public flag: boolean = false;
-  public formulario: FormGroup;
   public requestId: string;
   public request: any = null;
   public isLoading: boolean;
-  public insureType: string;
-  public paymentInformation: any = {};
   @ViewChild('wizard') wizard: WizardComponent;
-  @ViewChild('wizard2') wizard2: WizardComponent;
 
 
-  constructor(private modalService: NgbModal, private fb: FormBuilder, private _requestService: RequestService, private _showService: ShowService,
+  constructor(private modalService: NgbModal, private _requestService: RequestService, private _showService: ShowSuccessService,
     private _router: Router, private _route: ActivatedRoute) {
-    this.requestId = _route.snapshot.paramMap.get('requestId');
-    this.flag = false;
+      
+      this.requestId = _route.snapshot.paramMap.get('requestId');
+      this.flag = true;
+      this.redirectInsureNotExist(this.requestId);
+
+  }
+
+  ngOnInit() {
     this.isLoading = true;
-    this.redirectInsureNotExist(this.requestId);
   }
 
   redirectInsureNotExist(requestId: string) {
     this._requestService.getRequest(requestId).subscribe(
       response => {
         if (response.result.request.id) {
-          this.insureType = response.result.request.insurance.insuranceType;
+          let _response = response;
+          this.request = _response.result.request;
           this.isLoading = false;
         }
         else {
@@ -53,9 +54,6 @@ export class ShowInformationComponent implements OnInit {
     );
   }
 
-  ngOnInit() {
-    this.isLoading = true;
-  }
   public inicio() {
     window.scrollTo(0, 0);
     this._showService.stepCredit = false;
@@ -64,13 +62,6 @@ export class ShowInformationComponent implements OnInit {
       this.getRequest();
     }
 
-  }
-
-  public goPayment(){
-    window.scrollTo(0, 0);
-    this._showService.stepCredit = false;
-    this.wizard.model.navigationMode.goToNextStep();
-    this.getRequest();
   }
 
   public getPosition(id: string) {
@@ -119,8 +110,6 @@ export class ShowInformationComponent implements OnInit {
     this._requestService.getRequest(this.requestId).subscribe(
       response => {
         this.request = response;
-        this.insureType = response.result.request.insurance.insuranceType;
-        this.paymentInformation = response.result.request.paymentInformation;
         this.isLoading = false;
       },
       error => {

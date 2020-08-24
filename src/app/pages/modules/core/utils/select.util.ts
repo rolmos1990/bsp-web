@@ -203,3 +203,37 @@ export const SLIDES = [
   'mensaje': 'Asistencia médica durante tu viaje, si por indicación médica debes alojarte en un hotel, cubrimos tu estancia mientras te recuperas, transporte de los familiares del asegurado en caso necesario. Si ocurriera el fallecimiento del asegurado, traemos de vuelta sus restos así como a los familiares' 
   },
 ];
+
+export const SLIDES_CANCER = [
+  {
+  'id': '1',
+  'titulo': 'Muerte por Cancer',
+  'imagen' : 'unoapinfo',
+  'mensaje': 'Si el asegurado muere por motivos del cancer, a los beneficiarios se les pagará el monto asegurado que contrató (indemnización). Ej.: accidentes de tránsito, sucesos imprevistos, homicidios dolosos y culposos.' 
+  },
+  {
+  'id': '2',
+  'titulo': 'Adelantos de Gastos Funerarios',
+  'imagen' : 'dosapinfo',
+  'mensaje': 'Adelantamos hasta el 25% la suma asegurada de gastos funerarios a los beneficiarios cuando ocurre la muerte accidental del asegurado. Ej.: si tu suma asegurada por muerte accidental es USD 10,000 te adelantamos hasta USD 2,500' 
+  },
+  {
+  'id': '3',
+  'titulo': 'Gastos Médicos por diagnostico de Cancer',
+  'imagen' : 'cuatroapinfo',
+  'mensaje': 'Cobertura complementaria donde te reembolsamos hasta un 10% de la suma asegurada para gastos médicos incurridos por accidentes.',
+  'enlace':' '
+  },
+  {
+  'id': '4',
+  'titulo': 'Doble Indemnización por Muerte por Motivo de Cancer',
+  'imagen' : 'maletin',
+  'mensaje': 'Duplicamos la suma asegurada por muerte accidental mientras el asegurado se transporta en un vehículo público (autobús, metro, taxi, etc) o si se ve envuelto en un incendio en algún edificio público (hotel, museo, cine, teatro, etc)' 
+  },
+  {
+  'id': '5',
+  'titulo': 'Asistencia en Viajes',
+  'imagen' : 'seisapinfo',
+  'mensaje': 'Asistencia médica durante tu viaje, si por indicación médica debes alojarte en un hotel, cubrimos tu estancia mientras te recuperas, transporte de los familiares del asegurado en caso necesario. Si ocurriera el fallecimiento del asegurado, traemos de vuelta sus restos así como a los familiares' 
+  },
+];

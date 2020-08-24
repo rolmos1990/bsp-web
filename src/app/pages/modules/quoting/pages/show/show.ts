@@ -26,6 +26,7 @@ export class ShowComponent implements OnInit {
   public flag3: boolean = false;
   public flag4: boolean = false;
   public flag5: boolean = false;
+  private insureType: string = "accidentes-personales";
   private requestId: string;
 
 
@@ -44,6 +45,7 @@ export class ShowComponent implements OnInit {
     this._requestService.getRequest(requestId).subscribe(
       response => {
         if(response.result.request.id){
+          this.insureType = response.result.request.insurance.type;
           this.isLoading = false;
         }
         else{
@@ -128,7 +130,7 @@ export class ShowComponent implements OnInit {
       payload.requestId = this.requestId;
       localStorage.setItem('same', payload.same ? 'true' : 'false');
       payload.type = 'cliente';
-      this._requestService.saveRequest(payload).subscribe(
+      this._requestService.saveRequest(payload, this.insureType).subscribe(
         response => {
           this._router.navigate(['formulario', this.requestId]);
         }, error => {
@@ -160,35 +162,6 @@ export class ShowComponent implements OnInit {
 
   public onFocused(e) {
   }
-
-  // public startQuoting(): void {
-
-  //   let payload = this.forma.value;
-  //   if (payload.documentType !== 'Pasaporte') {
-  //     payload.document = payload.document.concat('-').concat(payload.document2).concat('-').concat(payload.document3);
-  //   }
-  //   delete payload.document2;
-  //   delete payload.document3;
-
-  //   this._requestService.saveRequest({ ...payload, requestId: this.requestId }).subscribe(
-  //     response => {
-  //       const { result } = response;
-  //       //if client was created (result.clientCreated)
-  //       const requestId = result.request.id;
-  //       if (requestId) {
-  //         this.hide1();
-  //       }
-  //       else {
-  //         console.error("[show] - error on save polize");
-  //         this.isLoading = false;
-  //       }
-  //     }, error => {
-  //       console.error(error);
-  //       this.isLoading = false;
-  //     }
-  //   );
-
-  // }
 
   // public hide1(): void {
   //   this.flag1 = false;

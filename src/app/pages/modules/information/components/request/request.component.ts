@@ -42,6 +42,7 @@ export class RequestComponent implements OnInit {
   public occupations: Array<any>;
   public forma: FormGroup;
   public attachment: any = {};
+  public insurance:any = {};
   @Input() requestId: string;
   @Output() nextStep: EventEmitter<any> = new EventEmitter<any>();
   content = 'Vivamus sagittis lacus vel augue laoreet rutrum faucibus.';
@@ -76,6 +77,7 @@ export class RequestComponent implements OnInit {
   public getRequest() {
     this._requestService.getRequest(this.requestId).subscribe(
       response => {
+        this.insurance = response.result.request.insurance;
         this.fillMainForm(response.result.request.contractor, response.result.request.insured);
         this.getDependents();
       },
@@ -188,57 +190,99 @@ export class RequestComponent implements OnInit {
     if (insu.documentFile) {
       this.hasPreview(insu.documentFile);
     }
-    this.forma = this._fb.group({
-      'requestId': this._fb.control(this.requestId),
-      'contName': this._fb.control(cont.name, [Validators.required, CustomValidatorDirective.namesValidator]),
-      'contLastName': this._fb.control(cont.lastName, [Validators.required, CustomValidatorDirective.namesValidator]),
-      'contProvinceId': this._fb.control(cont.province ? cont.province.id : null, Validators.required),
-      'contDistrictId': this._fb.control(cont.district ? cont.district.id : null, Validators.required),
-      'contCorregimientoId': this._fb.control(cont.corregimiento ? cont.corregimiento.id : null, Validators.required),
-      'contStreet': this._fb.control(cont.street, [Validators.required]),
-      'contBuilding': this._fb.control(cont.building, Validators.required),
-      'contNeighborhood': this._fb.control(cont.neighborhood, Validators.required),
-      'contCellphone': this._fb.control(cont.cellphone, [Validators.required, CustomValidatorDirective.cellphoneValidator]),
-      //'contEconomicActivity': this._fb.control(cont.economicActivity ? cont.economicActivity : null, [Validators.required]),
-      // 'insuSame': this._fb.control(localStorage.getItem('same') === 'true' ? true : false, Validators.required),
-      'insuSame': this._fb.control(true, Validators.required),
-      'insuName': this._fb.control(insu.name, Validators.compose([Validators.required, CustomValidatorDirective.namesValidator])),//Segundo Formulario
-      'insuSecondName': this._fb.control(insu.secondName, Validators.compose([Validators.required, CustomValidatorDirective.namesValidator])),//Segundo Formulario
-      'insuLastName': this._fb.control(insu.lastName, Validators.compose([Validators.required, CustomValidatorDirective.namesValidator])),
-      'insuSecondLastName': this._fb.control(insu.secondlastName, Validators.compose([Validators.required, CustomValidatorDirective.namesValidator])),
-      'insuDocumentType': [insu && insu.documentType ? insu.documentType : null, Validators.required],
-      'insuDocument': [(insu && insu.document ? (insu.documentType === 'Pasaporte' ? insu.document : insu.document.split('-')[0]) : null), Validators.required],
-      'insuDocument2': [!insu || !insu.document || insu.documentType === 'Pasaporte' ? null : insu.document.split('-')[1]],
-      'insuDocument3': [!insu || !insu.document || insu.documentType === 'Pasaporte' ? null : insu.document.split('-')[2]],
-      'insuGender': this._fb.control(insu.gender, Validators.required),
-      'insuBirthday': this._fb.control(insu.birthday ? moment(insu.birthday.iso).format('YYYY-MM-DD') : null, [Validators.required, CustomValidatorDirective.dateValidator, CustomValidatorDirective.tooOld]),
-      'insuCivilStatus': this._fb.control(insu.civilStatus, Validators.required),
-      'insuCountryId': this._fb.control(insu.country ? insu.country.id : null, Validators.required),
-      'insuNationalityId': this._fb.control(insu.nationality ? insu.nationality.id : null, [Validators.required]),
-      'insuProfession': this._fb.control(insu.profession, [Validators.required]),
-      'insuOccupation': this._fb.control(insu.occupation ? insu.occupation.id : null, [Validators.required]),
-      // 'insuOccupationDescription': this._fb.control(insu.occupationDescription, [Validators.required]),
-      'insuCompany': this._fb.control(insu.company, Validators.required),
-      // 'insuOccupationTime': this._fb.control(insu.occupationTime, Validators.required),
-      // 'insuOtherOccupations': this._fb.control(insu.otherOccupations, [Validators.required, CustomValidatorDirective.regularText]),
-      //'insuPreviousOccupations': this._fb.control(insu.previousOccupations ? insu.previousOccupations.id : null, Validators.required),
-      'insuSports': this._fb.control(insu.sports, [Validators.required]),
-      'insuMonthlyIncome': this._fb.control(insu.monthlyIncome, Validators.required),
-      'insuProvinceId': this._fb.control(insu.province ? insu.province.id : null, Validators.required),
-      'insuDistrictId': this._fb.control(insu.district ? insu.district.id : null, Validators.required),
-      'insuCorregimientoId': this._fb.control(insu.corregimiento ? insu.corregimiento.id : null, Validators.required),
-      'insuNeighborhood': this._fb.control(insu.neighborhood, Validators.required),
-      'insuStreet': this._fb.control(insu.street, Validators.required),
-      'insuBuilding': this._fb.control(insu.building, Validators.required),
-      'insuLocalNumber': this._fb.control(insu.localNumber, [CustomValidatorDirective.localphoneValidator]),
-      //'insuFiscalObligations': this._fb.control(false, Validators.required),
-      //'insuCountriesFiscalObligations': this._fb.control(insu.countriesFiscalObligations),
-      'insuTaxIdentificationNumber': this._fb.control(insu.taxIdentificationNumber),
-      'insuOfficeNumber': this._fb.control(insu.officeNumber, [CustomValidatorDirective.localphoneValidator]),
-      'insuCellphone': this._fb.control(insu.cellphone, Validators.compose([Validators.required, CustomValidatorDirective.cellphoneValidator])),
-      'documentFile': this._fb.control(insu.documentFile, [Validators.required, CustomValidatorDirective.customFileValidator]),
-      //'insuDependents': this._fb.array([])
-    });
+    if(this.insurance.type == 'cancer') {
+      this.forma = this._fb.group({
+        'requestId': this._fb.control(this.requestId),
+        'contName': this._fb.control(cont.name, [Validators.required, CustomValidatorDirective.namesValidator]),
+        'contLastName': this._fb.control(cont.lastName, [Validators.required, CustomValidatorDirective.namesValidator]),
+        'contProvinceId': this._fb.control(cont.province ? cont.province.id : null, Validators.required),
+        'contDistrictId': this._fb.control(cont.district ? cont.district.id : null, Validators.required),
+        'contCorregimientoId': this._fb.control(cont.corregimiento ? cont.corregimiento.id : null, Validators.required),
+        'contStreet': this._fb.control(cont.street, [Validators.required]),
+        'contBuilding': this._fb.control(cont.building, Validators.required),
+        'contNeighborhood': this._fb.control(cont.neighborhood, Validators.required),
+        'contCellphone': this._fb.control(cont.cellphone, [Validators.required, CustomValidatorDirective.cellphoneValidator]),
+        'insuSame': this._fb.control(true, Validators.required),
+        'insuName': this._fb.control(insu.name, Validators.compose([Validators.required, CustomValidatorDirective.namesValidator])),//Segundo Formulario
+        'insuSecondName': this._fb.control(insu.secondName, Validators.compose([Validators.required, CustomValidatorDirective.namesValidator])),//Segundo Formulario
+        'insuLastName': this._fb.control(insu.lastName, Validators.compose([Validators.required, CustomValidatorDirective.namesValidator])),
+        'insuSecondLastName': this._fb.control(insu.secondLastName, Validators.compose([Validators.required, CustomValidatorDirective.namesValidator])),
+        'insuDocumentType': [insu && insu.documentType ? insu.documentType : null, Validators.required],
+        'hasDiseases': this._fb.control(insu.hasDiseases, Validators.required),
+        'insuDocument': [(insu && insu.document ? (insu.documentType === 'Pasaporte' ? insu.document : insu.document.split('-')[0]) : null), Validators.required],
+        'insuDocument2': [!insu || !insu.document || insu.documentType === 'Pasaporte' ? null : insu.document.split('-')[1]],
+        'insuDocument3': [!insu || !insu.document || insu.documentType === 'Pasaporte' ? null : insu.document.split('-')[2]],
+        'insuGender': this._fb.control(insu.gender, Validators.required),
+        'insuBirthday': this._fb.control(insu.birthday ? moment(insu.birthday.iso).format('YYYY-MM-DD') : null, [Validators.required, CustomValidatorDirective.dateValidator, CustomValidatorDirective.tooOld65]),
+        'insuCivilStatus': this._fb.control(insu.civilStatus, Validators.required),
+        'insuCountryId': this._fb.control(insu.country ? insu.country.id : null, Validators.required),
+        'insuNationalityId': this._fb.control(insu.nationality ? insu.nationality.id : null, [Validators.required]),
+        'insuSports': this._fb.control(insu.sports, [Validators.required]),
+        'insuProvinceId': this._fb.control(insu.province ? insu.province.id : null, Validators.required),
+        'insuDistrictId': this._fb.control(insu.district ? insu.district.id : null, Validators.required),
+        'insuCorregimientoId': this._fb.control(insu.corregimiento ? insu.corregimiento.id : null, Validators.required),
+        'insuNeighborhood': this._fb.control(insu.neighborhood, Validators.required),
+        'insuStreet': this._fb.control(insu.street, Validators.required),
+        'insuBuilding': this._fb.control(insu.building, Validators.required),
+        'insuLocalNumber': this._fb.control(insu.localNumber, [CustomValidatorDirective.localphoneValidator]),
+        'insuCellphone': this._fb.control(insu.cellphone, Validators.compose([Validators.required, CustomValidatorDirective.cellphoneValidator])),
+        'documentFile': this._fb.control(insu.documentFile, [Validators.required, CustomValidatorDirective.customFileValidator]),
+        //'insuDependents': this._fb.array([])
+      });
+    }
+    else{
+        this.forma = this._fb.group({
+          'requestId': this._fb.control(this.requestId),
+          'contName': this._fb.control(cont.name, [Validators.required, CustomValidatorDirective.namesValidator]),
+          'contLastName': this._fb.control(cont.lastName, [Validators.required, CustomValidatorDirective.namesValidator]),
+          'contProvinceId': this._fb.control(cont.province ? cont.province.id : null, Validators.required),
+          'contDistrictId': this._fb.control(cont.district ? cont.district.id : null, Validators.required),
+          'contCorregimientoId': this._fb.control(cont.corregimiento ? cont.corregimiento.id : null, Validators.required),
+          'contStreet': this._fb.control(cont.street, [Validators.required]),
+          'contBuilding': this._fb.control(cont.building, Validators.required),
+          'contNeighborhood': this._fb.control(cont.neighborhood, Validators.required),
+          'contCellphone': this._fb.control(cont.cellphone, [Validators.required, CustomValidatorDirective.cellphoneValidator]),
+          //'contEconomicActivity': this._fb.control(cont.economicActivity ? cont.economicActivity : null, [Validators.required]),
+          // 'insuSame': this._fb.control(localStorage.getItem('same') === 'true' ? true : false, Validators.required),
+          'insuSame': this._fb.control(true, Validators.required),
+          'insuName': this._fb.control(insu.name, Validators.compose([Validators.required, CustomValidatorDirective.namesValidator])),//Segundo Formulario
+          'insuSecondName': this._fb.control(insu.secondName, Validators.compose([Validators.required, CustomValidatorDirective.namesValidator])),//Segundo Formulario
+          'insuLastName': this._fb.control(insu.lastName, Validators.compose([Validators.required, CustomValidatorDirective.namesValidator])),
+          'insuSecondLastName': this._fb.control(insu.secondLastName, Validators.compose([Validators.required, CustomValidatorDirective.namesValidator])),
+          'insuDocumentType': [insu && insu.documentType ? insu.documentType : null, Validators.required],
+          'insuDocument': [(insu && insu.document ? (insu.documentType === 'Pasaporte' ? insu.document : insu.document.split('-')[0]) : null), Validators.required],
+          'insuDocument2': [!insu || !insu.document || insu.documentType === 'Pasaporte' ? null : insu.document.split('-')[1]],
+          'insuDocument3': [!insu || !insu.document || insu.documentType === 'Pasaporte' ? null : insu.document.split('-')[2]],
+          'insuGender': this._fb.control(insu.gender, Validators.required),
+          'insuBirthday': this._fb.control(insu.birthday ? moment(insu.birthday.iso).format('YYYY-MM-DD') : null, [Validators.required, CustomValidatorDirective.dateValidator, CustomValidatorDirective.tooOld]),
+          'insuCivilStatus': this._fb.control(insu.civilStatus, Validators.required),
+          'insuCountryId': this._fb.control(insu.country ? insu.country.id : null, Validators.required),
+          'insuNationalityId': this._fb.control(insu.nationality ? insu.nationality.id : null, [Validators.required]),
+          'insuProfession': this._fb.control(insu.profession, [Validators.required]),
+          'insuOccupation': this._fb.control(insu.occupation ? insu.occupation.id : null, [Validators.required]),
+          // 'insuOccupationDescription': this._fb.control(insu.occupationDescription, [Validators.required]),
+          'insuCompany': this._fb.control(insu.company, Validators.required),
+          // 'insuOccupationTime': this._fb.control(insu.occupationTime, Validators.required),
+          // 'insuOtherOccupations': this._fb.control(insu.otherOccupations, [Validators.required, CustomValidatorDirective.regularText]),
+          //'insuPreviousOccupations': this._fb.control(insu.previousOccupations ? insu.previousOccupations.id : null, Validators.required),
+          'insuSports': this._fb.control(insu.sports, [Validators.required]),
+          'insuMonthlyIncome': this._fb.control(insu.monthlyIncome, Validators.required),
+          'insuProvinceId': this._fb.control(insu.province ? insu.province.id : null, Validators.required),
+          'insuDistrictId': this._fb.control(insu.district ? insu.district.id : null, Validators.required),
+          'insuCorregimientoId': this._fb.control(insu.corregimiento ? insu.corregimiento.id : null, Validators.required),
+          'insuNeighborhood': this._fb.control(insu.neighborhood, Validators.required),
+          'insuStreet': this._fb.control(insu.street, Validators.required),
+          'insuBuilding': this._fb.control(insu.building, Validators.required),
+          'insuLocalNumber': this._fb.control(insu.localNumber, [CustomValidatorDirective.localphoneValidator]),
+          //'insuFiscalObligations': this._fb.control(false, Validators.required),
+          //'insuCountriesFiscalObligations': this._fb.control(insu.countriesFiscalObligations),
+          'insuTaxIdentificationNumber': this._fb.control(insu.taxIdentificationNumber),
+          'insuOfficeNumber': this._fb.control(insu.officeNumber, [CustomValidatorDirective.localphoneValidator]),
+          'insuCellphone': this._fb.control(insu.cellphone, Validators.compose([Validators.required, CustomValidatorDirective.cellphoneValidator])),
+          'documentFile': this._fb.control(insu.documentFile, [Validators.required, CustomValidatorDirective.customFileValidator]),
+          //'insuDependents': this._fb.array([])
+        });
+    }
     this.validations(insu);
     if (insu.province) {
       this.getDistricts(false, true);
@@ -317,7 +361,13 @@ export class RequestComponent implements OnInit {
 
       //payload.insuOccupationTime = String(payload.insuOccupationTime);
       payload.insuBirthday = moment(new Date(payload.insuBirthday)).format('DD/MM/YYYY');
-      this._requestService.saveRequest(payload).subscribe(
+      payload.savePaymentInformation=true;
+
+      if(payload.hasDiseases == "true"){
+        payload.hasDiseases = true;
+      }
+      
+      this._requestService.saveRequest(payload, this.insurance.type).subscribe(
         response => {
           if (proceed) {
             window.scroll(0, 0);
@@ -391,15 +441,18 @@ export class RequestComponent implements OnInit {
       this.forma.get('insuCivilStatus').markAsTouched();
       this.forma.get('insuCountryId').markAsTouched();
       this.forma.get('insuNationalityId').markAsTouched();
-      this.forma.get('insuProfession').markAsTouched();
-      this.forma.get('insuOccupation').markAsTouched();
-      //this.forma.get('insuOccupationDescription').markAsTouched();
-      this.forma.get('insuCompany').markAsTouched();
-      //this.forma.get('insuOccupationTime').markAsTouched();
-      //this.forma.get('insuOtherOccupations').markAsTouched();
-      //this.forma.get('insuPreviousOccupations').markAsTouched();
+      if(this.insurance.type !== 'cancer'){
+        this.forma.get('insuProfession').markAsTouched();
+        this.forma.get('insuOccupation').markAsTouched();
+        this.forma.get('insuCompany').markAsTouched();
+        this.forma.get('insuOfficeNumber').markAsTouched();
+        this.forma.get('insuTaxIdentificationNumber').markAsTouched();
+        this.forma.get('insuMonthlyIncome').markAsTouched();
+      }
+      else{
+        this.forma.get('hasDiseases').markAsTouched();
+      }
       this.forma.get('insuSports').markAsTouched();
-      this.forma.get('insuMonthlyIncome').markAsTouched();
       this.forma.get('insuProvinceId').markAsTouched();
       this.forma.get('insuDistrictId').markAsTouched();
       this.forma.get('insuCorregimientoId').markAsTouched();
@@ -407,12 +460,10 @@ export class RequestComponent implements OnInit {
       this.forma.get('insuStreet').markAsTouched();
       this.forma.get('insuBuilding').markAsTouched();
       this.forma.get('insuLocalNumber').markAsTouched();
-      this.forma.get('insuOfficeNumber').markAsTouched();
       this.forma.get('insuCellphone').markAsTouched();
       this.forma.get('documentFile').markAsTouched();
       //this.forma.get('insuFiscalObligations').markAsTouched();
       //this.forma.get('insuCountriesFiscalObligations').markAsTouched();
-      this.forma.get('insuTaxIdentificationNumber').markAsTouched();
       this.forma.get('documentFile').markAsTouched();
     } else {
       this.modalForm.get('type').markAsTouched();

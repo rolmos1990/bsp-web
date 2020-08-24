@@ -6,6 +6,7 @@ import { MONTHS, CARDNAME } from '../../../core/utils/select.util';
 import { CustomValidatorDirective } from '../../../core/directives/validations/custom-validations.directive';
 import { NotifierService } from 'angular-notifier';
 import { ShowService } from '../../pages/show/show.service';
+import { pipeDef } from '@angular/core/src/view';
 
 @Component({
   selector: 'bsp-payment-info',
@@ -23,17 +24,27 @@ export class PaymentInfoComponent {
   public invalidForm = false;
   public payment: any;
   public creditCardsList;
+  public date;
   @Output() isLoading: EventEmitter<boolean> = new EventEmitter<boolean>();
   public years: Array<any> = [];
   @Input() requestId: string;
+  @Input() request: any;
+  @Input() insureType: any;
+  @Input() paymentInformation: any;
   @Output() nextStep: EventEmitter<any> = new EventEmitter<any>();
   @Output() previousStep: EventEmitter<any> = new EventEmitter<any>();
+
+  @Output() success: EventEmitter<any> = new EventEmitter<any>();
 
   constructor(private _fb: FormBuilder, private _paymentService: PaymentService, private _showService: ShowService,
     private _requestService: RequestService, private _toastr: NotifierService) {
     this._showService.changeToCreditCard.subscribe(values => {
       this.getRequest();
     });
+  }
+
+  ngOnInit() {
+    this.date = new Date();
   }
 
   public fillYearsList() {
@@ -63,6 +74,29 @@ export class PaymentInfoComponent {
         this.isLoading.emit(false);
       }
     );
+  }
+
+  public doPayment() {
+    console.log("PAYMENT INFORMATION", this.paymentInformation);
+    var form = document.createElement("form");
+    form.setAttribute("method", "POST");
+    form.setAttribute("action", this.paymentInformation['processingUrl']) 
+    
+    const arrayObj = this.paymentInformation || [];
+   
+   const _items = Object.entries(arrayObj).map((e) => { 
+    if(e[0] !== "processingUrl" && e[0] !== "status" && e[0] !== "message" && e[0] !== "id"){
+      const value = ((typeof e[1] == "string") ? e[1]: e[1] + "");
+      var hiddenField = document.createElement("input");
+      hiddenField.setAttribute("type", "hidden");
+      hiddenField.setAttribute("name", e[0]);
+      hiddenField.setAttribute("value", value );
+      form.appendChild(hiddenField);
+      }
+    });
+
+    document.body.appendChild(form);
+    form.submit();
   }
 
   public continuar() {
@@ -174,5 +208,13 @@ export class PaymentInfoComponent {
           break;
       }
     }
+  }
+
+  public getInsuredName(_request) {
+    if (!_request) {
+      return "";
+    }
+    const insured = (_request && _request.result && _request.result.insured) || {};
+    return `${insured.name || ""} ${insured.secondName || ""} ${insured.lastName || ""} ${insured.secondLastName || ""}`;
   }
 }

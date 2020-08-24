@@ -6,19 +6,15 @@
         <span style="color:#708090; font-size: 12px; font-weight: 700;">Ir al tope</span>
     </a>
 </ng-template>
+<!-- Plantilla para Seguro de Accidentes Personales -->
+<ng-template [ngIf]="insureType === 'accidentes-personales'">
 <section id="scroll" class="apinfo">
     <div class="portada">
         <div class="container">
             <div id="portada" class="row">
-                <div class="col-md-8">
-                    <ng-template [ngIf]="insureType === 'accidentes-personales'">
+                <div class="col-md-8">          
                         <h1>Explora el seguro de Accidentes Personales</h1>
                         <p>Nuestras pólizas AP te protegen contra cualquier eventualidad, asegurando la estabilidad financiera de tu familia cuando más lo necesitas.</p>
-                    </ng-template>
-                    <ng-template [ngIf]="insureType === 'cancer'">
-                        <h1>Explora el seguro de Cancer</h1>
-                        <p>Nuestras pólizas Cancer te protegen contra el Cancer, asegurando la estabilidad financiera de tu familia cuando más lo necesitas.</p>
-                    </ng-template>
                     <button class="btn" [routerLink]="['/cobertura/',insureType]">COTIZAR</button>
                 </div>
                 <div class="col-md-4">
@@ -200,3 +196,191 @@
         </div>
     </div>
 </section>
+</ng-template>
+<!-- Plantilla para Seguros de Cancer -->
+<ng-template [ngIf]="insureType === 'cancer'">
+    <section id="scroll" class="apinfo">
+        <div class="portada">
+            <div class="container">
+                <div id="portada" class="row">
+                    <div class="col-md-8">          
+                            <h1>Explora el seguro de Cancer</h1>
+                            <p>Nuestras pólizas Cancer te protegen contra el Cancer, asegurando la estabilidad financiera de tu familia cuando más lo necesitas.</p>
+                        <button class="btn" [routerLink]="['/cobertura/',insureType]">COTIZAR</button>
+                    </div>
+                    <div class="col-md-4">
+                        <img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/worldwide.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="contenedor">
+            <div class="botones">
+                <button [ngx-scroll-to]="'#1'" [ngClass]="{'todo-green': (greenActivate==='1')}" (click)="greenActivate = '1'" class="boton-cuadrado">¿En qué consiste nuestro seguro de Cancer?</button>
+                <button [ngx-scroll-to]="'#2'" [ngClass]="{'todo-green': (greenActivate==='2')}" (click)="greenActivate = '2'" class="boton-cuadrado">Coberturas</button>
+                <button [ngx-scroll-to]="'#3'" [ngClass]="{'todo-green': (greenActivate==='3')}" (click)="greenActivate = '3'" class="boton-cuadrado">Preguntas Frecuentes</button>
+            </div>
+            <a id="1"></a>
+            <div class="container">
+                <!-- aqui debe ir un ancla-->
+                <div class="caja">
+                    <div class="row">
+                        <div class="col-md-6 col-lg-3">
+                            <img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/medical.png" alt="">
+                        </div>
+                        <div class="col-md-6 col-lg-9">
+                            <h3>¿Qué es el seguro de Cancer?</h3>
+                            <p>Este seguro te ampara con una indemnización ante un diagnostico de Cancer, En caso de fallecimiento durante el proceso del trámite de reclamo, se indemniza al beneficiario designado..</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <h4>Este seguro te permite...</h4>
+                        </div>
+                        <div class="col-md-9">
+                            <hr>
+                        </div>
+                    </div>
+                    <div class="checkeado">
+                        <div class="row my-3">
+                            <div class="col-md-6">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/checkverde.svg" alt="">
+                                    </div>
+                                    <div class="col-md-10">
+                                        <p>Disponer del capital asegurado, en caso de un un diagnostico de Cancer o indemnizar a los beneficiarios del asegurado en caso de muerte por motivos de Cancer.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/checkverde.svg" alt="">
+                                    </div>
+                                    <div class="col-md-10">
+                                        <p>Servicios de ambulancia por emergencias médicas, asistencia en viajes al extranjero y asistencia médica.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/checkverde.svg" alt="">
+                                    </div>
+                                    <div class="col-md-10">
+                                        <p>Cobertura en cualquier parte del mundo, las 24 horas del día, los 365 días del año.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <a id="2"></a>
+        <div class="contenedor-gris">
+            <!-- aqui debe ir un ancla-->
+            <h3>Nuestras Coberturas</h3>
+            <div class="container">
+    
+                <div class="position-relative">
+                    <button class="derechaaa"><i class="fas fa-angle-right"></i></button>
+                    <button class="izquierdaaa"><i class="fas fa-angle-left"></i></button>
+                    <swiper class="swiper-container col-sm-10 col-10 col-md-12" [config]="config" (indexChange)="onIndexChange($event)" fxFlex="auto">
+    
+                        <div *ngFor="let slide of slides" class="swiper-slide">
+                            <div fxLayout="column" fxLayoutAlign="center center" fxFlexFill>
+                                <img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/{{slide.imagen}}.png" alt="">
+                                <p class="green">{{slide.titulo}}</p>
+                                <p class="mensaje">{{slide.mensaje}}</p>
+                                <a href="http://banescoseguros.com.pa/wp-content/uploads/2016/02/Condiciones_Generales_AP_INTEGRAL_INDIVIDUAL.pdf" target="_blank" class="enlace" *ngIf="slide.id == '3'">{{slide.enlace}}</a>
+                                <a href="http://banescoseguros.com.pa/wp-content/uploads/2016/02/Condiciones_Generales_AP_INTEGRAL_INDIVIDUAL.pdf" target="_blank" class="enlace" *ngIf="slide.id == '4'">{{slide.enlace}}</a>
+                            </div>
+                        </div>
+    
+                    </swiper>
+                </div>
+    
+            </div>
+        </div>
+    
+        <a id="3"></a>
+        <div class="contenedor">
+            <!-- aqui debe ir un ancla-->
+            <h3 class="preguntas">Preguntas Frecuentes</h3>
+            <div class="container cober">
+                <accordion>
+                    <accordion-group [panelClass]="customClass" [isOpen]="isFirstOpen">
+                        <button class="btn btn-link btn-block clearfix" accordion-heading>
+                    <div class="pull-left float-left lix"><i class="fas fa-angle-down"></i> ¿Qué ventajas tiene?</div>
+                  </button>
+                        <ul>
+                            <li>Alta cobertura a bajo costo.</li>
+                            <li>Fácil y rápida contratación.</li>
+                            <li>Tarifas diseñadas de acuerdo a la actividad laboral y a la medida de sus posibilidades.</li>
+                            <li>Facilidades de pago mediante sus tarjetas de crédito.</li>
+                        </ul>
+                    </accordion-group>
+                </accordion>
+    
+                <accordion>
+                    <accordion-group [panelClass]="customClass">
+                        <button class="btn btn-link btn-block clearfix" accordion-heading>
+                    <div class="pull-left float-left lix"><i class="fas fa-angle-down"></i> ¿Qué no cubre?</div>
+                  </button>
+                        <ul>
+                            <li>Ninguna enfermedad corporal, mental o el agravamiento de la misma, tampoco sus tratamientos médicos o quirúrgicos que no se deriven de un accidente del asegurado.</li>
+                            <li>Los casos y consecuencias de desvanecimientos, síncopes, infartos, ataques de apoplejía, epilepsia, roturas de aneurismas, várices, SIDA y toda clase de hernias.</li>
+                            <li>Suicidio o su intento. Homicidio intencional por parte de los BENEFICIARIOS de la póliza o su relación con el mismo.</li>
+                            <li>Cuando el asegurado participe en duelos o riñas, exceptuando si se demuestra que el asegurado no provocó los hechos.</li>
+                            <li>La participación del asegurado en competencias de velocidad sean terrestres o náuticos.</li>
+                            <li>Cuando el asegurado participe en competencias deportivas a nivel profesional.</li>
+                            <li>Accidentes causados por actos de guerra, invasión, levantamiento civil, motines, insurrección, rebelión, revolución de estados o situaciones similares.</li>
+                            <li>Accidentes producto de la reacción y radiación nuclear o contaminación radiactiva.</li>
+                            <li>Accidentes causados por infracción de las leyes vigentes en el país donde ocurran.</li>
+                        </ul>
+                    </accordion-group>
+                </accordion>
+    
+                <accordion>
+                    <accordion-group [panelClass]="customClass">
+                        <button class="btn btn-link btn-block clearfix" accordion-heading>
+                    <div class="pull-left float-left lix"><i class="fas fa-angle-down"></i> ¿Quién puede asegurarse?</div>
+                  </button>
+                        <ul>
+                            <li>Cualquier persona nacional o extranjera que resida en la República de Panamá, con buena condición de salud, con edad entre dieciocho (18) y sesenta (60) años.</li>
+                            <li>Edad máxima de permanencia: setenta y cinco (75) años.</li>
+                        </ul>
+                    </accordion-group>
+                </accordion>
+    
+                <accordion>
+                    <accordion-group [panelClass]="customClass">
+                        <button class="btn btn-link btn-block clearfix" accordion-heading>
+                    <div class="pull-left float-left lix"><i class="fas fa-angle-down"></i> ¿Qué es una indemnización?</div>
+                  </button>
+                        <ul>
+                            <li>Una indemnización consiste en conseguir una reposición económica para el asegurado cuando el mismo sufre un accidente de la forma en que están contempladas en las coberturas.</li>
+                        </ul>
+                    </accordion-group>
+                </accordion>
+    
+                <accordion>
+                    <accordion-group [panelClass]="customClass">
+                        <button class="btn btn-link btn-block clearfix" accordion-heading>
+                    <div class="pull-left float-left lix"><i class="fas fa-angle-down"></i> ¿Qué es un copago?</div>
+                    </button>
+                        <ul>
+                            <li>Un copago es una pequeña cantidad de dinero que debe pagar el asegurado o beneficiario de la póliza cada vez que utilice uno de los servicios contemplados dentro de las coberturas.</li>
+                        </ul>
+                    </accordion-group>
+                </accordion>
+    
+            </div>
+        </div>
+    </section>
+</ng-template>

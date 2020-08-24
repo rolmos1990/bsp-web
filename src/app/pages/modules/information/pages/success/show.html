@@ -1,0 +1,27 @@
+<div *ngIf="!isLoading" class="portada-info">
+    <div class="texto">
+      <h3>Accidentes Personales</h3>
+      <h5>Obtén tu seguro en tan solo 24 horas</h5>
+    </div>
+  </div>
+  
+    <div class="information" [ngClass]="{'d-none': isLoading}">
+      <aw-wizard #wizard [navBarLayout]="'large-filled-symbols'" >
+        <aw-wizard-step stepTitle="Cotización" (stepEnter)="enterFirstStep($event)" [navigationSymbol]="{ symbol: '1' }" awCompletedStep>
+          <div class="container">
+          </div>
+        </aw-wizard-step>
+        <aw-wizard-step stepTitle="Datos de Asegurado" (stepEnter)="enterFirstStep($event)" [navigationSymbol]="{ symbol: '2' }" awCompletedStep>
+          <div class="container">
+          </div>
+        </aw-wizard-step>
+        <aw-wizard-step stepTitle="Pago / Recibo" [navigationSymbol]="{ symbol: '3' }">
+          <bsp-success [requestId]="requestId" [insurance]="request.insurance" [insured]="request.insured" [paymentInformation]= "request.paymentInformation"></bsp-success>
+        </aw-wizard-step>
+      </aw-wizard>
+    </div>
+  
+  <ng-template [ngIf]="isLoading">
+    <bsp-loader></bsp-loader>
+  </ng-template>
+  

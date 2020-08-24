@@ -240,6 +240,7 @@ export class ShowPolicies implements OnInit {
       Profesion_Asegurado: !request.insured || !request.insured.profession ? 'N/A' : request.insured.profession,
       Deportes_Asegurado: !request.insured || !request.insured.sports ? 'N/A' : request.insured.sports,
       Tax_ID_Number_EEUU: !request.insured || !request.insured.taxIdentificationNumber ? 'N/A' : request.insured.taxIdentificationNumber,
+      Padece_Enfermedad: !request.insured || request.insured.hasDiseases === undefined ? 'N/A' : (request.insured.hasDiseases)?  "Si" : "No",
 
     };
 

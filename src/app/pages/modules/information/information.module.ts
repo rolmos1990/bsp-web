@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { InformationRoutingModule } from './information-routing.module';
 
 import { ShowInformationComponent } from './pages/show/show';
+import { SuccessInformationComponent } from './pages/success/show';
 import { DeliveryDataComponent } from './components/delivery-data/delivery-data.component';
 import { MedicalDataComponent } from './components/medical-data/medical-data.component';
 import { PaymentInfoComponent } from './components/payment-info/payment-info.component';
@@ -17,11 +18,13 @@ import { ProgressBarModule } from 'angular-progress-bar';
 import { CoreModule } from '../core/core.module';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { ShowService } from './pages/show/show.service';
+import { ShowSuccessService } from './pages/success/show.service';
 
 
 @NgModule({
   declarations: [
     ShowInformationComponent,
+    SuccessInformationComponent,
     DeliveryDataComponent,
     MedicalDataComponent,
     PaymentInfoComponent,
@@ -41,7 +44,8 @@ import { ShowService } from './pages/show/show.service';
     TooltipModule.forRoot()
   ],
   providers: [
-    ShowService
+    ShowService,
+    ShowSuccessService
   ]
 })
 export class InformationModule { }

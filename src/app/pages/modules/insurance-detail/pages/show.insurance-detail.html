@@ -302,6 +302,7 @@
             <h5><i class="fas fa-minus"></i> Nacionalidad:</h5>
             <p class="mayu">{{request?.insured?.nationality.name}}</p>
           </div>
+          <ng-template [ngIf]="request.insurance.type == 'accidentes-personales'">
           <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
             <h5><i class="fas fa-minus"></i> Profesión:</h5>
             <p class="mayu">{{request?.insured?.profession}}</p>
@@ -315,12 +316,19 @@
             <p class="mayu">{{request?.insured?.company}}</p>
           </div>
           <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
-            <h5><i class="fas fa-minus"></i> Deportes que práctica:</h5>
-            <p class="mayu">{{request?.insured?.sports}}</p>
-          </div>
-          <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
             <h5><i class="fas fa-minus"></i> Ingreso mensual:</h5>
             <p>{{request?.insured?.monthlyIncome}}</p>
+          </div>
+          </ng-template>
+          <ng-template [ngIf]="request.insurance.type == 'cancer'">
+            <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
+            <h5 title="Padece Enfermedad Cancer, Sida, Lupus o Hepatitis B"><i class="fas fa-minus"></i> ¿Padece Enfermedad? :</h5>
+            <p>{{(request?.insured?.hasDiseases)?'Si':'No' }}</p>
+            </div>
+          </ng-template>
+          <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
+            <h5><i class="fas fa-minus"></i> Deportes que práctica:</h5>
+            <p class="mayu">{{request?.insured?.sports}}</p>
           </div>
           <div class="col-md-6 col-lg-4 col-lg-3 mb-2">
             <h5><i class="fas fa-minus"></i> Provincia:</h5>

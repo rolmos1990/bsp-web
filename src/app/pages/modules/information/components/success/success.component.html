@@ -2,132 +2,128 @@
   <div class="cartel">
     <div class="container">
       <div class="row">
-        <div class="col-lg-1">
-          <img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/success1.svg"
-            alt="" class="check">
-        </div>
-        <div class="col-lg-7">
-          <h3 class="titulo">¡Listo!</h3>
-          <p class="texto">A más tardar 24 horas tu seguro estará activo</p>
-          <p class="texto">Te estaremos enviando vía email la póliza que acabas de comprar</p>
-        </div>
-        <div class="col-lg-4">
-          <a href="#" class="enlace"><img
-              src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/success2.png"
-              alt="" class="flechi"> Ir a Banescoseguros.com</a>
-        </div>
+        <ng-template [ngIf]="paymentFailed != true">
+          <div class="col-lg-1">
+            <img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/success1.svg"
+              alt="" class="check">
+          </div>
+          <div class="col-lg-7">
+            <h3 class="titulo">¡Listo {{insured.name}} {{insured.lastname}}!</h3>
+            <p class="texto">A más tardar 24 horas tu seguro estará activo</p>
+            <p class="texto">Te estaremos enviando vía email la póliza que acabas de comprar</p>
+          </div>
+        </ng-template>
+        <ng-template [ngIf]="paymentFailed == true">
+          <div class="col-lg-1">
+            <img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/error.svg"
+              alt="" class="check">
+          </div>
+          <div class="col-lg-10">
+            <h3 class="titulo">Lo Sentimos {{insured.name}} {{insured.lastName}}!</h3>
+            <p class="texto">{{ message }}</p>
+            <p class="texto">Realiza tu pago nuevamente, para completar tu seguro. <button class="btn btn-primary btn-small" (click)="doPayment()" >Reintentar Pago</button> </p>
+          </div>
+        </ng-template>
+        <ng-template [ngIf]="paymentFailed != true">
+          <div class="col-lg-4">
+            <a href="#" class="enlace"><img
+                src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/success2.png"
+                alt="" class="flechi"> Ir a Banescoseguros.com</a>
+          </div>
+        </ng-template>
       </div>
     </div>
   </div>
 </div>
 
-<div class="contenedor">
-  <h3 class="subtitulo">El seguro que acabas de comprar cuenta con:</h3>
-  <div class="row">
-    <div class="col-md-6">
-      <p class="en-caso">En caso de algún accidente:</p>
-      <ul>
-        <li>
-          <img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/check.png"
-            class="imgcheck" alt="">
-          <p class="informacion"> Gastos médicos</p>
-        </li>
-        <li>
-          <img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/check.png"
-            class="imgcheck" alt="">
-          <p class="informacion"> Servicio de emergencias y urgencias médicas</p>
-        </li>
-        <li>
-          <img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/check.png"
-            class="imgcheck" alt="">
-          <p class="informacion"> Asistencia en viajes en el extranjero</p>
-        </li>
-        <li>
-          <img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/check.png"
-            class="imgcheck" alt="">
-          <p class="informacion"> Invalidez permanente (total y parcial)</p>
-        </li>
-      </ul>
-      <div class="img1 img_top">
-        <img class="img2" src="https://uc.uxpin.com/files/851998/844969/wounded-359dc2.png">
-      </div>
-    </div>
-    <div class="columnContainer">
-      <div class="columnDivider"></div>
-    </div>
-    <div class="col-md-6">
-      <p class="en-caso">En caso de muerte accidental:</p>
-      <ul>
-        <li>
-          <img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/check.png"
-            class="imgcheck" alt="">
-          <p class="informacion"> Adelanto de gastos funerarios</p>
-        </li>
-        <li>
-          <img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/check.png"
-            class="imgcheck" alt="">
-          <p class="informacion"> Doble indemnización por muerte accidental por accidente específico</p>
-        </li>
-      </ul>
-      <div class="img1 img_bot">
-        <img class="img3" src="https://uc.uxpin.com/files/851998/844969/graveyard-21c09e.png">
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="gris">
+<ng-template [ngIf]="paymentFailed != true">
   <div class="contenedor">
-    <h3 class="subtitulo">¿Que hacer en el momento de un siniestro? </h3>
-    <img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/question.svg"
-      alt="">
-    <div class="row abajo">
+    <h3 class="subtitulo">{{ titles.coverageTitle }}</h3>
+    <div class="row">
       <div class="col-md-6">
-        <p class="en-caso">En caso de fallecimiento del asegurado:</p>
-        <p><span class="numero-azul">1.</span> Los beneficiarios deben dirigirse a cualquier sede de <strong>Banesco
-            Seguros</strong> </p>
-        <p><span class="numero-azul">2.</span> Deben traer: </p>
+        <p class="en-caso">{{ titles.coverageSubtitle}}</p>
         <ul>
-          <li>
+          <li *ngFor="let itemCheck of left_items">
             <img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/check.png"
               class="imgcheck" alt="">
-            <p class="informacion"> Certificado de defunción</p>
+            <p class="informacion"> {{ itemCheck }} </p>
           </li>
-          <li>
-            <img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/check.png"
-              class="imgcheck" alt="">
-            <p class="informacion"> Copia certificada del informe médico forense</p>
-          </li>
-          <li>
-            <img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/check.png"
-              class="imgcheck" alt="">
-            <p class="informacion"> Copia de cédula del asegurado</p>
-          </li>
-          <li>
-            <img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/check.png"
-              class="imgcheck" alt="">
-            <p class="informacion"> Certificado de nacimiento en caso de menor de edad</p>
-          </li>
-          <!-- <li>
-            <img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/check.png"
-              class="imgcheck" alt="">
-            <p class="informacion"> Formulario de declaración de siniestro.</p>
-          </li> -->
         </ul>
+        <div class="img1 img_top">
+          <img class="img2" src="https://uc.uxpin.com/files/851998/844969/wounded-359dc2.png">
+        </div>
       </div>
       <div class="columnContainer">
         <div class="columnDivider"></div>
       </div>
-      <div class="col-md-6 p-3">
-        <p class="en-caso">En caso de accidente del asegurado (territorio nacional o extranjero):</p>
-        <p><span class="numero-azul">1.</span> Llamar a nuestra asistencia médica :</p>
-        <img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/phonegreen.svg"
-          alt="" class="imgcheck ml-40 red">
-        <p> <strong>+507 366-8585</strong></p>
-        <p class="my-40"><span class="numero-azul">2.</span> Ten a la mano tu número de póliza o cédula.</p>
-        <p><span class="numero-azul">3.</span> Sigue las instrucciones de la operadora</p>
+      <div class="col-md-6">
+        <p class="en-caso">{{ titles.sinisterTitle }}</p>
+        <ul>
+          <li *ngFor="let itemCheck of right_items">
+            <img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/check.png"
+              class="imgcheck" alt="">
+            <p class="informacion"> {{ itemCheck }} </p>
+          </li>
+        </ul>
+        <div class="img1 img_bot">
+          <img class="img3" src="https://uc.uxpin.com/files/851998/844969/graveyard-21c09e.png">
+        </div>
       </div>
     </div>
+  </div>
 
+  <div class="gris">
+    <div class="contenedor">
+      <h3 class="subtitulo">¿Que hacer en el momento de un siniestro? </h3>
+      <img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/question.svg"
+        alt="">
+      <div class="row abajo">
+        <div class="col-md-6">
+          <p class="en-caso">En caso de fallecimiento del asegurado:</p>
+          <p><span class="numero-azul">1.</span> Los beneficiarios deben dirigirse a cualquier sede de <strong>Banesco
+              Seguros</strong> </p>
+          <p><span class="numero-azul">2.</span> Deben traer: </p>
+          <ul>
+            <li>
+              <img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/check.png"
+                class="imgcheck" alt="">
+              <p class="informacion"> Certificado de defunción</p>
+            </li>
+            <li>
+              <img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/check.png"
+                class="imgcheck" alt="">
+              <p class="informacion"> Copia certificada del informe médico forense</p>
+            </li>
+            <li>
+              <img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/check.png"
+                class="imgcheck" alt="">
+              <p class="informacion"> Copia de cédula del asegurado</p>
+            </li>
+            <li>
+              <img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/check.png"
+                class="imgcheck" alt="">
+              <p class="informacion"> Certificado de nacimiento en caso de menor de edad</p>
+            </li>
+            <!-- <li>
+              <img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/check.png"
+                class="imgcheck" alt="">
+              <p class="informacion"> Formulario de declaración de siniestro.</p>
+            </li> -->
+          </ul>
+        </div>
+        <div class="columnContainer">
+          <div class="columnDivider"></div>
+        </div>
+        <div class="col-md-6 p-3">
+          <p class="en-caso">En caso de accidente del asegurado (territorio nacional o extranjero):</p>
+          <p><span class="numero-azul">1.</span> Llamar a nuestra asistencia médica :</p>
+          <img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/phonegreen.svg"
+            alt="" class="imgcheck ml-40 red">
+          <p> <strong>+507 366-8585</strong></p>
+          <p class="my-40"><span class="numero-azul">2.</span> Ten a la mano tu número de póliza o cédula.</p>
+          <p><span class="numero-azul">3.</span> Sigue las instrucciones de la operadora</p>
+        </div>
+      </div>
   </div>
 </div>
+</ng-template>

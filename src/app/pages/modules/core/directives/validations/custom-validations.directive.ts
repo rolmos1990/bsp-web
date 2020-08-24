@@ -56,6 +56,18 @@ export class CustomValidatorDirective {
         }
     }
 
+         /**
+     * Validate that the FormControl has this structure "00-00-0000 and less than 70 years".
+     * @param control FormControl to evaluate.
+     */
+    static tooOld65(control: AbstractControl): ValidationErrors {
+        const _date = moment(control.value);
+        const itsTooOld = _date.isBefore(moment().subtract(65, 'years'));
+        if (itsTooOld) {
+            return { tooOld: true };
+        }
+    }
+
     /**
      * Validate that the FormControl has this structure "+507 xxxx xxxx".
      * @param control FormControl to evaluate.

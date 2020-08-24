@@ -281,10 +281,18 @@
 <div *ngIf="!isLoading" class="wrapper">
   <section class="cobertura">
     <div class="container">
+      <ng-template [ngIf]="insureType == 'accidentes-personales'">
       <div class="centrado">
         <h3 class="titulo-1">¡Coberturas flexibles en tu seguro AP!</h3>
         <h4 class="subtitulo">Nuestra recomendación que más se adapta a lo que buscas:</h4>
       </div>
+      </ng-template>
+      <ng-template [ngIf]="insureType == 'cancer'">
+        <div class="centrado">
+          <h3 class="titulo-1">¡Coberturas flexibles en tu seguro de Cancer!</h3>
+          <h4 class="subtitulo">Nuestra recomendación que más se adapta a lo que buscas:</h4>
+        </div>
+        </ng-template>
 
       <div class="row contenedor">
         <div *ngFor="let coverage of coverages | coveragesSort; let i = index;"

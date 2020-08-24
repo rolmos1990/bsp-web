@@ -120,11 +120,33 @@ i.fas {
     font-size: 11px;
 }
 
+.img-mail{
+    margin:0px;
+    height:78px;
+    width:86px;
+}
+
+.img-identity{
+    margin:0px;
+}
+
 @media (max-width: 767px) {
     .cuadrado {
         width: 100%;
     }
     .cotizador-h4 {
         margin: 0 0 0 40px;
+    }
+    .img-mail{
+        margin:0px;
+        height:38px;
+        width:46px;
+    }
+    
+    .img-identity{
+        margin:0px;
+        margin:0px;
+        height:38px;
+        width:46px;
     }
 }

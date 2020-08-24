@@ -8,6 +8,7 @@ import {  environment } from 'src/environments/environment';
 const API_ENDPOINT_CREATE_NEW_REQUEST = 'createNewRequest';
 const API_ENDPOINT_GET_REQUEST = 'getRequest';
 const API_ENDPOINT_SAVE_REQUEST = 'saveRequest';
+const API_ENDPOINT_SAVE_CANCER_REQUEST = 'saveCancerRequest';
 const API_ENDPOINT_FINISH_REQUEST = 'finishRequest';
 const API_ENDPOINT_UPDATE_REQUEST = 'updateRequest';
 const API_GET_ALL_REQUEST = 'getAllRequests';
@@ -17,9 +18,9 @@ export class RequestService {
 
     constructor(private _http: HttpClient) { }
 
-    public saveRequest(form: any) : Observable<any> {
+    public saveRequest(form: any, insuranceType: any) : Observable<any> {
       return this._http
-        .post(environment.baseUrl.concat(API_ENDPOINT_SAVE_REQUEST), form, ServiceDirective.headers)
+        .post(environment.baseUrl.concat((insuranceType === 'cancer') ? API_ENDPOINT_SAVE_CANCER_REQUEST : API_ENDPOINT_SAVE_REQUEST), form, ServiceDirective.headers)
         .pipe(
           catchError(err => {
             return ServiceDirective.handleError(err);
@@ -71,6 +72,17 @@ export class RequestService {
     public getRequest(requestId: string): Observable<any> {
       return this._http
         .post(environment.baseUrl.concat(API_ENDPOINT_GET_REQUEST), {requestId: requestId}, ServiceDirective.headers)
+        .pipe(
+          catchError(err => {
+            return ServiceDirective.handleError(err);
+          })
+        );
+    }
+
+    /* remove only for test purporsed */
+    public testPayment(): Observable<any> {
+      return this._http
+        .get("http://localhost:3000/payments")
         .pipe(
           catchError(err => {
             return ServiceDirective.handleError(err);

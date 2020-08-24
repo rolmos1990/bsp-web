@@ -1,7 +1,7 @@
 import { Component, ViewChild, OnInit, Injectable, HostListener } from '@angular/core';
 import { SwiperComponent, SwiperDirective, SwiperConfigInterface,
   SwiperScrollbarInterface, SwiperPaginationInterface } from 'ngx-swiper-wrapper';
-import { SLIDES } from '../../../core/utils/select.util';
+import { SLIDES, SLIDES_CANCER } from '../../../core/utils/select.util';
 import { ScrollToService } from '@nicky-lenaers/ngx-scroll-to';
 import { ActivatedRoute } from '@angular/router';
 @Component({
@@ -76,6 +76,9 @@ export class ShowApinfo implements OnInit {
   constructor(private _scrollToService: ScrollToService, private _route: ActivatedRoute){
     this.insureType = _route.snapshot.paramMap.get('insureType');
     this.insureType = this.insureType.replace("seguros-", "");
+    if(this.insureType == "cancer"){
+      this.slides = SLIDES_CANCER;
+    }
   }
 
   ngOnInit() {

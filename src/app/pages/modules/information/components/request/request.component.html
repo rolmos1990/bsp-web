@@ -654,12 +654,22 @@
                   Por favor escriba su fecha de nacimiento. Por ejemplo:
                   Ejemplo: 05/09/1995.
                 </div>
-                <div
+                <ng-template [ngIf]="insurance.type == 'cancer'">
+                    <div
+                    *ngIf="customInvalid('tooOld','insuBirthday',forma)"
+                    class="invalid-feedback"
+                  >
+                    Edad máxima permitida 65 años.
+                  </div>
+                </ng-template>
+                <ng-template [ngIf]="insurance.type != 'cancer'">
+                  <div
                   *ngIf="customInvalid('tooOld','insuBirthday',forma)"
                   class="invalid-feedback"
                 >
                   Edad máxima permitida 70 años.
                 </div>
+              </ng-template>
                 <div
                   *ngIf="valid('insuBirthday', forma)"
                   class="valid-feedback"
@@ -1023,7 +1033,39 @@
                 </div>
               </div>
             </div>
+            <ng-template [ngIf]="insurance.type == 'cancer'">
+                <div class="col-md-6 col-lg-4 mb-5">
+                  <div class="form-group form-width">
+                    <label for="" style="font-size:11px">¿Usted Padece Cancer, VIH, SIDA, Lupus o Hepatitis B?: </label>
+                    <select
+                    class="form-control {{
+                      forma.value.hasDiseases === null ? 'placeholder' : ''
+                    }}"
+                    [ngClass]="{
+                      'is-invalid': invalid('hasDiseases', forma),
+                      'is-valid': valid('hasDiseases', forma)
+                    }"
+                    formControlName="hasDiseases"
+                  >
+                    <option class="placeholder" [value]="null" disabled>Seleccione</option>
+                    <option value="1" [value]="true">Si</option>
+                    <option value="0" [value]="true">No</option>
+                    </select>
+                    <div *ngIf="invalid('hasDiseases', forma)"
+                      class="invalid-feedback">
+                      Por favor seleccione una de las opciones
+                    </div>
+                    <div
+                      *ngIf="valid('hasDiseases', forma)"
+                      class="valid-feedback"
+                    >
+                      ¡Excelente!
+                    </div>
+                  </div>
+                </div>
+            </ng-template>
           </div>
+          <ng-template [ngIf]="insurance.type !== 'cancer'">
           <div class="row">
             <div class="col-md-2">
               <h5 class="datos mb-3">Datos laborales</h5>
@@ -1274,6 +1316,7 @@
               </div>
             </div>
           </div>
+          </ng-template>
         </div>
       </accordion-group>
     </accordion>
