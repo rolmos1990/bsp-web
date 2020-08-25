@@ -362,7 +362,8 @@ export class RequestComponent implements OnInit {
       //payload.insuOccupationTime = String(payload.insuOccupationTime);
       payload.insuBirthday = moment(new Date(payload.insuBirthday)).format('DD/MM/YYYY');
       payload.savePaymentInformation=true;
-
+      payload.status = "Recibida";
+      
       if(payload.hasDiseases == "true"){
         payload.hasDiseases = true;
       }
