@@ -226,7 +226,7 @@ export class RequestComponent implements OnInit {
         'insuBuilding': this._fb.control(insu.building, Validators.required),
         'insuLocalNumber': this._fb.control(insu.localNumber, [CustomValidatorDirective.localphoneValidator]),
         'insuCellphone': this._fb.control(insu.cellphone, Validators.compose([Validators.required, CustomValidatorDirective.cellphoneValidator])),
-        'documentFile': this._fb.control(insu.documentFile, [Validators.required, CustomValidatorDirective.customFileValidator]),
+        'documentFile': this._fb.control(insu.documentFile, insu.documentFile ? [ CustomValidatorDirective.customFileValidator] : [Validators.required, CustomValidatorDirective.customFileValidator] ),
         //'insuDependents': this._fb.array([])
       });
     }
@@ -279,7 +279,7 @@ export class RequestComponent implements OnInit {
           'insuTaxIdentificationNumber': this._fb.control(insu.taxIdentificationNumber),
           'insuOfficeNumber': this._fb.control(insu.officeNumber, [CustomValidatorDirective.localphoneValidator]),
           'insuCellphone': this._fb.control(insu.cellphone, Validators.compose([Validators.required, CustomValidatorDirective.cellphoneValidator])),
-          'documentFile': this._fb.control(insu.documentFile, [Validators.required, CustomValidatorDirective.customFileValidator]),
+          'documentFile': this._fb.control(insu.documentFile, insu.documentFile ? [ CustomValidatorDirective.customFileValidator] : [Validators.required, CustomValidatorDirective.customFileValidator] ),
           //'insuDependents': this._fb.array([])
         });
     }
@@ -345,6 +345,7 @@ export class RequestComponent implements OnInit {
     if (proceed) {
       this.mainFormValidation();
     }
+    console.log("FORMA", this.forma);
 
     if ((this.forma.valid && this.isPercentValid) || !proceed) {
       //if (true) {
@@ -357,7 +358,12 @@ export class RequestComponent implements OnInit {
       delete payload.insuDocument3;
       delete payload.insuDependents;
 
-      payload.documentFile = this.attachment.data;
+      if(this.attachment.data == null || this.attachment.data == ""){
+        delete payload.documentFile;
+      }
+      else{
+        payload.documentFile = this.attachment.data;
+      }
 
       //payload.insuOccupationTime = String(payload.insuOccupationTime);
       payload.insuBirthday = moment(new Date(payload.insuBirthday)).format('DD/MM/YYYY');

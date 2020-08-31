@@ -37,8 +37,9 @@ export class ShowInformationComponent implements OnInit {
   redirectInsureNotExist(requestId: string) {
     this._requestService.getRequest(requestId).subscribe(
       response => {
-        if (response.result.request.id) {
-          this.insureType = response.result.request.insurance.insuranceType;
+        const _request = response.result.request;
+        if (_request.id && ["Iniciada","Recibida"].includes(_request.status)) {
+          this.insureType = _request.insurance.insuranceType;
           this.isLoading = false;
         }
         else {
