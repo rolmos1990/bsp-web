@@ -115,25 +115,37 @@ td {
     float: left;
     margin-top: 0;
     padding: 0;
+    margin-left:10px;
+    margin-right:10px;
 }
 
 .ibox-title .label {
     margin-left: 4px;
 }
+.status-mobile{
+    display:block;
+    width:100%;
+    margin-top:10px;
+}
 
 .emitida {
-    background-color: #007a53;
-    color: #ffffff;
+    background-color: #950247;
+    color: #F8F3F6;
 }
 
 .proceso {
-    background-color: #2E86C1;
-    color: #ffffff;
+    background-color: #46868F;
+    color: #F4FAF9;
 }
 
 .recibida {
-    background-color: #D68910;
-    color: #ffffff;
+    background-color: #00A2DF;
+    color: #F1FAFE;
+}
+
+.iniciada {
+    background-color: #AEB5AF;
+    color: #FDFEFF;
 }
 
 .label {
@@ -143,4 +155,90 @@ td {
     border-radius: 0.25em;
     line-height: 1;
     white-space: nowrap;
+}
+.container-filter{
+    padding: 5px;
+    text-align:center;
+}
+.criterio-busqueda{
+    color:#003c71;
+    font-size:18px;
+    font-weight:bold;
+}
+.container-filter .item, .container-filter .field-item{
+    margin-right: 10px;
+}
+
+.field-item{
+    height: 40px;
+    padding-right:10px;
+    font-size:0.8em;
+}
+.badge-general{
+    background-color: #003c71!important;
+}
+.badge-date{
+    background-color: #3a4454!important
+}
+.badge-insuranceType{
+    background-color: #007a53!important
+}
+.badge-status{
+    background-color: #003c71!important
+}
+.show-small{
+    display:none;
+}
+.btn-action{
+    display:inline-block;
+    color:white;
+    width:20px;
+    margin:0px 3px;
+    cursor: pointer;
+}
+.btn-blue{
+    background-color:#003c71;
+}
+.btn-green{
+    background-color: #007a53
+}
+.btn-action i{
+    font-size:15px;
+    padding: 5px;
+}
+.btn-green i, .btn-blue i{
+    color:white;
+}
+.btn-none{
+    background-color:white;
+    color:black;
+}
+.btn-none i{
+    color:black;
+}
+.btn-action-container{
+    min-width:90px;
+    text-align:center;
+}
+.btn-action a{
+    color:#003c71;
+    text-decoration:none;  
+}
+
+@media (max-width: 991px) {
+    .hidden-small{
+        display:none;
+    }
+    .show-small{
+        display:inline-block;
+    }
+    .field-item{
+        margin-bottom:10px;
+    }
+    .table-insurance tr th{
+        font-size:0.8em!important;
+    }
+    .table-insurance tr td{
+        font-size:0.8em!important;
+    }
 }

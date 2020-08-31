@@ -11,7 +11,7 @@ const API_ENDPOINT_SAVE_REQUEST = 'saveRequest';
 const API_ENDPOINT_SAVE_CANCER_REQUEST = 'saveCancerRequest';
 const API_ENDPOINT_FINISH_REQUEST = 'finishRequest';
 const API_ENDPOINT_UPDATE_REQUEST = 'updateRequest';
-const API_GET_ALL_REQUEST = 'getAllRequests';
+const API_GET_ALL_REQUEST = 'getPaginatedRequests';
 
 @Injectable()
 export class RequestService {
@@ -38,9 +38,9 @@ export class RequestService {
         );
     }
 
-    public getAllRequest(): Observable<any> {
+    public getAllRequest(payload: Object): Observable<any> {
       return this._http
-        .post(environment.baseUrl.concat(API_GET_ALL_REQUEST), null, ServiceDirective.headers)
+        .post(environment.baseUrl.concat(API_GET_ALL_REQUEST), payload, ServiceDirective.headers)
         .pipe(
           catchError(err => {
             return ServiceDirective.handleError(err);

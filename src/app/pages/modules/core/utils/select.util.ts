@@ -207,9 +207,9 @@ export const SLIDES = [
 export const SLIDES_CANCER = [
   {
   'id': '1',
-  'titulo': 'Muerte por Cancer',
+  'titulo': 'Muerte por Cáncer',
   'imagen' : 'unoapinfo',
-  'mensaje': 'Si el asegurado muere por motivos del cancer, a los beneficiarios se les pagará el monto asegurado que contrató (indemnización). Ej.: accidentes de tránsito, sucesos imprevistos, homicidios dolosos y culposos.' 
+  'mensaje': 'Si el asegurado muere por motivos del cáncer, a los beneficiarios se les pagará el monto asegurado que contrató (indemnización). Ej.: accidentes de tránsito, sucesos imprevistos, homicidios dolosos y culposos.' 
   },
   {
   'id': '2',
@@ -219,14 +219,14 @@ export const SLIDES_CANCER = [
   },
   {
   'id': '3',
-  'titulo': 'Gastos Médicos por diagnostico de Cancer',
+  'titulo': 'Gastos Médicos por diagnostico de Cáncer',
   'imagen' : 'cuatroapinfo',
   'mensaje': 'Cobertura complementaria donde te reembolsamos hasta un 10% de la suma asegurada para gastos médicos incurridos por accidentes.',
   'enlace':' '
   },
   {
   'id': '4',
-  'titulo': 'Doble Indemnización por Muerte por Motivo de Cancer',
+  'titulo': 'Doble Indemnización por Muerte por Motivo de Cáncer',
   'imagen' : 'maletin',
   'mensaje': 'Duplicamos la suma asegurada por muerte accidental mientras el asegurado se transporta en un vehículo público (autobús, metro, taxi, etc) o si se ve envuelto en un incendio en algún edificio público (hotel, museo, cine, teatro, etc)' 
   },

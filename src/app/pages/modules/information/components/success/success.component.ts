@@ -58,7 +58,7 @@ export class SuccessComponent implements OnInit {
           this.titles = {
             'coverageTitle': 'El seguro que acabas de comprar cuenta con:',
             'coverageSubtitle': 'En caso de una emergencia:',
-            'sinisterTitle': 'En caso de muerte por cancer'
+            'sinisterTitle': 'En caso de muerte por cáncer'
           };
 
           this.left_items = [

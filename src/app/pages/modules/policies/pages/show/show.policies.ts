@@ -15,19 +15,35 @@ import { CustomValidatorDirective } from '../../../core/directives/validations/c
   styleUrls: ['./show.policies.scss']
 })
 // tslint:disable-next-line:component-class-suffix
+
 export class ShowPolicies implements OnInit {
   searchText = '';
-  page = 1;
+  page = 0;
   pageSize = 5;
   collectionSize = 0;
+  filterDelay: any;
   public requests: any[] = [];
   public searching = false;
   public routerLinkVariable = '/detalle';
   public attachments: any[] = [];
   public isLoading: boolean = true;
+  public isLoadingTable: boolean = true;
   public isLoadingFile: any;
   public requestModal: any;
   public attachment: any;
+  public autoRefreshInterval: any;
+
+  public search: any = { 
+    date:null,
+    date_end:null,
+    general:"",
+    status:"",
+    insuranceType: "",
+    date_filter:null,
+    date_end_filter:null,
+    general_filter:null,
+    status_filter:null
+  };
 
   constructor(private _requestService: RequestService,
     private _fb: FormBuilder,
@@ -51,6 +67,16 @@ export class ShowPolicies implements OnInit {
       data: false
     };
     this.initForm();
+
+    /* auto-refresh table */
+    this.restartAutoRefresh();
+  }
+
+  insuranceTypeFormat(insuranceType){
+    switch((insuranceType + "").toLowerCase()){
+      case 'accidentes-personales': return "Accidentes Personales"
+      case 'cancer': return "Cáncer"
+    }
   }
 
   initForm() {
@@ -60,6 +86,76 @@ export class ShowPolicies implements OnInit {
       'policyUrl': this._fb.control(null, [CustomValidatorDirective.urlValidator])
     });
     this.validations();
+  }
+
+  private delay(callback: Function,_timer:number = 3000){
+    const _delay = setTimeout(callback,_timer);
+    return _delay;
+  }
+
+  private onSearch(){
+    if(this.filterDelay){
+      clearTimeout(this.filterDelay);
+    }
+    this.filterDelay = this.delay(() => this.refreshPage(this.page), 1000);
+  }
+
+  private onClearFilter(_filter){
+    
+    if(_filter == "date"){
+      this.search[_filter+"_end_filter"] = "";
+      this.search[_filter+"_end"] = "";
+    }
+
+    this.search[_filter+"_filter"] = "";
+    this.search[_filter] = "";
+    this.filterDelay = this.delay(() => this.refreshPage(this.page), 1000);
+  }
+
+  private onPageChange(pageNumber){
+    this.refreshPage(pageNumber);
+  }
+
+  private onLimitPageChange(pageSize){
+    this.delay(() => this.refreshPage(this.page, this.pageSize));
+  }
+
+  /* auto-refresh table interval */
+  private restartAutoRefresh(){
+    if(this.autoRefreshInterval){
+      clearInterval(this.autoRefreshInterval);
+    }
+    const minutes = 1000 * 60 * 3;
+    this.autoRefreshInterval = setInterval(() => this.autoRefresh(), minutes);
+  }
+  private autoRefresh(){
+      this.refreshPage(this.page,this.pageSize, true);
+  }
+
+  private refreshPage(pageNumber, pageSize = null, ignoreLoading = false){
+    const _pageSize = +this.pageSize;
+
+    this.search = { 
+      ...this.search, 
+      status_filter: this.search.status,
+      date_filter: this.search.date,
+      date_end_filter: this.search.date_end,
+      general_filter: this.search.general,
+      insuranceType_filter: this.search.insuranceType,
+    }
+
+    const payload = {
+      "page": pageNumber - 1,
+      "displayLimit": (!pageSize) ? _pageSize : parseInt(pageSize),
+      "filterParam": this.search.general || "",
+      "insuranceType": this.search.insuranceType || "",
+      "status": this.search.status || "",
+      "initialDate": this.search.date || "",
+      "finalDate": this.search.date_end || ""
+    };
+
+    this.restartAutoRefresh();
+    this.getAllRequest(payload, ignoreLoading);
   }
 
   public submit() {
@@ -128,20 +224,28 @@ export class ShowPolicies implements OnInit {
     this.modalService.open(content, {centered: true});
   }
 
-  private getAllRequest() {
-    this._requestService.getAllRequest().subscribe(
+  private getAllRequest(payload = { page: 1, displayLimit: 5 }, ignoreLoading = false) {
+    
+    if(!ignoreLoading){
+      this.isLoadingTable = true;
+    }
+
+    this._requestService.getAllRequest(payload).subscribe(
       response => {
         this.requests = response.result.requests;
-        this.collectionSize = this.requests.length * 5;
+        this.collectionSize = response.result.totalCount;
         this.requests.forEach(element => {
           this.attachments.push(null);
-        })
+        });
+        this.isLoadingTable = false;
         this.isLoading = false;
       }, error => {
+        this.isLoadingTable = false;
         this.isLoading = false;
         console.log(error);
       }
     );
+
   }
   public openAttachPolize(){
     
@@ -165,10 +269,25 @@ export class ShowPolicies implements OnInit {
   }
 
   public exportAsXLSX(): void {
-    this._excelService.exportAsExcelFile(this.requests.map(request => {
-      return this.structureXLSX(request);
-    }), 'Solicitud de pólizas de accidentes personales ' + moment().format('DD-MM-YYYY HH:mm:ss'));
+    
+    const payload = { page: 0, displayLimit: 10000 };
+    this._requestService.getAllRequest(payload).subscribe(
+      response => {
+        this._excelService.exportAsExcelFile(response.result.requests.map(request => {
+          return this.structureXLSX(request);
+        }), 'Solicitud de pólizas de accidentes personales ' + moment().format('DD-MM-YYYY HH:mm:ss'));
+        
+      }, error => {
+        this._toastr.notify('error', "No se ha podido descargar las Pólizas, intente luego.");
+      }
+    );
   }
+
+  // public exportAsXLSX(): void {
+  //   this._excelService.exportAsExcelFile(this.requests.map(request => {
+  //     return this.structureXLSX(request);
+  //   }), 'Solicitud de pólizas de accidentes personales ' + moment().format('DD-MM-YYYY HH:mm:ss'));
+  // }
 
   public getRequestWithDependents() {
     this.isLoading = true;
@@ -198,17 +317,18 @@ export class ShowPolicies implements OnInit {
     _request = {
       Numero_Solicitud: request.number,
       Numero_Poliza: request.policyNumber,
+      Referencia_de_Pago: request.paymentInformation && request.paymentInformation.transaction_id,
       Estatus: request.status,
       Tipo_Seguro: request.insurance && request.insurance.insuranceType,
       Monto_Asegurado_Cobertura: !request.insurance ? 'N/A' : ('$' + request.insurance.coverageDetail.insuredAmount),
       Prima_Mensual_Cobertura: !request.insurance ? 'N/A' : ('$' + request.insurance.coverageDetail.monthlyPrime),
-      Doble_Compensacion_Cobertura: !request.insurance ? 'N/A' : ('$' + request.insurance.coverageDetail.dobleCompensation),
-      Servicio_Emergencia_Cobertura: !request.insurance ? 'N/A' : ('$' + request.insurance.coverageDetail.emergencyService),
-      Avances_Funerarios_Cobertura: !request.insurance ? 'N/A' : ('$' + request.insurance.coverageDetail.funeraryAdvances),
-      Incapacidad_Permanente_Cobertura: !request.insurance ? 'N/A' : ('$' + request.insurance.coverageDetail.permanentInhability),
-      Asistencia_Viaje_Cobertura: !request.insurance ? 'N/A' : ('$' + request.insurance.coverageDetail.travelAssistance),
-      Muerte_Accidental_Cobertura: !request.insurance ? 'N/A' : ('$' + request.insurance.coverageDetail.accidentalDeath),
-      Gastos_Medicos_Cobertura: !request.insurance ? 'N/A' : ('$' + request.insurance.coverageDetail.medicalExpenses),
+      Doble_Compensacion_Cobertura: !request.insurance ? 'N/A' : ('$' + (request.insurance.coverageDetail.dobleCompensation || "0")),
+      Servicio_Emergencia_Cobertura: !request.insurance ? 'N/A' : ('$' + (request.insurance.coverageDetail.emergencyService || "0")),
+      Avances_Funerarios_Cobertura: !request.insurance ? 'N/A' : ('$' + (request.insurance.coverageDetail.funeraryAdvances || "0")),
+      Incapacidad_Permanente_Cobertura: !request.insurance ? 'N/A' : ('$' + (request.insurance.coverageDetail.permanentInhability || "0")),
+      Asistencia_Viaje_Cobertura: !request.insurance ? 'N/A' : ('$' + (request.insurance.coverageDetail.travelAssistance || "0")),
+      Muerte_Accidental_Cobertura: !request.insurance ? 'N/A' : ('$' + (request.insurance.coverageDetail.accidentalDeath || "0")),
+      Gastos_Medicos_Cobertura: !request.insurance ? 'N/A' : ('$' + (request.insurance.coverageDetail.medicalExpenses || "0")),
       //Nombre_Completo_Contratante: !request.contractor || !request.contractor.name ? 'N/A' : (request.contractor.name + ' ' + request.contractor.lastName),
       //Telefono_Celular_Contratante: !request.contractor || !request.contractor.cellphone ? 'N/A' : request.contractor.cellphone,
       //Provincia_Contratante: !request.contractor || !request.contractor.province ? 'N/A' : request.contractor.province.name,
