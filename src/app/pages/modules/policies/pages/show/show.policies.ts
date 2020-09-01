@@ -97,7 +97,7 @@ export class ShowPolicies implements OnInit {
     if(this.filterDelay){
       clearTimeout(this.filterDelay);
     }
-    this.filterDelay = this.delay(() => this.refreshPage(this.page), 1000);
+    this.filterDelay = this.delay(() => { this.page = 1; this.refreshPage(this.page) }, 1000);
   }
 
   private onClearFilter(_filter){
@@ -109,7 +109,7 @@ export class ShowPolicies implements OnInit {
 
     this.search[_filter+"_filter"] = "";
     this.search[_filter] = "";
-    this.filterDelay = this.delay(() => this.refreshPage(this.page), 1000);
+    this.filterDelay = this.delay(() => { this.page = 1; this.refreshPage(this.page) }, 1000);
   }
 
   private onPageChange(pageNumber){
