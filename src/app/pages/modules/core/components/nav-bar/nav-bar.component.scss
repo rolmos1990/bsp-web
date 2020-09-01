@@ -9,6 +9,9 @@ header {
         display: none;
     }
 }
+.nav-item ._svg{
+    width:1em;
+}
 
 .superior-header{
     padding: 10px 0;
@@ -36,6 +39,46 @@ header {
         font-size: 27px;
     }
 }
+.menu-left{
+    margin-left:20px;
+}
+.menu-left ul{
+    display: block;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    line-height: normal;
+}
+.menu-left ul li{
+    position:relative;
+    display:inline-block;
+    padding-left: 6px;
+    padding-right: 6px;
+    transition: .4s;
+}
+.menu-left ul li a{
+    color: #a5adb4;
+    font-family: "Helvetica",Helvetica;
+    font-size: 20px;
+    font-weight: 400;
+    transition: .4s;
+}
+.menu-left ul li:hover > a:after{
+    opacity:1;
+    position:absolute;
+    background-color:#003c71;
+    width:100%;
+    height:3px;
+    content:"";
+    left:0;
+    bottom:-10px;
+    z-index:2;
+}
+.menu-left ul li a:hover{
+    line-height: 20px;
+    text-decoration:none!important;
+    color: #003c71;
+}
 
 .menucito-desktop{
     display: none;
@@ -43,6 +86,61 @@ header {
         display: block;
     }
 }
+.nav-item span{
+    font-family: "Helvetica",Helvetica;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 2.5em;
+    padding: 0;
+    color: #3a4454!important;
+}
+.nav-link .icon-search{
+    position:relative;
+    left:-12px;
+    top:5px;
+}
+
+.sub-arrow:before {
+    font-family: FontAwesome!important;
+    font-size: inherit;
+    font-weight: 400;
+    content: '\f078';
+    font-size: 8px;
+}
+.country-selector{
+    position:relative;
+}
+.country-selector .sub-menu-country{
+    display: none;
+    transition: opacity 2s ease-out;
+    opacity: 0;
+    overflow: hidden;
+}
+.country-selector:hover > .sub-menu-country{
+    opacity: 1;
+    display: block;
+}
+.sub-menu-country a{
+    margin:0px;
+    padding:3px;
+}
+
+.sub-menu-country{
+    list-style-type: none;
+    position:absolute;
+    left:-50px;
+    background-color: white;
+    width:200px;
+    z-index:100;
+    text-align:left;
+    padding:0px;
+    padding-left:20px;
+    padding-right:10px;
+}
+.sub-menu-country li{
+    text-align:left;
+}
+
 .menucito-movil{
     display: block;
     margin: 10px 0;
@@ -67,9 +165,12 @@ header {
         }
 
         .nav-link{
-            color: #13599e !important;
-            font-weight: 400;
+            font-family: "Helvetica",Helvetica;
             font-size: 14px;
+            font-weight: 400;
+            line-height: 2.5em;
+            padding: 0;
+            color: #3a4454!important;
         }
     @media (min-width: 1024px){
         display: none;

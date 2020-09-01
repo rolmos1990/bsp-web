@@ -1,30 +1,79 @@
 <header>
     <div class="navbar navbar-expand-md navbar-dark box-shadow menucito-desktop">
-        <div class="container d-flex justify-content-between">
+        <div class="d-flex justify-content-between" style="min-height:40px;margin:2px 15px;padding:5px 0px;">
             <a [routerLink]="['/']" class="navbar-brand d-flex align-items-center">
                 <img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/logoo.png" alt="" class="sizeImgLogo">
             </a>
             <button class="navbar-toggler collapsed" type="button">
-        <img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/menu.png" alt="">
-      </button>
+                <img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/menu.png" alt="">
+            </button>
+            <div class="nav-item menu-left d-flex align-items-center">
+                <ul>
+                    <li>
+                        <a href="http://bsp-labx-com.stackstaging.com/">Personas</a>
+                    </li>
+                    <li>
+                        <a href="http://bsp-labx-com.stackstaging.com/corredores/">Corredores</a>
+                    </li>
+                    <li>
+                        <a href="http://bsp-labx-com.stackstaging.com/somos-banesco-seguros/">Somos Banco Seguros</a>
+                    </li>
+                </ul>
+            </div>
             <div class="navbar-collapse collapse">
-                <ul class="navbar-nav ml-auto">
+                <ul class="navbar-nav ml-auto" style="flex-wrap:wrap">
                     <!-- <li class="nav-item mx-md-1">
                         <a class="nav-link ayuda" href="" [routerLink]="['/']" routerLinkActive="active">
               ¿Necesitas ayuda?</a>
                     </li> -->
-                    <li class="nav-item mx-md-1">
-                        <a class="nav-link" href="" [routerLink]="['/']" routerLinkActive="active"><img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/telefono.svg" alt="" class="mr-2"> +507 366 8585</a>
-                    </li>
-                    <li class="nav-item mx-md-1">
-                        <a class="nav-link" href="" [routerLink]="['/']" routerLinkActive="active"><img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/whatsapp.svg" alt="" class="mr-2"> +507 6534 8555</a>
-                    </li>
-                    <li class="nav-item mx-md-1">
-                        <a class="nav-link" href="" [routerLink]="['/']" routerLinkActive="active"><img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/mensaje.svg" alt="" class="mr-2"> acliente_pa@banescoseguros.com
+                    <li class="nav-item">
+                        <a class="nav-link" href="mailto:acliente_pa@banescoseguros.com" routerLinkActive="active">
+                            <img src="http://bsp-labx-com.stackstaging.com/wp-content/uploads/2020/06/black-back-closed-envelope-shape.svg" class="_mi _before _svg mr-1" aria-hidden="true"><span> Email </span>
                         </a>
                     </li>
-                    <li *ngIf="isDashboard" class="nav-item mx-md-1">
-                        <a (click)="logOut()" class="nav-link" style="cursor:pointer;"><i class="mr-2 fas fa-sign-out-alt"></i>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://api.whatsapp.com/send?phone=50765348555&amp;text=&amp;source=&amp;data=" routerLinkActive="active"><img src="http://bsp-labx-com.stackstaging.com/wp-content/uploads/2020/06/whatsapp-logo-variant.svg" alt="" class="_mi _before _svg mr-1"><span>+507 6534 8555</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="tel:+5073668555" routerLinkActive="active"><img src="http://bsp-labx-com.stackstaging.com/wp-content/uploads/2020/06/telephone-handle-silhouette.svg" alt="" class="_mi _before _svg mr-1"><span> +507 366 8585 </span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://bsp-labx-com.stackstaging.com/cuentanos-tus-experiencia/" routerLinkActive="active"><img src="http://bsp-labx-com.stackstaging.com/wp-content/uploads/2020/06/star-with-five-points.svg" class="_mi _before _svg mr-1" aria-hidden="true"><span> Cuéntanos tu experiencia </span></a>
+                    </li>
+                    <a class="nav-link" href="" [routerLink]="['/']" routerLinkActive="active">
+                        <div class="icon-search">
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 310.088 310.088" enable-background="new 0 0 310.088 310.088" width="35px" height="20px" class="_svg">
+                            <g>
+                               <g>
+                                  <path d="m299.85,250.413l-62.808-62.808c-3.982-3.982-10.437-3.982-14.418,0l-3.539,3.539-18.586-18.586c29.709-42.872 25.472-102.152-12.716-140.34-42.958-42.958-112.606-42.958-155.563,0s-42.958,112.606 0,155.563c38.189,38.188 97.468,42.425 140.34,12.716l18.586,18.586-3.539,3.539c-3.982,3.981-3.982,10.437 0,14.418l62.808,62.808c13.651,13.651 35.785,13.651 49.436,0s13.65-35.784-0.001-49.435zm-251.368-78.895c-33.921-33.921-33.921-89.115-0.001-123.036 33.922-33.921 89.117-33.922 123.037-0.001v0.001c33.922,33.921 33.922,89.115 0,123.036-16.96,16.961-39.239,25.441-61.518,25.441-22.279,0-44.558-8.48-61.518-25.441z" data-original="#000000" class="active-path" data-old_color="#000000" fill="#003C71"></path>
+                               </g>
+                            </g>
+                         </svg>
+                        </div>
+                    </a>
+                    <li class="nav-item country-item-container">
+                        <a class="nav-link country-selector" href="#" >
+                            <img src="http://bsp-labx-com.stackstaging.com/wp-content/uploads/2020/06/panama.svg" class="_mi _before _svg mr-1" aria-hidden="true">
+                            <span></span>
+                            <span class="sub-arrow"></span>
+                            <ul class="sub-menu-country">
+                                <li class="active">
+                                    <a class="nav-link" href="http://www.banescoseguros.com" rel="noopener">
+                                    <img src="http://bsp-labx-com.stackstaging.com/wp-content/uploads/2020/06/venezuela.svg" class="_mi _before _svg mr-1" aria-hidden="true">
+                                    <span> VE </span>
+                                    </a>
+                                </li>
+                                <li class="active">
+                                    <a class="nav-link" href="http://banescoseguros.com.do/" rel="noopener">
+                                    <img src="http://bsp-labx-com.stackstaging.com/wp-content/uploads/2020/06/dominican-republic.svg" class="_mi _before _svg mr-1" aria-hidden="true">
+                                    <span> DO </span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </a>
+                    </li>
+                    <li *ngIf="isDashboard" class="nav-item mr-1 mt-2">
+                        <a (click)="logOut()" class="nav-link" style="cursor:pointer;"><i class="mr-1 fas fa-sign-out-alt"></i>
                         Cerrar sesión</a>
                     </li>
                 </ul>
@@ -46,14 +95,14 @@
                   ¿Necesitas ayuda?</a>
                 </li> -->
                 <li class="nav-item mx-2 mx-md-1">
+                    <a class="nav-link" href="" [routerLink]="['/']" routerLinkActive="active"><img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/mensaje.svg" alt="" class="mr-2"> acliente_pa@banescoseguros.com
+                    </a>
+                </li>
+                <li class="nav-item mx-2 mx-md-1">
                     <a class="nav-link" href="" [routerLink]="['/']" routerLinkActive="active"><img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/telefono.svg" alt="" class="mr-2"> +507 830 0000</a>
                 </li>
                 <li class="nav-item mx-2 mx-md-1">
                     <a class="nav-link" href="" [routerLink]="['/']" routerLinkActive="active"><img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/whatsapp.svg" alt="" class="mr-2"> +507 830 0000</a>
-                </li>
-                <li class="nav-item mx-2 mx-md-1">
-                    <a class="nav-link" href="" [routerLink]="['/']" routerLinkActive="active"><img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/mensaje.svg" alt="" class="mr-2"> acliente_pa@banescoseguros.com
-                    </a>
                 </li>
                 <li *ngIf="isDashboard && isLogged" class="nav-item mx-2 mx-md-1">
                     <a (click)="logOut()" class="nav-link"><i class="mr-2 fas fa-sign-out-alt"></i>
