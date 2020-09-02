@@ -34,6 +34,8 @@ export class RequestComponent implements OnInit {
   public edit: boolean;
   public nationalities: Array<any>;
   public countries: Array<any>;
+  public preferer_country: Array<any>;
+  public preferer_nationalities: Array<any>;
   public provinces: Array<any>;
   public districtsCont: Array<any>;
   public corregimientosCont: Array<any>;
@@ -173,6 +175,11 @@ export class RequestComponent implements OnInit {
   public getAllCountries() {
     this._locationService.getAllCountries().subscribe(
       response => {
+        let countries = response.result.countries;
+        if(countries.length > 0){
+          const preferer_country = countries.filter(item => item.name == "Panamá");
+          this.preferer_country = preferer_country;
+        }
         this.countries = response.result.countries;
         this.getProvinces();
       },
@@ -399,6 +406,9 @@ export class RequestComponent implements OnInit {
     this._locationService.getAllNationalites().subscribe(
       response => {
         this.nationalities = response.result.nationalities;
+        if(this.nationalities.length > 0){
+          this.preferer_nationalities = this.nationalities.filter(item => item.name == "Panameño");
+        }
         this.getOccupations();
       },
       error => {

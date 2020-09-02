@@ -3,6 +3,7 @@ import { RequestService } from '../../core/services/request.service';
 import { ActivatedRoute } from '@angular/router';
 import { DependentService } from '../../core/services/dependent.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'bsp-show-insurance-detail',
@@ -17,7 +18,7 @@ export class ShowInsuranceDetailComponent implements OnInit {
   public request: any;
 
   // tslint:disable-next-line:max-line-length
-  constructor(private _requestService: RequestService, private modalService: NgbModal, private _activatedRoute: ActivatedRoute, private _dependentsService: DependentService) {
+  constructor(private _requestService: RequestService, private modalService: NgbModal, private _activatedRoute: ActivatedRoute, private _dependentsService: DependentService, private _location: Location) {
     this.isLoading = true;
     this.requestId = _activatedRoute.snapshot.paramMap.get('requestId');
   }
@@ -70,6 +71,10 @@ export class ShowInsuranceDetailComponent implements OnInit {
       _documentAttachment.isImage = true;
     }
     return _documentAttachment;
+  }
+
+  goBack() {
+    this._location.back();
   }
 
 }

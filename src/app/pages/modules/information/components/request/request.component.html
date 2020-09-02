@@ -694,6 +694,11 @@
                   <option class="placeholder" [value]="null" disabled
                     >Seleccione</option
                   >
+                  <option *ngFor="let country of preferer_country; let i = index"
+                  [value]="country.id"
+                  >
+                    {{country.name}}</option>
+                  <option class="placeholder" [value]="null" disabled>--------------------</option>
                   <option
                     *ngFor="let country of countries; let i = index"
                     [value]="country.id"
@@ -730,6 +735,11 @@
                   <option class="placeholder" [value]="null" disabled
                     >Seleccione</option
                   >
+                  <option *ngFor="let nationality of preferer_nationalities; let i = index"
+                  [value]="nationality.id"
+                  >
+                    {{nationality.name}}</option>
+                  <option class="placeholder" [value]="null" disabled>--------------------</option>
                   <option
                     *ngFor="let nationality of nationalities; let i = index"
                     [value]="nationality.id"
