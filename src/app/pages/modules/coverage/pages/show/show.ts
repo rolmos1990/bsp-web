@@ -45,7 +45,7 @@ export class ShowComponent implements OnInit {
 
   public reject(modal: any) {
     modal.dismiss('Cross click');
-    this._router.navigate(['formulario', this.insuranceId, 'rechazo']);
+    //this._router.navigate(['formulario', this.insuranceId, 'rechazo']);
   }
 
   private updateRequest(modal: any) {

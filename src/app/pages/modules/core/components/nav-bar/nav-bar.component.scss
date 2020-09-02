@@ -1,5 +1,5 @@
 header {
-    background: #ffffff !important;
+    background: #fafafa !important;
     border: 1px solid #e6e6e6;
     border-width: 0 0 1px 0;
 }
@@ -85,6 +85,13 @@ header {
     @media (min-width: 1024px){
         display: block;
     }
+}
+.right-menu li:hover > a span{
+    color:#050f26!important;
+}
+.right-menu .nav-link{
+    padding-right:.3rem;
+    padding-left:.3rem;
 }
 .nav-item span{
     font-family: "Helvetica",Helvetica;

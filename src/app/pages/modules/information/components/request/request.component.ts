@@ -204,9 +204,9 @@ export class RequestComponent implements OnInit {
         'contCellphone': this._fb.control(cont.cellphone, [Validators.required, CustomValidatorDirective.cellphoneValidator]),
         'insuSame': this._fb.control(true, Validators.required),
         'insuName': this._fb.control(insu.name, Validators.compose([Validators.required, CustomValidatorDirective.namesValidator])),//Segundo Formulario
-        'insuSecondName': this._fb.control(insu.secondName, Validators.compose([Validators.required, CustomValidatorDirective.namesValidator])),//Segundo Formulario
+        'insuSecondName': this._fb.control(insu.secondName, Validators.compose([CustomValidatorDirective.namesValidator])),//Segundo Formulario
         'insuLastName': this._fb.control(insu.lastName, Validators.compose([Validators.required, CustomValidatorDirective.namesValidator])),
-        'insuSecondLastName': this._fb.control(insu.secondLastName, Validators.compose([Validators.required, CustomValidatorDirective.namesValidator])),
+        'insuSecondLastName': this._fb.control(insu.secondLastName, Validators.compose([CustomValidatorDirective.namesValidator])),
         'insuDocumentType': [insu && insu.documentType ? insu.documentType : null, Validators.required],
         'hasDiseases': this._fb.control(insu.hasDiseases, Validators.required),
         'insuDocument': [(insu && insu.document ? (insu.documentType === 'Pasaporte' ? insu.document : insu.document.split('-')[0]) : null), Validators.required],
@@ -246,9 +246,9 @@ export class RequestComponent implements OnInit {
           // 'insuSame': this._fb.control(localStorage.getItem('same') === 'true' ? true : false, Validators.required),
           'insuSame': this._fb.control(true, Validators.required),
           'insuName': this._fb.control(insu.name, Validators.compose([Validators.required, CustomValidatorDirective.namesValidator])),//Segundo Formulario
-          'insuSecondName': this._fb.control(insu.secondName, Validators.compose([Validators.required, CustomValidatorDirective.namesValidator])),//Segundo Formulario
+          'insuSecondName': this._fb.control(insu.secondName, Validators.compose([CustomValidatorDirective.namesValidator])),//Segundo Formulario
           'insuLastName': this._fb.control(insu.lastName, Validators.compose([Validators.required, CustomValidatorDirective.namesValidator])),
-          'insuSecondLastName': this._fb.control(insu.secondLastName, Validators.compose([Validators.required, CustomValidatorDirective.namesValidator])),
+          'insuSecondLastName': this._fb.control(insu.secondLastName, Validators.compose([CustomValidatorDirective.namesValidator])),
           'insuDocumentType': [insu && insu.documentType ? insu.documentType : null, Validators.required],
           'insuDocument': [(insu && insu.document ? (insu.documentType === 'Pasaporte' ? insu.document : insu.document.split('-')[0]) : null), Validators.required],
           'insuDocument2': [!insu || !insu.document || insu.documentType === 'Pasaporte' ? null : insu.document.split('-')[1]],

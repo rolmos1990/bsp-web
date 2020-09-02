@@ -109,16 +109,6 @@ h2.solicitud {
   font-size: 36px;
 }
 
-.contenedor .texto {
-  width: 100%;
-  float: initial;
-}
-
-.contenedor .imagen {
-  width: 100%;
-  float: initial;
-}
-
 .texto {
   padding: 0 20px;
 }
@@ -204,5 +194,32 @@ h2.solicitud {
 @media (min-width: 1920px) {
   .texto {
     padding: 50px 250px;
+  }
+}
+.oferta_container{
+  margin-bottom:65px;
+}
+.oferta_image{
+  padding:0px;
+}
+.oferta_content{
+  padding:0px;
+}
+.oferta_content .separator{
+  display:block;
+}
+
+@media (max-width: 991px) {
+  .oferta_content {
+    padding: 20px 20px;
+  }
+  .oferta_content h1{
+    font-size:28px;
+  }
+  .oferta_content .p-segundo{
+    font-size:18px;
+  }
+  .oferta_content .separator{
+    display:inline;
   }
 }
