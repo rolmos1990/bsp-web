@@ -6,7 +6,7 @@
     font-size: 36px;
     color: #007943;
     font-weight: 700;
-    text-decoration: none solid rgb(0, 121, 67);
+    text-decoration: none solid #003c71;
     letter-spacing: -2px;
 
     @media (min-width: 1024px) {
@@ -260,7 +260,7 @@
 
   h3.preguntas {
     font-size: 28px;
-    color: #007943;
+    color: #003c71;
     font-weight: 700;
     text-decoration: none solid rgb(0, 121, 67);
     margin: 30px 0 50px 20px;
@@ -313,7 +313,7 @@
 
   h3 {
     font-size: 28px;
-    color: #007943;
+    color: #003c71;
     font-weight: 700;
     text-decoration: none solid rgb(0, 121, 67);
     margin: 0px 0 20px 20px;
@@ -332,6 +332,13 @@
   p.green {
     font-size: 14px;
     color: #1c8464;
+    text-decoration: none solid rgb(28, 132, 100);
+    margin: 10px 0;
+  }
+
+  p.blue {
+    font-size: 14px;
+    color: #003c71;
     text-decoration: none solid rgb(28, 132, 100);
     margin: 10px 0;
   }

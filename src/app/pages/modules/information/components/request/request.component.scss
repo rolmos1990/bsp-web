@@ -284,3 +284,9 @@ table td,
 .placeholder {
     color: #c8c8c8 !important;
 }
+
+@media (min-width: 992px) {
+    .topFix{
+        margin-top:25px
+    }
+}

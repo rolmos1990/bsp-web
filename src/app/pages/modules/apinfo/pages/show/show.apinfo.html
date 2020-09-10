@@ -13,7 +13,7 @@
         <div class="container">
             <div id="portada" class="row">
                 <div class="col-md-8">          
-                        <h1>Explora el seguro de Accidentes Personales</h1>
+                        <h1 style="color:#003c71">Explora el seguro de Accidentes Personales</h1>
                         <p>Nuestras pólizas AP te protegen contra cualquier eventualidad, asegurando la estabilidad financiera de tu familia cuando más lo necesitas.</p>
                     <button class="btn" [routerLink]="['/cobertura/',insureType]">COTIZAR</button>
                 </div>
@@ -94,7 +94,7 @@
     <a id="2"></a>
     <div class="contenedor-gris">
         <!-- aqui debe ir un ancla-->
-        <h3>Nuestras Coberturas</h3>
+        <h3 style="color:#003c71">Nuestras Coberturas</h3>
         <div class="container">
 
             <div class="position-relative">
@@ -105,7 +105,7 @@
                     <div *ngFor="let slide of slides" class="swiper-slide">
                         <div fxLayout="column" fxLayoutAlign="center center" fxFlexFill>
                             <img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/{{slide.imagen}}.png" alt="">
-                            <p class="green">{{slide.titulo}}</p>
+                            <p class="blue">{{slide.titulo}}</p>
                             <p class="mensaje">{{slide.mensaje}}</p>
                             <a href="http://banescoseguros.com.pa/wp-content/uploads/2016/02/Condiciones_Generales_AP_INTEGRAL_INDIVIDUAL.pdf" target="_blank" class="enlace" *ngIf="slide.id == '3'">{{slide.enlace}}</a>
                             <a href="http://banescoseguros.com.pa/wp-content/uploads/2016/02/Condiciones_Generales_AP_INTEGRAL_INDIVIDUAL.pdf" target="_blank" class="enlace" *ngIf="slide.id == '4'">{{slide.enlace}}</a>
@@ -121,7 +121,7 @@
     <a id="3"></a>
     <div class="contenedor">
         <!-- aqui debe ir un ancla-->
-        <h3 class="preguntas">Preguntas Frecuentes</h3>
+        <h3 class="preguntas" style="color:#003c71">Preguntas Frecuentes</h3>
         <div class="container cober">
             <accordion>
                 <accordion-group [panelClass]="customClass" [isOpen]="isFirstOpen">
@@ -204,7 +204,7 @@
             <div class="container">
                 <div id="portada" class="row">
                     <div class="col-md-8">          
-                            <h1>Explora el seguro de Cáncer</h1>
+                            <h1 style="color:#003c71">Explora el seguro de Cáncer</h1>
                             <p>Nuestras pólizas Cáncer te protegen contra el Cáncer, asegurando la estabilidad financiera de tu familia cuando más lo necesitas.</p>
                         <button class="btn" [routerLink]="['/cobertura/',insureType]">COTIZAR</button>
                     </div>
@@ -284,7 +284,7 @@
         <a id="2"></a>
         <div class="contenedor-gris">
             <!-- aqui debe ir un ancla-->
-            <h3>Nuestras Coberturas</h3>
+            <h3 style="color:#003c71">Nuestras Coberturas</h3>
             <div class="container">
     
                 <div class="position-relative">
@@ -295,7 +295,7 @@
                         <div *ngFor="let slide of slides" class="swiper-slide">
                             <div fxLayout="column" fxLayoutAlign="center center" fxFlexFill>
                                 <img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/{{slide.imagen}}.png" alt="">
-                                <p class="green">{{slide.titulo}}</p>
+                                <p class="blue">{{slide.titulo}}</p>
                                 <p class="mensaje">{{slide.mensaje}}</p>
                                 <a href="http://banescoseguros.com.pa/wp-content/uploads/2016/02/Condiciones_Generales_AP_INTEGRAL_INDIVIDUAL.pdf" target="_blank" class="enlace" *ngIf="slide.id == '3'">{{slide.enlace}}</a>
                                 <a href="http://banescoseguros.com.pa/wp-content/uploads/2016/02/Condiciones_Generales_AP_INTEGRAL_INDIVIDUAL.pdf" target="_blank" class="enlace" *ngIf="slide.id == '4'">{{slide.enlace}}</a>
@@ -311,7 +311,7 @@
         <a id="3"></a>
         <div class="contenedor">
             <!-- aqui debe ir un ancla-->
-            <h3 class="preguntas">Preguntas Frecuentes</h3>
+            <h3 style="color:#003c71" class="preguntas">Preguntas Frecuentes</h3>
             <div class="container cober">
                 <accordion>
                     <accordion-group [panelClass]="customClass" [isOpen]="isFirstOpen">
