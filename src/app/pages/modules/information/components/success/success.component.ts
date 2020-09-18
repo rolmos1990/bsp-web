@@ -8,6 +8,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class SuccessComponent implements OnInit {
   public titles: Object;
+  public icons: boolean;
   public left_items: any;
   public right_items: any;
   public isLoading: boolean;
@@ -34,6 +35,8 @@ export class SuccessComponent implements OnInit {
 
         if(this.insurance.type == "accidentes-personales")
         {
+          this.icons = true;
+          
           this.titles = {
             'coverageTitle': 'El seguro que acabas de comprar cuenta con:',
             'coverageSubtitle': 'En caso de algún accidente:',
@@ -54,22 +57,22 @@ export class SuccessComponent implements OnInit {
 
         }
         else{
+          this.icons = false;
           //cancer
           this.titles = {
             'coverageTitle': 'El seguro que acabas de comprar cuenta con:',
-            'coverageSubtitle': 'En caso de una emergencia:',
-            'sinisterTitle': 'En caso de muerte por cáncer'
+            'coverageSubtitle': '',
+            'sinisterTitle': ''
           };
 
           this.left_items = [
-            "Gastos médicos",
-            "Servicio de emergencias y urgencias médicas",
-            "Asistencia en viajes en el extranjero"
+            "Flexibilidad en la entrega del monto asegurado, sin tener que asociarlo a gastos médicos.",
+            "Consigue tu protección rápidamente estés donde estés."
           ];
 
           this.right_items = [
-            "Adelanto de gastos funerarios",
-            "Doble indemnización por muerte accidental por cancer"
+            "Paga cómodamente en pequeñas cuotas con tu tarjeta de crédito o por transferencia bancaria. Como sea más fácil para tí.",
+            "Siempre estarás protegido, porque cada año renovamos la protección contra Cáncer automáticamente."
           ];
         }
     }

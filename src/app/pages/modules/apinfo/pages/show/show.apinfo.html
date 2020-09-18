@@ -3,7 +3,7 @@
 </div> -->
 <ng-template [ngIf]="showScrollButton()">
     <a [ngx-scroll-to]="'#portada'" class="btn-fixed">
-        <span style="color:#708090; font-size: 12px; font-weight: 700;">Ir al tope</span>
+        <span style="color:#708090; font-size: 12px; font-weight: 700;">Ir arriba</span>
     </a>
 </ng-template>
 <!-- Plantilla para Seguro de Accidentes Personales -->
@@ -13,9 +13,9 @@
         <div class="container">
             <div id="portada" class="row">
                 <div class="col-md-8">          
-                        <h1 style="color:#003c71">Explora el seguro de Accidentes Personales</h1>
-                        <p>Nuestras pólizas AP te protegen contra cualquier eventualidad, asegurando la estabilidad financiera de tu familia cuando más lo necesitas.</p>
-                    <button class="btn" [routerLink]="['/cobertura/',insureType]">COTIZAR</button>
+                        <h1 style="color:#003c71">Explora nuestra protección contra Accidentes Personales</h1>
+                        <p>Te apoyamos contra cualquier eventualidad, asegurando la estabilidad financiera de tu familia cuando más lo necesites.</p>
+                    <button style="font-size: 17px" class="btn" [routerLink]="['/cobertura/',insureType]">VER PRECIOS</button>
                 </div>
                 <div class="col-md-4">
                     <img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/worldwide.png" alt="">
@@ -35,12 +35,11 @@
             <div class="caja">
                 <div class="row">
                     <div class="col-md-6 col-lg-3">
-                        <img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/medical.png" alt="">
+                        <img src="../../../../../../assets/img/medical.png" alt="">
                     </div>
                     <div class="col-md-6 col-lg-9">
                         <h3>¿Qué es el seguro AP o Accidentes Personales?</h3>
-                        <p>Este seguro te ampara durante las 24 horas del día por accidentes que pudieras sufrir en el trabajo, en tus actividades profesionales, privadas o recreativas, en la práctica de diversos deportes no extremos, en accidentes de tránsito
-                            como peatón, conductor no profesional o pasajero y en viajes, que te originen la muerte o alguna incapacidad.</p>
+                        <p>La protección te ampara durante las 24 horas del día por accidentes que pudieras sufrir en el trabajo, en tus actividades profesionales, privadas o recreativas, en la práctica de diversos deportes no extremos, en accidentes de tránsito como peatón, conductor no profesional o pasajero y en viajes, que te originen la muerte o alguna incapacidad.</p>
                     </div>
                 </div>
                 <div class="row">
@@ -56,7 +55,7 @@
                         <div class="col-md-6">
                             <div class="row">
                                 <div class="col-md-2">
-                                    <img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/checkverde.svg" alt="">
+                                    <img src="../../../../../../assets/img/checkazul.svg" alt="">
                                 </div>
                                 <div class="col-md-10">
                                     <p>Disponer del capital asegurado, en caso de un accidente (invalidez o pérdida de un miembro) o indemnizar a los beneficiarios del asegurado en caso de muerte accidental.</p>
@@ -66,10 +65,10 @@
                         <div class="col-md-6">
                             <div class="row">
                                 <div class="col-md-2">
-                                    <img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/checkverde.svg" alt="">
+                                    <img src="../../../../../../assets/img/checkazul.svg" alt="">
                                 </div>
                                 <div class="col-md-10">
-                                    <p>Servicios de ambulancia por emergencias médicas, asistencia en viajes al extranjero y asistencia médica.</p>
+                                    <p>Cobertura en cualquier parte del mundo, las 24 horas del día, los 365 días del año.</p>
                                 </div>
                             </div>
                         </div>
@@ -78,10 +77,20 @@
                         <div class="col-md-6">
                             <div class="row">
                                 <div class="col-md-2">
-                                    <img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/checkverde.svg" alt="">
+                                    <img src="../../../../../../assets/img/checkazul.svg" alt="">
                                 </div>
                                 <div class="col-md-10">
-                                    <p>Cobertura en cualquier parte del mundo, las 24 horas del día, los 365 días del año.</p>
+                                    <p>Servicio de ambulancia por emergencias médicas y asistencia médica domiciliaria.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <img src="../../../../../../assets/img/checkazul.svg" alt="">
+                                </div>
+                                <div class="col-md-10">
+                                    <p>Asistencia en viajes en el extranjero si se presenta un accidente.</p>
                                 </div>
                             </div>
                         </div>
@@ -129,11 +138,9 @@
                 <div class="pull-left float-left lix"><i class="fas fa-angle-down"></i> ¿Qué ventajas tiene?</div>
               </button>
                     <ul>
-                        <li>El Asegurado tiene la opción de seleccionar el tipo de cobertura (total o vida profesional).</li>
-                        <li>Alta cobertura a bajo costo.</li>
-                        <li>Fácil y rápida contratación.</li>
-                        <li>Tarifas diseñadas de acuerdo a la actividad laboral y a la medida de sus posibilidades.</li>
-                        <li>Facilidades de pago mediante sus tarjetas de crédito.</li>
+                        <li>Te ofrecemos mayor protección por muy poco.</li>
+                        <li>Consigue tu protección rápidamente estés donde estés.</li>
+                        <li>Paga cómodamente en pequeñas cuotas con tu tarjeta de crédito.</li>
                     </ul>
                 </accordion-group>
             </accordion>
@@ -145,12 +152,11 @@
               </button>
                     <ul>
                         <li>Ninguna enfermedad corporal, mental o el agravamiento de la misma, tampoco sus tratamientos médicos o quirúrgicos que no se deriven de un accidente del asegurado.</li>
-                        <li>Los casos y consecuencias de desvanecimientos, síncopes, infartos, ataques de apoplejía, epilepsia, roturas de aneurismas, várices, SIDA y toda clase de hernias.</li>
-                        <li>Cuando el asegurado sufriera un accidente estando bajo los efectos del alcohol, estupefacientes, medicamento no prescrito por un médico, esta póliza no puede ejecutar sus coberturas o si este accidente tuviera como causa un desorden
-                            mental o Delirium Tremens.</li>
+                        <li>Los casos y consecuencias de desvanecimientos, síncopes (pérdida de conciencia), infartos, ataques de apoplejía (parálisis muscular); epilepsia, roturas de aneurismas, varices, SIDA y toda clase de hernias.</li>
+                        <li>Cuando el asegurado sufriera un accidente estando bajo los efectos del alcohol, estupefacientes, medicamento no prescrito por un médico, esta póliza no puede ejecutar sus coberturas o si este accidente tuviera como causa un desorden mental o Delirium Tremens (Delirios provocados por adicción al alcohol).</li>
                         <li>Suicidio o su intento. Homicidio intencional por parte de los BENEFICIARIOS de la póliza o su relación con el mismo.</li>
                         <li>Cuando el asegurado participe en duelos o riñas, exceptuando si se demuestra que el asegurado no provocó los hechos.</li>
-                        <li>La participación del asegurado en competencias de velocidad sean terrestres o náuticos.</li>
+                        <li>La participación del asegurado en competencias de velocidad sean terrestres o acuáticas.</li>
                         <li>Cuando el asegurado participe en competencias deportivas a nivel profesional.</li>
                         <li>Accidentes causados por actos de guerra, invasión, levantamiento civil, motines, insurrección, rebelión, revolución de estados o situaciones similares.</li>
                         <li>Accidentes producto de la reacción y radiación nuclear o contaminación radiactiva.</li>
@@ -204,9 +210,9 @@
             <div class="container">
                 <div id="portada" class="row">
                     <div class="col-md-8">          
-                            <h1 style="color:#003c71">Explora el seguro de Cáncer</h1>
-                            <p>Nuestras pólizas Cáncer te protegen contra el Cáncer, asegurando la estabilidad financiera de tu familia cuando más lo necesitas.</p>
-                        <button class="btn" [routerLink]="['/cobertura/',insureType]">COTIZAR</button>
+                            <h1 style="color:#003c71">Explora nuestra protección contra el Cáncer</h1>
+                            <p>Con nuestra Protección Segura por Cáncer, recibirás una indemnización por el diagnóstico de esta enfermedad, además podrás disponer del monto total asegurado sin necesidad de asociarlo a gastos médicos.</p>
+                        <button style="font-size: 17px" class="btn" [routerLink]="['/cobertura/',insureType]">VER PRECIOS</button>
                     </div>
                     <div class="col-md-4">
                         <img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/worldwide.png" alt="">
@@ -229,8 +235,8 @@
                             <img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/medical.png" alt="">
                         </div>
                         <div class="col-md-6 col-lg-9">
-                            <h3>¿Qué es el seguro de Cáncer?</h3>
-                            <p>Este seguro te ampara con una indemnización ante un diagnostico de Cáncer, En caso de fallecimiento durante el proceso del trámite de reclamo, se indemniza al beneficiario designado..</p>
+                            <h3>¿Qué es Protección Segura por Cáncer?</h3>
+                            <p>Te indemniza a través de un pago único, en caso de que recibas un diagnóstico de cáncer por primera vez en tu vida.  La indemnización otorgada podrá ser utilizada de cualquier manera, sin necesidad de asociarlo a gastos médicos. El pago único se realiza al asegurado titular, o en caso de su fallecimiento, a los beneficiarios designados en la póliza por el titular.</p>
                         </div>
                     </div>
                     <div class="row">
@@ -246,32 +252,20 @@
                             <div class="col-md-6">
                                 <div class="row">
                                     <div class="col-md-2">
-                                        <img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/checkverde.svg" alt="">
+                                        <img src="../../../../../../assets/img/checkazul.svg" alt="">
                                     </div>
                                     <div class="col-md-10">
-                                        <p>Disponer del capital asegurado, en caso de un un diagnostico de Cáncer o indemnizar a los beneficiarios del asegurado en caso de muerte por motivos de Cáncer.</p>
+                                        <p>Disponer el monto asegurado en caso de un un diagnóstico de Cáncer o a los beneficiarios del asegurado en caso de muerte por motivos de Cáncer.</p>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="row">
                                     <div class="col-md-2">
-                                        <img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/checkverde.svg" alt="">
+                                        <img src="../../../../../../assets/img/checkazul.svg" alt="">
                                     </div>
                                     <div class="col-md-10">
-                                        <p>Servicios de ambulancia por emergencias médicas, asistencia en viajes al extranjero y asistencia médica.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="row">
-                                    <div class="col-md-2">
-                                        <img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/checkverde.svg" alt="">
-                                    </div>
-                                    <div class="col-md-10">
-                                        <p>Cobertura en cualquier parte del mundo, las 24 horas del día, los 365 días del año.</p>
+                                        <p>Utilizar el monto asegurado como desees, los gastos no necesariamente deben ir asociados a los gastos médicos.</p>
                                     </div>
                                 </div>
                             </div>
@@ -316,33 +310,9 @@
                 <accordion>
                     <accordion-group [panelClass]="customClass" [isOpen]="isFirstOpen">
                         <button class="btn btn-link btn-block clearfix" accordion-heading>
-                    <div class="pull-left float-left lix"><i class="fas fa-angle-down"></i> ¿Qué ventajas tiene?</div>
+                    <div class="pull-left float-left lix"><i class="fas fa-angle-down"></i> ¿Qué ocurre si el asegurado fallece?</div>
                   </button>
-                        <ul>
-                            <li>Alta cobertura a bajo costo.</li>
-                            <li>Fácil y rápida contratación.</li>
-                            <li>Tarifas diseñadas de acuerdo a la actividad laboral y a la medida de sus posibilidades.</li>
-                            <li>Facilidades de pago mediante sus tarjetas de crédito.</li>
-                        </ul>
-                    </accordion-group>
-                </accordion>
-    
-                <accordion>
-                    <accordion-group [panelClass]="customClass">
-                        <button class="btn btn-link btn-block clearfix" accordion-heading>
-                    <div class="pull-left float-left lix"><i class="fas fa-angle-down"></i> ¿Qué no cubre?</div>
-                  </button>
-                        <ul>
-                            <li>Ninguna enfermedad corporal, mental o el agravamiento de la misma, tampoco sus tratamientos médicos o quirúrgicos que no se deriven de un accidente del asegurado.</li>
-                            <li>Los casos y consecuencias de desvanecimientos, síncopes, infartos, ataques de apoplejía, epilepsia, roturas de aneurismas, várices, SIDA y toda clase de hernias.</li>
-                            <li>Suicidio o su intento. Homicidio intencional por parte de los BENEFICIARIOS de la póliza o su relación con el mismo.</li>
-                            <li>Cuando el asegurado participe en duelos o riñas, exceptuando si se demuestra que el asegurado no provocó los hechos.</li>
-                            <li>La participación del asegurado en competencias de velocidad sean terrestres o náuticos.</li>
-                            <li>Cuando el asegurado participe en competencias deportivas a nivel profesional.</li>
-                            <li>Accidentes causados por actos de guerra, invasión, levantamiento civil, motines, insurrección, rebelión, revolución de estados o situaciones similares.</li>
-                            <li>Accidentes producto de la reacción y radiación nuclear o contaminación radiactiva.</li>
-                            <li>Accidentes causados por infracción de las leyes vigentes en el país donde ocurran.</li>
-                        </ul>
+                        <p>Se entregará el monto total asegurado al beneficiario designado.</p>
                     </accordion-group>
                 </accordion>
     
@@ -351,35 +321,18 @@
                         <button class="btn btn-link btn-block clearfix" accordion-heading>
                     <div class="pull-left float-left lix"><i class="fas fa-angle-down"></i> ¿Quién puede asegurarse?</div>
                   </button>
-                        <ul>
-                            <li>Cualquier persona nacional o extranjera que resida en la República de Panamá, con buena condición de salud, con edad entre dieciocho (18) y sesenta (60) años.</li>
-                            <li>Edad máxima de permanencia: setenta y cinco (75) años.</li>
-                        </ul>
+                            <p>Cualquier persona nacional o extranjera que resida en la República de Panamá con edad entre veinte (20) hasta los sesenta y cinco (65) años.</p>
                     </accordion-group>
                 </accordion>
     
                 <accordion>
                     <accordion-group [panelClass]="customClass">
                         <button class="btn btn-link btn-block clearfix" accordion-heading>
-                    <div class="pull-left float-left lix"><i class="fas fa-angle-down"></i> ¿Qué es una indemnización?</div>
+                    <div class="pull-left float-left lix"><i class="fas fa-angle-down"></i> ¿Cuánto tiempo tengo que esperar para cobrar la indemnización?</div>
                   </button>
-                        <ul>
-                            <li>Una indemnización consiste en conseguir una reposición económica para el asegurado cuando el mismo sufre un accidente de la forma en que están contempladas en las coberturas.</li>
-                        </ul>
+                        <p>La indemnización se entregará luego de los treinta (30) días continuos siguientes a ser diagnosticado de Cáncer.</p>
                     </accordion-group>
                 </accordion>
-    
-                <accordion>
-                    <accordion-group [panelClass]="customClass">
-                        <button class="btn btn-link btn-block clearfix" accordion-heading>
-                    <div class="pull-left float-left lix"><i class="fas fa-angle-down"></i> ¿Qué es un copago?</div>
-                    </button>
-                        <ul>
-                            <li>Un copago es una pequeña cantidad de dinero que debe pagar el asegurado o beneficiario de la póliza cada vez que utilice uno de los servicios contemplados dentro de las coberturas.</li>
-                        </ul>
-                    </accordion-group>
-                </accordion>
-    
             </div>
         </div>
     </section>

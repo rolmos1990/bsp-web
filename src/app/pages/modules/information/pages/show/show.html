@@ -1,14 +1,21 @@
 <div *ngIf="!isLoading" class="portada-info">
   <div class="texto">
-    <h3>{{insureType}}</h3>
-    <h5>Obtén tu seguro en tan solo 24 horas</h5>
+    <h3>Seguro de {{insureType}}</h3>
+    <ng-template [ngIf]="insureType == 'Cáncer'">
+      <h5>Hay enfermedades inesperadas, pero estaremos contigo en todo momento. <br> Obtén aquí tranquilidad y apoyo para tí y tu familia en caso que seas diagnosticado con Cáncer. <br>
+        Completa los datos y en menos de 24 horas podrás disfrutar de la tranquilidad de estar respaldado.
+      </h5>
+    </ng-template>
+    <ng-template [ngIf]="insureType != 'Cáncer'">
+      <h5>Sabemos que hay momentos difíciles, pero estamos aquí para apoyarte. <br> Completa los datos y en menos de 24 horas podrás disfrutar de la tranquilidad de estar respaldado.</h5>
+    </ng-template>
   </div>
 </div>
 
 <!-- Padre -->
 <div class="information" [ngClass]="{'d-none': (flag == true) || isLoading}">
   <aw-wizard #wizard [navBarLayout]="'large-filled-symbols'" >
-    <aw-wizard-step stepTitle="Cotización" (stepEnter)="enterFirstStep($event)" [navigationSymbol]="{ symbol: '1' }" awCompletedStep>
+    <aw-wizard-step stepTitle="Opciones" (stepEnter)="enterFirstStep($event)" [navigationSymbol]="{ symbol: '1' }" awCompletedStep>
       <div class="container">
       </div>
     </aw-wizard-step>
@@ -18,7 +25,7 @@
         <bsp-request (nextStep)="inicio()" (isLoading)="isLoading = $event" [requestId]="requestId"></bsp-request>
       </div>
     </aw-wizard-step>
-    <aw-wizard-step stepTitle="Pago / Recibo" [navigationSymbol]="{ symbol: '3' }">
+    <aw-wizard-step stepTitle="Pago y Recibo" [navigationSymbol]="{ symbol: '3' }">
       <div class="container">
         
         <div class="container">

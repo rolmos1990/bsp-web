@@ -4,7 +4,7 @@ import { ShowInsuranceDetailComponent } from './pages/show.insurance-detail';
 
 const routes: Routes = [
   {
-    path: ':requestId',
+    path: '',
     component: ShowInsuranceDetailComponent,
     pathMatch: 'full',
     data: { title: 'Banesco Seguros' }

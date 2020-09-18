@@ -62,6 +62,15 @@ a {
   .padding-300 {
     padding: 100px 0;
   }
+  .portada-info {
+    h3{
+        font-size: 18px;
+    }
+  
+    h5{
+        font-size: 15px;
+    }
+  }
 }
 
 @media (max-width: 1024px) {
@@ -71,7 +80,7 @@ a {
 }
 
 .portada-info{
-  height: 186px;
+  height: 196px;
   background-image: url("src/assets/img/landing-info.png");
   background-size: cover;
   background-repeat: no-repeat;

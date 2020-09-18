@@ -7,7 +7,7 @@
   
     <div class="information" [ngClass]="{'d-none': isLoading}">
       <aw-wizard #wizard [navBarLayout]="'large-filled-symbols'" >
-        <aw-wizard-step stepTitle="Cotización" (stepEnter)="enterFirstStep($event)" [navigationSymbol]="{ symbol: '1' }" awCompletedStep>
+        <aw-wizard-step stepTitle="Opciones" (stepEnter)="enterFirstStep($event)" [navigationSymbol]="{ symbol: '1' }" awCompletedStep>
           <div class="container">
           </div>
         </aw-wizard-step>
@@ -15,7 +15,7 @@
           <div class="container">
           </div>
         </aw-wizard-step>
-        <aw-wizard-step stepTitle="Pago / Recibo" [navigationSymbol]="{ symbol: '3' }">
+        <aw-wizard-step stepTitle="Pago y Recibo" [navigationSymbol]="{ symbol: '3' }">
           <bsp-success [requestId]="requestId" [insurance]="request.insurance" [insured]="request.insured" [paymentInformation]= "request.paymentInformation"></bsp-success>
         </aw-wizard-step>
       </aw-wizard>

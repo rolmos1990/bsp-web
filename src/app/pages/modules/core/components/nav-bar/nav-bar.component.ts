@@ -24,7 +24,7 @@ export class NavBarComponent implements OnInit {
   }
 
   public get isDashboard() {
-    return this.location.isCurrentPathEqualTo('/polizas');
+    return this.location.isCurrentPathEqualTo('/polizas') || this.location.path().includes("/detalle/");
   }
 
 }

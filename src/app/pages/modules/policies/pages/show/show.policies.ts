@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core'
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { RequestService } from '../../../core/services/request.service';
 import { ExcelService } from '../../../core/services/excel.service';
 import * as moment from 'moment';
@@ -8,6 +8,8 @@ import { NotifierService } from 'angular-notifier';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { CustomValidatorDirective } from '../../../core/directives/validations/custom-validations.directive';
+import {Location} from '@angular/common';
+import { Route } from '@angular/compiler/src/core';
 
 @Component({
   selector: 'bsp-show-policies',
@@ -49,14 +51,29 @@ export class ShowPolicies implements OnInit {
     private _fb: FormBuilder,
     private modalService: NgbModal,
     private _route: ActivatedRoute,
+    private _router: Router,
     private _excelService: ExcelService,
     private _dependentsService: DependentService,
-    private _toastr: NotifierService) { }
+    private _toastr: NotifierService, private _location: Location) { }
     public forma: FormGroup;
     public submitted: boolean;
 
   ngOnInit() {
+    
+    if(localStorage.getItem("redirectTo")){
+      const url = localStorage.getItem("redirectTo");
+      try{
+      console.log("REDIRECT TO", url);
+      this._router.navigate([url]);
+      localStorage.removeItem("redirectTo");
+      }catch(e){
+        console.log("error", e);
+      }
+      return;
+    }
+
     this.getAllRequest();
+
     this._route.queryParams.forEach(queryParams => {
       if (queryParams['page']) {
         this.page = queryParams['page'];

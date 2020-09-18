@@ -9,8 +9,8 @@
           </div>
           <div class="col-lg-7">
             <h3 class="titulo">¡Listo {{insured.name}} {{insured.lastname}}!</h3>
-            <p class="texto">A más tardar 24 horas tu seguro estará activo</p>
-            <p class="texto">Te estaremos enviando vía email la póliza que acabas de comprar</p>
+            <p class="texto" style="font-size:15px;">A más tardar 24 horas tu seguro estará activo</p>
+            <p class="texto" style="font-size:15px;">Te estaremos enviando vía email los documentos del seguro que acabas de comprar.</p>
           </div>
         </ng-template>
         <ng-template [ngIf]="paymentFailed == true">
@@ -49,9 +49,11 @@
             <p class="informacion"> {{ itemCheck }} </p>
           </li>
         </ul>
+        <ng-template [ngIf]="icons">
         <div class="img1 img_top">
           <img class="img2" src="https://uc.uxpin.com/files/851998/844969/wounded-359dc2.png">
         </div>
+        </ng-template>
       </div>
       <div class="columnContainer">
         <div class="columnDivider"></div>
@@ -65,13 +67,15 @@
             <p class="informacion"> {{ itemCheck }} </p>
           </li>
         </ul>
+        <ng-template [ngIf]="icons">
         <div class="img1 img_bot">
           <img class="img3" src="https://uc.uxpin.com/files/851998/844969/graveyard-21c09e.png">
         </div>
+        </ng-template>
       </div>
     </div>
   </div>
-
+<ng-template [ngIf]="this.insurance.type == 'accidentes-personales'">
   <div class="gris">
     <div class="contenedor">
       <h3 class="subtitulo">¿Que hacer en el momento de un siniestro? </h3>
@@ -126,4 +130,41 @@
       </div>
   </div>
 </div>
+</ng-template>
+<ng-template [ngIf]="this.insurance.type == 'cancer'">
+  <div class="gris">
+    <div class="contenedor offset-md-1 col-md-10">
+      <h3 class="subtitulo">¿Que hacer en el momento de un siniestro? </h3>
+      <img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/question.svg"
+        alt="">
+      <div class="row abajo">
+        <div class="col-md-12">
+          <p class="en-caso">El asegurado o beneficiarios en caso de fallecimiento del asegurado deben dirigirse a cualquier sede de Banesco Seguros y entregar los siguientes documentos: </p>
+          <ul>
+            <li>
+              <img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/check.png"
+                class="imgcheck" alt="">
+              <p class="informacion"> Historial médico del diagnóstico de cáncer.</p>
+            </li>
+            <li>
+              <img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/check.png"
+                class="imgcheck" alt="">
+              <p class="informacion"> Historia Clínica completa.</p>
+            </li>
+            <li>
+              <img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/check.png"
+                class="imgcheck" alt="">
+              <p class="informacion"> Copia de cédula o identificación del asegurado.</p>
+            </li>
+            <li>
+              <img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/check.png"
+                class="imgcheck" alt="">
+              <p class="informacion"> Exámenes médicos practicados al asegurado relacionados al diagnóstico de cáncer.</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+  </div>
+</div>
+</ng-template>
 </ng-template>

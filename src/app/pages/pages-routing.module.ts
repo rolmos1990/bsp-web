@@ -48,8 +48,9 @@ const routes: Routes = [
     loadChildren: './modules/apinfo/apinfo.module#ApinfoModule'
   },
   {
-    path: 'detalle',
-    loadChildren: './modules/insurance-detail/insurance-detail.module#InsuranceDetailModule'
+    path: 'detalle/:requestId',
+    loadChildren: './modules/insurance-detail/insurance-detail.module#InsuranceDetailModule',
+    canActivate: [AuthorizatedGuard]
   }
 ];
 

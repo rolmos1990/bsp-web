@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="26px" height="26px" viewBox="0 0 26 26" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 39.1 (31720) - http://www.bohemiancoding.com/sketch -->
+    <title>Group</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group">
+            <g id="check">
+                <g id="Capa_1">
+                    <path d="M12.9931467,7.0652174e-05 C20.1690054,7.0652174e-05 25.9862228,5.81728804 25.9862228,12.9931467 C25.9862228,20.1690054 20.1690054,25.9862228 12.9931467,25.9862228 C5.81728804,25.9862228 7.06521739e-05,20.1690054 7.06521739e-05,12.9931467 L7.06521739e-05,12.9931467 C-0.0203478261,5.83763587 5.7637337,0.0204891304 12.9191739,7.0652174e-05 C12.9438315,5.7970403e-14 12.9684891,5.7970403e-14 12.9931467,7.0652174e-05 L12.9931467,7.0652174e-05 Z" id="Shape" fill="#003C72"></path>
+                    <polygon id="Shape" fill="#FFFFFF" points="23.5097659 7.74422633 10.0698564 21.1841359 2.54347826 13.7115742 5.60782538 10.7010435 10.0698564 15.109361 20.4455217 4.73369565"></polygon>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

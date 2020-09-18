@@ -6,8 +6,8 @@
 export const environment = {
   production: false,
   type: 'develop',
-  baseUrl: 'https://bsp-api.azurewebsites.net/parse/functions/',
+  baseUrl: 'https://bsp-api-qa.azurewebsites.net/parse/functions/',
   webUrl: 'https://banesco-seguros-dev.azurewebsites.net/',
-  paseApplicationId: 'myappid',
+  paseApplicationId: 'BSPAPQA',
   contentType: 'application/json'
 };
