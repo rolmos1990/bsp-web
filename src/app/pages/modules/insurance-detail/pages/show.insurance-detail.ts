@@ -16,6 +16,8 @@ export class ShowInsuranceDetailComponent implements OnInit {
   public requestId: string;
   public isLoading: boolean;
   public request: any;
+  public actualCoverage: any;
+  public insuranceId: any;
 
   // tslint:disable-next-line:max-line-length
   constructor(private _requestService: RequestService, private modalService: NgbModal, private _activatedRoute: ActivatedRoute, private _dependentsService: DependentService, private _location: Location) {
@@ -40,8 +42,14 @@ export class ShowInsuranceDetailComponent implements OnInit {
     );
   }
 
-  open(content) {
-    this.modalService.open(content, { centered: true });
+  openSm(content,insurance,mod) {
+    if (mod) {
+      mod.dismiss('Cross click');
+    } else {
+    this.actualCoverage = insurance;
+    this.insuranceId = insurance.id;
+    }
+    this.modalService.open(content, {centered: true});
   }
 
   private getDependents() {

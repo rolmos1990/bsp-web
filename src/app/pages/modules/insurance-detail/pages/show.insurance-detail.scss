@@ -273,4 +273,76 @@ div.bolita{
       font-size: 14px;
     }
   }
+
+  /* tooltip */
+
+/* Tooltip container */
+.tooltip-insure {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px solid #c8c8c8;
+  cursor: pointer;
+}
+
+.tooltip-insure .tooltiptext {
+  visibility: hidden;
+  width: 350px;
+  background-color: #003c71;
+  color: white;
+  text-align: center;
+  border-radius: 6px;
+  padding: 15px 15;
+
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+  top: -400px;
+  left: 110%;
+  font-size: 11px;
+  line-height: 1.6;
+  padding: 10px;
+
+  transition: opacity 0.3s linear;
+  opacity: 0;
+}
+
+.tooltip-insure .tooltiptext:before {
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  position: absolute;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-right: 8px solid #003c71;
+  left: -8px;
+  top: 57%;
+}
+
+@media (min-width: 790px) {
+  .tooltip-insure:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+@media (max-width: 789px) {
+  .tooltip-insure {
+    display: none;
+  }
+}
+
+.tooltip-insure .tooltiptext b {
+  margin-bottom: 5px;
+  margin-top: 10px;
+}
+.tooltip-insure .tooltiptext ul {
+  text-align: left;
+}
+.tooltip-insure .tooltiptext ul li {
+  font-size: 9.8px;
+  font-weight: normal;
+  line-height: 1.1;
+  color: white;
+}
   

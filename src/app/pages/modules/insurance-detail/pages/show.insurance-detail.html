@@ -67,7 +67,7 @@
         <div class="container">
           <div class="row">
             <div class="col-xs-12 col-md-12">
-              <button class="btn ver-detalle" (click)="open(content)">
+              <button class="btn ver-detalle" (click)="openSm(content, request?.insurance)">
                 <img
                   src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/flechita.svg"
                   alt=""
@@ -448,294 +448,255 @@
           />
         </div>
       </div>
-      <div class="row">
-        <div class="col-md-12">
-          <h4 class="h4-verde" style="color:#003c71">Cobertura completa:</h4>
-          <p style="color:#556176">
-            * Se indican los porcentajes de la suma asegurada <br />
-            contratada segun el tipo de cobertura.
-          </p>
-
-          <div class="container cober coverage">
-            <div class="position-relative">
-              <div class="bolita"></div>
-              <accordion>
-                <accordion-group
-                  #muerte
-                  [panelClass]="customClass"
-                  [isOpen]="isFirstOpen"
-                >
-                  <button
-                    class="btn btn-link btn-block clearfix"
-                    accordion-heading
-                  >
-                    <div class="pull-left float-left lix">
-                      Muerte Accidental
-                    </div>
-                    <div *ngIf="!muerte.isOpen" class="float-right">
-                      <img
-                        src="https://res.cloudinary.com/merchanj/image/upload/v1559937359/Banesco_Seguros_Panama/AP/arrow3.png"
-                        alt=""
-                        class="arrow2"
-                      />
-                    </div>
-                    <div *ngIf="muerte.isOpen" class="float-right">
-                      <img
-                        src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/arrow2.svg"
-                        alt=""
-                        class="arrow2"
-                      />
-                    </div>
-                    <div class="porcentaje">
-                      {{request.insurance.coverageDetail.accidentalDeath}}%
-                    </div>
-                  </button>
-                  <p>
-                    Si el asegurado muere en un accidente, a los beneficiarios
-                    se les pagará el monto asegurado que contrató
-                    (indemnización). Ej.: accidentes de tránsito, sucesos
-                    imprevistos, homicidios dolosos y culposos.
-                  </p>
-                </accordion-group>
-              </accordion>
-            </div>
-
-            <div class="position-relative">
-              <div class="bolita"></div>
-              <accordion>
-                <accordion-group #funerarios [panelClass]="customClass">
-                  <button
-                    class="btn btn-link btn-block clearfix"
-                    accordion-heading
-                  >
-                    <div class="pull-left float-left lix">
-                      Adelantos de Gastos Funerarios
-                    </div>
-                    <div *ngIf="!funerarios.isOpen" class="float-right">
-                      <img
-                        src="https://res.cloudinary.com/merchanj/image/upload/v1559937359/Banesco_Seguros_Panama/AP/arrow3.png"
-                        alt=""
-                        class="arrow2"
-                      />
-                    </div>
-                    <div *ngIf="funerarios.isOpen" class="float-right">
-                      <img
-                        src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/arrow2.svg"
-                        alt=""
-                        class="arrow2"
-                      />
-                    </div>
-                    <div class="porcentaje">
-                      {{request.insurance.coverageDetail.funeraryAdvances}}%
-                    </div>
-                  </button>
-                  <p>
-                    Adelantamos hasta el 25% la suma asegurada de gastos
-                    funerarios a los beneficiarios cuando ocurre la muerte
-                    accidental del asegurado. Ej.: si tu suma asegurada por
-                    muerte accidental es USD 10,000 te adelantamos hasta USD
-                    2,500.
-                  </p>
-                </accordion-group>
-              </accordion>
-            </div>
-
-            <div class="position-relative">
-              <div class="bolita"></div>
-              <accordion>
-                <accordion-group #doble [panelClass]="customClass">
-                  <button
-                    class="btn btn-link btn-block clearfix"
-                    accordion-heading
-                  >
-                    <div class="pull-left float-left lix">
-                      Doble Indemnización por Muerte por Accidente Específico
-                    </div>
-                    <div *ngIf="!doble.isOpen" class="float-right">
-                      <img
-                        src="https://res.cloudinary.com/merchanj/image/upload/v1559937359/Banesco_Seguros_Panama/AP/arrow3.png"
-                        alt=""
-                        class="arrow2"
-                      />
-                    </div>
-                    <div *ngIf="doble.isOpen" class="float-right">
-                      <img
-                        src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/arrow2.svg"
-                        alt=""
-                        class="arrow2"
-                      />
-                    </div>
-                    <div class="porcentaje">
-                      {{request.insurance.coverageDetail.dobleCompensation}}%
-                    </div>
-                  </button>
-                  <p>
-                    Cubrimos un porcentaje según el grado de discapacidad que
-                    pudiera presentar el asegurado a causa de un accidente
-                    sufrido.
-                  </p>
-                </accordion-group>
-              </accordion>
-            </div>
-
-            <div class="position-relative">
-              <div class="bolita"></div>
-              <accordion>
-                <accordion-group #gastos [panelClass]="customClass">
-                  <button
-                    class="btn btn-link btn-block clearfix"
-                    accordion-heading
-                  >
-                    <div class="pull-left float-left lix">
-                      Gastos Médicos por Accidente
-                    </div>
-                    <div *ngIf="!gastos.isOpen" class="float-right">
-                      <img
-                        src="https://res.cloudinary.com/merchanj/image/upload/v1559937359/Banesco_Seguros_Panama/AP/arrow3.png"
-                        alt=""
-                        class="arrow2"
-                      />
-                    </div>
-                    <div *ngIf="gastos.isOpen" class="float-right">
-                      <img
-                        src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/arrow2.svg"
-                        alt=""
-                        class="arrow2"
-                      />
-                    </div>
-                    <div class="porcentaje">
-                      {{request.insurance.coverageDetail.medicalExpenses}}%
-                    </div>
-                  </button>
-                  <p>
-                    Cobertura complementaria donde te reembolsamos hasta un 10%
-                    de la suma asegurada para gastos médicos incurridos por
-                    accidentes.
-                  </p>
-                </accordion-group>
-              </accordion>
-            </div>
-
-            <div class="position-relative">
-              <div class="bolita"></div>
-              <accordion>
-                <accordion-group #permanente [panelClass]="customClass">
-                  <button
-                    class="btn btn-link btn-block clearfix"
-                    accordion-heading
-                  >
-                    <div class="pull-left float-left lix">
-                      Invalidez Permanente (Total o Parcial)
-                    </div>
-                    <div *ngIf="!permanente.isOpen" class="float-right">
-                      <img
-                        src="https://res.cloudinary.com/merchanj/image/upload/v1559937359/Banesco_Seguros_Panama/AP/arrow3.png"
-                        alt=""
-                        class="arrow2"
-                      />
-                    </div>
-                    <div *ngIf="permanente.isOpen" class="float-right">
-                      <img
-                        src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/arrow2.svg"
-                        alt=""
-                        class="arrow2"
-                      />
-                    </div>
-                    <div class="porcentaje">
-                      {{request.insurance.coverageDetail.permanentInhability}}%
-                    </div>
-                  </button>
-                  <p>
-                    Duplicamos la suma asegurada por muerte accidental mientras
-                    el asegurado se transporta en un vehículo público (autobús,
-                    metro, taxi, etc) o si se ve envuelto en un incendio en
-                    algún edificio público (hotel, museo, cine, teatro, etc).
-                  </p>
-                </accordion-group>
-              </accordion>
-            </div>
-
-            <div class="position-relative">
-              <div class="bolita"></div>
-              <accordion>
-                <accordion-group #emergencia [panelClass]="customClass">
-                  <button
-                    class="btn btn-link btn-block clearfix"
-                    accordion-heading
-                  >
-                    <div class="pull-left float-left lix">
-                      Servicio de Emergencia Médica por Accidente
-                    </div>
-                    <div *ngIf="!emergencia.isOpen" class="float-right">
-                      <img
-                        src="https://res.cloudinary.com/merchanj/image/upload/v1559937359/Banesco_Seguros_Panama/AP/arrow3.png"
-                        alt=""
-                        class="arrow2"
-                      />
-                    </div>
-                    <div *ngIf="emergencia.isOpen" class="float-right">
-                      <img
-                        src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/arrow2.svg"
-                        alt=""
-                        class="arrow2"
-                      />
-                    </div>
-                    <div class="porcentaje">
-                      {{request.insurance.coverageDetail.emergencyService}}%
-                    </div>
-                  </button>
-                  <p>
-                    Cuentas con un servicio de ambulancia por emergencia y
-                    urgencia médica sin costo adicional, así como con atención
-                    médica a domicilio para casos no urgentes mediante un
-                    copago. (ver Términos y Condiciones a continuación).
-                  </p>
-                </accordion-group>
-              </accordion>
-            </div>
-
-            <div class="position-relative">
-              <div class="bolita"></div>
-              <accordion>
-                <accordion-group #viajes [panelClass]="customClass">
-                  <button
-                    class="btn btn-link btn-block clearfix"
-                    accordion-heading
-                  >
-                    <div class="pull-left float-left lix">
-                      Asistencia en Viajes
-                    </div>
-                    <div *ngIf="!viajes.isOpen" class="float-right">
-                      <img
-                        src="https://res.cloudinary.com/merchanj/image/upload/v1559937359/Banesco_Seguros_Panama/AP/arrow3.png"
-                        alt=""
-                        class="arrow2"
-                      />
-                    </div>
-                    <div *ngIf="viajes.isOpen" class="float-right">
-                      <img
-                        src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/arrow2.svg"
-                        alt=""
-                        class="arrow2"
-                      />
-                    </div>
-                    <div class="porcentaje">
-                      {{request.insurance.coverageDetail.travelAssistance}}%
-                    </div>
-                  </button>
-                  <p>
-                    Asistencia médica durante tu viaje, si por indicación médica
-                    debes alojarte en un hotel, cubrimos tu estancia mientras te
-                    recuperas, transporte de los familiares del asegurado en
-                    caso necesario. Si ocurriera el fallecimiento del asegurado,
-                    traemos de vuelta sus restos así como a los familiares.
-                  </p>
-                </accordion-group>
-              </accordion>
+      <ng-template [ngIf]="actualCoverage.type === 'accidentes-personales'">
+        <div class="row">
+          <div class="col-md-12">
+            <h4 class="h4-verde" style="color:#003c71">Cobertura completa: </h4>
+            <p style="color:#556176">Los porcentajes indican la porción del monto asegurado <br> que te será entregado o a los beneficiarios del seguro<br>en caso de algún accidente de los detallados en la parte inferior.</p>
+  
+            <div class="container cober coverage">
+              <div class="position-relative">
+                <div class="bolita"></div>
+                <accordion>
+                  <accordion-group #muerte [panelClass]="customClass" [isOpen]="isFirstOpen">
+                    <button class="btn btn-link btn-block clearfix" accordion-heading>
+                      <div class="pull-left float-left lix">Muerte Accidental</div>
+                      <div *ngIf="!muerte.isOpen" class="float-right">
+                        <img
+                          src="https://res.cloudinary.com/merchanj/image/upload/v1559937359/Banesco_Seguros_Panama/AP/arrow3.png"
+                          alt="" class="arrow2">
+                      </div>
+                      <div *ngIf="muerte.isOpen" class="float-right">
+                        <img
+                          src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/arrow2.svg"
+                          alt="" class="arrow2">
+                      </div>
+                      <div class="porcentaje">
+                        {{actualCoverage.coverageDetail.accidentalDeath}}%
+                      </div>
+                    </button>
+                    <p>Si el asegurado muere en un accidente, a los beneficiarios se les pagará el monto asegurado que
+                      contrató (indemnización). Ej.: accidentes de tránsito, sucesos imprevistos, homicidios dolosos y
+                      culposos.
+                    </p>
+                  </accordion-group>
+                </accordion>
+              </div>
+  
+              <div class="position-relative">
+                <div class="bolita"></div>
+                <accordion>
+                  <accordion-group #funerarios [panelClass]="customClass">
+                    <button class="btn btn-link btn-block clearfix" accordion-heading>
+                      <div class="pull-left float-left lix">Adelantos de Gastos Funerarios</div>
+                      <div *ngIf="!funerarios.isOpen" class="float-right">
+                        <img
+                          src="https://res.cloudinary.com/merchanj/image/upload/v1559937359/Banesco_Seguros_Panama/AP/arrow3.png"
+                          alt="" class="arrow2">
+                      </div>
+                      <div *ngIf="funerarios.isOpen" class="float-right">
+                        <img
+                          src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/arrow2.svg"
+                          alt="" class="arrow2">
+                      </div>
+                      <div class="porcentaje">
+                        {{actualCoverage.coverageDetail.funeraryAdvances}}%
+                      </div>
+  
+                    </button>
+                    <p>Adelantamos hasta el 25% del monto asegurado de los gastos funerarios a los beneficiarios cuando ocurre la muerte accidental del asegurado hasta un límite de USD 5,000. Ej.: si tu monto asegurado por muerte accidental es USD 10,000 te adelantamos hasta USD 2,500.</p>
+                  </accordion-group>
+                </accordion>
+              </div>
+  
+              <div class="position-relative">
+                <div class="bolita"></div>
+                <accordion>
+                  <accordion-group #doble [panelClass]="customClass">
+                    <button class="btn btn-link btn-block clearfix" accordion-heading>
+                      <div class="pull-left float-left lix">Doble indemnización por Muerte Accidental Específico</div>
+                      <div *ngIf="!doble.isOpen" class="float-right">
+                        <img
+                          src="https://res.cloudinary.com/merchanj/image/upload/v1559937359/Banesco_Seguros_Panama/AP/arrow3.png"
+                          alt="" class="arrow2">
+                      </div>
+                      <div *ngIf="doble.isOpen" class="float-right">
+                        <img
+                          src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/arrow2.svg"
+                          alt="" class="arrow2">
+                      </div>
+                      <div class="porcentaje">
+                        {{actualCoverage.coverageDetail.dobleCompensation}}%
+                      </div>
+                    </button>
+                    <p>Duplicamos el monto asegurado por muerte accidental mientras el asegurado se transporta en un vehículo público (autobús, metro, taxi, etc) o si se ve envuelto en un incendio en algún edificio público (hotel, museo, cine, teatro, etc).</p>
+                  </accordion-group>
+                </accordion>
+              </div>
+  
+              <div class="position-relative">
+                <div class="bolita"></div>
+                <accordion>
+                  <accordion-group #gastos [panelClass]="customClass">
+                    <button class="btn btn-link btn-block clearfix" accordion-heading>
+                      <div class="pull-left float-left lix">Gastos Médicos por Accidentes</div>
+                      <div *ngIf="!gastos.isOpen" class="float-right">
+                        <img
+                          src="https://res.cloudinary.com/merchanj/image/upload/v1559937359/Banesco_Seguros_Panama/AP/arrow3.png"
+                          alt="" class="arrow2">
+                      </div>
+                      <div *ngIf="gastos.isOpen" class="float-right">
+                        <img
+                          src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/arrow2.svg"
+                          alt="" class="arrow2">
+                      </div>
+                      <div class="porcentaje">
+                        {{actualCoverage.coverageDetail.medicalExpenses}}%
+                      </div>
+                    </button>
+                    <p>Cobertura complementaria donde te reembolsamos hasta un 10% del monto asegurado para gastos médicos incurridos por accidentes hasta un límite de USD 1,000.</p>
+                  </accordion-group>
+                </accordion>
+              </div>
+  
+              <div class="position-relative">
+                <div class="bolita"></div>
+                <accordion>
+                  <accordion-group #permanente [panelClass]="customClass">
+                    <button class="btn btn-link btn-block clearfix" accordion-heading>
+                      <div class="pull-left float-left lix">Invalidez Permanente (Total o Parcial)</div>
+                      <div *ngIf="!permanente.isOpen" class="float-right">
+                        <img
+                          src="https://res.cloudinary.com/merchanj/image/upload/v1559937359/Banesco_Seguros_Panama/AP/arrow3.png"
+                          alt="" class="arrow2">
+                      </div>
+                      <div *ngIf="permanente.isOpen" class="float-right">
+                        <img
+                          src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/arrow2.svg"
+                          alt="" class="arrow2">
+                      </div>
+                      <div class="porcentaje">
+                        {{actualCoverage.coverageDetail.permanentInhability}}%
+                      </div>
+                    </button>
+                    <p>Cubrimos un porcentaje del monto total según el grado de discapacidad que pudiera presentar el asegurado a causa de un accidente sufrido.
+                      <span class="tooltip-insure">Ver tipos de Invalidez
+                        <span class="tooltiptext">
+                          <b>INVALIDEZ TOTAL Y PERMANENTE (%)</b>
+                          <ul>
+                            <li>Lesiones en la médula espinal que imposibilitan permanentemente caminar o parálisis completa. (100%)</li>
+                            <li>Pérdida de la razón absoluta e incurable. (100%)</li>
+                            <li>Ceguera absoluta de ambos ojos (100%)</li>
+                            <li>Pérdida por amputación o inutilización absoluta de ambos brazos, ambas piernas, ambos pies o una mano conjuntamente con una pierna o un pie (100%)</li>
+                          </ul>
+                          <b>INVALIDEZ PARCIAL Y PERMANENTE (%)</b>
+                          <ul>
+                            <li>Sordera total bilateral (65%)</li>
+                            <li>Pérdida del habla (60%)</li>
+                            <li>Pérdida de un ojo totalmente. (50%)</li>
+                            <li>Reducción de la visión de ambos ojos en más de 50% cada uno. (50%)</li>
+                            <li>Pérdida de la visión de un ojo. (40%)</li>
+                            <li>Pérdida total del maxilar inferior o ablación total de la mandíbula. (40%)</li>
+                            <li>Pérdida total del olfato o del gusto. (30%)</li>
+                            <li>Sordera total unilateral. (35%)</li>
+                            <li>Pérdida total de un brazo o una mano. (70%)</li>
+                            <li>Pérdida total de un dedo pulgar o índice. (30%)</li>
+                            <li>Pérdida total de cualquier otro dedo de una mano. (20%)</li>
+                            <li>Pérdida de una falange del dedo pulgar. (15%)</li>
+                            <li>Pérdida de cada falange de cualquier otro dedo. (5%)</li>
+                            <li>Pérdida total del movimiento del hombro o del codo (40%)</li>
+                            <li>Fractura mal consolidada de un brazo, que afecte su movilidad. (30%)</li>
+                            <li>Fractura mal consolidada del antebrazo, que afecte la movilidad de los dos huesos. (30%)</li>
+                            <li>Fractura mal consolidada del antebrazo, que afecte la movilidad de un solo hueso.  (20%)</li>
+                            <li>Pérdida total por amputación o inutilización de una pierna por encima de la rodilla. (70%)</li>
+                            <li>Pérdida total por amputación o inutilización de una pierna por debajo de la rodilla o de un pie. (60%)</li>
+                            <li>Pérdida total por amputación o inutilización del dedo gordo del pie. (20%)</li>
+                            <li>Pérdida total por amputación o inutilización de cualquier otro dedo del pie. (15%)</li>
+                            <li>Pérdida total del movimiento de la cadera. (65%)</li>
+                            <li>Pérdida total del movimiento de la rodilla. (50%)</li>
+                            <li>Pérdida total de los movimientos del tobillo. (30%)</li>
+                            <li>Pérdida total de los movimientos de la articulación subastragalina (20%)</li>
+                            <li>Fractura mal consolidada del fémur o de los huesos de la pierna que afecte su movilidad. (50%)</li>
+                            <li>Fractura mal consolidada de un pie que afecte su movilidad. (30%)</li>
+                          </ul>
+                        </span>
+                      </span>
+                    </p>
+                  </accordion-group>
+                </accordion>
+              </div>
+  
+              <div class="position-relative">
+                <div class="bolita"></div>
+                <accordion>
+                  <accordion-group #emergencia [panelClass]="customClass">
+                    <button class="btn btn-link btn-block clearfix" accordion-heading>
+                      <div class="pull-left float-left lix">Servicio de Emergencia Médica por Accidente</div>
+                      <div *ngIf="!emergencia.isOpen" class="float-right">
+                        <img
+                          src="https://res.cloudinary.com/merchanj/image/upload/v1559937359/Banesco_Seguros_Panama/AP/arrow3.png"
+                          alt="" class="arrow2">
+                      </div>
+                      <div *ngIf="emergencia.isOpen" class="float-right">
+                        <img
+                          src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/arrow2.svg"
+                          alt="" class="arrow2">
+                      </div>
+                      <div class="porcentaje">
+                        {{actualCoverage.coverageDetail.emergencyService}}%
+                      </div>
+                    </button>
+                    <p>Cuentas con un servicio de ambulancia por emergencia y urgencia médica sin costo adicional, así
+                      como con atención médica a domicilio para casos no urgentes mediante un copago. (ver Términos y
+                      Condiciones a continuación).</p>
+                  </accordion-group>
+                </accordion>
+              </div>
+  
+              <div class="position-relative">
+                <div class="bolita"></div>
+                <accordion>
+                  <accordion-group #viajes [panelClass]="customClass">
+                    <button class="btn btn-link btn-block clearfix" accordion-heading>
+                      <div class="pull-left float-left lix">Asistencia en Viajes</div>
+                      <div *ngIf="!viajes.isOpen" class="float-right">
+                        <img
+                          src="https://res.cloudinary.com/merchanj/image/upload/v1559937359/Banesco_Seguros_Panama/AP/arrow3.png"
+                          alt="" class="arrow2">
+                      </div>
+                      <div *ngIf="viajes.isOpen" class="float-right">
+                        <img
+                          src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/arrow2.svg"
+                          alt="" class="arrow2">
+                      </div>
+                      <div class="porcentaje">
+                        {{actualCoverage.coverageDetail.travelAssistance}}%
+                      </div>
+                    </button>
+                    <p>Estamos para apoyarte más allá de nuestras fronteras. Si debes alojarte en un hotel o cancelar tu viaje por indicación médica, asumimos la estadía y te traemos de vuelta a casa con tu acompañante. Asimismo, en caso de fallecimiento en el extranjero, ofrecemos el servicio para traerte de vuelta a casa (repatriación).</p>
+                  </accordion-group>
+                </accordion>
+              </div>
+  
             </div>
           </div>
         </div>
-      </div>
+        </ng-template>
+        <ng-template [ngIf]="actualCoverage.type === 'cancer'">
+          <div class="row">
+            <div class="col-md-12">
+              <h4 class="h4-verde" style="color:#003c71">Protección contra Cáncer</h4>
+              <p style="color:#556176">
+                En caso que recibas un diagnóstico de cáncer por primera vez <br />
+                en tu vida se te entregará el monto total asegurado. <br />
+                Ej.: Si eres diagnosticado como paciente de cáncer <br />
+                te entregamos el monto total asegurado por USD {{actualCoverage.coverageDetail.insuredAmount | number:'1.0-0'}}<br />
+                o en caso de fallecimiento del asegurado se le entregará <br />
+                el monto total a los beneficiarios designados. <br />
+              </p>
+            </div>
+          </div>
+        </ng-template>
     </div>
   </div>
   <div class="modal-footer">

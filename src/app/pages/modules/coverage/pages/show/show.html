@@ -18,10 +18,11 @@
             alt="" class="">
         </div>
       </div>
+      <ng-template [ngIf]="actualCoverage.type === 'accidentes-personales'">
       <div class="row">
         <div class="col-md-12">
           <h4 class="h4-verde" style="color:#003c71">Cobertura completa: </h4>
-          <p style="color:#556176">Los porcentajes indican la porción del monto asegurado <br> que te será entregado o a los beneficiarios del seguro.<br>en caso de algún accidente de los detallados en la parte inferior.</p>
+          <p style="color:#556176">Los porcentajes indican la porción del monto asegurado <br> que te será entregado o a los beneficiarios del seguro<br>en caso de algún accidente de los detallados en la parte inferior.</p>
 
           <div class="container cober coverage">
             <div class="position-relative">
@@ -250,6 +251,22 @@
           </div>
         </div>
       </div>
+      </ng-template>
+      <ng-template [ngIf]="actualCoverage.type === 'cancer'">
+        <div class="row">
+          <div class="col-md-12">
+            <h4 class="h4-verde" style="color:#003c71">Protección contra Cáncer</h4>
+            <p style="color:#556176">
+              En caso que recibas un diagnóstico de cáncer por primera vez <br />
+              en tu vida se te entregará el monto total asegurado. <br />
+              Ej.: Si eres diagnosticado como paciente de cáncer <br />
+              te entregamos el monto total asegurado por USD {{actualCoverage.coverageDetail.insuredAmount | number:'1.0-0'}}<br />
+              o en caso de fallecimiento del asegurado se le entregará <br />
+              el monto total a los beneficiarios designados. <br />
+            </p>
+          </div>
+        </div>
+      </ng-template>
     </div>
   </div>
   <div class="modal-footer">

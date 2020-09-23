@@ -114,18 +114,18 @@ export const BENEFICIARIOS = [
 ];
 
 export const MONTHS = [
-  { 'id': '01', 'item': 'Enero'},
-  { 'id': '02', 'item': 'Febrero'},
-  { 'id': '03', 'item': 'Marzo'},
-  { 'id': '04', 'item': 'Abril'},
-  { 'id': '05', 'item': 'Mayo'},
-  { 'id': '06', 'item': 'Junio'},
-  { 'id': '07', 'item': 'Julio'},
-  { 'id': '08', 'item': 'Agosto'},
-  { 'id': '09', 'item': 'Septiembre'},
-  { 'id': '10', 'item': 'Octubre'},
-  { 'id': '11', 'item': 'Noviembre'},
-  { 'id': '12', 'item': 'Diciembre'}
+  { 'id': '01', 'item': 'Enero' },
+  { 'id': '02', 'item': 'Febrero' },
+  { 'id': '03', 'item': 'Marzo' },
+  { 'id': '04', 'item': 'Abril' },
+  { 'id': '05', 'item': 'Mayo' },
+  { 'id': '06', 'item': 'Junio' },
+  { 'id': '07', 'item': 'Julio' },
+  { 'id': '08', 'item': 'Agosto' },
+  { 'id': '09', 'item': 'Septiembre' },
+  { 'id': '10', 'item': 'Octubre' },
+  { 'id': '11', 'item': 'Noviembre' },
+  { 'id': '12', 'item': 'Diciembre' }
 ];
 
 export const CARDNAME = [
@@ -139,76 +139,87 @@ export const CARDNAME = [
 ];
 
 export const SCHEDULES = [
-  { 'item': 'Mañana (08:00 AM - 12:00 PM)'},
-  { 'item': 'Mediodía (12:00 PM - 1:00 PM)'},
-  { 'item': 'Tarde (1:00 PM - 5:00 PM)'}
+  { 'item': 'Mañana (08:00 AM - 12:00 PM)' },
+  { 'item': 'Mediodía (12:00 PM - 1:00 PM)' },
+  { 'item': 'Tarde (1:00 PM - 5:00 PM)' }
 ];
 
 export const CIVILSTATUS = [
-  { 'item': 'Soltero'},
-  { 'item': 'Casado'},
-  { 'item': 'Divorciado'},
-  { 'item': 'Viudo'},
-  { 'item': 'Otro'}
+  { 'item': 'Soltero' },
+  { 'item': 'Casado' },
+  { 'item': 'Divorciado' },
+  { 'item': 'Viudo' },
+  { 'item': 'Otro' }
 ];
 
 export const MONTHLYINCOME = [
-  { 'item': 'Entre USD 0 a USD 10,000'},
-  { 'item': 'Mayor a USD 10,000'}
+  { 'item': 'Entre USD 0 a USD 10,000' },
+  { 'item': 'Mayor a USD 10,000' }
 ];
 
 export const DEDUCTIBLES = [
-  { 'item': 'USD 200'},
-  { 'item': 'USD 300'},
-  { 'item': 'USD 400'},
-  { 'item': 'USD 500'},
+  { 'item': 'USD 200' },
+  { 'item': 'USD 300' },
+  { 'item': 'USD 400' },
+  { 'item': 'USD 500' },
 ];
 
 export const SLIDES = [
   {
-  'id': '1',
-  'titulo': 'Muerte Accidental',
-  'imagen' : 'unoapinfo',
-  'mensaje': 'Si el asegurado muere en un accidente, a los beneficiarios se les pagará el monto asegurado que contrató (indemnización). Ej.: accidentes de tránsito, sucesos imprevistos, homicidios dolosos y culposos.' 
+    'id': '1',
+    'titulo': 'Muerte Accidental',
+    'imagen': 'unoapinfo',
+    'mensaje': 'Si el asegurado muere en un accidente, a los beneficiarios se les pagará el monto asegurado que contrató (indemnización). Ej.: accidentes de tránsito, sucesos imprevistos, homicidios dolosos y culposos.'
   },
   {
-  'id': '2',
-  'titulo': 'Adelantos de Gastos Funerarios',
-  'imagen' : 'dosapinfo',
-  'mensaje': 'Adelantamos hasta el 25% la suma asegurada de gastos funerarios a los beneficiarios cuando ocurre la muerte accidental del asegurado. Ej.: si tu suma asegurada por muerte accidental es USD 10,000 te adelantamos hasta USD 2,500' 
+    'id': '2',
+    'titulo': 'Adelantos de Gastos Funerarios',
+    'imagen': 'dosapinfo',
+    'mensaje': 'Adelantamos hasta el 25% del monto asegurado de los gastos funerarios a los beneficiarios cuando ocurre la muerte accidental del asegurado hasta un límite de USD 5,000. Ej.: si tu monto asegurado por muerte accidental es USD 10,000 te adelantamos hasta USD 2,500.'
   },
   {
-  'id': '3',
-  'titulo': 'Invalidez Permanente',
-  'imagen' : 'tresapinfo',
-  'mensaje': 'Cubrimos un porcentaje según el grado de discapacidad que pudiera presentar el asegurado a causa de un accidente sufrido'
+    'id': '3',
+    'titulo': 'Invalidez Permanente (Total o Parcial)',
+    'imagen': 'tresapinfo',
+    'mensaje': 'Cubrimos un porcentaje del monto total según el grado de discapacidad que pudiera presentar el asegurado a causa de un accidente sufrido.'
   },
   {
-  'id': '4',
-  'titulo': 'Gastos Médicos por Accidente',
-  'imagen' : 'cuatroapinfo',
-  'mensaje': 'Cobertura complementaria donde te reembolsamos hasta un 10% de la suma asegurada para gastos médicos incurridos por accidentes.',
-  'enlace':' '
+    'id': '4',
+    'titulo': 'Gastos Médicos por Accidente',
+    'imagen': 'cuatroapinfo',
+    'mensaje': 'Cobertura complementaria donde te reembolsamos hasta un 10% del monto asegurado para gastos médicos incurridos por accidentes hasta un límite de USD 1,000.',
   },
   {
-  'id': '5',
-  'titulo': 'Doble Indemnización por Muerte por Accidente Específico',
-  'imagen' : 'cincoapinfo',
-  'mensaje': 'Duplicamos la suma asegurada por muerte accidental mientras el asegurado se transporta en un vehículo público (autobús, metro, taxi, etc) o si se ve envuelto en un incendio en algún edificio público (hotel, museo, cine, teatro, etc)' 
+    'id': '6',
+    'titulo': 'Asistencia en Viajes',
+    'imagen': 'seisapinfo',
+    'mensaje': 'Estamos para apoyarte más allá de nuestras fronteras. Si debes alojarte en un hotel o cancelar tu viaje por indicación médica, asumimos la estadía y te traemos de vuelta a casa con tu acompañante. Asimismo, en caso de fallecimiento en el extranjero, ofrecemos el servicio para traerte de vuelta a casa (repatriación).'
   },
   {
-  'id': '6',
-  'titulo': 'Asistencia en Viajes',
-  'imagen' : 'seisapinfo',
-  'mensaje': 'Asistencia médica durante tu viaje, si por indicación médica debes alojarte en un hotel, cubrimos tu estancia mientras te recuperas, transporte de los familiares del asegurado en caso necesario. Si ocurriera el fallecimiento del asegurado, traemos de vuelta sus restos así como a los familiares' 
+    'id': '5',
+    'titulo': 'Doble indemnización por Muerte Accidental Específico',
+    'imagen': 'cincoapinfo',
+    'mensaje': 'Duplicamos el monto asegurado por muerte accidental mientras el asegurado se transporta en un vehículo público (autobús, metro, taxi, etc) o si se ve envuelto en un incendio en algún edificio público (hotel, museo, cine, teatro, etc).'
   },
 ];
 
 export const SLIDES_CANCER = [
+  // {
+  //   'id': '',
+  //   'titulo': '',
+  //   'imagen': '',
+  //   'mensaje': ''
+  // },
   {
-  'id': '1',
-  'titulo': 'Protección contra Cáncer',
-  'imagen' : 'cuatroapinfo',
-  'mensaje': 'Indemnización del monto total asegurado en caso de que recibas un diagnóstico de cáncer por primera vez en tu vida. Ej.: Si eres diagnosticado como paciente de cáncer por primera vez en tu vida, te entregamos el monto total asegurado o en caso de fallecimiento del asegurado a los beneficiarios designados.' 
-  }
+    'id': 'carousel-unique-cancer',
+    'titulo': 'Protección contra Cáncer',
+    'imagen': 'cuatroapinfo',
+    'mensaje': 'Indemnización del monto total asegurado en caso de que recibas un diagnóstico de cáncer por primera vez en tu vida. Ej.: Si eres diagnosticado como paciente de cáncer por primera vez en tu vida, te entregamos el monto total asegurado o en caso de fallecimiento del asegurado a los beneficiarios designados.'
+  },
+  // {
+  //   'id': '',
+  //   'titulo': '',
+  //   'imagen': '',
+  //   'mensaje': ''
+  // }
 ];

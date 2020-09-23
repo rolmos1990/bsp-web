@@ -111,14 +111,16 @@
                 <button class="izquierdaaa"><i class="fas fa-angle-left"></i></button>
                 <swiper class="swiper-container col-sm-10 col-10 col-md-12" [config]="config" (indexChange)="onIndexChange($event)" fxFlex="auto">
 
-                    <div *ngFor="let slide of slides" class="swiper-slide">
-                        <div fxLayout="column" fxLayoutAlign="center center" fxFlexFill>
-                            <img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/{{slide.imagen}}.png" alt="">
-                            <p class="blue">{{slide.titulo}}</p>
-                            <p class="mensaje">{{slide.mensaje}}</p>
-                            <a href="http://banescoseguros.com.pa/wp-content/uploads/2016/02/Condiciones_Generales_AP_INTEGRAL_INDIVIDUAL.pdf" target="_blank" class="enlace" *ngIf="slide.id == '3'">{{slide.enlace}}</a>
-                            <a href="http://banescoseguros.com.pa/wp-content/uploads/2016/02/Condiciones_Generales_AP_INTEGRAL_INDIVIDUAL.pdf" target="_blank" class="enlace" *ngIf="slide.id == '4'">{{slide.enlace}}</a>
-                        </div>
+                    <div *ngFor="let slide of slides" [ngClass]="{ 'no-border-carousel': slide.id === '', 'swiper-slide' : true, 'test': true }">
+                            <div fxLayout="column" fxLayoutAlign="center center" fxFlexFill>
+                                <ng-template [ngIf]="slide.id!==''">
+                                <img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/{{slide.imagen}}.png" alt="">
+                                <p class="blue">{{slide.titulo}}</p>
+                                <p class="mensaje">{{slide.mensaje}}</p>
+                                <a href="http://banescoseguros.com.pa/wp-content/uploads/2016/02/Condiciones_Generales_AP_INTEGRAL_INDIVIDUAL.pdf" target="_blank" class="enlace" *ngIf="slide.id == '3'">{{slide.enlace}}</a>
+                                <a href="http://banescoseguros.com.pa/wp-content/uploads/2016/02/Condiciones_Generales_AP_INTEGRAL_INDIVIDUAL.pdf" target="_blank" class="enlace" *ngIf="slide.id == '4'">{{slide.enlace}}</a>
+                                </ng-template>
+                            </div>
                     </div>
 
                 </swiper>
@@ -286,13 +288,15 @@
                     <button class="izquierdaaa"><i class="fas fa-angle-left"></i></button>
                     <swiper class="swiper-container col-sm-10 col-10 col-md-12" [config]="config" (indexChange)="onIndexChange($event)" fxFlex="auto">
     
-                        <div *ngFor="let slide of slides" class="swiper-slide">
+                        <div *ngFor="let slide of slides" [ngClass]="{ 'no-border-carousel': slide.id === '', 'swiper-slide' : true, 'carousel-unique-cancer' : slide.id === 'carousel-unique-cancer'}">
                             <div fxLayout="column" fxLayoutAlign="center center" fxFlexFill>
+                                <ng-template [ngIf]="slide.id!==''">
                                 <img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/{{slide.imagen}}.png" alt="">
                                 <p class="blue">{{slide.titulo}}</p>
                                 <p class="mensaje">{{slide.mensaje}}</p>
                                 <a href="http://banescoseguros.com.pa/wp-content/uploads/2016/02/Condiciones_Generales_AP_INTEGRAL_INDIVIDUAL.pdf" target="_blank" class="enlace" *ngIf="slide.id == '3'">{{slide.enlace}}</a>
                                 <a href="http://banescoseguros.com.pa/wp-content/uploads/2016/02/Condiciones_Generales_AP_INTEGRAL_INDIVIDUAL.pdf" target="_blank" class="enlace" *ngIf="slide.id == '4'">{{slide.enlace}}</a>
+                                </ng-template>
                             </div>
                         </div>
     
