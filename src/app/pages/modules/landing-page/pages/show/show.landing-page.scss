@@ -204,6 +204,10 @@ h2.solicitud {
 }
 .oferta_content{
   padding:0px;
+  display:flex;
+  flex-direction:column;
+  align-items: center;
+  justify-content: center;
 }
 .oferta_content h1 {
   color:#003c71;
