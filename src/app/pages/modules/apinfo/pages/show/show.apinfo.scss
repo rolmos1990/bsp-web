@@ -246,6 +246,7 @@
 
       p {
         font-size: 14px;
+        font-weight: normal;
         color: #556176;
         text-decoration: none solid rgb(85, 97, 118);
         text-align: justify;
@@ -340,6 +341,7 @@
     font-size: 14px;
     color: #003c71;
     text-decoration: none solid rgb(28, 132, 100);
+    font-weight:bold;
     margin: 10px 0;
   }
 
@@ -449,4 +451,8 @@
   .carousel-unique-cancer{
   width: 100%!important;
   }
+}
+
+.cober .card-body{
+  background-color:white!important;
 }

@@ -14,7 +14,7 @@
             <div id="portada" class="row">
                 <div class="col-md-8">          
                         <h1 style="color:#003c71">Explora nuestra protección contra Accidentes Personales</h1>
-                        <p>Te apoyamos contra cualquier eventualidad, asegurando la estabilidad financiera de tu familia cuando más lo necesites.</p>
+                        <p>Te apoyamos contra cualquier eventualidad, asegurando la estabilidad financiera de tu familia cuando más lo necesiten.</p>
                     <button style="font-size: 17px" class="btn" [routerLink]="['/cobertura/',insureType]">VER PRECIOS</button>
                 </div>
                 <div class="col-md-4">
@@ -114,7 +114,7 @@
                     <div *ngFor="let slide of slides" [ngClass]="{ 'no-border-carousel': slide.id === '', 'swiper-slide' : true, 'test': true }">
                             <div fxLayout="column" fxLayoutAlign="center center" fxFlexFill>
                                 <ng-template [ngIf]="slide.id!==''">
-                                <img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/{{slide.imagen}}.png" alt="">
+                                <img src="../../../../../../assets/img/{{slide.imagen}}.svg" alt="">
                                 <p class="blue">{{slide.titulo}}</p>
                                 <p class="mensaje">{{slide.mensaje}}</p>
                                 <a href="http://banescoseguros.com.pa/wp-content/uploads/2016/02/Condiciones_Generales_AP_INTEGRAL_INDIVIDUAL.pdf" target="_blank" class="enlace" *ngIf="slide.id == '3'">{{slide.enlace}}</a>
@@ -140,9 +140,10 @@
                 <div class="pull-left float-left lix"><i class="fas fa-angle-down"></i> ¿Qué ventajas tiene?</div>
               </button>
                     <ul>
-                        <li>Te ofrecemos mayor protección por muy poco.</li>
+                        <li>Te ofrecemos mayor protección por muy poco: servicios de ambulancia por emergencias médicas, asistencia médica domiciliaria y en viajes al extranjero.</li>
                         <li>Consigue tu protección rápidamente estés donde estés.</li>
                         <li>Paga cómodamente en pequeñas cuotas con tu tarjeta de crédito.</li>
+                        <li>La indemnización que ofrecemos es adicional a la de cualquier otra póliza que puedas disponer.</li>
                     </ul>
                 </accordion-group>
             </accordion>
@@ -213,7 +214,7 @@
                 <div id="portada" class="row">
                     <div class="col-md-8">          
                             <h1 style="color:#003c71">Explora nuestra protección contra el Cáncer</h1>
-                            <p>Con nuestra Protección Segura por Cáncer, recibirás una indemnización por el diagnóstico de esta enfermedad, además podrás disponer del monto total asegurado sin necesidad de asociarlo a gastos médicos.</p>
+                            <p>Con nuestra Protección Segura por Cáncer, recibirás una indemnización por el diagnóstico de esta enfermedad. Además podrás disponer del monto total asegurado sin necesidad de asociarlo a gastos médicos.</p>
                         <button style="font-size: 17px" class="btn" [routerLink]="['/cobertura/',insureType]">VER PRECIOS</button>
                     </div>
                     <div class="col-md-4">
@@ -278,33 +279,6 @@
         </div>
     
         <a id="2"></a>
-        <div class="contenedor-gris">
-            <!-- aqui debe ir un ancla-->
-            <h3 style="color:#003c71">Nuestras Coberturas</h3>
-            <div class="container">
-    
-                <div class="position-relative">
-                    <button class="derechaaa"><i class="fas fa-angle-right"></i></button>
-                    <button class="izquierdaaa"><i class="fas fa-angle-left"></i></button>
-                    <swiper class="swiper-container col-sm-10 col-10 col-md-12" [config]="config" (indexChange)="onIndexChange($event)" fxFlex="auto">
-    
-                        <div *ngFor="let slide of slides" [ngClass]="{ 'no-border-carousel': slide.id === '', 'swiper-slide' : true, 'carousel-unique-cancer' : slide.id === 'carousel-unique-cancer'}">
-                            <div fxLayout="column" fxLayoutAlign="center center" fxFlexFill>
-                                <ng-template [ngIf]="slide.id!==''">
-                                <img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/{{slide.imagen}}.png" alt="">
-                                <p class="blue">{{slide.titulo}}</p>
-                                <p class="mensaje">{{slide.mensaje}}</p>
-                                <a href="http://banescoseguros.com.pa/wp-content/uploads/2016/02/Condiciones_Generales_AP_INTEGRAL_INDIVIDUAL.pdf" target="_blank" class="enlace" *ngIf="slide.id == '3'">{{slide.enlace}}</a>
-                                <a href="http://banescoseguros.com.pa/wp-content/uploads/2016/02/Condiciones_Generales_AP_INTEGRAL_INDIVIDUAL.pdf" target="_blank" class="enlace" *ngIf="slide.id == '4'">{{slide.enlace}}</a>
-                                </ng-template>
-                            </div>
-                        </div>
-    
-                    </swiper>
-                </div>
-    
-            </div>
-        </div>
     
         <a id="3"></a>
         <div class="contenedor">
@@ -314,9 +288,33 @@
                 <accordion>
                     <accordion-group [panelClass]="customClass" [isOpen]="isFirstOpen">
                         <button class="btn btn-link btn-block clearfix" accordion-heading>
-                    <div class="pull-left float-left lix"><i class="fas fa-angle-down"></i> ¿Qué ocurre si el asegurado fallece?</div>
+                    <div class="pull-left float-left lix"><i class="fas fa-angle-down"></i> ¿Qué ventajas tiene?</div>
+                  </button>
+                    <ul>
+                    <li>Atención sin exámenes médicos previos.</li>
+                    <li>Indemnización al presentar el diagnóstico sin necesidad de asociarlo a gastos médicos.</li>
+                    <li>Consigue tu protección rápidamente estés donde estés.</li>
+                    <li>Paga cómodamente en pequeñas cuotas con tu tarjeta de crédito.</li>
+                    <li>La indemnización que ofrecemos es adicional a la de cualquier otra póliza que puedas disponer.</li>
+                    </ul>
+                    </accordion-group>
+                </accordion>
+
+                <accordion>
+                    <accordion-group [panelClass]="customClass">
+                        <button class="btn btn-link btn-block clearfix" accordion-heading>
+                    <div class="pull-left float-left lix"><i class="fas fa-angle-down"></i>  ¿Qué ocurre si el asegurado fallece?</div>
                   </button>
                         <p>Se entregará el monto total asegurado al beneficiario designado.</p>
+                    </accordion-group>
+                </accordion>
+
+                <accordion>
+                    <accordion-group [panelClass]="customClass">
+                        <button class="btn btn-link btn-block clearfix" accordion-heading>
+                    <div class="pull-left float-left lix"><i class="fas fa-angle-down"></i> ¿A partir de cuándo estoy protegido?</div>
+                  </button>
+                        <p>La protección comienza a partir de noventa (90) días calendario, posteriores a la adquisición de la póliza.</p>
                     </accordion-group>
                 </accordion>
     
@@ -325,16 +323,29 @@
                         <button class="btn btn-link btn-block clearfix" accordion-heading>
                     <div class="pull-left float-left lix"><i class="fas fa-angle-down"></i> ¿Quién puede asegurarse?</div>
                   </button>
-                            <p>Cualquier persona nacional o extranjera que resida en la República de Panamá con edad entre veinte (20) hasta los sesenta y cinco (65) años.</p>
+                            <p>Aplica para clientes entre 20 y 65 años, hijos solteros o hijastros legalmente adoptados que tengan al menos seis (6) meses de nacidos y sean menores de veinticuatro (24) años, que gocen de buena salud y no padezcan ninguna enfermedad.</p>
                     </accordion-group>
                 </accordion>
     
                 <accordion>
                     <accordion-group [panelClass]="customClass">
                         <button class="btn btn-link btn-block clearfix" accordion-heading>
-                    <div class="pull-left float-left lix"><i class="fas fa-angle-down"></i> ¿Cuánto tiempo tengo que esperar para cobrar la indemnización?</div>
+                    <div class="pull-left float-left lix"><i class="fas fa-angle-down"></i> ¿Qué es una indemnización?</div>
                   </button>
-                        <p>La indemnización se entregará luego de los treinta (30) días continuos siguientes a ser diagnosticado de Cáncer.</p>
+                        <ul>
+                            <li>Una indemnización consiste en conseguir una reposición económica para el asegurado cuando el mismo sufre un accidente de la forma en que están contempladas en las coberturas.</li>
+                        </ul>
+                    </accordion-group>
+                </accordion>
+
+                <accordion>
+                    <accordion-group [panelClass]="customClass">
+                        <button class="btn btn-link btn-block clearfix" accordion-heading>
+                    <div class="pull-left float-left lix"><i class="fas fa-angle-down"></i>  ¿Cuánto tiempo tengo que esperar para cobrar la indemnización?</div>
+                  </button>
+                        <ul>
+                            <li>La indemnización se entregará luego de los treinta (30) días continuos siguientes a ser diagnosticado de Cáncer.</li>
+                        </ul>
                     </accordion-group>
                 </accordion>
             </div>

@@ -66,13 +66,15 @@ export class SuccessComponent implements OnInit {
           };
 
           this.left_items = [
-            "Flexibilidad en la entrega del monto asegurado, sin tener que asociarlo a gastos médicos.",
+            "Atención sin exámenes médicos previos.",
+            "Indemnización al presentar el diagnóstico sin necesidad de asociarlo a gastos médicos.",
             "Consigue tu protección rápidamente estés donde estés."
           ];
 
           this.right_items = [
-            "Paga cómodamente en pequeñas cuotas con tu tarjeta de crédito o por transferencia bancaria. Como sea más fácil para tí.",
-            "Siempre estarás protegido, porque cada año renovamos la protección contra Cáncer automáticamente."
+
+            "Paga cómodamente en pequeñas cuotas con tu tarjeta de crédito.",
+            "La indemnización que ofrecemos es adicional a la de cualquier otra póliza que puedas disponer."
           ];
         }
     }
