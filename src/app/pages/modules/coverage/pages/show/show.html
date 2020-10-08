@@ -358,17 +358,32 @@
                   </div>
                 </div>
                 <div class="row">
+                  <ng-template [ngIf]="coverage.type == 'cancer'">
                   <div class="col-md-12">
                     <img *ngIf="i === 0"
-                      src="../../../../../../assets/img/icono3.png" alt=""
+                      src="../../../../../../assets/img/awareness-ribbon.svg" alt=""
                       class="">
                     <img *ngIf="i === 1"
-                      src="../../../../../../assets/img/icono1.png" alt=""
+                      src="../../../../../../assets/img/awareness-ribbon.svg" alt=""
                       class="">
                     <img *ngIf="i === 2"
-                      src="../../../../../../assets/img/icono2.png" alt=""
+                      src="../../../../../../assets/img/awareness-ribbon.svg" alt=""
                       class="">
                   </div>
+                  </ng-template>
+                  <ng-template [ngIf]="coverage.type != 'cancer'">
+                    <div class="col-md-12">
+                      <img *ngIf="i === 0"
+                        src="../../../../../../assets/img/icono3.png" alt=""
+                        class="">
+                      <img *ngIf="i === 1"
+                        src="../../../../../../assets/img/icono1.png" alt=""
+                        class="">
+                      <img *ngIf="i === 2"
+                        src="../../../../../../assets/img/icono2.png" alt=""
+                        class="">
+                    </div>
+                  </ng-template>
                 </div>
               </div>
             </div>
@@ -409,17 +424,32 @@
                   </div>
                 </div>
                 <div class="row">
-                  <div class="col-md-12">
-                    <img *ngIf="i === 0"
-                      src="../../../../../../assets/img/icono3.png" alt=""
-                      class="">
-                    <img *ngIf="i === 1"
-                      src="../../../../../../assets/img/icono1.png" alt=""
-                      class="">
-                    <img *ngIf="i === 2"
-                      src="../../../../../../assets/img/icono2.png" alt=""
-                      class="">
-                  </div>
+                  <ng-template [ngIf]="actualCoverage.type == 'cancer'">
+                    <div class="col-md-12">
+                      <img *ngIf="i === 0"
+                        src="../../../../../../assets/img/awareness-ribbon.svg" alt=""
+                        class="">
+                      <img *ngIf="i === 1"
+                        src="../../../../../../assets/img/awareness-ribbon.svg" alt=""
+                        class="">
+                      <img *ngIf="i === 2"
+                        src="../../../../../../assets/img/awareness-ribbon.svg" alt=""
+                        class="">
+                    </div>
+                  </ng-template>
+                  <ng-template [ngIf]="actualCoverage.type != 'cancer'">
+                    <div class="col-md-12">
+                      <img *ngIf="i === 0"
+                        src="../../../../../../assets/img/icono3.png" alt=""
+                        class="">
+                      <img *ngIf="i === 1"
+                        src="../../../../../../assets/img/icono1.png" alt=""
+                        class="">
+                      <img *ngIf="i === 2"
+                        src="../../../../../../assets/img/icono2.png" alt=""
+                        class="">
+                    </div>
+                  </ng-template>
                 </div>
               </div>
             </div>

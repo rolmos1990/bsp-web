@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { RequestService } from '../../../core/services/request.service';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -114,6 +114,59 @@ export class ShowComponent implements OnInit {
     //this.getOccupations();
     this.validations();
   }
+
+  keydown(event) {
+    var target = event.srcElement || event.target;
+    const index = target.getAttribute("tabindex");
+    let tmpElement = document.querySelectorAll("input[tabindex]");
+    let nextElement;
+    let previusElement;
+    
+    tmpElement.forEach(item => { 
+    const nextIndex = (parseInt(index) + 1) + "";
+    if(item.getAttribute("tabindex") == nextIndex) {
+      nextElement = item;
+    }});
+
+    tmpElement.forEach(item => { 
+    const previusIndex = (parseInt(index) - 1) + "";
+    if(item.getAttribute("tabindex") == previusIndex) {
+      previusElement = item;
+    }});
+
+    var key = 'unknown';
+    console.log("EVENT KEY CODE", event.keyCode);
+    switch (event.keyCode) {
+        case 37:
+            key = 'left';
+            break;
+        case 38:
+            key = 'up';
+            console.log("UP PRESS");
+            tmpElement.forEach(item => { 
+              if(item.getAttribute("tabindex") == "1") {
+                previusElement = item;
+            }});
+            break;
+        case 39:
+            key = 'right';
+            break;
+        case 40:
+            key = 'down';
+            tmpElement.forEach(item => { 
+              if(item.getAttribute("tabindex") == "4") {
+                nextElement = item;
+            }});
+            break;
+    }
+    if(key === "right" || key === "down"){
+      nextElement.focus();
+    }
+    if(key === "left" || key === "up"){
+      previusElement.focus();
+    }
+    return key;
+}
 
   public submit() {
     if (this.forma.valid) {

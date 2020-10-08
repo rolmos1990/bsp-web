@@ -5,7 +5,7 @@ import {ActivatedRoute} from '@angular/router';
 @Component({
   selector: 'bsp-terms-conditions',
   templateUrl: './terms-and-conditions.component.html',
-  styleUrls: ['../../pages/show/show.scss']
+  styleUrls: ['../../pages/show/show.scss','./terms-and-conditions.scss']
 })
 export class TermsAndConditionsComponent {
 

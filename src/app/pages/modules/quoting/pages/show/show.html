@@ -1,6 +1,6 @@
 <div *ngIf="!isLoading" class="wrapper">
     <section class="quoting">
-        <form [formGroup]="forma">
+        <form [formGroup]="forma" novalidate>
             <div class="container">
                 <div class="row" [ngClass]="{'d-none': flag1 == false}">
                     <div class="col-1 col-md-2">
@@ -35,19 +35,19 @@
                                 <div class="form-row">
                                     <ng-template [ngIf]="forma.value.documentType === 'Cedula'">
                                         <div class="treinta">
-                                            <input type="text" class="form-control w-100" [ngClass]="{'is-invalid': invalid('document', forma), 'is-valid': valid('document', forma)}" formControlName="document">
+                                            <input type="text" class="form-control w-100" [ngClass]="{'is-invalid': invalid('document', forma), 'is-valid': valid('document', forma)}" formControlName="document" (keydown)="keydown($event)" tabindex=1>
                                         </div>
                                         <div class="tres d-flex justify-content-center align-items-center">
                                             <strong><b>-</b></strong>
                                         </div>
                                         <div class="treinta">
-                                            <input type="text" class="form-control w-100" [ngClass]="{'is-invalid': invalid('document2', forma), 'is-valid': valid('document2', forma)}" formControlName="document2">
+                                            <input type="text" class="form-control w-100" [ngClass]="{'is-invalid': invalid('document2', forma), 'is-valid': valid('document2', forma)}" formControlName="document2" (keydown)="keydown($event)" tabindex=2>
                                         </div>
                                         <div class="tres d-flex justify-content-center align-items-center">
                                             <strong><b>-</b></strong>
                                         </div>
                                         <div class="cuarenta">
-                                            <input type="text" class="form-control w-100" [ngClass]="{'is-invalid': invalid('document3', forma), 'is-valid': valid('document3', forma)}" formControlName="document3">
+                                            <input type="text" class="form-control w-100" [ngClass]="{'is-invalid': invalid('document3', forma), 'is-valid': valid('document3', forma)}" formControlName="document3" (keydown)="keydown($event)" tabindex=3>
                                         </div>
                                         <ng-template [ngIf]="forma.value.documentType !== 'Pasaporte'">
                                             <div class="col-12">
@@ -65,7 +65,7 @@
                                     </ng-template>
                                     <ng-template [ngIf]="forma.value.documentType === 'Pasaporte'">
                                         <div class="col-12">
-                                            <input type="text" class="form-control w-100" [ngClass]="{'is-invalid': invalid('document', forma), 'is-valid': valid('document', forma)}" formControlName="document">
+                                            <input type="text" class="form-control w-100" [ngClass]="{'is-invalid': invalid('document', forma), 'is-valid': valid('document', forma)}" formControlName="document" (keydown)="keydown($event)" tabindex=1>
                                             <div *ngIf="invalid('document', forma)" class="invalid-feedback">
                                                 Por favor introduzca un número de pasaporte válido. Por ejemplo: 458456684.
                                             </div>
@@ -81,7 +81,7 @@
                             <div style="display:flex;flex-direction:row;align-items:center;justify-content: center;margin-top:-40px;">
                                 <img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/Mail.svg" alt="" class="my-5" style="margin:0px;height:78px;width:86px;">
                                 <div style="margin-left:25px;width:260px;">
-                                <input type="email" class="form-control mb-1" placeholder="EMAIL" formControlName="email" [ngClass]="{'is-invalid': invalid('email', forma), 'is-valid': valid('email', forma)}" style="width:260px;">
+                                <input type="email" class="form-control mb-1" placeholder="EMAIL" formControlName="email" [ngClass]="{'is-invalid': invalid('email', forma), 'is-valid': valid('email', forma)}" style="width:260px;" (keydown)="keydown($event)" tabindex=4>
                                 <div *ngIf="invalid('email', forma)" class="invalid-feedback">
                                     * Por favor introduce un correo válido
                                 </div>

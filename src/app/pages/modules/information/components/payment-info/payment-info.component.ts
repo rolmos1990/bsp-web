@@ -7,6 +7,7 @@ import { CustomValidatorDirective } from '../../../core/directives/validations/c
 import { NotifierService } from 'angular-notifier';
 import { ShowService } from '../../pages/show/show.service';
 import { pipeDef } from '@angular/core/src/view';
+import * as moment from 'moment';
 
 @Component({
   selector: 'bsp-payment-info',
@@ -25,6 +26,7 @@ export class PaymentInfoComponent {
   public payment: any;
   public creditCardsList;
   public date;
+  public quotesAmounts = [];
   @Output() isLoading: EventEmitter<boolean> = new EventEmitter<boolean>();
   public years: Array<any> = [];
   @Input() requestId: string;
@@ -69,11 +71,25 @@ export class PaymentInfoComponent {
         this.payment = response.result.request.insurance.coverageDetail;
         let documentInfo = response.result.request.insured;
         this.getClientByDocument(documentInfo);
+        this.loadQuotes(response.result.request.insurance.coverageDetail);
       },
       error => {
         this.isLoading.emit(false);
       }
     );
+  }
+
+  public loadQuotes(coverage){
+    const qtyMonthly = coverage.monthlyPayments - 1; //resto monto inicial
+    const amountMonthly = coverage.monthlyPrime; 
+    for(var i = 0; i < qtyMonthly; i++){
+      var nextPaymentDate = moment().add(i+1, 'M');
+      this.quotesAmounts.push({
+        number: i+2,
+        amount: amountMonthly,
+        description: nextPaymentDate.format("DD-MM-YYYY")
+      });
+    }
   }
 
   public doPayment() {
