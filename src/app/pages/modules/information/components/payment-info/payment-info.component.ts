@@ -79,13 +79,13 @@ export class PaymentInfoComponent {
     );
   }
 
-  public loadQuotes(coverage){
+  public loadQuotes(coverage) {
     const qtyMonthly = coverage.monthlyPayments - 1; //resto monto inicial
-    const amountMonthly = coverage.monthlyPrime; 
-    for(var i = 0; i < qtyMonthly; i++){
-      var nextPaymentDate = moment().add(i+1, 'M');
+    const amountMonthly = coverage.monthlyPrime;
+    for (var i = 0; i < qtyMonthly; i++) {
+      var nextPaymentDate = moment().add(i + 1, 'M');
       this.quotesAmounts.push({
-        number: i+2,
+        number: i + 2,
         amount: amountMonthly,
         description: nextPaymentDate.format("DD-MM-YYYY")
       });
@@ -96,18 +96,33 @@ export class PaymentInfoComponent {
     console.log("PAYMENT INFORMATION", this.paymentInformation);
     var form = document.createElement("form");
     form.setAttribute("method", "POST");
-    form.setAttribute("action", this.paymentInformation['processingUrl']) 
-    
-    const arrayObj = this.paymentInformation || [];
-   
-   const _items = Object.entries(arrayObj).map((e) => { 
-    if(e[0] !== "processingUrl" && e[0] !== "status" && e[0] !== "message" && e[0] !== "id"){
-      const value = ((typeof e[1] == "string") ? e[1]: e[1] + "");
-      var hiddenField = document.createElement("input");
-      hiddenField.setAttribute("type", "hidden");
-      hiddenField.setAttribute("name", e[0]);
-      hiddenField.setAttribute("value", value );
-      form.appendChild(hiddenField);
+    form.setAttribute("action", this.paymentInformation['processingUrl'])
+
+    const arrayObj = this.paymentInformation || [];
+
+    const _items = Object.entries(arrayObj).map((e) => {
+      if (e[0] !== "processingUrl" && e[0] !== "status" && e[0] !== "message" && e[0] !== "id" && e[0] !== "merchant_defined_data" && e[0]!== "req_merchant_defined_data") {
+        const value = ((typeof e[1] == "string") ? e[1] : e[1] + "");
+        var hiddenField = document.createElement("input");
+        hiddenField.setAttribute("type", "hidden");
+        hiddenField.setAttribute("name", e[0]);
+        hiddenField.setAttribute("value", value);
+        form.appendChild(hiddenField);
+      }
+      if (e[0] === 'merchant_defined_data' || e[0] === 'req_merchant_defined_data') {
+        Object.values(e[1]).map((_e, index) => {
+
+          const value = ((typeof _e == "string") ? _e : _e + "");
+          const incrementIndex = parseInt(index.toFixed(0));
+
+          var hiddenField = document.createElement("input");
+          hiddenField.setAttribute("type", "hidden");
+          const name_field = e[0];
+          hiddenField.setAttribute("name", name_field + (incrementIndex + 1));
+          hiddenField.setAttribute("value", value);
+          form.appendChild(hiddenField);
+
+        });
       }
     });
 

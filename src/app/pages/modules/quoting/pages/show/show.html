@@ -87,7 +87,7 @@
                                 </div>
                                 </div>
                             </div>
-                            <button type="submit" [disabled]="forma.controls['document'].invalid" class="btn btn-primary my-5 " (click)="submit()">COTIZAR</button>
+                            <button type="submit" [disabled]="forma.controls['document'].invalid" class="btn btn-primary my-5 " (click)="submit()">SOLICITAR</button>
                         </div>
                     </div>
                     <div class="col-1 col-md-2">
@@ -121,7 +121,7 @@
                             <div *ngIf="invalid('occupationId', forma)" class="invalid-feedback">
                                 Por favor elija una ocupación.
                             </div>
-                            <button type="submit" [disabled]="forma.controls['occupationId'].invalid || flag2 == false" class="btn btn-primary my-5 " (click)="submit()">COTIZAR</button>
+                            <button type="submit" [disabled]="forma.controls['occupationId'].invalid || flag2 == false" class="btn btn-primary my-5 " (click)="submit()">SOLICITAR</button>
 
                         </div>
                     </div>
