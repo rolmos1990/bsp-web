@@ -51,7 +51,8 @@
           </tr>
         </table>
         </div>
-        <button class="btn btn-primary centrado" (click)="doPayment()">PAGAR</button>
+        <button *ngIf="(!paymentInformation) || (paymentInformation && !paymentInformation.reference_number)" class="btn btn-primary btn-disabled centrado">PAGAR ...</button>
+        <button *ngIf="paymentInformation && paymentInformation.reference_number" class="btn btn-primary centrado" (click)="doPayment()">PAGAR</button>
       </div>
     </div>
   </div>

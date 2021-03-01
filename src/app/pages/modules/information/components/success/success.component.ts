@@ -15,13 +15,13 @@ export class SuccessComponent implements OnInit {
   public paymentFailed: boolean;
   public message: string;
   public _router:any;
-  @Input() requestId: string;
+  @Input() requestId: any;
   @Input() insured: any;
   @Input() insurance: any;
   @Input() paymentInformation: any;
-  
 
-  constructor(router: ActivatedRoute) { 
+
+  constructor(router: ActivatedRoute) {
     this._router = router;
   }
 
@@ -31,12 +31,18 @@ export class SuccessComponent implements OnInit {
       //redirect to home...
       this._router.navigate([`/`]);
     }
-    if(this.paymentInformation.status === "ACCEPT"){
+    const PROVIDER_STATUS = {
+      ACCEPTED2 : "ACCEPT",
+      ACCEPTED : "SUCCESSFUL",
+      DECLINE: "DENIED"
+    };
+
+    if(this.paymentInformation.status === PROVIDER_STATUS.ACCEPTED || this.paymentInformation.status === PROVIDER_STATUS.ACCEPTED2){
 
         if(this.insurance.type == "accidentes-personales")
         {
           this.icons = true;
-          
+
           this.titles = {
             'coverageTitle': 'El seguro que acabas de comprar cuenta con:',
             'coverageSubtitle': 'En caso de algún accidente:',
@@ -79,8 +85,11 @@ export class SuccessComponent implements OnInit {
         }
     }
     else{
-
-      if(["DECLINE","REVIEW","ERROR","CANCEL"].includes(this.paymentInformation.status)){
+      if(this.paymentInformation.status === PROVIDER_STATUS.DECLINE){
+        this.paymentFailed = true;
+        this.message = this.paymentInformation.message || "Su pago ha sido rechazado";
+      }
+      else if(["DECLINE","REVIEW","ERROR","CANCEL"].includes(this.paymentInformation.status)){
         this.paymentFailed = true;
         this.message = this.paymentInformation.message || "Error al obtener información del pago";
       }
@@ -90,12 +99,18 @@ export class SuccessComponent implements OnInit {
       }
     }
   }
+  public doPayment(){
+    if(this.paymentInformation['reference_number']) {
+      this._router.navigate([`/pago/${this.paymentInformation['reference_number']}`]);
+    }
+  }
 
-  public doPayment() {
+  //TODO -- old version for CyberSource (normal flow).
+  public _doPayment() {
     var form = document.createElement("form");
     form.setAttribute("method", "POST");
-    form.setAttribute("action", this.paymentInformation['processingUrl'])   
-    
+    form.setAttribute("action", this.paymentInformation['processingUrl'])
+
     const arrayObj = this.paymentInformation || [];
 
     const _items = Object.entries(arrayObj).map((e) => {

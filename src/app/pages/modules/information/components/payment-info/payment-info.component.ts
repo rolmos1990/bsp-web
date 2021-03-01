@@ -8,6 +8,7 @@ import { NotifierService } from 'angular-notifier';
 import { ShowService } from '../../pages/show/show.service';
 import { pipeDef } from '@angular/core/src/view';
 import * as moment from 'moment';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'bsp-payment-info',
@@ -27,6 +28,7 @@ export class PaymentInfoComponent {
   public creditCardsList;
   public date;
   public quotesAmounts = [];
+  public _router: any;
   @Output() isLoading: EventEmitter<boolean> = new EventEmitter<boolean>();
   public years: Array<any> = [];
   @Input() requestId: string;
@@ -38,8 +40,9 @@ export class PaymentInfoComponent {
 
   @Output() success: EventEmitter<any> = new EventEmitter<any>();
 
-  constructor(private _fb: FormBuilder, private _paymentService: PaymentService, private _showService: ShowService,
+  constructor(private _fb: FormBuilder, router: Router, private _paymentService: PaymentService, private _showService: ShowService,
     private _requestService: RequestService, private _toastr: NotifierService) {
+    this._router = router;
     this._showService.changeToCreditCard.subscribe(values => {
       this.getRequest();
     });
@@ -92,8 +95,14 @@ export class PaymentInfoComponent {
     }
   }
 
-  public doPayment() {
-    console.log("PAYMENT INFORMATION", this.paymentInformation);
+  public doPayment(){
+    if(this.paymentInformation['reference_number']) {
+      this._router.navigate([`/pago/${this.paymentInformation['reference_number']}`]);
+    }
+  }
+
+  //TODO -- for connect with cybersource
+  public _doPayment() {
     var form = document.createElement("form");
     form.setAttribute("method", "POST");
     form.setAttribute("action", this.paymentInformation['processingUrl'])

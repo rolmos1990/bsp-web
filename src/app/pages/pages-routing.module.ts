@@ -9,7 +9,7 @@ const routes: Routes = [
     loadChildren: './modules/landing-page/landing-page.module#LandingPageModule'
   },
   {
-    path: 'pago',
+    path: 'pago/:requestId',
     loadChildren: './modules/payment/payment.module#PaymentModule'
   },
   {

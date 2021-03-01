@@ -9,6 +9,7 @@ const API_ENDPOINT_CREDIT_CARD= 'assignCreditcard';
 const API_ENDPOINT_DELIVERY_INFO = 'assignDeliverInformation';
 const API_ENDPOINT_FINISHREQUEST = 'finishRequest';
 const API_ENDPOINT_CLIENT_BY_DOCUMENT = 'getClientByDocument';
+const API_ENDPOINT_PAY_WITH_PF= 'makePaymentPF';
 
 @Injectable()
 export class PaymentService {
@@ -44,6 +45,17 @@ export class PaymentService {
           })
         );
     }
+
+  public makePayment(form: any): Observable<any> {
+    return this._http
+      .post(environment.baseUrl.concat(API_ENDPOINT_PAY_WITH_PF), form, ServiceDirective.headers)
+      .pipe(
+        catchError(err => {
+          return ServiceDirective.handleError(err);
+        })
+      );
+  }
+
     public getClientByDocument(form: any): Observable<any> {
       return this._http
         .post(environment.baseUrl.concat(API_ENDPOINT_CLIENT_BY_DOCUMENT), form, ServiceDirective.headers)

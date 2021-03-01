@@ -44,6 +44,35 @@ export class CustomValidatorDirective {
         }
     }
 
+    /**
+     * Validate the creditcard with spaces includes (Visa, Mastercard)
+     * @param control FormControl to evaluate.
+     */
+    static creditCardValidatorWithSpaces(control: AbstractControl): ValidationErrors {
+      const card = /^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14})$/g;
+      if (control.value) {
+        const value = control.value.replace("/s\s/g","");
+        if(!card.test(value)) {
+          return {invalidcard: true};
+        }
+      }
+    }
+
+    /**
+     * Validate that the FormControl has this structure "00/00 and is not expiry".
+     * @param control FormControl to evaluate.
+     * @return Object|void
+     */
+    static dateExpiryValidator(control: AbstractControl): ValidationErrors {
+      const date = /^(0[1-9]|1[0-2])\/?(([0-9]{4}|[0-9]{2})$)/;
+      const _date = moment('31/' + control.value, 'DD/MM/YY');
+      const lessThanToday = _date.isBefore(moment.now());
+      if (control.value && (!date.test(control.value) || lessThanToday)) {
+        return { invalidDate: true };
+      }
+    }
+
+
      /**
      * Validate that the FormControl has this structure "00-00-0000 and less than 70 years".
      * @param control FormControl to evaluate.
@@ -136,7 +165,7 @@ export class CustomValidatorDirective {
     }
 
     /**
-     * Validate that the FormControl has one or more name. 
+     * Validate that the FormControl has one or more name.
      * @param control FormControl to evaluate.
      */
     static namesValidator(control: AbstractControl): ValidationErrors {
@@ -147,7 +176,7 @@ export class CustomValidatorDirective {
     }
 
     /**
-     * Validate that the FormControl has two name. 
+     * Validate that the FormControl has two name.
      * @param control FormControl to evaluate.
      */
     static cvvValidator(control: AbstractControl): ValidationErrors {
@@ -158,7 +187,7 @@ export class CustomValidatorDirective {
     }
 
     /**
-     * Validate that the FormControl has two name. 
+     * Validate that the FormControl has two name.
      * @param control FormControl to evaluate.
      */
     static creditCardValidator(control: AbstractControl): ValidationErrors {
@@ -169,7 +198,7 @@ export class CustomValidatorDirective {
     }
 
     /**
-     * Validate that the FormControl has two name. 
+     * Validate that the FormControl has two name.
      * @param control FormControl to evaluate.
      */
     static fullNameValidator(control: AbstractControl): ValidationErrors {
@@ -218,7 +247,7 @@ export class CustomValidatorDirective {
     }
 
         /**
-     * Validate that the FormControl has two name. 
+     * Validate that the FormControl has two name.
      * @param control FormControl to evaluate.
      */
     static urlValidator(control: AbstractControl): ValidationErrors {
@@ -230,6 +259,20 @@ export class CustomValidatorDirective {
         if (control.value && !url.test(urlToCheck)) {
             return { invalidname: true };
         }
+    }
+
+    /**
+     * Validate least one space for sentence
+     * @param control FormControl to evaluate.
+     */
+    static leastOneSpace(control: AbstractControl): ValidationErrors {
+      let value = control.value;
+      if(value) {
+      var matches = value.match(/\b[^\d\s]+\b/g);
+        if (!(matches && matches.length >= 2)) {
+          return { leastOneSpace: true };
+        }
+      }
     }
 
 }

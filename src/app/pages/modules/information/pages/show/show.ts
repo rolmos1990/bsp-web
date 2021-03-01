@@ -28,6 +28,7 @@ export class ShowInformationComponent implements OnInit {
 
   constructor(private modalService: NgbModal, private fb: FormBuilder, private _requestService: RequestService, private _showService: ShowService,
     private _router: Router, private _route: ActivatedRoute) {
+    this.isLoading = true;
     this.requestId = _route.snapshot.paramMap.get('requestId');
     this.flag = false;
     this.isLoading = true;
@@ -38,7 +39,7 @@ export class ShowInformationComponent implements OnInit {
     this._requestService.getRequest(requestId).subscribe(
       response => {
         const _request = response.result.request;
-        if (_request.id && ["Iniciada","Recibida"].includes(_request.status)) {
+        if (_request.id && ['Iniciada', 'Recibida'].includes(_request.status)) {
           this.insureType = _request.insurance.insuranceType;
           this.isLoading = false;
         }
@@ -55,7 +56,7 @@ export class ShowInformationComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.isLoading = true;
+
   }
   public inicio() {
     window.scrollTo(0, 0);
@@ -144,7 +145,7 @@ export class ShowInformationComponent implements OnInit {
   }
 
   public enterSuccess(event) {
-  
+
     if(this.wizard.model.currentStepIndex == 1){
         this._showService.changeCreditCard(true);
       }

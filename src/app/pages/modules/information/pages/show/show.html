@@ -27,7 +27,7 @@
     </aw-wizard-step>
     <aw-wizard-step stepTitle="Pago y Recibo" [navigationSymbol]="{ symbol: '3' }">
       <div class="container">
-        
+
         <div class="container">
           <bsp-payment-info (nextStep)="goPayment()" (previousStep)="anterior()" (isLoading)="isLoading = $event"
             [requestId]="requestId" [request]="request" [insureType]="insureType" [paymentInformation]="paymentInformation">
@@ -44,7 +44,6 @@
     </aw-wizard-step>
   </aw-wizard>
 </div>
-
 <ng-template [ngIf]="isLoading">
   <bsp-loader></bsp-loader>
 </ng-template>

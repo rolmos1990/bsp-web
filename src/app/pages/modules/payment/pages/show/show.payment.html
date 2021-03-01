@@ -1,146 +1,132 @@
-<div class="wrapper">
-    <section class="module-header-2 full-height parallax bg-dark bg-dark-30 text-left" id="home">
-        <div class="container">
-            <div class="row py-5">
-                <div class="col-md-12 py-2 text-white">
-                    <h1 class="my-4">Póliza de Seguro de Automóvil</h1>
-                    <h4 class="my-4">Protege de forma integral tu auto y sus ocupantes</h4>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <a href="javascript:void(0)"><i class="fas fa-arrow-left p-3"></i>Regresar a <span class="font-weight-bold">Banesco.com.pa</span></a>
-
-    <div class="container">
-        <form [formGroup]="forma" (ngSubmit)="guardarCambios()">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="bloque mx-auto d-block">
-                        <div class="formulario">
-                            <div class="row">
-                                <div class="col-md-9">
-                                    <h3 class="font-weight-bold color-green">Pagos</h3>
-                                    <p class="color-blue mb-3">Por favor completa los siguientes datos y continúa con el proceso de solicitud.
-                                    </p>
-                                    <button (click)="guardarCambios()">enviar</button>
-                                </div>
-                                <div class="col-md-3">
-                                    <img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/mastercard.png" height="32" width="32" alt="">
-                                    <img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/visa.png" height="32" width="32" alt="">
-                                </div>
-                            </div>
-                            <h5>Datos de la tarjeta</h5>
-                            <hr>
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <label for="numero" id="numero" class="sub-titulo">Número de tarjeta:</label>
-                                    <input type="tel" class="form-control" id="numero" placeholder="Número:" formControlName="cardNumber">
-                                    <div class="error ml-70" *ngIf="forma.get('cardNumber').errors && forma.get('cardNumber').dirty">
-                                        <p *ngIf="forma.get('cardNumber').hasError('required')">* Campo requerido</p>
-                                        <p *ngIf="forma.get('cardNumber').hasError('maxlength')">* Campo no válido</p>
-                                    </div>
-                                </div>
-                                <!-- <textarea class='autoExpand form-control' rows='3' data-min-rows='3' placeholder='Dirección'></textarea> -->
-                                <div class="form-group col-md-6">
-                                    <label for="nombre" id="nombre" class="sub-titulo">Nombre del titular:</label>
-                                    <input type="text" class="form-control" id="nombre" placeholder="Nombre:" formControlName="cardName">
-                                    <div class="error ml-70" *ngIf="forma.get('cardName').errors && forma.get('cardName').dirty">
-                                        <p *ngIf="forma.get('cardName').hasError('required')">* Campo requerido</p>
-                                        <p *ngIf="forma.get('cardName').hasError('minlength')">* Campo no válido</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <label for="mes" class="sub-titulo">Mes:</label>
-                                    <input type="tel" class="form-control" id="mes" placeholder="Mes de vencimiento" formControlName="expireMonth">
-                                    <div class="error ml-70" *ngIf="forma.get('expireMonth').errors && forma.get('expireMonth').dirty">
-                                        <p *ngIf="forma.get('expireMonth').hasError('required')">* Campo requerido</p>
-                                        <p *ngIf="forma.get('expireMonth').hasError('maxlength')">* Campo no válido</p>
-                                    </div>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label for="anio_carro" class="sub-titulo">Año:</label>
-                                    <input type="tel" class="form-control" id="anio_card" placeholder="Año de vencimiento" formControlName="expireYear">
-                                    <div class="error ml-70" *ngIf="forma.get('expireYear').errors && forma.get('expireYear').dirty">
-                                        <p *ngIf="forma.get('expireYear').hasError('required')">* Campo requerido</p>
-                                        <p *ngIf="forma.get('expireYear').hasError('maxlength')">* Campo no válido</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <label for="mes" class="sub-titulo">CVV:</label>
-                                    <input type="tel" class="form-control" id="mes" placeholder="3 dígitos" formControlName="cvv">
-                                    <div class="error ml-70" *ngIf="forma.get('cvv').errors && forma.get('cvv').dirty">
-                                        <p *ngIf="forma.get('cvv').hasError('required')">* Campo requerido</p>
-                                        <p *ngIf="forma.get('cvv').hasError('maxlength')">* Campo no válido</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <h5>Datos de facturación</h5>
-                            <hr>
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <label for="ciudad" class="sub-titulo">Ciudad:</label>
-                                    <input type="text" class="form-control" id="ciudad" placeholder="Ciudad actual en donde vive" formControlName="city">
-                                    <div class="error ml-70" *ngIf="forma.get('city').errors && forma.get('city').dirty">
-                                        <p *ngIf="forma.get('city').hasError('required')">* Campo requerido</p>
-                                        <p *ngIf="forma.get('city').hasError('minlength')">* Campo no válido</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group col-md-12">
-                                    <label for="ciudad" class="sub-titulo">Dirección:</label>
-                                    <textarea class='autoExpand form-control' rows='3' data-min-rows='3' placeholder='Dirección de su residencia actual' formControlName="address"></textarea>
-                                    <div class="error ml-70" *ngIf="forma.get('address').errors && forma.get('address').dirty">
-                                        <p *ngIf="forma.get('address').hasError('required')">* Campo requerido</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="formulario-externo">
-                            <div class="row">
-                                <div class="col-md-12 text-right">
-                                    <a href="" class="enlace-atras" [routerLink]="['/client-info']" routerLinkActive="router-link-active">Atrás</a>
-                                    <button [disabled]="forma.invalid" class="btn btn-primary" type="submit" [routerLink]="['/general/thanks']" routerLinkActive="router-link-active">Pagar</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </form>
-    </div>
-
-    <footer>
-        <div class="izquierda float-left height-70">
-            <a [routerLink]="['/home']" class="navbar-brand d-flex align-items-center pl-3">
-                <img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/banesco.jpg" alt="" class="sizeImgLogo">
-            </a>
-        </div>
-        <div class="derecha height-70">
-            <a href="javascript:void(0)" class="float-right mt-4 ml-3 pr-3"><i class="fab fa-youtube font-size-18 color-verde"></i></a>
-            <a href="javascript:void(0)" class="float-right mt-4 ml-3"><i class="fab fa-twitter font-size-18 color-verde"></i></a>
-            <a href="javascript:void(0)" class="float-right mt-4 ml-3"><i class="fab fa-linkedin font-size-18 color-verde"></i></a>
-            <a href="javascript:void(0)" class="float-right mt-4 ml-3"><i class="fab fa-instagram font-size-18 color-verde"></i></a>
-            <a href="javascript:void(0)" class="float-right mt-4 ml-3"><i class="fab fa-facebook font-size-18 color-verde"></i></a>
-        </div>
-        <ul class="w-100 ul-footer pl-3 d-">
-            <li class="mx-3"><a href="">Bienes reposeídos</a></li>
-            <li class="mx-3"><a href="">Promociones</a></li>
-            <li class="mx-3"><a href="">Preguntas Frecuentes</a></li>
-            <li class="mx-3"><a href="">Club Banesco</a></li>
-            <li class="mx-3"><a href="">Somos Banesco</a></li>
-        </ul>
-        <p class="pl-3 p-footer">2018. Banesco(Panamá), S.A. Todos los derechos reservados.</p>
-        <div class="izquierda pl-3 float-left">
-            <img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/superintendencia.png" alt="">
-        </div>
-        <div class="derecha pl-3 float-right pr-3">
-            <img src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/norton.png" alt="">
-        </div>
-    </footer>
+<div *ngIf="!isLoading" class="portada-info">
+  <div class="texto">
+    <h3>Seguro de {{insureType}}</h3>
+    <ng-template [ngIf]="insureType == 'Cáncer'">
+      <h5>Hay enfermedades inesperadas, pero estaremos contigo en todo momento. <br> Obtén aquí tranquilidad y apoyo
+        para tí y tu familia en caso que seas diagnosticado con Cáncer. <br>
+        Completa los datos y en menos de 24 horas podrás disfrutar de la tranquilidad de estar respaldado.
+      </h5>
+    </ng-template>
+    <ng-template [ngIf]="insureType != 'Cáncer'">
+      <h5>Sabemos que hay momentos difíciles, pero estamos aquí para apoyarte. <br> Completa los datos y en menos de 24
+        horas podrás disfrutar de la tranquilidad de estar respaldado.</h5>
+    </ng-template>
+  </div>
 </div>
+
+<div class="information" [ngClass]="{'d-none': isLoading}">
+  <div class="container">
+    <section class="payment">
+      <div class="container">
+        <div class="row">
+          <div style="margin-bottom: 10px">
+            <svg class="img click" (click)="previus()">
+              <g>
+                <path xmlns:default="http://www.w3.org/2000/svg" d="M15.41 16.09l-4.58-4.59 4.58-4.59L14 5.5l-6 6 6 6z"
+                      style="fill: rgb(0, 60, 113);"></path>
+              </g>
+            </svg>
+            <p class="previous click" (click)="previus()">Volver a paso previo</p>
+          </div>
+        </div>
+        <div class="offset-lg-2 col-lg-7 col-md-12">
+          <form [formGroup]="forma" (ngSubmit)="submitPayment()">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="panel card customClass">
+                  <div class="panel-heading card-header" role="tab">
+                    <div class="panel-title">
+                      <div><!--bindings={}-->
+                        <button class="btn btn-link btn-block clearfix">
+                          <div class="pull-left float-left" style="margin-left: -20px;"> Datos de Pago </div>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="formulario">
+                    <p class="text-error-payment" *ngIf="errorMessage">{{errorMessage}}</p>
+                    <p class="total-amount">Total de la Orden: <b class="amount-bill">{{  request.paymentInformation.amount | currency }}</b></p>
+                    <div class="row">
+                      <div class="col-md-3">
+                        <img
+                          src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/mastercard.png"
+                          height="32" width="32" alt="">
+                        <img
+                          src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/visa.png"
+                          height="32" width="32" alt="">
+                      </div>
+                    </div>
+                    <hr>
+                    <div class="form-row">
+                      <div class="form-group col-md-6">
+                        <label for="numero" class="sub-titulo">Número de tarjeta:</label>
+                        <input type="tel" class="form-control" id="numero"  formControlName="cardNumber" mask="0000 0000 0000 0000">
+                        <div class="error ml-70"
+                             *ngIf="forma.get('cardNumber').errors && forma.get('cardNumber').dirty">
+                          <p *ngIf="forma.get('cardNumber').hasError('required')">* Campo requerido</p>
+                          <p *ngIf="forma.get('cardNumber').hasError('invalidcard')">* Tarjeta invalida</p>
+                        </div>
+                      </div>
+                      <!-- <textarea class='autoExpand form-control' rows='3' data-min-rows='3' placeholder='Dirección'></textarea> -->
+                      <div class="form-group col-md-6">
+                        <label for="nombre" class="sub-titulo">Nombre del titular:</label>
+                        <input type="text" class="form-control" id="nombre" placeholder=""
+                               formControlName="cardName">
+                        <div class="error ml-70" *ngIf="forma.get('cardName').errors && forma.get('cardName').dirty">
+                          <p *ngIf="forma.get('cardName').hasError('required')">* Campo requerido</p>
+                          <p *ngIf="!forma.get('cardName').hasError('required') && forma.get('cardName').hasError('minlength')">* Campo no válido</p>
+                          <p *ngIf="!forma.get('cardName').hasError('minlength') && forma.get('cardName').hasError('leastOneSpace')">* Ingrese nombre(s) y apellido(s)</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-row">
+                      <div class="form-group col-md-6">
+                        <label for="mes" class="sub-titulo">Fecha de Expiración:</label>
+                        <input type="text" class="form-control" id="mes" formControlName="expireDate" mask="00/00">
+                        <div class="error ml-70"
+                             *ngIf="forma.get('expireDate').errors && forma.get('expireDate').dirty">
+                          <p *ngIf="forma.get('expireDate').hasError('required')">* Campo requerido</p>
+                          <p *ngIf="!forma.get('expireDate').hasError('required') && forma.get('expireDate').hasError('invalidDate')">* Fecha Expirada</p>
+                        </div>
+                      </div>
+                      <div class="form-group col-md-6">
+                        <label for="cvv" class="sub-titulo">CVV:</label>
+                        <input type="text" class="form-control" id="cvv" mask="000" formControlName="cvv">
+                        <div class="error ml-70" *ngIf="forma.get('cvv').errors && forma.get('cvv').dirty">
+                          <p *ngIf="forma.get('cvv').hasError('required')">* Campo requerido</p>
+                          <p *ngIf="forma.get('cvv').hasError('maxlength')">* Campo no válido</p>
+                        </div>
+                      </div>
+                    </div>
+                    <hr>
+                    <div class="form-row">
+                      <div class="form-group col-md-12">
+                        <label for="address" class="sub-titulo">Dirección:</label>
+                        <textarea id="address"  class='autoExpand form-control' rows='3' data-min-rows='3'
+                                  placeholder='' formControlName="address"></textarea>
+                        <div class="error ml-70" *ngIf="forma.get('address').errors && forma.get('address').dirty">
+                          <p *ngIf="forma.get('address').hasError('required')">* Campo requerido</p>
+                          <p *ngIf="forma.get('address').hasError('maxlength')">* Campo no válido</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div _ngcontent-c6="" class="row">
+              <div _ngcontent-c6="" class="col-md-12 text-center">
+                <button _ngcontent-c6="" class="btn btn-primary mb-2 mb-md-0 solicitar"> PAGAR </button>
+              </div>
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<ng-template [ngIf]="isLoading">
+  <bsp-loader></bsp-loader>
+</ng-template>
