@@ -111,7 +111,9 @@ export class ShowPaymentComponent implements OnInit {
           cvv: form.cvv,
           cardFirstName: name,
           cardLastName: lastname,
-          email: insured.email
+          email: insured.email,
+          phone: insured.cellphone,
+          address: insured.street
         }
       };
 
