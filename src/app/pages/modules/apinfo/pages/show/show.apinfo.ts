@@ -3,19 +3,27 @@ import { SwiperComponent, SwiperDirective, SwiperConfigInterface,
   SwiperScrollbarInterface, SwiperPaginationInterface } from 'ngx-swiper-wrapper';
 import { SLIDES, SLIDES_CANCER } from '../../../core/utils/select.util';
 import { ScrollToService } from '@nicky-lenaers/ngx-scroll-to';
-import { ActivatedRoute } from '@angular/router';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import { Router, ActivatedRoute } from '@angular/router';
+import { CoverageService } from '../../../core/services/coverage.service';
+import { RequestService } from '../../../core/services/request.service';
 @Component({
   selector: 'bsp-show',
   templateUrl: './show.apinfo.html',
-  styleUrls: ['./show.apinfo.scss']
+  styleUrls: ['./show.apinfo.scss', '../../../coverage/pages/show/show.scss']
 })
 @Injectable()
 export class ShowApinfo implements OnInit {
+  public coverages: any[] = [];
+  public insuranceId: string;
+  public actualCoverage: any;
+  public isLoading: boolean;
+
   customClass = 'customClass';
   isFirstOpen = true;
   public slides = SLIDES;
   public greenActivate = '1';
-  public insureType = null;
+  public insureType: string;
 
   public type: string = 'component';
 
@@ -73,17 +81,80 @@ export class ShowApinfo implements OnInit {
   @ViewChild(SwiperComponent) componentRef: SwiperComponent;
   @ViewChild(SwiperDirective) directiveRef: SwiperDirective;
 
-  constructor(private _scrollToService: ScrollToService, private _route: ActivatedRoute){
-    this.insureType = _route.snapshot.paramMap.get('insureType');
-    this.insureType = this.insureType.replace("seguros-", "");
-    if(this.insureType == "cancer"){
-      this.slides = SLIDES_CANCER;
+  constructor(private _scrollToService: ScrollToService, private _route: ActivatedRoute, 
+    private modalService: NgbModal, private _coverageService: CoverageService,
+    private _requestService: RequestService, private _router: Router, 
+    ){
+      this.isLoading = true;
+      this.insureType = _route.snapshot.paramMap.get('insureType');
+      this.insureType = this.insureType.replace("seguros-", "");
+      if(this.insureType == "cancer"){
+        this.slides = SLIDES_CANCER;
+      }
     }
-  }
 
   ngOnInit() {
-
+    this.getCoverages();
     window.scrollTo(0, 0);
+  }
+
+  private getCoverages() {
+    this._coverageService.getAllConverages({type: this.insureType}).subscribe(
+      response => {
+        this.isLoading = false;
+        this.coverages = response.result.insurances;
+      }, error => {
+        this.isLoading = false;
+        this.coverages = [];
+      }
+    );
+  }
+
+
+  public reject(modal: any) {
+    modal.dismiss('Cross click');
+    //this._router.navigate(['formulario', this.insuranceId, 'rechazo']);
+  }
+
+  private updateRequest(modal: any) {
+        modal.dismiss('Cross click');
+    this.isLoading = true;
+
+    const payload = { insuranceId: this.insuranceId };
+    this._requestService.saveRequest(payload, this.insureType).subscribe(
+      response => {
+        const requestId = response && response.result && response.request && response.result.request.id;
+        if(!requestId){
+          console.error("[pages.show.ts]", "requestId not found");
+          this.isLoading = false;
+        }
+        localStorage.setItem('requestId', response.result)
+        this._router.navigate(['cotizar', response.result.request.id]);
+      }, error => {
+        console.error("[pages.show.ts]", error);
+        this.isLoading = false;
+      }
+    );
+  }
+  openSm(content, insurance, mod?) {
+    if (mod) {
+      mod.dismiss('Cross click');
+    } else {
+    this.actualCoverage = insurance;
+    this.insuranceId = insurance.id;
+    }
+    this.modalService.open(content, {centered: true});
+  }
+
+  openLg(content, insurance, mod?) {
+    if (mod) {
+      mod.dismiss('Cross click');
+    } else {
+    this.actualCoverage = insurance;
+    this.insuranceId = insurance.id;
+    }
+    
+    this.modalService.open(content, {centered: true, size: 'lg'});
   }
 
   public toggleDisabled() {

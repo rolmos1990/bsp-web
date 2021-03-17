@@ -6,6 +6,7 @@ const routes: Routes = [
   {
     path: '',
     component: ShowApinfo,
+    pathMatch: 'full',
     data: { title: 'Banesco Seguros' }
   }
 ];

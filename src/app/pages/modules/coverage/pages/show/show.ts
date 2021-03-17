@@ -85,6 +85,7 @@ export class ShowComponent implements OnInit {
     this.actualCoverage = insurance;
     this.insuranceId = insurance.id;
     }
+    console.log(content);
     this.modalService.open(content, {centered: true, size: 'lg'});
   }
 

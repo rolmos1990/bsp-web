@@ -1,4 +1,5 @@
 <ng-template #content let-modal>
+<div class="cobertura">
   <div class="modal-header">
     <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
       <span aria-hidden="true" style="color: #556176;">&times;</span>
@@ -272,10 +273,12 @@
   <div class="modal-footer">
     <button class="btn btn-primary centrado" (click)="openLg(terminos,actualCoverage, modal)">SOLICITAR</button>
   </div>
+</div>
 </ng-template>
 
 <!-- Modal Términos y condiciones -->
 <ng-template #terminos let-modal>
+<div class="cobertura">
   <ng-template [ngIf]="isLoading">
     <bsp-loader></bsp-loader>
   </ng-template>
@@ -324,153 +327,99 @@
       <button class="btn-primary-modal" (click)="updateRequest(modal)">ACEPTO</button>
     </div>
   </div>
+</div>
 </ng-template>
 
-<div *ngIf="!isLoading" class="wrapper">
+<div *ngIf="!isLoading" class="wrapper cobertura">
   <section class="cobertura">
     <div class="container">
       <ng-template [ngIf]="insureType == 'accidentes-personales'">
-      <div class="centrado">
-        <h3 class="titulo-1" style="color:#003c71">¡Tenemos la protección de Accidentes Personales ideal para ti!</h3>
-        <h4 class="subtitulo">Mira nuestras recomendaciones y compra la que más se ajuste a lo que estás buscando.</h4>
-      </div>
+        <div class="centrado">
+          <h3 class="titulo-1" style="color:#003c71">¡Tenemos la protección de Accidentes Personales ideal para ti!</h3>
+          <h4 class="subtitulo">Mira nuestras recomendaciones y compra la que más se ajuste a lo que estás buscando.</h4>
+        </div>
       </ng-template>
       <ng-template [ngIf]="insureType == 'cancer'">
         <div class="centrado">
           <h3 class="titulo-1" style="color:#003c71">¡Adquiere seguridad y tranquilidad con tu seguro de Cáncer!</h3>
           <h4 class="subtitulo">Mira nuestras recomendaciones y compra la que más se ajuste a lo que estás buscando.</h4>
         </div>
-        </ng-template>
-
-      <div class="row contenedor">
-        <div *ngFor="let coverage of coverages | coveragesSort; let i = index;"
-          class="col-md-6 col-lg-4 d-none d-md-block">
-          <div class="cuadrado {{ i===0 || i===2 ? 'mt-40' : 'sombra'}}">
-            <div class="superior">
-              <div class="container">
+      </ng-template>
+      <div class="row">
+      <div class="col-md-6 col-lg-4 cont_card" *ngFor="let coverage of coverages | coveragesSort; let i = index;">
+          <div class="col">
+            <div class="card">
+              <div class="card-body">
                 <div class="row">
-                  <div class="col-md-12">
-                    <h5 style="font-weight: 700; font-size: 14px !important; text-align: end; color:#556176;">{{ coverage.coverageDetail.monthlyPayments }} cuotas
-                      mensuales de:</h5>
+                  <div class="col-sm-5 col-md-5 cont_img">
+                    <img src="../../../../../../favicon.ico" class="" alt=""/>
                   </div>
-                  <div class="col-md-12">
-                    <h4 class="xmes mr-3">USD {{coverage.coverageDetail.monthlyPrime}}</h4>
+                  <div class="col-sm-7 col-md-7 cobertura">
+                    <h2>{{coverage.coverageDetail.insuredAmount | number:'1.0-0'}} $</h2>
+                    <h6>Monto asegurado</h6>
                   </div>
                 </div>
                 <div class="row">
-                  <ng-template [ngIf]="coverage.type == 'cancer'">
-                  <div class="col-md-12">
-                    <img *ngIf="i === 0"
-                      src="../../../../../../assets/img/awareness-ribbon.svg" alt=""
-                      class="">
-                    <img *ngIf="i === 1"
-                      src="../../../../../../assets/img/awareness-ribbon.svg" alt=""
-                      class="">
-                    <img *ngIf="i === 2"
-                      src="../../../../../../assets/img/awareness-ribbon.svg" alt=""
-                      class="">
-                  </div>
-                  </ng-template>
-                  <ng-template [ngIf]="coverage.type != 'cancer'">
-                    <div class="col-md-12">
-                      <img *ngIf="i === 0"
-                        src="../../../../../../assets/img/icono2.png" alt=""
-                        class="">
-                      <img *ngIf="i === 1"
-                        src="../../../../../../assets/img/icono2.png" alt=""
-                        class="">
-                      <img *ngIf="i === 2"
-                        src="../../../../../../assets/img/icono2.png" alt=""
-                        class="">
-                    </div>
-                  </ng-template>
-                </div>
-              </div>
-            </div>
-
-            <div class="inferior">
-              <div class="container">
-                <div class="row">
-                  <div class="col-xs-12 col-md-12">
-                    <p class="text-center">Suma asegurada</p>
-                    <h2 class="text-center">USD {{coverage.coverageDetail.insuredAmount | number:'1.0-0'}}</h2>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="contenedor-blanco">
-              <div class="container">
-                <button class="btn ver-detalle" (click)="openSm(content, coverage)"><img
-                    src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/flechita2.png"
-                    alt="" class="flechita"> Ver detalles</button>
-                <button class="btn btn-primary solicitar" (click)="openLg(terminos, coverage)">SOLICITAR</button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div *ngFor="let coverage of coverages | coveragesSort; let i = index;"
-          class="col-md-6 col-lg-4 d-block d-md-none">
-          <div class="cuadrado {{ coverage.recommended ? 'sombra' : ' '}}">
-            <div class="superior">
-              <div class="container">
-                <div class="row">
-                  <div class="col-md-12">
-                    <h5 style="font-weight: 700; font-size: 14px !important; text-align: end; color:#556176;">{{ coverage.coverageDetail.monthlyPayments }} cuotas
-                      mensuales de:</h5>
-                  </div>
-                  <div class="col-md-12">
-                    <h4 class="xmes mr-3">USD {{coverage.coverageDetail.monthlyPrime}}</h4>
+                  <div class="col-sm-12 col-lg-12 cont_info">
+                    <h5 class="card-title">
+                      <b>Basico</b>
+                      <button class="btn ver-detalle" (click)="openSm(content, coverage)">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
+                      <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                      <path d="M8.93 6.588l-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                      </svg>
+                      </button>
+                    </h5>
+                    <p class="card-text">Incluya un seguro básico con acceso a la cobertura mínima.</p>
+                    <ng-template [ngIf]="insureType == 'accidentes-personales'">
+                      <ul>
+                        <li>
+                          Muerte Accidental <b>({{coverage.coverageDetail.accidentalDeath}}%)</b>
+                        </li>
+                        <li>
+                          Adelanto de Gastos Funerarios <b>({{coverage.coverageDetail.funeraryAdvances}}%)</b>
+                        </li>
+                        <li>
+                          Doble indemnización por muerte en accidente especifico <b>({{coverage.coverageDetail.dobleCompensation}}%)</b>
+                        </li>
+                        <li>
+                          Gastos Médicos por Accidente <b>({{coverage.coverageDetail.medicalExpenses}}%)</b>
+                        </li>
+                        <li>
+                          Invalidez Permanente <b>({{coverage.coverageDetail.permanentInhability}}%)</b>
+                        </li>
+                        <li>
+                          Servicio de Emergencia Médica por Accidente <b>({{coverage.coverageDetail.emergencyService}}%)</b>
+                        </li>
+                        <li>
+                          Asistencia en Viajes <b>({{coverage.coverageDetail.travelAssistance}}%)</b>
+                        </li>
+                      </ul>
+                    </ng-template>
+                    <ng-template [ngIf]="insureType == 'cancer'">
+                      <ul>
+                        <li>
+                          En caso que recibas un diagnóstico de cáncer por primera vez 
+                          en tu vida se te entregará el monto total asegurado. 
+                          Ej.: Si eres diagnosticado como paciente de cáncer 
+                          te entregamos el monto total asegurado por USD {{coverage.coverageDetail.insuredAmount | number:'1.0-0'}}
+                        </li>
+                        <li>
+                          en caso de fallecimiento del asegurado se le entregará 
+                          el monto total a los beneficiarios designados.
+                        </li>
+                      </ul>
+                    </ng-template>
+                    <h2>
+                      {{coverage.coverageDetail.monthlyPrime}} $<label>/Mensuales</label>
+                    </h2>
                   </div>
                 </div>
                 <div class="row">
-                  <ng-template [ngIf]="actualCoverage.type == 'cancer'">
-                    <div class="col-md-12">
-                      <img *ngIf="i === 0"
-                        src="../../../../../../assets/img/awareness-ribbon.svg" alt=""
-                        class="">
-                      <img *ngIf="i === 1"
-                        src="../../../../../../assets/img/awareness-ribbon.svg" alt=""
-                        class="">
-                      <img *ngIf="i === 2"
-                        src="../../../../../../assets/img/awareness-ribbon.svg" alt=""
-                        class="">
-                    </div>
-                  </ng-template>
-                  <ng-template [ngIf]="actualCoverage.type != 'cancer'">
-                    <div class="col-md-12">
-                      <img *ngIf="i === 0"
-                        src="../../../../../../assets/img/icono2.png" alt=""
-                        class="">
-                      <img *ngIf="i === 1"
-                        src="../../../../../../assets/img/icono2.png" alt=""
-                        class="">
-                      <img *ngIf="i === 2"
-                        src="../../../../../../assets/img/icono2.png" alt=""
-                        class="">
-                    </div>
-                  </ng-template>
-                </div>
-              </div>
-            </div>
-
-            <div class="inferior">
-              <div class="container">
-                <div class="row">
-                  <div class="col-xs-12 col-md-12">
-                    <p class="text-center">Suma asegurada</p>
-                    <h2 class="text-center">USD {{coverage.coverageDetail.insuredAmount | number:'1.0-0'}}</h2>
+                  <div class="col-sm-12 col-lg-12 cont_botones">
+                    <button class="btn btn-primary solicitar" (click)="openLg(terminos, coverage)">SOLICITAR</button>
                   </div>
                 </div>
-              </div>
-            </div>
-
-            <div class="contenedor-blanco">
-              <div class="container">
-                <button class="btn ver-detalle" (click)="openSm(content, coverage)"><img
-                    src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/flechita.png"
-                    alt="" class="flechita"> Ver detalles</button>
-                <button class="btn btn-primary solicitar" (click)="openLg(terminos, coverage)">SOLICITAR</button>
               </div>
             </div>
           </div>

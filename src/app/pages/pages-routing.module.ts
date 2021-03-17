@@ -22,7 +22,8 @@ const routes: Routes = [
     loadChildren: './modules/general/general.module#GeneralModule'
   },
   {
-    path: 'cobertura/:insureType',
+    //path: 'cobertura/:insureType',
+    path: 'MNXWEZLSOR2XEYI/:insureType',
     loadChildren: './modules/coverage/coverage.module#CoverageModule',
     pathMatch: 'full'
   },

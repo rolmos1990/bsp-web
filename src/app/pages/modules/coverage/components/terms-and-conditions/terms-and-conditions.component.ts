@@ -13,9 +13,9 @@ export class TermsAndConditionsComponent {
   public partialDisability = PARTIALDISABILITY;
   public insureType = null;
 
-  constructor(private _route: ActivatedRoute) {
+  constructor(public _route: ActivatedRoute) {
     this.insureType = _route.snapshot.paramMap.get('insureType');
-    console.log("INSURANCE TYPE", this.insureType);
+    //console.log(this.insureType);
   }
 
 }

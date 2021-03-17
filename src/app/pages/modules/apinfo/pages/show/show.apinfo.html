@@ -1,3 +1,339 @@
+<ng-template [ngIf]="isLoading">
+  <bsp-loader></bsp-loader>
+</ng-template>
+
+<ng-template #content let-modal>
+<div class="cobertura">
+  <div class="modal-header">
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true" style="color: #556176;">&times;</span>
+    </button>
+  </div>
+  <ng-template [ngIf]="isLoading">
+    <bsp-loader></bsp-loader>
+  </ng-template>
+  <div *ngIf="!isLoading" class="modal-body">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <!-- -->
+        </div>
+        <div class="col-md-6">
+          <img src="../../../../../../assets/img/menor.png"
+            alt="" class="">
+        </div>
+      </div>
+      <ng-template [ngIf]="actualCoverage.type === 'accidentes-personales'">
+      <div class="row">
+        <div class="col-md-12">
+          <h4 class="h4-verde" style="color:#003c71">Cobertura completa: </h4>
+          <p style="color:#556176">Los porcentajes indican la porción del monto asegurado <br> que te será entregado o a los beneficiarios del seguro<br>en caso de algún accidente de los detallados en la parte inferior.</p>
+
+          <div class="container cober coverage">
+            <div class="position-relative">
+              <div class="bolita"></div>
+              <accordion>
+                <accordion-group #muerte [panelClass]="customClass" [isOpen]="isFirstOpen">
+                  <button class="btn btn-link btn-block clearfix" accordion-heading>
+                    <div class="pull-left float-left lix">Muerte Accidental</div>
+                    <div *ngIf="!muerte.isOpen" class="float-right">
+                      <img
+                        src="https://res.cloudinary.com/merchanj/image/upload/v1559937359/Banesco_Seguros_Panama/AP/arrow3.png"
+                        alt="" class="arrow2">
+                    </div>
+                    <div *ngIf="muerte.isOpen" class="float-right">
+                      <img
+                        src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/arrow2.svg"
+                        alt="" class="arrow2">
+                    </div>
+                    <div class="porcentaje">
+                      {{actualCoverage.coverageDetail.accidentalDeath}}%
+                    </div>
+                  </button>
+                  <p>Si el asegurado muere en un accidente, a los beneficiarios se les pagará el monto asegurado que
+                    contrató (indemnización). Ej.: accidentes de tránsito, sucesos imprevistos, homicidios dolosos y
+                    culposos.
+                  </p>
+                </accordion-group>
+              </accordion>
+            </div>
+
+            <div class="position-relative">
+              <div class="bolita"></div>
+              <accordion>
+                <accordion-group #funerarios [panelClass]="customClass">
+                  <button class="btn btn-link btn-block clearfix" accordion-heading>
+                    <div class="pull-left float-left lix">Adelantos de Gastos Funerarios</div>
+                    <div *ngIf="!funerarios.isOpen" class="float-right">
+                      <img
+                        src="https://res.cloudinary.com/merchanj/image/upload/v1559937359/Banesco_Seguros_Panama/AP/arrow3.png"
+                        alt="" class="arrow2">
+                    </div>
+                    <div *ngIf="funerarios.isOpen" class="float-right">
+                      <img
+                        src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/arrow2.svg"
+                        alt="" class="arrow2">
+                    </div>
+                    <div class="porcentaje">
+                      {{actualCoverage.coverageDetail.funeraryAdvances}}%
+                    </div>
+
+                  </button>
+                  <p>Adelantamos hasta el 25% del monto asegurado de los gastos funerarios a los beneficiarios cuando ocurre la muerte accidental del asegurado hasta un límite de USD 5,000. Ej.: si tu monto asegurado por muerte accidental es USD 10,000 te adelantamos hasta USD 2,500.</p>
+                </accordion-group>
+              </accordion>
+            </div>
+
+            <div class="position-relative">
+              <div class="bolita"></div>
+              <accordion>
+                <accordion-group #doble [panelClass]="customClass">
+                  <button class="btn btn-link btn-block clearfix" accordion-heading>
+                    <div class="pull-left float-left lix">Doble indemnización por Muerte Accidental Específico</div>
+                    <div *ngIf="!doble.isOpen" class="float-right">
+                      <img
+                        src="https://res.cloudinary.com/merchanj/image/upload/v1559937359/Banesco_Seguros_Panama/AP/arrow3.png"
+                        alt="" class="arrow2">
+                    </div>
+                    <div *ngIf="doble.isOpen" class="float-right">
+                      <img
+                        src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/arrow2.svg"
+                        alt="" class="arrow2">
+                    </div>
+                    <div class="porcentaje">
+                      {{actualCoverage.coverageDetail.dobleCompensation}}%
+                    </div>
+                  </button>
+                  <p>Duplicamos el monto asegurado por muerte accidental mientras el asegurado se transporta en un vehículo público (autobús, metro, taxi, etc) o si se ve envuelto en un incendio en algún edificio público (hotel, museo, cine, teatro, etc).</p>
+                </accordion-group>
+              </accordion>
+            </div>
+
+            <div class="position-relative">
+              <div class="bolita"></div>
+              <accordion>
+                <accordion-group #gastos [panelClass]="customClass">
+                  <button class="btn btn-link btn-block clearfix" accordion-heading>
+                    <div class="pull-left float-left lix">Gastos Médicos por Accidentes</div>
+                    <div *ngIf="!gastos.isOpen" class="float-right">
+                      <img
+                        src="https://res.cloudinary.com/merchanj/image/upload/v1559937359/Banesco_Seguros_Panama/AP/arrow3.png"
+                        alt="" class="arrow2">
+                    </div>
+                    <div *ngIf="gastos.isOpen" class="float-right">
+                      <img
+                        src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/arrow2.svg"
+                        alt="" class="arrow2">
+                    </div>
+                    <div class="porcentaje">
+                      {{actualCoverage.coverageDetail.medicalExpenses}}%
+                    </div>
+                  </button>
+                  <p>Cobertura complementaria donde te reembolsamos hasta un 10% del monto asegurado para gastos médicos incurridos por accidentes hasta un límite de USD 1,000.</p>
+                </accordion-group>
+              </accordion>
+            </div>
+
+            <div class="position-relative">
+              <div class="bolita"></div>
+              <accordion>
+                <accordion-group #permanente [panelClass]="customClass">
+                  <button class="btn btn-link btn-block clearfix" accordion-heading>
+                    <div class="pull-left float-left lix">Invalidez Permanente (Total o Parcial)</div>
+                    <div *ngIf="!permanente.isOpen" class="float-right">
+                      <img
+                        src="https://res.cloudinary.com/merchanj/image/upload/v1559937359/Banesco_Seguros_Panama/AP/arrow3.png"
+                        alt="" class="arrow2">
+                    </div>
+                    <div *ngIf="permanente.isOpen" class="float-right">
+                      <img
+                        src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/arrow2.svg"
+                        alt="" class="arrow2">
+                    </div>
+                    <div class="porcentaje">
+                      {{actualCoverage.coverageDetail.permanentInhability}}%
+                    </div>
+                  </button>
+                  <p>Cubrimos un porcentaje del monto total según el grado de discapacidad que pudiera presentar el asegurado a causa de un accidente sufrido.
+                    <span class="tooltip-insure">Ver tipos de Invalidez
+                      <span class="tooltiptext">
+                        <b>INVALIDEZ TOTAL Y PERMANENTE (%)</b>
+                        <ul>
+                          <li>Lesiones en la médula espinal que imposibilitan permanentemente caminar o parálisis completa. (100%)</li>
+                          <li>Pérdida de la razón absoluta e incurable. (100%)</li>
+                          <li>Ceguera absoluta de ambos ojos (100%)</li>
+                          <li>Pérdida por amputación o inutilización absoluta de ambos brazos, ambas piernas, ambos pies o una mano conjuntamente con una pierna o un pie (100%)</li>
+                        </ul>
+                        <b>INVALIDEZ PARCIAL Y PERMANENTE (%)</b>
+                        <ul>
+                          <li>Sordera total bilateral (65%)</li>
+                          <li>Pérdida del habla (60%)</li>
+                          <li>Pérdida de un ojo totalmente. (50%)</li>
+                          <li>Reducción de la visión de ambos ojos en más de 50% cada uno. (50%)</li>
+                          <li>Pérdida de la visión de un ojo. (40%)</li>
+                          <li>Pérdida total del maxilar inferior o ablación total de la mandíbula. (40%)</li>
+                          <li>Pérdida total del olfato o del gusto. (30%)</li>
+                          <li>Sordera total unilateral. (35%)</li>
+                          <li>Pérdida total de un brazo o una mano. (70%)</li>
+                          <li>Pérdida total de un dedo pulgar o índice. (30%)</li>
+                          <li>Pérdida total de cualquier otro dedo de una mano. (20%)</li>
+                          <li>Pérdida de una falange del dedo pulgar. (15%)</li>
+                          <li>Pérdida de cada falange de cualquier otro dedo. (5%)</li>
+                          <li>Pérdida total del movimiento del hombro o del codo (40%)</li>
+                          <li>Fractura mal consolidada de un brazo, que afecte su movilidad. (30%)</li>
+                          <li>Fractura mal consolidada del antebrazo, que afecte la movilidad de los dos huesos. (30%)</li>
+                          <li>Fractura mal consolidada del antebrazo, que afecte la movilidad de un solo hueso.  (20%)</li>
+                          <li>Pérdida total por amputación o inutilización de una pierna por encima de la rodilla. (70%)</li>
+                          <li>Pérdida total por amputación o inutilización de una pierna por debajo de la rodilla o de un pie. (60%)</li>
+                          <li>Pérdida total por amputación o inutilización del dedo gordo del pie. (20%)</li>
+                          <li>Pérdida total por amputación o inutilización de cualquier otro dedo del pie. (15%)</li>
+                          <li>Pérdida total del movimiento de la cadera. (65%)</li>
+                          <li>Pérdida total del movimiento de la rodilla. (50%)</li>
+                          <li>Pérdida total de los movimientos del tobillo. (30%)</li>
+                          <li>Pérdida total de los movimientos de la articulación subastragalina (20%)</li>
+                          <li>Fractura mal consolidada del fémur o de los huesos de la pierna que afecte su movilidad. (50%)</li>
+                          <li>Fractura mal consolidada de un pie que afecte su movilidad. (30%)</li>
+                        </ul>
+                      </span>
+                    </span>
+                  </p>
+                </accordion-group>
+              </accordion>
+            </div>
+
+            <div class="position-relative">
+              <div class="bolita"></div>
+              <accordion>
+                <accordion-group #emergencia [panelClass]="customClass">
+                  <button class="btn btn-link btn-block clearfix" accordion-heading>
+                    <div class="pull-left float-left lix">Servicio de Emergencia Médica por Accidente</div>
+                    <div *ngIf="!emergencia.isOpen" class="float-right">
+                      <img
+                        src="https://res.cloudinary.com/merchanj/image/upload/v1559937359/Banesco_Seguros_Panama/AP/arrow3.png"
+                        alt="" class="arrow2">
+                    </div>
+                    <div *ngIf="emergencia.isOpen" class="float-right">
+                      <img
+                        src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/arrow2.svg"
+                        alt="" class="arrow2">
+                    </div>
+                    <div class="porcentaje">
+                      {{actualCoverage.coverageDetail.emergencyService}}%
+                    </div>
+                  </button>
+                  <p>Cuentas con un servicio de ambulancia por emergencia y urgencia médica sin costo adicional, así
+                    como con atención médica a domicilio para casos no urgentes mediante un copago. <span  style="color:#003c71;text-decoration:underline;cursor:pointer;" (click)="openLg(terminos,actualCoverage, modal)">(ver Términos y
+                    Condiciones a continuación).</span></p>
+                </accordion-group>
+              </accordion>
+            </div>
+
+            <div class="position-relative">
+              <div class="bolita"></div>
+              <accordion>
+                <accordion-group #viajes [panelClass]="customClass">
+                  <button class="btn btn-link btn-block clearfix" accordion-heading>
+                    <div class="pull-left float-left lix">Asistencia en Viajes</div>
+                    <div *ngIf="!viajes.isOpen" class="float-right">
+                      <img
+                        src="https://res.cloudinary.com/merchanj/image/upload/v1559937359/Banesco_Seguros_Panama/AP/arrow3.png"
+                        alt="" class="arrow2">
+                    </div>
+                    <div *ngIf="viajes.isOpen" class="float-right">
+                      <img
+                        src="https://res.cloudinary.com/merchanj/image/upload/v1559177569/Banesco_Seguros_Panama/AP/arrow2.svg"
+                        alt="" class="arrow2">
+                    </div>
+                    <div class="porcentaje">
+                      {{actualCoverage.coverageDetail.travelAssistance}}%
+                    </div>
+                  </button>
+                  <p>Estamos para apoyarte más allá de nuestras fronteras. Si debes alojarte en un hotel o cancelar tu viaje por indicación médica, asumimos la estadía y te traemos de vuelta a casa con tu acompañante. Asimismo, en caso de fallecimiento en el extranjero, ofrecemos el servicio para traerte de vuelta a casa (repatriación).</p>
+                </accordion-group>
+              </accordion>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      </ng-template>
+      <ng-template [ngIf]="actualCoverage.type === 'cancer'">
+        <div class="row">
+          <div class="col-md-12">
+            <h4 class="h4-verde" style="color:#003c71">Protección contra Cáncer</h4>
+            <p style="color:#556176">
+              En caso que recibas un diagnóstico de cáncer por primera vez <br />
+              en tu vida se te entregará el monto total asegurado. <br />
+              Ej.: Si eres diagnosticado como paciente de cáncer <br />
+              te entregamos el monto total asegurado por USD {{actualCoverage.coverageDetail.insuredAmount | number:'1.0-0'}}<br />
+              o en caso de fallecimiento del asegurado se le entregará <br />
+              el monto total a los beneficiarios designados. <br />
+            </p>
+          </div>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-primary centrado" (click)="openLg(terminos,actualCoverage, modal)">SOLICITAR</button>
+  </div>
+</div>
+</ng-template>
+
+<!-- Modal Términos y condiciones -->
+<ng-template #terminos let-modal>
+<div class="cobertura">
+  <ng-template [ngIf]="isLoading">
+    <bsp-loader></bsp-loader>
+  </ng-template>
+  <div *ngIf="!isLoading" class="modal-body terminos">
+    <div class="container">
+      <h4 class="titulo-modal">Términos y Condiciones y Declaración de Salud</h4>
+      <div class="terms">
+        <h4 class="titulo-modal">Términos y Condiciones</h4>
+        <bsp-terms-conditions></bsp-terms-conditions>
+        <h4 class="titulo-modal">Declaración de Salud</h4>
+        <h5>Yo, el contratante declaro formalmente que:</h5>
+        <p>
+          <strong>1.</strong> No tengo ni he tenido episodios de epilepsia, vértigos, convulsiones, mareos o síncopes.
+          <br>
+          <strong>2.</strong> No practico deportes peligrosos o extremos que expongan, por irresponsabilidades, desconocimiento o por circunstancias agravante de mi salud que implica estar frente a riesgos físicos constantes.
+          <br />
+          <strong>3.</strong> No tengo ni he tenido enfermedades mentales o del sistema nervioso, parálisis, esclerosis
+          múltiple, afección de la espina dorsal, reumatismo o artritis, mutilaciones o deformaciones físicas.<br>
+          <strong>4.</strong> No tengo ni he tenido enfermedad o defecto físico del oído y/o la vista.<br>
+          <strong>5.</strong> No tengo ni he tenido enfermedades del corazón, hipertensión arterial, afecciones
+          coronarias, aneurismas, enfermedades de los riñones, enfermedades de los pulmones, anemia, cáncer, sida,
+          diabetes.<br>
+          <strong>6.</strong> Goza de buena salud y no padece enfermedades.<br>
+          <strong>7.</strong> No tengo ningún impedimento o defecto físico.<br>
+          <strong>8.</strong> No he sufrido algún accidente.<br>
+          <strong>9.</strong> No viajo como pasajero en aviones, avionetas o helicópteros particulares.<br>
+          <strong>10.</strong> No piloto ningún tipo de aeronave.<br>
+          <strong>11.</strong> No utilizo lanchas u otro tipo de embarcaciones.<br>
+          <strong>12.</strong> No he sido arrestado por posesión de drogas o por embriaguez, o tratado por adicción al
+          alcohol o a las drogas.<br>
+          <strong>13.</strong> No trabajo sobre andamios, techos, exteriores de edificios o similar.<br>
+          <strong>14.</strong> No trabajo ni transporto materiales inflamables, sustancias corrosivas o de alta
+          peligrosidad.<br>
+          <strong>15.</strong> No utilizo maquinarias para hacer mi trabajo.<br>
+          <strong>16.</strong> No trabajo con corriente eléctrica de alta tensión.<br>
+          <strong>18.</strong> No manipulo explosivos o preparados químicos.<br>
+          <strong>18.</strong> No practico ningún deporte extremo, ni aun ocasionalmente (Ejemplos: motorizados,
+          paracaidismo, buceo, carreras, de autos u otras actividades peligrosas).
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="px-5 py-3">
+    <div class="row justify-content-between">
+      <button class="btn-white" (click)="reject(modal)">CANCELAR</button>
+      <button class="btn-primary-modal" (click)="updateRequest(modal)">ACEPTO</button>
+    </div>
+  </div>
+</div>
+</ng-template>
+
 <!-- <div id="scroll" class="contenedor-pantalla" [ngStyle]="{'height': !showScrollButton() ? '0%': onBottom() ? '65%' : '100%', 'padding-bottom': !onBottom() ? '80px' : '10px'}">
 
 </div> -->
@@ -8,89 +344,191 @@
 </ng-template>
 <!-- Plantilla para Seguro de Accidentes Personales -->
 <ng-template [ngIf]="insureType === 'accidentes-personales'">
-<section id="scroll" class="apinfo">
-    <div class="portada">
-        <div class="container">
-            <div id="portada" class="row">
-                <div class="col-md-8">          
-                        <h1 style="color:#003c71">Explora nuestra protección contra Accidentes Personales</h1>
-                        <p>Te apoyamos contra cualquier eventualidad, asegurando la estabilidad financiera de tu familia cuando más lo necesiten.</p>
-                    <button style="font-size: 17px" class="btn" [routerLink]="['/cobertura/',insureType]">VER PRECIOS</button>
-                </div>
-                <div class="col-md-4">
-                    <img src="../../../../../../assets/img/hospital-ap.svg" alt="">
+    <section id="scroll" class="apinfo">
+        <div class="portada">
+            <div class="container">
+                <div id="portada" class="row">
+                    <div class="col-md-8">          
+                            <h1 style="color:#003c71">Explora nuestra protección contra Accidentes Personales</h1>
+                            <p>Te apoyamos contra cualquier eventualidad, asegurando la estabilidad financiera de tu familia cuando más lo necesiten.</p>
+                            <!--<button style="font-size: 17px" class="btn" [routerLink]="['/cobertura/',insureType]">VER PRECIOS</button>-->
+                    </div>
+                    <div class="col-md-4">
+                        <img src="../../../../../../assets/img/hospital-ap.svg" alt="">
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="contenedor">
-        <div class="botones">
-            <button [ngx-scroll-to]="'#1'" [ngClass]="{'todo-green': (greenActivate==='1')}" (click)="greenActivate = '1'" class="boton-cuadrado">¿En qué consiste nuestro seguro de AP?</button>
-            <button [ngx-scroll-to]="'#2'" [ngClass]="{'todo-green': (greenActivate==='2')}" (click)="greenActivate = '2'" class="boton-cuadrado">Coberturas</button>
-            <button [ngx-scroll-to]="'#3'" [ngClass]="{'todo-green': (greenActivate==='3')}" (click)="greenActivate = '3'" class="boton-cuadrado">Preguntas Frecuentes</button>
-        </div>
-        <a id="1"></a>
-        <div class="container">
-            <!-- aqui debe ir un ancla-->
-            <div class="caja">
+
+        <!-- Cuadros de Precio-->
+        <div *ngIf="!isLoading" class="wrapper cobertura">
+            <section class="cobertura">
+                <div class="container">
+                <ng-template [ngIf]="insureType == 'accidentes-personales'">
+                    <div class="centrado">
+                    <h3 class="titulo-1" style="color:#003c71">¡Tenemos la protección de Accidentes Personales ideal para ti!</h3>
+                    <h4 class="subtitulo">Mira nuestras recomendaciones y compra la que más se ajuste a lo que estás buscando.</h4>
+                    </div>
+                </ng-template>
+                <ng-template [ngIf]="insureType == 'cancer'">
+                    <div class="centrado">
+                    <h3 class="titulo-1" style="color:#003c71">¡Adquiere seguridad y tranquilidad con tu seguro de Cáncer!</h3>
+                    <h4 class="subtitulo">Mira nuestras recomendaciones y compra la que más se ajuste a lo que estás buscando.</h4>
+                    </div>
+                </ng-template>
                 <div class="row">
-                    <div class="col-md-6 col-lg-3">
-                        <img src="../../../../../../assets/img/medical.png" alt="">
-                    </div>
-                    <div class="col-md-6 col-lg-9">
-                        <h3>¿Qué es el seguro AP o Accidentes Personales?</h3>
-                        <p>La protección te ampara durante las 24 horas del día por accidentes que pudieras sufrir en el trabajo, en tus actividades profesionales, privadas o recreativas, en la práctica de diversos deportes no extremos, en accidentes de tránsito como peatón, conductor no profesional o pasajero y en viajes, que te originen la muerte o alguna incapacidad.</p>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-3">
-                        <h4>Este seguro te permite...</h4>
-                    </div>
-                    <div class="col-md-9">
-                        <hr>
-                    </div>
-                </div>
-                <div class="checkeado">
-                    <div class="row my-3">
-                        <div class="col-md-6">
+                <div class="col-md-6 col-lg-4 cont_card" *ngFor="let coverage of coverages | coveragesSort; let i = index;">
+                    <div class="col">
+                        <div class="card">
+                        <div class="card-body">
                             <div class="row">
-                                <div class="col-md-2">
-                                    <img src="../../../../../../assets/img/checkazul.svg" alt="">
-                                </div>
-                                <div class="col-md-10">
-                                    <p>Disponer del capital asegurado, en caso de un accidente (invalidez o pérdida de un miembro) o indemnizar a los beneficiarios del asegurado en caso de muerte accidental.</p>
-                                </div>
+                            <div class="col-sm-5 col-md-5 cont_img">
+                                <img src="../../../../../../favicon.ico" class="" alt=""/>
+                            </div>
+                            <div class="col-sm-7 col-md-7 cobertura">
+                                <h2>{{coverage.coverageDetail.insuredAmount | number:'1.0-0'}} $</h2>
+                                <h6>Monto asegurado</h6>
+                            </div>
+                            </div>
+                            <div class="row">
+                            <div class="col-sm-12 col-lg-12 cont_info">
+                                <h5 class="card-title">
+                                <b>Basico</b>
+                                <button class="btn ver-detalle" (click)="openSm(content, coverage)">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
+                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                <path d="M8.93 6.588l-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                                </svg>
+                                </button>
+                                </h5>
+                                <p class="card-text">Incluya un seguro básico con acceso a la cobertura mínima.</p>
+                                <ng-template [ngIf]="insureType == 'accidentes-personales'">
+                                <ul>
+                                    <li>
+                                    Muerte Accidental <b>({{coverage.coverageDetail.accidentalDeath}}%)</b>
+                                    </li>
+                                    <li>
+                                    Adelanto de Gastos Funerarios <b>({{coverage.coverageDetail.funeraryAdvances}}%)</b>
+                                    </li>
+                                    <li>
+                                    Doble indemnización por muerte en accidente especifico <b>({{coverage.coverageDetail.dobleCompensation}}%)</b>
+                                    </li>
+                                    <li>
+                                    Gastos Médicos por Accidente <b>({{coverage.coverageDetail.medicalExpenses}}%)</b>
+                                    </li>
+                                    <li>
+                                    Invalidez Permanente <b>({{coverage.coverageDetail.permanentInhability}}%)</b>
+                                    </li>
+                                    <li>
+                                    Servicio de Emergencia Médica por Accidente <b>({{coverage.coverageDetail.emergencyService}}%)</b>
+                                    </li>
+                                    <li>
+                                    Asistencia en Viajes <b>({{coverage.coverageDetail.travelAssistance}}%)</b>
+                                    </li>
+                                </ul>
+                                </ng-template>
+                                <ng-template [ngIf]="insureType == 'cancer'">
+                                <ul>
+                                    <li>
+                                    En caso que recibas un diagnóstico de cáncer por primera vez 
+                                    en tu vida se te entregará el monto total asegurado. 
+                                    Ej.: Si eres diagnosticado como paciente de cáncer 
+                                    te entregamos el monto total asegurado por USD {{coverage.coverageDetail.insuredAmount | number:'1.0-0'}}
+                                    </li>
+                                    <li>
+                                    En caso de fallecimiento del asegurado se le entregará 
+                                    el monto total a los beneficiarios designados.
+                                    </li>
+                                </ul>
+                                </ng-template>
+                                <h2>
+                                {{coverage.coverageDetail.monthlyPrime}} $<label>/Mensuales</label>
+                                </h2>
+                            </div>
+                            </div>
+                            <div class="row">
+                            <div class="col-sm-12 col-lg-12 cont_botones">
+                                <button class="btn btn-primary solicitar" (click)="openLg(terminos, coverage)">SOLICITAR</button>
+                            </div>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="row">
-                                <div class="col-md-2">
-                                    <img src="../../../../../../assets/img/checkazul.svg" alt="">
-                                </div>
-                                <div class="col-md-10">
-                                    <p>Cobertura en cualquier parte del mundo, las 24 horas del día, los 365 días del año.</p>
-                                </div>
-                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </section>
+        </div>
+
+        <div class="contenedor">
+            <div class="botones">
+                <button [ngx-scroll-to]="'#1'" [ngClass]="{'todo-green': (greenActivate==='1')}" (click)="greenActivate = '1'" class="boton-cuadrado">¿En qué consiste nuestro seguro de AP?</button>
+                <button [ngx-scroll-to]="'#2'" [ngClass]="{'todo-green': (greenActivate==='2')}" (click)="greenActivate = '2'" class="boton-cuadrado">Coberturas</button>
+                <button [ngx-scroll-to]="'#3'" [ngClass]="{'todo-green': (greenActivate==='3')}" (click)="greenActivate = '3'" class="boton-cuadrado">Preguntas Frecuentes</button>
+            </div>
+            <a id="1"></a>
+            <div class="container">
+                <!-- aqui debe ir un ancla-->
+                <div class="caja">
+                    <div class="row">
+                        <div class="col-md-6 col-lg-3">
+                            <img src="../../../../../../assets/img/medical.png" alt="">
+                        </div>
+                        <div class="col-md-6 col-lg-9">
+                            <h3>¿Qué es el seguro AP o Accidentes Personales?</h3>
+                            <p>La protección te ampara durante las 24 horas del día por accidentes que pudieras sufrir en el trabajo, en tus actividades profesionales, privadas o recreativas, en la práctica de diversos deportes no extremos, en accidentes de tránsito como peatón, conductor no profesional o pasajero y en viajes, que te originen la muerte o alguna incapacidad.</p>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-6">
-                            <div class="row">
-                                <div class="col-md-2">
-                                    <img src="../../../../../../assets/img/checkazul.svg" alt="">
+                        <div class="col-md-3">
+                            <h4>Este seguro te permite...</h4>
+                        </div>
+                        <div class="col-md-9">
+                            <hr>
+                        </div>
+                    </div>
+                    <div class="checkeado">
+                        <div class="row my-3">
+                            <div class="col-md-6">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <img src="../../../../../../assets/img/checkazul.svg" alt="">
+                                    </div>
+                                    <div class="col-md-10">
+                                        <p>Disponer del capital asegurado, en caso de un accidente (invalidez o pérdida de un miembro) o indemnizar a los beneficiarios del asegurado en caso de muerte accidental.</p>
+                                    </div>
                                 </div>
-                                <div class="col-md-10">
-                                    <p>Servicio de ambulancia por emergencias médicas y asistencia médica domiciliaria.</p>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <img src="../../../../../../assets/img/checkazul.svg" alt="">
+                                    </div>
+                                    <div class="col-md-10">
+                                        <p>Cobertura en cualquier parte del mundo, las 24 horas del día, los 365 días del año.</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="row">
-                                <div class="col-md-2">
-                                    <img src="../../../../../../assets/img/checkazul.svg" alt="">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <img src="../../../../../../assets/img/checkazul.svg" alt="">
+                                    </div>
+                                    <div class="col-md-10">
+                                        <p>Servicio de ambulancia por emergencias médicas y asistencia médica domiciliaria.</p>
+                                    </div>
                                 </div>
-                                <div class="col-md-10">
-                                    <p>Asistencia en viajes en el extranjero si se presenta un accidente.</p>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <img src="../../../../../../assets/img/checkazul.svg" alt="">
+                                    </div>
+                                    <div class="col-md-10">
+                                        <p>Asistencia en viajes en el extranjero si se presenta un accidente.</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -98,113 +536,112 @@
                 </div>
             </div>
         </div>
-    </div>
 
-    <a id="2"></a>
-    <div class="contenedor-gris">
-        <!-- aqui debe ir un ancla-->
-        <h3 style="color:#003c71">Nuestras Coberturas</h3>
-        <div class="container">
+        <a id="2"></a>
+        <div class="contenedor-gris">
+            <!-- aqui debe ir un ancla-->
+            <h3 style="color:#003c71">Nuestras Coberturas</h3>
+            <div class="container">
 
-            <div class="position-relative">
-                <button class="derechaaa"><i class="fas fa-angle-right"></i></button>
-                <button class="izquierdaaa"><i class="fas fa-angle-left"></i></button>
-                <swiper class="swiper-container col-sm-10 col-10 col-md-12" [config]="config" (indexChange)="onIndexChange($event)" fxFlex="auto">
+                <div class="position-relative">
+                    <button class="derechaaa"><i class="fas fa-angle-right"></i></button>
+                    <button class="izquierdaaa"><i class="fas fa-angle-left"></i></button>
+                    <swiper class="swiper-container col-sm-10 col-10 col-md-12" [config]="config" (indexChange)="onIndexChange($event)" fxFlex="auto">
 
-                    <div *ngFor="let slide of slides" [ngClass]="{ 'no-border-carousel': slide.id === '', 'swiper-slide' : true, 'test': true }">
-                            <div fxLayout="column" fxLayoutAlign="center center" fxFlexFill>
-                                <ng-template [ngIf]="slide.id!==''">
-                                <img src="../../../../../../assets/img/{{slide.imagen}}.svg" alt="">
-                                <p class="blue">{{slide.titulo}}</p>
-                                <p class="mensaje">{{slide.mensaje}}</p>
-                                <a href="http://banescoseguros.com.pa/wp-content/uploads/2016/02/Condiciones_Generales_AP_INTEGRAL_INDIVIDUAL.pdf" target="_blank" class="enlace" *ngIf="slide.id == '3'">{{slide.enlace}}</a>
-                                <a href="http://banescoseguros.com.pa/wp-content/uploads/2016/02/Condiciones_Generales_AP_INTEGRAL_INDIVIDUAL.pdf" target="_blank" class="enlace" *ngIf="slide.id == '4'">{{slide.enlace}}</a>
-                                </ng-template>
-                            </div>
-                    </div>
+                        <div *ngFor="let slide of slides" [ngClass]="{ 'no-border-carousel': slide.id === '', 'swiper-slide' : true, 'test': true }">
+                                <div fxLayout="column" fxLayoutAlign="center center" fxFlexFill>
+                                    <ng-template [ngIf]="slide.id!==''">
+                                    <img src="../../../../../../assets/img/{{slide.imagen}}.svg" alt="">
+                                    <p class="blue">{{slide.titulo}}</p>
+                                    <p class="mensaje">{{slide.mensaje}}</p>
+                                    <a href="http://banescoseguros.com.pa/wp-content/uploads/2016/02/Condiciones_Generales_AP_INTEGRAL_INDIVIDUAL.pdf" target="_blank" class="enlace" *ngIf="slide.id == '3'">{{slide.enlace}}</a>
+                                    <a href="http://banescoseguros.com.pa/wp-content/uploads/2016/02/Condiciones_Generales_AP_INTEGRAL_INDIVIDUAL.pdf" target="_blank" class="enlace" *ngIf="slide.id == '4'">{{slide.enlace}}</a>
+                                    </ng-template>
+                                </div>
+                        </div>
 
-                </swiper>
+                    </swiper>
+                </div>
+
             </div>
-
         </div>
-    </div>
 
-    <a id="3"></a>
-    <div class="contenedor">
-        <!-- aqui debe ir un ancla-->
-        <h3 class="preguntas" style="color:#003c71">Preguntas Frecuentes</h3>
-        <div class="container cober">
-            <accordion>
-                <accordion-group [panelClass]="customClass" [isOpen]="isFirstOpen">
-                    <button class="btn btn-link btn-block clearfix" accordion-heading>
-                <div class="pull-left float-left lix"><i class="fas fa-angle-down"></i> ¿Qué ventajas tiene?</div>
-              </button>
-                    <ul>
-                        <li>Te ofrecemos mayor protección por muy poco: servicios de ambulancia por emergencias médicas, asistencia médica domiciliaria y en viajes al extranjero.</li>
-                        <li>Consigue tu protección rápidamente estés donde estés.</li>
-                        <li>Paga cómodamente en pequeñas cuotas con tu tarjeta de crédito.</li>
-                        <li>La indemnización que ofrecemos es adicional a la de cualquier otra póliza que puedas disponer.</li>
-                    </ul>
-                </accordion-group>
-            </accordion>
-
-            <accordion>
-                <accordion-group [panelClass]="customClass">
-                    <button class="btn btn-link btn-block clearfix" accordion-heading>
-                <div class="pull-left float-left lix"><i class="fas fa-angle-down"></i> ¿Qué no cubre?</div>
-              </button>
-                    <ul>
-                        <li>Ninguna enfermedad corporal, mental o el agravamiento de la misma, tampoco sus tratamientos médicos o quirúrgicos que no se deriven de un accidente del asegurado.</li>
-                        <li>Los casos y consecuencias de desvanecimientos, síncopes (pérdida de conciencia), infartos, ataques de apoplejía (parálisis muscular); epilepsia, roturas de aneurismas, varices, SIDA y toda clase de hernias.</li>
-                        <li>Cuando el asegurado sufriera un accidente estando bajo los efectos del alcohol, estupefacientes, medicamento no prescrito por un médico, esta póliza no puede ejecutar sus coberturas o si este accidente tuviera como causa un desorden mental o Delirium Tremens (Delirios provocados por adicción al alcohol).</li>
-                        <li>Suicidio o su intento. Homicidio intencional por parte de los BENEFICIARIOS de la póliza o su relación con el mismo.</li>
-                        <li>Cuando el asegurado participe en duelos o riñas, exceptuando si se demuestra que el asegurado no provocó los hechos.</li>
-                        <li>La participación del asegurado en competencias de velocidad sean terrestres o acuáticas.</li>
-                        <li>Cuando el asegurado participe en competencias deportivas a nivel profesional.</li>
-                        <li>Accidentes causados por actos de guerra, invasión, levantamiento civil, motines, insurrección, rebelión, revolución de estados o situaciones similares.</li>
-                        <li>Accidentes producto de la reacción y radiación nuclear o contaminación radiactiva.</li>
-                        <li>Accidentes causados por infracción de las leyes vigentes en el país donde ocurran.</li>
-                    </ul>
-                </accordion-group>
-            </accordion>
-
-            <accordion>
-                <accordion-group [panelClass]="customClass">
-                    <button class="btn btn-link btn-block clearfix" accordion-heading>
-                <div class="pull-left float-left lix"><i class="fas fa-angle-down"></i> ¿Quién puede asegurarse?</div>
-              </button>
-                    <ul>
-                        <li>Cualquier persona nacional o extranjera que resida en la República de Panamá, con buena condición de salud, con edad entre dieciocho (18) y sesenta (60) años.</li>
-                        <li>Edad máxima de permanencia: setenta y cinco (75) años.</li>
-                    </ul>
-                </accordion-group>
-            </accordion>
-
-            <accordion>
-                <accordion-group [panelClass]="customClass">
-                    <button class="btn btn-link btn-block clearfix" accordion-heading>
-                <div class="pull-left float-left lix"><i class="fas fa-angle-down"></i> ¿Qué es una indemnización?</div>
-              </button>
-                    <ul>
-                        <li>Una indemnización consiste en conseguir una reposición económica para el asegurado cuando el mismo sufre un accidente de la forma en que están contempladas en las coberturas.</li>
-                    </ul>
-                </accordion-group>
-            </accordion>
-
-            <accordion>
-                <accordion-group [panelClass]="customClass">
-                    <button class="btn btn-link btn-block clearfix" accordion-heading>
-                <div class="pull-left float-left lix"><i class="fas fa-angle-down"></i> ¿Qué es un copago?</div>
+        <a id="3"></a>
+        <div class="contenedor">
+            <!-- aqui debe ir un ancla-->
+            <h3 class="preguntas" style="color:#003c71">Preguntas Frecuentes</h3>
+            <div class="container cober">
+                <accordion>
+                    <accordion-group [panelClass]="customClass" [isOpen]="isFirstOpen">
+                        <button class="btn btn-link btn-block clearfix" accordion-heading>
+                    <div class="pull-left float-left lix"><i class="fas fa-angle-down"></i> ¿Qué ventajas tiene?</div>
                 </button>
-                    <ul>
-                        <li>Un copago es una pequeña cantidad de dinero que debe pagar el asegurado o beneficiario de la póliza cada vez que utilice uno de los servicios contemplados dentro de las coberturas.</li>
-                    </ul>
-                </accordion-group>
-            </accordion>
+                        <ul>
+                            <li>Te ofrecemos mayor protección por muy poco: servicios de ambulancia por emergencias médicas, asistencia médica domiciliaria y en viajes al extranjero.</li>
+                            <li>Consigue tu protección rápidamente estés donde estés.</li>
+                            <li>Paga cómodamente en pequeñas cuotas con tu tarjeta de crédito.</li>
+                            <li>La indemnización que ofrecemos es adicional a la de cualquier otra póliza que puedas disponer.</li>
+                        </ul>
+                    </accordion-group>
+                </accordion>
 
+                <accordion>
+                    <accordion-group [panelClass]="customClass">
+                        <button class="btn btn-link btn-block clearfix" accordion-heading>
+                    <div class="pull-left float-left lix"><i class="fas fa-angle-down"></i> ¿Qué no cubre?</div>
+                </button>
+                        <ul>
+                            <li>Ninguna enfermedad corporal, mental o el agravamiento de la misma, tampoco sus tratamientos médicos o quirúrgicos que no se deriven de un accidente del asegurado.</li>
+                            <li>Los casos y consecuencias de desvanecimientos, síncopes (pérdida de conciencia), infartos, ataques de apoplejía (parálisis muscular); epilepsia, roturas de aneurismas, varices, SIDA y toda clase de hernias.</li>
+                            <li>Cuando el asegurado sufriera un accidente estando bajo los efectos del alcohol, estupefacientes, medicamento no prescrito por un médico, esta póliza no puede ejecutar sus coberturas o si este accidente tuviera como causa un desorden mental o Delirium Tremens (Delirios provocados por adicción al alcohol).</li>
+                            <li>Suicidio o su intento. Homicidio intencional por parte de los BENEFICIARIOS de la póliza o su relación con el mismo.</li>
+                            <li>Cuando el asegurado participe en duelos o riñas, exceptuando si se demuestra que el asegurado no provocó los hechos.</li>
+                            <li>La participación del asegurado en competencias de velocidad sean terrestres o acuáticas.</li>
+                            <li>Cuando el asegurado participe en competencias deportivas a nivel profesional.</li>
+                            <li>Accidentes causados por actos de guerra, invasión, levantamiento civil, motines, insurrección, rebelión, revolución de estados o situaciones similares.</li>
+                            <li>Accidentes producto de la reacción y radiación nuclear o contaminación radiactiva.</li>
+                            <li>Accidentes causados por infracción de las leyes vigentes en el país donde ocurran.</li>
+                        </ul>
+                    </accordion-group>
+                </accordion>
+
+                <accordion>
+                    <accordion-group [panelClass]="customClass">
+                        <button class="btn btn-link btn-block clearfix" accordion-heading>
+                    <div class="pull-left float-left lix"><i class="fas fa-angle-down"></i> ¿Quién puede asegurarse?</div>
+                </button>
+                        <ul>
+                            <li>Cualquier persona nacional o extranjera que resida en la República de Panamá, con buena condición de salud, con edad entre dieciocho (18) y sesenta (60) años.</li>
+                            <li>Edad máxima de permanencia: setenta y cinco (75) años.</li>
+                        </ul>
+                    </accordion-group>
+                </accordion>
+
+                <accordion>
+                    <accordion-group [panelClass]="customClass">
+                        <button class="btn btn-link btn-block clearfix" accordion-heading>
+                    <div class="pull-left float-left lix"><i class="fas fa-angle-down"></i> ¿Qué es una indemnización?</div>
+                </button>
+                        <ul>
+                            <li>Una indemnización consiste en conseguir una reposición económica para el asegurado cuando el mismo sufre un accidente de la forma en que están contempladas en las coberturas.</li>
+                        </ul>
+                    </accordion-group>
+                </accordion>
+
+                <accordion>
+                    <accordion-group [panelClass]="customClass">
+                        <button class="btn btn-link btn-block clearfix" accordion-heading>
+                    <div class="pull-left float-left lix"><i class="fas fa-angle-down"></i> ¿Qué es un copago?</div>
+                    </button>
+                        <ul>
+                            <li>Un copago es una pequeña cantidad de dinero que debe pagar el asegurado o beneficiario de la póliza cada vez que utilice uno de los servicios contemplados dentro de las coberturas.</li>
+                        </ul>
+                    </accordion-group>
+                </accordion>
+
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 </ng-template>
 <!-- Plantilla para Seguros de Cancer -->
 <ng-template [ngIf]="insureType === 'cancer'">
@@ -215,7 +652,7 @@
                     <div class="col-md-8">          
                             <h1 style="color:#003c71">Explora nuestra protección contra el Cáncer</h1>
                             <p>Con nuestra Protección Segura por Cáncer, recibirás una indemnización por el diagnóstico de esta enfermedad. Además podrás disponer del monto total asegurado sin necesidad de asociarlo a gastos médicos.</p>
-                        <button style="font-size: 17px" class="btn" [routerLink]="['/cobertura/',insureType]">VER PRECIOS</button>
+                        <!--<button style="font-size: 17px" class="btn" [routerLink]="['/cobertura/',insureType]">VER PRECIOS</button>-->
                     </div>
                     <div class="col-md-4">
                         <img src="../../../../../../assets/img/pink-ribbon.svg" alt="" style="max-height:160px;">
@@ -223,6 +660,107 @@
                 </div>
             </div>
         </div>
+
+        <!-- Cuadros de Precio-->
+        <div *ngIf="!isLoading" class="wrapper cobertura">
+            <section class="cobertura">
+                <div class="container">
+                <ng-template [ngIf]="insureType == 'accidentes-personales'">
+                    <div class="centrado">
+                    <h3 class="titulo-1" style="color:#003c71">¡Tenemos la protección de Accidentes Personales ideal para ti!</h3>
+                    <h4 class="subtitulo">Mira nuestras recomendaciones y compra la que más se ajuste a lo que estás buscando.</h4>
+                    </div>
+                </ng-template>
+                <ng-template [ngIf]="insureType == 'cancer'">
+                    <div class="centrado">
+                    <h3 class="titulo-1" style="color:#003c71">¡Adquiere seguridad y tranquilidad con tu seguro de Cáncer!</h3>
+                    <h4 class="subtitulo">Mira nuestras recomendaciones y compra la que más se ajuste a lo que estás buscando.</h4>
+                    </div>
+                </ng-template>
+                <div class="row">
+                <div class="col-md-6 col-lg-4 cont_card" *ngFor="let coverage of coverages | coveragesSort; let i = index;">
+                    <div class="col">
+                        <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                            <div class="col-sm-5 col-md-5 cont_img">
+                                <img src="../../../../../../favicon.ico" class="" alt=""/>
+                            </div>
+                            <div class="col-sm-7 col-md-7 cobertura">
+                                <h2>{{coverage.coverageDetail.insuredAmount | number:'1.0-0'}} $</h2>
+                                <h6>Monto asegurado</h6>
+                            </div>
+                            </div>
+                            <div class="row">
+                            <div class="col-sm-12 col-lg-12 cont_info">
+                                <h5 class="card-title">
+                                <b>Basico</b>
+                                <button class="btn ver-detalle" (click)="openSm(content, coverage)">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
+                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                <path d="M8.93 6.588l-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                                </svg>
+                                </button>
+                                </h5>
+                                <p class="card-text">Incluya un seguro básico con acceso a la cobertura mínima.</p>
+                                <ng-template [ngIf]="insureType == 'accidentes-personales'">
+                                <ul>
+                                    <li>
+                                    Muerte Accidental <b>({{coverage.coverageDetail.accidentalDeath}}%)</b>
+                                    </li>
+                                    <li>
+                                    Adelanto de Gastos Funerarios <b>({{coverage.coverageDetail.funeraryAdvances}}%)</b>
+                                    </li>
+                                    <li>
+                                    Doble indemnización por muerte en accidente especifico <b>({{coverage.coverageDetail.dobleCompensation}}%)</b>
+                                    </li>
+                                    <li>
+                                    Gastos Médicos por Accidente <b>({{coverage.coverageDetail.medicalExpenses}}%)</b>
+                                    </li>
+                                    <li>
+                                    Invalidez Permanente <b>({{coverage.coverageDetail.permanentInhability}}%)</b>
+                                    </li>
+                                    <li>
+                                    Servicio de Emergencia Médica por Accidente <b>({{coverage.coverageDetail.emergencyService}}%)</b>
+                                    </li>
+                                    <li>
+                                    Asistencia en Viajes <b>({{coverage.coverageDetail.travelAssistance}}%)</b>
+                                    </li>
+                                </ul>
+                                </ng-template>
+                                <ng-template [ngIf]="insureType == 'cancer'">
+                                <ul>
+                                    <li>
+                                    En caso que recibas un diagnóstico de cáncer por primera vez 
+                                    en tu vida se te entregará el monto total asegurado. 
+                                    Ej.: Si eres diagnosticado como paciente de cáncer 
+                                    te entregamos el monto total asegurado por USD {{coverage.coverageDetail.insuredAmount | number:'1.0-0'}}
+                                    </li>
+                                    <li>
+                                    En caso de fallecimiento del asegurado se le entregará 
+                                    el monto total a los beneficiarios designados.
+                                    </li>
+                                </ul>
+                                </ng-template>
+                                <h2>
+                                {{coverage.coverageDetail.monthlyPrime}} $<label>/Mensuales</label>
+                                </h2>
+                            </div>
+                            </div>
+                            <div class="row">
+                            <div class="col-sm-12 col-lg-12 cont_botones">
+                                <button class="btn btn-primary solicitar" (click)="openLg(terminos, coverage)">SOLICITAR</button>
+                            </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </section>
+        </div>
+
         <div class="contenedor">
             <div class="botones">
                 <button [ngx-scroll-to]="'#1'" [ngClass]="{'todo-green': (greenActivate==='1')}" (click)="greenActivate = '1'" class="boton-cuadrado">¿En qué consiste nuestro seguro de Cáncer?</button>
