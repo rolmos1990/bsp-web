@@ -11,7 +11,7 @@ import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
 import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
 import { CoreModule } from '../core/core.module';
 //import { ShowComponent } from '../coverage/pages/show/show';
-import { TermsAndConditionsComponent } from '../coverage/components/terms-and-conditions/terms-and-conditions.component';
+import { TermsAndConditionsComponent } from '../terms-and-conditions/terms-and-conditions.component';
 
 const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
   direction: 'horizontal',
